@@ -12,19 +12,19 @@
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
         h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         
-        /* Fixed Background */
+        /* Background */
         .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), url('hero.jpeg');
             background-size: cover; background-position: center;
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
         }
 
         /* Responsive Hero Text */
-        .hero-title { font-size: clamp(2.5rem, 12vw, 8rem); line-height: 0.9; text-align: center; font-style: italic; font-weight: 700; margin-bottom: 2rem; }
+        .hero-title { font-size: clamp(2.5rem, 12vw, 8rem); line-height: 0.9; font-style: italic; font-weight: 700; margin-bottom: 2rem; }
 
-        /* Navigation: Always Visible */
+        /* Navigation */
         .glass-nav { background: rgba(0, 0, 0, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; position: fixed; top: 0; z-index: 1000; }
-        .nav-links { display: flex; gap: 15px; overflow-x: auto; padding: 15px; justify-content: center; scrollbar-width: none; }
+        .nav-links { display: flex; gap: 15px; overflow-x: auto; padding: 15px; scrollbar-width: none; }
         .nav-links::-webkit-scrollbar { display: none; }
         .nav-links a, .nav-links button { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #888; text-transform: uppercase; white-space: nowrap; }
         .nav-links .active-link { color: #FCA311; }
@@ -33,10 +33,20 @@
         .form-group { margin-bottom: 15px; }
         label { display: block; font-size: 10px; color: #FCA311; margin-bottom: 5px; letter-spacing: 1px; font-weight: 700; }
         input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; padding: 14px !important; width: 100%; border-radius: 4px !important; font-size: 16px !important; outline: none; -webkit-appearance: none; }
-        input:focus, select:focus { border-color: #FCA311 !important; }
 
         .btn-gold { background: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; display: inline-block; width: 100%; text-align: center; border: none; cursor: pointer; }
         .btn-outline { border: 2px solid white; color: white; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; display: inline-block; width: 100%; text-align: center; background: transparent; cursor: pointer; }
+
+        /* ALIGNMENT FIX: Center on mobile, Left on Desktop */
+        .hero-content { padding: 0 1.5rem; text-align: center; }
+        .hero-btn-container { width: 100%; max-width: 320px; margin: 0 auto; }
+        .social-container { display: flex; gap: 1.5rem; margin-top: 3rem; justify-content: center; opacity: 0.6; }
+
+        @media (min-width: 1024px) {
+            .hero-content { padding: 0 10%; text-align: left; }
+            .hero-btn-container { margin: 0; display: flex; max-width: 500px; gap: 1rem; }
+            .social-container { justify-content: flex-start; }
+        }
 
         #merch, #events, #support { display: none; padding: 80px 20px; text-align: center; }
     </style>
@@ -44,29 +54,35 @@
 <body>
 
     <nav class="glass-nav">
-        <div class="nav-links">
-            <a href="#home">HOME</a>
-            <button onclick="reveal('events')">EVENT</button>
-            <button onclick="reveal('merch')">MERCH</button>
-            <button onclick="reveal('support')">SUPPORT</button>
-            <a href="#join" class="active-link">JOIN MOVEMENT</a>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="nav-links">
+                <a href="#home">HOME</a>
+                <button onclick="reveal('events')">EVENT</button>
+                <button onclick="reveal('merch')">MERCH</button>
+                <button onclick="reveal('support')">SUPPORT</button>
+                <a href="#join" class="active-link">JOIN MOVEMENT</a>
+            </div>
         </div>
     </nav>
 
-    <header id="home" class="hero-bg px-6 pt-20">
-        <h1 class="hero-title">
-            C<span class="text-[#FCA311]">O</span>FFEE MEETS<br>THE WORD.
-        </h1>
-        
-        <div class="w-full max-w-xs space-y-4">
-            <a href="#join" class="btn-gold">Join Movement</a>
-            <button onclick="reveal('merch')" class="btn-outline">View Merch</button>
-        </div>
+    <header id="home" class="hero-bg">
+        <div class="hero-content pt-20">
+            <h1 class="hero-title">
+                C<span class="text-[#FCA311]">O</span>FFEE MEETS<br>THE WORD.
+            </h1>
+            
+            <div class="hero-btn-container space-y-4 md:space-y-0">
+                <a href="#join" class="btn-gold">Join Movement</a>
+                <button onclick="reveal('merch')" class="btn-outline">View Merch</button>
+            </div>
 
-        <div class="flex gap-10 mt-12 opacity-60">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="music-2"></i></a>
-            <a href="#"><i data-lucide="mail"></i></a>
+            <div class="social-container">
+                <a href="#"><i data-lucide="instagram"></i></a>
+                <a href="#"><i data-lucide="facebook"></i></a>
+                <a href="#"><i data-lucide="youtube"></i></a>
+                <a href="#"><i data-lucide="music-2"></i></a>
+                <a href="#"><i data-lucide="mail"></i></a>
+            </div>
         </div>
     </header>
 
@@ -108,24 +124,9 @@
         </div>
     </section>
 
-    <section id="events" class="bg-[#0d0d0d]">
-        <h2 class="text-3xl font-bold mb-6 italic text-[#FCA311]">Events</h2>
-        <p class="text-gray-500 uppercase tracking-widest text-xs">Announcements Coming Soon</p>
-    </section>
-
-    <section id="merch">
-        <h2 class="text-3xl font-bold mb-10 italic">The Merch</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div class="bg-[#111] p-4 border border-white/5"><img src="merch1.jpeg" class="w-full grayscale"></div>
-            <div class="bg-[#111] p-4 border border-white/5"><img src="merch2.jpeg" class="w-full grayscale"></div>
-            <div class="bg-[#111] p-4 border border-white/5"><img src="merch3.jpeg" class="w-full grayscale"></div>
-        </div>
-    </section>
-
-    <section id="support" class="bg-[#0d0d0d]">
-        <h2 class="text-3xl font-bold mb-6 italic text-[#FCA311]">Support</h2>
-        <a href="https://wa.me/251910884585" class="btn-outline max-w-xs mx-auto">Partner with us</a>
-    </section>
+    <section id="events" class="bg-[#0d0d0d]"><h2 class="text-3xl font-bold italic text-[#FCA311]">Events</h2></section>
+    <section id="merch"><h2 class="text-3xl font-bold italic">The Merch</h2></section>
+    <section id="support" class="bg-[#0d0d0d]"><h2 class="text-3xl font-bold italic text-[#FCA311]">Support</h2></section>
 
     <script>
         const API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";

@@ -6,35 +6,41 @@
     <title>Bible & Coffee | Global</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; overflow-x: hidden; }
         h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         .accent-text { color: #FCA311; }
         
-        /* Premium Navigation */
-        .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Navigation */
+        .glass-nav { background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* Hero Section with YOUR Image */
+        /* THE BUTTON FIX: Flexible but strong */
+        .btn-container { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 400px; margin: 0 auto; }
+        @media (min-width: 768px) { .btn-container { flex-direction: row; max-width: 500px; } }
+
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; font-size: 12px; padding: 1.25rem; border-radius: 4px; transition: 0.3s; flex: 1; text-align: center; border: none; cursor: pointer; text-decoration: none; }
+        .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: white; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; font-size: 12px; padding: 1.25rem; border-radius: 4px; transition: 0.3s; flex: 1; text-align: center; background: transparent; cursor: pointer; text-decoration: none; }
+        
+        .btn-gold:active, .btn-gold:hover { background-color: white; transform: scale(0.98); }
+        .btn-outline:active, .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: scale(0.98); }
+
+        /* Hero Background - Uses your hero.jpeg */
         .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(10,10,10,1)), 
-                        url('hero.jpeg'); /* This uses the file you uploaded */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), 
+                        url('hero.jpeg');
             background-size: cover;
             background-position: center;
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Fixed Premium Buttons */
-        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; border: none; cursor: pointer; text-decoration: none; }
-        .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; background: transparent; cursor: pointer; text-decoration: none; }
-        .btn-gold:hover { background-color: #fff; }
-        .btn-outline:hover { background-color: white; color: black; }
-
-        /* Form styling - No mobile glitches */
-        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1.2rem !important; width: 100%; border-radius: 0px !important; -webkit-appearance: none; outline: none; }
-        input:focus { border-color: #FCA311 !important; }
-
+        /* Forms */
+        input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; font-size: 16px !important; padding: 1.2rem !important; width: 100%; border-radius: 4px !important; -webkit-appearance: none; outline: none; }
+        
         #merch { display: none; }
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
     </style>
@@ -45,62 +51,61 @@
         <img id="lb-img" class="max-w-full max-h-[80vh] border border-white/10">
     </div>
 
-    <nav class="fixed w-full z-[100] glass-nav py-5 px-6">
+    <nav class="fixed w-full z-[100] glass-nav py-4 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <i data-lucide="coffee" class="accent-text w-5 h-5"></i>
-                <span class="text-xl font-bold brand-font italic">BIBLE & COFFEE</span>
+                <i data-lucide="coffee" class="accent-text"></i>
+                <span class="text-lg font-bold brand-font italic tracking-tighter">BIBLE & COFFEE</span>
             </div>
-            <div class="hidden md:flex items-center gap-8 text-[10px] font-bold tracking-[0.3em]">
-                <a href="#home" class="hover:text-[#FCA311]">HOME</a>
-                <button onclick="toggleMerch()" class="hover:text-[#FCA311]">MERCH</button>
-                <a href="#join" class="accent-text">JOIN MOVEMENT</a>
+            <div class="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em]">
+                <a href="#home">HOME</a>
+                <button onclick="toggleMerch()">MERCH</button>
+                <a href="#join" class="accent-text">JOIN</a>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="relative flex flex-col justify-center items-center text-center px-6 hero-bg">
-        <div class="max-w-4xl pt-12">
-            <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-12 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
-            <div class="flex flex-col md:flex-row gap-4 w-full max-w-md mx-auto">
-                <a href="#join" class="btn-gold w-full">Join Movement</a>
-                <button onclick="toggleMerch()" class="btn-outline w-full">View Merch</button>
+    <header id="home" class="relative px-6 hero-bg">
+        <div class="max-w-4xl text-center">
+            <h1 class="text-5xl md:text-9xl font-bold leading-tight mb-10 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
+            <div class="btn-container">
+                <a href="#join" class="btn-gold">Join Movement</a>
+                <button onclick="toggleMerch()" class="btn-outline">View Merch</button>
             </div>
         </div>
     </header>
 
-    <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-y border-white/5">
-        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-16 italic">The Merch</h2>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <img src="merch1.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-700 cursor-zoom-in">
-            <img src="merch2.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-700 cursor-zoom-in">
-            <img src="merch3.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-700 cursor-zoom-in">
+    <section id="merch" class="py-24 bg-[#0a0a0a] px-6 text-center">
+        <h2 class="text-4xl md:text-6xl font-bold uppercase mb-12 italic">Exclusive Merch</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <img src="merch1.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-500">
+            <img src="merch2.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-500">
+            <img src="merch3.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-500">
         </div>
     </section>
 
-    <section id="join" class="py-32 px-6 bg-black">
-        <div class="max-w-xl mx-auto text-center">
-            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 accent-text">Register</h2>
-            <form id="regForm" class="space-y-6 text-left">
+    <section id="join" class="py-24 px-6 bg-black">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-4xl text-center mb-12 italic accent-text brand-font">Register</h2>
+            <form id="regForm" class="space-y-4">
                 <input type="text" id="name" placeholder="FULL NAME" required>
-                <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
-                <input type="tel" id="phone" placeholder="PHONE NUMBER" required>
+                <input type="email" id="email" placeholder="EMAIL" required>
+                <input type="tel" id="phone" placeholder="PHONE" required>
                 <select id="country" onchange="updateCities()" required>
-                    <option value="" disabled selected>SELECT COUNTRY</option>
+                    <option value="" disabled selected>COUNTRY</option>
                     <option value="Ethiopia">Ethiopia</option>
                     <option value="Germany">Germany</option>
-                    <option value="Netherlands">Netherlands</option>
                 </select>
                 <select id="city" required>
-                    <option value="" disabled selected>SELECT CITY</option>
+                    <option value="" disabled selected>CITY</option>
                 </select>
-                <button type="submit" id="subBtn" class="btn-gold w-full mt-8">Confirm Registration</button>
+                <button type="submit" id="subBtn" class="btn-gold w-full mt-4">Confirm Registration</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-20 bg-black text-center border-t border-white/5">
-        <p class="text-[8px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
+    <footer class="py-16 bg-black text-center border-t border-white/5">
+        <p class="text-[8px] tracking-[0.5em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee</p>
     </footer>
 
     <script>
@@ -120,14 +125,13 @@
 
         const geo = {
             "Ethiopia": ["Addis Ababa", "Hawassa", "Adama"],
-            "Germany": ["Frankfurt", "Munich"],
-            "Netherlands": ["Amsterdam", "Rotterdam"]
+            "Germany": ["Frankfurt", "Munich"]
         };
 
         function updateCities() {
             const country = document.getElementById('country').value;
             const citySel = document.getElementById('city');
-            citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
+            citySel.innerHTML = '<option value="" disabled selected>CITY</option>';
             if(geo[country]) {
                 geo[country].forEach(c => {
                     let o = document.createElement('option'); o.value = c; o.textContent = c.toUpperCase();
@@ -139,9 +143,7 @@
         document.getElementById('regForm').onsubmit = async (e) => {
             e.preventDefault();
             const b = document.getElementById('subBtn');
-            const originalText = b.innerText;
             b.innerText = "SAVING...";
-            
             const now = new Date();
             const formData = {
                 Name: document.getElementById('name').value,
@@ -152,18 +154,13 @@
                 "Registration Date": now.toLocaleDateString(),
                 "Registration Time": now.toLocaleTimeString()
             };
-
             try {
                 await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [formData] }) });
-                const waMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered for the movement.\n\n*Details:*\n- Name: ${formData.Name}\n- City: ${formData.City}\n\nConfirmed on ${formData["Registration Date"]}.`;
+                const waMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered.\n- Name: ${formData.Name}\n- City: ${formData.City}`;
                 window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(waMsg)}`, '_blank');
-                document.getElementById('regForm').reset();
-                b.innerText = originalText;
-                alert("Success! Welcome to the movement.");
-            } catch (err) { 
-                alert("Connection Error. Please check your internet."); 
-                b.innerText = originalText; 
-            }
+                b.innerText = "Confirm Registration";
+                alert("Success!");
+            } catch (err) { alert("Error."); b.innerText = "Confirm Registration"; }
         };
         lucide.createIcons();
     </script>

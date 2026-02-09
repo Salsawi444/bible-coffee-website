@@ -3,125 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bible & Coffee | Global</title>
+    <title>BIBLE & COFFEE | GLOBAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; overflow-x: hidden; }
-        h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
         .accent-text { color: #FCA311; }
         
-        /* Navigation */
-        .glass-nav { background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         
-        /* THE BUTTON FIX: Flexible but strong */
-        .btn-container { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 400px; margin: 0 auto; }
-        @media (min-width: 768px) { .btn-container { flex-direction: row; max-width: 500px; } }
-
-        .btn-gold { background-color: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; font-size: 12px; padding: 1.25rem; border-radius: 4px; transition: 0.3s; flex: 1; text-align: center; border: none; cursor: pointer; text-decoration: none; }
-        .btn-outline { border: 2px solid rgba(255,255,255,0.3); color: white; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; font-size: 12px; padding: 1.25rem; border-radius: 4px; transition: 0.3s; flex: 1; text-align: center; background: transparent; cursor: pointer; text-decoration: none; }
-        
-        .btn-gold:active, .btn-gold:hover { background-color: white; transform: scale(0.98); }
-        .btn-outline:active, .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: scale(0.98); }
-
-        /* Hero Background - Uses your hero.jpeg */
         .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), 
-                        url('hero.jpeg');
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(10,10,10,1)), url('hero.jpeg');
+            background-size: cover; background-position: center; min-height: 100vh;
         }
 
-        /* Forms */
-        input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; font-size: 16px !important; padding: 1.2rem !important; width: 100%; border-radius: 4px !important; -webkit-appearance: none; outline: none; }
+        /* Luxury Buttons */
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; font-size: 10px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.4s; display: inline-block; text-align: center; border: none; cursor: pointer; text-decoration: none; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; font-size: 10px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.4s; display: inline-block; text-align: center; background: transparent; cursor: pointer; text-decoration: none; }
+        .btn-gold:hover { background-color: white; transform: translateY(-2px); }
+        .btn-outline:hover { background-color: white; color: black; border-color: white; transform: translateY(-2px); }
+
+        .social-links { display: flex; gap: 20px; margin-top: 40px; }
+        .social-links a { color: rgba(255,255,255,0.5); transition: 0.3s; }
+        .social-links a:hover { color: #FCA311; }
+
+        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 14px !important; padding: 1.2rem !important; width: 100%; border-radius: 0px !important; outline: none; }
         
-        #merch { display: none; }
-        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+        #merch, #events, #support { display: none; }
+        .section-padding { padding: 100px 24px; }
     </style>
 </head>
 <body>
 
-    <div id="lightbox" onclick="this.style.display='none'">
-        <img id="lb-img" class="max-w-full max-h-[80vh] border border-white/10">
-    </div>
-
-    <nav class="fixed w-full z-[100] glass-nav py-4 px-6">
+    <nav class="fixed w-full z-[100] glass-nav py-6 px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <i data-lucide="coffee" class="accent-text"></i>
-                <span class="text-lg font-bold brand-font italic tracking-tighter">BIBLE & COFFEE</span>
+            <div class="flex items-center gap-3">
+                <i data-lucide="coffee" class="accent-text w-5 h-5"></i>
+                <span class="text-xl font-bold brand-font italic tracking-tighter">BIBLE & COFFEE</span>
             </div>
-            <div class="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em]">
-                <a href="#home">HOME</a>
-                <button onclick="toggleMerch()">MERCH</button>
-                <a href="#join" class="accent-text">JOIN</a>
+            <div class="hidden lg:flex items-center gap-8 text-[9px] font-bold tracking-[0.4em]">
+                <a href="#home" class="hover:text-[#FCA311]">HOME</a>
+                <button onclick="showSection('events')" class="hover:text-[#FCA311]">EVENTS</button>
+                <button onclick="toggleMerch()" class="hover:text-[#FCA311]">MERCH</button>
+                <button onclick="showSection('support')" class="hover:text-[#FCA311]">SUPPORT</button>
+                <a href="#join" class="accent-text">JOIN MOVEMENT</a>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="relative px-6 hero-bg">
-        <div class="max-w-4xl text-center">
-            <h1 class="text-5xl md:text-9xl font-bold leading-tight mb-10 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
-            <div class="btn-container">
-                <a href="#join" class="btn-gold">Join Movement</a>
-                <button onclick="toggleMerch()" class="btn-outline">View Merch</button>
+    <header id="home" class="relative flex flex-col justify-center items-center text-center px-6 hero-bg">
+        <div class="max-w-5xl pt-20">
+            <h1 class="text-6xl md:text-[9rem] font-bold leading-[0.85] mb-12 italic">
+                C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
+            </h1>
+            
+            <div class="flex flex-col md:flex-row gap-5 w-full max-w-lg mx-auto justify-center items-center">
+                <a href="#join" class="btn-gold w-full md:w-auto">Join Movement</a>
+                <button onclick="toggleMerch()" class="btn-outline w-full md:w-auto">View Merch</button>
+            </div>
+
+            <div class="social-links justify-center">
+                <a href="#"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#"><i data-lucide="music-2" class="w-5 h-5"></i></a>
+                <a href="#"><i data-lucide="mail" class="w-5 h-5"></i></a>
             </div>
         </div>
     </header>
 
-    <section id="merch" class="py-24 bg-[#0a0a0a] px-6 text-center">
-        <h2 class="text-4xl md:text-6xl font-bold uppercase mb-12 italic">Exclusive Merch</h2>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="merch1.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-500">
-            <img src="merch2.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-500">
-            <img src="merch3.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-500">
+    <section id="events" class="section-padding bg-[#0d0d0d] text-center border-b border-white/5">
+        <h2 class="text-4xl md:text-6xl font-bold mb-10 italic accent-text">Upcoming Events</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto mb-12 text-sm tracking-widest uppercase">Global gatherings & local fellowship. Stay tuned for our next session.</p>
+        <div class="max-w-4xl mx-auto border border-white/10 p-10">
+            <p class="text-[10px] tracking-[0.5em] text-gray-500 mb-2">NEXT SESSION</p>
+            <h3 class="text-2xl font-bold mb-4">COFFEE & SCRIPTURE LIVE</h3>
+            <p class="text-gray-400 italic">Announcement Coming Soon</p>
         </div>
     </section>
 
-    <section id="join" class="py-24 px-6 bg-black">
-        <div class="max-w-xl mx-auto">
-            <h2 class="text-4xl text-center mb-12 italic accent-text brand-font">Register</h2>
-            <form id="regForm" class="space-y-4">
+    <section id="merch" class="section-padding bg-[#0a0a0a] text-center border-b border-white/5">
+        <h2 class="text-5xl md:text-7xl font-bold mb-16 italic">The Merch</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+            <img src="merch1.jpeg" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-1000">
+            <img src="merch2.jpeg" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-1000">
+            <img src="merch3.jpeg" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-1000">
+        </div>
+    </section>
+
+    <section id="support" class="section-padding bg-[#0d0d0d] text-center border-b border-white/5">
+        <h2 class="text-4xl md:text-6xl font-bold mb-10 italic accent-text">Support</h2>
+        <p class="text-gray-400 max-w-xl mx-auto mb-10 text-sm tracking-widest uppercase leading-loose">Help us spread the word and the coffee. Your support fuels the global movement.</p>
+        <a href="https://wa.me/251910884585?text=I'd like to support the movement" class="btn-outline">Partnership Inquiry</a>
+    </section>
+
+    <section id="join" class="section-padding bg-black">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-5xl md:text-7xl font-bold italic mb-16 accent-text">Register</h2>
+            <form id="regForm" class="space-y-6 text-left">
                 <input type="text" id="name" placeholder="FULL NAME" required>
-                <input type="email" id="email" placeholder="EMAIL" required>
-                <input type="tel" id="phone" placeholder="PHONE" required>
+                <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
+                <input type="tel" id="phone" placeholder="PHONE NUMBER" required>
                 <select id="country" onchange="updateCities()" required>
-                    <option value="" disabled selected>COUNTRY</option>
+                    <option value="" disabled selected>SELECT COUNTRY</option>
                     <option value="Ethiopia">Ethiopia</option>
                     <option value="Germany">Germany</option>
                 </select>
                 <select id="city" required>
-                    <option value="" disabled selected>CITY</option>
+                    <option value="" disabled selected>SELECT CITY</option>
                 </select>
-                <button type="submit" id="subBtn" class="btn-gold w-full mt-4">Confirm Registration</button>
+                <button type="submit" id="subBtn" class="btn-gold w-full mt-10">Confirm Registration</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-16 bg-black text-center border-t border-white/5">
-        <p class="text-[8px] tracking-[0.5em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee</p>
+    <footer class="py-20 bg-black text-center border-t border-white/5">
+        <p class="text-[9px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
     </footer>
 
     <script>
         const API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ADMIN_PHONE = "251910884585";
+        const ADMIN_WA = "251910884585";
 
-        function openLB(src) { 
-            document.getElementById('lb-img').src = src; 
-            document.getElementById('lightbox').style.display = 'flex'; 
+        function showSection(id) {
+            const el = document.getElementById(id);
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function toggleMerch() { 
-            const m = document.getElementById('merch');
-            m.style.display = 'block'; 
-            m.scrollIntoView({ behavior: 'smooth' }); 
-        }
+        function toggleMerch() { showSection('merch'); }
 
         const geo = {
             "Ethiopia": ["Addis Ababa", "Hawassa", "Adama"],
@@ -131,7 +142,7 @@
         function updateCities() {
             const country = document.getElementById('country').value;
             const citySel = document.getElementById('city');
-            citySel.innerHTML = '<option value="" disabled selected>CITY</option>';
+            citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
             if(geo[country]) {
                 geo[country].forEach(c => {
                     let o = document.createElement('option'); o.value = c; o.textContent = c.toUpperCase();
@@ -143,23 +154,20 @@
         document.getElementById('regForm').onsubmit = async (e) => {
             e.preventDefault();
             const b = document.getElementById('subBtn');
-            b.innerText = "SAVING...";
-            const now = new Date();
-            const formData = {
+            b.innerText = "PROCESSING...";
+            const data = {
                 Name: document.getElementById('name').value,
                 Email: document.getElementById('email').value,
                 Phone: document.getElementById('phone').value,
                 Country: document.getElementById('country').value,
                 City: document.getElementById('city').value,
-                "Registration Date": now.toLocaleDateString(),
-                "Registration Time": now.toLocaleTimeString()
+                "Registration Date": new Date().toLocaleDateString()
             };
             try {
-                await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [formData] }) });
-                const waMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered.\n- Name: ${formData.Name}\n- City: ${formData.City}`;
-                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [data] }) });
+                window.open(`https://wa.me/${ADMIN_WA}?text=Registered: ${data.Name}`, '_blank');
                 b.innerText = "Confirm Registration";
-                alert("Success!");
+                alert("Welcome to the Movement!");
             } catch (err) { alert("Error."); b.innerText = "Confirm Registration"; }
         };
         lucide.createIcons();

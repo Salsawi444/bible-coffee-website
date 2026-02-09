@@ -167,4 +167,63 @@
 
         function updateSubCities() {
             const country = document.getElementById('country').value;
-            const city = document.getElementById('city
+            const city = document.getElementById('city').value;
+            const subCitySel = document.getElementById('subCity');
+            const subCityGroup = document.getElementById('subCityGroup');
+            const areas = locationData[country][city];
+            if(areas && areas.length > 0) {
+                subCitySel.innerHTML = '<option value="" disabled selected>SELECT AREA</option>';
+                areas.forEach(a => {
+                    let o = document.createElement('option'); o.value = a; o.textContent = a.toUpperCase();
+                    subCitySel.appendChild(o);
+                });
+                subCityGroup.style.display = 'block';
+            } else { subCityGroup.style.display = 'none'; }
+        }
+
+        async function checkSpots() {
+            const city = document.getElementById('city').value;
+            const spot = document.getElementById('subCity').value;
+            const counterBox = document.getElementById('counterBox');
+            if (city === "Addis Ababa" && spot) {
+                counterBox.style.display = 'block';
+                try {
+                    const resp = await fetch(`${API}/search?City=${city}&Spot=${spot}`);
+                    const regs = await resp.json();
+                    const remaining = TOTAL_LIMIT - regs.length;
+                    document.getElementById('spotsLeft').innerText = remaining > 0 ? remaining : 0;
+                    if (remaining <= 0) {
+                        const b = document.getElementById('subBtn');
+                        b.disabled = true; b.innerText = "LOCATION FULL"; b.style.background = "#444";
+                    } else {
+                        const b = document.getElementById('subBtn');
+                        b.disabled = false; b.innerText = "CONFIRM REGISTRATION"; b.style.background = "#FCA311";
+                    }
+                } catch (e) { console.error(e); }
+            }
+        }
+
+        document.getElementById('regForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const b = document.getElementById('subBtn'); b.innerText = "SAVING...";
+            const name = document.getElementById('name').value;
+            const city = document.getElementById('city').value;
+            const area = document.getElementById('subCity').value || "N/A";
+            const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const data = { "Name": name, "Email": document.getElementById('email').value, "Phone": document.getElementById('phone').value, "Country": document.getElementById('country').value, "City": city, "Spot": area, "Registration Date": dateStr, "Registration Time": timeStr };
+            const waMessage = `Hello Bible %26 Coffee!%0A%0AI just registered.%0A%0A*Details:*%0A- Name: ${name}%0A- City: ${city}%0A- Spot: ${area}%0A%0AConfirmed on ${dateStr}`;
+
+            try {
+                await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [data] }) });
+                window.open(`https://wa.me/${ADMIN_WA}?text=${waMessage}`, '_blank');
+                alert("Success!");
+                b.innerText = "Confirm Registration";
+                checkSpots();
+            } catch (err) { alert("Error."); b.innerText = "Confirm Registration"; }
+        };
+        lucide.createIcons();
+    </script>
+</body>
+</html>

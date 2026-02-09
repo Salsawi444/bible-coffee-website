@@ -15,8 +15,7 @@
         .accent-bg { background-color: #FCA311; }
         .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* ORIGINAL BUTTON STYLE */
-        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; }
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; cursor: pointer; }
         .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; }
         .btn-gold:hover { background-color: #fff; transform: translateY(-2px); }
         .btn-outline:hover { background-color: white; color: black; }
@@ -36,7 +35,6 @@
                 <a href="#" class="hover:text-[#FCA311] transition">Home</a>
                 <a href="#events" class="hover:text-[#FCA311] transition">Events</a>
                 <a href="#magazine" class="hover:text-[#FCA311] transition">Magazine</a>
-                <a href="#merch" class="hover:text-[#FCA311] transition">Merch</a>
                 <a href="#support" class="hover:text-[#FCA311] transition">Support</a>
                 <a href="#join" class="accent-bg text-black px-4 py-2">Join Movement</a>
             </div>
@@ -58,16 +56,6 @@
         </div>
     </header>
 
-    <section id="events" class="py-32 bg-[#0a0a0a] px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic text-white">Events</h2>
-        <p class="text-gray-600 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Experience the culture in person</p>
-        <div class="max-w-2xl mx-auto border border-white/5 bg-black p-10">
-            <p class="brand-font text-2xl mb-4 italic">Next Global Encounter</p>
-            <p class="text-gray-400 text-sm mb-8">Announcement coming soon. Stay tuned to our socials.</p>
-            <a href="#" class="btn-outline text-[8px]">View Calendar</a>
-        </div>
-    </section>
-
     <section id="magazine" class="py-32 bg-[#0f0f0f] px-6 text-center">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Magazine</h2>
         <div class="max-w-sm mx-auto group">
@@ -78,22 +66,14 @@
         </div>
     </section>
 
-    <section id="support" class="py-32 bg-[#0a0a0a] px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic text-[#FCA311]">Support</h2>
-        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16">Fuel the mission across borders</p>
-        <div class="max-w-xl mx-auto border-t border-white/10 pt-12">
-            <p class="text-sm text-gray-400 mb-10 leading-loose">Help us keep the coffee brewing and the word spreading. Every contribution supports our digital content and global gatherings.</p>
-            <a href="mailto:support@bibleandcoffee.com" class="btn-gold">Ways to Give</a>
-        </div>
-    </section>
-
-    <section id="join" class="py-32 px-6 bg-[#0f0f0f]">
+    <section id="join" class="py-32 px-6 bg-[#0a0a0a]">
         <div class="max-w-xl mx-auto">
             <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-center">Register</h2>
             <form id="mainRegForm" class="space-y-6">
                 <input type="text" id="userName" placeholder="FULL NAME" required>
                 <input type="email" id="userEmail" placeholder="EMAIL ADDRESS" required>
                 <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required>
+                
                 <select id="userCountry" required onchange="updateCities()">
                     <option value="" disabled selected>SELECT COUNTRY</option>
                     <option value="Ethiopia">Ethiopia</option>
@@ -101,12 +81,15 @@
                     <option value="Netherlands">Netherlands</option>
                     <option value="Sweden">Sweden</option>
                 </select>
+
                 <select id="userCity" required onchange="updateSpecificLocations()">
                     <option value="" disabled selected>SELECT CITY</option>
                 </select>
+
                 <select id="userLocation" required>
                     <option value="" disabled selected>SELECT GATHERING SPOT</option>
                 </select>
+
                 <button type="submit" id="submitBtn" class="btn-gold w-full text-center mt-8">Confirm Registration</button>
             </form>
         </div>
@@ -142,32 +125,41 @@
                 opt.value = city; opt.textContent = city.toUpperCase();
                 citySel.appendChild(opt);
             });
+            // Clear location whenever country changes
+            document.getElementById('userLocation').innerHTML = '<option value="" disabled selected>SELECT GATHERING SPOT</option>';
         }
 
         async function updateSpecificLocations() {
             const city = document.getElementById('userCity').value;
             const locSel = document.getElementById('userLocation');
+            
             if (city === "Addis Ababa") {
-                locSel.innerHTML = '<option disabled>LOADING...</option>';
-                const res = await fetch(API_URL);
-                const data = await res.json();
-                locSel.innerHTML = '<option value="" disabled selected>SELECT ADDIS SPOT</option>';
-                ["Ayat", "Haile Garment", "Mexico"].forEach(g => {
-                    const count = data.filter(r => r.Location === g).length;
-                    let opt = document.createElement('option');
-                    opt.value = g; opt.disabled = count >= 8;
-                    opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
-                    locSel.appendChild(opt);
-                });
+                locSel.innerHTML = '<option disabled>LOADING SLOTS...</option>';
+                try {
+                    const res = await fetch(API_URL);
+                    const data = await res.json();
+                    locSel.innerHTML = '<option value="" disabled selected>SELECT ADDIS SPOT</option>';
+                    ["Ayat", "Haile Garment", "Mexico"].forEach(g => {
+                        const count = data.filter(r => r.Location === g).length;
+                        let opt = document.createElement('option');
+                        opt.value = g;
+                        opt.disabled = count >= 8;
+                        opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
+                        locSel.appendChild(opt);
+                    });
+                } catch(e) {
+                    locSel.innerHTML = '<option value="General">ERROR - SELECT GENERAL</option>';
+                }
             } else if (city) {
-                locSel.innerHTML = '<option value="General Fellowship">GENERAL FELLOWSHIP SPOT</option>';
+                // IMPORTANT: This ensures the value is set so it records in the sheet
+                locSel.innerHTML = '<option value="General Fellowship Spot" selected>GENERAL FELLOWSHIP SPOT</option>';
             }
         }
 
         document.getElementById('mainRegForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.innerText = "SAVING...";
+            btn.innerText = "RECORDING...";
 
             const payload = {
                 data: [{
@@ -181,8 +173,17 @@
                 }]
             };
 
-            await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-            window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New Global Registration: " + payload.data[0].Name + " (" + payload.data[0].City + ")")}`;
+            try {
+                await fetch(API_URL, { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'}, 
+                    body: JSON.stringify(payload) 
+                });
+                window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("Registration: " + payload.data[0].Name + " (" + payload.data[0].City + ")")}`;
+            } catch (err) {
+                alert("Submit error. Please try again.");
+                btn.innerText = "Confirm Registration";
+            }
         };
         lucide.createIcons();
     </script>

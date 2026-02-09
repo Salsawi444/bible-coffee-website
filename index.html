@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bible & Coffee | Global</title>
+    <title>Bible & Coffee | Global Movement</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
@@ -15,17 +15,21 @@
         .accent-bg { background-color: #FCA311; }
         .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; cursor: pointer; }
-        .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; }
-        
-        /* Lightbox Styling */
-        #lightbox { display: none; position: fixed; z-index: 200; inset: 0; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 80%; border: 1px solid rgba(255,255,255,0.1); }
+        /* Buttons */
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; cursor: pointer; border: none; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; background: transparent; }
+        .btn-gold:hover { background-color: #fff; transform: translateY(-2px); }
+        .btn-outline:hover { background-color: white; color: black; }
 
-        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1rem !important; width: 100%; outline: none; border-radius: 0px !important; }
+        /* Lightbox */
+        #lightbox { display: none; position: fixed; z-index: 200; inset: 0; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 1px solid rgba(255,255,255,0.1); object-fit: contain; }
+
+        /* Form Styling */
+        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1rem !important; width: 100%; outline: none; border-radius: 0px !important; appearance: none; }
         
-        /* Merch Section is hidden by default */
-        #merch { display: none; }
+        /* Merch initially hidden */
+        #merch { display: none; transition: all 0.5s ease-in-out; }
     </style>
 </head>
 <body>
@@ -54,9 +58,7 @@
 
     <header id="home" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.3),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
         <div class="max-w-4xl">
-            <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-8 uppercase italic">
-                C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
-            </h1>
+            <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-8 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
                 <a href="#join" class="btn-gold">Join Movement</a>
                 <button onclick="toggleMerch()" class="btn-outline">View Merch</button>
@@ -67,50 +69,48 @@
     </header>
 
     <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-y border-white/5">
-        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Merch Gallery</h2>
-        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Click to magnify details</p>
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">Exclusive Merch</h2>
+        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Click image to magnify details</p>
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch1.jpeg')">
                 <img src="merch1.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
             </div>
             <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch2.jpeg')">
                 <img src="merch2.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
             </div>
             <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch3.jpeg')">
                 <img src="merch3.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
             </div>
             <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch4.jpeg')">
                 <img src="merch4.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
             </div>
             <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch5.jpeg')">
                 <img src="merch5.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
             </div>
             <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch6.jpeg')">
                 <img src="merch6.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
             </div>
         </div>
     </section>
 
     <section id="support" class="py-32 bg-[#0a0a0a] px-6 text-center">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic text-[#FCA311]">Support</h2>
-        <div class="max-w-2xl mx-auto border border-white/10 p-12 bg-black">
-            <p class="text-sm text-gray-400 mb-10 leading-loose uppercase tracking-widest font-light">Join the movement by supporting the vision across borders.</p>
+        <div class="max-w-2xl mx-auto border border-white/10 p-12 bg-[#0f0f0f]">
+            <p class="text-xs text-gray-500 mb-10 uppercase tracking-[0.3em] leading-loose">Help us bring the vision to life globally.</p>
             <a href="mailto:support@bibleandcoffee.com" class="btn-gold">Ways to Give</a>
         </div>
     </section>
 
     <section id="magazine" class="py-32 bg-[#0f0f0f] px-6 text-center">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Magazine</h2>
-        <div class="max-w-sm mx-auto group">
-            <div class="relative mb-12">
-                <img src="magazine28-page1.jpeg" alt="Cover" class="w-full h-auto shadow-2xl">
-            </div>
+        <div class="max-w-xs mx-auto group">
+            <img src="magazine28-page1.jpeg" class="w-full h-auto shadow-2xl mb-8 border border-white/5 transition-transform group-hover:scale-[1.02]">
             <a href="magazine28.pdf" target="_blank" class="btn-gold">Read Issue #28</a>
         </div>
     </section>
@@ -141,25 +141,20 @@
     </section>
 
     <footer class="py-24 bg-black text-center border-t border-white/5">
-        <div class="flex justify-center gap-8 mb-12 text-gray-500">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="facebook"></i></a>
-            <a href="#"><i data-lucide="youtube"></i></a>
-        </div>
-        <p class="text-[9px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
+        <p class="text-[8px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
     </footer>
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
         const ADMIN_PHONE = "251910884585"; 
 
-        // Lightbox Logic
+        // Lightbox
         function openLightbox(imgSrc) {
             document.getElementById('lightbox-img').src = imgSrc;
             document.getElementById('lightbox').style.display = 'flex';
         }
 
-        // Toggle Merch Visibility
+        // Toggle & Scroll to Merch
         function toggleMerch() {
             const mSection = document.getElementById('merch');
             mSection.style.display = 'block';
@@ -188,7 +183,7 @@
             const city = document.getElementById('userCity').value;
             const locSel = document.getElementById('userLocation');
             if (city === "Addis Ababa") {
-                locSel.innerHTML = '<option disabled>LOADING...</option>';
+                locSel.innerHTML = '<option disabled>LOADING spots...</option>';
                 const res = await fetch(API_URL);
                 const data = await res.json();
                 locSel.innerHTML = '<option value="" disabled selected>SELECT ADDIS SPOT</option>';
@@ -208,26 +203,40 @@
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.innerText = "SAVING...";
-            const payload = {
-                data: [{
-                    "Name": document.getElementById('userName').value,
-                    "Email": document.getElementById('userEmail').value,
-                    "Phone": document.getElementById('userPhone').value,
-                    "Country": document.getElementById('userCountry').value,
-                    "City": document.getElementById('userCity').value,
-                    "Location": document.getElementById('userLocation').value,
-                    "Timestamp": new Date().toLocaleString()
-                }]
+
+            const now = new Date();
+            const regDate = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const regTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+            const formData = {
+                Name: document.getElementById('userName').value,
+                Email: document.getElementById('userEmail').value,
+                Phone: document.getElementById('userPhone').value,
+                Country: document.getElementById('userCountry').value,
+                City: document.getElementById('userCity').value,
+                Location: document.getElementById('userLocation').value,
+                "Registration Date": regDate,
+                "Registration Time": regTime
             };
 
             try {
-                await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New Registration: " + payload.data[0].Name)}`, '_blank');
+                await fetch(API_URL, { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'}, 
+                    body: JSON.stringify({ data: [formData] }) 
+                });
+                
+                const waMsg = `Hello! I just registered for Bible & Coffee. %0A%0A*Details:*%0A- Name: ${formData.Name}%0A- City: ${formData.City}%0A- Spot: ${formData.Location}%0A%0ASee you there!`;
+                window.open(`https://wa.me/${ADMIN_PHONE}?text=${waMsg}`, '_blank');
+                
                 document.getElementById('mainRegForm').reset();
                 btn.innerText = "Confirm Registration";
                 window.location.hash = "home";
-                alert("Success! Welcome to the movement.");
-            } catch (err) { alert("Error saving."); btn.innerText = "Confirm Registration"; }
+                alert("Welcome to the movement!");
+            } catch (err) { 
+                alert("Connection error. Please try again."); 
+                btn.innerText = "Confirm Registration"; 
+            }
         };
         lucide.createIcons();
     </script>

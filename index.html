@@ -58,17 +58,17 @@
     </section>
 
     <section id="events" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold uppercase mb-12 text-center">The Gathering</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-5xl font-bold uppercase mb-12">The Gathering</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card-blur p-10 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4 accent-text">Coffee & Word Friday</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase">7:00 AM - 8:30 AM</p>
+                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">7:00 AM - 8:30 AM</p>
                     <a href="#join" class="text-white border-b-2 border-yellow-500 pb-1 text-[10px] font-bold uppercase">Secure Your Spot</a>
                 </div>
                 <div class="card-blur p-10 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4">Evening Fellowship</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase">Monthly Special</p>
+                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">Monthly Special</p>
                     <a href="#join" class="text-white border-b-2 border-gray-600 pb-1 text-[10px] font-bold uppercase">Register Interest</a>
                 </div>
             </div>
@@ -109,8 +109,8 @@
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ADM_ET = "251910884585"; 
-        const ADM_SA = "27671748626";
+        const ADM_ET = "251910884585"; // Ethiopia
+        const ADM_SA = "27671748626";  // South Africa
 
         async function loadSpots() {
             try {
@@ -142,18 +142,16 @@
             const payload = { "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() };
 
             try {
-                // Save to Google Sheets
                 await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [payload] }) });
 
-                // THE MAGIC MESSAGE
-                const customMsg = `Hello! I'm ${name}. I just registered for the ${loc} group to discuss the scripture over coffee! My number is ${phone}.`;
+                // THE MAGIC MESSAGE YOU REQUESTED
+                const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
                 const encodedMsg = encodeURIComponent(customMsg);
                 
-                // This logic attempts to send to the ET admin while SA is alerted via the sheet
+                // Sends to ET leader (Primary)
                 window.open(`https://wa.me/${ADM_ET}?text=${encodedMsg}`, '_blank');
                 
-                // If you have a WhatsApp Group link, use that instead of ADM_ET for dual notification!
-                
+                // Redirects back to clear form
                 window.location.href = "index.html"; 
             } catch (err) { alert("Error saving."); btn.disabled = false; }
         };

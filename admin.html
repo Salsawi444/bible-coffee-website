@@ -1,59 +1,57 @@
-<script>
-        // Choose a simple password here
-        const PASSWORD = "abc@123"; 
-        
-        const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B&C | Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { background-color: #0a0a0a; color: white; font-family: sans-serif; }</style>
+</head>
+<body class="p-8">
+    <div id="lock" class="fixed inset-0 bg-black flex items-center justify-center z-50">
+        <div class="bg-neutral-900 p-8 rounded border border-neutral-800 text-center">
+            <h2 class="mb-4 font-bold uppercase tracking-widest text-yellow-500">Admin Login</h2>
+            <input type="password" id="pass" placeholder="Password" class="bg-black border border-neutral-800 p-2 mb-4 w-full text-center outline-none">
+            <button onclick="auth()" class="w-full bg-yellow-500 text-black font-bold py-2 rounded uppercase text-sm">Login</button>
+        </div>
+    </div>
 
-        function checkAccess() {
-            const entry = prompt("Enter Admin Password:");
-            if (entry === PASSWORD) {
-                fetchData();
-            } else {
-                alert("Access Denied");
-                window.location.href = "index.html"; // Send them back to home
-            }
+    <div id="dash" class="hidden max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-8 uppercase border-b border-neutral-800 pb-4">Registrations</h1>
+        <div id="tableContainer" class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="text-gray-500 text-xs uppercase border-b border-neutral-800">
+                        <th class="p-4">Name</th><th class="p-4">Phone</th><th class="p-4">Location</th><th class="p-4">Date</th>
+                    </tr>
+                </thead>
+                <tbody id="list" class="text-sm"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function auth() {
+            const p = document.getElementById('pass').value;
+            if (p === "abc@123") {
+                document.getElementById('lock').style.display = 'none';
+                document.getElementById('dash').style.display = 'block';
+                loadData();
+            } else { alert("Wrong password"); }
         }
 
-        async function fetchData() {
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                renderTable(data);
-                renderStats(data);
-            } catch (e) { console.error(e); }
-        }
-
-        function renderStats(data) {
-            const counts = { Ayat: 0, "Haile Garment": 0, Mexico: 0 };
-            data.forEach(row => { if(counts[row.Location] !== undefined) counts[row.Location]++; });
-            
-            const summary = document.getElementById('summary');
-            summary.innerHTML = Object.entries(counts).map(([loc, count]) => `
-                <div class="bg-neutral-900 p-6 rounded-lg border border-neutral-800 text-center">
-                    <p class="text-xs text-gray-500 uppercase font-bold mb-1">${loc}</p>
-                    <p class="text-3xl font-bold ${count >= 8 ? 'text-red-500' : 'text-white'}">${count}/8</p>
-                </div>
-            `).join('');
-        }
-
-        function renderTable(data) {
-            const body = document.getElementById('tableBody');
-            if (data.length === 0) {
-                body.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-gray-500">No one has registered yet.</td></tr>';
-                return;
-            }
-            data.reverse();
-            body.innerHTML = data.map(row => `
-                <tr class="border-t border-neutral-900 hover:bg-white/5 transition">
-                    <td class="p-4 font-bold text-white">${row.Name}</td>
-                    <td class="p-4 text-gray-400 font-mono">${row.Phone}</td>
-                    <td class="p-4"><span class="bg-yellow-500/10 text-yellow-500 px-2 py-1 rounded text-xs">${row.Location}</span></td>
-                    <td class="p-4 text-gray-500 text-xs">${row.Timestamp || 'N/A'}</td>
+        async function loadData() {
+            const res = await fetch("https://sheetdb.io/api/v1/9q45d3e7oe5ks");
+            const data = await res.json();
+            const list = document.getElementById('list');
+            list.innerHTML = data.reverse().map(r => `
+                <tr class="border-b border-neutral-900">
+                    <td class="p-4">${r.Name}</td>
+                    <td class="p-4">${r.Phone}</td>
+                    <td class="p-4 text-yellow-500">${r.Location}</td>
+                    <td class="p-4 text-gray-500 text-xs">${r.Timestamp}</td>
                 </tr>
             `).join('');
-            lucide.createIcons();
         }
-
-        // Start by asking for the password
-        checkAccess();
     </script>
+</body>
+</html>

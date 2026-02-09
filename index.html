@@ -141,18 +141,24 @@
             const payload = { "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() };
 
             try {
+                // 1. Save to Google Sheets
                 await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [payload] }) });
 
+                // 2. Prepare the Custom Message
                 const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
                 
-                // COPY TO CLIPBOARD MAGIC
+                // 3. COPY TO CLIPBOARD (User just has to Paste in the group)
                 await navigator.clipboard.writeText(customMsg);
                 
-                alert("Saved! We are opening the WhatsApp Group now. Just PASTE and SEND your message to notify both admins!");
-
-                window.open(GROUP_LINK, '_blank');
-                window.location.href = "index.html"; 
-            } catch (err) { alert("Error saving."); btn.disabled = false; }
+                // 4. Alert the user and Redirect to the Group
+                alert("Awesome! Your spot is reserved. We are moving you to the WhatsApp Group now. Please PASTE and SEND your confirmation message there so both admins see you!");
+                
+                window.location.href = GROUP_LINK; // This replaces the current page with the group join page
+            } catch (err) { 
+                alert("Something went wrong. Please try again."); 
+                btn.disabled = false; 
+                btn.innerText = "Confirm My Spot";
+            }
         };
 
         loadSpots();

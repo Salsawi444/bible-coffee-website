@@ -6,83 +6,83 @@
     <title>Bible & Coffee | Global</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0a0a0a; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
-        .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
-        .accent { color: #FCA311; }
-        .btn-gold { background: #FCA311; color: black; font-weight: bold; padding: 1.2rem 2rem; display: inline-block; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; text-decoration: none; font-size: 12px; }
-        .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; padding: 1.2rem 2rem; display: inline-block; text-transform: uppercase; background: transparent; cursor: pointer; text-decoration: none; font-size: 12px; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; overflow-x: hidden; }
+        h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .accent-text { color: #FCA311; }
         
-        /* Fixed Hero Background - Coffee & Bible */
-        .hero { 
+        /* Navigation */
+        .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Fixed Button Layouts */
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; border: none; cursor: pointer; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; background: transparent; cursor: pointer; }
+        .btn-gold:hover { background-color: #fff; }
+        .btn-outline:hover { background-color: white; color: black; }
+
+        /* Hero Background */
+        .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(10,10,10,1)), 
-                        url('https://images.unsplash.com/photo-1507434965515-61970f2bd7c6?q=80&w=2070'); 
-            background-size: cover; 
-            background-position: center; 
-            min-height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center;
+                        url('https://images.unsplash.com/photo-1507434965515-61970f2bd7c6?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
         }
 
-        #merch-section { display: none; }
-        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
-        input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; padding: 16px !important; width: 100%; font-size: 16px !important; border-radius: 0 !important; -webkit-appearance: none; }
+        /* Form styling */
+        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1.2rem !important; width: 100%; border-radius: 0px !important; -webkit-appearance: none; }
+        
+        #merch { display: none; }
+        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
     </style>
 </head>
 <body>
 
     <div id="lightbox" onclick="this.style.display='none'">
-        <img id="lb-img" style="max-width:100%; max-height:80%; object-fit: contain; border: 1px solid rgba(255,255,255,0.1);">
-        <p class="absolute bottom-10 text-[10px] tracking-widest text-gray-500 uppercase">Tap to close</p>
+        <img id="lb-img" class="max-w-full max-h-[80vh] border border-white/10">
     </div>
 
-    <nav class="fixed w-full z-50 bg-black/95 p-5 flex justify-between items-center border-b border-white/5">
-        <div class="brand-font font-bold italic flex items-center gap-2">
-            <i data-lucide="coffee" class="accent w-5 h-5"></i> BIBLE & COFFEE
-        </div>
-        <div class="md:flex hidden gap-8 text-[10px] tracking-[0.3em] font-bold uppercase">
-            <a href="javascript:void(0)" onclick="showMerch()" class="hover:text-[#FCA311]">Merch</a>
-            <a href="#support" class="hover:text-[#FCA311]">Support</a>
-            <a href="#join" class="hover:text-[#FCA311]">Join</a>
-        </div>
-        <div class="md:hidden accent"><i data-lucide="menu"></i></div>
-    </nav>
-
-    <div class="hero">
-        <div class="max-w-4xl px-6">
-            <h1 class="brand-font text-5xl md:text-9xl italic font-bold mb-10 leading-tight">C<span class="accent">O</span>FFEE MEETS<br>THE WORD.</h1>
-            <div class="flex flex-col md:flex-row gap-5 justify-center">
-                <a href="#join" class="btn-gold">Join Movement</a>
-                <button onclick="showMerch()" class="btn-outline">View Merch</button>
+    <nav class="fixed w-full z-[100] glass-nav py-5 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="coffee" class="accent-text w-5 h-5"></i>
+                <span class="text-xl font-bold brand-font italic">BIBLE & COFFEE</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-[10px] font-bold tracking-[0.3em]">
+                <a href="#home">HOME</a>
+                <button onclick="toggleMerch()">MERCH</button>
+                <a href="#join" class="accent-text">JOIN MOVEMENT</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <section id="merch-section" class="py-24 px-6 bg-[#0a0a0a] text-center">
-        <h2 class="brand-font text-4xl md:text-6xl mb-4 italic">The Merch</h2>
-        <p class="text-gray-500 text-[10px] tracking-widest uppercase mb-16">Tap to enlarge</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <img src="merch1.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale active:grayscale-0">
-            <img src="merch2.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale active:grayscale-0">
-            <img src="merch3.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale active:grayscale-0">
+    <header id="home" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 hero-bg">
+        <div class="max-w-4xl pt-12">
+            <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-12 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
+            <div class="flex flex-col md:flex-row gap-4 w-full max-w-md mx-auto">
+                <a href="#join" class="btn-gold w-full">Join Movement</a>
+                <button onclick="toggleMerch()" class="btn-outline w-full">View Merch</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-y border-white/5">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-16 italic">The Merch</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <img src="merch1.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-700 cursor-zoom-in">
+            <img src="merch2.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-700 cursor-zoom-in">
+            <img src="merch3.jpeg" onclick="openLB(this.src)" class="w-full aspect-[4/5] object-cover border border-white/5 grayscale hover:grayscale-0 transition duration-700 cursor-zoom-in">
         </div>
     </section>
 
-    <section id="support" class="py-24 bg-black text-center border-y border-white/5 px-6">
-        <h2 class="brand-font text-4xl accent mb-8 italic">Support</h2>
-        <a href="mailto:support@bibleandcoffee.com" class="btn-gold">Ways to Give</a>
-    </section>
-
-    <section id="join" class="py-24 px-6 bg-[#0a0a0a]">
-        <div class="max-w-xl mx-auto">
-            <h2 class="brand-font text-4xl text-center mb-16 italic accent">Register</h2>
-            <form id="regForm" class="space-y-5">
+    <section id="join" class="py-32 px-6 bg-black">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 accent-text">Register</h2>
+            <form id="regForm" class="space-y-6 text-left">
                 <input type="text" id="name" placeholder="FULL NAME" required>
-                <input type="email" id="email" placeholder="EMAIL" required>
-                <input type="tel" id="phone" placeholder="PHONE" required>
+                <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
+                <input type="tel" id="phone" placeholder="PHONE NUMBER" required>
                 <select id="country" onchange="updateCities()" required>
                     <option value="" disabled selected>SELECT COUNTRY</option>
                     <option value="Ethiopia">Ethiopia</option>
@@ -92,13 +92,13 @@
                 <select id="city" required>
                     <option value="" disabled selected>SELECT CITY</option>
                 </select>
-                <button type="submit" id="subBtn" class="btn-gold w-full mt-6">Confirm Registration</button>
+                <button type="submit" id="subBtn" class="btn-gold w-full mt-8">Confirm Registration</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-20 bg-black text-center">
-        <p class="text-[8px] tracking-[0.6em] text-gray-700 uppercase italic font-bold">&copy; 2026 Bible & Coffee Movement</p>
+    <footer class="py-20 bg-black text-center border-t border-white/5">
+        <p class="text-[8px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
     </footer>
 
     <script>
@@ -110,10 +110,10 @@
             document.getElementById('lightbox').style.display = 'flex'; 
         }
 
-        function showMerch() { 
-            const s = document.getElementById('merch-section');
-            s.style.display = 'block'; 
-            s.scrollIntoView({ behavior: 'smooth' }); 
+        function toggleMerch() { 
+            const m = document.getElementById('merch');
+            m.style.display = 'block'; 
+            m.scrollIntoView({ behavior: 'smooth' }); 
         }
 
         const geo = {
@@ -137,7 +137,6 @@
         document.getElementById('regForm').onsubmit = async (e) => {
             e.preventDefault();
             const b = document.getElementById('subBtn');
-            const originalText = b.innerText;
             b.innerText = "SAVING...";
             
             const now = new Date();
@@ -152,22 +151,13 @@
             };
 
             try {
-                await fetch(API, { 
-                    method: 'POST', 
-                    headers: {'Content-Type': 'application/json'}, 
-                    body: JSON.stringify({ data: [formData] }) 
-                });
-                
+                await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [formData] }) });
                 const waMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered for the movement.\n\n*Details:*\n- Name: ${formData.Name}\n- City: ${formData.City}\n\nConfirmed on ${formData["Registration Date"]}.`;
                 window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(waMsg)}`, '_blank');
-                
                 document.getElementById('regForm').reset();
-                b.innerText = originalText;
-                alert("Welcome to the movement!");
-            } catch (err) { 
-                alert("Error connecting. Check your internet."); 
-                b.innerText = originalText; 
-            }
+                b.innerText = "Confirm Registration";
+                alert("Success!");
+            } catch (err) { alert("Error."); b.innerText = "Confirm Registration"; }
         };
         lucide.createIcons();
     </script>

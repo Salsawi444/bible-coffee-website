@@ -32,31 +32,53 @@
                 <span class="text-xl font-bold brand-font tracking-tighter italic">BIBLE & COFFEE</span>
             </a>
             <div class="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
-                <a href="#" class="hover:text-[#FCA311] transition">Home</a>
-                <a href="#events" class="hover:text-[#FCA311] transition">Events</a>
+                <a href="#home" class="hover:text-[#FCA311] transition">Home</a>
+                <a href="#merch" class="hover:text-[#FCA311] transition">Merch</a>
                 <a href="#magazine" class="hover:text-[#FCA311] transition">Magazine</a>
-                <a href="#support" class="hover:text-[#FCA311] transition">Support</a>
                 <a href="#join" class="accent-bg text-black px-4 py-2">Join Movement</a>
             </div>
             <div class="md:hidden accent-text"><i data-lucide="menu"></i></div>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.3),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
+    <header id="home" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.3),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
         <div class="max-w-4xl">
             <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-8 uppercase italic">
                 C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
             </h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
                 <a href="#join" class="btn-gold">Join Movement</a>
-                <a href="#events" class="btn-outline">Upcoming Events</a>
-                <a href="#magazine" class="btn-outline">The Magazine</a>
-                <a href="#support" class="btn-outline border-[#FCA311] text-[#FCA311]">Support the Vision</a>
+                <a href="#merch" class="btn-outline">View Merch</a>
             </div>
         </div>
     </header>
 
-    <section id="magazine" class="py-32 bg-[#0f0f0f] px-6 text-center">
+    <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-b border-white/5">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Merch</h2>
+        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Drop #01 Essentials</p>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
+                <img src="merch1.jpeg" alt="Merch 1" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
+                <img src="merch2.jpeg" alt="Merch 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
+                <img src="merch3.jpeg" alt="Merch 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
+                <img src="merch4.jpeg" alt="Merch 4" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
+                <img src="merch5.jpeg" alt="Merch 5" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
+                <img src="merch6.jpeg" alt="Merch 6" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+        </div>
+    </section>
+
+    <section id="magazine" class="py-32 bg-[#0a0a0a] px-6 text-center">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Magazine</h2>
         <div class="max-w-sm mx-auto group">
             <div class="relative mb-12 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
@@ -66,14 +88,13 @@
         </div>
     </section>
 
-    <section id="join" class="py-32 px-6 bg-[#0a0a0a]">
+    <section id="join" class="py-32 px-6 bg-[#0f0f0f]">
         <div class="max-w-xl mx-auto">
             <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-center">Register</h2>
             <form id="mainRegForm" class="space-y-6">
                 <input type="text" id="userName" placeholder="FULL NAME" required>
                 <input type="email" id="userEmail" placeholder="EMAIL ADDRESS" required>
                 <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required>
-                
                 <select id="userCountry" required onchange="updateCities()">
                     <option value="" disabled selected>SELECT COUNTRY</option>
                     <option value="Ethiopia">Ethiopia</option>
@@ -81,15 +102,12 @@
                     <option value="Netherlands">Netherlands</option>
                     <option value="Sweden">Sweden</option>
                 </select>
-
                 <select id="userCity" required onchange="updateSpecificLocations()">
                     <option value="" disabled selected>SELECT CITY</option>
                 </select>
-
                 <select id="userLocation" required>
                     <option value="" disabled selected>SELECT GATHERING SPOT</option>
                 </select>
-
                 <button type="submit" id="submitBtn" class="btn-gold w-full text-center mt-8">Confirm Registration</button>
             </form>
         </div>
@@ -125,33 +143,24 @@
                 opt.value = city; opt.textContent = city.toUpperCase();
                 citySel.appendChild(opt);
             });
-            // Clear location whenever country changes
-            document.getElementById('userLocation').innerHTML = '<option value="" disabled selected>SELECT GATHERING SPOT</option>';
         }
 
         async function updateSpecificLocations() {
             const city = document.getElementById('userCity').value;
             const locSel = document.getElementById('userLocation');
-            
             if (city === "Addis Ababa") {
-                locSel.innerHTML = '<option disabled>LOADING SLOTS...</option>';
-                try {
-                    const res = await fetch(API_URL);
-                    const data = await res.json();
-                    locSel.innerHTML = '<option value="" disabled selected>SELECT ADDIS SPOT</option>';
-                    ["Ayat", "Haile Garment", "Mexico"].forEach(g => {
-                        const count = data.filter(r => r.Location === g).length;
-                        let opt = document.createElement('option');
-                        opt.value = g;
-                        opt.disabled = count >= 8;
-                        opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
-                        locSel.appendChild(opt);
-                    });
-                } catch(e) {
-                    locSel.innerHTML = '<option value="General">ERROR - SELECT GENERAL</option>';
-                }
+                locSel.innerHTML = '<option disabled>LOADING...</option>';
+                const res = await fetch(API_URL);
+                const data = await res.json();
+                locSel.innerHTML = '<option value="" disabled selected>SELECT ADDIS SPOT</option>';
+                ["Ayat", "Haile Garment", "Mexico"].forEach(g => {
+                    const count = data.filter(r => r.Location === g).length;
+                    let opt = document.createElement('option');
+                    opt.value = g; opt.disabled = count >= 8;
+                    opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
+                    locSel.appendChild(opt);
+                });
             } else if (city) {
-                // IMPORTANT: This ensures the value is set so it records in the sheet
                 locSel.innerHTML = '<option value="General Fellowship Spot" selected>GENERAL FELLOWSHIP SPOT</option>';
             }
         }
@@ -159,11 +168,12 @@
         document.getElementById('mainRegForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.innerText = "RECORDING...";
+            btn.innerText = "SAVING...";
+            const name = document.getElementById('userName').value;
 
             const payload = {
                 data: [{
-                    "Name": document.getElementById('userName').value,
+                    "Name": name,
                     "Email": document.getElementById('userEmail').value,
                     "Phone": document.getElementById('userPhone').value,
                     "Country": document.getElementById('userCountry').value,
@@ -174,14 +184,14 @@
             };
 
             try {
-                await fetch(API_URL, { 
-                    method: 'POST', 
-                    headers: {'Content-Type': 'application/json'}, 
-                    body: JSON.stringify(payload) 
-                });
-                window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("Registration: " + payload.data[0].Name + " (" + payload.data[0].City + ")")}`;
+                await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New Registration: " + name)}`, '_blank');
+                document.getElementById('mainRegForm').reset();
+                btn.innerText = "Confirm Registration";
+                window.location.hash = "home";
+                alert("Success! Welcome to the movement.");
             } catch (err) {
-                alert("Submit error. Please try again.");
+                alert("Error saving. Please try again.");
                 btn.innerText = "Confirm Registration";
             }
         };

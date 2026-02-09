@@ -85,7 +85,7 @@
                 </div>
                 <div class="card-blur p-12 rounded-2xl text-center border-yellow-500/30 bg-yellow-500/5">
                     <h3 class="text-3xl font-bold mb-4">Support the Vision</h3>
-                    <button class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest">Partner With Us</button>
+                    <button class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-yellow-600 transition">Partner With Us</button>
                 </div>
             </div>
         </div>
@@ -109,8 +109,7 @@
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ADM_ET = "251910884585"; // Ethiopia
-        const ADM_SA = "27671748626";  // South Africa
+        const GROUP_LINK = "https://chat.whatsapp.com/KOx7HoG2xqdDd9yEjWLZ2O"; 
 
         async function loadSpots() {
             try {
@@ -144,14 +143,14 @@
             try {
                 await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [payload] }) });
 
-                // THE MAGIC MESSAGE YOU REQUESTED
                 const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
-                const encodedMsg = encodeURIComponent(customMsg);
                 
-                // Sends to ET leader (Primary)
-                window.open(`https://wa.me/${ADM_ET}?text=${encodedMsg}`, '_blank');
+                // COPY TO CLIPBOARD MAGIC
+                await navigator.clipboard.writeText(customMsg);
                 
-                // Redirects back to clear form
+                alert("Saved! We are opening the WhatsApp Group now. Just PASTE and SEND your message to notify both admins!");
+
+                window.open(GROUP_LINK, '_blank');
                 window.location.href = "index.html"; 
             } catch (err) { alert("Error saving."); btn.disabled = false; }
         };

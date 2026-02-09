@@ -15,16 +15,45 @@
         .accent-bg { background-color: #FCA311; }
         .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* Mobile Input Fix (No Zoom) */
+        /* The Original Button Style */
+        .btn-primary { 
+            background-color: #FCA311; 
+            color: black; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            font-size: 10px; 
+            padding: 1.25rem 3rem; 
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .btn-secondary { 
+            border: 1px solid rgba(255,255,255,0.2); 
+            color: white; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            font-size: 10px; 
+            padding: 1.25rem 3rem; 
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .btn-primary:hover { background-color: #e59400; transform: translateY(-2px); }
+        .btn-secondary:hover { background-color: rgba(255,255,255,0.05); border-color: white; }
+
+        /* Mobile Input Fix */
         input, select { 
             background: black !important; 
             border: 1px solid rgba(255,255,255,0.2) !important; 
             color: white !important; 
-            border-radius: 4px !important;
+            border-radius: 2px !important;
             font-size: 16px !important; 
             padding: 1.25rem !important;
             width: 100%;
             outline: none;
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
@@ -34,9 +63,9 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-2">
                 <i data-lucide="coffee" class="text-white w-6 h-6"></i>
-                <span class="text-xl font-bold brand-font tracking-tighter">BIBLE & COFFEE</span>
+                <span class="text-xl font-bold brand-font tracking-tighter italic">BIBLE & COFFEE</span>
             </a>
-            <a href="#join" class="accent-bg text-black px-5 py-2 rounded-sm font-bold brand-font text-xs">JOIN</a>
+            <a href="#join" class="accent-bg text-black px-4 py-2 rounded-sm font-bold brand-font text-[10px] tracking-widest">JOIN</a>
         </div>
     </nav>
 
@@ -45,18 +74,19 @@
             C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
         </h1>
         <div class="flex flex-col md:flex-row gap-4">
-            <a href="#join" class="accent-bg text-black px-12 py-5 rounded-sm font-bold uppercase tracking-widest text-[10px]">Join Movement</a>
-            <a href="#magazine" class="border border-white/20 text-white px-12 py-5 rounded-sm font-bold uppercase tracking-widest text-[10px]">The Magazine</a>
+            <a href="#join" class="btn-primary">Join Movement</a>
+            <a href="#magazine" class="btn-secondary">The Magazine</a>
         </div>
     </header>
 
     <section id="magazine" class="py-24 bg-neutral-900 px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-12 italic text-white">The Magazine</h2>
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Magazine</h2>
+        <p class="text-gray-500 text-[10px] tracking-[0.3em] uppercase mb-12">Weekly Digital Edition</p>
         <div class="max-w-sm mx-auto group">
             <div class="relative mb-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-lg overflow-hidden border border-white/10">
                 <img src="magazine28-page1.jpeg" alt="Cover" class="w-full h-auto block">
             </div>
-            <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-12 py-5 rounded-sm font-bold uppercase text-[10px] tracking-widest">Read Issue #28 (PDF)</a>
+            <a href="magazine28.pdf" target="_blank" class="btn-primary">Read Issue #28</a>
         </div>
     </section>
 
@@ -83,7 +113,7 @@
                     <option value="" disabled selected>SELECT GATHERING SPOT</option>
                 </select>
 
-                <button type="submit" id="submitBtn" class="w-full accent-bg text-black font-bold py-6 rounded-sm uppercase tracking-widest text-xs mt-6 active:scale-95 transition">Confirm Registration</button>
+                <button type="submit" id="submitBtn" class="btn-primary w-full mt-6">Confirm Registration</button>
             </form>
         </div>
     </section>
@@ -118,7 +148,7 @@
             const city = document.getElementById('userCity').value;
             const locSel = document.getElementById('userLocation');
             if (city === "Addis Ababa") {
-                locSel.innerHTML = '<option disabled>LOADING SLOTS...</option>';
+                locSel.innerHTML = '<option disabled>LOADING...</option>';
                 const res = await fetch(API_URL);
                 const data = await res.json();
                 locSel.innerHTML = '<option value="" disabled selected>SELECT ADDIS SPOT</option>';
@@ -139,17 +169,19 @@
             const btn = document.getElementById('submitBtn');
             btn.innerText = "SAVING...";
 
-            const formData = {
-                "Name": document.getElementById('userName').value,
-                "Phone": document.getElementById('userPhone').value,
-                "Country": document.getElementById('userCountry').value,
-                "City": document.getElementById('userCity').value,
-                "Location": document.getElementById('userLocation').value,
-                "Timestamp": new Date().toLocaleString()
+            const payload = {
+                data: [{
+                    "Name": document.getElementById('userName').value,
+                    "Phone": document.getElementById('userPhone').value,
+                    "Country": document.getElementById('userCountry').value,
+                    "City": document.getElementById('userCity').value,
+                    "Location": document.getElementById('userLocation').value,
+                    "Timestamp": new Date().toLocaleString()
+                }]
             };
 
-            await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({data: [formData]}) });
-            window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New registration from " + formData.Name + " in " + formData.City)}`;
+            await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+            window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New registration from " + payload.data[0].Name + " in " + payload.data[0].City)}`;
         };
         lucide.createIcons();
     </script>

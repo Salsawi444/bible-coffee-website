@@ -35,6 +35,7 @@
                 <a href="#home" class="hover:text-[#FCA311] transition">Home</a>
                 <a href="#merch" class="hover:text-[#FCA311] transition">Merch</a>
                 <a href="#magazine" class="hover:text-[#FCA311] transition">Magazine</a>
+                <a href="#support" class="hover:text-[#FCA311] transition">Support</a>
                 <a href="#join" class="accent-bg text-black px-4 py-2">Join Movement</a>
             </div>
             <div class="md:hidden accent-text"><i data-lucide="menu"></i></div>
@@ -46,14 +47,27 @@
             <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-8 uppercase italic">
                 C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
             </h1>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
                 <a href="#join" class="btn-gold">Join Movement</a>
                 <a href="#merch" class="btn-outline">View Merch</a>
+                <a href="#magazine" class="btn-outline">The Magazine</a>
+                <a href="#support" class="btn-outline">Support Us</a>
             </div>
         </div>
     </header>
 
-    <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-b border-white/5">
+    <section id="support" class="py-32 bg-[#0a0a0a] px-6 text-center">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic text-[#FCA311]">Support</h2>
+        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-12 italic">Fuel the mission across borders</p>
+        <div class="max-w-2xl mx-auto border border-white/10 p-12 bg-black">
+            <p class="text-sm text-gray-400 mb-10 leading-loose uppercase tracking-widest font-light">
+                Your support fuels our global gatherings, digital content, and community outreach. Join us in making the Word accessible everywhere.
+            </p>
+            <a href="mailto:support@bibleandcoffee.com" class="btn-gold">Ways to Give</a>
+        </div>
+    </section>
+
+    <section id="merch" class="py-32 bg-[#0f0f0f] px-6 text-center border-y border-white/5">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Merch</h2>
         <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Drop #01 Essentials</p>
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -96,7 +110,7 @@
 
     <section id="join" class="py-32 px-6 bg-[#0f0f0f]">
         <div class="max-w-xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-center">Register</h2>
+            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-center text-[#FCA311]">Register</h2>
             <form id="mainRegForm" class="space-y-6">
                 <input type="text" id="userName" placeholder="FULL NAME" required>
                 <input type="email" id="userEmail" placeholder="EMAIL ADDRESS" required>

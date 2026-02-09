@@ -13,21 +13,28 @@
         h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         .accent-text { color: #FCA311; }
         
+        /* Premium Navigation */
         .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; border: none; cursor: pointer; }
-        .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; background: transparent; cursor: pointer; }
-        
-        /* NEW COMMUNITY-FOCUSED BACKGROUND */
+        /* Hero Section with YOUR Image */
         .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.65), rgba(10,10,10,1)), 
-                        url('https://images.unsplash.com/photo-1515162305114-98210091777d?q=80&w=2000');
+                        url('hero.jpeg'); /* This uses the file you uploaded */
             background-size: cover;
             background-position: center;
+            min-height: 100vh;
         }
 
-        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1.2rem !important; width: 100%; border-radius: 0px !important; -webkit-appearance: none; }
-        
+        /* Fixed Premium Buttons */
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; border: none; cursor: pointer; text-decoration: none; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; padding: 1.25rem 2.5rem; border-radius: 2px; transition: 0.3s; display: inline-block; text-align: center; background: transparent; cursor: pointer; text-decoration: none; }
+        .btn-gold:hover { background-color: #fff; }
+        .btn-outline:hover { background-color: white; color: black; }
+
+        /* Form styling - No mobile glitches */
+        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1.2rem !important; width: 100%; border-radius: 0px !important; -webkit-appearance: none; outline: none; }
+        input:focus { border-color: #FCA311 !important; }
+
         #merch { display: none; }
         #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
     </style>
@@ -45,14 +52,14 @@
                 <span class="text-xl font-bold brand-font italic">BIBLE & COFFEE</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-[10px] font-bold tracking-[0.3em]">
-                <a href="#home">HOME</a>
-                <button onclick="toggleMerch()">MERCH</button>
+                <a href="#home" class="hover:text-[#FCA311]">HOME</a>
+                <button onclick="toggleMerch()" class="hover:text-[#FCA311]">MERCH</button>
                 <a href="#join" class="accent-text">JOIN MOVEMENT</a>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 hero-bg">
+    <header id="home" class="relative flex flex-col justify-center items-center text-center px-6 hero-bg">
         <div class="max-w-4xl pt-12">
             <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-12 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
             <div class="flex flex-col md:flex-row gap-4 w-full max-w-md mx-auto">
@@ -132,6 +139,7 @@
         document.getElementById('regForm').onsubmit = async (e) => {
             e.preventDefault();
             const b = document.getElementById('subBtn');
+            const originalText = b.innerText;
             b.innerText = "SAVING...";
             
             const now = new Date();
@@ -150,9 +158,12 @@
                 const waMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered for the movement.\n\n*Details:*\n- Name: ${formData.Name}\n- City: ${formData.City}\n\nConfirmed on ${formData["Registration Date"]}.`;
                 window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(waMsg)}`, '_blank');
                 document.getElementById('regForm').reset();
-                b.innerText = "Confirm Registration";
-                alert("Success!");
-            } catch (err) { alert("Error."); b.innerText = "Confirm Registration"; }
+                b.innerText = originalText;
+                alert("Success! Welcome to the movement.");
+            } catch (err) { 
+                alert("Connection Error. Please check your internet."); 
+                b.innerText = originalText; 
+            }
         };
         lucide.createIcons();
     </script>

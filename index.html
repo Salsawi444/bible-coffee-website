@@ -12,24 +12,20 @@
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
         h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         
-        /* Background */
         .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), url('hero.jpeg');
             background-size: cover; background-position: center;
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
         }
 
-        /* Responsive Hero Text */
         .hero-title { font-size: clamp(2.5rem, 12vw, 8rem); line-height: 0.9; font-style: italic; font-weight: 700; margin-bottom: 2rem; }
 
-        /* Navigation */
         .glass-nav { background: rgba(0, 0, 0, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; position: fixed; top: 0; z-index: 1000; }
         .nav-links { display: flex; gap: 15px; overflow-x: auto; padding: 15px; scrollbar-width: none; }
         .nav-links::-webkit-scrollbar { display: none; }
         .nav-links a, .nav-links button { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #888; text-transform: uppercase; white-space: nowrap; }
         .nav-links .active-link { color: #FCA311; }
 
-        /* Form Styling */
         .form-group { margin-bottom: 15px; }
         label { display: block; font-size: 10px; color: #FCA311; margin-bottom: 5px; letter-spacing: 1px; font-weight: 700; }
         input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; padding: 14px !important; width: 100%; border-radius: 4px !important; font-size: 16px !important; outline: none; -webkit-appearance: none; }
@@ -37,15 +33,15 @@
         .btn-gold { background: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; display: inline-block; width: 100%; text-align: center; border: none; cursor: pointer; }
         .btn-outline { border: 2px solid white; color: white; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; display: inline-block; width: 100%; text-align: center; background: transparent; cursor: pointer; }
 
-        /* ALIGNMENT FIX: Center on mobile, Left on Desktop */
+        /* ALIGNMENT: Right on Desktop, Center on Mobile */
         .hero-content { padding: 0 1.5rem; text-align: center; }
         .hero-btn-container { width: 100%; max-width: 320px; margin: 0 auto; }
         .social-container { display: flex; gap: 1.5rem; margin-top: 3rem; justify-content: center; opacity: 0.6; }
 
         @media (min-width: 1024px) {
-            .hero-content { padding: 0 10%; text-align: left; }
-            .hero-btn-container { margin: 0; display: flex; max-width: 500px; gap: 1rem; }
-            .social-container { justify-content: flex-start; }
+            .hero-content { padding: 0 10%; text-align: right; }
+            .hero-btn-container { margin-left: auto; margin-right: 0; display: flex; max-width: 500px; gap: 1rem; flex-direction: row-reverse; }
+            .social-container { justify-content: flex-end; }
         }
 
         #merch, #events, #support { display: none; padding: 80px 20px; text-align: center; }
@@ -181,18 +177,27 @@
             e.preventDefault();
             const b = document.getElementById('subBtn');
             b.innerText = "SAVING...";
+            
+            const name = document.getElementById('name').value;
+            const city = document.getElementById('city').value;
+            const area = document.getElementById('subCity').value || "N/A";
+            const dateYear = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
             const data = {
-                Name: document.getElementById('name').value,
+                Name: name,
                 Email: document.getElementById('email').value,
                 Phone: document.getElementById('phone').value,
                 Country: document.getElementById('country').value,
-                City: document.getElementById('city').value,
-                Area: document.getElementById('subCity').value || "N/A",
-                Date: new Date().toLocaleDateString()
+                City: city,
+                Area: area,
+                Date: dateYear
             };
+
+            const waMessage = `Hello Bible %26 Coffee!%0A%0AI just registered.%0A%0A*Details:*%0A- Name: ${name}%0A- City: ${city}%0A- Spot: ${area}%0A%0AConfirmed on ${dateYear}`;
+
             try {
                 await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [data] }) });
-                window.open(`https://wa.me/${ADMIN_WA}?text=Registered: ${data.Name} from ${data.Area}`, '_blank');
+                window.open(`https://wa.me/${ADMIN_WA}?text=${waMessage}`, '_blank');
                 alert("Success!");
                 b.innerText = "Confirm Registration";
             } catch (err) { alert("Error."); b.innerText = "Confirm Registration"; }

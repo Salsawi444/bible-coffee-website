@@ -17,13 +17,23 @@
         
         .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; cursor: pointer; }
         .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; }
-        .btn-gold:hover { background-color: #fff; transform: translateY(-2px); }
-        .btn-outline:hover { background-color: white; color: black; }
+        
+        /* Lightbox Styling */
+        #lightbox { display: none; position: fixed; z-index: 200; inset: 0; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 1px solid rgba(255,255,255,0.1); }
 
         input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1rem !important; width: 100%; outline: none; border-radius: 0px !important; }
+        
+        /* Merch Section is hidden by default */
+        #merch { display: none; }
     </style>
 </head>
 <body>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Enlarged Merch">
+        <p class="absolute bottom-10 text-[10px] tracking-[0.5em] text-gray-500 uppercase">Click anywhere to close</p>
+    </div>
 
     <nav class="fixed w-full z-[100] glass-nav py-5 px-6 md:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -33,7 +43,7 @@
             </a>
             <div class="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
                 <a href="#home" class="hover:text-[#FCA311] transition">Home</a>
-                <a href="#merch" class="hover:text-[#FCA311] transition">Merch</a>
+                <a href="javascript:void(0)" onclick="toggleMerch()" class="hover:text-[#FCA311] transition">Merch</a>
                 <a href="#magazine" class="hover:text-[#FCA311] transition">Magazine</a>
                 <a href="#support" class="hover:text-[#FCA311] transition">Support</a>
                 <a href="#join" class="accent-bg text-black px-4 py-2">Join Movement</a>
@@ -49,69 +59,66 @@
             </h1>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
                 <a href="#join" class="btn-gold">Join Movement</a>
-                <a href="#merch" class="btn-outline">View Merch</a>
+                <button onclick="toggleMerch()" class="btn-outline">View Merch</button>
                 <a href="#magazine" class="btn-outline">The Magazine</a>
                 <a href="#support" class="btn-outline">Support Us</a>
             </div>
         </div>
     </header>
 
+    <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-y border-white/5">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Merch Gallery</h2>
+        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Click to magnify details</p>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch1.jpeg')">
+                <img src="merch1.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch2.jpeg')">
+                <img src="merch2.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch3.jpeg')">
+                <img src="merch3.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch4.jpeg')">
+                <img src="merch4.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch5.jpeg')">
+                <img src="merch5.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch6.jpeg')">
+                <img src="merch6.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em]">VIEW DETAIL</span></div>
+            </div>
+        </div>
+    </section>
+
     <section id="support" class="py-32 bg-[#0a0a0a] px-6 text-center">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic text-[#FCA311]">Support</h2>
-        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-12 italic">Fuel the mission across borders</p>
         <div class="max-w-2xl mx-auto border border-white/10 p-12 bg-black">
-            <p class="text-sm text-gray-400 mb-10 leading-loose uppercase tracking-widest font-light">
-                Your support fuels our global gatherings, digital content, and community outreach. Join us in making the Word accessible everywhere.
-            </p>
+            <p class="text-sm text-gray-400 mb-10 leading-loose uppercase tracking-widest font-light">Join the movement by supporting the vision across borders.</p>
             <a href="mailto:support@bibleandcoffee.com" class="btn-gold">Ways to Give</a>
         </div>
     </section>
 
-    <section id="merch" class="py-32 bg-[#0f0f0f] px-6 text-center border-y border-white/5">
-        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Merch</h2>
-        <p class="text-gray-500 text-[9px] tracking-[0.4em] uppercase mb-16 italic">Drop #01 Essentials</p>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
-                <img src="merch1.jpeg" alt="Merch 1" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-4 py-2">COMING SOON</span></div>
-            </div>
-            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
-                <img src="merch2.jpeg" alt="Merch 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-4 py-2">COMING SOON</span></div>
-            </div>
-            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
-                <img src="merch3.jpeg" alt="Merch 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-4 py-2">COMING SOON</span></div>
-            </div>
-            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
-                <img src="merch4.jpeg" alt="Merch 4" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-4 py-2">COMING SOON</span></div>
-            </div>
-            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
-                <img src="merch5.jpeg" alt="Merch 5" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-4 py-2">COMING SOON</span></div>
-            </div>
-            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5">
-                <img src="merch6.jpeg" alt="Merch 6" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-4 py-2">COMING SOON</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="magazine" class="py-32 bg-[#0a0a0a] px-6 text-center">
+    <section id="magazine" class="py-32 bg-[#0f0f0f] px-6 text-center">
         <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Magazine</h2>
         <div class="max-w-sm mx-auto group">
-            <div class="relative mb-12 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
-                <img src="magazine28-page1.jpeg" alt="Cover" class="w-full h-auto">
+            <div class="relative mb-12">
+                <img src="magazine28-page1.jpeg" alt="Cover" class="w-full h-auto shadow-2xl">
             </div>
             <a href="magazine28.pdf" target="_blank" class="btn-gold">Read Issue #28</a>
         </div>
     </section>
 
-    <section id="join" class="py-32 px-6 bg-[#0f0f0f]">
-        <div class="max-w-xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-center text-[#FCA311]">Register</h2>
-            <form id="mainRegForm" class="space-y-6">
+    <section id="join" class="py-32 px-6 bg-[#0a0a0a]">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-[#FCA311]">Register</h2>
+            <form id="mainRegForm" class="space-y-6 text-left">
                 <input type="text" id="userName" placeholder="FULL NAME" required>
                 <input type="email" id="userEmail" placeholder="EMAIL ADDRESS" required>
                 <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required>
@@ -128,7 +135,7 @@
                 <select id="userLocation" required>
                     <option value="" disabled selected>SELECT GATHERING SPOT</option>
                 </select>
-                <button type="submit" id="submitBtn" class="btn-gold w-full text-center mt-8">Confirm Registration</button>
+                <button type="submit" id="submitBtn" class="btn-gold w-full mt-8">Confirm Registration</button>
             </form>
         </div>
     </section>
@@ -138,7 +145,6 @@
             <a href="#"><i data-lucide="instagram"></i></a>
             <a href="#"><i data-lucide="facebook"></i></a>
             <a href="#"><i data-lucide="youtube"></i></a>
-            <a href="#"><i data-lucide="send"></i></a>
         </div>
         <p class="text-[9px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
     </footer>
@@ -146,6 +152,19 @@
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
         const ADMIN_PHONE = "251910884585"; 
+
+        // Lightbox Logic
+        function openLightbox(imgSrc) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        // Toggle Merch Visibility
+        function toggleMerch() {
+            const mSection = document.getElementById('merch');
+            mSection.style.display = 'block';
+            mSection.scrollIntoView({ behavior: 'smooth' });
+        }
 
         const geoData = {
             "Ethiopia": ["Addis Ababa", "Hawassa", "Adama", "Bishoftu"],
@@ -189,11 +208,9 @@
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             btn.innerText = "SAVING...";
-            const name = document.getElementById('userName').value;
-
             const payload = {
                 data: [{
-                    "Name": name,
+                    "Name": document.getElementById('userName').value,
                     "Email": document.getElementById('userEmail').value,
                     "Phone": document.getElementById('userPhone').value,
                     "Country": document.getElementById('userCountry').value,
@@ -205,15 +222,12 @@
 
             try {
                 await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New Registration: " + name)}`, '_blank');
+                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent("New Registration: " + payload.data[0].Name)}`, '_blank');
                 document.getElementById('mainRegForm').reset();
                 btn.innerText = "Confirm Registration";
                 window.location.hash = "home";
                 alert("Success! Welcome to the movement.");
-            } catch (err) {
-                alert("Error saving. Please try again.");
-                btn.innerText = "Confirm Registration";
-            }
+            } catch (err) { alert("Error saving."); btn.innerText = "Confirm Registration"; }
         };
         lucide.createIcons();
     </script>

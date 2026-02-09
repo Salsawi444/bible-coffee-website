@@ -132,7 +132,8 @@
         document.getElementById('mainRegForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerText = "SAVING...";
+            btn.disabled = true; 
+            btn.innerText = "SAVING...";
 
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
@@ -141,21 +142,27 @@
             const payload = { "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() };
 
             try {
-                // 1. Save to Google Sheets
-                await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [payload] }) });
+                // 1. Save to SheetDB
+                await fetch(API_URL, { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'}, 
+                    body: JSON.stringify({ data: [payload] }) 
+                });
 
                 // 2. Prepare the Custom Message
                 const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
                 
-                // 3. COPY TO CLIPBOARD (User just has to Paste in the group)
+                // 3. Copy message to clipboard
                 await navigator.clipboard.writeText(customMsg);
                 
-                // 4. Alert the user and Redirect to the Group
-                alert("Awesome! Your spot is reserved. We are moving you to the WhatsApp Group now. Please PASTE and SEND your confirmation message there so both admins see you!");
+                // 4. THE FIX: Explicitly tell the browser to go to the group link
+                alert("Saved! Opening the WhatsApp Group. Please PASTE your confirmation message there!");
                 
-                window.location.href = GROUP_LINK; // This replaces the current page with the group join page
+                // This window.location command kills the current session and forces the Group Link to load.
+                window.location.replace(GROUP_LINK);
+
             } catch (err) { 
-                alert("Something went wrong. Please try again."); 
+                alert("Process failed. Please check your connection."); 
                 btn.disabled = false; 
                 btn.innerText = "Confirm My Spot";
             }

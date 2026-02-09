@@ -2,96 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bible & Coffee | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; overflow-x: hidden; }
         h1, h2, h3, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         .accent-text { color: #FCA311; }
         .accent-bg { background-color: #FCA311; }
-        .glass-nav { background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .card-blur { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
-        input, select { background: black !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; }
+        
+        /* Glass effect for mobile and desktop nav */
+        .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        
+        /* Card styling */
+        .card-blur { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.2s ease; }
+        
+        /* Mobile Input Fixes */
+        input, select { 
+            background: #111 !important; 
+            border: 1px solid rgba(255,255,255,0.1) !important; 
+            color: white !important; 
+            border-radius: 8px !important;
+            font-size: 16px !important; /* Prevents iOS zoom-on-focus */
+        }
+        
+        /* Custom scrollbar for desktop */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-[100] glass-nav py-4 px-6">
+    <nav class="fixed w-full z-[100] glass-nav py-3 md:py-4 px-4 md:px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <i data-lucide="coffee" class="text-white w-5 h-5"></i>
-                <span class="text-lg font-bold brand-font tracking-tighter">BIBLE & COFFEE</span>
-            </div>
-            <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-[0.15em] uppercase text-gray-400">
+            <a href="#" class="flex items-center gap-2 group">
+                <i data-lucide="coffee" class="text-white w-5 h-5 group-hover:text-[#FCA311] transition-colors"></i>
+                <span class="text-base md:text-xl font-bold brand-font tracking-tighter">BIBLE & COFFEE</span>
+            </a>
+            
+            <div class="flex items-center gap-4 md:gap-8 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400">
                 <a href="#" class="hover:text-white transition">Home</a>
-                <a href="#magazine" class="hover:text-white transition">Magazine</a>
-                <a href="#events" class="hover:text-white transition">Events</a>
-                <a href="#merch" class="hover:text-white transition">Merch</a>
-                <a href="#join" class="accent-bg text-black px-4 py-2 rounded-sm hover:bg-yellow-500 transition">JOIN A GROUP</a>
+                <a href="#magazine" class="hidden sm:inline hover:text-white transition">Magazine</a>
+                <a href="#join" class="accent-bg text-black px-3 py-2 md:px-5 md:py-2.5 rounded-sm hover:bg-yellow-500 transition shadow-lg shadow-yellow-500/10">JOIN</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
-        <div class="relative z-10 max-w-4xl">
-            <h1 class="text-7xl md:text-9xl font-bold leading-[0.9] mb-8 uppercase">
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
+        <div class="relative z-10 max-w-5xl">
+            <h1 class="text-5xl sm:text-7xl md:text-9xl font-bold leading-[1] mb-6 md:mb-8 uppercase">
                 C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
             </h1>
-            <a href="#join" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs">Start Your Journey</a>
+            <p class="text-gray-400 text-[10px] md:text-xs tracking-[0.4em] mb-12 uppercase font-light">Addis Ababa • Faith • Culture</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#join" class="w-full sm:w-auto accent-bg text-black px-10 py-5 rounded-sm font-bold uppercase tracking-widest text-[10px] shadow-xl shadow-yellow-500/20 active:scale-95 transition">Start Your Journey</a>
+                <a href="#magazine" class="w-full sm:w-auto border border-white/20 hover:bg-white/5 text-white px-10 py-5 rounded-sm font-bold uppercase tracking-widest text-[10px] transition">View Magazine</a>
+            </div>
         </div>
     </header>
 
-    <section id="magazine" class="py-24 bg-neutral-900 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-5xl font-bold uppercase mb-12">Weekly Magazine</h2>
-            <div class="rounded-xl bg-black border border-white/5 h-[600px] overflow-hidden mb-8">
+    <section id="magazine" class="py-20 md:py-32 bg-neutral-900 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold uppercase mb-4">The Magazine</h2>
+            <p class="text-gray-500 text-[10px] tracking-widest uppercase mb-12">Weekly Wisdom & Culture</p>
+            
+            <div class="hidden md:block rounded-2xl bg-black border border-white/5 h-[700px] overflow-hidden mb-8 shadow-2xl">
                 <embed src="magazine28.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
-            <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-6 py-4 rounded-sm font-bold uppercase text-xs">Read Full Screen</a>
+            
+            <div class="md:hidden p-8 card-blur rounded-2xl mb-8 flex flex-col items-center">
+                <i data-lucide="book-open" class="w-12 h-12 accent-text mb-4"></i>
+                <h4 class="font-bold mb-2 uppercase">Issue #28</h4>
+                <p class="text-xs text-gray-400 mb-6">Optimized for mobile viewing</p>
+                <a href="magazine28.pdf" target="_blank" class="w-full bg-white/10 text-white py-4 rounded-lg font-bold uppercase text-[11px] tracking-widest border border-white/10">Read PDF Now</a>
+            </div>
         </div>
     </section>
 
-    <section id="events" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-5xl font-bold uppercase mb-12">The Gathering</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-blur p-10 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-4 accent-text">Coffee & Word Friday</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">7:00 AM - 8:30 AM</p>
-                    <a href="#join" class="text-white border-b-2 border-yellow-500 pb-1 text-[10px] font-bold uppercase">Secure Your Spot</a>
+    <section id="events" class="py-24 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold uppercase mb-12 text-center">The Gathering</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                <div class="card-blur p-8 md:p-14 rounded-3xl hover:border-yellow-500/30 transition">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="calendar" class="accent-text w-6 h-6"></i>
+                        <span class="bg-yellow-500/10 text-yellow-500 px-3 py-1 rounded-full text-[9px] font-bold tracking-tighter">WEEKLY</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-3 uppercase">Coffee & Word Friday</h3>
+                    <p class="text-gray-500 text-[11px] mb-8 uppercase tracking-[0.2em]">7:00 AM — Friday Morning</p>
+                    <a href="#join" class="inline-block text-white border-b-2 border-yellow-500 pb-1 text-[10px] font-bold uppercase tracking-widest">Reserve My Chair</a>
                 </div>
-                <div class="card-blur p-10 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-4">Evening Fellowship</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">Monthly Special</p>
-                    <a href="#join" class="text-white border-b-2 border-gray-600 pb-1 text-[10px] font-bold uppercase">Register Interest</a>
+                
+                <div class="card-blur p-8 md:p-14 rounded-3xl opacity-40">
+                    <i data-lucide="moon" class="text-gray-500 w-6 h-6 mb-6"></i>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-3 uppercase font-outline">Evening Fellowship</h3>
+                    <p class="text-gray-500 text-[11px] mb-8 uppercase tracking-[0.2em]">Monthly Special</p>
+                    <span class="text-gray-600 text-[9px] font-bold uppercase tracking-widest">Registration Closed</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="join" class="py-32 px-6 bg-black">
+    <section id="join" class="py-24 px-6 bg-[#080808]">
         <div class="max-w-xl mx-auto">
-            <h2 class="text-5xl font-bold uppercase mb-12 text-center">Join A Group</h2>
-            <form id="mainRegForm" class="space-y-4 card-blur p-8 rounded-xl">
-                <input type="text" id="userName" placeholder="FULL NAME" required class="w-full p-4 rounded text-sm uppercase font-bold tracking-widest">
-                <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required class="w-full p-4 rounded text-sm uppercase font-bold tracking-widest">
-                <select id="userLocation" required class="w-full p-4 rounded text-sm font-bold uppercase tracking-widest">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-6xl font-bold uppercase mb-4">Join Us</h2>
+                <p class="text-gray-500 text-[11px] uppercase tracking-[0.3em] leading-relaxed">Secure your spot at the table</p>
+            </div>
+            
+            <form id="mainRegForm" class="space-y-4 md:space-y-6">
+                <input type="text" id="userName" placeholder="FULL NAME" required class="w-full p-5 md:p-6 text-sm uppercase font-bold tracking-widest transition-all focus:border-yellow-500/50 outline-none">
+                <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required class="w-full p-5 md:p-6 text-sm uppercase font-bold tracking-widest transition-all focus:border-yellow-500/50 outline-none">
+                <select id="userLocation" required class="w-full p-5 md:p-6 text-sm font-bold uppercase tracking-widest transition-all focus:border-yellow-500/50 outline-none">
                     <option value="" disabled selected>CHECKING SLOTS...</option>
                 </select>
-                <button type="submit" id="submitBtn" class="w-full accent-bg text-black font-bold py-5 rounded uppercase tracking-widest text-xs mt-4">Confirm My Spot</button>
+                
+                <button type="submit" id="submitBtn" class="w-full accent-bg text-black font-bold py-6 rounded-xl uppercase tracking-[0.3em] text-[12px] mt-4 shadow-xl shadow-yellow-500/10 active:scale-95 transition">Confirm Registration</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-20 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 Bible & Coffee Movement</footer>
+    <footer class="py-20 text-center px-6">
+        <div class="flex justify-center gap-6 mb-8 text-gray-600">
+            <i data-lucide="instagram" class="w-5 h-5 cursor-pointer hover:text-white transition"></i>
+            <i data-lucide="mail" class="w-5 h-5 cursor-pointer hover:text-white transition"></i>
+        </div>
+        <p class="text-gray-800 text-[9px] uppercase tracking-[0.5em]">&copy; 2026 Bible & Coffee Movement • Addis Ababa</p>
+    </footer>
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ETH_ADMIN = "251910884585"; // ETHIOPIAN NUMBER ONLY
+        const ETH_ADMIN = "251910884585"; 
 
         async function loadSpots() {
             try {
@@ -108,46 +153,48 @@
                     opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
                     sel.appendChild(opt);
                 });
-            } catch(e) { console.log("Offline mode"); }
+            } catch(e) { 
+                document.getElementById('userLocation').innerHTML = '<option value="" disabled selected>SLOTS UNAVAILABLE</option>';
+            }
         }
 
         document.getElementById('mainRegForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.innerText = "SAVING...";
+            const originalText = btn.innerText;
+            btn.disabled = true; 
+            btn.innerText = "PROCESSING...";
 
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
             const loc = document.getElementById('userLocation').value;
 
             try {
-                // 1. Save to Google Sheets
+                // 1. Submit Data
                 await fetch(API_URL, { 
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
                     body: JSON.stringify({ data: [{ "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() }] }) 
                 });
 
-                // 2. Prepare WhatsApp URL with Custom Message
-                const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
-                const whatsappUrl = `https://wa.me/${ETH_ADMIN}?text=${encodeURIComponent(customMsg)}`;
+                const msg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
                 
-                // 3. Open WhatsApp in new tab
-                window.open(whatsappUrl, '_blank');
+                // 2. Open WhatsApp in new tab
+                window.open(`https://wa.me/${ETH_ADMIN}?text=${encodeURIComponent(msg)}`, '_blank');
 
-                // 4. Reset page to HOME
+                // 3. Page Reset & Navigation
                 setTimeout(() => {
-                    window.location.href = "#"; // Scrolls to top
+                    window.location.href = "#"; // Redirect to Home (top)
                     document.getElementById('mainRegForm').reset();
                     btn.disabled = false;
-                    btn.innerText = "Confirm My Spot";
-                    loadSpots();
-                }, 500);
+                    btn.innerText = originalText;
+                    loadSpots(); // Refresh counts
+                }, 1000);
 
             } catch (err) { 
-                alert("Error saving registration."); 
+                alert("Connection failed. Check your data and try again."); 
                 btn.disabled = false; 
-                btn.innerText = "Confirm My Spot";
+                btn.innerText = originalText;
             }
         };
 

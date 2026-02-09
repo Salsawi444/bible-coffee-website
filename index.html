@@ -12,7 +12,6 @@
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
         h1, h2, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         
-        /* Layout & Background */
         .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), url('hero.jpeg');
             background-size: cover; background-position: center;
@@ -21,33 +20,30 @@
 
         .hero-title { font-size: clamp(2.5rem, 12vw, 8rem); line-height: 0.9; font-style: italic; font-weight: 700; margin-bottom: 2rem; }
 
-        /* Navigation */
         .glass-nav { background: rgba(0, 0, 0, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; position: fixed; top: 0; z-index: 1000; }
         .nav-links { display: flex; gap: 15px; overflow-x: auto; padding: 15px; scrollbar-width: none; }
         .nav-links::-webkit-scrollbar { display: none; }
         .nav-links a, .nav-links button { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #888; text-transform: uppercase; white-space: nowrap; border: none; background: none; cursor: pointer; }
         .nav-links .active-link { color: #FCA311; }
 
-        /* Form Styling */
         input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; padding: 14px !important; width: 100%; border-radius: 4px !important; font-size: 16px !important; outline: none; margin-bottom: 15px; -webkit-appearance: none; }
         label { display: block; font-size: 10px; color: #FCA311; margin-bottom: 5px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
 
-        /* Buttons */
         .btn-gold { background: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; width: 100%; text-align: center; display: block; border: none; cursor: pointer; }
         .btn-outline { border: 2px solid white; color: white; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; width: 100%; text-align: center; display: block; background: transparent; cursor: pointer; }
+        .btn-magazine { border: 2px solid #FCA311; color: #FCA311; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; width: 100%; text-align: center; display: block; background: transparent; cursor: pointer; }
 
-        /* Desktop Right Alignment */
         .hero-content { padding: 0 1.5rem; text-align: center; }
         .hero-btn-container { width: 100%; max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
         .social-container { display: flex; gap: 1.5rem; margin-top: 3rem; justify-content: center; opacity: 0.6; }
 
         @media (min-width: 1024px) {
             .hero-content { padding: 0 10%; text-align: right; }
-            .hero-btn-container { margin-left: auto; margin-right: 0; display: flex; max-width: 500px; flex-direction: row-reverse; }
+            .hero-btn-container { margin-left: auto; margin-right: 0; display: flex; max-width: 650px; flex-direction: row-reverse; }
             .social-container { justify-content: flex-end; }
         }
 
-        #merch, #events, #support { display: none; padding: 80px 20px; text-align: center; }
+        #merch, #events, #support, #magazine { display: none; padding: 100px 20px; text-align: center; }
         .counter-box { background: rgba(252, 163, 17, 0.1); border: 1px solid #FCA311; padding: 10px; margin-bottom: 20px; border-radius: 4px; display: none; text-align: center; }
     </style>
 </head>
@@ -57,6 +53,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="nav-links">
                 <a href="#home">HOME</a>
+                <button onclick="reveal('magazine')">MAGAZINE</button>
                 <button onclick="reveal('events')">EVENT</button>
                 <button onclick="reveal('merch')">MERCH</button>
                 <button onclick="reveal('support')">SUPPORT</button>
@@ -70,6 +67,7 @@
             <h1 class="hero-title">C<span class="text-[#FCA311]">O</span>FFEE MEETS<br>THE WORD.</h1>
             <div class="hero-btn-container">
                 <a href="#join" class="btn-gold">Join Movement</a>
+                <button onclick="reveal('magazine')" class="btn-magazine">Weekly Magazine</button>
                 <button onclick="reveal('merch')" class="btn-outline">View Merch</button>
             </div>
             <div class="social-container">
@@ -82,19 +80,25 @@
         </div>
     </header>
 
+    <section id="magazine" class="bg-[#0a0a0a]">
+        <h2 class="text-4xl font-bold italic text-[#FCA311] mb-10">Weekly Magazine</h2>
+        <div class="max-w-sm mx-auto bg-[#111] p-4 border border-white/5 rounded-lg">
+            <img src="magazine.jpg" alt="Latest Magazine Cover" class="w-full mb-6 rounded shadow-2xl grayscale hover:grayscale-0 transition-all duration-500">
+            <p class="text-gray-500 uppercase tracking-widest text-[10px] mb-6">New Edition Every Sunday</p>
+            <a href="magazine.pdf" target="_blank" class="btn-gold">Download Full Edition (PDF)</a>
+        </div>
+    </section>
+
     <section id="join" class="py-24 px-6">
         <div class="max-w-md mx-auto">
             <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311]">Register</h2>
-            
             <div id="counterBox" class="counter-box">
                 <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">Only <span id="spotsLeft">8</span> Spots Remaining</p>
             </div>
-
             <form id="regForm">
                 <input type="text" id="name" placeholder="FULL NAME" required>
                 <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
                 <input type="tel" id="phone" placeholder="PHONE (e.g. +251...)" required>
-                
                 <label>Country</label>
                 <select id="country" onchange="updateCities()" required>
                     <option value="" disabled selected>SELECT COUNTRY</option>
@@ -104,27 +108,24 @@
                     <option value="Netherlands">Netherlands</option>
                     <option value="Kenya">Kenya</option>
                 </select>
-
                 <label>City</label>
                 <select id="city" onchange="updateSubCities()" required>
                     <option value="" disabled selected>SELECT CITY</option>
                 </select>
-
                 <div id="subCityGroup" style="display:none;">
                     <label>Spot / Sub-Location</label>
                     <select id="subCity" onchange="checkSpots()">
                         <option value="" disabled selected>SELECT AREA</option>
                     </select>
                 </div>
-
                 <button type="submit" id="subBtn" class="btn-gold mt-4">Confirm Registration</button>
             </form>
         </div>
     </section>
 
-    <section id="events"><h2 class="text-3xl font-bold italic text-[#FCA311]">Events</h2></section>
+    <section id="events" class="bg-[#0d0d0d]"><h2 class="text-3xl font-bold italic text-[#FCA311]">Events</h2></section>
     <section id="merch"><h2 class="text-3xl font-bold italic">The Merch</h2></section>
-    <section id="support"><h2 class="text-3xl font-bold italic text-[#FCA311]">Support</h2></section>
+    <section id="support" class="bg-[#0d0d0d]"><h2 class="text-3xl font-bold italic text-[#FCA311]">Support</h2></section>
 
     <script>
         const API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
@@ -143,7 +144,12 @@
             "Kenya": { "Nairobi": ["Westlands"] }
         };
 
-        function reveal(id) { document.getElementById(id).style.display = 'block'; document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+        function reveal(id) { 
+            // Hide other sections first
+            document.querySelectorAll('section').forEach(s => { if(s.id !== 'join' && s.id !== 'home') s.style.display = 'none'; });
+            document.getElementById(id).style.display = 'block'; 
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
+        }
 
         function updateCities() {
             const country = document.getElementById('country').value;
@@ -161,73 +167,4 @@
 
         function updateSubCities() {
             const country = document.getElementById('country').value;
-            const city = document.getElementById('city').value;
-            const subCitySel = document.getElementById('subCity');
-            const subCityGroup = document.getElementById('subCityGroup');
-            const areas = locationData[country][city];
-            if(areas && areas.length > 0) {
-                subCitySel.innerHTML = '<option value="" disabled selected>SELECT AREA</option>';
-                areas.forEach(a => {
-                    let o = document.createElement('option'); o.value = a; o.textContent = a.toUpperCase();
-                    subCitySel.appendChild(o);
-                });
-                subCityGroup.style.display = 'block';
-            } else { subCityGroup.style.display = 'none'; }
-        }
-
-        async function checkSpots() {
-            const city = document.getElementById('city').value;
-            const spot = document.getElementById('subCity').value;
-            const counterBox = document.getElementById('counterBox');
-            if (city === "Addis Ababa" && spot) {
-                counterBox.style.display = 'block';
-                try {
-                    const resp = await fetch(`${API}/search?City=${city}&Spot=${spot}`);
-                    const regs = await resp.json();
-                    const remaining = TOTAL_LIMIT - regs.length;
-                    document.getElementById('spotsLeft').innerText = remaining > 0 ? remaining : 0;
-                    if (remaining <= 0) {
-                        const b = document.getElementById('subBtn');
-                        b.disabled = true; b.innerText = "LOCATION FULL"; b.style.background = "#444";
-                    } else {
-                        const b = document.getElementById('subBtn');
-                        b.disabled = false; b.innerText = "CONFIRM REGISTRATION"; b.style.background = "#FCA311";
-                    }
-                } catch (e) { console.error(e); }
-            }
-        }
-
-        document.getElementById('regForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const b = document.getElementById('subBtn'); b.innerText = "SAVING...";
-            const name = document.getElementById('name').value;
-            const city = document.getElementById('city').value;
-            const area = document.getElementById('subCity').value || "N/A";
-            const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-            const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-            const data = { 
-                "Name": name, 
-                "Email": document.getElementById('email').value, 
-                "Phone": document.getElementById('phone').value, 
-                "Country": document.getElementById('country').value, 
-                "City": city, 
-                "Spot": area, 
-                "Registration Date": dateStr, 
-                "Registration Time": timeStr 
-            };
-
-            const waMessage = `Hello Bible %26 Coffee!%0A%0AI just registered.%0A%0A*Details:*%0A- Name: ${name}%0A- City: ${city}%0A- Spot: ${area}%0A%0AConfirmed on ${dateStr}`;
-
-            try {
-                await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [data] }) });
-                window.open(`https://wa.me/${ADMIN_WA}?text=${waMessage}`, '_blank');
-                alert("Success! Check your WhatsApp.");
-                b.innerText = "Confirm Registration";
-                checkSpots();
-            } catch (err) { alert("Error connecting."); b.innerText = "Confirm Registration"; }
-        };
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+            const city = document.getElementById('city

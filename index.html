@@ -103,7 +103,7 @@
         </div>
     </section>
 
-    <footer class="py-20 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 Bible & Coffee Movement</footer>
+    <footer class="py-20 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 Bible & Coffee</footer>
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
@@ -124,7 +124,7 @@
                     opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
                     sel.appendChild(opt);
                 });
-            } catch(e) { console.log("API Connection Issue"); }
+            } catch(e) { console.log("API Error"); }
         }
 
         document.getElementById('mainRegForm').onsubmit = async (e) => {
@@ -137,21 +137,31 @@
             const loc = document.getElementById('userLocation').value;
 
             try {
-                // Save to Google Sheet
+                // 1. Save to Sheet
                 await fetch(API_URL, { 
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
                     body: JSON.stringify({ data: [{ "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() }] }) 
                 });
 
-                // THE MESSAGE YOU REQUESTED
+                // 2. Prepare WhatsApp Link
                 const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
+                const whatsappUrl = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(customMsg)}`;
                 
-                // OPEN DIRECT WHATSAPP TO ETHIOPIA ADMIN
-                window.location.href = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(customMsg)}`;
+                // 3. Open WhatsApp in a NEW tab
+                window.open(whatsappUrl, '_blank');
+
+                // 4. Return the website to HOME (top) immediately
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // 5. Reset the form
+                document.getElementById('mainRegForm').reset();
+                btn.disabled = false;
+                btn.innerText = "Confirm My Spot";
+                loadSpots(); // Refresh spot counts
 
             } catch (err) { 
-                alert("Submission failed. Please check your internet."); 
+                alert("Error. Try again."); 
                 btn.disabled = false; 
                 btn.innerText = "Confirm My Spot";
             }

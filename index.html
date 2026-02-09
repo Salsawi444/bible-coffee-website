@@ -27,10 +27,10 @@
                 <span class="text-lg font-bold brand-font tracking-tighter">BIBLE & COFFEE</span>
             </div>
             <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-[0.15em] uppercase text-gray-400">
-                <a href="#" class="hover:text-white transition cursor-pointer">Home</a>
-                <a href="#magazine" class="hover:text-white transition cursor-pointer">Magazine</a>
-                <a href="#events" class="hover:text-white transition cursor-pointer">Events</a>
-                <a href="#merch" class="hover:text-white transition cursor-pointer">Merch</a>
+                <a href="#" class="hover:text-white transition">Home</a>
+                <a href="#magazine" class="hover:text-white transition">Magazine</a>
+                <a href="#events" class="hover:text-white transition">Events</a>
+                <a href="#merch" class="hover:text-white transition">Merch</a>
                 <a href="#join" class="accent-bg text-black px-4 py-2 rounded-sm hover:bg-yellow-500 transition">JOIN A GROUP</a>
             </div>
         </div>
@@ -41,16 +41,14 @@
             <h1 class="text-7xl md:text-9xl font-bold leading-[0.9] mb-8 uppercase">
                 C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
             </h1>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#join" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs">Start Your Journey</a>
-            </div>
+            <a href="#join" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs">Start Your Journey</a>
         </div>
     </header>
 
     <section id="magazine" class="py-24 bg-neutral-900 px-6">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-5xl font-bold uppercase mb-12">Weekly Magazine</h2>
-            <div class="lg:col-span-2 rounded-xl bg-black border border-white/5 h-[600px] overflow-hidden mb-8">
+            <div class="rounded-xl bg-black border border-white/5 h-[600px] overflow-hidden mb-8">
                 <embed src="magazine28.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
             <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-6 py-4 rounded-sm font-bold uppercase text-xs">Read Full Screen</a>
@@ -63,12 +61,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card-blur p-10 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4 accent-text">Coffee & Word Friday</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">7:00 AM - 8:30 AM</p>
+                    <p class="text-gray-400 text-xs mb-6 uppercase">7:00 AM - 8:30 AM</p>
                     <a href="#join" class="text-white border-b-2 border-yellow-500 pb-1 text-[10px] font-bold uppercase">Secure Your Spot</a>
                 </div>
                 <div class="card-blur p-10 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4">Evening Fellowship</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">Monthly Special</p>
+                    <p class="text-gray-400 text-xs mb-6 uppercase">Monthly Special</p>
                     <a href="#join" class="text-white border-b-2 border-gray-600 pb-1 text-[10px] font-bold uppercase">Register Interest</a>
                 </div>
             </div>
@@ -79,13 +77,13 @@
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-5xl font-bold uppercase mb-12">Vision & Gear</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-blur p-12 rounded-2xl text-center">
+                <div class="card-blur p-12 rounded-2xl">
                     <h3 class="text-3xl font-bold mb-4">Official Merch</h3>
                     <p class="text-gray-500 text-sm mb-8 uppercase tracking-widest">Coming Soon</p>
                 </div>
-                <div class="card-blur p-12 rounded-2xl text-center border-yellow-500/30 bg-yellow-500/5">
+                <div class="card-blur p-12 rounded-2xl border-yellow-500/30">
                     <h3 class="text-3xl font-bold mb-4">Support the Vision</h3>
-                    <button class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-yellow-600 transition">Partner With Us</button>
+                    <button class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest">Partner With Us</button>
                 </div>
             </div>
         </div>
@@ -109,7 +107,7 @@
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const GROUP_LINK = "https://chat.whatsapp.com/KOx7HoG2xqdDd9yEjWLZ2O"; 
+        const ADMIN_NUMBER = "251910884585"; 
 
         async function loadSpots() {
             try {
@@ -126,43 +124,34 @@
                     opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
                     sel.appendChild(opt);
                 });
-            } catch(e) { console.log("Offline mode"); }
+            } catch(e) { console.log("API Connection Issue"); }
         }
 
         document.getElementById('mainRegForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.disabled = true; 
-            btn.innerText = "SAVING...";
+            btn.disabled = true; btn.innerText = "SAVING...";
 
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
             const loc = document.getElementById('userLocation').value;
 
-            const payload = { "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() };
-
             try {
-                // 1. Save to SheetDB
+                // Save to Google Sheet
                 await fetch(API_URL, { 
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
-                    body: JSON.stringify({ data: [payload] }) 
+                    body: JSON.stringify({ data: [{ "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() }] }) 
                 });
 
-                // 2. Prepare the Custom Message
+                // THE MESSAGE YOU REQUESTED
                 const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
                 
-                // 3. Copy message to clipboard
-                await navigator.clipboard.writeText(customMsg);
-                
-                // 4. THE FIX: Explicitly tell the browser to go to the group link
-                alert("Saved! Opening the WhatsApp Group. Please PASTE your confirmation message there!");
-                
-                // This window.location command kills the current session and forces the Group Link to load.
-                window.location.replace(GROUP_LINK);
+                // OPEN DIRECT WHATSAPP TO ETHIOPIA ADMIN
+                window.location.href = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(customMsg)}`;
 
             } catch (err) { 
-                alert("Process failed. Please check your connection."); 
+                alert("Submission failed. Please check your internet."); 
                 btn.disabled = false; 
                 btn.innerText = "Confirm My Spot";
             }

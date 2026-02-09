@@ -17,6 +17,8 @@
         .card-blur:hover { border-color: #FCA311; background: rgba(251, 163, 17, 0.05); }
         input, select { background: black !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; }
         input:focus, select:focus { border-color: #FCA311 !important; outline: none; }
+        /* Smooth scrolling for IDs */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -32,7 +34,7 @@
                 <a href="#magazine" class="hover:text-white transition">Magazine</a>
                 <a href="#events" class="hover:text-white transition">Events</a>
                 <a href="#merch" class="hover:text-white transition">Merch</a>
-                <a href="#register" class="accent-bg text-black px-4 py-2 rounded-sm hover:bg-yellow-500 transition">JOIN A GROUP</a>
+                <a href="#register" class="accent-bg text-black px-4 py-2 rounded-sm hover:bg-yellow-500 transition border-none">JOIN A GROUP</a>
             </div>
         </div>
     </nav>
@@ -43,73 +45,98 @@
                 C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
             </h1>
             <p class="text-[12px] tracking-[0.5em] font-bold mb-8 text-white uppercase">Every Friday.</p>
-            <a href="#register" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-yellow-500 transition">Start Your Journey</a>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#register" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-yellow-500 transition">Start Your Journey</a>
+                <a href="#events" class="border border-white/20 text-white px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition">View Events</a>
+            </div>
         </div>
     </header>
 
-    <section id="magazine" class="py-24 bg-neutral-900 px-6 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold uppercase mb-12">Weekly Magazine</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 relative rounded-xl aspect-video bg-neutral-800 flex items-center justify-center border border-white/5 overflow-hidden">
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544928147-7972fc44099e?q=80&w=2000')] bg-cover opacity-30"></div>
-                    <div class="relative z-10 text-center">
-                        <h3 class="text-4xl font-bold mb-6">Issue #28</h3>
-                        <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-8 py-3 rounded-sm font-bold uppercase text-xs inline-flex items-center gap-2">
-                            <i data-lucide="download" class="w-4 h-4"></i> Read Latest Issue
-                        </a>
-                    </div>
+    <section id="about" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-yellow-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Our Vision</p>
+            <h2 class="text-5xl font-bold mb-12 uppercase">Faith In Action</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="card-blur p-8 rounded-lg text-left">
+                    <i data-lucide="book-open" class="text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold mb-2">Scripture</h3>
+                    <p class="text-xs text-gray-500">Deep dives into the Word over morning coffee.</p>
                 </div>
-                <div class="bg-black p-8 rounded-xl border border-white/10 flex flex-col justify-center text-center">
-                    <h3 class="text-xl font-bold mb-4 brand-font">28 Weeks of Faith</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed mb-6 uppercase tracking-widest">Our archive is growing. Check back every Friday for new insights.</p>
-                    <i data-lucide="scroll-text" class="w-12 h-12 text-yellow-500 mx-auto opacity-20"></i>
+                <div class="card-blur p-8 rounded-lg text-left">
+                    <i data-lucide="users" class="text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold mb-2">Community</h3>
+                    <p class="text-xs text-gray-500">Authentic local relationships that last.</p>
+                </div>
+                <div class="card-blur p-8 rounded-lg text-left">
+                    <i data-lucide="heart" class="text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold mb-2">Support</h3>
+                    <p class="text-xs text-gray-500">Encouragement and prayer for your week.</p>
+                </div>
+                <div class="card-blur p-8 rounded-lg text-left">
+                    <i data-lucide="sparkles" class="text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold mb-2">Growth</h3>
+                    <p class="text-xs text-gray-500">Transformation through weekly fellowship.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="register" class="py-32 px-6 bg-black">
-        <div class="max-w-xl mx-auto">
-            <div class="text-center mb-12">
-                <p class="text-yellow-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Secure Your Spot</p>
-                <h2 class="text-5xl font-bold uppercase">Join A Group</h2>
+    <section id="magazine" class="py-24 bg-neutral-900 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold uppercase mb-12">Weekly Magazine</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 rounded-xl bg-black border border-white/5 overflow-hidden h-[500px]">
+                    <iframe src="magazine28.pdf#toolbar=0" class="w-full h-full border-none" type="application/pdf"></iframe>
+                </div>
+                <div class="bg-black p-8 rounded-xl border border-white/10 flex flex-col justify-center">
+                    <h3 class="text-xl font-bold mb-4 brand-font">Issue #28</h3>
+                    <p class="text-gray-500 text-xs mb-8 uppercase tracking-widest leading-relaxed">Weekly insights, fellowship highlights, and deep coaching content.</p>
+                    <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-6 py-4 rounded-sm font-bold uppercase text-xs text-center">Open Full Screen</a>
+                </div>
             </div>
-            
+        </div>
+    </section>
+
+    <section id="events" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold uppercase mb-12 text-center">The Gathering</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card-blur p-10 rounded-xl">
+                    <span class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest">Every Friday</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-4">Coffee & Word</h3>
+                    <p class="text-gray-500 text-xs mb-6 uppercase">7:00 AM - 8:30 AM • Local Cafe</p>
+                    <a href="#register" class="text-white border-b border-yellow-500 pb-1 text-[10px] font-bold uppercase tracking-widest">Secure Your Spot</a>
+                </div>
+                <div class="card-blur p-10 rounded-xl">
+                    <span class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest">Monthly Special</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-4">Evening Fellowship</h3>
+                    <p class="text-gray-500 text-xs mb-6 uppercase">6:00 PM - 9:00 PM • Community Hall</p>
+                    <a href="#register" class="text-white border-b border-yellow-500 pb-1 text-[10px] font-bold uppercase tracking-widest">Join Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="py-32 px-6 bg-black border-t border-white/5">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-5xl font-bold uppercase mb-12 text-center">Join A Group</h2>
             <form id="mainRegForm" class="space-y-4 card-blur p-8 rounded-xl">
                 <input type="text" id="userName" placeholder="FULL NAME" required class="w-full p-4 rounded text-sm uppercase font-bold tracking-widest">
                 <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required class="w-full p-4 rounded text-sm uppercase font-bold tracking-widest">
                 <select id="userLocation" required class="w-full p-4 rounded text-sm font-bold uppercase tracking-widest">
-                    <option value="" disabled selected>LOADING LOCATIONS...</option>
+                    <option value="" disabled selected>CHECKING SLOTS...</option>
                 </select>
-                <button type="submit" id="submitBtn" class="w-full accent-bg text-black font-bold py-5 rounded uppercase tracking-[0.2em] text-xs mt-4 hover:bg-yellow-500 transition">Confirm Registration</button>
+                <button type="submit" id="submitBtn" class="w-full accent-bg text-black font-bold py-5 rounded uppercase tracking-widest text-xs mt-4">Confirm My Spot</button>
             </form>
         </div>
     </section>
 
-    <section id="merch" class="py-24 bg-neutral-900 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="card-blur p-12 rounded-2xl text-center">
-                <i data-lucide="shopping-bag" class="w-10 h-10 text-yellow-500 mx-auto mb-6"></i>
-                <h3 class="text-3xl font-bold mb-4">Official Merch</h3>
-                <p class="text-gray-500 text-sm mb-8">Wear the message. Our new collection is currently in production.</p>
-                <button class="border border-white/20 px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest">Coming Soon</button>
-            </div>
-            <div class="card-blur p-12 rounded-2xl text-center bg-yellow-500/5 border-yellow-500/20">
-                <i data-lucide="heart" class="w-10 h-10 text-yellow-500 mx-auto mb-6"></i>
-                <h3 class="text-3xl font-bold mb-4">Support the Vision</h3>
-                <p class="text-gray-500 text-sm mb-8">Help us reach more people through coffee and the Word.</p>
-                <button class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest">Partner With Us</button>
-            </div>
-        </div>
-    </section>
-
     <footer class="py-20 border-t border-white/5 text-center">
-        <div class="flex justify-center gap-10 mb-10">
-            <a href="https://facebook.com" class="text-gray-600 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-            <a href="https://instagram.com" class="text-gray-600 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-            <a href="https://youtube.com" class="text-gray-600 hover:text-white transition"><i data-lucide="youtube" class="w-5 h-5"></i></a>
-            <a href="https://tiktok.com" class="text-gray-600 hover:text-white transition">
+        <div class="flex justify-center gap-10 mb-8">
+            <a href="https://facebook.com" target="_blank" class="text-gray-600 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+            <a href="https://instagram.com" target="_blank" class="text-gray-600 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            <a href="https://youtube.com" target="_blank" class="text-gray-600 hover:text-white transition"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="text-gray-600 hover:text-white transition">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V18c0 1.32-.42 2.63-1.21 3.73-.78 1.1-1.92 1.88-3.21 2.22-1.29.34-2.66.27-3.9-.21-1.24-.48-2.31-1.37-3.03-2.52-.72-1.15-1.04-2.52-.91-3.87.13-1.35.73-2.62 1.69-3.58.96-.96 2.23-1.56 3.58-1.69 1.35-.13 2.72.19 3.87.91.38.24.74.52 1.07.83V5.62c-2.14-.14-4.28-.97-5.91-2.43C8.61 1.73 7.82.01 7.82.01h4.705z"/></svg>
             </a>
         </div>
@@ -119,7 +146,6 @@
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
         const ADMIN_1 = "251910884585"; 
-        const ADMIN_2 = "27671748626";
 
         const groups = [
             { n: "Ayat", m: 8 },
@@ -133,7 +159,6 @@
                 const data = await res.json();
                 const sel = document.getElementById('userLocation');
                 sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-                
                 groups.forEach((g) => {
                     const count = data.filter(r => r.Location === g.n).length;
                     const full = count >= g.m;
@@ -163,17 +188,13 @@
             };
 
             try {
-                // Save to Google Sheet
                 await fetch(API_URL, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ data: [payload] })
                 });
-
-                // User experience: We send them to Admin 1, but Admin 2 can see the sheet update
                 const text = encodeURIComponent(`Hi! I'm ${payload.Name}. I just registered for the ${payload.Location} group.`);
                 window.location.href = `https://wa.me/${ADMIN_1}?text=${text}`;
-
             } catch (err) {
                 alert("Database connection error.");
                 btn.disabled = false; btn.innerText = "Confirm Registration";

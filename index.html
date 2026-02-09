@@ -8,17 +8,14 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
         h1, h2, h3, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
         .accent-text { color: #FCA311; }
         .accent-bg { background-color: #FCA311; }
-        .glass-nav { background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .card-blur { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-        .card-blur:hover { border-color: #FCA311; background: rgba(251, 163, 17, 0.05); }
+        .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .card-blur { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
         input, select { background: black !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; }
-        input:focus, select:focus { border-color: #FCA311 !important; outline: none; }
-        /* Smooth scrolling for IDs */
-        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -27,97 +24,88 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <i data-lucide="coffee" class="text-white w-5 h-5"></i>
-                <span class="text-lg font-bold tracking-tighter brand-font">BIBLE & COFFEE</span>
+                <span class="text-lg font-bold brand-font tracking-tighter">BIBLE & COFFEE</span>
             </div>
             <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-[0.15em] uppercase text-gray-400">
-                <a href="#about" class="hover:text-white transition">About</a>
-                <a href="#magazine" class="hover:text-white transition">Magazine</a>
-                <a href="#events" class="hover:text-white transition">Events</a>
-                <a href="#merch" class="hover:text-white transition">Merch</a>
-                <a href="#register" class="accent-bg text-black px-4 py-2 rounded-sm hover:bg-yellow-500 transition border-none">JOIN A GROUP</a>
+                <a href="#our-mission" class="hover:text-white transition">About</a>
+                <a href="#magazine-view" class="hover:text-white transition">Magazine</a>
+                <a href="#upcoming-events" class="hover:text-white transition">Events</a>
+                <a href="#registration-form" class="accent-bg text-black px-4 py-2 rounded-sm hover:bg-yellow-500 transition">JOIN A GROUP</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
+    <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
         <div class="relative z-10 max-w-4xl">
             <h1 class="text-7xl md:text-9xl font-bold leading-[0.9] mb-8 uppercase">
                 C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.
             </h1>
-            <p class="text-[12px] tracking-[0.5em] font-bold mb-8 text-white uppercase">Every Friday.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#register" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-yellow-500 transition">Start Your Journey</a>
-                <a href="#events" class="border border-white/20 text-white px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition">View Events</a>
+                <a href="#registration-form" class="accent-bg text-black px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs">Start Your Journey</a>
+                <a href="#upcoming-events" class="border border-white/20 text-white px-8 py-4 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black">View Events</a>
             </div>
         </div>
     </header>
 
-    <section id="about" class="py-32 px-6">
+    <section id="our-mission" class="py-32 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <p class="text-yellow-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Our Vision</p>
             <h2 class="text-5xl font-bold mb-12 uppercase">Faith In Action</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="card-blur p-8 rounded-lg text-left">
-                    <i data-lucide="book-open" class="text-yellow-500 mb-4"></i>
+                <div class="card-blur p-8 rounded-lg text-left border-l-4 border-l-yellow-500">
                     <h3 class="font-bold mb-2">Scripture</h3>
-                    <p class="text-xs text-gray-500">Deep dives into the Word over morning coffee.</p>
+                    <p class="text-xs text-gray-500 italic">"Your word is a lamp to my feet."</p>
                 </div>
                 <div class="card-blur p-8 rounded-lg text-left">
-                    <i data-lucide="users" class="text-yellow-500 mb-4"></i>
-                    <h3 class="font-bold mb-2">Community</h3>
-                    <p class="text-xs text-gray-500">Authentic local relationships that last.</p>
+                    <h3 class="font-bold mb-2 text-yellow-500">Community</h3>
+                    <p class="text-xs text-gray-500">Building real bonds that last.</p>
                 </div>
                 <div class="card-blur p-8 rounded-lg text-left">
-                    <i data-lucide="heart" class="text-yellow-500 mb-4"></i>
-                    <h3 class="font-bold mb-2">Support</h3>
-                    <p class="text-xs text-gray-500">Encouragement and prayer for your week.</p>
+                    <h3 class="font-bold mb-2 text-yellow-500">Support</h3>
+                    <p class="text-xs text-gray-500">A family that walks with you.</p>
                 </div>
                 <div class="card-blur p-8 rounded-lg text-left">
-                    <i data-lucide="sparkles" class="text-yellow-500 mb-4"></i>
-                    <h3 class="font-bold mb-2">Growth</h3>
-                    <p class="text-xs text-gray-500">Transformation through weekly fellowship.</p>
+                    <h3 class="font-bold mb-2 text-yellow-500">Growth</h3>
+                    <p class="text-xs text-gray-500">Transforming lives one Friday at a time.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="magazine" class="py-24 bg-neutral-900 px-6">
+    <section id="magazine-view" class="py-24 bg-neutral-900 px-6">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-5xl font-bold uppercase mb-12">Weekly Magazine</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 rounded-xl bg-black border border-white/5 overflow-hidden h-[500px]">
-                    <iframe src="magazine28.pdf#toolbar=0" class="w-full h-full border-none" type="application/pdf"></iframe>
+                <div class="lg:col-span-2 rounded-xl bg-black border border-white/5 h-[600px] overflow-hidden">
+                    <embed src="magazine28.pdf" type="application/pdf" width="100%" height="100%" />
                 </div>
-                <div class="bg-black p-8 rounded-xl border border-white/10 flex flex-col justify-center">
-                    <h3 class="text-xl font-bold mb-4 brand-font">Issue #28</h3>
-                    <p class="text-gray-500 text-xs mb-8 uppercase tracking-widest leading-relaxed">Weekly insights, fellowship highlights, and deep coaching content.</p>
-                    <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-6 py-4 rounded-sm font-bold uppercase text-xs text-center">Open Full Screen</a>
+                <div class="bg-black p-8 rounded-xl border border-white/10 flex flex-col justify-center text-center">
+                    <h3 class="text-xl font-bold mb-4 brand-font accent-text">Issue #28</h3>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-8">Friday Insights & Coaching</p>
+                    <a href="magazine28.pdf" target="_blank" class="accent-bg text-black px-6 py-4 rounded-sm font-bold uppercase text-xs">Read Full Screen</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="events" class="py-32 px-6">
+    <section id="upcoming-events" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-5xl font-bold uppercase mb-12 text-center">The Gathering</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-blur p-10 rounded-xl">
-                    <span class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest">Every Friday</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">Coffee & Word</h3>
-                    <p class="text-gray-500 text-xs mb-6 uppercase">7:00 AM - 8:30 AM • Local Cafe</p>
-                    <a href="#register" class="text-white border-b border-yellow-500 pb-1 text-[10px] font-bold uppercase tracking-widest">Secure Your Spot</a>
+                <div class="card-blur p-10 rounded-xl hover:bg-white/5 transition">
+                    <h3 class="text-2xl font-bold mb-4 accent-text">Coffee & Word Friday</h3>
+                    <p class="text-gray-400 text-xs mb-6 font-bold uppercase tracking-widest">7:00 AM - 8:30 AM • ADDIS ABABA</p>
+                    <a href="#registration-form" class="text-white border-b-2 border-yellow-500 pb-1 text-[10px] font-bold uppercase tracking-widest">Secure Your Spot</a>
                 </div>
-                <div class="card-blur p-10 rounded-xl">
-                    <span class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest">Monthly Special</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">Evening Fellowship</h3>
-                    <p class="text-gray-500 text-xs mb-6 uppercase">6:00 PM - 9:00 PM • Community Hall</p>
-                    <a href="#register" class="text-white border-b border-yellow-500 pb-1 text-[10px] font-bold uppercase tracking-widest">Join Event</a>
+                <div class="card-blur p-10 rounded-xl hover:bg-white/5 transition">
+                    <h3 class="text-2xl font-bold mb-4">Evening Fellowship</h3>
+                    <p class="text-gray-400 text-xs mb-6 font-bold uppercase tracking-widest">Monthly Special • 6:00 PM</p>
+                    <a href="#registration-form" class="text-white border-b-2 border-gray-600 pb-1 text-[10px] font-bold uppercase tracking-widest">Register Interest</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="register" class="py-32 px-6 bg-black border-t border-white/5">
+    <section id="registration-form" class="py-32 px-6 bg-black border-t border-white/5">
         <div class="max-w-xl mx-auto">
             <h2 class="text-5xl font-bold uppercase mb-12 text-center">Join A Group</h2>
             <form id="mainRegForm" class="space-y-4 card-blur p-8 rounded-xl">
@@ -131,27 +119,13 @@
         </div>
     </section>
 
-    <footer class="py-20 border-t border-white/5 text-center">
-        <div class="flex justify-center gap-10 mb-8">
-            <a href="https://facebook.com" target="_blank" class="text-gray-600 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-            <a href="https://instagram.com" target="_blank" class="text-gray-600 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-            <a href="https://youtube.com" target="_blank" class="text-gray-600 hover:text-white transition"><i data-lucide="youtube" class="w-5 h-5"></i></a>
-            <a href="https://tiktok.com" target="_blank" class="text-gray-600 hover:text-white transition">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V18c0 1.32-.42 2.63-1.21 3.73-.78 1.1-1.92 1.88-3.21 2.22-1.29.34-2.66.27-3.9-.21-1.24-.48-2.31-1.37-3.03-2.52-.72-1.15-1.04-2.52-.91-3.87.13-1.35.73-2.62 1.69-3.58.96-.96 2.23-1.56 3.58-1.69 1.35-.13 2.72.19 3.87.91.38.24.74.52 1.07.83V5.62c-2.14-.14-4.28-.97-5.91-2.43C8.61 1.73 7.82.01 7.82.01h4.705z"/></svg>
-            </a>
-        </div>
-        <p class="text-[10px] text-gray-700 tracking-widest uppercase">&copy; 2026 Bible & Coffee Movement</p>
+    <footer class="py-20 border-t border-white/5 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em]">
+        &copy; 2026 Bible & Coffee Movement
     </footer>
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ADMIN_1 = "251910884585"; 
-
-        const groups = [
-            { n: "Ayat", m: 8 },
-            { n: "Haile Garment", m: 8 },
-            { n: "Mexico", m: 8 }
-        ];
+        const ADMIN_WA = "251910884585"; 
 
         async function loadSpots() {
             try {
@@ -159,19 +133,17 @@
                 const data = await res.json();
                 const sel = document.getElementById('userLocation');
                 sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-                groups.forEach((g) => {
-                    const count = data.filter(r => r.Location === g.n).length;
-                    const full = count >= g.m;
+                const groups = ["Ayat", "Haile Garment", "Mexico"];
+                groups.forEach(g => {
+                    const count = data.filter(r => r.Location === g).length;
                     const opt = document.createElement('option');
-                    opt.value = g.n;
-                    opt.disabled = full;
-                    opt.textContent = `${g.n.toUpperCase()} ${full ? '(FULL)' : `(${g.m - count} SPOTS LEFT)`}`;
+                    opt.value = g;
+                    opt.disabled = count >= 8;
+                    opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
                     sel.appendChild(opt);
                 });
             } catch(e) {
-                const sel = document.getElementById('userLocation');
-                sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-                groups.forEach(g => sel.innerHTML += `<option value="${g.n}">${g.n.toUpperCase()} (8 SPOTS LEFT)</option>`);
+                document.getElementById('userLocation').innerHTML = '<option value="Ayat">AYAT</option><option value="Mexico">MEXICO</option>';
             }
         }
 
@@ -193,11 +165,16 @@
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ data: [payload] })
                 });
-                const text = encodeURIComponent(`Hi! I'm ${payload.Name}. I just registered for the ${payload.Location} group.`);
-                window.location.href = `https://wa.me/${ADMIN_1}?text=${text}`;
+                
+                const text = encodeURIComponent(`Hi! I'm ${payload.Name}. I registered for ${payload.Location}.`);
+                window.open(`https://wa.me/${ADMIN_WA}?text=${text}`, '_blank');
+                
+                // Instant Reset
+                window.location.href = "index.html"; 
+
             } catch (err) {
-                alert("Database connection error.");
-                btn.disabled = false; btn.innerText = "Confirm Registration";
+                alert("Error connecting. Try again.");
+                btn.disabled = false; btn.innerText = "Confirm My Spot";
             }
         };
 

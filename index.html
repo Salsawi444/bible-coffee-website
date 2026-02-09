@@ -22,7 +22,7 @@
             <i data-lucide="coffee" class="text-white w-5 h-5"></i>
             <span class="text-lg font-bold tracking-tighter uppercase">BIBLE & COFFEE</span>
         </div>
-        <a href="#register" class="accent-bg text-black px-4 py-2 rounded font-bold text-xs uppercase hover:bg-yellow-500 transition">JOIN A GROUP</a>
+        <a href="#register" class="accent-bg text-black px-4 py-2 rounded font-bold text-xs uppercase hover:bg-yellow-500 transition">JOIN A GROUP NEAR YOU</a>
     </nav>
 
     <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 bg-[url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
@@ -32,12 +32,12 @@
             <h1 class="text-6xl md:text-8xl font-bold uppercase leading-tight mb-8">
                 C<span class="accent-text">O</span>FFEE MEETS <br> THE WORD.
             </h1>
-            <a href="#register" class="border-2 border-white px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition">Get Connected</a>
+            <a href="#register" class="border-2 border-white px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition">Find Your Group</a>
         </div>
     </header>
 
     <section class="py-24 bg-neutral-900 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="border-l-2 border-yellow-500 pl-6 py-2">
                 <h3 class="font-bold uppercase text-lg">Scripture Study</h3>
                 <p class="text-gray-400 text-sm">Deep dives into the Word.</p>
@@ -60,20 +60,16 @@
     <section id="register" class="py-24 bg-black px-6">
         <div class="max-w-xl mx-auto">
             <h2 class="text-4xl font-bold uppercase mb-2 text-center">Join A Group <span class="accent-text">Near You</span></h2>
-            <p class="text-gray-500 text-center mb-10 text-xs uppercase tracking-[0.2em]">8 spots per cell • Addis Ababa</p>
+            <p class="text-gray-500 text-center mb-10 text-xs uppercase tracking-widest">8 spots per cell • Addis Ababa</p>
 
-            <form id="regForm" class="space-y-4">
-                <input type="text" id="name" placeholder="FULL NAME" required class="w-full bg-neutral-900 border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none">
-                <input type="tel" id="phone" placeholder="PHONE (09...)" required class="w-full bg-neutral-900 border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none">
-                <select id="location" required class="w-full bg-neutral-900 border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none appearance-none text-gray-400">
-                    <option value="" disabled selected>SELECT YOUR LOCATION</option>
-                    <option value="Ayat">AYAT</option>
-                    <option value="Haile Garment">HAILE GARMENT</option>
-                    <option value="Mexico">MEXICO</option>
+            <form id="regForm" class="space-y-4 bg-neutral-900/40 p-8 rounded border border-neutral-800">
+                <input type="text" id="name" placeholder="FULL NAME" required class="w-full bg-black border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none">
+                <input type="tel" id="phone" placeholder="PHONE NUMBER" required class="w-full bg-black border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none">
+                <select id="location" required class="w-full bg-black border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none appearance-none text-gray-400">
+                    <option value="" disabled selected>SELECT LOCATION</option>
                 </select>
                 <button type="submit" id="subBtn" class="w-full accent-bg text-black font-bold py-4 rounded uppercase tracking-widest hover:bg-yellow-500 transition mt-4">Confirm Registration</button>
             </form>
-            <div id="statusMsg" class="mt-4 text-center text-sm font-bold uppercase tracking-widest hidden"></div>
         </div>
     </section>
 
@@ -83,68 +79,70 @@
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ADMIN_PHONE = "251910884585";
+        
+        // ADMIN NUMBERS
+        const ADM_ET = "251910884585"; // Ethiopia Leader
+        const ADM_SA = "27671748626";  // South Africa Leader
 
-        // Fetch counts to see if any are FULL
-        async function checkAvailability() {
+        // ROUTING: Ayat/Mexico to Ethiopia, Haile Garment to South Africa
+        const cells = [
+            { n: "Ayat", m: 8, leader: ADM_ET },
+            { n: "Haile Garment", m: 8, leader: ADM_SA },
+            { n: "Mexico", m: 8, leader: ADM_ET }
+        ];
+
+        async function init() {
             try {
                 const res = await fetch(API_URL);
                 const data = await res.json();
                 const sel = document.getElementById('location');
-                const counts = { "Ayat": 0, "Haile Garment": 0, "Mexico": 0 };
+                sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
                 
-                data.forEach(r => { if(counts[r.Location] !== undefined) counts[r.Location]++; });
-
-                for (let i = 0; i < sel.options.length; i++) {
-                    const loc = sel.options[i].value;
-                    if (counts[loc] >= 8) {
-                        sel.options[i].disabled = true;
-                        sel.options[i].text = loc.toUpperCase() + " (FULL)";
-                    } else if (counts[loc] > 0) {
-                        sel.options[i].text = loc.toUpperCase() + " (" + (8 - counts[loc]) + " SPOTS LEFT)";
-                    }
-                }
-            } catch (e) { console.log("Background check failed, form still works."); }
+                cells.forEach((c, i) => {
+                    const count = data.filter(r => r.Location === c.n).length;
+                    const full = count >= c.m;
+                    const opt = document.createElement('option');
+                    opt.value = i;
+                    opt.disabled = full;
+                    opt.textContent = `${c.n.toUpperCase()} ${full ? '(FULL)' : `(${c.m - count} SPOTS LEFT)`}`;
+                    sel.appendChild(opt);
+                });
+            } catch(e) { 
+                const sel = document.getElementById('location');
+                sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+                cells.forEach((c, i) => sel.innerHTML += `<option value="${i}">${c.n.toUpperCase()} (8 SPOTS LEFT)</option>`);
+            }
         }
 
         document.getElementById('regForm').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('subBtn');
-            const status = document.getElementById('statusMsg');
-            
-            btn.disabled = true;
-            btn.innerText = "SAVING...";
+            btn.disabled = true; btn.innerText = "SAVING...";
 
-            const formData = {
-                Name: document.getElementById('name').value,
-                Phone: document.getElementById('phone').value,
-                Location: document.getElementById('location').value,
-                Timestamp: new Date().toLocaleString()
+            const cellIndex = document.getElementById('location').value;
+            const targetCell = cells[cellIndex];
+
+            const payload = {
+                "Name": document.getElementById('name').value,
+                "Phone": document.getElementById('phone').value,
+                "Location": targetCell.n,
+                "Timestamp": new Date().toLocaleString()
             };
 
             try {
-                const response = await fetch(API_URL, {
+                await fetch(API_URL, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ data: [formData] })
+                    body: JSON.stringify({ data: [payload] })
                 });
-
-                if(response.ok) {
-                    status.innerText = "Success! Redirecting...";
-                    status.classList.remove('hidden', 'text-red-500');
-                    status.classList.add('text-green-500');
-                    
-                    const msg = encodeURIComponent(`Hi! I'm ${formData.Name}. I just registered for the ${formData.Location} group.`);
-                    window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${msg}`;
-                }
+                window.location.href = `https://wa.me/${targetCell.leader}?text=${encodeURIComponent("Hi! I'm "+payload.Name+". I registered for "+payload.Location+" group.")}`;
             } catch (err) {
-                alert("Could not connect to database. Check your internet.");
-                btn.disabled = false;
-                btn.innerText = "Confirm Registration";
+                alert("Database Error. Try again.");
+                btn.disabled = false; btn.innerText = "Confirm Registration";
             }
         };
 
-        checkAvailability();
+        init();
         lucide.createIcons();
     </script>
 </body>

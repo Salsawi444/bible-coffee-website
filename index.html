@@ -12,7 +12,7 @@
         h1, h2, h3 { font-family: 'Oswald', sans-serif; }
         .accent-text { color: #FCA311; }
         .accent-bg { background-color: #FCA311; }
-        .glass-nav { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1a1a1a; }
+        .glass-nav { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #1a1a1a; }
     </style>
 </head>
 <body>
@@ -22,7 +22,7 @@
             <i data-lucide="coffee" class="text-white w-5 h-5"></i>
             <span class="text-lg font-bold tracking-tighter uppercase">BIBLE & COFFEE</span>
         </div>
-        <a href="#register" class="accent-bg text-black px-4 py-2 rounded font-bold text-xs uppercase hover:bg-yellow-500 transition">JOIN A GROUP NEAR YOU</a>
+        <a href="#register" class="accent-bg text-black px-4 py-2 rounded font-bold text-xs uppercase hover:bg-yellow-500 transition">JOIN A GROUP</a>
     </nav>
 
     <header class="relative h-screen flex flex-col justify-center items-center text-center px-4 bg-[url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
@@ -37,21 +37,21 @@
     </header>
 
     <section class="py-24 bg-neutral-900 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="border-l border-yellow-500 pl-6 py-4">
-                <h3 class="font-bold uppercase mb-2">Scripture Study</h3>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <div class="border-l-2 border-yellow-500 pl-6 py-2">
+                <h3 class="font-bold uppercase text-lg">Scripture Study</h3>
                 <p class="text-gray-400 text-sm">Deep dives into the Word.</p>
             </div>
-            <div class="border-l border-yellow-500 pl-6 py-4">
-                <h3 class="font-bold uppercase mb-2">Community</h3>
+            <div class="border-l-2 border-yellow-500 pl-6 py-2">
+                <h3 class="font-bold uppercase text-lg">Community</h3>
                 <p class="text-gray-400 text-sm">Authentic local relationships.</p>
             </div>
-            <div class="border-l border-yellow-500 pl-6 py-4">
-                <h3 class="font-bold uppercase mb-2">Support</h3>
+            <div class="border-l-2 border-yellow-500 pl-6 py-2">
+                <h3 class="font-bold uppercase text-lg">Support</h3>
                 <p class="text-gray-400 text-sm">Encouragement and prayer.</p>
             </div>
-            <div class="border-l border-yellow-500 pl-6 py-4">
-                <h3 class="font-bold uppercase mb-2">Growth</h3>
+            <div class="border-l-2 border-yellow-500 pl-6 py-2">
+                <h3 class="font-bold uppercase text-lg">Growth</h3>
                 <p class="text-gray-400 text-sm">Transformation together.</p>
             </div>
         </div>
@@ -60,53 +60,62 @@
     <section id="register" class="py-24 bg-black px-6">
         <div class="max-w-xl mx-auto">
             <h2 class="text-4xl font-bold uppercase mb-2 text-center">Join A Group <span class="accent-text">Near You</span></h2>
-            <p class="text-gray-500 text-center mb-10 text-sm uppercase tracking-widest">8 spots per cell • Real community</p>
+            <p class="text-gray-500 text-center mb-10 text-xs uppercase tracking-[0.2em]">8 spots per cell • Addis Ababa</p>
 
-            <form id="mainForm" class="space-y-6 bg-neutral-900/50 p-8 rounded border border-neutral-800">
-                <input type="text" id="name" placeholder="FULL NAME" required class="w-full bg-black border border-neutral-800 p-4 text-sm focus:border-yellow-500 outline-none transition">
-                <input type="tel" id="phone" placeholder="PHONE NUMBER" required class="w-full bg-black border border-neutral-800 p-4 text-sm focus:border-yellow-500 outline-none transition">
-                <select id="location" required class="w-full bg-black border border-neutral-800 p-4 text-sm focus:border-yellow-500 outline-none transition">
-                    <option value="" disabled selected uppercase>SELECT LOCATION</option>
+            <form id="regForm" class="space-y-4">
+                <input type="text" id="name" placeholder="FULL NAME" required class="w-full bg-neutral-900 border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none">
+                <input type="tel" id="phone" placeholder="PHONE (09...)" required class="w-full bg-neutral-900 border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none">
+                <select id="location" required class="w-full bg-neutral-900 border border-neutral-800 p-4 rounded text-sm focus:border-yellow-500 outline-none appearance-none text-gray-400">
+                    <option value="" disabled selected>SELECT YOUR LOCATION</option>
+                    <option value="Ayat">AYAT</option>
+                    <option value="Haile Garment">HAILE GARMENT</option>
+                    <option value="Mexico">MEXICO</option>
                 </select>
-                <button type="submit" id="btn" class="w-full accent-bg text-black font-bold py-4 rounded uppercase tracking-widest hover:bg-yellow-500 transition">Confirm Registration</button>
+                <button type="submit" id="subBtn" class="w-full accent-bg text-black font-bold py-4 rounded uppercase tracking-widest hover:bg-yellow-500 transition mt-4">Confirm Registration</button>
             </form>
+            <div id="statusMsg" class="mt-4 text-center text-sm font-bold uppercase tracking-widest hidden"></div>
         </div>
     </section>
 
-    <footer class="py-10 text-center border-t border-neutral-900">
-        <p class="text-[10px] text-gray-600 tracking-widest uppercase">&copy; 2026 Bible & Coffee • <a href="admin.html" class="hover:text-white">Admin</a></p>
+    <footer class="py-12 text-center border-t border-neutral-900">
+        <p class="text-[10px] text-gray-600 tracking-widest uppercase">&copy; 2026 Bible & Coffee • <a href="admin.html" class="opacity-10 hover:opacity-100">Admin</a></p>
     </footer>
 
     <script>
-        const API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const cells = [{n:"Ayat", m:8}, {n:"Haile Garment", m:8}, {n:"Mexico", m:8}];
+        const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+        const ADMIN_PHONE = "251910884585";
 
-        async function init() {
+        // Fetch counts to see if any are FULL
+        async function checkAvailability() {
             try {
-                const res = await fetch(API);
+                const res = await fetch(API_URL);
                 const data = await res.json();
                 const sel = document.getElementById('location');
-                sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-                cells.forEach(c => {
-                    const count = data.filter(r => r.Location === c.n).length;
-                    const full = count >= c.m;
-                    sel.innerHTML += `<option value="${c.n}" ${full?'disabled':''}>${c.n.toUpperCase()} ${full?'(FULL)':`(${c.m-count} SPOTS LEFT)`}</option>`;
-                });
-            } catch(e) { console.log("Sheet empty or error"); renderFallback(); }
+                const counts = { "Ayat": 0, "Haile Garment": 0, "Mexico": 0 };
+                
+                data.forEach(r => { if(counts[r.Location] !== undefined) counts[r.Location]++; });
+
+                for (let i = 0; i < sel.options.length; i++) {
+                    const loc = sel.options[i].value;
+                    if (counts[loc] >= 8) {
+                        sel.options[i].disabled = true;
+                        sel.options[i].text = loc.toUpperCase() + " (FULL)";
+                    } else if (counts[loc] > 0) {
+                        sel.options[i].text = loc.toUpperCase() + " (" + (8 - counts[loc]) + " SPOTS LEFT)";
+                    }
+                }
+            } catch (e) { console.log("Background check failed, form still works."); }
         }
 
-        function renderFallback() {
-            const sel = document.getElementById('location');
-            sel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-            cells.forEach(c => sel.innerHTML += `<option value="${c.n}">${c.n.toUpperCase()} (8 SPOTS LEFT)</option>`);
-        }
-
-        document.getElementById('mainForm').onsubmit = async (e) => {
+        document.getElementById('regForm').onsubmit = async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('btn');
-            btn.disabled = true; btn.innerText = "SAVING...";
+            const btn = document.getElementById('subBtn');
+            const status = document.getElementById('statusMsg');
+            
+            btn.disabled = true;
+            btn.innerText = "SAVING...";
 
-            const payload = {
+            const formData = {
                 Name: document.getElementById('name').value,
                 Phone: document.getElementById('phone').value,
                 Location: document.getElementById('location').value,
@@ -114,16 +123,28 @@
             };
 
             try {
-                await fetch(API, {
+                const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {'Content-Type':'application/json'},
-                    body: JSON.stringify({data: [payload]})
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ data: [formData] })
                 });
-                window.location.href = `https://wa.me/251910884585?text=${encodeURIComponent("Hi! I'm "+payload.Name+". I registered for the "+payload.Location+" group.")}`;
-            } catch(e) { alert("Error saving. Please try again."); btn.disabled = false; btn.innerText = "CONFIRM REGISTRATION"; }
+
+                if(response.ok) {
+                    status.innerText = "Success! Redirecting...";
+                    status.classList.remove('hidden', 'text-red-500');
+                    status.classList.add('text-green-500');
+                    
+                    const msg = encodeURIComponent(`Hi! I'm ${formData.Name}. I just registered for the ${formData.Location} group.`);
+                    window.location.href = `https://wa.me/${ADMIN_PHONE}?text=${msg}`;
+                }
+            } catch (err) {
+                alert("Could not connect to database. Check your internet.");
+                btn.disabled = false;
+                btn.innerText = "Confirm Registration";
+            }
         };
 
-        init();
+        checkAvailability();
         lucide.createIcons();
     </script>
 </body>

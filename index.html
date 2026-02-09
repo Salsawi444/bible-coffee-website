@@ -61,29 +61,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card-blur p-10 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4 accent-text">Coffee & Word Friday</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase">7:00 AM - 8:30 AM</p>
+                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">7:00 AM - 8:30 AM</p>
                     <a href="#join" class="text-white border-b-2 border-yellow-500 pb-1 text-[10px] font-bold uppercase">Secure Your Spot</a>
                 </div>
                 <div class="card-blur p-10 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4">Evening Fellowship</h3>
-                    <p class="text-gray-400 text-xs mb-6 uppercase">Monthly Special</p>
+                    <p class="text-gray-400 text-xs mb-6 uppercase tracking-widest">Monthly Special</p>
                     <a href="#join" class="text-white border-b-2 border-gray-600 pb-1 text-[10px] font-bold uppercase">Register Interest</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="merch" class="py-32 px-6 bg-black border-y border-white/5">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-5xl font-bold uppercase mb-12">Vision & Gear</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-blur p-12 rounded-2xl">
-                    <h3 class="text-3xl font-bold mb-4">Official Merch</h3>
-                    <p class="text-gray-500 text-sm mb-8 uppercase tracking-widest">Coming Soon</p>
-                </div>
-                <div class="card-blur p-12 rounded-2xl border-yellow-500/30">
-                    <h3 class="text-3xl font-bold mb-4">Support the Vision</h3>
-                    <button class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest">Partner With Us</button>
                 </div>
             </div>
         </div>
@@ -103,11 +87,11 @@
         </div>
     </section>
 
-    <footer class="py-20 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 Bible & Coffee</footer>
+    <footer class="py-20 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 Bible & Coffee Movement</footer>
 
     <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const ADMIN_NUMBER = "251910884585"; 
+        const ETH_ADMIN = "251910884585"; // ETHIOPIAN NUMBER ONLY
 
         async function loadSpots() {
             try {
@@ -124,7 +108,7 @@
                     opt.textContent = `${g.toUpperCase()} (${8-count} SPOTS LEFT)`;
                     sel.appendChild(opt);
                 });
-            } catch(e) { console.log("API Error"); }
+            } catch(e) { console.log("Offline mode"); }
         }
 
         document.getElementById('mainRegForm').onsubmit = async (e) => {
@@ -137,31 +121,31 @@
             const loc = document.getElementById('userLocation').value;
 
             try {
-                // 1. Save to Sheet
+                // 1. Save to Google Sheets
                 await fetch(API_URL, { 
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
                     body: JSON.stringify({ data: [{ "Name": name, "Phone": phone, "Location": loc, "Timestamp": new Date().toLocaleString() }] }) 
                 });
 
-                // 2. Prepare WhatsApp Link
+                // 2. Prepare WhatsApp URL with Custom Message
                 const customMsg = `Hello I'm ${name}. I just registered to join you to discuss the scripture over a coffee! My number is ${phone}.`;
-                const whatsappUrl = `https://wa.me/${ADMIN_NUMBER}?text=${encodeURIComponent(customMsg)}`;
+                const whatsappUrl = `https://wa.me/${ETH_ADMIN}?text=${encodeURIComponent(customMsg)}`;
                 
-                // 3. Open WhatsApp in a NEW tab
+                // 3. Open WhatsApp in new tab
                 window.open(whatsappUrl, '_blank');
 
-                // 4. Return the website to HOME (top) immediately
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // 5. Reset the form
-                document.getElementById('mainRegForm').reset();
-                btn.disabled = false;
-                btn.innerText = "Confirm My Spot";
-                loadSpots(); // Refresh spot counts
+                // 4. Reset page to HOME
+                setTimeout(() => {
+                    window.location.href = "#"; // Scrolls to top
+                    document.getElementById('mainRegForm').reset();
+                    btn.disabled = false;
+                    btn.innerText = "Confirm My Spot";
+                    loadSpots();
+                }, 500);
 
             } catch (err) { 
-                alert("Error. Try again."); 
+                alert("Error saving registration."); 
                 btn.disabled = false; 
                 btn.innerText = "Confirm My Spot";
             }

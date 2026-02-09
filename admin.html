@@ -1,0 +1,59 @@
+<script>
+        // Choose a simple password here
+        const PASSWORD = "abc@123"; 
+        
+        const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+
+        function checkAccess() {
+            const entry = prompt("Enter Admin Password:");
+            if (entry === PASSWORD) {
+                fetchData();
+            } else {
+                alert("Access Denied");
+                window.location.href = "index.html"; // Send them back to home
+            }
+        }
+
+        async function fetchData() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                renderTable(data);
+                renderStats(data);
+            } catch (e) { console.error(e); }
+        }
+
+        function renderStats(data) {
+            const counts = { Ayat: 0, "Haile Garment": 0, Mexico: 0 };
+            data.forEach(row => { if(counts[row.Location] !== undefined) counts[row.Location]++; });
+            
+            const summary = document.getElementById('summary');
+            summary.innerHTML = Object.entries(counts).map(([loc, count]) => `
+                <div class="bg-neutral-900 p-6 rounded-lg border border-neutral-800 text-center">
+                    <p class="text-xs text-gray-500 uppercase font-bold mb-1">${loc}</p>
+                    <p class="text-3xl font-bold ${count >= 8 ? 'text-red-500' : 'text-white'}">${count}/8</p>
+                </div>
+            `).join('');
+        }
+
+        function renderTable(data) {
+            const body = document.getElementById('tableBody');
+            if (data.length === 0) {
+                body.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-gray-500">No one has registered yet.</td></tr>';
+                return;
+            }
+            data.reverse();
+            body.innerHTML = data.map(row => `
+                <tr class="border-t border-neutral-900 hover:bg-white/5 transition">
+                    <td class="p-4 font-bold text-white">${row.Name}</td>
+                    <td class="p-4 text-gray-400 font-mono">${row.Phone}</td>
+                    <td class="p-4"><span class="bg-yellow-500/10 text-yellow-500 px-2 py-1 rounded text-xs">${row.Location}</span></td>
+                    <td class="p-4 text-gray-500 text-xs">${row.Timestamp || 'N/A'}</td>
+                </tr>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // Start by asking for the password
+        checkAccess();
+    </script>

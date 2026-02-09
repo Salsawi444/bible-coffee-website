@@ -16,17 +16,20 @@
         .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); }
         .card-blur { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); }
         input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; border-radius: 8px !important; font-size: 16px !important; }
+        
+        /* Fixed height for the viewer on different screens */
+        .pdf-container { height: 500px; }
+        @media (min-width: 768px) { .pdf-container { height: 800px; } }
     </style>
 </head>
 <body>
 
     <nav class="fixed w-full z-[100] glass-nav py-3 md:py-4 px-4 md:px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2 group">
-                <i data-lucide="coffee" class="text-white w-5 h-5 group-hover:text-[#FCA311] transition-colors"></i>
+            <a href="#" class="flex items-center gap-2">
+                <i data-lucide="coffee" class="text-white w-5 h-5"></i>
                 <span class="text-base md:text-xl font-bold brand-font tracking-tighter">BIBLE & COFFEE</span>
             </a>
-            
             <div class="flex items-center gap-4 md:gap-8 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400">
                 <a href="#" class="hover:text-white transition">Home</a>
                 <a href="#merch" class="hover:text-white transition">Merch</a>
@@ -52,14 +55,19 @@
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl md:text-6xl font-bold uppercase mb-4">The Magazine</h2>
             <p class="text-gray-500 text-[10px] tracking-widest uppercase mb-12">Weekly Wisdom & Culture</p>
-            <div class="hidden md:block rounded-2xl bg-black border border-white/5 h-[700px] overflow-hidden mb-8 shadow-2xl">
-                <embed src="magazine28.pdf" type="application/pdf" width="100%" height="100%" />
+            
+            <div class="pdf-container rounded-2xl bg-black border border-white/5 overflow-hidden mb-8 shadow-2xl relative">
+                <iframe 
+                    id="pdfViewer"
+                    src="https://docs.google.com/viewer?url=https:https://github.com/Salsawi444/bible-coffee-website/blob/main/magazine28.pdf&embedded=true" 
+                    style="width:100%; height:100%; border: none;"
+                    loading="lazy">
+                </iframe>
             </div>
-            <div class="md:hidden p-8 card-blur rounded-2xl mb-8 flex flex-col items-center">
-                <i data-lucide="book-open" class="w-12 h-12 accent-text mb-4"></i>
-                <h4 class="font-bold mb-2 uppercase">Issue #28</h4>
-                <a href="magazine28.pdf" target="_blank" class="w-full bg-white/10 text-white py-4 rounded-lg font-bold uppercase text-[11px] tracking-widest border border-white/10">Read PDF Now</a>
-            </div>
+            
+            <a href="magazine28.pdf" target="_blank" class="inline-block border border-white/20 text-white px-8 py-3 rounded-lg font-bold uppercase text-[10px] tracking-widest hover:bg-white/5 transition">
+                Open Full Screen
+            </a>
         </div>
     </section>
 
@@ -69,16 +77,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                 <div class="card-blur p-10 md:p-14 rounded-3xl">
                     <h3 class="text-2xl md:text-3xl font-bold mb-4 uppercase">Official Merch</h3>
-                    <p class="text-gray-500 text-[10px] mb-8 uppercase tracking-widest italic">Dropping soon. Stay tuned.</p>
-                    <div class="flex justify-center gap-4 opacity-30">
-                        <div class="w-12 h-12 bg-white/10 rounded-full"></div>
-                        <div class="w-12 h-12 bg-white/10 rounded-full"></div>
-                    </div>
+                    <p class="text-gray-500 text-[10px] mb-8 uppercase tracking-widest italic">Coming Soon.</p>
                 </div>
-                
                 <div class="card-blur p-10 md:p-14 rounded-3xl border-yellow-500/20 bg-yellow-500/5">
                     <h3 class="text-2xl md:text-3xl font-bold mb-4 uppercase accent-text">Support the Vision</h3>
-                    <p class="text-gray-400 text-xs mb-8 uppercase tracking-widest">Help us expand the coffee community</p>
                     <button onclick="partnerMessage()" class="accent-bg text-black px-8 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-yellow-600 transition">Partner With Us</button>
                 </div>
             </div>
@@ -92,9 +94,9 @@
                 <p class="text-gray-500 text-[11px] uppercase tracking-[0.3em]">Addis Ababa • Faith • Culture</p>
             </div>
             <form id="mainRegForm" class="space-y-4">
-                <input type="text" id="userName" placeholder="FULL NAME" required class="w-full p-5 md:p-6 text-sm uppercase font-bold tracking-widest transition-all focus:border-yellow-500/50 outline-none">
-                <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required class="w-full p-5 md:p-6 text-sm uppercase font-bold tracking-widest transition-all focus:border-yellow-500/50 outline-none">
-                <select id="userLocation" required class="w-full p-5 md:p-6 text-sm font-bold uppercase tracking-widest transition-all focus:border-yellow-500/50 outline-none">
+                <input type="text" id="userName" placeholder="FULL NAME" required class="w-full p-5 md:p-6 text-sm uppercase font-bold tracking-widest outline-none">
+                <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required class="w-full p-5 md:p-6 text-sm uppercase font-bold tracking-widest outline-none">
+                <select id="userLocation" required class="w-full p-5 md:p-6 text-sm font-bold uppercase tracking-widest outline-none">
                     <option value="" disabled selected>CHECKING SLOTS...</option>
                 </select>
                 <button type="submit" id="submitBtn" class="w-full accent-bg text-black font-bold py-6 rounded-xl uppercase tracking-[0.3em] text-[12px] mt-4 shadow-xl shadow-yellow-500/10 active:scale-95 transition">Confirm Registration</button>
@@ -102,8 +104,8 @@
         </div>
     </section>
 
-    <footer class="py-20 text-center px-6">
-        <p class="text-gray-800 text-[9px] uppercase tracking-[0.5em]">&copy; 2026 Bible & Coffee Movement • Addis Ababa</p>
+    <footer class="py-16 text-center px-6 text-gray-800 text-[9px] uppercase tracking-[0.5em]">
+        &copy; 2026 Bible & Coffee Movement • Addis Ababa
     </footer>
 
     <script>
@@ -128,9 +130,8 @@
             } catch(e) { console.log("API Error"); }
         }
 
-        // Support Message
         function partnerMessage() {
-            const msg = "Hi! I would like to partner with the Bible & Coffee movement. How can I support the vision?";
+            const msg = "Hi! I would like to partner with the Bible & Coffee movement.";
             window.open(`https://wa.me/${ETH_ADMIN}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
@@ -151,10 +152,10 @@
                 });
 
                 const msg = `Hello I'm ${name}. I just registered for a group in ${loc}! My number is ${phone}.`;
-                window.open(`https://wa.me/${ETH_ADMIN}?text=${encodeURIComponent(msg)}`, '_blank');
+                window.location.href = `https://wa.me/${ETH_ADMIN}?text=${encodeURIComponent(msg)}`;
 
                 setTimeout(() => {
-                    window.location.href = "#"; 
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     document.getElementById('mainRegForm').reset();
                     btn.disabled = false;
                     btn.innerText = "Confirm Registration";

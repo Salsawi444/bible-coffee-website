@@ -1,4 +1,133 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bible & Coffee | Global Movement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; overflow-x: hidden; }
+        h1, h2, h3, .brand-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .accent-text { color: #FCA311; }
+        .accent-bg { background-color: #FCA311; }
+        .glass-nav { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .btn-gold { background-color: #FCA311; color: black; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; cursor: pointer; border: none; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; padding: 1.25rem 2rem; border-radius: 2px; transition: all 0.3s ease; display: inline-block; font-family: 'Oswald', sans-serif; text-align: center; background: transparent; }
+        #lightbox { display: none; position: fixed; z-index: 200; inset: 0; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 1px solid rgba(255,255,255,0.1); object-fit: contain; }
+        input, select { background: #111 !important; border: 1px solid rgba(255,255,255,0.1) !important; color: white !important; font-size: 16px !important; padding: 1rem !important; width: 100%; outline: none; border-radius: 0px !important; appearance: none; }
+        #merch { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Enlarged Merch">
+        <p class="absolute bottom-10 text-[10px] tracking-[0.5em] text-gray-500 uppercase">Click anywhere to close</p>
+    </div>
+
+    <nav class="fixed w-full z-[100] glass-nav py-5 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-2">
+                <i data-lucide="coffee" class="accent-text w-5 h-5"></i>
+                <span class="text-xl font-bold brand-font tracking-tighter italic">BIBLE & COFFEE</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
+                <a href="#home" class="hover:text-[#FCA311] transition">Home</a>
+                <a href="javascript:void(0)" onclick="toggleMerch()" class="hover:text-[#FCA311] transition">Merch</a>
+                <a href="#magazine" class="hover:text-[#FCA311] transition">Magazine</a>
+                <a href="#support" class="hover:text-[#FCA311] transition">Support</a>
+                <a href="#join" class="accent-bg text-black px-4 py-2">Join Movement</a>
+            </div>
+            <div class="md:hidden accent-text"><i data-lucide="menu"></i></div>
+        </div>
+    </nav>
+
+    <header id="home" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.3),rgba(10,10,10,1)),url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070')] bg-cover bg-center">
+        <div class="max-w-4xl">
+            <h1 class="text-6xl md:text-9xl font-bold leading-[0.85] mb-8 uppercase italic">C<span class="accent-text">O</span>FFEE MEETS<br>THE WORD.</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
+                <a href="#join" class="btn-gold">Join Movement</a>
+                <button onclick="toggleMerch()" class="btn-outline">View Merch</button>
+                <a href="#magazine" class="btn-outline">The Magazine</a>
+                <a href="#support" class="btn-outline">Support Us</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="merch" class="py-32 bg-[#0a0a0a] px-6 text-center border-y border-white/5">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">Exclusive Merch</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch1.jpeg')">
+                <img src="merch1.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="brand-font text-[10px] tracking-[0.3em] border border-white/20 px-3 py-1">ENLARGE</span></div>
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch2.jpeg')">
+                <img src="merch2.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch3.jpeg')">
+                <img src="merch3.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch4.jpeg')">
+                <img src="merch4.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch5.jpeg')">
+                <img src="merch5.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+            <div class="relative group aspect-[4/5] bg-[#111] overflow-hidden border border-white/5 cursor-zoom-in" onclick="openLightbox('merch6.jpeg')">
+                <img src="merch6.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="py-32 bg-[#0a0a0a] px-6 text-center">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic text-[#FCA311]">Support</h2>
+        <div class="max-w-2xl mx-auto border border-white/10 p-12 bg-[#0f0f0f]">
+            <a href="mailto:support@bibleandcoffee.com" class="btn-gold">Ways to Give</a>
+        </div>
+    </section>
+
+    <section id="magazine" class="py-32 bg-[#0f0f0f] px-6 text-center">
+        <h2 class="text-5xl md:text-7xl font-bold uppercase mb-4 italic">The Magazine</h2>
+        <div class="max-w-xs mx-auto group">
+            <img src="magazine28-page1.jpeg" class="w-full h-auto shadow-2xl mb-8 border border-white/5">
+            <a href="magazine28.pdf" target="_blank" class="btn-gold">Read Issue #28</a>
+        </div>
+    </section>
+
+    <section id="join" class="py-32 px-6 bg-[#0a0a0a]">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-5xl md:text-7xl font-bold uppercase italic mb-16 text-[#FCA311]">Register</h2>
+            <form id="mainRegForm" class="space-y-6 text-left">
+                <input type="text" id="userName" placeholder="FULL NAME" required>
+                <input type="email" id="userEmail" placeholder="EMAIL ADDRESS" required>
+                <input type="tel" id="userPhone" placeholder="PHONE NUMBER" required>
+                <select id="userCountry" required onchange="updateCities()">
+                    <option value="" disabled selected>SELECT COUNTRY</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Sweden">Sweden</option>
+                </select>
+                <select id="userCity" required onchange="updateSpecificLocations()">
+                    <option value="" disabled selected>SELECT CITY</option>
+                </select>
+                <select id="userLocation" required>
+                    <option value="" disabled selected>SELECT GATHERING SPOT</option>
+                </select>
+                <button type="submit" id="submitBtn" class="btn-gold w-full mt-8">Confirm Registration</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-24 bg-black text-center border-t border-white/5">
+        <p class="text-[8px] tracking-[0.6em] text-gray-700 uppercase italic">&copy; 2026 Bible & Coffee Movement</p>
+    </footer>
+
+    <script>
         const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
         const ADMIN_PHONE = "251910884585"; 
 
@@ -76,30 +205,15 @@
             };
 
             try {
-                // 1. Save to Google Sheets
-                await fetch(API_URL, { 
-                    method: 'POST', 
-                    headers: {'Content-Type': 'application/json'}, 
-                    body: JSON.stringify({ data: [formData] }) 
-                });
-                
-                // 2. Construct Clean WhatsApp Message
-                const rawMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered for the movement.\n\n*My Details:*\n- Name: ${name}\n- City: ${city}\n- Spot: ${location}\n\nRegistration confirmed on ${regDate}. See you there!`;
-                
-                const encodedMsg = encodeURIComponent(rawMsg);
-                
-                // 3. Open WhatsApp
-                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodedMsg}`, '_blank');
-                
-                // 4. Reset Form
+                await fetch(API_URL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [formData] }) });
+                const rawMsg = `Hello Bible & Coffee! ☕️📖\n\nI just registered.\n\n*Details:*\n- Name: ${name}\n- City: ${city}\n- Spot: ${location}\n\nConfirmed on ${regDate}.`;
+                window.open(`https://wa.me/${ADMIN_PHONE}?text=${encodeURIComponent(rawMsg)}`, '_blank');
                 document.getElementById('mainRegForm').reset();
                 btn.innerText = "Confirm Registration";
                 window.location.hash = "home";
-                alert("Registration Complete! Check your WhatsApp to send the confirmation.");
-            } catch (err) { 
-                alert("Connection error. Please try again."); 
-                btn.innerText = "Confirm Registration"; 
-            }
+            } catch (err) { alert("Error."); btn.innerText = "Confirm Registration"; }
         };
         lucide.createIcons();
     </script>
+</body>
+</html>

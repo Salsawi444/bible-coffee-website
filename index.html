@@ -1,91 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BIBLE & COFFEE | GLOBAL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BIBLE & COFFEE | GLOBAL</title>
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
+<style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
+    h1, h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
 
-        h1,h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+    /* HERO */
+    .hero-bg {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,1)), url('hero.jpeg');
+        background-size: cover; background-position: center;
+        min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    }
 
-        /* HERO */
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), url('hero.jpeg');
-            background-size: cover; background-position: center;
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-        }
+    /* NAV */
+    .glass-nav {
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+    }
+    .nav-links { display: flex; gap: 20px; overflow-x: auto; padding: 15px; scrollbar-width: none; justify-content: center; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links button { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #888; text-transform: uppercase; background: none; border: none; cursor: pointer; }
+    .nav-links button.active-link { color: #FCA311; }
 
-        /* NAV */
-        .glass-nav {
-            background: rgba(0,0,0,0.95);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            width: 100%; position: fixed; top: 0; z-index: 1000;
-        }
+    /* BUTTONS */
+    .btn-gold {
+        background: linear-gradient(to right, #FCA311, #FFBA49);
+        color: black;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        padding: 16px;
+        border-radius: 6px;
+        text-align: center;
+        display: inline-block;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-gold:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(252,163,17,0.5); }
 
-        .nav-links {
-            display: flex; gap: 20px; overflow-x: auto; padding: 15px; scrollbar-width: none; justify-content: center;
-        }
+    .btn-outline {
+        border: 2px solid #FCA311;
+        color: #FCA311;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        padding: 16px;
+        border-radius: 6px;
+        text-align: center;
+        display: inline-block;
+        background: transparent;
+        transition: transform 0.3s, background 0.3s;
+    }
+    .btn-outline:hover { transform: scale(1.05); background: #FCA311; color: black; }
 
-        .nav-links::-webkit-scrollbar { display: none; }
+    section { display: none; padding: 120px 20px; max-width: 1200px; margin: auto; text-align: center; }
+    #home, #join { display: block; }
 
-        .nav-links button, .nav-links a {
-            font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #888;
-            text-transform: uppercase; background: none; border: none; cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-links button.active-link { color: #FCA311; }
-
-        /* BUTTONS */
-        .btn-gold {
-            background: linear-gradient(90deg, #FCA311, #FFBA49);
-            color: black; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 2px; font-size: 14px; padding: 18px;
-            border-radius: 8px; width: 100%; transition: transform 0.2s, background 0.3s;
-        }
-        .btn-gold:hover { transform: scale(1.05); background: linear-gradient(90deg,#FFBA49,#FCA311); }
-
-        .btn-outline {
-            border: 2px solid #FCA311; color: #FCA311; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 2px; font-size: 14px;
-            padding: 18px; border-radius: 8px; width: 100%; background: transparent;
-            transition: transform 0.2s, background 0.3s, color 0.3s;
-        }
-        .btn-outline:hover { transform: scale(1.05); background: #FCA311; color: black; }
-
-        /* SECTIONS */
-        section { display: none; padding: 120px 20px 80px; max-width: 1200px; margin: auto; text-align: center; }
-        #home, #join { display: block; }
-
-        input, select {
-            background: #151515; border: 1px solid #333; color: white;
-            padding: 14px; width: 100%; border-radius: 6px; margin-bottom: 15px; outline: none;
-        }
-
-        .counter-box {
-            background: rgba(252,163,17,0.1);
-            border: 1px solid #FCA311; padding: 15px; margin-bottom: 20px; border-radius: 6px;
-            display: none;
-        }
-
-        /* PDF Preview */
-        .pdf-preview {
-            width: 100%; height: 450px; border: 1px solid #333; border-radius: 8px;
-        }
-    </style>
+    input, select {
+        background: #151515;
+        border: 1px solid #333;
+        color: white;
+        padding: 14px;
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        outline: none;
+    }
+    .counter-box {
+        background: rgba(252, 163, 17, 0.1);
+        border: 1px solid #FCA311;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        display: none;
+    }
+</style>
 </head>
+
 <body>
 
 <!-- NAV -->
@@ -103,7 +113,8 @@
 <header id="home" class="hero-bg">
     <div class="px-6 text-center lg:text-right lg:px-24">
         <h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
-            COFFEE MEETS<br><span class="text-[#FCA311]">THE WORD.</span>
+            COFFEE MEETS<br>
+            <span class="text-[#FCA311]">THE WORD.</span>
         </h1>
         <div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
             <button onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
@@ -119,11 +130,27 @@
 </header>
 
 <!-- MAGAZINE -->
-<section id="magazine">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
-    <div class="max-w-md mx-auto bg-[#111] p-6 rounded-lg border border-white/10">
-        <iframe src="megazine.pdf" class="pdf-preview" title="Weekly Magazine"></iframe>
-        <a href="megazine.pdf" target="_blank" class="btn-gold mt-6">Download Edition (PDF)</a>
+<section id="magazine" class="py-24 px-6 bg-[#0a0a0a]">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-12 uppercase">Weekly Magazine</h2>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- PDF Preview -->
+        <div class="bg-[#111] p-4 rounded-lg border border-white/10 shadow-lg">
+            <iframe src="magazine.pdf" class="w-full h-[500px] rounded-lg border border-white/20" title="Weekly Magazine Preview"></iframe>
+        </div>
+
+        <!-- Download & Info -->
+        <div class="flex flex-col justify-center gap-6">
+            <p class="text-white/70 text-lg">
+                Dive into this week's Bible & Coffee edition. Explore insights, reflections, and stories curated to refresh your spirit and deepen your faith.
+            </p>
+            <a href="magazine.pdf" target="_blank" 
+               class="bg-gradient-to-r from-[#FCA311] to-[#FFBA49] text-black font-bold uppercase tracking-widest py-5 rounded-lg text-center shadow-md hover:scale-105 transition-transform duration-300">
+               Download PDF Edition
+            </a>
+            <p class="text-white/50 text-sm mt-2">
+                Can't see the preview? Click the download button to open it directly.
+            </p>
+        </div>
     </div>
 </section>
 
@@ -142,17 +169,14 @@
         <img src="merch4.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
         <img src="merch5.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
         <img src="merch6.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-        <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">
-            NEW DROPS SOON
-        </div>
+        <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">NEW DROPS SOON</div>
     </div>
 </section>
 
-<!-- JOIN -->
+<!-- JOIN / REGISTRATION -->
 <section id="join" class="py-24 px-6 bg-[#0a0a0a]">
     <div class="max-w-md mx-auto">
         <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] font-['Oswald'] uppercase">Join Movement</h2>
-        
         <div id="counterBox" class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded text-center hidden">
             <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
                 Current Availability: <span id="spotsLeft" class="text-white text-lg ml-2">8</span> Spots Left
@@ -160,142 +184,125 @@
         </div>
 
         <form id="regForm" class="space-y-4">
-            <div>
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Full Name</label>
-                <input type="text" id="name" placeholder="YOUR NAME" required>
-            </div>
-
-            <div>
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Email Address</label>
-                <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required>
-            </div>
-
-            <div>
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Phone Number</label>
-                <input type="tel" id="phone" placeholder="+251..." required>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Country</label>
-                    <select id="country" onchange="updateCities()" required>
-                        <option value="" disabled selected>SELECT</option>
-                        <option value="Ethiopia">Ethiopia</option>
-                        <option value="Germany">Germany</option>
-                        <option value="USA">USA</option>
-                        <option value="Netherlands">Netherlands</option>
-                        <option value="Kenya">Kenya</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">City</label>
-                    <select id="city" onchange="updateSubCities()" required>
-                        <option value="" disabled selected>SELECT</option>
-                    </select>
-                </div>
-            </div>
-
+            <input type="text" id="name" placeholder="YOUR NAME" required>
+            <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required>
+            <input type="tel" id="phone" placeholder="+251..." required>
+            <select id="country" onchange="updateCities()" required>
+                <option value="" disabled selected>SELECT COUNTRY</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Germany">Germany</option>
+                <option value="USA">USA</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Kenya">Kenya</option>
+            </select>
+            <select id="city" onchange="updateSubCities()" required>
+                <option value="" disabled selected>SELECT CITY</option>
+            </select>
             <div id="subCityGroup" class="hidden">
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Specific Spot / Area</label>
                 <select id="subCity" onchange="checkSpots()">
                     <option value="" disabled selected>SELECT AREA</option>
                 </select>
             </div>
-
-            <button type="submit" id="subBtn" class="w-full bg-[#FCA311] text-black font-black uppercase tracking-widest py-5 rounded mt-4 hover:bg-white transition-colors duration-300">
-                Confirm Registration
-            </button>
+            <button type="submit" id="subBtn" class="btn-gold w-full mt-4">Confirm Registration</button>
         </form>
     </div>
 </section>
 
 <script>
-    lucide.createIcons();
+lucide.createIcons();
 
-    const SHEETDB_API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-    const WHATSAPP_NUM = "251910884585";
-    const LIMIT_PER_SPOT = 8;
+const SHEETDB_API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+const WHATSAPP_NUM = "251910884585";
+const LIMIT_PER_SPOT = 8;
 
-    const locations = {
-        "Ethiopia": { "Addis Ababa": ["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"] },
-        "Germany": { "Berlin": ["Mitte"] },
-        "USA": { "Dallas": ["Downtown"] },
-        "Netherlands": { "Amsterdam": ["Zuid"] },
-        "Kenya": { "Nairobi": ["Westlands"] }
-    };
+const locations = {
+    "Ethiopia": { "Addis Ababa": ["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"] },
+    "Germany": { "Berlin": ["Mitte"] },
+    "USA": { "Dallas": ["Downtown"] },
+    "Netherlands": { "Amsterdam": ["Zuid"] },
+    "Kenya": { "Nairobi": ["Westlands"] }
+};
 
-    function showSection(id) {
-        document.querySelectorAll('section, header').forEach(el => el.style.display = 'none');
-        document.getElementById(id).style.display = 'block';
-        document.querySelectorAll('.nav-links button').forEach(btn => btn.classList.remove('active-link'));
-        document.querySelector(`.nav-links button[onclick*="${id}"]`).classList.add('active-link');
-        window.scrollTo({ top:0, behavior:'smooth' });
-        lucide.createIcons();
+function showSection(id) {
+    document.querySelectorAll('section, header').forEach(el => el.style.display='none');
+    document.getElementById(id).style.display='block';
+    document.querySelectorAll('.nav-links button').forEach(btn=>btn.classList.remove('active-link'));
+    document.querySelector(`.nav-links button[onclick*="${id}"]`)?.classList.add('active-link');
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function updateCities() {
+    const country = document.getElementById('country').value;
+    const citySel = document.getElementById('city');
+    citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
+    document.getElementById('subCityGroup').classList.add('hidden');
+    document.getElementById('counterBox').classList.add('hidden');
+
+    if(locations[country]){
+        Object.keys(locations[country]).forEach(city => citySel.add(new Option(city, city)));
     }
+}
 
-    function updateCities() {
-        const country = document.getElementById('country').value;
-        const citySel = document.getElementById('city');
-        citySel.innerHTML = '<option value="" disabled selected>SELECT</option>';
-        document.getElementById('subCityGroup').classList.add('hidden');
-        document.getElementById('counterBox').classList.add('hidden');
-        if(locations[country]) Object.keys(locations[country]).forEach(c => citySel.add(new Option(c.toUpperCase(), c)));
-    }
+function updateSubCities() {
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const subCitySel = document.getElementById('subCity');
+    const group = document.getElementById('subCityGroup');
+    const areas = locations[country][city];
+    if(areas?.length){
+        subCitySel.innerHTML = '<option value="" disabled selected>SELECT AREA</option>';
+        areas.forEach(area => subCitySel.add(new Option(area, area)));
+        group.classList.remove('hidden');
+    } else group.classList.add('hidden');
+}
 
-    function updateSubCities() {
-        const country = document.getElementById('country').value;
-        const city = document.getElementById('city').value;
-        const subCitySel = document.getElementById('subCity');
-        const areas = locations[country][city];
-        if(areas && areas.length>0){
-            subCitySel.innerHTML='<option value="" disabled selected>SELECT AREA</option>';
-            areas.forEach(a=>subCitySel.add(new Option(a.toUpperCase(),a)));
-            document.getElementById('subCityGroup').classList.remove('hidden');
-        } else document.getElementById('subCityGroup').classList.add('hidden');
-    }
+async function checkSpots(){
+    const city = document.getElementById('city').value;
+    const spot = document.getElementById('subCity').value;
+    const counter = document.getElementById('counterBox');
+    const btn = document.getElementById('subBtn');
 
-    async function checkSpots(){
-        const city=document.getElementById('city').value;
-        const spot=document.getElementById('subCity').value;
-        const counter=document.getElementById('counterBox');
-        const btn=document.getElementById('subBtn');
-        if(spot){
-            counter.classList.remove('hidden');
-            try{
-                const res=await fetch(`${SHEETDB_API}/search?City=${city}&Location=${spot}`);
-                const data=await res.json();
-                const remaining=LIMIT_PER_SPOT-data.length;
-                document.getElementById('spotsLeft').innerText=remaining>0?remaining:0;
-                if(remaining<=0){ btn.disabled=true; btn.innerText="LOCATION FULL"; btn.style.backgroundColor="#444"; }
-                else{ btn.disabled=false; btn.innerText="CONFIRM REGISTRATION"; btn.style.backgroundColor="#FCA311"; }
-            }catch(e){console.error(e);}
-        }
-    }
-
-    document.getElementById('regForm').onsubmit=async e=>{
-        e.preventDefault();
-        const btn=document.getElementById('subBtn'); const oldText=btn.innerText;
-        btn.innerText="PROCESSING...";
-        const formData={
-            Name:document.getElementById('name').value,
-            Email:document.getElementById('email').value,
-            Phone:document.getElementById('phone').value,
-            Country:document.getElementById('country').value,
-            City:document.getElementById('city').value,
-            Location:document.getElementById('subCity').value||"General",
-            "Registration Date":new Date().toLocaleDateString(),
-            "Registration Time":new Date().toLocaleTimeString()
-        };
+    if(city && spot){
+        counter.classList.remove('hidden');
         try{
-            await fetch(SHEETDB_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data:[formData]})});
-            const msg=`Hello! I just registered for Bible & Coffee.%0A%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Location}`;
-            window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
-            alert("Registration Submitted Successfully!");
-            btn.innerText=oldText;
-            document.getElementById('regForm').reset();
-            checkSpots();
-        }catch(err){ alert("Submission failed. Please try again."); btn.innerText=oldText; }
+            const resp = await fetch(`${SHEETDB_API}/search?City=${city}&Location=${spot}`);
+            const data = await resp.json();
+            const remaining = LIMIT_PER_SPOT - data.length;
+            document.getElementById('spotsLeft').innerText = remaining>0?remaining:0;
+            if(remaining<=0){ btn.disabled=true; btn.innerText="LOCATION FULL"; btn.style.backgroundColor="#444"; }
+            else { btn.disabled=false; btn.innerText="Confirm Registration"; btn.style.backgroundColor=""; }
+        } catch(err){ console.error(err); }
+    }
+}
+
+document.getElementById('regForm').onsubmit = async (e)=>{
+    e.preventDefault();
+    const btn = document.getElementById('subBtn');
+    const oldText = btn.innerText;
+    btn.innerText = "PROCESSING...";
+
+    const formData = {
+        Name: document.getElementById('name').value,
+        Email: document.getElementById('email').value,
+        Phone: document.getElementById('phone').value,
+        Country: document.getElementById('country').value,
+        City: document.getElementById('city').value,
+        Location: document.getElementById('subCity').value || "General",
+        "Registration Date": new Date().toLocaleDateString(),
+        "Registration Time": new Date().toLocaleTimeString()
     };
+
+    try{
+        await fetch(SHEETDB_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data:[formData]})});
+        const msg = `Hello! I just registered for Bible & Coffee.%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Location}`;
+        window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+        alert("Registration Submitted Successfully!");
+        document.getElementById('regForm').reset();
+        checkSpots();
+    } catch(err){
+        alert("Submission failed. Please try again.");
+    } finally{ btn.innerText=oldText; }
+};
 </script>
 
 </body>

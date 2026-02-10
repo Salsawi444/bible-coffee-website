@@ -12,6 +12,8 @@
 
 <style>
 
+/* BASE */
+
 html{scroll-behavior:smooth;}
 
 body{
@@ -19,6 +21,7 @@ font-family:'Poppins',sans-serif;
 background:#0a0a0a;
 color:white;
 margin:0;
+overflow-x:hidden;
 }
 
 /* NAV */
@@ -30,14 +33,14 @@ position:fixed;
 top:0;
 width:100%;
 z-index:1000;
-padding:8px 12px;
+padding:8px 10px;
 }
 
 .nav-links{
 display:flex;
 justify-content:flex-end;
-gap:10px;
-overflow-x:auto;
+gap:8px;
+flex-wrap:wrap;
 }
 
 .nav-links button{
@@ -46,18 +49,14 @@ font-weight:700;
 color:#aaa;
 background:none;
 border:2px solid #FCA311;
-padding:6px 14px;
+padding:6px 12px;
 border-radius:6px;
 white-space:nowrap;
 cursor:pointer;
 transition:.3s;
 }
 
-.nav-links button:hover{
-background:#FCA311;
-color:black;
-}
-
+.nav-links button:hover,
 .active-link{
 background:#FCA311;
 color:black;
@@ -67,7 +66,7 @@ color:black;
 
 .hero-bg{
 background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),
 url('hero.jpeg');
 background-size:cover;
 background-position:center;
@@ -75,6 +74,7 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+padding-top:80px;
 }
 
 .hero-inner{
@@ -87,11 +87,11 @@ gap:40px;
 text-align:center;
 }
 
-/* Vision */
+/* VISION */
 
 .vision-box{
 text-align:left;
-background:rgba(0,0,0,.6);
+background:rgba(0,0,0,.65);
 padding:25px;
 border-left:4px solid #FCA311;
 border-radius:6px;
@@ -110,28 +110,23 @@ line-height:1.6;
 font-size:15px;
 }
 
-/* Hero Text */
+/* HERO TEXT */
 
 .hero-title{
 font-family:'Playfair Display',serif;
-font-size:2.6rem;
+font-size:2.8rem;
 font-style:italic;
-line-height:1.2;
+line-height:1.1;
 margin:0;
-animation:fadeUp 1s ease forwards;
-opacity:0;
 }
 
 .hero-title span{color:#FCA311;}
 
 .hero-motto{
-font-size:1.2rem;
+font-size:1.3rem;
 color:#FCA311;
 margin-top:10px;
 font-weight:600;
-animation:fadeUp 1s ease forwards;
-animation-delay:.2s;
-opacity:0;
 }
 
 .social-icons{
@@ -139,9 +134,6 @@ display:flex;
 justify-content:center;
 gap:18px;
 margin-top:20px;
-animation:fadeUp 1s ease forwards;
-animation-delay:.4s;
-opacity:0;
 }
 
 .social-icons a{
@@ -151,7 +143,7 @@ transition:.3s;
 
 .social-icons a:hover{
 color:#FCA311;
-transform:scale(1.2);
+transform:scale(1.15);
 }
 
 .tiktok{
@@ -181,13 +173,6 @@ width:100%;
 border-radius:8px;
 }
 
-/* ANIM */
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(25px);}
-to{opacity:1;transform:none;}
-}
-
 /* DESKTOP */
 
 @media(min-width:768px){
@@ -203,9 +188,8 @@ align-items:center;
 
 .social-icons{justify-content:flex-end;}
 
-.vision-box{
-text-align:left;
-}
+.vision-box{text-align:left;}
+
 }
 
 </style>
@@ -218,11 +202,11 @@ text-align:left;
 <nav class="glass-nav">
 <div class="nav-links">
 
-<button onclick="showSection('home')" class="active-link">Home</button>
-<button onclick="showSection('magazine')">Magazine</button>
-<button onclick="showSection('events')">Events</button>
-<button onclick="showSection('merch')">Merch</button>
-<button onclick="showSection('join')">Join</button>
+<button onclick="showSection('home',this)" class="active-link">Home</button>
+<button onclick="showSection('magazine',this)">Magazine</button>
+<button onclick="showSection('events',this)">Events</button>
+<button onclick="showSection('merch',this)">Merch</button>
+<button onclick="showSection('join',this)">Join</button>
 
 </div>
 </nav>
@@ -342,7 +326,7 @@ NEW DROPS SOON
 
 </section>
 
-<!-- JOIN (RESTORED) -->
+<!-- JOIN -->
 
 <section id="join" class="py-24 px-6 bg-[#0a0a0a]">
 
@@ -364,7 +348,7 @@ class="w-full bg-[#151515] p-4 rounded">
 class="w-full bg-[#151515] p-4 rounded">
 
 <button type="submit"
-class="w-full bg-[#FCA311] text-black py-4 rounded font-bold">
+class="w-full bg-[#FCA311] text-black py-4 rounded font-bold hover:bg-white transition">
 Confirm Registration
 </button>
 
@@ -380,7 +364,7 @@ lucide.createIcons();
 
 /* SECTION SWITCH */
 
-function showSection(id){
+function showSection(id,btn){
 
 document
 .querySelectorAll('section,header')
@@ -392,7 +376,9 @@ document
 .querySelectorAll('.nav-links button')
 .forEach(b=>b.classList.remove('active-link'));
 
-event.target.classList.add('active-link');
+btn.classList.add('active-link');
+
+window.scrollTo(0,0);
 }
 
 </script>

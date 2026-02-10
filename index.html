@@ -3,324 +3,511 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIBLE & COFFEE | GLOBAL</title>
 
+<title>Bible & Coffee | Global</title>
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;margin:0}
-h1,h2{font-family:'Oswald',sans-serif;text-transform:uppercase}
 
-.hero-bg{
-background:linear-gradient(rgba(0,0,0,.8),rgba(10,10,10,1)),url('hero.jpeg');
-background-size:cover;
-background-position:center;
-min-height:100vh;
-display:flex;
-justify-content:center;
-flex-direction:column;
+html{scroll-behavior:smooth}
+
+body{
+font-family:'Inter',sans-serif;
+background:#0a0a0a;
+color:#fff;
+margin:0;
 }
 
-.glass-nav{
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
 background:rgba(0,0,0,.95);
 border-bottom:1px solid rgba(255,255,255,.1);
-position:fixed;
-top:0;width:100%;z-index:999;
+z-index:999;
 }
 
 .nav-links{
-display:flex;gap:20px;justify-content:center;padding:15px
+display:flex;
+justify-content:center;
+gap:16px;
+padding:14px;
 }
 
 .nav-links button{
-font-size:11px;font-weight:700;letter-spacing:1px;color:#888;
-background:none;border:none;cursor:pointer
+font-size:11px;
+font-weight:700;
+letter-spacing:1px;
+color:#aaa;
+background:none;
+border:none;
+cursor:pointer;
+transition:.3s;
 }
 
-.active-link{color:#FCA311}
+.nav-links button:hover,
+.nav-links .active{
+color:#FCA311;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+url('hero.jpeg');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.hero-inner{
+max-width:1200px;
+width:100%;
+padding:40px 20px;
+display:grid;
+grid-template-columns:1fr;
+gap:40px;
+text-align:center;
+}
+
+/* Vision */
+
+.vision{
+background:rgba(0,0,0,.6);
+padding:25px;
+border-left:4px solid #FCA311;
+border-radius:6px;
+text-align:left;
+}
+
+.vision h3{
+color:#FCA311;
+font-size:22px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.vision p{
+color:#ccc;
+line-height:1.6;
+}
+
+/* Title */
+
+.hero-title{
+font-family:'Oswald',sans-serif;
+font-size:3rem;
+font-style:italic;
+line-height:1.1;
+}
+
+.hero-title span{
+color:#FCA311;
+}
+
+.hero-motto{
+color:#FCA311;
+font-weight:600;
+margin-top:10px;
+}
+
+/* Buttons */
 
 .btn-gold{
-background:#FCA311;color:#000;font-weight:800;
-letter-spacing:2px;font-size:12px;
-padding:16px;border-radius:4px;width:100%;border:none
+background:#FCA311;
+color:#000;
+font-weight:800;
+letter-spacing:2px;
+padding:14px;
+border-radius:4px;
+width:100%;
+border:none;
 }
 
 .btn-outline{
-border:2px solid #FCA311;color:#FCA311;font-weight:800;
-letter-spacing:2px;font-size:12px;
-padding:16px;border-radius:4px;width:100%;background:transparent
+border:2px solid #FCA311;
+color:#FCA311;
+font-weight:800;
+letter-spacing:2px;
+padding:14px;
+border-radius:4px;
+width:100%;
+background:transparent;
 }
 
-section{display:none;padding:110px 20px;max-width:1200px;margin:auto;text-align:center}
-#home,#join{display:block}
+/* Sections */
+
+section{
+display:none;
+padding:120px 20px 80px;
+max-width:1200px;
+margin:auto;
+text-align:center;
+}
+
+#home,
+#join{
+display:block;
+}
+
+/* Form */
 
 input,select{
-background:#151515;border:1px solid #333;color:#fff;
-padding:14px;width:100%;border-radius:4px;margin-bottom:15px
+background:#151515;
+border:1px solid #333;
+color:#fff;
+padding:14px;
+width:100%;
+border-radius:4px;
+margin-bottom:15px;
 }
 
-.counter-box{
+.counter{
 background:rgba(252,163,17,.1);
 border:1px solid #FCA311;
-padding:15px;margin-bottom:20px;border-radius:4px;display:none
+padding:14px;
+margin-bottom:20px;
+border-radius:4px;
+display:none;
 }
 
-.pdf-preview{
-width:100%;height:500px;border:1px solid #333;border-radius:6px
+/* Desktop */
+
+@media(min-width:768px){
+
+.hero-inner{
+grid-template-columns:1fr 1fr;
+text-align:right;
+align-items:center;
 }
+
+.hero-title{
+font-size:5rem;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
 <!-- NAV -->
-<nav class="glass-nav">
+
+<nav>
 <div class="nav-links">
-<button type="button" onclick="showSection('home',this)" class="active-link">HOME</button>
-<button type="button" onclick="showSection('magazine',this)">MAGAZINE</button>
-<button type="button" onclick="showSection('events',this)">EVENTS</button>
-<button type="button" onclick="showSection('merch',this)">MERCH</button>
-<button type="button" onclick="showSection('join',this)">JOIN</button>
+
+<button onclick="showSection('home',this)" class="active">HOME</button>
+<button onclick="showSection('magazine',this)">MAGAZINE</button>
+<button onclick="showSection('events',this)">EVENTS</button>
+<button onclick="showSection('merch',this)">MERCH</button>
+<button onclick="showSection('join',this)">JOIN</button>
+
 </div>
 </nav>
 
 <!-- HOME -->
-<header id="home" class="hero-bg">
-<div class="px-6 text-center lg:text-right lg:px-24">
 
-<h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
-COFFEE MEETS<br>
-<span class="text-[#FCA311]">THE WORD.</span>
-</h1>
+<header id="home" class="hero">
 
-<div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
-<button type="button" onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
-<button type="button" onclick="showSection('merch')" class="btn-outline">View Merch</button>
+<div class="hero-inner">
+
+<!-- Vision -->
+
+<div class="vision">
+
+<h3>Who We Are</h3>
+
+<p>
+Bible & Coffee is a global movement where faith,
+community, and conversation meet.
+</p>
+
+<p class="mt-3">
+Build disciples. Build friendships. Build purpose.
+</p>
+
 </div>
 
-<div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
+<!-- Text -->
+
+<div>
+
+<h1 class="hero-title">
+COFFEE MEETS<br>
+<span>THE WORD.</span>
+</h1>
+
+<p class="hero-motto">Thank God It’s Friday!</p>
+
+<div class="flex flex-col gap-3 max-w-xs ml-auto mt-6">
+
+<button onclick="showSection('magazine')" class="btn-gold">
+Weekly Magazine
+</button>
+
+<button onclick="showSection('join')" class="btn-outline">
+Join Now
+</button>
+
+</div>
+
+<div class="flex justify-center lg:justify-end gap-6 mt-10 text-white/60">
 <i data-lucide="instagram"></i>
 <i data-lucide="facebook"></i>
 <i data-lucide="youtube"></i>
 <i data-lucide="mail"></i>
 </div>
+
 </div>
+
+</div>
+
 </header>
 
 <!-- MAGAZINE -->
+
 <section id="magazine">
-<h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
-<p class="text-white/60 mb-6">Preview & download latest edition</p>
 
-<div class="max-w-3xl mx-auto bg-[#111] p-4 rounded-lg border border-white/10">
+<h2 class="text-4xl font-bold text-[#FCA311] mb-6">
+Weekly Magazine
+</h2>
 
-<iframe src="megazine.pdf" class="pdf-preview mb-6"></iframe>
+<p class="text-white/60 mb-6">
+Download latest edition
+</p>
 
-<a href="megazine.pdf" download onclick="countDownload()" class="btn-gold">
+<a href="megazine.pdf" download class="btn-gold max-w-xs mx-auto block">
 Download PDF
 </a>
 
-<p class="mt-3 text-sm text-white/50">
-Downloads: <span id="dlCount">0</span>
-</p>
-
-</div>
 </section>
 
 <!-- EVENTS -->
+
 <section id="events">
-<h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
-<p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
+
+<h2 class="text-4xl font-bold text-[#FCA311] mb-4">
+Events
+</h2>
+
+<p class="text-2xl tracking-[10px] text-white/20 py-20">
+COMING SOON
+</p>
+
 </section>
 
 <!-- MERCH -->
+
 <section id="merch">
-<h2 class="text-4xl font-bold mb-10">The Merch</h2>
+
+<h2 class="text-4xl font-bold mb-10">
+Merch
+</h2>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<img src="merch1.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch2.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch3.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
+
+<img src="merch1.jpeg" class="rounded">
+<img src="merch2.jpeg" class="rounded">
+<img src="merch3.jpeg" class="rounded">
+
 </div>
+
 </section>
 
 <!-- JOIN -->
-<section id="join" class="py-24 px-6 bg-[#0a0a0a]">
-    <div class="max-w-md mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] font-['Oswald'] uppercase">Join Movement</h2>
-        
-        <div id="counterBox" class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded text-center hidden">
-            <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
-                Current Availability: <span id="spotsLeft" class="text-white text-lg ml-2">8</span> Spots Left
-            </p>
-        </div>
 
-        <form id="regForm" class="space-y-4">
-            <div>
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Full Name</label>
-                <input type="text" id="name" placeholder="YOUR NAME" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
-            </div>
+<section id="join">
 
-            <div>
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Email Address</label>
-                <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
-            </div>
+<div class="max-w-md mx-auto">
 
-            <div>
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Phone Number</label>
-                <input type="tel" id="phone" placeholder="+251..." required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
-            </div>
+<h2 class="text-4xl font-bold italic text-[#FCA311] mb-8">
+Join Movement
+</h2>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Country</label>
-                    <select id="country" onchange="updateCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
-                        <option value="" disabled selected>SELECT</option>
-                        <option value="Ethiopia">Ethiopia</option>
-                        <option value="Germany">Germany</option>
-                        <option value="USA">USA</option>
-                        <option value="Netherlands">Netherlands</option>
-                        <option value="Kenya">Kenya</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">City</label>
-                    <select id="city" onchange="updateSubCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
-                        <option value="" disabled selected>SELECT</option>
-                    </select>
-                </div>
-            </div>
+<div id="counter" class="counter">
+Spots Left: <span id="spots">8</span>
+</div>
 
-            <div id="subCityGroup" class="hidden">
-                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Specific Spot / Area</label>
-                <select id="subCity" onchange="checkSpots()" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
-                    <option value="" disabled selected>SELECT AREA</option>
-                </select>
-            </div>
+<form id="regForm">
 
-            <button type="submit" id="subBtn" class="w-full bg-[#FCA311] text-black font-black uppercase tracking-widest py-5 rounded mt-4 hover:bg-white transition-colors duration-300">
-                Confirm Registration
-            </button>
-        </form>
-    </div>
+<input id="name" required placeholder="Full Name">
+<input id="email" type="email" required placeholder="Email">
+<input id="phone" required placeholder="Phone">
+
+<select id="country" required onchange="updateCities()">
+<option value="">Country</option>
+<option>Ethiopia</option>
+<option>USA</option>
+<option>Germany</option>
+</select>
+
+<select id="city" required onchange="updateAreas()">
+<option value="">City</option>
+</select>
+
+<div id="areaBox" style="display:none">
+
+<select id="location" onchange="checkSpots()">
+<option value="">Location</option>
+</select>
+
+</div>
+
+<button id="submitBtn" class="btn-gold mt-4">
+Confirm Registration
+</button>
+
+</form>
+
+</div>
+
 </section>
 
 <!-- SCRIPT -->
+
 <script>
+
 lucide.createIcons();
+
+/* CONFIG */
 
 const API="https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-const MAX=8;
+const LIMIT=8;
 
-const locations={
-Ethiopia:{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"]},
-USA:{Dallas:["Downtown"]}
-};
+/* LOCATIONS */
 
-/* SECTION */
-function showSection(id,btn){
+const places={
 
-['home','magazine','events','merch','join'].forEach(s=>{
-const el=document.getElementById(s);
-el.style.display=s===id?'block':'none';
-});
+Ethiopia:{
+"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Old Airport"]
+},
 
-if(btn){
-document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));
-btn.classList.add('active-link');
+USA:{
+"Dallas":["Downtown"]
+},
+
+Germany:{
+"Berlin":["Mitte"]
 }
 
+};
+
+/* NAV */
+
+function showSection(id,btn){
+
+document.querySelectorAll('section,header')
+.forEach(e=>e.style.display='none');
+
+document.getElementById(id).style.display='block';
+
+document.querySelectorAll('.nav-links button')
+.forEach(b=>b.classList.remove('active'));
+
+if(btn) btn.classList.add('active');
+
 window.scrollTo(0,0);
+
 lucide.createIcons();
 }
 
-/* MAG DOWNLOAD */
-let downloads=localStorage.getItem('megDL')||0;
-document.getElementById('dlCount').innerText=downloads;
+/* CITIES */
 
-function countDownload(){
-downloads++;
-localStorage.setItem('megDL',downloads);
-document.getElementById('dlCount').innerText=downloads;
-}
-
-/* LOCATION */
 function updateCities(){
-const c=document.getElementById('country').value;
-const city=document.getElementById('city');
-city.innerHTML='<option value="">CITY</option>';
 
-if(locations[c]){
-Object.keys(locations[c]).forEach(x=>{
-let o=document.createElement('option');
-o.value=x;o.textContent=x;
-city.appendChild(o);
+const c=country.value;
+city.innerHTML='<option value="">City</option>';
+
+if(places[c]){
+Object.keys(places[c]).forEach(x=>{
+city.add(new Option(x,x));
 });
 }
 
-document.getElementById('subCityGroup').classList.add('hidden');
+areaBox.style.display='none';
 }
 
-function updateSubCities(){
-const c=document.getElementById('country').value;
-const city=document.getElementById('city').value;
-const sub=document.getElementById('subCity');
+/* AREAS */
 
-sub.innerHTML='<option value="">SELECT AREA</option>';
+function updateAreas(){
 
-if(locations[c]&&locations[c][city]){
-locations[c][city].forEach(a=>{
-let o=document.createElement('option');
-o.value=a;o.textContent=a;
-sub.appendChild(o);
+const c=country.value;
+const ct=city.value;
+
+location.innerHTML='<option value="">Location</option>';
+
+if(places[c] && places[c][ct]){
+
+places[c][ct].forEach(a=>{
+location.add(new Option(a,a));
 });
 
-document.getElementById('subCityGroup').classList.remove('hidden');
+areaBox.style.display='block';
 }
+
 }
 
 /* SPOTS */
+
 async function checkSpots(){
-const s=document.getElementById('subCity').value;
-if(!s)return;
 
-document.getElementById('counterBox').style.display='block';
+if(!location.value) return;
 
-const r=await fetch(`${API}/search?Spot=${s}`);
+counter.style.display='block';
+
+const r=await fetch(`${API}/search?Location=${location.value}`);
 const d=await r.json();
-const left=MAX-d.length;
 
-document.getElementById('spotsLeft').innerText=Math.max(left,0);
+const left=LIMIT-d.length;
 
-const b=document.getElementById('subBtn');
+spots.innerText=Math.max(left,0);
 
 if(left<=0){
-b.disabled=true;b.innerText='FULL';b.style.opacity=.5;
+submitBtn.disabled=true;
+submitBtn.innerText='FULL';
 }else{
-b.disabled=false;b.innerText='Confirm Registration';b.style.opacity=1;
+submitBtn.disabled=false;
+submitBtn.innerText='Confirm Registration';
 }
+
 }
 
 /* SUBMIT */
-document.getElementById('regForm').addEventListener('submit',async e=>{
+
+regForm.addEventListener('submit',async e=>{
+
 e.preventDefault();
 
-const b=document.getElementById('subBtn');
-b.innerText='SENDING...';b.disabled=true;
+submitBtn.innerText='SENDING...';
+submitBtn.disabled=true;
 
 const data={
+
 Name:name.value,
 Email:email.value,
 Phone:phone.value,
 Country:country.value,
 City:city.value,
-Spot:subCity.value,
-Date:new Date().toLocaleString()
+Location:location.value,
+
+"Registration Date":new Date().toLocaleDateString(),
+"Registration Time":new Date().toLocaleTimeString()
+
 };
 
 await fetch(API,{
@@ -330,11 +517,19 @@ body:JSON.stringify({data:[data]})
 });
 
 window.open(`https://wa.me/251910884585?text=Registered:%20${data.Name}`,'_blank');
+
 alert('Registered successfully 🙏');
 
-document.getElementById('regForm').reset();
-b.innerText='Confirm Registration';b.disabled=false;
+regForm.reset();
+
+areaBox.style.display='none';
+counter.style.display='none';
+
+submitBtn.innerText='Confirm Registration';
+submitBtn.disabled=false;
+
 });
+
 </script>
 
 </body>

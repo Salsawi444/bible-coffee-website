@@ -15,74 +15,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
 
 <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Roboto Mono', monospace; background-color: #0a0a0a; color: white; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Roboto Mono', monospace; background-color: #0a0a0a; color: white; margin: 0; }
 
-    /* Hero */
-    .hero-bg {
-        background: linear-gradient(rgba(0,0,0,0.8), rgba(10,10,10,1)), url('hero.jpeg');
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 1.5rem;
-    }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1.1; margin: 0; }
-    .hero-motto { font-family: 'Roboto Mono', monospace; font-size: 1.5rem; color: #FCA311; margin-top: 1rem; }
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(10,10,10,1)), url('hero.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1.5rem;
+}
 
-    /* Navigation */
-    .glass-nav {
-        background: rgba(0,0,0,0.95);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        width: 100%;
-        position: fixed;
-        top: 0;
-        z-index: 1000;
-        padding: 0.5rem 1rem;
-    }
-    .nav-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 0.5rem; }
-    .nav-links button {
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        color: #888;
-        background: none;
-        border: 2px solid #FCA311;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    .nav-links button:hover { background: #FCA311; color: black; }
-    .nav-links .active-link { color: #FCA311; border-color: #FCA311; }
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 1.1;
+    margin: 0;
+    text-align: center;
+}
+.hero-motto {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5rem;
+    color: #FCA311;
+    margin-top: 1rem;
+    text-align: center;
+}
 
-    /* Social Icons */
-    .social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
-    .social-icons a { color: white; transition: all 0.3s; }
-    .social-icons a:hover { color: #FCA311; }
+/* Navigation */
+.glass-nav {
+    background: rgba(0,0,0,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+}
+.nav-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 0.5rem; }
+.nav-links button {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #888;
+    background: none;
+    border: 2px solid #FCA311;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.nav-links button:hover { background: #FCA311; color: black; }
+.nav-links .active-link { color: #FCA311; border-color: #FCA311; }
 
-    /* Sections */
-    section { display: none; padding: 120px 20px 80px; max-width: 1200px; margin: auto; text-align: center; }
-    #home, #join { display: block; }
+/* Social Icons */
+.social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.social-icons a { color: white; transition: all 0.3s; }
+.social-icons a:hover { color: #FCA311; }
 
-    /* Magazine Preview */
-    .mag-preview { max-width: 400px; margin: auto; }
-    .mag-preview img { width: 100%; border-radius: 8px; margin-bottom: 12px; }
+/* Sections */
+section { display: none; padding: 120px 20px 80px; max-width: 1200px; margin: auto; text-align: center; }
+#home, #join { display: block; }
 
-    /* Responsive Hero */
-    @media (min-width: 640px) {
-        .hero-title { font-size: 4rem; text-align: right; }
-        .hero-motto { font-size: 2rem; text-align: right; }
-        .social-icons { justify-content: flex-end; margin-top: 2rem; }
-    }
+/* Magazine Preview */
+.mag-preview { max-width: 400px; margin: auto; }
+.mag-preview img { width: 100%; border-radius: 8px; margin-bottom: 12px; }
 
-    @media (max-width: 639px) {
-        .hero-title, .hero-motto { text-align: center; }
-        .nav-links { justify-content: center; }
-    }
-
+/* Responsive Hero */
+@media (min-width: 640px) {
+    .hero-title { font-size: 4rem; text-align: right; }
+    .hero-motto { font-size: 2rem; text-align: right; }
+    .social-icons { justify-content: flex-end; margin-top: 2rem; }
+}
+@media (max-width: 639px) {
+    .hero-title, .hero-motto { text-align: center; }
+    .nav-links { justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -194,14 +204,97 @@
 </section>
 
 <script>
-    lucide.createIcons();
-    const SHEETDB_API="https://sheetdb.io/api/v1/9q45d3e7oe5ks",WHATSAPP_NUM="251910884585",LIMIT_PER_SPOT=8;
-    const locations={"Ethiopia":{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"],"Hawassa":["Main Center"],"Adama":["Main Center"]},"Germany":{"Berlin":["Mitte"]},"USA":{"Dallas":["Downtown"]},"Netherlands":{"Amsterdam":["Zuid"]},"Kenya":{"Nairobi":["Westlands"]}};
-    function showSection(id){document.querySelectorAll('section,header').forEach(el=>el.style.display='none');document.getElementById(id).style.display='block';}
-    function updateCities(){const country=document.getElementById('country').value,citySel=document.getElementById('city');citySel.innerHTML='<option value="" disabled selected>SELECT</option>';document.getElementById('subCityGroup').classList.add('hidden');document.getElementById('counterBox').classList.add('hidden');if(locations[country])Object.keys(locations[country]).forEach(city=>citySel.add(new Option(city,city)));}
-    function updateSubCities(){const country=document.getElementById('country').value,city=document.getElementById('city').value,subCitySel=document.getElementById('subCity'),group=document.getElementById('subCityGroup'),areas=locations[country][city];if(areas&&areas.length>0){subCitySel.innerHTML='<option value="" disabled selected>SELECT AREA</option>';areas.forEach(a=>subCitySel.add(new Option(a,a)));group.classList.remove('hidden');}else group.classList.add('hidden');}
-    async function checkSpots(){const city=document.getElementById('city').value,spot=document.getElementById('subCity').value,counter=document.getElementById('counterBox'),btn=document.getElementById('subBtn');if(city==="Addis Ababa"&&spot){counter.classList.remove('hidden');try{const resp=await fetch(`${SHEETDB_API}/search?City=${city}&Spot=${spot}`);const data=await resp.json();const remaining=LIMIT_PER_SPOT-data.length;document.getElementById('spotsLeft').innerText=remaining>0?remaining:0;if(remaining<=0){btn.disabled=true;btn.innerText="LOCATION FULL";btn.style.backgroundColor="#444";}else{btn.disabled=false;btn.innerText="CONFIRM REGISTRATION";btn.style.backgroundColor="#FCA311";}}catch(e){console.error(e);}}}
-    document.getElementById('regForm').onsubmit=async function(e){e.preventDefault();const btn=document.getElementById('subBtn'),oldText=btn.innerText;btn.innerText="PROCESSING...";const formData={"Name":document.getElementById('name').value,"Email":document.getElementById('email').value,"Phone":document.getElementById('phone').value,"Country":document.getElementById('country').value,"City":document.getElementById('city').value,"Location":document.getElementById('subCity').value||"General","Registration Date":new Date().toLocaleDateString(),"Registration Time":new Date().toLocaleTimeString()};try{await fetch(SHEETDB_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data:[formData]})});const msg=`Hello! I just registered for Bible & Coffee.%0A%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Location}`;window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');alert("Registration Submitted Successfully!");btn.innerText=oldText;document.getElementById('regForm').reset();checkSpots();}catch(e){alert("Submission failed. Please try again.");btn.innerText=oldText;};
+lucide.createIcons();
+
+const SHEETDB_API="https://sheetdb.io/api/v1/9q45d3e7oe5ks",WHATSAPP_NUM="251910884585",LIMIT_PER_SPOT=8;
+const locations={"Ethiopia":{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"],"Hawassa":["Main Center"],"Adama":["Main Center"]},"Germany":{"Berlin":["Mitte"]},"USA":{"Dallas":["Downtown"]},"Netherlands":{"Amsterdam":["Zuid"]},"Kenya":{"Nairobi":["Westlands"]}};
+
+function showSection(id){
+    document.querySelectorAll('section,header').forEach(el=>el.style.display='none');
+    document.getElementById(id).style.display='block';
+    document.querySelectorAll('.nav-links button').forEach(btn=>btn.classList.remove('active-link'));
+    document.querySelector(`.nav-links button[onclick="showSection('${id}')"]`).classList.add('active-link');
+}
+
+function updateCities(){
+    const country=document.getElementById('country').value;
+    const citySel=document.getElementById('city');
+    citySel.innerHTML='<option value="" disabled selected>SELECT</option>';
+    document.getElementById('subCityGroup').classList.add('hidden');
+    document.getElementById('counterBox').classList.add('hidden');
+    if(locations[country]) Object.keys(locations[country]).forEach(city=>citySel.add(new Option(city,city)));
+}
+
+function updateSubCities(){
+    const country=document.getElementById('country').value;
+    const city=document.getElementById('city').value;
+    const subCitySel=document.getElementById('subCity');
+    const group=document.getElementById('subCityGroup');
+    const areas=locations[country][city];
+    if(areas && areas.length>0){
+        subCitySel.innerHTML='<option value="" disabled selected>SELECT AREA</option>';
+        areas.forEach(a=>subCitySel.add(new Option(a,a)));
+        group.classList.remove('hidden');
+    } else group.classList.add('hidden');
+}
+
+async function checkSpots(){
+    const city=document.getElementById('city').value;
+    const spot=document.getElementById('subCity').value;
+    const counter=document.getElementById('counterBox');
+    const btn=document.getElementById('subBtn');
+    if(city==="Addis Ababa" && spot){
+        counter.classList.remove('hidden');
+        try{
+            const resp=await fetch(`${SHEETDB_API}/search?City=${city}&Spot=${spot}`);
+            const data=await resp.json();
+            const remaining=LIMIT_PER_SPOT - data.length;
+            document.getElementById('spotsLeft').innerText=remaining>0?remaining:0;
+            if(remaining<=0){
+                btn.disabled=true;
+                btn.innerText="LOCATION FULL";
+                btn.style.backgroundColor="#444";
+            } else {
+                btn.disabled=false;
+                btn.innerText="CONFIRM REGISTRATION";
+                btn.style.backgroundColor="#FCA311";
+            }
+        } catch(e){console.error(e);}
+    }
+}
+
+document.getElementById('regForm').onsubmit=async function(e){
+    e.preventDefault();
+    const btn=document.getElementById('subBtn');
+    const oldText=btn.innerText;
+    btn.innerText="PROCESSING...";
+    const formData={
+        "Name":document.getElementById('name').value,
+        "Email":document.getElementById('email').value,
+        "Phone":document.getElementById('phone').value,
+        "Country":document.getElementById('country').value,
+        "City":document.getElementById('city').value,
+        "Location":document.getElementById('subCity').value||"General",
+        "Registration Date":new Date().toLocaleDateString(),
+        "Registration Time":new Date().toLocaleTimeString()
+    };
+    try{
+        await fetch(SHEETDB_API,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({data:[formData]})
+        });
+        const msg=`Hello! I just registered for Bible & Coffee.%0A%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Location}`;
+        window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+        alert("Registration Submitted Successfully!");
+        btn.innerText=oldText;
+        document.getElementById('regForm').reset();
+        checkSpots();
+    } catch(e){
+        alert("Submission failed. Please try again.");
+        btn.innerText=oldText;
+    }
+};
 </script>
 
 </body>

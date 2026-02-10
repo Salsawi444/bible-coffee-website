@@ -5,493 +5,277 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BIBLE & COFFEE | GLOBAL</title>
 
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
 <style>
+html { scroll-behavior: smooth; }
+body { font-family: 'Roboto Slab', serif; background-color: #0a0a0a; color: white; margin: 0; }
 
-html{scroll-behavior:smooth}
-body{
-font-family:'Roboto Slab',serif;
-background:#0a0a0a;
-color:white;
-margin:0
+/* Hero */
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(10,10,10,1)), url('hero.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1.5rem;
 }
+.hero-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; line-height: 1.1; text-align: center; margin: 0; }
+.hero-motto { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: #FCA311; text-align: center; margin: 1rem 0; font-weight: 500; }
 
-/* NAV */
-
-.glass-nav{
-background:rgba(0,0,0,.95);
-border-bottom:1px solid rgba(255,255,255,.1);
-position:fixed;
-top:0;
-width:100%;
-z-index:1000;
-padding:.7rem 1rem
+/* Navigation */
+.glass-nav {
+    background: rgba(0,0,0,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
 }
-
-.nav-links{
-display:flex;
-justify-content:flex-end;
-flex-wrap:wrap;
-gap:.5rem
+.nav-links { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 0.5rem; }
+.nav-links button {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #888;
+    background: none;
+    border: 2px solid #FCA311;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+.nav-links button:hover { background: #FCA311; color: black; }
+.nav-links .active-link { color: #FCA311; border-color: #FCA311; }
 
-.nav-links button{
-font-size:13px;
-font-weight:700;
-letter-spacing:1px;
-color:#bbb;
-background:none;
-border:2px solid #FCA311;
-padding:.45rem .9rem;
-border-radius:8px;
-cursor:pointer;
-transition:.3s
+/* Social Icons */
+.social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.social-icons a { color: white; transition: all 0.3s; }
+.social-icons a:hover { color: #FCA311; }
+
+/* Sections */
+section { display: none; padding: 120px 20px 80px; max-width: 1200px; margin: auto; text-align: center; }
+#home, #join { display: block; }
+
+/* Magazine Preview */
+.mag-preview { max-width: 400px; margin: auto; }
+.mag-preview img { width: 100%; border-radius: 8px; margin-bottom: 12px; }
+.btn-gold { background: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; padding: 12px; border-radius: 6px; display: inline-block; width: 100%; text-align: center; transition: 0.3s; }
+.btn-gold:hover { background: white; color: black; }
+
+/* Responsive Hero */
+@media (min-width: 640px) {
+    .hero-title { font-size: 4rem; text-align: right; }
+    .hero-motto { font-size: 2rem; text-align: right; }
+    .social-icons { justify-content: flex-end; margin-top: 2rem; }
 }
-
-.nav-links button:hover{
-background:#FCA311;
-color:black;
-transform:scale(1.05)
-}
-
-.active-link{
-color:#FCA311
-}
-
-/* HERO */
-
-.hero-bg{
-min-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,.8),rgba(10,10,10,1)),
-url('hero.jpeg');
-background-size:cover;
-background-position:center;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-padding:6rem 1.5rem 2rem;
-text-align:center
-}
-
-.hero-title{
-font-family:'Playfair Display',serif;
-font-size:3rem;
-line-height:1.1
-}
-
-.hero-motto{
-font-size:1.5rem;
-color:#FCA311;
-margin-top:1rem
-}
-
-/* SOCIAL */
-
-.social-icons{
-display:flex;
-gap:1.2rem;
-margin-top:1.5rem
-}
-
-.social-icons a{
-color:white;
-transition:.3s
-}
-
-.social-icons a:hover{
-color:#FCA311;
-transform:scale(1.2)
-}
-
-/* SECTIONS */
-
-main section{
-display:none;
-padding:120px 20px 80px;
-max-width:1200px;
-margin:auto;
-text-align:center
-}
-
-main section.active{
-display:block
-}
-
-/* MAG */
-
-.mag-preview{
-max-width:380px;
-margin:auto
-}
-
-.mag-preview img{
-width:100%;
-border-radius:8px;
-margin-bottom:12px
-}
-
-.btn-gold{
-background:#FCA311;
-color:black;
-font-weight:700;
-transition:.3s
-}
-
-.btn-gold:hover{
-background:white
-}
-
-/* DESKTOP */
-
-@media(min-width:768px){
-
-.hero-bg{
-align-items:flex-end;
-text-align:right;
-padding-right:4rem
-}
-
-.hero-title{
-font-size:4rem
-}
-
-.hero-motto{
-font-size:2rem
-}
-
-.social-icons{
-justify-content:flex-end
-}
-
-}
-
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-
 <nav class="glass-nav">
-<div class="nav-links">
-<button onclick="showSection('home')" class="active-link">Home</button>
-<button onclick="showSection('magazine')">Magazine</button>
-<button onclick="showSection('events')">Events</button>
-<button onclick="showSection('merch')">Merch</button>
-<button onclick="showSection('join')">Join</button>
-</div>
+    <div class="nav-links">
+        <button onclick="showSection('home')" class="active-link">Home</button>
+        <button onclick="showSection('magazine')">Magazine</button>
+        <button onclick="showSection('events')">Events</button>
+        <button onclick="showSection('merch')">Merch</button>
+        <button onclick="showSection('join')">Join</button>
+    </div>
 </nav>
 
-
 <!-- HERO -->
-
 <header id="home" class="hero-bg">
-
-<h1 class="hero-title font-bold italic">
-COFFEE MEETS<br>
-<span class="text-[#FCA311]">THE WORD.</span>
-</h1>
-
-<p class="hero-motto">Thank God It’s Friday!</p>
-
-<div class="social-icons">
-<a href="#"><i data-lucide="instagram"></i></a>
-<a href="#"><i data-lucide="facebook"></i></a>
-<a href="#"><i data-lucide="youtube"></i></a>
-<a href="#"><i data-lucide="mail"></i></a>
-<a href="#"><i data-lucide="tiktok"></i></a>
-</div>
-
+    <h1 class="hero-title font-bold italic">COFFEE MEETS<br><span class="text-[#FCA311]">THE WORD.</span></h1>
+    <p class="hero-motto">Thank God It’s Friday!</p>
+    <div class="social-icons">
+        <a href="#"><i data-lucide="instagram"></i></a>
+        <a href="#"><i data-lucide="facebook"></i></a>
+        <a href="#"><i data-lucide="youtube"></i></a>
+        <a href="#"><i data-lucide="mail"></i></a>
+        <a href="#"><i data-lucide="tiktok"></i></a>
+    </div>
 </header>
 
-
-<main>
-
-<!-- MAG -->
-
+<!-- MAGAZINE -->
 <section id="magazine">
-
-<h2 class="text-4xl font-bold text-[#FCA311] mb-10">
-Weekly Magazine
-</h2>
-
-<div class="mag-preview">
-
-<img src="megimage.jpeg">
-
-<a href="magazine.pdf" target="_blank"
-class="btn-gold w-full py-4 rounded inline-block mt-2">
-Download PDF
-</a>
-
-</div>
-
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
+    <div class="mag-preview">
+        <img src="megimage.jpeg" alt="Magazine Preview" onclick="window.open('magazine.pdf','_blank')">
+        <a href="magazine.pdf" target="_blank" class="btn-gold mt-2">Download PDF</a>
+    </div>
 </section>
-
 
 <!-- EVENTS -->
-
 <section id="events">
-
-<h2 class="text-4xl font-bold text-[#FCA311] mb-4">
-Events
-</h2>
-
-<p class="text-2xl tracking-[10px] text-white/20 py-20">
-COMING SOON
-</p>
-
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
+    <p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
 </section>
-
 
 <!-- MERCH -->
-
 <section id="merch">
-
-<h2 class="text-4xl font-bold mb-10">The Merch</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-<img src="merch2.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch3.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
-
-<div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">
-NEW DROPS SOON
-</div>
-
-</div>
-
+    <h2 class="text-4xl font-bold mb-10">The Merch</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <img src="merch2.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch3.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch4.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch5.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch6.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">NEW DROPS SOON</div>
+    </div>
 </section>
 
-
-<!-- JOIN -->
-
-<section id="join" class="active">
-
-<div class="max-w-md mx-auto">
-
-<h2 class="text-4xl font-bold mb-8 italic text-[#FCA311] uppercase">
-Join Movement
-</h2>
-
-<div id="counterBox"
-class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded hidden">
-
-<p class="text-[#FCA311] text-xs font-bold uppercase">
-
-Current Availability:
-<span id="spotsLeft" class="text-white text-lg ml-2">8</span>
-
-</p>
-
-</div>
-
-
-<form id="regForm" class="space-y-4">
-
-<input id="name" required placeholder="YOUR NAME"
-class="w-full bg-[#151515] border border-[#333] p-4 rounded">
-
-<input id="email" type="email" required placeholder="EMAIL"
-class="w-full bg-[#151515] border border-[#333] p-4 rounded">
-
-<input id="phone" required placeholder="+251..."
-class="w-full bg-[#151515] border border-[#333] p-4 rounded">
-
-
-<div class="grid grid-cols-2 gap-4">
-
-<select id="country" onchange="updateCities()" required
-class="w-full bg-[#151515] border border-[#333] p-4 rounded">
-
-<option disabled selected>SELECT</option>
-<option>Ethiopia</option>
-<option>Germany</option>
-<option>USA</option>
-<option>Netherlands</option>
-<option>Kenya</option>
-
-</select>
-
-<select id="city" onchange="updateSubCities()" required
-class="w-full bg-[#151515] border border-[#333] p-4 rounded">
-
-<option disabled selected>SELECT</option>
-
-</select>
-
-</div>
-
-
-<div id="subCityGroup" class="hidden">
-
-<select id="subCity" onchange="checkSpots()"
-class="w-full bg-[#151515] border border-[#333] p-4 rounded">
-
-<option disabled selected>SELECT AREA</option>
-
-</select>
-
-</div>
-
-
-<button id="subBtn" type="submit"
-class="w-full bg-[#FCA311] text-black font-black py-5 rounded">
-
-Confirm Registration
-
-</button>
-
-</form>
-
-</div>
-
+<!-- JOIN / REGISTRATION -->
+<section id="join" class="py-24 px-6 bg-[#0a0a0a]">
+    <div class="max-w-md mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] font-['Oswald'] uppercase">Join Movement</h2>
+        <div id="counterBox" class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded text-center hidden">
+            <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
+                Current Availability: <span id="spotsLeft" class="text-white text-lg ml-2">8</span> Spots Left
+            </p>
+        </div>
+        <form id="regForm" class="space-y-4">
+            <div>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Full Name</label>
+                <input type="text" id="name" placeholder="YOUR NAME" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            </div>
+            <div>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Email Address</label>
+                <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            </div>
+            <div>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+251..." required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Country</label>
+                    <select id="country" onchange="updateCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                        <option value="" disabled selected>SELECT</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="USA">USA</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Kenya">Kenya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">City</label>
+                    <select id="city" onchange="updateSubCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                        <option value="" disabled selected>SELECT</option>
+                    </select>
+                </div>
+            </div>
+            <div id="subCityGroup" class="hidden">
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Specific Spot / Area</label>
+                <select id="subCity" onchange="checkSpots()" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                    <option value="" disabled selected>SELECT AREA</option>
+                </select>
+            </div>
+            <button type="submit" id="subBtn" class="w-full bg-[#FCA311] text-black font-black uppercase tracking-widest py-5 rounded mt-4 hover:bg-white transition-colors duration-300">
+                Confirm Registration
+            </button>
+        </form>
+    </div>
 </section>
-
-</main>
-
 
 <script>
-
 lucide.createIcons();
 
 const SHEETDB_API="https://sheetdb.io/api/v1/9q45d3e7oe5ks";
 const WHATSAPP_NUM="251910884585";
-const LIMIT=8;
-
+const LIMIT_PER_SPOT=8;
 const locations={
-"Ethiopia":{
-"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"],
-"Hawassa":["Main Center"],
-"Adama":["Main Center"]
-}
-};
+"Ethiopia":{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"],"Hawassa":["Main Center"],"Adama":["Main Center"]},
+"Germany":{"Berlin":["Mitte"]},
+"USA":{"Dallas":["Downtown"]},
+"Netherlands":{"Amsterdam":["Zuid"]},
+"Kenya":{"Nairobi":["Westlands"]}};
 
 function showSection(id){
-
-document.querySelectorAll("main section").forEach(s=>{
-s.classList.remove("active");
-});
-
-document.getElementById(id).classList.add("active");
-
-document.querySelectorAll(".nav-links button").forEach(b=>{
-b.classList.remove("active-link");
-});
-
-event.target.classList.add("active-link");
-
-window.scrollTo(0,0);
-
+    document.querySelectorAll('section,header').forEach(el=>el.style.display='none');
+    document.getElementById(id).style.display='block';
 }
-
 
 function updateCities(){
-
-const c=country.value;
-city.innerHTML="<option disabled selected>SELECT</option>";
-
-subCityGroup.classList.add("hidden");
-counterBox.classList.add("hidden");
-
-if(locations[c]){
-
-Object.keys(locations[c]).forEach(x=>{
-city.add(new Option(x,x));
-});
-
+    const country=document.getElementById('country').value;
+    const citySel=document.getElementById('city');
+    citySel.innerHTML='<option value="" disabled selected>SELECT</option>';
+    document.getElementById('subCityGroup').classList.add('hidden');
+    document.getElementById('counterBox').classList.add('hidden');
+    if(locations[country]) Object.keys(locations[country]).forEach(city=>citySel.add(new Option(city,city)));
 }
-
-}
-
 
 function updateSubCities(){
-
-const arr=locations[country.value][city.value];
-
-subCity.innerHTML="<option disabled selected>SELECT</option>";
-
-arr.forEach(a=>{
-subCity.add(new Option(a,a));
-});
-
-subCityGroup.classList.remove("hidden");
-
+    const country=document.getElementById('country').value;
+    const city=document.getElementById('city').value;
+    const subCitySel=document.getElementById('subCity');
+    const group=document.getElementById('subCityGroup');
+    const areas=locations[country][city];
+    if(areas && areas.length>0){
+        subCitySel.innerHTML='<option value="" disabled selected>SELECT AREA</option>';
+        areas.forEach(a=>subCitySel.add(new Option(a,a)));
+        group.classList.remove('hidden');
+    } else group.classList.add('hidden');
 }
-
 
 async function checkSpots(){
-
-if(city.value==="Addis Ababa" && subCity.value){
-
-counterBox.classList.remove("hidden");
-
-const r=await fetch(`${SHEETDB_API}/search?City=${city.value}&Location=${subCity.value}`);
-const d=await r.json();
-
-const left=LIMIT-d.length;
-
-spotsLeft.innerText=left>0?left:0;
-
-if(left<=0){
-subBtn.disabled=true;
-subBtn.innerText="FULL";
-}else{
-subBtn.disabled=false;
-subBtn.innerText="CONFIRM REGISTRATION";
+    const city=document.getElementById('city').value;
+    const spot=document.getElementById('subCity').value;
+    const counter=document.getElementById('counterBox');
+    const btn=document.getElementById('subBtn');
+    if(city==="Addis Ababa" && spot){
+        counter.classList.remove('hidden');
+        try{
+            const resp=await fetch(`${SHEETDB_API}/search?City=${city}&Spot=${spot}`);
+            const data=await resp.json();
+            const remaining=LIMIT_PER_SPOT-data.length;
+            document.getElementById('spotsLeft').innerText=remaining>0?remaining:0;
+            if(remaining<=0){btn.disabled=true; btn.innerText="LOCATION FULL"; btn.style.backgroundColor="#444";}
+            else {btn.disabled=false; btn.innerText="CONFIRM REGISTRATION"; btn.style.backgroundColor="#FCA311";}
+        } catch(e){console.error(e);}
+    }
 }
 
-}
-
-}
-
-
-regForm.onsubmit=async e=>{
-
-e.preventDefault();
-
-subBtn.innerText="PROCESSING...";
-
-const data={
-Name:name.value,
-Email:email.value,
-Phone:phone.value,
-Country:country.value,
-City:city.value,
-Location:subCity.value||"General",
-"Registration Date":new Date().toLocaleDateString(),
-"Registration Time":new Date().toLocaleTimeString()
+document.getElementById('regForm').onsubmit=async function(e){
+    e.preventDefault();
+    const btn=document.getElementById('subBtn');
+    const oldText=btn.innerText;
+    btn.innerText="PROCESSING...";
+    const formData={
+        "Name":document.getElementById('name').value,
+        "Email":document.getElementById('email').value,
+        "Phone":document.getElementById('phone').value,
+        "Country":document.getElementById('country').value,
+        "City":document.getElementById('city').value,
+        "Location":document.getElementById('subCity').value||"General",
+        "Registration Date":new Date().toLocaleDateString(),
+        "Registration Time":new Date().toLocaleTimeString()
+    };
+    try{
+        await fetch(SHEETDB_API,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({data:[formData]})
+        });
+        const msg=`Hello! I just registered for Bible & Coffee.%0A%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Location}`;
+        window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+        alert("Registration Submitted Successfully!");
+        btn.innerText=oldText;
+        document.getElementById('regForm').reset();
+        checkSpots();
+    } catch(e){alert("Submission failed. Please try again."); btn.innerText=oldText;}
 };
-
-await fetch(SHEETDB_API,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({data:[data]})
-});
-
-window.open(
-`https://wa.me/${WHATSAPP_NUM}?text=Registered:%20${data.Name}`,
-"_blank"
-);
-
-alert("Registered!");
-
-regForm.reset();
-counterBox.classList.add("hidden");
-subBtn.innerText="Confirm Registration";
-
-};
-
 </script>
 
 </body>

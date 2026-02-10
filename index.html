@@ -1,418 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible & Coffee</title>
 
-<title>Bible & Coffee | Global</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+    }
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
+    header {
+      background: #3b2f2f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
 
-<style>
+    nav button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      background: #c19a6b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-html{scroll-behavior:smooth;}
+    nav button:hover {
+      background: #a67c52;
+    }
 
-body{
-font-family:Inter,sans-serif;
-background:#0a0a0a;
-color:white;
-margin:0;
-}
+    section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-h1,h2{
-font-family:Oswald,sans-serif;
-text-transform:uppercase;
-}
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-/* HERO */
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to right, #3b2f2f, #6f4e37);
+      color: white;
+    }
 
-.hero{
-background:
-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),
-url('hero.jpeg');
-background-size:cover;
-background-position:center;
-min-height:100vh;
-display:flex;
-align-items:center;
-}
+    .hero h1 {
+      font-size: 2.5em;
+    }
 
-/* NAV */
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+    }
 
-nav{
-background:#000;
-border-bottom:1px solid rgba(255,255,255,.1);
-position:fixed;
-top:0;
-width:100%;
-z-index:1000;
-}
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #3b2f2f;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.nav{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:15px;
-overflow-x:auto;
-}
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-.nav button{
-background:none;
-border:none;
-color:#777;
-font-weight:700;
-font-size:11px;
-letter-spacing:1px;
-cursor:pointer;
-text-transform:uppercase;
-}
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-.nav .active{
-color:#FCA311;
-}
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
 
-/* BUTTONS */
+    /* FORM */
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-.btn{
-background:linear-gradient(135deg,#FCA311,#ffd166);
-color:black;
-font-weight:900;
-padding:16px;
-border-radius:8px;
-letter-spacing:2px;
-font-size:12px;
-width:100%;
-border:none;
-transition:.3s;
-box-shadow:0 5px 20px rgba(252,163,17,.4);
-}
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
 
-.btn:hover{
-transform:translateY(-3px);
-box-shadow:0 10px 30px rgba(252,163,17,.6);
-}
+    form button {
+      width: 100%;
+      padding: 12px;
+      background: #6f4e37;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+    }
 
-.btn-outline{
-border:2px solid #FCA311;
-color:#FCA311;
-background:none;
-font-weight:800;
-padding:16px;
-border-radius:8px;
-letter-spacing:2px;
-font-size:12px;
-width:100%;
-transition:.3s;
-}
+    /* MAGAZINE */
+    .mag-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-.btn-outline:hover{
-background:#FCA311;
-color:black;
-}
+    .mag-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 18px;
+      background: #3b2f2f;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+    }
 
-/* SECTIONS */
-
-section,header{
-padding:120px 20px 80px;
-max-width:1200px;
-margin:auto;
-display:none;
-text-align:center;
-}
-
-#home,#about{
-display:block;
-}
-
-.card{
-background:#111;
-border:1px solid rgba(255,255,255,.1);
-border-radius:10px;
-overflow:hidden;
-display:flex;
-flex-direction:column;
-}
-
-</style>
+    footer {
+      background: #3b2f2f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<header>
+  <h1>Bible & Coffee</h1>
+  <p>Where Faith Meets Fellowship</p>
 
-<nav>
-<div class="nav">
-<button onclick="go('home',this)" class="active">Home</button>
-<button onclick="go('magazine',this)">Magazine</button>
-<button onclick="go('events',this)">Events</button>
-<button onclick="go('merch',this)">Merch</button>
-<button onclick="go('join',this)">Join</button>
-</div>
-</nav>
-
-
-<!-- HERO -->
-
-<header id="home" class="hero">
-
-<div class="text-center lg:text-right w-full px-6 lg:px-24">
-
-<h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
-COFFEE MEETS<br>
-<span class="text-[#FCA311]">THE WORD</span>
-</h1>
-
-<p class="text-white/60 max-w-md ml-auto mb-8">
-Where Scripture, community, and faith meet around the table.
-</p>
-
-<div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
-
-<button onclick="go('magazine')" class="btn">
-Weekly Magazine
-</button>
-
-<button onclick="go('merch')" class="btn-outline">
-View Merch
-</button>
-
-</div>
-
-<div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
-<i data-lucide="instagram"></i>
-<i data-lucide="facebook"></i>
-<i data-lucide="youtube"></i>
-<i data-lucide="mail"></i>
-</div>
-
-</div>
-
+  <nav>
+    <button onclick="scrollToSection('home')">Home</button>
+    <button onclick="scrollToSection('about')">About</button>
+    <button onclick="scrollToSection('magazine')">Magazine</button>
+    <button onclick="scrollToSection('merch')">Merch</button>
+    <button onclick="scrollToSection('register')">Register</button>
+  </nav>
 </header>
 
 
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Coffee Meets Scripture</h1>
+  <p>A place to connect, grow, and walk with Christ together.</p>
+  <button onclick="scrollToSection('register')">Join Us</button>
+</section>
+
+
 <!-- ABOUT -->
-
 <section id="about">
+  <h2>Who We Are</h2>
 
-<h2 class="text-4xl font-bold text-[#FCA311] mb-6">
-Who We Are
-</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Our Vision</h3>
+      <p>To see lives transformed through Christ-centered community.</p>
+    </div>
 
-<p class="max-w-3xl mx-auto text-white/70 leading-relaxed mb-10">
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>Creating safe spaces for honest conversations around Scripture.</p>
+    </div>
 
-Bible & Coffee is a global movement bringing people together
-around God’s Word, honest conversation, and faith in Jesus Christ.
-
-From cafés to homes, we believe revival begins at the table.
-
-</p>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<div class="card p-6">
-<h3 class="font-bold mb-2">Vision</h3>
-<p class="text-white/60 text-sm">
-Lives transformed through Scripture.
-</p>
-</div>
-
-<div class="card p-6">
-<h3 class="font-bold mb-2">Mission</h3>
-<p class="text-white/60 text-sm">
-Connect people to Christ.
-</p>
-</div>
-
-<div class="card p-6">
-<h3 class="font-bold mb-2">Heart</h3>
-<p class="text-white/60 text-sm">
-John 4:14 — Living Water.
-</p>
-</div>
-
-</div>
-
+    <div class="card">
+      <h3>Our Goal</h3>
+      <p>Raising disciples who live the Gospel daily.</p>
+    </div>
+  </div>
 </section>
 
 
 <!-- MAGAZINE -->
-
 <section id="magazine">
+  <h2>Magazine</h2>
 
-<h2 class="text-4xl font-bold text-[#FCA311] mb-8">
-Weekly Magazine
-</h2>
-
-<p class="text-white/60 mb-10">
-Fresh devotionals every week.
-</p>
-
-<div id="magGrid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
-
-</section>
-
-
-<!-- EVENTS -->
-
-<section id="events">
-
-<h2 class="text-4xl font-bold text-[#FCA311] mb-6">Events</h2>
-
-<p class="text-2xl tracking-[10px] text-white/20 py-20">
-COMING SOON
-</p>
-
+  <div class="grid">
+    <div class="mag-card">
+      <h3>Issue #28</h3>
+      <p>Upper Room Edition</p>
+      <p>Downloads: <span id="count-mag28">0</span></p>
+      <a href="magazine28.pdf" download onclick="countDownload('mag28')">Download PDF</a>
+    </div>
+  </div>
 </section>
 
 
 <!-- MERCH -->
-
 <section id="merch">
+  <h2>Merchandise</h2>
 
-<h2 class="text-4xl font-bold mb-10">Merch</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<img src="merch1.jpeg" class="rounded h-80 object-cover">
-<img src="merch2.jpeg" class="rounded h-80 object-cover">
-<img src="merch3.jpeg" class="rounded h-80 object-cover">
-<img src="merch4.jpeg" class="rounded h-80 object-cover">
-<img src="merch5.jpeg" class="rounded h-80 object-cover">
-<img src="merch6.jpeg" class="rounded h-80 object-cover">
-
-</div>
-
+  <div class="grid">
+    <div class="card"><img src="merch1.jpeg"><p>Merch 1</p></div>
+    <div class="card"><img src="merch2.jpeg"><p>Merch 2</p></div>
+    <div class="card"><img src="merch3.jpeg"><p>Merch 3</p></div>
+    <div class="card"><img src="merch4.jpeg"><p>Merch 4</p></div>
+    <div class="card"><img src="merch5.jpeg"><p>Merch 5</p></div>
+    <div class="card"><img src="merch6.jpeg"><p>Merch 6</p></div>
+  </div>
 </section>
 
 
-<!-- JOIN -->
+<!-- REGISTER -->
+<section id="register">
+  <h2>Register</h2>
 
-<section id="join">
+  <form id="regForm">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="text" placeholder="City" required>
+    <textarea placeholder="Why do you want to join?"></textarea>
 
-<h2 class="text-4xl font-bold text-[#FCA311] mb-8">
-Join Us
-</h2>
+    <button type="submit">Submit</button>
+  </form>
 
-<p class="text-white/60 mb-10">
-Be part of the movement.
-</p>
-
-<a href="https://wa.me/251910884585" class="btn max-w-md mx-auto block">
-Contact on WhatsApp
-</a>
-
+  <p id="regMsg" style="text-align:center"></p>
 </section>
 
 
-<!-- SCRIPT -->
+<!-- ADMIN -->
+<section id="admin" style="display:none">
+  <h2>Admin Panel</h2>
+  <div id="adminData"></div>
+</section>
+
+
+<footer>
+  <p>© 2026 Bible & Coffee Fridays</p>
+</footer>
+
 
 <script>
 
-lucide.createIcons();
+/* SCROLL */
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
 
-/* NAV */
 
-function go(id,btn){
+/* DOWNLOAD COUNTER */
+let downloads = JSON.parse(localStorage.getItem('downloads') || '{}');
 
-document.querySelectorAll("section,header").forEach(e=>{
-e.style.display="none";
+function countDownload(id) {
+  if (!downloads[id]) downloads[id] = 0;
+  downloads[id]++;
+  localStorage.setItem('downloads', JSON.stringify(downloads));
+  updateCounts();
+}
+
+function updateCounts() {
+  document.getElementById('count-mag28').innerText = downloads['mag28'] || 0;
+}
+
+
+/* REGISTER */
+let registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
+
+const form = document.getElementById('regForm');
+const msg = document.getElementById('regMsg');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const data = {
+    name: form[0].value,
+    email: form[1].value,
+    city: form[2].value,
+    reason: form[3].value,
+    date: new Date().toLocaleString()
+  };
+
+  registrations.push(data);
+  localStorage.setItem('registrations', JSON.stringify(registrations));
+
+  msg.innerText = 'Thank you for registering!';
+  form.reset();
 });
 
-document.getElementById(id).style.display="block";
 
-document.querySelectorAll(".nav button").forEach(b=>{
-b.classList.remove("active");
-});
+/* ADMIN ACCESS */
+const ADMIN_PASS = "admin123";
 
-if(btn) btn.classList.add("active");
+function adminLogin() {
+  const pass = prompt("Enter admin password:");
 
-window.scrollTo(0,0);
-
+  if (pass === ADMIN_PASS) {
+    document.getElementById('admin').style.display = 'block';
+    loadAdmin();
+  } else {
+    alert("Wrong password");
+  }
 }
 
-/* MAGAZINE DATA */
+function loadAdmin() {
+  const box = document.getElementById('adminData');
+  box.innerHTML = '';
 
-const mags=[
-{
-id:"m28",
-title:"Bible & Coffee Weekly",
-date:"Feb 2026",
-cover:"merch1.jpeg",
-pdf:"magazine28.pdf"
-}
-];
-
-let counts=
-JSON.parse(localStorage.getItem("dl")||"{}");
-
-function save(){
-localStorage.setItem("dl",JSON.stringify(counts));
+  registrations.forEach((r,i) => {
+    box.innerHTML += `
+      <div class="card">
+        <p><b>${i+1}. ${r.name}</b></p>
+        <p>${r.email}</p>
+        <p>${r.city}</p>
+        <p>${r.reason}</p>
+        <small>${r.date}</small>
+      </div>
+    `;
+  });
 }
 
-function plus(id){
 
-counts[id]=(counts[id]||0)+1;
-save();
+/* INIT */
+updateCounts();
 
-document.getElementById("c"+id).innerText=
-counts[id];
-
-}
-
-/* LOAD MAG */
-
-function load(){
-
-const g=document.getElementById("magGrid");
-
-g.innerHTML="";
-
-mags.forEach(m=>{
-
-const n=counts[m.id]||0;
-
-const d=document.createElement("div");
-
-d.className="card";
-
-d.innerHTML=`
-
-<img src="${m.cover}"
-class="h-64 object-cover">
-
-<div class="p-5 flex flex-col grow">
-
-<h3 class="font-bold mb-1">${m.title}</h3>
-
-<p class="text-white/50 text-sm mb-2">${m.date}</p>
-
-<p class="text-xs text-white/40 mb-4">
-Downloads:
-<span id="c${m.id}">${n}</span>
-</p>
-
-<a href="${m.pdf}"
-target="_blank"
-onclick="plus('${m.id}')"
-class="btn mt-auto text-center">
-
-Download
-
-</a>
-
-</div>
-`;
-
-g.appendChild(d);
-
-});
-
-}
-
-document.addEventListener("DOMContentLoaded",load);
+// Type "adminLogin()" in browser console to access admin
 
 </script>
 

@@ -7,25 +7,28 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
 html{scroll-behavior:smooth;}
 body{font-family:'Poppins',sans-serif;background:#0a0a0a;color:white;margin:0;}
+
 /* NAV */
 .glass-nav{background:rgba(0,0,0,.95);border-bottom:1px solid rgba(255,255,255,.1);position:fixed;top:0;width:100%;z-index:1000;padding:8px 12px;}
 .nav-links{display:flex;justify-content:flex-end;gap:10px;overflow-x:auto;}
 .nav-links button{font-size:12px;font-weight:700;color:#aaa;background:none;border:2px solid #FCA311;padding:6px 14px;border-radius:6px;white-space:nowrap;cursor:pointer;transition:.3s;}
 .nav-links button:hover{background:#FCA311;color:black;}
 .active-link{background:#FCA311;color:black;}
+
 /* HERO */
 .hero-bg{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),url('hero.jpeg');background-size:cover;background-position:center;min-height:100vh;display:flex;align-items:center;justify-content:center;}
 .hero-inner{max-width:1200px;width:100%;padding:20px;display:grid;grid-template-columns:1fr;gap:40px;text-align:center;}
+
 /* Vision */
 .vision-box{text-align:left;background:rgba(0,0,0,.6);padding:25px;border-left:4px solid #FCA311;border-radius:6px;}
 .vision-box h3{color:#FCA311;font-size:22px;font-weight:700;margin-bottom:10px;}
 .vision-box p{color:#ccc;line-height:1.6;font-size:15px;}
+
 /* Hero Text */
 .hero-title{font-family:'Playfair Display',serif;font-size:2.6rem;font-style:italic;line-height:1.2;margin:0;animation:fadeUp 1s ease forwards;opacity:0;}
 .hero-title span{color:#FCA311;}
@@ -34,14 +37,18 @@ body{font-family:'Poppins',sans-serif;background:#0a0a0a;color:white;margin:0;}
 .social-icons a{color:white;transition:.3s;}
 .social-icons a:hover{color:#FCA311;transform:scale(1.2);}
 .tiktok{width:22px;height:22px;fill:currentColor;}
+
 /* SECTIONS */
 section{display:none;padding:120px 20px 80px;max-width:1200px;margin:auto;text-align:center;}
 #home,#join{display:block;}
+
 /* MAG */
 .mag-preview{max-width:400px;margin:auto;}
 .mag-preview img{width:100%;border-radius:8px;}
+
 /* ANIM */
 @keyframes fadeUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:none;}}
+
 /* DESKTOP */
 @media(min-width:768px){
 .hero-inner{grid-template-columns:1fr 1fr;text-align:right;align-items:center;}
@@ -52,6 +59,7 @@ section{display:none;padding:120px 20px 80px;max-width:1200px;margin:auto;text-a
 }
 </style>
 </head>
+
 <body>
 
 <!-- NAV -->
@@ -68,26 +76,13 @@ section{display:none;padding:120px 20px 80px;max-width:1200px;margin:auto;text-a
 <!-- HERO -->
 <header id="home" class="hero-bg">
 <div class="hero-inner">
-<!-- VISION -->
 <div class="vision-box">
 <h3>Who We Are</h3>
-<p>
-Bible & Coffee is a global movement where faith, community, and conversation meet.
-We create safe spaces for people to grow spiritually,
-connect deeply, and walk together in Christ.
-</p>
-<p class="mt-3">
-Our vision is simple:
-Build disciples. Build friendships. Build purpose.
-</p>
+<p>Bible & Coffee is a global movement where faith, community, and conversation meet. We create safe spaces for people to grow spiritually, connect deeply, and walk together in Christ.</p>
+<p class="mt-3">Our vision is simple: Build disciples. Build friendships. Build purpose.</p>
 </div>
-
-<!-- HERO TEXT -->
 <div>
-<h1 class="hero-title">
-COFFEE MEETS<br>
-<span>THE WORD.</span>
-</h1>
+<h1 class="hero-title">COFFEE MEETS<br><span>THE WORD.</span></h1>
 <p class="hero-motto">Thank God It’s Friday!</p>
 <div class="social-icons">
 <a href="#"><i data-lucide="instagram"></i></a>
@@ -95,9 +90,7 @@ COFFEE MEETS<br>
 <a href="#"><i data-lucide="youtube"></i></a>
 <a href="#"><i data-lucide="mail"></i></a>
 <a href="#">
-<svg class="tiktok" viewBox="0 0 24 24">
-<path d="M21 8.5a6.5 6.5 0 01-6.5-6.5h-4v14a3.5 3.5 0 11-3.5-3.5c.4 0 .8.1 1.2.2v-4a7.5 7.5 0 105.3 7.2V9.7A10.4 10.4 0 0021 12V8.5z"/>
-</svg>
+<svg class="tiktok" viewBox="0 0 24 24"><path d="M21 8.5a6.5 6.5 0 01-6.5-6.5h-4v14a3.5 3.5 0 11-3.5-3.5c.4 0 .8.1 1.2.2v-4a7.5 7.5 0 105.3 7.2V9.7A10.4 10.4 0 0021 12V8.5z"/></svg>
 </a>
 </div>
 </div>
@@ -106,14 +99,10 @@ COFFEE MEETS<br>
 
 <!-- MAG -->
 <section id="magazine">
-<h2 class="text-4xl font-bold text-[#FCA311] mb-10">
-Weekly Magazine
-</h2>
+<h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
 <div class="mag-preview">
 <img src="megimage.jpeg">
-<a href="magazine.pdf" target="_blank" class="block bg-[#FCA311] text-black py-3 rounded mt-3 font-bold">
-Download PDF
-</a>
+<a href="magazine.pdf" target="_blank" class="block bg-[#FCA311] text-black py-3 rounded mt-3 font-bold">Download PDF</a>
 </div>
 </section>
 
@@ -132,9 +121,7 @@ Download PDF
 <img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
 <img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
 <img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
-<div class="flex items-center justify-center border border-dashed text-gray-500">
-NEW DROPS SOON
-</div>
+<div class="flex items-center justify-center border border-dashed text-gray-500">NEW DROPS SOON</div>
 </div>
 </section>
 
@@ -161,6 +148,7 @@ Live Availability: <span id="spotsLeft" class="text-white text-xl ml-2 font-blac
 <option value="USA">USA</option>
 <option value="Germany">Germany</option>
 </select>
+
 <select id="city" onchange="updateSubCities()" required class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none">
 <option value="" disabled selected>CITY</option>
 </select>
@@ -181,7 +169,7 @@ Confirm Registration
 
 <script>
 lucide.createIcons();
-/* SECTION SWITCH */
+
 function showSection(id){
 document.querySelectorAll('section,header').forEach(e=>e.style.display='none');
 document.getElementById(id).style.display='block';
@@ -189,82 +177,93 @@ document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('ac
 event.target.classList.add('active-link');
 }
 
-/* REGISTRATION LOGIC */
-const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-const ADMIN_PHONE = "251910884585";
-const MAX_CAPACITY = 8;
+// ===== REGISTRATION LOGIC =====
+const API_URL="https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+const ADMIN_PHONE="251910884585";
+const MAX_CAPACITY=8;
 
-const locs = {
-    "Ethiopia": { "Addis Ababa": ["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"], "Hawassa":["Center"], "Adama":["Center"] },
-    "USA": { "Dallas":["Downtown"] },
-    "Germany": { "Berlin":["Mitte"] }
+const locs={
+"Ethiopia":{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"],"Hawassa":["Center"],"Adama":["Center"]},
+"USA":{"Dallas":["Downtown"]},
+"Germany":{"Berlin":["Mitte"]}
 };
 
 function updateCities(){
-    const country = document.getElementById('country').value;
-    const citySel = document.getElementById('city');
-    citySel.innerHTML = '<option value="" disabled selected>CITY</option>';
-    document.getElementById('subCityGroup').classList.add('hidden');
-    document.getElementById('counterBox').classList.add('hidden');
-    if(locs[country]) Object.keys(locs[country]).forEach(c=>citySel.add(new Option(c.toUpperCase(),c)));
+const country=document.getElementById('country').value;
+const citySel=document.getElementById('city');
+citySel.innerHTML='<option value="" disabled selected>CITY</option>';
+document.getElementById('subCityGroup').classList.add('hidden');
+document.getElementById('counterBox').classList.add('hidden');
+if(locs[country]) Object.keys(locs[country]).forEach(c=>citySel.add(new Option(c.toUpperCase(),c)));
 }
 
 function updateSubCities(){
-    const country = document.getElementById('country').value;
-    const city = document.getElementById('city').value;
-    const sSel = document.getElementById('subCity');
-    const areas = locs[country][city];
-    if(areas && areas.length>0){
-        sSel.innerHTML = '<option value="" disabled selected>SELECT YOUR AREA / SPOT</option>';
-        areas.forEach(a=>sSel.add(new Option(a.toUpperCase(),a)));
-        document.getElementById('subCityGroup').classList.remove('hidden');
-        document.getElementById('counterBox').classList.add('hidden');
-    } else { document.getElementById('subCityGroup').classList.add('hidden'); }
+const country=document.getElementById('country').value;
+const city=document.getElementById('city').value;
+const sSel=document.getElementById('subCity');
+const areas=locs[country][city];
+if(areas && areas.length>0){
+sSel.innerHTML='<option value="" disabled selected>SELECT YOUR AREA / SPOT</option>';
+areas.forEach(a=>sSel.add(new Option(a.toUpperCase(),a)));
+document.getElementById('subCityGroup').classList.remove('hidden');
+document.getElementById('counterBox').classList.add('hidden');
+}else document.getElementById('subCityGroup').classList.add('hidden');
 }
 
 async function checkSpots(){
-    const spot = document.getElementById('subCity').value;
-    const btn = document.getElementById('subBtn');
-    const counterBox = document.getElementById('counterBox');
-    if(!spot) return;
-    counterBox.classList.remove('hidden');
-    try{
-        const res = await fetch(`${API_URL}/search?Spot=${spot}`);
-        const data = await res.json();
-        const remaining = MAX_CAPACITY - data.length;
-        document.getElementById('spotsLeft').innerText = remaining>0?remaining:0;
-        if(remaining<=0){ btn.disabled=true; btn.innerText="LOCATION FULL"; btn.classList.replace('bg-[#FCA311]','bg-gray-700'); }
-        else{ btn.disabled=false; btn.innerText="Confirm Registration"; btn.classList.replace('bg-gray-700','bg-[#FCA311]'); }
-    }catch(err){ console.error("Error fetching spots:",err); }
+const location=document.getElementById('subCity').value;
+const btn=document.getElementById('subBtn');
+const counterBox=document.getElementById('counterBox');
+if(!location) return;
+counterBox.classList.remove('hidden');
+try{
+const res=await fetch(`${API_URL}/search?Location=${location}`);
+const data=await res.json();
+const remaining=MAX_CAPACITY-data.length;
+document.getElementById('spotsLeft').innerText=remaining>0?remaining:0;
+if(remaining<=0){
+btn.disabled=true;
+btn.innerText="LOCATION FULL";
+btn.classList.replace('bg-[#FCA311]','bg-gray-700');
+}else{
+btn.disabled=false;
+btn.innerText="Confirm Registration";
+btn.classList.replace('bg-gray-700','bg-[#FCA311]');
+}
+}catch(err){console.error("Error fetching spots:",err);}
 }
 
-document.getElementById('regForm').onsubmit = async (e)=>{
-    e.preventDefault();
-    const btn = document.getElementById('subBtn');
-    btn.innerText="SYNCING...";
-    btn.disabled=true;
-    const payload={
-        Name:document.getElementById('name').value,
-        Email:document.getElementById('email').value,
-        Phone:document.getElementById('phone').value,
-        Country:document.getElementById('country').value,
-        City:document.getElementById('city').value,
-        Spot:document.getElementById('subCity').value,
-        "Registration Date":new Date().toLocaleDateString(),
-        "Registration Time":new Date().toLocaleTimeString()
-    };
-    try{
-        await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data:[payload]})});
-        const waText=`Bible %26 Coffee Registration%0AName: ${payload.Name}%0ALocation: ${payload.Spot}`;
-        window.open(`https://wa.me/${ADMIN_PHONE}?text=${waText}`,'_blank');
-        await checkSpots();
-        alert("Registered! Your spot is secured.");
-        document.getElementById('regForm').reset();
-        document.getElementById('subCityGroup').classList.add('hidden');
-        document.getElementById('counterBox').classList.add('hidden');
-        btn.innerText="Confirm Registration";
-        btn.disabled=false;
-    }catch(err){ alert("Error saving data."); btn.disabled=false; }
+document.getElementById('regForm').onsubmit=async(e)=>{
+e.preventDefault();
+const btn=document.getElementById('subBtn');
+btn.innerText="SYNCING...";
+btn.disabled=true;
+const payload={
+Name:document.getElementById('name').value,
+Email:document.getElementById('email').value,
+Phone:document.getElementById('phone').value,
+Country:document.getElementById('country').value,
+City:document.getElementById('city').value,
+Location:document.getElementById('subCity').value,
+"Registration Date":new Date().toLocaleDateString(),
+"Registration Time":new Date().toLocaleTimeString()
+};
+try{
+await fetch(API_URL,{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({data:[payload]})
+});
+const waText=`Bible %26 Coffee Registration%0AName: ${payload.Name}%0ALocation: ${payload.Location}`;
+window.open(`https://wa.me/${ADMIN_PHONE}?text=${waText}`,'_blank');
+await checkSpots();
+alert("Registered! Your spot is secured.");
+document.getElementById('regForm').reset();
+document.getElementById('subCityGroup').classList.add('hidden');
+document.getElementById('counterBox').classList.add('hidden');
+btn.innerText="Confirm Registration";
+btn.disabled=false;
+}catch(err){alert("Error saving data."); btn.disabled=false;}
 };
 </script>
 

@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
-
 html{scroll-behavior:smooth;}
 
 body{
@@ -22,7 +21,6 @@ margin:0;
 }
 
 /* NAV */
-
 .glass-nav{
 background:rgba(0,0,0,.95);
 border-bottom:1px solid rgba(255,255,255,.1);
@@ -64,7 +62,6 @@ color:black;
 }
 
 /* HERO */
-
 .hero-bg{
 background:
 linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
@@ -88,7 +85,6 @@ text-align:center;
 }
 
 /* Vision */
-
 .vision-box{
 text-align:left;
 background:rgba(0,0,0,.6);
@@ -111,7 +107,6 @@ font-size:15px;
 }
 
 /* Hero Text */
-
 .hero-title{
 font-family:'Playfair Display',serif;
 font-size:2.6rem;
@@ -161,7 +156,6 @@ fill:currentColor;
 }
 
 /* SECTIONS */
-
 section{
 display:none;
 padding:120px 20px 80px;
@@ -170,12 +164,9 @@ margin:auto;
 text-align:center;
 }
 
-#home{
-display:block;
-}
+#home,#join{display:block;}
 
 /* MAG */
-
 .mag-preview{max-width:400px;margin:auto;}
 
 .mag-preview img{
@@ -183,24 +174,13 @@ width:100%;
 border-radius:8px;
 }
 
-/* JOIN SECTION FIX */
-
-#join{
-background:
-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9));
-min-height:100vh;
-display:none;
-}
-
 /* ANIM */
-
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(25px);}
 to{opacity:1;transform:none;}
 }
 
 /* DESKTOP */
-
 @media(min-width:768px){
 
 .hero-inner{
@@ -225,187 +205,137 @@ text-align:left;
 <body>
 
 <!-- NAV -->
-
 <nav class="glass-nav">
 <div class="nav-links">
-
-<button onclick="showSection('home', this)" class="active-link">Home</button>
-<button onclick="showSection('magazine', this)">Magazine</button>
-<button onclick="showSection('events', this)">Events</button>
-<button onclick="showSection('merch', this)">Merch</button>
-<button onclick="showSection('join', this)">Join</button>
-
+<button onclick="showSection('home')" class="active-link">Home</button>
+<button onclick="showSection('magazine')">Magazine</button>
+<button onclick="showSection('events')">Events</button>
+<button onclick="showSection('merch')">Merch</button>
+<button onclick="showSection('join')">Join</button>
 </div>
 </nav>
 
 <!-- HERO -->
-
 <header id="home" class="hero-bg">
-
 <div class="hero-inner">
 
 <!-- VISION -->
-
 <div class="vision-box">
-
 <h3>Who We Are</h3>
-
 <p>
 Bible & Coffee is a global movement where faith,
 community, and conversation meet.
 We create safe spaces for people to grow spiritually,
 connect deeply, and walk together in Christ.
 </p>
-
 <p class="mt-3">
 Our vision is simple:
 Build disciples. Build friendships. Build purpose.
 </p>
-
 </div>
 
 <!-- HERO TEXT -->
-
 <div>
-
 <h1 class="hero-title">
 COFFEE MEETS<br>
 <span>THE WORD.</span>
 </h1>
-
 <p class="hero-motto">Thank God It’s Friday!</p>
-
 <div class="social-icons">
-
 <a href="#"><i data-lucide="instagram"></i></a>
 <a href="#"><i data-lucide="facebook"></i></a>
 <a href="#"><i data-lucide="youtube"></i></a>
 <a href="#"><i data-lucide="mail"></i></a>
-
 <a href="#">
 <svg class="tiktok" viewBox="0 0 24 24">
 <path d="M21 8.5a6.5 6.5 0 01-6.5-6.5h-4v14a3.5 3.5 0 11-3.5-3.5c.4 0 .8.1 1.2.2v-4a7.5 7.5 0 105.3 7.2V9.7A10.4 10.4 0 0021 12V8.5z"/>
 </svg>
 </a>
-
+</div>
 </div>
 
 </div>
-
-</div>
-
 </header>
 
 <!-- MAG -->
-
 <section id="magazine">
-
 <h2 class="text-4xl font-bold text-[#FCA311] mb-10">
 Weekly Magazine
 </h2>
-
 <div class="mag-preview">
-
 <img src="megimage.jpeg">
-
 <a href="magazine.pdf" target="_blank"
 class="block bg-[#FCA311] text-black py-3 rounded mt-3 font-bold">
 Download PDF
 </a>
-
 </div>
-
 </section>
 
 <!-- EVENTS -->
-
 <section id="events">
-
 <h2 class="text-4xl font-bold text-[#FCA311] mb-4">
 Events
 </h2>
-
 <p class="text-2xl tracking-[10px] text-white/20 py-20">
 COMING SOON
 </p>
-
 </section>
 
 <!-- MERCH -->
-
 <section id="merch">
-
 <h2 class="text-4xl font-bold mb-10">The Merch</h2>
-
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
 <img src="merch2.jpeg" class="w-full h-80 object-cover rounded">
 <img src="merch3.jpeg" class="w-full h-80 object-cover rounded">
 <img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
 <img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
 <img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
-
 <div class="flex items-center justify-center border border-dashed text-gray-500">
 NEW DROPS SOON
 </div>
-
 </div>
-
 </section>
 
-<!-- JOIN -->
-
-<section id="join" class="py-24 px-6">
-
-<div class="max-w-md mx-auto">
-
+<!-- JOIN (FIXED) -->
+<section id="join" class="py-24 px-6 bg-[#0a0a0a] min-h-screen">
+<div class="max-w-md mx-auto border border-[#222] rounded-xl p-8 bg-black/70 shadow-lg">
 <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] uppercase">
 Join Movement
 </h2>
-
-<form id="regForm" class="space-y-4">
-
-<input required placeholder="Full Name"
-class="w-full bg-[#151515] p-4 rounded">
-
-<input required type="email" placeholder="Email"
-class="w-full bg-[#151515] p-4 rounded">
-
-<input required placeholder="Phone"
-class="w-full bg-[#151515] p-4 rounded">
-
-<button type="submit"
-class="w-full bg-[#FCA311] text-black py-4 rounded font-bold">
+<form id="regForm" class="space-y-5">
+<!-- NAME -->
+<div>
+<label class="block text-xs text-[#FCA311] mb-1 font-bold uppercase">Full Name</label>
+<input type="text" required placeholder="Your full name" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+</div>
+<!-- EMAIL -->
+<div>
+<label class="block text-xs text-[#FCA311] mb-1 font-bold uppercase">Email</label>
+<input type="email" required placeholder="you@email.com" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+</div>
+<!-- PHONE -->
+<div>
+<label class="block text-xs text-[#FCA311] mb-1 font-bold uppercase">Phone</label>
+<input type="tel" required placeholder="+251..." class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+</div>
+<!-- BUTTON -->
+<button type="submit" class="w-full bg-[#FCA311] text-black py-4 rounded font-black uppercase tracking-wider hover:bg-white transition">
 Confirm Registration
 </button>
-
 </form>
-
 </div>
-
 </section>
 
 <script>
-
 lucide.createIcons();
 
-/* SECTION SWITCH FIXED */
-
-function showSection(id, btn){
-
-document
-.querySelectorAll('section,header')
-.forEach(e=>e.style.display='none');
-
+/* SECTION SWITCH */
+function showSection(id){
+document.querySelectorAll('section,header').forEach(e=>e.style.display='none');
 document.getElementById(id).style.display='block';
-
-document
-.querySelectorAll('.nav-links button')
-.forEach(b=>b.classList.remove('active-link'));
-
-btn.classList.add('active-link');
+document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));
+event.target.classList.add('active-link');
 }
-
 </script>
 
 </body>

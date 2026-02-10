@@ -6,14 +6,10 @@
 
 <title>Bible & Coffee | Global</title>
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -32,25 +28,25 @@ nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,.95);
-border-bottom:1px solid rgba(255,255,255,.1);
 z-index:999;
+background:#000;
+border-bottom:1px solid #222;
 }
 
 .nav-links{
 display:flex;
 justify-content:center;
-gap:16px;
+gap:18px;
 padding:14px;
 }
 
 .nav-links button{
-font-size:11px;
+color:#aaa;
+font-size:12px;
 font-weight:700;
 letter-spacing:1px;
-color:#aaa;
-background:none;
 border:none;
+background:none;
 cursor:pointer;
 transition:.3s;
 }
@@ -65,97 +61,78 @@ color:#FCA311;
 .hero{
 min-height:100vh;
 background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
-url('hero.jpeg');
+linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+url("hero.jpeg");
 background-size:cover;
 background-position:center;
+
 display:flex;
 align-items:center;
-justify-content:center;
+justify-content:flex-end;
+padding:80px 25px;
 }
 
 .hero-inner{
-max-width:1200px;
-width:100%;
-padding:40px 20px;
-display:grid;
-grid-template-columns:1fr;
-gap:40px;
-text-align:center;
+max-width:500px;
+text-align:right;
 }
 
-/* Vision */
-
-.vision{
-background:rgba(0,0,0,.6);
-padding:25px;
-border-left:4px solid #FCA311;
-border-radius:6px;
-text-align:left;
-}
-
-.vision h3{
-color:#FCA311;
-font-size:22px;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.vision p{
-color:#ccc;
-line-height:1.6;
-}
-
-/* Title */
-
-.hero-title{
+.hero h1{
 font-family:'Oswald',sans-serif;
 font-size:3rem;
-font-style:italic;
 line-height:1.1;
 }
 
-.hero-title span{
+.hero span{
 color:#FCA311;
 }
 
-.hero-motto{
-color:#FCA311;
-font-weight:600;
-margin-top:10px;
+.hero-btns{
+margin-top:25px;
+display:flex;
+justify-content:flex-end;
+gap:12px;
 }
 
-/* Buttons */
-
-.btn-gold{
+.btn-main{
 background:#FCA311;
 color:#000;
 font-weight:800;
-letter-spacing:2px;
-padding:14px;
-border-radius:4px;
-width:100%;
-border:none;
+padding:14px 24px;
+border-radius:5px;
+font-size:12px;
+letter-spacing:1px;
+transition:.3s;
+}
+
+.btn-main:hover{
+transform:translateY(-2px);
+background:#fff;
 }
 
 .btn-outline{
 border:2px solid #FCA311;
 color:#FCA311;
 font-weight:800;
-letter-spacing:2px;
-padding:14px;
-border-radius:4px;
-width:100%;
-background:transparent;
+padding:12px 22px;
+border-radius:5px;
+font-size:12px;
+letter-spacing:1px;
+transition:.3s;
 }
 
-/* Sections */
+.btn-outline:hover{
+background:#FCA311;
+color:#000;
+}
+
+/* SECTIONS */
 
 section{
 display:none;
-padding:120px 20px 80px;
 max-width:1200px;
 margin:auto;
+padding:110px 20px;
 text-align:center;
 }
 
@@ -164,39 +141,71 @@ text-align:center;
 display:block;
 }
 
-/* Form */
+/* MAG */
+
+.mag-box{
+max-width:700px;
+margin:auto;
+background:#111;
+padding:15px;
+border-radius:8px;
+border:1px solid #333;
+}
+
+.mag-box iframe{
+width:100%;
+height:450px;
+border:none;
+border-radius:6px;
+}
+
+/* FORM */
 
 input,select{
+width:100%;
 background:#151515;
 border:1px solid #333;
-color:#fff;
+color:white;
 padding:14px;
+border-radius:5px;
+margin-bottom:14px;
+}
+
+.submit-btn{
+background:#FCA311;
+color:black;
+font-weight:900;
+letter-spacing:2px;
+padding:16px;
+border-radius:6px;
 width:100%;
-border-radius:4px;
-margin-bottom:15px;
+transition:.3s;
 }
 
-.counter{
-background:rgba(252,163,17,.1);
-border:1px solid #FCA311;
-padding:14px;
-margin-bottom:20px;
-border-radius:4px;
-display:none;
+.submit-btn:hover{
+background:#fff;
+transform:scale(1.03);
 }
 
-/* Desktop */
+/* MOBILE */
 
-@media(min-width:768px){
+@media(max-width:768px){
+
+.hero{
+justify-content:center;
+text-align:center;
+}
 
 .hero-inner{
-grid-template-columns:1fr 1fr;
-text-align:right;
-align-items:center;
+text-align:center;
 }
 
-.hero-title{
-font-size:5rem;
+.hero-btns{
+justify-content:center;
+}
+
+.hero h1{
+font-size:2.3rem;
 }
 
 }
@@ -220,58 +229,31 @@ font-size:5rem;
 </div>
 </nav>
 
+
 <!-- HOME -->
 
 <header id="home" class="hero">
 
 <div class="hero-inner">
 
-<!-- Vision -->
-
-<div class="vision">
-
-<h3>Who We Are</h3>
-
-<p>
-Bible & Coffee is a global movement where faith,
-community, and conversation meet.
-</p>
-
-<p class="mt-3">
-Build disciples. Build friendships. Build purpose.
-</p>
-
-</div>
-
-<!-- Text -->
-
-<div>
-
-<h1 class="hero-title">
+<h1>
 COFFEE MEETS<br>
-<span>THE WORD.</span>
+<span>THE WORD</span>
 </h1>
 
-<p class="hero-motto">Thank God It’s Friday!</p>
+<p class="mt-3 text-[#FCA311] font-bold">
+Thank God It’s Friday
+</p>
 
-<div class="flex flex-col gap-3 max-w-xs ml-auto mt-6">
+<div class="hero-btns">
 
-<button onclick="showSection('magazine')" class="btn-gold">
-Weekly Magazine
+<button onclick="showSection('magazine')" class="btn-main">
+MAGAZINE
 </button>
 
-<button onclick="showSection('join')" class="btn-outline">
-Join Now
+<button onclick="showSection('merch')" class="btn-outline">
+MERCH
 </button>
-
-</div>
-
-<div class="flex justify-center lg:justify-end gap-6 mt-10 text-white/60">
-<i data-lucide="instagram"></i>
-<i data-lucide="facebook"></i>
-<i data-lucide="youtube"></i>
-<i data-lucide="mail"></i>
-</div>
 
 </div>
 
@@ -279,7 +261,8 @@ Join Now
 
 </header>
 
-<!-- MAGAZINE -->
+
+<!-- MAG -->
 
 <section id="magazine">
 
@@ -287,15 +270,19 @@ Join Now
 Weekly Magazine
 </h2>
 
-<p class="text-white/60 mb-6">
-Download latest edition
-</p>
+<div class="mag-box">
 
-<a href="megazine.pdf" download class="btn-gold max-w-xs mx-auto block">
+<iframe src="megazine.pdf"></iframe>
+
+<a href="megazine.pdf" download
+class="btn-main block mt-4 text-center">
 Download PDF
 </a>
 
+</div>
+
 </section>
+
 
 <!-- EVENTS -->
 
@@ -305,18 +292,19 @@ Download PDF
 Events
 </h2>
 
-<p class="text-2xl tracking-[10px] text-white/20 py-20">
+<p class="text-white/30 tracking-[6px] text-xl py-20">
 COMING SOON
 </p>
 
 </section>
 
+
 <!-- MERCH -->
 
 <section id="merch">
 
-<h2 class="text-4xl font-bold mb-10">
-Merch
+<h2 class="text-4xl font-bold mb-8">
+The Merch
 </h2>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -324,51 +312,50 @@ Merch
 <img src="merch1.jpeg" class="rounded">
 <img src="merch2.jpeg" class="rounded">
 <img src="merch3.jpeg" class="rounded">
+<img src="merch4.jpeg" class="rounded">
+<img src="merch5.jpeg" class="rounded">
+<img src="merch6.jpeg" class="rounded">
 
 </div>
 
 </section>
 
+
 <!-- JOIN -->
 
 <section id="join">
 
-<div class="max-w-md mx-auto">
-
-<h2 class="text-4xl font-bold italic text-[#FCA311] mb-8">
+<h2 class="text-4xl font-bold text-[#FCA311] mb-8">
 Join Movement
 </h2>
 
-<div id="counter" class="counter">
-Spots Left: <span id="spots">8</span>
-</div>
+<div class="max-w-md mx-auto">
 
 <form id="regForm">
 
 <input id="name" required placeholder="Full Name">
+
 <input id="email" type="email" required placeholder="Email">
+
 <input id="phone" required placeholder="Phone">
 
-<select id="country" required onchange="updateCities()">
+<select id="country" required>
 <option value="">Country</option>
 <option>Ethiopia</option>
 <option>USA</option>
 <option>Germany</option>
 </select>
 
-<select id="city" required onchange="updateAreas()">
+<select id="city" required>
 <option value="">City</option>
+<option>Addis Ababa</option>
+<option>Dallas</option>
+<option>Berlin</option>
 </select>
 
-<div id="areaBox" style="display:none">
+<input id="location" placeholder="Location / Area">
 
-<select id="location" onchange="checkSpots()">
-<option value="">Location</option>
-</select>
-
-</div>
-
-<button id="submitBtn" class="btn-gold mt-4">
+<button class="submit-btn" type="submit">
 Confirm Registration
 </button>
 
@@ -378,155 +365,41 @@ Confirm Registration
 
 </section>
 
+
 <!-- SCRIPT -->
 
 <script>
 
 lucide.createIcons();
 
-/* CONFIG */
-
-const API="https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-const LIMIT=8;
-
-/* LOCATIONS */
-
-const places={
-
-Ethiopia:{
-"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Old Airport"]
-},
-
-USA:{
-"Dallas":["Downtown"]
-},
-
-Germany:{
-"Berlin":["Mitte"]
-}
-
-};
-
 /* NAV */
 
 function showSection(id,btn){
 
-document.querySelectorAll('section,header')
-.forEach(e=>e.style.display='none');
+document.querySelectorAll('section,header').forEach(s=>{
+s.style.display='none';
+});
 
 document.getElementById(id).style.display='block';
 
 document.querySelectorAll('.nav-links button')
 .forEach(b=>b.classList.remove('active'));
 
-if(btn) btn.classList.add('active');
+btn.classList.add('active');
 
 window.scrollTo(0,0);
-
-lucide.createIcons();
 }
 
-/* CITIES */
+/* FORM */
 
-function updateCities(){
-
-const c=country.value;
-city.innerHTML='<option value="">City</option>';
-
-if(places[c]){
-Object.keys(places[c]).forEach(x=>{
-city.add(new Option(x,x));
-});
-}
-
-areaBox.style.display='none';
-}
-
-/* AREAS */
-
-function updateAreas(){
-
-const c=country.value;
-const ct=city.value;
-
-location.innerHTML='<option value="">Location</option>';
-
-if(places[c] && places[c][ct]){
-
-places[c][ct].forEach(a=>{
-location.add(new Option(a,a));
-});
-
-areaBox.style.display='block';
-}
-
-}
-
-/* SPOTS */
-
-async function checkSpots(){
-
-if(!location.value) return;
-
-counter.style.display='block';
-
-const r=await fetch(`${API}/search?Location=${location.value}`);
-const d=await r.json();
-
-const left=LIMIT-d.length;
-
-spots.innerText=Math.max(left,0);
-
-if(left<=0){
-submitBtn.disabled=true;
-submitBtn.innerText='FULL';
-}else{
-submitBtn.disabled=false;
-submitBtn.innerText='Confirm Registration';
-}
-
-}
-
-/* SUBMIT */
-
-regForm.addEventListener('submit',async e=>{
+document.getElementById('regForm')
+.addEventListener('submit',e=>{
 
 e.preventDefault();
 
-submitBtn.innerText='SENDING...';
-submitBtn.disabled=true;
+alert("Registration submitted 🙏");
 
-const data={
-
-Name:name.value,
-Email:email.value,
-Phone:phone.value,
-Country:country.value,
-City:city.value,
-Location:location.value,
-
-"Registration Date":new Date().toLocaleDateString(),
-"Registration Time":new Date().toLocaleTimeString()
-
-};
-
-await fetch(API,{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify({data:[data]})
-});
-
-window.open(`https://wa.me/251910884585?text=Registered:%20${data.Name}`,'_blank');
-
-alert('Registered successfully 🙏');
-
-regForm.reset();
-
-areaBox.style.display='none';
-counter.style.display='none';
-
-submitBtn.innerText='Confirm Registration';
-submitBtn.disabled=false;
+e.target.reset();
 
 });
 

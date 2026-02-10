@@ -12,340 +12,318 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
+
 html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #0a0a0a;
-    color: white;
-    margin: 0;
+    background:#0a0a0a;
+    color:white;
+    margin:0;
 }
 
-/* HERO */
+/* ---------------- HERO ---------------- */
 
-.hero-bg {
-    background: linear-gradient(rgba(0,0,0,0.85), rgba(10,10,10,1)), url('hero.jpeg');
-    background-size: cover;
-    background-position: center;
+.hero-bg{
+    background:
+    linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
+    url('hero.jpeg');
 
-    min-height: 100vh;
+    background-size:cover;
+    background-position:center;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height:100vh;
 
-    text-align: center;
-    padding: 0 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Hero container */
+.hero-inner{
+    width:100%;
+    max-width:1100px;
+    padding:0 20px;
+    text-align:center;
 }
 
 /* Title */
-
-.hero-title {
-    font-family: 'Playfair Display', serif;
-
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.15;
-
-    font-weight: 800;
-    letter-spacing: 2px;
-
-    margin: 0;
-
-    animation: fadeUp 1s ease forwards;
-    opacity: 0;
+.hero-title{
+    font-family:'Playfair Display',serif;
+    font-size:2.7rem;
+    line-height:1.2;
+    font-style:italic;
+    margin:0;
+    animation:fadeUp 1s ease forwards;
+    opacity:0;
 }
 
-.hero-title span {
-    color: #FCA311;
+.hero-title span{
+    color:#FCA311;
 }
 
 /* Motto */
+.hero-motto{
+    font-size:1.2rem;
+    color:#FCA311;
+    margin-top:10px;
+    font-weight:600;
 
-.hero-motto {
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    font-weight: 600;
-
-    color: #FCA311;
-
-    margin-top: 0.7rem;
-    letter-spacing: 1px;
-
-    animation: fadeUp 1s ease forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
+    animation:fadeUp 1s ease forwards;
+    animation-delay:.2s;
+    opacity:0;
 }
 
-/* Vision Box */
+/* Social */
+.social-icons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:20px;
 
-.vision-box {
-    margin-top: 2rem;
-
-    max-width: 600px;
-    padding: 1.5rem;
-
-    border: 1px dashed rgba(255,255,255,0.2);
-    border-radius: 10px;
-
-    color: rgba(255,255,255,0.7);
-    font-size: 0.95rem;
-
-    animation: fadeUp 1s ease forwards;
-    animation-delay: 0.4s;
-    opacity: 0;
+    animation:fadeUp 1s ease forwards;
+    animation-delay:.4s;
+    opacity:0;
 }
 
-/* NAV */
-
-.glass-nav {
-    background: rgba(0,0,0,0.95);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-
-    padding: 0.5rem 1rem;
+.social-icons a{
+    color:white;
+    transition:.3s;
 }
 
-.nav-links {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+.social-icons a:hover{
+    color:#FCA311;
+    transform:scale(1.2);
 }
 
-.nav-links button {
-    font-size: 13px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    color: #888;
-    background: none;
-
-    border: 2px solid #FCA311;
-
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-
-    cursor: pointer;
-
-    transition: all 0.3s ease;
+/* TikTok SVG */
+.tiktok{
+    width:22px;
+    height:22px;
+    fill:currentColor;
 }
 
-.nav-links button:hover {
-    background: #FCA311;
-    color: black;
+/* ---------------- NAV ---------------- */
+
+.glass-nav{
+    background:rgba(0,0,0,.95);
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+
+    padding:8px 10px;
 }
 
-.nav-links .active-link {
-    color: #FCA311;
+/* Mobile scroll nav */
+.nav-links{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+
+    overflow-x:auto;
+    scrollbar-width:none;
 }
 
-/* SOCIAL */
+.nav-links::-webkit-scrollbar{display:none;}
 
-.social-icons {
-    display: flex;
-    justify-content: center;
+.nav-links button{
 
-    gap: 1.2rem;
-    margin-top: 1.8rem;
+    font-size:12px;
+    font-weight:700;
 
-    animation: fadeUp 1s ease forwards;
-    animation-delay: 0.6s;
-    opacity: 0;
+    color:#aaa;
+    background:none;
+
+    border:2px solid #FCA311;
+
+    padding:6px 14px;
+    border-radius:6px;
+
+    white-space:nowrap;
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-.social-icons a {
-    color: white;
-    transition: all 0.3s;
+.nav-links button:hover{
+    background:#FCA311;
+    color:black;
 }
 
-.social-icons a:hover {
-    color: #FCA311;
-    transform: translateY(-3px);
+.active-link{
+    background:#FCA311;
+    color:black;
 }
 
-/* SECTIONS */
+/* ---------------- SECTIONS ---------------- */
 
-section {
-    display: none;
-
-    padding: 120px 20px 80px;
-
-    max-width: 1200px;
-    margin: auto;
-
-    text-align: center;
+section{
+    display:none;
+    padding:120px 20px 80px;
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
 }
 
-#home, #join {
-    display: block;
+#home,#join{display:block;}
+
+/* ---------------- MAG ---------------- */
+
+.mag-preview{
+    max-width:400px;
+    margin:auto;
 }
 
-/* MAG */
-
-.mag-preview {
-    max-width: 400px;
-    margin: auto;
+.mag-preview img{
+    width:100%;
+    border-radius:8px;
 }
 
-.mag-preview img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
+/* ---------------- ANIM ---------------- */
 
-/* ANIMATION */
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    to{
+        opacity:1;
+        transform:none;
     }
 }
 
-/* DESKTOP */
+/* ---------------- DESKTOP ---------------- */
 
-@media (min-width: 768px) {
+@media(min-width:768px){
 
-    .hero-bg {
-        align-items: flex-end;
-        text-align: right;
-        padding-right: 4rem;
+    .hero-inner{
+        text-align:right;
     }
 
-    .social-icons {
-        justify-content: flex-end;
+    .hero-title{
+        font-size:4rem;
     }
 
-    .vision-box {
-        margin-left: auto;
+    .hero-motto{
+        font-size:1.6rem;
+    }
+
+    .social-icons{
+        justify-content:flex-end;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- NAV -->
-
 <nav class="glass-nav">
-    <div class="nav-links">
-        <button onclick="showSection('home')" class="active-link">Home</button>
-        <button onclick="showSection('magazine')">Magazine</button>
-        <button onclick="showSection('events')">Events</button>
-        <button onclick="showSection('merch')">Merch</button>
-        <button onclick="showSection('join')">Join</button>
-    </div>
+<div class="nav-links">
+
+<button onclick="showSection('home')" class="active-link">Home</button>
+<button onclick="showSection('magazine')">Magazine</button>
+<button onclick="showSection('events')">Events</button>
+<button onclick="showSection('merch')">Merch</button>
+<button onclick="showSection('join')">Join</button>
+
+</div>
 </nav>
 
 <!-- HERO -->
-
 <header id="home" class="hero-bg">
 
-    <h1 class="hero-title">
-        COFFEE MEETS<br>
-        <span>THE WORD.</span>
-    </h1>
+<div class="hero-inner">
 
-    <p class="hero-motto">
-        Thank God It’s Friday!
-    </p>
+<h1 class="hero-title">
+COFFEE MEETS<br>
+<span>THE WORD.</span>
+</h1>
 
-    <!-- Vision Placeholder -->
+<p class="hero-motto">Thank God It’s Friday!</p>
 
-    <div class="vision-box">
-        ✨ Your Vision & Mission goes here.<br>
-        Replace this with your story, purpose, and calling.
-    </div>
+<div class="social-icons">
 
-    <!-- Social -->
+<a href="#"><i data-lucide="instagram"></i></a>
+<a href="#"><i data-lucide="facebook"></i></a>
+<a href="#"><i data-lucide="youtube"></i></a>
+<a href="#"><i data-lucide="mail"></i></a>
 
-    <div class="social-icons">
-        <a href="#"><i data-lucide="instagram"></i></a>
-        <a href="#"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="youtube"></i></a>
-        <a href="#"><i data-lucide="mail"></i></a>
-        <a href="#"><i data-lucide="music-2"></i></a> <!-- TikTok -->
-    </div>
+<!-- TikTok -->
+<a href="#">
+<svg class="tiktok" viewBox="0 0 24 24">
+<path d="M21 8.5a6.5 6.5 0 01-6.5-6.5h-4v14a3.5 3.5 0 11-3.5-3.5c.4 0 .8.1 1.2.2v-4a7.5 7.5 0 105.3 7.2V9.7A10.4 10.4 0 0021 12V8.5z"/>
+</svg>
+</a>
 
+</div>
+
+</div>
 </header>
 
 <!-- MAGAZINE -->
-
 <section id="magazine">
 
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-10">
-        Weekly Magazine
-    </h2>
+<h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
 
-    <div class="mag-preview">
+<div class="mag-preview">
 
-        <img src="megimage.jpeg">
+<img src="megimage.jpeg">
 
-        <a href="magazine.pdf" target="_blank"
-        class="w-full py-4 rounded inline-block mt-2 bg-[#FCA311] text-black font-bold">
-        Download PDF
-        </a>
+<a href="magazine.pdf" target="_blank"
+class="w-full bg-[#FCA311] text-black py-3 rounded block mt-3 font-bold">
+Download PDF
+</a>
 
-    </div>
-
+</div>
 </section>
 
 <!-- EVENTS -->
-
 <section id="events">
 
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">
-        Events
-    </h2>
+<h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
 
-    <p class="text-2xl tracking-[10px] text-white/20 py-20">
-        COMING SOON
-    </p>
+<p class="text-2xl tracking-[10px] text-white/20 py-20">
+COMING SOON
+</p>
 
 </section>
 
 <!-- MERCH -->
-
 <section id="merch">
 
-    <h2 class="text-4xl font-bold mb-10">
-        The Merch
-    </h2>
+<h2 class="text-4xl font-bold mb-10">The Merch</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <img src="merch2.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-        <img src="merch3.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-        <img src="merch4.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-        <img src="merch5.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-        <img src="merch6.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+<img src="merch2.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch3.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
 
-        <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">
-            NEW DROPS SOON
-        </div>
+<div class="flex items-center justify-center border border-dashed text-gray-500">
+NEW DROPS SOON
+</div>
 
-    </div>
-
+</div>
 </section>
 
 <!-- JOIN -->
+<section id="join">
 
-<section id="join" class="py-24 px-6 bg-[#0a0a0a]">
+<h2 class="text-4xl font-bold text-[#FCA311] mb-6 italic">
+Join Movement
+</h2>
 
-    <!-- YOUR ORIGINAL JOIN SECTION UNTOUCHED -->
+<p class="text-gray-400">Registration Section (unchanged)</p>
 
 </section>
 
@@ -353,12 +331,23 @@ section {
 
 lucide.createIcons();
 
+/* Section Switch */
+
 function showSection(id){
 
-    document.querySelectorAll('section,header')
-    .forEach(el => el.style.display='none');
+document
+.querySelectorAll('section,header')
+.forEach(e=>e.style.display='none');
 
-    document.getElementById(id).style.display='block';
+document.getElementById(id).style.display='block';
+
+/* active nav */
+
+document
+.querySelectorAll('.nav-links button')
+.forEach(b=>b.classList.remove('active-link'));
+
+event.target.classList.add('active-link');
 }
 
 </script>

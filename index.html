@@ -4,194 +4,430 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BIBLE & COFFEE | GLOBAL</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
-        h1, h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
-        
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+            margin: 0;
+        }
+
+        h1, h2 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* HERO */
         .hero-bg {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(10,10,10,1)), url('hero.jpeg');
-            background-size: cover; background-position: center;
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .glass-nav { background: rgba(0, 0, 0, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; position: fixed; top: 0; z-index: 1000; }
-        .nav-links { display: flex; gap: 20px; overflow-x: auto; padding: 15px; scrollbar-width: none; justify-content: center; }
-        .nav-links::-webkit-scrollbar { display: none; }
-        .nav-links button, .nav-links a { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #888; text-transform: uppercase; background: none; border: none; cursor: pointer; }
-        .nav-links .active-link { color: #FCA311; }
+        /* NAV */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
 
-        .btn-gold { background: #FCA311; color: black; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; width: 100%; text-align: center; display: block; border: none; }
-        .btn-outline { border: 2px solid #FCA311; color: #FCA311; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; padding: 18px; border-radius: 4px; width: 100%; text-align: center; display: block; background: transparent; }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 15px;
+            scrollbar-width: none;
+            justify-content: center;
+        }
 
-        section { display: none; padding: 100px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
-        #home, #join { display: block; } /* Home and Registration stay visible */
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
 
-        input, select { background: #151515 !important; border: 1px solid #333 !important; color: white !important; padding: 14px; width: 100%; border-radius: 4px; margin-bottom: 15px; outline: none; }
-        .counter-box { background: rgba(252, 163, 17, 0.1); border: 1px solid #FCA311; padding: 15px; margin-bottom: 20px; border-radius: 4px; display: none; }
+        .nav-links button {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #888;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-links button.active-link {
+            color: #FCA311;
+        }
+
+        /* BUTTONS */
+        .btn-gold {
+            background: #FCA311;
+            color: black;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            padding: 18px;
+            border-radius: 4px;
+            width: 100%;
+            border: none;
+        }
+
+        .btn-outline {
+            border: 2px solid #FCA311;
+            color: #FCA311;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            padding: 18px;
+            border-radius: 4px;
+            width: 100%;
+            background: transparent;
+        }
+
+        /* SECTIONS */
+        section {
+            display: none;
+            padding: 120px 20px 80px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #home,
+        #join {
+            display: block;
+        }
+
+        /* FORMS */
+        input, select {
+            background: #151515;
+            border: 1px solid #333;
+            color: white;
+            padding: 14px;
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .counter-box {
+            background: rgba(252, 163, 17, 0.1);
+            border: 1px solid #FCA311;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
     </style>
 </head>
+
 <body>
 
-    <nav class="glass-nav">
-        <div class="nav-links">
-            <button onclick="window.location.href='#home'">HOME</button>
-            <button onclick="reveal('magazine')">MAGAZINE</button>
-            <button onclick="reveal('events')">EVENT</button>
-            <button onclick="reveal('merch')">MERCH</button>
-            <button onclick="reveal('join')" class="active-link">JOIN</button>
+<!-- NAV -->
+<nav class="glass-nav">
+    <div class="nav-links">
+        <button onclick="showSection('home')" class="active-link">Home</button>
+        <button onclick="showSection('magazine')">Magazine</button>
+        <button onclick="showSection('events')">Events</button>
+        <button onclick="showSection('merch')">Merch</button>
+        <button onclick="showSection('join')">Join</button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="hero-bg">
+    <div class="px-6 text-center lg:text-right lg:px-24">
+
+        <h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
+            COFFEE MEETS<br>
+            <span class="text-[#FCA311]">THE WORD.</span>
+        </h1>
+
+        <div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
+            <button onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
+            <button onclick="showSection('merch')" class="btn-outline">View Merch</button>
         </div>
-    </nav>
 
-    <header id="home" class="hero-bg">
-        <div class="px-6 text-center lg:text-right lg:px-24">
-            <h1 class="text-6xl lg:text-9xl font-bold italic italic mb-6">COFFEE MEETS<br><span class="text-[#FCA311]">THE WORD.</span></h1>
-            <div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
-                <button onclick="reveal('magazine')" class="btn-gold">Weekly Magazine</button>
-                <button onclick="reveal('merch')" class="btn-outline">View Merch</button>
-            </div>
-            <div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
-                <a href="#"><i data-lucide="instagram"></i></a>
-                <a href="#"><i data-lucide="facebook"></i></a>
-                <a href="#"><i data-lucide="youtube"></i></a>
-                <a href="#"><i data-lucide="mail"></i></a>
-            </div>
+        <div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
+            <a href="#"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="facebook"></i></a>
+            <a href="#"><i data-lucide="youtube"></i></a>
+            <a href="#"><i data-lucide="mail"></i></a>
         </div>
-    </header>
 
-    <section id="magazine">
-        <h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
-        <div class="max-w-sm mx-auto bg-[#111] p-4 rounded-lg border border-white/10">
-            <img src="merch1.jpeg" class="w-full h-[450px] object-cover rounded mb-6" alt="Magazine Cover">
-            <a href="magazine.pdf" target="_blank" class="btn-gold">Download Edition (PDF)</a>
+    </div>
+</header>
+
+<!-- MAGAZINE -->
+<section id="magazine">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
+
+    <p class="text-white/60 max-w-xl mx-auto mb-12">
+        Fresh devotionals, testimonies, and reflections every week.
+        Download, read, and share with your community.
+    </p>
+
+    <!-- Magazine Grid -->
+    <div id="magazineGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- JS will load issues here -->
+    </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
+    <p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
+</section>
+
+<!-- MERCH -->
+<section id="merch">
+    <h2 class="text-4xl font-bold mb-10">The Merch</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <img src="merch2.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch3.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch4.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch5.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch6.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+
+        <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">
+            NEW DROPS SOON
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="events">
-        <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
-        <p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
-    </section>
+<!-- JOIN -->
+<section id="join">
 
-    <section id="merch">
-        <h2 class="text-4xl font-bold mb-10">The Merch</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <img src="merch2.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-            <img src="merch3.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-            <img src="merch4.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-            <img src="merch5.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-            <img src="merch6.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
-            <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">NEW DROPS SOON</div>
+    <div class="max-w-md mx-auto">
+
+        <h2 class="text-4xl font-bold text-[#FCA311] mb-8 italic">Register</h2>
+
+        <div id="counterBox" class="counter-box">
+            <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
+                Spots Left: <span id="spotsLeft">8</span>
+            </p>
         </div>
-    </section>
 
-    <section id="join">
-        <div class="max-w-md mx-auto">
-            <h2 class="text-4xl font-bold text-[#FCA311] mb-8 italic">Register</h2>
-            <div id="counterBox" class="counter-box">
-                <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">Spots Left: <span id="spotsLeft">8</span></p>
-            </div>
-            <form id="regForm">
-                <input type="text" id="name" placeholder="FULL NAME" required>
-                <input type="email" id="email" placeholder="EMAIL ADDRESS" required>
-                <input type="tel" id="phone" placeholder="PHONE" required>
-                <select id="country" onchange="updateCities()" required>
-                    <option value="" disabled selected>COUNTRY</option>
-                    <option value="Ethiopia">Ethiopia</option>
-                    <option value="USA">USA</option>
+        <form id="regForm">
+
+            <input type="text" id="name" placeholder="FULL NAME" required>
+            <input type="email" id="email" placeholder="EMAIL" required>
+            <input type="tel" id="phone" placeholder="PHONE" required>
+
+            <select id="country" required onchange="updateCities()">
+                <option value="">COUNTRY</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="USA">USA</option>
+            </select>
+
+            <select id="city" required onchange="updateSubCities()">
+                <option value="">CITY</option>
+            </select>
+
+            <div id="subCityGroup" class="hidden">
+                <select id="subCity" onchange="checkSpots()">
+                    <option value="">SELECT AREA</option>
                 </select>
-                <select id="city" onchange="updateSubCities()" required>
-                    <option value="" disabled selected>CITY</option>
-                </select>
-                <div id="subCityGroup" style="display:none;">
-                    <select id="subCity" onchange="checkSpots()">
-                        <option value="" disabled selected>SELECT AREA</option>
-                    </select>
-                </div>
-                <button type="submit" id="subBtn" class="btn-gold mt-4">Confirm Registration</button>
-            </form>
-        </div>
-    </section>
+            </div>
 
-    <script>
-        // Initialize Icons
+            <button type="submit" id="subBtn" class="btn-gold mt-4">
+                Confirm Registration
+            </button>
+
+        </form>
+    </div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+
+    lucide.createIcons();
+
+    const API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+    const MAX_SPOTS = 8;
+
+    const locationData = {
+        "Ethiopia": {
+            "Addis Ababa": ["Bole", "Ayat", "Megenagna", "Mexico", "Haile Garment", "Old Airport"]
+        },
+        "USA": {
+            "Dallas": ["Downtown"]
+        }
+    };
+
+    /* SECTION SWITCH */
+    function showSection(id) {
+
+        document.querySelectorAll('section, header').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        document.getElementById(id).style.display = 'block';
+
+        document.querySelectorAll('.nav-links button').forEach(btn => {
+            btn.classList.remove('active-link');
+        });
+
+        event.target.classList.add('active-link');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
         lucide.createIcons();
+    }
 
-        const API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-        const locationData = {
-            "Ethiopia": { "Addis Ababa": ["Bole", "Ayat", "Megenagna", "Mexico", "Haile Garment", "Old Airport"] },
-            "USA": { "Dallas": ["Downtown"] }
+
+    /* LOCATION */
+    function updateCities() {
+
+        const country = document.getElementById('country').value;
+        const city = document.getElementById('city');
+
+        city.innerHTML = '<option value="">CITY</option>';
+
+        document.getElementById('subCityGroup').classList.add('hidden');
+
+        if (locationData[country]) {
+
+            Object.keys(locationData[country]).forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                city.appendChild(opt);
+            });
+        }
+    }
+
+
+    function updateSubCities() {
+
+        const country = document.getElementById('country').value;
+        const city = document.getElementById('city').value;
+        const subCity = document.getElementById('subCity');
+
+        subCity.innerHTML = '<option value="">SELECT AREA</option>';
+
+        if (locationData[country] && locationData[country][city]) {
+
+            locationData[country][city].forEach(a => {
+                const opt = document.createElement('option');
+                opt.value = a;
+                opt.textContent = a;
+                subCity.appendChild(opt);
+            });
+
+            document.getElementById('subCityGroup').classList.remove('hidden');
+        }
+    }
+
+
+    /* CHECK SPOTS */
+    async function checkSpots() {
+
+        const spot = document.getElementById('subCity').value;
+
+        if (!spot) return;
+
+        document.getElementById('counterBox').style.display = 'block';
+
+        try {
+
+            const res = await fetch(`${API}/search?Spot=${spot}`);
+            const data = await res.json();
+
+            const left = MAX_SPOTS - data.length;
+
+            document.getElementById('spotsLeft').innerText = Math.max(left, 0);
+
+            const btn = document.getElementById('subBtn');
+
+            if (left <= 0) {
+                btn.disabled = true;
+                btn.innerText = "FULL";
+                btn.style.opacity = "0.5";
+            } else {
+                btn.disabled = false;
+                btn.innerText = "Confirm Registration";
+                btn.style.opacity = "1";
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+
+    /* SUBMIT */
+    document.getElementById('regForm').addEventListener('submit', async (e) => {
+
+        e.preventDefault();
+
+        const btn = document.getElementById('subBtn');
+        btn.innerText = "Sending...";
+        btn.disabled = true;
+
+        const data = {
+            Name: document.getElementById('name').value,
+            Email: document.getElementById('email').value,
+            Phone: document.getElementById('phone').value,
+            Country: document.getElementById('country').value,
+            City: document.getElementById('city').value,
+            Spot: document.getElementById('subCity').value,
+            Date: new Date().toLocaleString()
         };
 
-        function reveal(id) {
-            // Hide all toggleable sections
-            document.getElementById('magazine').style.display = 'none';
-            document.getElementById('events').style.display = 'none';
-            document.getElementById('merch').style.display = 'none';
-            // Show target
-            const el = document.getElementById(id);
-            el.style.display = 'block';
-            el.scrollIntoView({ behavior: 'smooth' });
-            // Re-draw icons in case they are inside the section
-            lucide.createIcons();
+        try {
+
+            await fetch(API, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [data] })
+            });
+
+            window.open(
+                `https://wa.me/251910884585?text=Registered:%20${encodeURIComponent(data.Name)}`,
+                '_blank'
+            );
+
+            alert("Registration successful! God bless you 🙏");
+
+            document.getElementById('regForm').reset();
+
+        } catch (err) {
+
+            alert("Something went wrong. Please try again.");
+            console.error(err);
+
+        } finally {
+
+            btn.innerText = "Confirm Registration";
+            btn.disabled = false;
         }
 
-        function updateCities() {
-            const country = document.getElementById('country').value;
-            const citySel = document.getElementById('city');
-            citySel.innerHTML = '<option value="" disabled selected>CITY</option>';
-            if(locationData[country]) {
-                Object.keys(locationData[country]).forEach(city => {
-                    let o = document.createElement('option'); o.value = city; o.textContent = city;
-                    citySel.appendChild(o);
-                });
-            }
-        }
+    });
 
-        function updateSubCities() {
-            const country = document.getElementById('country').value;
-            const city = document.getElementById('city').value;
-            const subCitySel = document.getElementById('subCity');
-            const areas = locationData[country][city];
-            if(areas) {
-                subCitySel.innerHTML = '<option value="" disabled selected>SELECT AREA</option>';
-                areas.forEach(a => {
-                    let o = document.createElement('option'); o.value = a; o.textContent = a;
-                    subCitySel.appendChild(o);
-                });
-                document.getElementById('subCityGroup').style.display = 'block';
-            }
-        }
+</script>
 
-        async function checkSpots() {
-            const spot = document.getElementById('subCity').value;
-            if (spot) {
-                document.getElementById('counterBox').style.display = 'block';
-                const resp = await fetch(`${API}/search?Spot=${spot}`);
-                const data = await resp.json();
-                const left = 8 - data.length;
-                document.getElementById('spotsLeft').innerText = left > 0 ? left : 0;
-                if(left <= 0) {
-                    const b = document.getElementById('subBtn');
-                    b.disabled = true; b.innerText = "FULL"; b.style.opacity = "0.5";
-                }
-            }
-        }
-
-        document.getElementById('regForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const b = document.getElementById('subBtn'); b.innerText = "SENDING...";
-            const data = { 
-                "Name": document.getElementById('name').value,
-                "Spot": document.getElementById('subCity').value,
-                "Registration Date": new Date().toLocaleDateString()
-            };
-            await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ data: [data] }) });
-            window.open(`https://wa.me/251910884585?text=Registered: ${data.Name}`, '_blank');
-            b.innerText = "Confirm Registration";
-        };
-    </script>
 </body>
 </html>

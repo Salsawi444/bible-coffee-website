@@ -1,152 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIBLE & COFFEE | GLOBAL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BIBLE & COFFEE | GLOBAL</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;margin:0}
-h1,h2{font-family:'Oswald',sans-serif;text-transform:uppercase}
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-.hero-bg{
-background:linear-gradient(rgba(0,0,0,.8),rgba(10,10,10,1)),url('hero.jpeg');
-background-size:cover;
-background-position:center;
-min-height:100vh;
-display:flex;
-justify-content:center;
-flex-direction:column;
-}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
-.glass-nav{
-background:rgba(0,0,0,.95);
-border-bottom:1px solid rgba(255,255,255,.1);
-position:fixed;
-top:0;width:100%;z-index:999;
-}
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: white; margin: 0; }
 
-.nav-links{
-display:flex;gap:20px;justify-content:center;padding:15px
-}
+        h1,h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
 
-.nav-links button{
-font-size:11px;font-weight:700;letter-spacing:1px;color:#888;
-background:none;border:none;cursor:pointer
-}
+        /* HERO */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), url('hero.jpeg');
+            background-size: cover; background-position: center;
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+        }
 
-.active-link{color:#FCA311}
+        /* NAV */
+        .glass-nav {
+            background: rgba(0,0,0,0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%; position: fixed; top: 0; z-index: 1000;
+        }
 
-.btn-gold{
-background:#FCA311;color:#000;font-weight:800;
-letter-spacing:2px;font-size:12px;
-padding:16px;border-radius:4px;width:100%;border:none
-}
+        .nav-links {
+            display: flex; gap: 20px; overflow-x: auto; padding: 15px; scrollbar-width: none; justify-content: center;
+        }
 
-.btn-outline{
-border:2px solid #FCA311;color:#FCA311;font-weight:800;
-letter-spacing:2px;font-size:12px;
-padding:16px;border-radius:4px;width:100%;background:transparent
-}
+        .nav-links::-webkit-scrollbar { display: none; }
 
-section{display:none;padding:110px 20px;max-width:1200px;margin:auto;text-align:center}
-#home,#join{display:block}
+        .nav-links button, .nav-links a {
+            font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #888;
+            text-transform: uppercase; background: none; border: none; cursor: pointer;
+            transition: color 0.3s;
+        }
 
-input,select{
-background:#151515;border:1px solid #333;color:#fff;
-padding:14px;width:100%;border-radius:4px;margin-bottom:15px
-}
+        .nav-links button.active-link { color: #FCA311; }
 
-.counter-box{
-background:rgba(252,163,17,.1);
-border:1px solid #FCA311;
-padding:15px;margin-bottom:20px;border-radius:4px;display:none
-}
+        /* BUTTONS */
+        .btn-gold {
+            background: linear-gradient(90deg, #FCA311, #FFBA49);
+            color: black; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; font-size: 14px; padding: 18px;
+            border-radius: 8px; width: 100%; transition: transform 0.2s, background 0.3s;
+        }
+        .btn-gold:hover { transform: scale(1.05); background: linear-gradient(90deg,#FFBA49,#FCA311); }
 
-.pdf-preview{
-width:100%;height:500px;border:1px solid #333;border-radius:6px
-}
-</style>
+        .btn-outline {
+            border: 2px solid #FCA311; color: #FCA311; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px; font-size: 14px;
+            padding: 18px; border-radius: 8px; width: 100%; background: transparent;
+            transition: transform 0.2s, background 0.3s, color 0.3s;
+        }
+        .btn-outline:hover { transform: scale(1.05); background: #FCA311; color: black; }
+
+        /* SECTIONS */
+        section { display: none; padding: 120px 20px 80px; max-width: 1200px; margin: auto; text-align: center; }
+        #home, #join { display: block; }
+
+        input, select {
+            background: #151515; border: 1px solid #333; color: white;
+            padding: 14px; width: 100%; border-radius: 6px; margin-bottom: 15px; outline: none;
+        }
+
+        .counter-box {
+            background: rgba(252,163,17,0.1);
+            border: 1px solid #FCA311; padding: 15px; margin-bottom: 20px; border-radius: 6px;
+            display: none;
+        }
+
+        /* PDF Preview */
+        .pdf-preview {
+            width: 100%; height: 450px; border: 1px solid #333; border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="glass-nav">
-<div class="nav-links">
-<button onclick="showSection('home',this)" class="active-link">HOME</button>
-<button onclick="showSection('magazine',this)">MAGAZINE</button>
-<button onclick="showSection('events',this)">EVENTS</button>
-<button onclick="showSection('merch',this)">MERCH</button>
-<button onclick="showSection('join',this)">JOIN</button>
-</div>
+    <div class="nav-links">
+        <button onclick="showSection('home')" class="active-link">Home</button>
+        <button onclick="showSection('magazine')">Magazine</button>
+        <button onclick="showSection('events')">Events</button>
+        <button onclick="showSection('merch')">Merch</button>
+        <button onclick="showSection('join')">Join</button>
+    </div>
 </nav>
 
-<!-- HOME -->
+<!-- HERO -->
 <header id="home" class="hero-bg">
-<div class="px-6 text-center lg:text-right lg:px-24">
-
-<h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
-COFFEE MEETS<br>
-<span class="text-[#FCA311]">THE WORD.</span>
-</h1>
-
-<div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
-<button onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
-<button onclick="showSection('merch')" class="btn-outline">View Merch</button>
-</div>
-
-<div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
-<i data-lucide="instagram"></i>
-<i data-lucide="facebook"></i>
-<i data-lucide="youtube"></i>
-<i data-lucide="mail"></i>
-</div>
-</div>
+    <div class="px-6 text-center lg:text-right lg:px-24">
+        <h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
+            COFFEE MEETS<br><span class="text-[#FCA311]">THE WORD.</span>
+        </h1>
+        <div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
+            <button onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
+            <button onclick="showSection('merch')" class="btn-outline">View Merch</button>
+        </div>
+        <div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
+            <a href="#"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="facebook"></i></a>
+            <a href="#"><i data-lucide="youtube"></i></a>
+            <a href="#"><i data-lucide="mail"></i></a>
+        </div>
+    </div>
 </header>
 
 <!-- MAGAZINE -->
 <section id="magazine">
-<h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
-<p class="text-white/60 mb-6">Preview & download latest edition</p>
-
-<div class="max-w-3xl mx-auto bg-[#111] p-4 rounded-lg border border-white/10">
-
-<iframe src="megazine.pdf" class="pdf-preview mb-6"></iframe>
-
-<a href="megazine.pdf" download onclick="countDownload()" class="btn-gold">
-Download PDF
-</a>
-
-<p class="mt-3 text-sm text-white/50">
-Downloads: <span id="dlCount">0</span>
-</p>
-
-</div>
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-10">Weekly Magazine</h2>
+    <div class="max-w-md mx-auto bg-[#111] p-6 rounded-lg border border-white/10">
+        <iframe src="megazine.pdf" class="pdf-preview" title="Weekly Magazine"></iframe>
+        <a href="megazine.pdf" target="_blank" class="btn-gold mt-6">Download Edition (PDF)</a>
+    </div>
 </section>
 
 <!-- EVENTS -->
 <section id="events">
-<h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
-<p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
+    <p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
 </section>
 
 <!-- MERCH -->
 <section id="merch">
-<h2 class="text-4xl font-bold mb-10">The Merch</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<img src="merch1.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch2.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch3.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
-<img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
-</div>
+    <h2 class="text-4xl font-bold mb-10">The Merch</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <img src="merch2.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch3.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch4.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch5.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <img src="merch6.jpeg" class="w-full h-80 object-cover rounded border border-white/5">
+        <div class="flex items-center justify-center border border-dashed border-white/10 text-gray-600">
+            NEW DROPS SOON
+        </div>
+    </div>
 </section>
 
 <!-- JOIN -->
@@ -163,23 +162,23 @@ Downloads: <span id="dlCount">0</span>
         <form id="regForm" class="space-y-4">
             <div>
                 <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Full Name</label>
-                <input type="text" id="name" placeholder="YOUR NAME" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+                <input type="text" id="name" placeholder="YOUR NAME" required>
             </div>
 
             <div>
                 <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Email Address</label>
-                <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+                <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required>
             </div>
 
             <div>
                 <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Phone Number</label>
-                <input type="tel" id="phone" placeholder="+251..." required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+                <input type="tel" id="phone" placeholder="+251..." required>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Country</label>
-                    <select id="country" onchange="updateCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                    <select id="country" onchange="updateCities()" required>
                         <option value="" disabled selected>SELECT</option>
                         <option value="Ethiopia">Ethiopia</option>
                         <option value="Germany">Germany</option>
@@ -190,7 +189,7 @@ Downloads: <span id="dlCount">0</span>
                 </div>
                 <div>
                     <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">City</label>
-                    <select id="city" onchange="updateSubCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                    <select id="city" onchange="updateSubCities()" required>
                         <option value="" disabled selected>SELECT</option>
                     </select>
                 </div>
@@ -198,7 +197,7 @@ Downloads: <span id="dlCount">0</span>
 
             <div id="subCityGroup" class="hidden">
                 <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Specific Spot / Area</label>
-                <select id="subCity" onchange="checkSpots()" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                <select id="subCity" onchange="checkSpots()">
                     <option value="" disabled selected>SELECT AREA</option>
                 </select>
             </div>
@@ -210,131 +209,93 @@ Downloads: <span id="dlCount">0</span>
     </div>
 </section>
 
-<!-- SCRIPT -->
 <script>
-lucide.createIcons();
+    lucide.createIcons();
 
-const API="https://sheetdb.io/api/v1/9q45d3e7oe5ks";
-const MAX=8;
+    const SHEETDB_API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+    const WHATSAPP_NUM = "251910884585";
+    const LIMIT_PER_SPOT = 8;
 
-const locations={
-Ethiopia:{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"]},
-USA:{Dallas:["Downtown"]}
-};
+    const locations = {
+        "Ethiopia": { "Addis Ababa": ["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"] },
+        "Germany": { "Berlin": ["Mitte"] },
+        "USA": { "Dallas": ["Downtown"] },
+        "Netherlands": { "Amsterdam": ["Zuid"] },
+        "Kenya": { "Nairobi": ["Westlands"] }
+    };
 
-/* SECTION */
-function showSection(id,btn){
+    function showSection(id) {
+        document.querySelectorAll('section, header').forEach(el => el.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+        document.querySelectorAll('.nav-links button').forEach(btn => btn.classList.remove('active-link'));
+        document.querySelector(`.nav-links button[onclick*="${id}"]`).classList.add('active-link');
+        window.scrollTo({ top:0, behavior:'smooth' });
+        lucide.createIcons();
+    }
 
-['home','magazine','events','merch','join'].forEach(s=>{
-const el=document.getElementById(s);
-el.style.display=s===id?'block':'none';
-});
+    function updateCities() {
+        const country = document.getElementById('country').value;
+        const citySel = document.getElementById('city');
+        citySel.innerHTML = '<option value="" disabled selected>SELECT</option>';
+        document.getElementById('subCityGroup').classList.add('hidden');
+        document.getElementById('counterBox').classList.add('hidden');
+        if(locations[country]) Object.keys(locations[country]).forEach(c => citySel.add(new Option(c.toUpperCase(), c)));
+    }
 
-if(btn){
-document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));
-btn.classList.add('active-link');
-}
+    function updateSubCities() {
+        const country = document.getElementById('country').value;
+        const city = document.getElementById('city').value;
+        const subCitySel = document.getElementById('subCity');
+        const areas = locations[country][city];
+        if(areas && areas.length>0){
+            subCitySel.innerHTML='<option value="" disabled selected>SELECT AREA</option>';
+            areas.forEach(a=>subCitySel.add(new Option(a.toUpperCase(),a)));
+            document.getElementById('subCityGroup').classList.remove('hidden');
+        } else document.getElementById('subCityGroup').classList.add('hidden');
+    }
 
-window.scrollTo(0,0);
-lucide.createIcons();
-}
+    async function checkSpots(){
+        const city=document.getElementById('city').value;
+        const spot=document.getElementById('subCity').value;
+        const counter=document.getElementById('counterBox');
+        const btn=document.getElementById('subBtn');
+        if(spot){
+            counter.classList.remove('hidden');
+            try{
+                const res=await fetch(`${SHEETDB_API}/search?City=${city}&Location=${spot}`);
+                const data=await res.json();
+                const remaining=LIMIT_PER_SPOT-data.length;
+                document.getElementById('spotsLeft').innerText=remaining>0?remaining:0;
+                if(remaining<=0){ btn.disabled=true; btn.innerText="LOCATION FULL"; btn.style.backgroundColor="#444"; }
+                else{ btn.disabled=false; btn.innerText="CONFIRM REGISTRATION"; btn.style.backgroundColor="#FCA311"; }
+            }catch(e){console.error(e);}
+        }
+    }
 
-/* MAG DOWNLOAD */
-let downloads=localStorage.getItem('megDL')||0;
-document.getElementById('dlCount').innerText=downloads;
-
-function countDownload(){
-downloads++;
-localStorage.setItem('megDL',downloads);
-document.getElementById('dlCount').innerText=downloads;
-}
-
-/* LOCATION */
-function updateCities(){
-const c=document.getElementById('country').value;
-const city=document.getElementById('city');
-city.innerHTML='<option value="">CITY</option>';
-
-if(locations[c]){
-Object.keys(locations[c]).forEach(x=>{
-let o=document.createElement('option');
-o.value=x;o.textContent=x;
-city.appendChild(o);
-});
-}
-
-document.getElementById('subCityGroup').classList.add('hidden');
-}
-
-function updateSubCities(){
-const c=document.getElementById('country').value;
-const city=document.getElementById('city').value;
-const sub=document.getElementById('subCity');
-
-sub.innerHTML='<option value="">SELECT AREA</option>';
-
-if(locations[c]&&locations[c][city]){
-locations[c][city].forEach(a=>{
-let o=document.createElement('option');
-o.value=a;o.textContent=a;
-sub.appendChild(o);
-});
-
-document.getElementById('subCityGroup').classList.remove('hidden');
-}
-}
-
-/* SPOTS */
-async function checkSpots(){
-const s=document.getElementById('subCity').value;
-if(!s)return;
-
-document.getElementById('counterBox').style.display='block';
-
-const r=await fetch(`${API}/search?Spot=${s}`);
-const d=await r.json();
-const left=MAX-d.length;
-
-document.getElementById('spotsLeft').innerText=Math.max(left,0);
-
-const b=document.getElementById('subBtn');
-
-if(left<=0){
-b.disabled=true;b.innerText='FULL';b.style.opacity=.5;
-}else{
-b.disabled=false;b.innerText='Confirm Registration';b.style.opacity=1;
-}
-}
-
-/* SUBMIT */
-document.getElementById('regForm').addEventListener('submit',async e=>{
-e.preventDefault();
-
-const b=document.getElementById('subBtn');
-b.innerText='SENDING...';b.disabled=true;
-
-const data={
-Name:name.value,
-Email:email.value,
-Phone:phone.value,
-Country:country.value,
-City:city.value,
-Spot:subCity.value,
-Date:new Date().toLocaleString()
-};
-
-await fetch(API,{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify({data:[data]})
-});
-
-window.open(`https://wa.me/251910884585?text=Registered:%20${data.Name}`,'_blank');
-alert('Registered successfully 🙏');
-
-document.getElementById('regForm').reset();
-b.innerText='Confirm Registration';b.disabled=false;
-});
+    document.getElementById('regForm').onsubmit=async e=>{
+        e.preventDefault();
+        const btn=document.getElementById('subBtn'); const oldText=btn.innerText;
+        btn.innerText="PROCESSING...";
+        const formData={
+            Name:document.getElementById('name').value,
+            Email:document.getElementById('email').value,
+            Phone:document.getElementById('phone').value,
+            Country:document.getElementById('country').value,
+            City:document.getElementById('city').value,
+            Location:document.getElementById('subCity').value||"General",
+            "Registration Date":new Date().toLocaleDateString(),
+            "Registration Time":new Date().toLocaleTimeString()
+        };
+        try{
+            await fetch(SHEETDB_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data:[formData]})});
+            const msg=`Hello! I just registered for Bible & Coffee.%0A%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Location}`;
+            window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+            alert("Registration Submitted Successfully!");
+            btn.innerText=oldText;
+            document.getElementById('regForm').reset();
+            checkSpots();
+        }catch(err){ alert("Submission failed. Please try again."); btn.innerText=oldText; }
+    };
 </script>
 
 </body>

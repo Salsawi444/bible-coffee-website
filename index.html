@@ -12,7 +12,6 @@
 
 <style>
 html{scroll-behavior:smooth;}
-
 body{
 font-family:'Poppins',sans-serif;
 background:#0a0a0a;
@@ -168,7 +167,6 @@ text-align:center;
 
 /* MAG */
 .mag-preview{max-width:400px;margin:auto;}
-
 .mag-preview img{
 width:100%;
 border-radius:8px;
@@ -182,23 +180,18 @@ to{opacity:1;transform:none;}
 
 /* DESKTOP */
 @media(min-width:768px){
-
 .hero-inner{
 grid-template-columns:1fr 1fr;
 text-align:right;
 align-items:center;
 }
-
 .hero-title{font-size:4rem;}
 .hero-motto{font-size:1.6rem;}
-
 .social-icons{justify-content:flex-end;}
-
 .vision-box{
 text-align:left;
 }
 }
-
 </style>
 </head>
 
@@ -218,8 +211,6 @@ text-align:left;
 <!-- HERO -->
 <header id="home" class="hero-bg">
 <div class="hero-inner">
-
-<!-- VISION -->
 <div class="vision-box">
 <h3>Who We Are</h3>
 <p>
@@ -234,7 +225,6 @@ Build disciples. Build friendships. Build purpose.
 </p>
 </div>
 
-<!-- HERO TEXT -->
 <div>
 <h1 class="hero-title">
 COFFEE MEETS<br>
@@ -253,7 +243,6 @@ COFFEE MEETS<br>
 </a>
 </div>
 </div>
-
 </div>
 </header>
 
@@ -296,32 +285,68 @@ NEW DROPS SOON
 </div>
 </section>
 
-<!-- JOIN (FIXED) -->
-<section id="join" class="py-24 px-6 bg-[#0a0a0a] min-h-screen">
-<div class="max-w-md mx-auto border border-[#222] rounded-xl p-8 bg-black/70 shadow-lg">
-<h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] uppercase">
+<!-- JOIN (REFINED WITH YOUR LOGIC) -->
+<section id="join" class="py-24 px-6 bg-[#0a0a0a]">
+<div class="max-w-md mx-auto">
+<h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] font-['Oswald'] uppercase">
 Join Movement
 </h2>
-<form id="regForm" class="space-y-5">
-<!-- NAME -->
-<div>
-<label class="block text-xs text-[#FCA311] mb-1 font-bold uppercase">Full Name</label>
-<input type="text" required placeholder="Your full name" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+
+<!-- Counter -->
+<div id="counterBox" class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded text-center hidden">
+<p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
+Current Availability: <span id="spotsLeft" class="text-white text-lg ml-2">8</span> Spots Left
+</p>
 </div>
-<!-- EMAIL -->
+
+<form id="regForm" class="space-y-4">
+
 <div>
-<label class="block text-xs text-[#FCA311] mb-1 font-bold uppercase">Email</label>
-<input type="email" required placeholder="you@email.com" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+<label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Full Name</label>
+<input type="text" id="name" placeholder="YOUR NAME" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
 </div>
-<!-- PHONE -->
+
 <div>
-<label class="block text-xs text-[#FCA311] mb-1 font-bold uppercase">Phone</label>
-<input type="tel" required placeholder="+251..." class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+<label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Email Address</label>
+<input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
 </div>
-<!-- BUTTON -->
-<button type="submit" class="w-full bg-[#FCA311] text-black py-4 rounded font-black uppercase tracking-wider hover:bg-white transition">
+
+<div>
+<label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Phone Number</label>
+<input type="tel" id="phone" placeholder="+251..." required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+</div>
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Country</label>
+<select id="country" onchange="updateCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+<option value="" disabled selected>SELECT</option>
+<option value="Ethiopia">Ethiopia</option>
+<option value="Germany">Germany</option>
+<option value="USA">USA</option>
+<option value="Netherlands">Netherlands</option>
+<option value="Kenya">Kenya</option>
+</select>
+</div>
+<div>
+<label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">City</label>
+<select id="city" onchange="updateSubCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+<option value="" disabled selected>SELECT</option>
+</select>
+</div>
+</div>
+
+<div id="subCityGroup" class="hidden">
+<label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Specific Spot / Area</label>
+<select id="subCity" onchange="checkSpots()" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+<option value="" disabled selected>SELECT AREA</option>
+</select>
+</div>
+
+<button type="submit" id="subBtn" class="w-full bg-[#FCA311] text-black font-black uppercase tracking-widest py-5 rounded mt-4 hover:bg-white transition-colors duration-300">
 Confirm Registration
 </button>
+
 </form>
 </div>
 </section>
@@ -329,13 +354,103 @@ Confirm Registration
 <script>
 lucide.createIcons();
 
-/* SECTION SWITCH */
+// SECTION SWITCH
 function showSection(id){
 document.querySelectorAll('section,header').forEach(e=>e.style.display='none');
 document.getElementById(id).style.display='block';
 document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));
 event.target.classList.add('active-link');
 }
+
+// Registration Logic
+const SHEETDB_API = "https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+const WHATSAPP_NUM = "251910884585";
+const LIMIT_PER_SPOT = 8;
+
+const locations = {
+"Ethiopia": { "Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"], "Hawassa":["Main Center"], "Adama":["Main Center"] },
+"Germany": {"Berlin":["Mitte"]},
+"USA":{"Dallas":["Downtown"]},
+"Netherlands":{"Amsterdam":["Zuid"]},
+"Kenya":{"Nairobi":["Westlands"]}
+};
+
+function updateCities(){
+const country = document.getElementById('country').value;
+const citySel = document.getElementById('city');
+citySel.innerHTML = '<option value="" disabled selected>SELECT</option>';
+document.getElementById('subCityGroup').classList.add('hidden');
+document.getElementById('counterBox').classList.add('hidden');
+
+if(locations[country]){
+Object.keys(locations[country]).forEach(city=>citySel.add(new Option(city.toUpperCase(), city)));
+}
+}
+
+function updateSubCities(){
+const country = document.getElementById('country').value;
+const city = document.getElementById('city').value;
+const subCitySel = document.getElementById('subCity');
+const group = document.getElementById('subCityGroup');
+const areas = locations[country][city] || [];
+subCitySel.innerHTML = '<option value="" disabled selected>SELECT AREA</option>';
+areas.forEach(area=>subCitySel.add(new Option(area.toUpperCase(), area)));
+group.classList.toggle('hidden', areas.length===0);
+}
+
+async function checkSpots(){
+const city = document.getElementById('city').value;
+const spot = document.getElementById('subCity').value;
+const counter = document.getElementById('counterBox');
+const btn = document.getElementById('subBtn');
+
+if(!city || !spot) return;
+if(city==="Addis Ababa"){
+counter.classList.remove('hidden');
+try{
+const res = await fetch(`${SHEETDB_API}/search?City=${city}&Spot=${spot}`);
+const data = await res.json();
+const remaining = LIMIT_PER_SPOT - data.length;
+document.getElementById('spotsLeft').innerText = Math.max(0, remaining);
+btn.disabled = remaining<=0;
+btn.innerText = remaining<=0?"LOCATION FULL":"CONFIRM REGISTRATION";
+btn.style.backgroundColor = remaining<=0?"#444":"#FCA311";
+}catch(e){console.error("Counter Error:",e);}
+}
+}
+
+document.getElementById('regForm').onsubmit = async (e)=>{
+e.preventDefault();
+const btn = document.getElementById('subBtn');
+const oldText = btn.innerText;
+btn.innerText = "PROCESSING...";
+const formData = {
+Name: document.getElementById('name').value,
+Email: document.getElementById('email').value,
+Phone: document.getElementById('phone').value,
+Country: document.getElementById('country').value,
+City: document.getElementById('city').value,
+Spot: document.getElementById('subCity').value || "General",
+"Registration Date": new Date().toLocaleDateString(),
+"Registration Time": new Date().toLocaleTimeString()
+};
+try{
+await fetch(SHEETDB_API,{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify({data:[formData]})
+});
+const msg=`Hello! I just registered for Bible %26 Coffee.%0A%0A*Name:* ${formData.Name}%0A*Location:* ${formData.City} - ${formData.Spot}`;
+window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`,'_blank');
+alert("Registration Submitted Successfully!");
+btn.innerText = oldText;
+document.getElementById('regForm').reset();
+checkSpots();
+}catch(err){
+alert("Submission failed. Please try again.");
+btn.innerText = oldText;
+}
+};
 </script>
 
 </body>

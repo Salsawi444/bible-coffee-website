@@ -78,11 +78,11 @@ width:100%;height:500px;border:1px solid #333;border-radius:6px
 <!-- NAV -->
 <nav class="glass-nav">
 <div class="nav-links">
-<button onclick="showSection('home',this)" class="active-link">HOME</button>
-<button onclick="showSection('magazine',this)">MAGAZINE</button>
-<button onclick="showSection('events',this)">EVENTS</button>
-<button onclick="showSection('merch',this)">MERCH</button>
-<button onclick="showSection('join',this)">JOIN</button>
+<button type="button" onclick="showSection('home',this)" class="active-link">HOME</button>
+<button type="button" onclick="showSection('magazine',this)">MAGAZINE</button>
+<button type="button" onclick="showSection('events',this)">EVENTS</button>
+<button type="button" onclick="showSection('merch',this)">MERCH</button>
+<button type="button" onclick="showSection('join',this)">JOIN</button>
 </div>
 </nav>
 
@@ -96,8 +96,8 @@ COFFEE MEETS<br>
 </h1>
 
 <div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
-<button onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
-<button onclick="showSection('merch')" class="btn-outline">View Merch</button>
+<button type="button" onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
+<button type="button" onclick="showSection('merch')" class="btn-outline">View Merch</button>
 </div>
 
 <div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
@@ -152,34 +152,54 @@ Downloads: <span id="dlCount">0</span>
 <!-- JOIN -->
 <section id="join" class="py-24 px-6 bg-[#0a0a0a]">
     <div class="max-w-md mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] font-['Oswald'] uppercase tracking-tighter">Join Movement</h2>
+        <h2 class="text-4xl font-bold text-center mb-8 italic text-[#FCA311] font-['Oswald'] uppercase">Join Movement</h2>
         
-        <div id="counterBox" class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded text-center hidden animate-pulse">
-            <p class="text-[#FCA311] text-[10px] font-bold uppercase tracking-[3px]">
-                Live Availability: <span id="spotsLeft" class="text-white text-xl ml-2 font-black">8</span> <span class="text-white/50 text-[10px]">Spots Left</span>
+        <div id="counterBox" class="bg-[#FCA311]/10 border border-[#FCA311] p-4 mb-6 rounded text-center hidden">
+            <p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
+                Current Availability: <span id="spotsLeft" class="text-white text-lg ml-2">8</span> Spots Left
             </p>
         </div>
 
         <form id="regForm" class="space-y-4">
-            <input type="text" id="name" placeholder="FULL NAME" required class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
-            <input type="email" id="email" placeholder="EMAIL ADDRESS" required class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
-            <input type="tel" id="phone" placeholder="PHONE (+251...)" required class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            <div>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Full Name</label>
+                <input type="text" id="name" placeholder="YOUR NAME" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            </div>
+
+            <div>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Email Address</label>
+                <input type="email" id="email" placeholder="EMAIL@EXAMPLE.COM" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            </div>
+
+            <div>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+251..." required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none focus:border-[#FCA311]">
+            </div>
 
             <div class="grid grid-cols-2 gap-4">
-                <select id="country" onchange="updateCities()" required class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none">
-                    <option value="" disabled selected>COUNTRY</option>
-                    <option value="Ethiopia">Ethiopia</option>
-                    <option value="USA">USA</option>
-                    <option value="Germany">Germany</option>
-                </select>
-                <select id="city" onchange="updateSubCities()" required class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none">
-                    <option value="" disabled selected>CITY</option>
-                </select>
+                <div>
+                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Country</label>
+                    <select id="country" onchange="updateCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                        <option value="" disabled selected>SELECT</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="USA">USA</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Kenya">Kenya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">City</label>
+                    <select id="city" onchange="updateSubCities()" required class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                        <option value="" disabled selected>SELECT</option>
+                    </select>
+                </div>
             </div>
 
             <div id="subCityGroup" class="hidden">
-                <select id="subCity" onchange="checkSpots()" class="w-full bg-[#111] border border-[#333] text-white p-4 rounded outline-none">
-                    <option value="" disabled selected>SELECT YOUR AREA / SPOT</option>
+                <label class="block text-[10px] text-[#FCA311] font-bold uppercase mb-1 tracking-wider">Specific Spot / Area</label>
+                <select id="subCity" onchange="checkSpots()" class="w-full bg-[#151515] border border-[#333] text-white p-4 rounded outline-none appearance-none">
+                    <option value="" disabled selected>SELECT AREA</option>
                 </select>
             </div>
 
@@ -190,6 +210,7 @@ Downloads: <span id="dlCount">0</span>
     </div>
 </section>
 
+<!-- SCRIPT -->
 <script>
 lucide.createIcons();
 
@@ -198,30 +219,50 @@ const MAX=8;
 
 const locations={
 Ethiopia:{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"]},
-USA:{Dallas:["Downtown"]},
-Germany:{Berlin:["Mitte"]}
+USA:{Dallas:["Downtown"]}
 };
 
 /* SECTION */
 function showSection(id,btn){
+
 ['home','magazine','events','merch','join'].forEach(s=>{
-document.getElementById(s).style.display=s===id?'block':'none';
+const el=document.getElementById(s);
+el.style.display=s===id?'block':'none';
 });
-if(btn){document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));btn.classList.add('active-link');}
-window.scrollTo(0,0);lucide.createIcons();
+
+if(btn){
+document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));
+btn.classList.add('active-link');
+}
+
+window.scrollTo(0,0);
+lucide.createIcons();
 }
 
 /* MAG DOWNLOAD */
 let downloads=localStorage.getItem('megDL')||0;
-document.getElementById('dlCount')?.innerText=downloads;
-function countDownload(){downloads++;localStorage.setItem('megDL',downloads);document.getElementById('dlCount').innerText=downloads;}
+document.getElementById('dlCount').innerText=downloads;
+
+function countDownload(){
+downloads++;
+localStorage.setItem('megDL',downloads);
+document.getElementById('dlCount').innerText=downloads;
+}
 
 /* LOCATION */
 function updateCities(){
 const c=document.getElementById('country').value;
 const city=document.getElementById('city');
 city.innerHTML='<option value="">CITY</option>';
-if(locations[c]){Object.keys(locations[c]).forEach(x=>{let o=document.createElement('option');o.value=x;o.textContent=x;city.appendChild(o);});}
+
+if(locations[c]){
+Object.keys(locations[c]).forEach(x=>{
+let o=document.createElement('option');
+o.value=x;o.textContent=x;
+city.appendChild(o);
+});
+}
+
 document.getElementById('subCityGroup').classList.add('hidden');
 }
 
@@ -229,48 +270,69 @@ function updateSubCities(){
 const c=document.getElementById('country').value;
 const city=document.getElementById('city').value;
 const sub=document.getElementById('subCity');
+
 sub.innerHTML='<option value="">SELECT AREA</option>';
-if(locations[c]&&locations[c][city]){locations[c][city].forEach(a=>{let o=document.createElement('option');o.value=a;o.textContent=a;sub.appendChild(o);});document.getElementById('subCityGroup').classList.remove('hidden');}
+
+if(locations[c]&&locations[c][city]){
+locations[c][city].forEach(a=>{
+let o=document.createElement('option');
+o.value=a;o.textContent=a;
+sub.appendChild(o);
+});
+
+document.getElementById('subCityGroup').classList.remove('hidden');
+}
 }
 
 /* SPOTS */
 async function checkSpots(){
 const s=document.getElementById('subCity').value;
 if(!s)return;
+
 document.getElementById('counterBox').style.display='block';
+
 const r=await fetch(`${API}/search?Spot=${s}`);
 const d=await r.json();
 const left=MAX-d.length;
+
 document.getElementById('spotsLeft').innerText=Math.max(left,0);
+
 const b=document.getElementById('subBtn');
-if(left<=0){b.disabled=true;b.innerText='FULL';b.style.opacity=.5;}else{b.disabled=false;b.innerText='Confirm Registration';b.style.opacity=1;}
+
+if(left<=0){
+b.disabled=true;b.innerText='FULL';b.style.opacity=.5;
+}else{
+b.disabled=false;b.innerText='Confirm Registration';b.style.opacity=1;
+}
 }
 
 /* SUBMIT */
 document.getElementById('regForm').addEventListener('submit',async e=>{
 e.preventDefault();
+
 const b=document.getElementById('subBtn');
 b.innerText='SENDING...';b.disabled=true;
+
 const data={
-Name:document.getElementById('name').value,
-Email:document.getElementById('email').value,
-Phone:document.getElementById('phone').value,
-Country:document.getElementById('country').value,
-City:document.getElementById('city').value,
-Location:document.getElementById('subCity').value,
-Date:new Date().toLocaleDateString(),
-Time:new Date().toLocaleTimeString()
+Name:name.value,
+Email:email.value,
+Phone:phone.value,
+Country:country.value,
+City:city.value,
+Spot:subCity.value,
+Date:new Date().toLocaleString()
 };
+
 await fetch(API,{
 method:'POST',
 headers:{'Content-Type':'application/json'},
 body:JSON.stringify({data:[data]})
 });
-window.open(`https://wa.me/251910884585?text=Registered:%20${data.Name}%20-%20${data.Location}`,'_blank');
+
+window.open(`https://wa.me/251910884585?text=Registered:%20${data.Name}`,'_blank');
 alert('Registered successfully 🙏');
+
 document.getElementById('regForm').reset();
-document.getElementById('subCityGroup').classList.add('hidden');
-document.getElementById('counterBox').style.display='none';
 b.innerText='Confirm Registration';b.disabled=false;
 });
 </script>

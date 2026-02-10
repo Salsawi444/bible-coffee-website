@@ -1,355 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bible & Coffee</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIBLE & COFFEE | GLOBAL</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      color: #222;
-    }
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
-    header {
-      background: #3b2f2f;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+<style>
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;margin:0}
+h1,h2{font-family:'Oswald',sans-serif;text-transform:uppercase}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
+.hero-bg{
+background:linear-gradient(rgba(0,0,0,.8),rgba(10,10,10,1)),url('hero.jpeg');
+background-size:cover;
+background-position:center;
+min-height:100vh;
+display:flex;
+justify-content:center;
+flex-direction:column;
+}
 
-    nav button {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 25px;
-      background: #c19a6b;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.glass-nav{
+background:rgba(0,0,0,.95);
+border-bottom:1px solid rgba(255,255,255,.1);
+position:fixed;
+top:0;width:100%;z-index:999;
+}
 
-    nav button:hover {
-      background: #a67c52;
-    }
+.nav-links{
+display:flex;gap:20px;justify-content:center;padding:15px
+}
 
-    section {
-      padding: 40px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+.nav-links button{
+font-size:11px;font-weight:700;letter-spacing:1px;color:#888;
+background:none;border:none;cursor:pointer
+}
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+.active-link{color:#FCA311}
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to right, #3b2f2f, #6f4e37);
-      color: white;
-    }
+.btn-gold{
+background:#FCA311;color:#000;font-weight:800;
+letter-spacing:2px;font-size:12px;
+padding:16px;border-radius:4px;width:100%;border:none
+}
 
-    .hero h1 {
-      font-size: 2.5em;
-    }
+.btn-outline{
+border:2px solid #FCA311;color:#FCA311;font-weight:800;
+letter-spacing:2px;font-size:12px;
+padding:16px;border-radius:4px;width:100%;background:transparent
+}
 
-    .hero p {
-      max-width: 600px;
-      margin: auto;
-    }
+section{display:none;padding:110px 20px;max-width:1200px;margin:auto;text-align:center}
+#home,#join{display:block}
 
-    .hero button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 30px;
-      background: white;
-      color: #3b2f2f;
-      font-weight: bold;
-      cursor: pointer;
-    }
+input,select{
+background:#151515;border:1px solid #333;color:#fff;
+padding:14px;width:100%;border-radius:4px;margin-bottom:15px
+}
 
-    /* CARDS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+.counter-box{
+background:rgba(252,163,17,.1);
+border:1px solid #FCA311;
+padding:15px;margin-bottom:20px;border-radius:4px;display:none
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    /* FORM */
-    form {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      width: 100%;
-      padding: 12px;
-      background: #6f4e37;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      font-weight: bold;
-    }
-
-    /* MAGAZINE */
-    .mag-card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .mag-card a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 18px;
-      background: #3b2f2f;
-      color: white;
-      text-decoration: none;
-      border-radius: 20px;
-    }
-
-    footer {
-      background: #3b2f2f;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+.pdf-preview{
+width:100%;height:500px;border:1px solid #333;border-radius:6px
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Bible & Coffee</h1>
-  <p>Where Faith Meets Fellowship</p>
+<!-- NAV -->
+<nav class="glass-nav">
+<div class="nav-links">
+<button onclick="showSection('home',this)" class="active-link">HOME</button>
+<button onclick="showSection('magazine',this)">MAGAZINE</button>
+<button onclick="showSection('events',this)">EVENTS</button>
+<button onclick="showSection('merch',this)">MERCH</button>
+<button onclick="showSection('join',this)">JOIN</button>
+</div>
+</nav>
 
-  <nav>
-    <button onclick="scrollToSection('home')">Home</button>
-    <button onclick="scrollToSection('about')">About</button>
-    <button onclick="scrollToSection('magazine')">Magazine</button>
-    <button onclick="scrollToSection('merch')">Merch</button>
-    <button onclick="scrollToSection('register')">Register</button>
-  </nav>
+<!-- HOME -->
+<header id="home" class="hero-bg">
+<div class="px-6 text-center lg:text-right lg:px-24">
+
+<h1 class="text-6xl lg:text-9xl font-bold italic mb-6">
+COFFEE MEETS<br>
+<span class="text-[#FCA311]">THE WORD.</span>
+</h1>
+
+<div class="flex flex-col lg:flex-row-reverse gap-4 max-w-md ml-auto">
+<button onclick="showSection('magazine')" class="btn-gold">Weekly Magazine</button>
+<button onclick="showSection('merch')" class="btn-outline">View Merch</button>
+</div>
+
+<div class="flex justify-center lg:justify-end gap-6 mt-12 text-white/50">
+<i data-lucide="instagram"></i>
+<i data-lucide="facebook"></i>
+<i data-lucide="youtube"></i>
+<i data-lucide="mail"></i>
+</div>
+</div>
 </header>
-
-
-<!-- HERO -->
-<section id="home" class="hero">
-  <h1>Coffee Meets Scripture</h1>
-  <p>A place to connect, grow, and walk with Christ together.</p>
-  <button onclick="scrollToSection('register')">Join Us</button>
-</section>
-
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>Who We Are</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Our Vision</h3>
-      <p>To see lives transformed through Christ-centered community.</p>
-    </div>
-
-    <div class="card">
-      <h3>Our Mission</h3>
-      <p>Creating safe spaces for honest conversations around Scripture.</p>
-    </div>
-
-    <div class="card">
-      <h3>Our Goal</h3>
-      <p>Raising disciples who live the Gospel daily.</p>
-    </div>
-  </div>
-</section>
-
 
 <!-- MAGAZINE -->
 <section id="magazine">
-  <h2>Magazine</h2>
+<h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
+<p class="text-white/60 mb-6">Preview & download latest edition</p>
 
-  <div class="grid">
-    <div class="mag-card">
-      <h3>Issue #28</h3>
-      <p>Upper Room Edition</p>
-      <p>Downloads: <span id="count-mag28">0</span></p>
-      <a href="magazine28.pdf" download onclick="countDownload('mag28')">Download PDF</a>
-    </div>
-  </div>
+<div class="max-w-3xl mx-auto bg-[#111] p-4 rounded-lg border border-white/10">
+
+<iframe src="megazine.pdf" class="pdf-preview mb-6"></iframe>
+
+<a href="megazine.pdf" download onclick="countDownload()" class="btn-gold">
+Download PDF
+</a>
+
+<p class="mt-3 text-sm text-white/50">
+Downloads: <span id="dlCount">0</span>
+</p>
+
+</div>
 </section>
 
+<!-- EVENTS -->
+<section id="events">
+<h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
+<p class="text-2xl tracking-[10px] text-white/20 py-20">COMING SOON</p>
+</section>
 
 <!-- MERCH -->
 <section id="merch">
-  <h2>Merchandise</h2>
+<h2 class="text-4xl font-bold mb-10">The Merch</h2>
 
-  <div class="grid">
-    <div class="card"><img src="merch1.jpeg"><p>Merch 1</p></div>
-    <div class="card"><img src="merch2.jpeg"><p>Merch 2</p></div>
-    <div class="card"><img src="merch3.jpeg"><p>Merch 3</p></div>
-    <div class="card"><img src="merch4.jpeg"><p>Merch 4</p></div>
-    <div class="card"><img src="merch5.jpeg"><p>Merch 5</p></div>
-    <div class="card"><img src="merch6.jpeg"><p>Merch 6</p></div>
-  </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<img src="merch1.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch2.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch3.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch4.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch5.jpeg" class="w-full h-80 object-cover rounded">
+<img src="merch6.jpeg" class="w-full h-80 object-cover rounded">
+</div>
 </section>
 
+<!-- JOIN -->
+<section id="join">
+<div class="max-w-md mx-auto">
 
-<!-- REGISTER -->
-<section id="register">
-  <h2>Register</h2>
+<h2 class="text-4xl font-bold text-[#FCA311] mb-8 italic">Register</h2>
 
-  <form id="regForm">
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="text" placeholder="City" required>
-    <textarea placeholder="Why do you want to join?"></textarea>
+<div id="counterBox" class="counter-box">
+<p class="text-[#FCA311] text-xs font-bold uppercase tracking-widest">
+Spots Left: <span id="spotsLeft">8</span>
+</p>
+</div>
 
-    <button type="submit">Submit</button>
-  </form>
+<form id="regForm">
 
-  <p id="regMsg" style="text-align:center"></p>
+<input type="text" id="name" placeholder="FULL NAME" required>
+<input type="email" id="email" placeholder="EMAIL" required>
+<input type="tel" id="phone" placeholder="PHONE" required>
+
+<select id="country" onchange="updateCities()" required>
+<option value="">COUNTRY</option>
+<option value="Ethiopia">Ethiopia</option>
+<option value="USA">USA</option>
+</select>
+
+<select id="city" onchange="updateSubCities()" required>
+<option value="">CITY</option>
+</select>
+
+<div id="subCityGroup" class="hidden">
+<select id="subCity" onchange="checkSpots()">
+<option value="">SELECT AREA</option>
+</select>
+</div>
+
+<button type="submit" id="subBtn" class="btn-gold mt-4">
+Confirm Registration
+</button>
+
+</form>
+</div>
 </section>
 
-
-<!-- ADMIN -->
-<section id="admin" style="display:none">
-  <h2>Admin Panel</h2>
-  <div id="adminData"></div>
-</section>
-
-
-<footer>
-  <p>© 2026 Bible & Coffee Fridays</p>
-</footer>
-
-
+<!-- SCRIPT -->
 <script>
+lucide.createIcons();
 
-/* SCROLL */
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-}
+const API="https://sheetdb.io/api/v1/9q45d3e7oe5ks";
+const MAX=8;
 
+const locations={
+Ethiopia:{"Addis Ababa":["Bole","Ayat","Megenagna","Mexico","Haile Garment","Old Airport"]},
+USA:{Dallas:["Downtown"]}
+};
 
-/* DOWNLOAD COUNTER */
-let downloads = JSON.parse(localStorage.getItem('downloads') || '{}');
+/* SECTION */
+function showSection(id,btn){
 
-function countDownload(id) {
-  if (!downloads[id]) downloads[id] = 0;
-  downloads[id]++;
-  localStorage.setItem('downloads', JSON.stringify(downloads));
-  updateCounts();
-}
-
-function updateCounts() {
-  document.getElementById('count-mag28').innerText = downloads['mag28'] || 0;
-}
-
-
-/* REGISTER */
-let registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
-
-const form = document.getElementById('regForm');
-const msg = document.getElementById('regMsg');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  const data = {
-    name: form[0].value,
-    email: form[1].value,
-    city: form[2].value,
-    reason: form[3].value,
-    date: new Date().toLocaleString()
-  };
-
-  registrations.push(data);
-  localStorage.setItem('registrations', JSON.stringify(registrations));
-
-  msg.innerText = 'Thank you for registering!';
-  form.reset();
+['home','magazine','events','merch','join'].forEach(s=>{
+const el=document.getElementById(s);
+el.style.display=s===id?'block':'none';
 });
 
-
-/* ADMIN ACCESS */
-const ADMIN_PASS = "admin123";
-
-function adminLogin() {
-  const pass = prompt("Enter admin password:");
-
-  if (pass === ADMIN_PASS) {
-    document.getElementById('admin').style.display = 'block';
-    loadAdmin();
-  } else {
-    alert("Wrong password");
-  }
+if(btn){
+document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active-link'));
+btn.classList.add('active-link');
 }
 
-function loadAdmin() {
-  const box = document.getElementById('adminData');
-  box.innerHTML = '';
-
-  registrations.forEach((r,i) => {
-    box.innerHTML += `
-      <div class="card">
-        <p><b>${i+1}. ${r.name}</b></p>
-        <p>${r.email}</p>
-        <p>${r.city}</p>
-        <p>${r.reason}</p>
-        <small>${r.date}</small>
-      </div>
-    `;
-  });
+window.scrollTo(0,0);
+lucide.createIcons();
 }
 
+/* MAG DOWNLOAD */
+let downloads=localStorage.getItem('megDL')||0;
+document.getElementById('dlCount').innerText=downloads;
 
-/* INIT */
-updateCounts();
+function countDownload(){
+downloads++;
+localStorage.setItem('megDL',downloads);
+document.getElementById('dlCount').innerText=downloads;
+}
 
-// Type "adminLogin()" in browser console to access admin
+/* LOCATION */
+function updateCities(){
+const c=document.getElementById('country').value;
+const city=document.getElementById('city');
+city.innerHTML='<option value="">CITY</option>';
 
+if(locations[c]){
+Object.keys(locations[c]).forEach(x=>{
+let o=document.createElement('option');
+o.value=x;o.textContent=x;
+city.appendChild(o);
+});
+}
+
+document.getElementById('subCityGroup').classList.add('hidden');
+}
+
+function updateSubCities(){
+const c=document.getElementById('country').value;
+const city=document.getElementById('city').value;
+const sub=document.getElementById('subCity');
+
+sub.innerHTML='<option value="">SELECT AREA</option>';
+
+if(locations[c]&&locations[c][city]){
+locations[c][city].forEach(a=>{
+let o=document.createElement('option');
+o.value=a;o.textContent=a;
+sub.appendChild(o);
+});
+
+document.getElementById('subCityGroup').classList.remove('hidden');
+}
+}
+
+/* SPOTS */
+async function checkSpots(){
+const s=document.getElementById('subCity').value;
+if(!s)return;
+
+document.getElementById('counterBox').style.display='block';
+
+const r=await fetch(`${API}/search?Spot=${s}`);
+const d=await r.json();
+const left=MAX-d.length;
+
+document.getElementById('spotsLeft').innerText=Math.max(left,0);
+
+const b=document.getElementById('subBtn');
+
+if(left<=0){
+b.disabled=true;b.innerText='FULL';b.style.opacity=.5;
+}else{
+b.disabled=false;b.innerText='Confirm Registration';b.style.opacity=1;
+}
+}
+
+/* SUBMIT */
+document.getElementById('regForm').addEventListener('submit',async e=>{
+e.preventDefault();
+
+const b=document.getElementById('subBtn');
+b.innerText='SENDING...';b.disabled=true;
+
+const data={
+Name:name.value,
+Email:email.value,
+Phone:phone.value,
+Country:country.value,
+City:city.value,
+Spot:subCity.value,
+Date:new Date().toLocaleString()
+};
+
+await fetch(API,{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({data:[data]})
+});
+
+window.open(`https://wa.me/251910884585?text=Registered:%20${data.Name}`,'_blank');
+alert('Registered successfully 🙏');
+
+document.getElementById('regForm').reset();
+b.innerText='Confirm Registration';b.disabled=false;
+});
 </script>
 
 </body>

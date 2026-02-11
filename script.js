@@ -16,14 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("regTime").value = today.toTimeString().slice(0,5);
 });
 
-// Slot tracking for Addis Ababa locations
-const slots = {
-  Bole: 8,
-  Piazza: 8,
-  Mexico: 8,
-  "Sar Bet": 8,
-  "4 Kilo": 8
-};
+// Slot tracking
+const slots = { Bole: 8, Piazza: 8, Mexico: 8, "Sar Bet": 8, "4 Kilo": 8 };
 
 const form = document.getElementById('regForm');
 form.addEventListener('submit', async function(e) {
@@ -37,7 +31,6 @@ form.addEventListener('submit', async function(e) {
     alert(`Sorry, ${location} is full.`);
   }
 
-  // Continue with SheetDB submission
   const data = {
     Name: document.getElementById('name').value,
     Email: document.getElementById('email').value,
@@ -58,7 +51,7 @@ form.addEventListener('submit', async function(e) {
   form.reset();
 });
 
-// Hamburger toggle for mobile nav with animation
+// Hamburger toggle
 document.getElementById('menuToggle').addEventListener('click', function() {
   const menu = document.getElementById('hamburgerMenu');
   menu.classList.toggle('show');

@@ -15,14 +15,22 @@
 <body>
 
   <nav>
-    <div class="nav-links">
-      <button onclick="showSection('home',this)" class="active">HOME</button>
-      <button onclick="showSection('magazine',this)">MAGAZINE</button>
-      <button onclick="showSection('events',this)">EVENTS</button>
-      <button onclick="showSection('merch',this)">MERCH</button>
-      <button onclick="showSection('sermon',this)">SERMON</button>
-      <button onclick="showSection('support',this)">SUPPORT</button>
-      <button onclick="showSection('join',this)">JOIN</button>
+    <div class="nav-container">
+      <div class="brand md:hidden">B&C</div>
+      
+      <button id="menu-toggle" class="md:hidden text-[#FCA311]">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <div id="nav-links" class="nav-links">
+        <button onclick="showSection('home',this)" class="active">HOME</button>
+        <button onclick="showSection('magazine',this)">MAGAZINE</button>
+        <button onclick="showSection('events',this)">EVENTS</button>
+        <button onclick="showSection('merch',this)">MERCH</button>
+        <button onclick="showSection('sermon',this)">SERMON</button>
+        <button onclick="showSection('support',this)">SUPPORT</button>
+        <button onclick="showSection('join',this)">JOIN</button>
+      </div>
     </div>
   </nav>
 
@@ -35,7 +43,7 @@
 
   <section id="vision">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
-    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded">
+    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded w-full max-w-2xl">
     <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
       This is where you can place your vision text or a JPEG banner.
     </p>
@@ -44,8 +52,8 @@
   <section id="magazine">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
     <div class="mag-box">
-      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded">
-      <a href="magazine.pdf" download class="submit-btn">Download PDF</a>
+      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded w-full">
+      <a href="magazine.pdf" download class="submit-btn block text-center">Download PDF</a>
     </div>
   </section>
 
@@ -56,13 +64,13 @@
 
   <section id="merch">
     <h2 class="text-4xl font-bold mb-8">The Merch</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <img src="merch1.jpeg" alt="Merch item 1" class="rounded">
-      <img src="merch2.jpeg" alt="Merch item 2" class="rounded">
-      <img src="merch3.jpeg" alt="Merch item 3" class="rounded">
-      <img src="merch4.jpeg" alt="Merch item 4" class="rounded">
-      <img src="merch5.jpeg" alt="Merch item 5" class="rounded">
-      <img src="merch6.jpeg" alt="Merch item 6" class="rounded">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <img src="merch1.jpeg" alt="Merch item 1" class="rounded w-full">
+      <img src="merch2.jpeg" alt="Merch item 2" class="rounded w-full">
+      <img src="merch3.jpeg" alt="Merch item 3" class="rounded w-full">
+      <img src="merch4.jpeg" alt="Merch item 4" class="rounded w-full">
+      <img src="merch5.jpeg" alt="Merch item 5" class="rounded w-full">
+      <img src="merch6.jpeg" alt="Merch item 6" class="rounded w-full">
     </div>
   </section>
 
@@ -75,6 +83,7 @@
     <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Support</h2>
     <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
   </section>
+
   <section id="join">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
     <div class="max-w-md mx-auto form-card">

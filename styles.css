@@ -1,102 +1,74 @@
+html { scroll-behavior: smooth; }
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
   margin: 0;
-  padding: 0;
-  background: #f4f4f4;
 }
 
 nav {
-  background: #333;
-  padding: 10px;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-nav ul li {
-  margin-right: 20px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Registration Form Styling */
-form {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 40px auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-select, button {
+  position: fixed;
+  top: 0;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  z-index: 999;
+  background: #000;
+  border-bottom: 1px solid #222;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+}
+.nav-links { display: flex; gap: 18px; }
+.nav-links button {
+  color: #aaa; font-size: 12px; font-weight: 700; letter-spacing: 1px;
+  border: none; background: none; cursor: pointer; transition: .3s; position: relative;
+}
+.nav-links button:hover, .nav-links .active { color: #FCA311; }
+.nav-links button::after {
+  content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0;
+  background: #FCA311; transition: width .3s;
+}
+.nav-links button:hover::after { width: 100%; }
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("hero.jpeg");
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  padding: 80px 25px; text-align: center;
+  filter: brightness(1.1) contrast(1.05);
+}
+.hero h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; line-height: 1.1; }
+.hero span { color: #FCA311; }
+.motto { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 20px; color: #FCA311; font-weight: bold; }
+
+section {
+  display: none; max-width: 1200px; margin: auto; padding: 110px 20px; text-align: center;
+}
+#home, #vision { display: block; }
+
+.mag-box {
+  max-width: 700px; margin: auto; background: #111; padding: 25px;
+  border-radius: 8px; border: 1px solid #333;
 }
 
-button {
-  background: #3498db;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.form-card {
+  background: #111; padding: 30px; border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.6);
 }
-
-button:hover {
-  background: #2980b9;
+input, select {
+  width: 100%; background: #151515; border: 1px solid #333; color: white;
+  padding: 14px; border-radius: 5px; margin-bottom: 14px; transition: .3s;
 }
+input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 0 6px #FCA311; }
 
-#availability {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 18px;
+.submit-btn {
+  background: #FCA311; color: black; font-weight: 900; letter-spacing: 2px;
+  padding: 16px; border-radius: 6px; width: 100%; transition: .3s;
 }
+.submit-btn:hover { background: #fff; transform: scale(1.03); }
 
-/* Homepage Image */
-.bright-image {
-  filter: brightness(1.2) contrast(1.1);
-  max-width: 100%;
-  border-radius: 8px;
-  display: block;
-  margin: 20px auto;
-}
-
-/* Vision Section */
-#vision {
-  background: #ffffff;
-  padding: 40px;
-  margin: 20px auto;
-  max-width: 800px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-radius: 8px;
-}
-
-#vision h2 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-}
-
-#vision p {
-  font-size: 18px;
-  color: #555;
+@media(max-width:768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .motto { font-size: 1.4rem; }
+  nav { justify-content: center; }
 }

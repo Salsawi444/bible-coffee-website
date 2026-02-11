@@ -20,27 +20,20 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-links">
-    <!-- Only hamburger shows on mobile -->
-    <button id="menuToggle">☰ MENU</button>
-  </div>
-</nav>
-
-<!-- Vertical hamburger menu -->
-<div id="hamburgerMenu" class="hamburger-menu">
-  <button onclick="showSection('home',this)">HOME</button>
-  <button onclick="showSection('magazine',this)">MAGAZINE</button>
-  <button onclick="showSection('events',this)">EVENTS</button>
-  <button onclick="showSection('merch',this)">MERCH</button>
-  <button onclick="showSection('sermon',this)">SERMON</button>
-  <button onclick="showSection('support',this)">SUPPORT</button>
-  <button onclick="showSection('join',this)">JOIN</button>
-</div>
-
-
+      <button onclick="showSection('home',this)" class="active">HOME</button>
+      <button onclick="showSection('magazine',this)">MAGAZINE</button>
+      <button onclick="showSection('events',this)">EVENTS</button>
+      <button onclick="showSection('merch',this)">MERCH</button>
+      <button onclick="showSection('sermon',this)">SERMON</button>
+      <button onclick="showSection('support',this)">SUPPORT</button>
+      <button onclick="showSection('join',this)">JOIN</button>
+      <!-- Hamburger toggle (shows only on mobile) -->
+      <button id="menuToggle">☰ MENU</button>
+    </div>
   </nav>
 
-  <!-- Expandable Hamburger Menu -->
-  <div class="hamburger-menu" id="hamburgerMenu">
+  <!-- Vertical hamburger menu (mobile only) -->
+  <div id="hamburgerMenu" class="hamburger-menu">
     <button onclick="showSection('home',this)">HOME</button>
     <button onclick="showSection('magazine',this)">MAGAZINE</button>
     <button onclick="showSection('events',this)">EVENTS</button>
@@ -48,23 +41,9 @@
     <button onclick="showSection('sermon',this)">SERMON</button>
     <button onclick="showSection('support',this)">SUPPORT</button>
     <button onclick="showSection('join',this)">JOIN</button>
-  <!-- Hamburger toggle (shows only on mobile) -->
-    <button id="menuToggle">☰</button>
   </div>
-</nav>
 
-<!-- Vertical hamburger menu (mobile only) -->
-<div id="hamburgerMenu" class="hamburger-menu">
-  <button onclick="showSection('home',this)">HOME</button>
-  <button onclick="showSection('magazine',this)">MAGAZINE</button>
-  <button onclick="showSection('events',this)">EVENTS</button>
-  <button onclick="showSection('merch',this)">MERCH</button>
-  <button onclick="showSection('sermon',this)">SERMON</button>
-  <button onclick="showSection('support',this)">SUPPORT</button>
-  <button onclick="showSection('join',this)">JOIN</button>
-</div>
-
-
+  <!-- Hero -->
   <header id="home" class="hero">
     <div>
       <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
@@ -72,6 +51,7 @@
     </div>
   </header>
 
+  <!-- Vision -->
   <section id="vision">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
     <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded">
@@ -80,6 +60,7 @@
     </p>
   </section>
 
+  <!-- Magazine -->
   <section id="magazine">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
     <div class="mag-box">
@@ -88,11 +69,13 @@
     </div>
   </section>
 
+  <!-- Events -->
   <section id="events">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
     <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
   </section>
 
+  <!-- Merch -->
   <section id="merch">
     <h2 class="text-4xl font-bold mb-8">The Merch</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -105,16 +88,19 @@
     </div>
   </section>
 
+  <!-- Sermon -->
   <section id="sermon">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Latest Sermon</h2>
     <p class="text-white/80">Embed your YouTube sermon video here.</p>
   </section>
 
+  <!-- Support -->
   <section id="support">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Support the Movement</h2>
     <p class="text-white/80">Add donation or support information here.</p>
   </section>
 
+  <!-- Join -->
   <section id="join">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
     <div class="max-w-md mx-auto form-card">

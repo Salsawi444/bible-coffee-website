@@ -1,1 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
 
+nav {
+  background: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Registration Form Styling */
+form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+select, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  background: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+#availability {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Homepage Image */
+.bright-image {
+  filter: brightness(1.2) contrast(1.1);
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Vision Section */
+#vision {
+  background: #ffffff;
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+#vision h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+#vision p {
+  font-size: 18px;
+  color: #555;
+}

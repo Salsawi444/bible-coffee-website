@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bible & Coffee | Global</title>
 
-  <!-- Tailwind & Icons -->
+  <!-- Fonts & Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -27,12 +24,11 @@
       <button onclick="showSection('sermon',this)">SERMON</button>
       <button onclick="showSection('support',this)">SUPPORT</button>
       <button onclick="showSection('join',this)">JOIN</button>
-      <!-- Hamburger toggle (mobile only) -->
       <button id="menuToggle">☰ MENU</button>
     </div>
   </nav>
 
-  <!-- Vertical hamburger menu (mobile only) -->
+  <!-- Mobile Hamburger Menu -->
   <div id="hamburgerMenu" class="hamburger-menu">
     <button onclick="showSection('home',this)">HOME</button>
     <button onclick="showSection('magazine',this)">MAGAZINE</button>
@@ -43,59 +39,28 @@
     <button onclick="showSection('join',this)">JOIN</button>
   </div>
 
-  <!-- Hero -->
+  <!-- Sections -->
   <header id="home" class="hero">
-    <div>
-      <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
-      <p class="motto">Thank God It’s Friday</p>
-    </div>
+    <h1>COFFEE MEETS <span>THE WORD</span></h1>
+    <p class="motto">Thank God It’s Friday</p>
   </header>
 
-  <!-- Vision -->
-  <section id="vision">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
-    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded">
-    <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-      This is where you can place your vision text or a JPEG banner.
-    </p>
-  </section>
+  <section id="magazine"><h2>Magazine</h2><p>Weekly magazine content.</p></section>
+  <section id="events"><h2>Events</h2><p>Events content.</p></section>
 
-  <!-- Magazine -->
-  <section id="magazine">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
-    <div class="mag-box">
-      <p>Magazine content goes here.</p>
-    </div>
-  </section>
-
-  <!-- Events -->
-  <section id="events">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Events</h2>
-    <p>Events content goes here.</p>
-  </section>
-
-  <!-- Merch -->
   <section id="merch">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Merch</h2>
-    <p>Merchandise content goes here.</p>
+    <h2>Merch</h2>
+    <img src="merch.jpeg" alt="Merch Banner" class="mx-auto mb-6 rounded">
+    <p>Browse our merchandise below.</p>
+    <a href="merch.pdf" target="_blank">Download Merch Catalog (PDF)</a>
   </section>
 
-  <!-- Sermon -->
-  <section id="sermon">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Sermon</h2>
-    <p>Sermon content goes here.</p>
-  </section>
+  <section id="sermon"><h2>Sermon</h2><p>Sermon content.</p></section>
+  <section id="support"><h2>Support</h2><p>Support content.</p></section>
 
-  <!-- Support -->
-  <section id="support">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Support</h2>
-    <p>Support content goes here.</p>
-  </section>
-
-  <!-- Join (with form) -->
   <section id="join">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Join Us</h2>
-    <form id="regForm" class="form-card">
+    <h2>Join Us</h2>
+    <form id="regForm">
       <input type="text" id="name" placeholder="Name" required>
       <input type="email" id="email" placeholder="Email" required>
       <input type="tel" id="phone" placeholder="Phone" required>
@@ -111,7 +76,7 @@
       </select>
       <input type="date" id="regDate" required>
       <input type="time" id="regTime" required>
-      <button type="submit" class="submit-btn">Register</button>
+      <button type="submit">Register</button>
     </form>
   </section>
 

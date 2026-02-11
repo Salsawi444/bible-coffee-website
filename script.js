@@ -93,3 +93,18 @@ document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
   });
 });
 
+// Hamburger toggle for mobile nav with animation
+document.getElementById('menuToggle').addEventListener('click', function() {
+  const menu = document.getElementById('hamburgerMenu');
+  menu.classList.toggle('show');
+});
+
+// Close hamburger menu after selecting a button
+document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('hamburgerMenu').classList.remove('show');
+  });
+});
+
+
+

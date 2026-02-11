@@ -70,4 +70,3 @@ document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
     document.getElementById('hamburgerMenu').classList.remove('show');
   });
 });
-

@@ -96,25 +96,45 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
   nav {
     position: fixed;
     bottom: 0;
-    top: auto;
     width: 100%;
-    justify-content: space-around;
+    justify-content: flex-end;
     padding: 10px;
     border-top: 1px solid #222;
-    border-bottom: none;
     background: #000;
   }
 
+  /* Only hamburger visible in bottom bar */
+  .nav-links button {
+    display: none;
+  }
+  #menuToggle {
+    display: block;
+    color: #FCA311;
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+  }
+
+  /* Vertical menu with slide-up animation */
   .hamburger-menu {
     display: none;
     position: fixed;
-    bottom: 60px; /* just above the nav bar */
+    bottom: 60px;
     left: 0;
     right: 0;
     background: #111;
     padding: 20px;
     border-top: 1px solid #333;
     text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .hamburger-menu.show {
+    display: block;
+    transform: translateY(0);
   }
 
   .hamburger-menu button {

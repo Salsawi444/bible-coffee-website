@@ -1,409 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible & Coffee | Global</title>
 
-<title>Bible & Coffee | Global</title>
+  <!-- Tailwind & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      margin: 0;
+    }
 
-<style>
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: #000;
+      border-bottom: 1px solid #222;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      padding: 14px;
+    }
+    .nav-links button {
+      color: #aaa;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: .3s;
+    }
+    .nav-links button:hover,
+    .nav-links .active {
+      color: #FCA311;
+    }
 
-html{scroll-behavior:smooth}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("hero.jpeg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 80px 25px;
+    }
+    .hero-inner {
+      max-width: 500px;
+      text-align: right;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+    .hero span { color: #FCA311; }
+    .hero-btns {
+      margin-top: 25px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
 
-body{
-font-family:'Inter',sans-serif;
-background:#0a0a0a;
-color:#fff;
-margin:0;
-}
+    /* BUTTONS */
+    .btn-main {
+      background: #FCA311;
+      color: #000;
+      font-weight: 800;
+      padding: 14px 24px;
+      border-radius: 5px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+    .btn-outline {
+      border: 2px solid #FCA311;
+      color: #FCA311;
+      font-weight: 800;
+      padding: 12px 22px;
+      border-radius: 5px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+    .btn-outline:hover {
+      background: #FCA311;
+      color: #000;
+    }
 
-/* NAV */
+    /* SECTIONS */
+    section {
+      display: none;
+      max-width: 1200px;
+      margin: auto;
+      padding: 110px 20px;
+      text-align: center;
+    }
+    #home, #join { display: block; }
 
-nav{
-position:fixed;
-top:0;
-width:100%;
-z-index:999;
-background:#000;
-border-bottom:1px solid #222;
-}
+    /* MAGAZINE */
+    .mag-box {
+      max-width: 700px;
+      margin: auto;
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #333;
+    }
+    .mag-box iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 6px;
+    }
 
-.nav-links{
-display:flex;
-justify-content:center;
-gap:18px;
-padding:14px;
-}
+    /* FORM */
+    input, select {
+      width: 100%;
+      background: #151515;
+      border: 1px solid #333;
+      color: white;
+      padding: 14px;
+      border-radius: 5px;
+      margin-bottom: 14px;
+    }
+    .submit-btn {
+      background: #FCA311;
+      color: black;
+      font-weight: 900;
+      letter-spacing: 2px;
+      padding: 16px;
+      border-radius: 6px;
+      width: 100%;
+      transition: .3s;
+    }
+    .submit-btn:hover {
+      background: #fff;
+      transform: scale(1.03);
+    }
 
-.nav-links button{
-color:#aaa;
-font-size:12px;
-font-weight:700;
-letter-spacing:1px;
-border:none;
-background:none;
-cursor:pointer;
-transition:.3s;
-}
-
-.nav-links button:hover,
-.nav-links .active{
-color:#FCA311;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
-url("hero.jpeg");
-background-size:cover;
-background-position:center;
-
-display:flex;
-align-items:center;
-justify-content:flex-end;
-padding:80px 25px;
-}
-
-.hero-inner{
-max-width:500px;
-text-align:right;
-}
-
-.hero h1{
-font-family:'Oswald',sans-serif;
-font-size:3rem;
-line-height:1.1;
-}
-
-.hero span{
-color:#FCA311;
-}
-
-.hero-btns{
-margin-top:25px;
-display:flex;
-justify-content:flex-end;
-gap:12px;
-}
-
-.btn-main{
-background:#FCA311;
-color:#000;
-font-weight:800;
-padding:14px 24px;
-border-radius:5px;
-font-size:12px;
-letter-spacing:1px;
-transition:.3s;
-}
-
-.btn-main:hover{
-transform:translateY(-2px);
-background:#fff;
-}
-
-.btn-outline{
-border:2px solid #FCA311;
-color:#FCA311;
-font-weight:800;
-padding:12px 22px;
-border-radius:5px;
-font-size:12px;
-letter-spacing:1px;
-transition:.3s;
-}
-
-.btn-outline:hover{
-background:#FCA311;
-color:#000;
-}
-
-/* SECTIONS */
-
-section{
-display:none;
-max-width:1200px;
-margin:auto;
-padding:110px 20px;
-text-align:center;
-}
-
-#home,
-#join{
-display:block;
-}
-
-/* MAG */
-
-.mag-box{
-max-width:700px;
-margin:auto;
-background:#111;
-padding:15px;
-border-radius:8px;
-border:1px solid #333;
-}
-
-.mag-box iframe{
-width:100%;
-height:450px;
-border:none;
-border-radius:6px;
-}
-
-/* FORM */
-
-input,select{
-width:100%;
-background:#151515;
-border:1px solid #333;
-color:white;
-padding:14px;
-border-radius:5px;
-margin-bottom:14px;
-}
-
-.submit-btn{
-background:#FCA311;
-color:black;
-font-weight:900;
-letter-spacing:2px;
-padding:16px;
-border-radius:6px;
-width:100%;
-transition:.3s;
-}
-
-.submit-btn:hover{
-background:#fff;
-transform:scale(1.03);
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero{
-justify-content:center;
-text-align:center;
-}
-
-.hero-inner{
-text-align:center;
-}
-
-.hero-btns{
-justify-content:center;
-}
-
-.hero h1{
-font-size:2.3rem;
-}
-
-}
-
-</style>
+    /* MOBILE */
+    @media(max-width:768px) {
+      .hero { justify-content: center; text-align: center; }
+      .hero-inner { text-align: center; }
+      .hero-btns { justify-content: center; }
+      .hero h1 { font-size: 2.3rem; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+  <!-- NAV -->
+  <nav>
+    <div class="nav-links">
+      <button onclick="showSection('home',this)" class="active">HOME</button>
+      <button onclick="showSection('magazine',this)">MAGAZINE</button>
+      <button onclick="showSection('events',this)">EVENTS</button>
+      <button onclick="showSection('merch',this)">MERCH</button>
+      <button onclick="showSection('join',this)">JOIN</button>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <header id="home" class="hero">
+    <div class="hero-inner">
+      <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
+      <p class="mt-3 text-[#FCA311] font-bold">Thank God It’s Friday</p>
+      <div class="hero-btns">
+        <button onclick="showSection('magazine')" class="btn-main">MAGAZINE</button>
+        <button onclick="showSection('merch')" class="btn-outline">MERCH</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAGAZINE -->
+  <section id="magazine">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
+    <div class="mag-box">
+      <iframe src="megazine.pdf" title="Weekly Magazine"></iframe>
+      <a href="megazine.pdf" download class="btn-main block mt-4 text-center">Download PDF</a>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
+    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
+  </section>
+
+  <!-- MERCH -->
+  <section id="merch">
+    <h2 class="text-4xl font-bold mb-8">The Merch</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <img src="merch1.jpeg" alt="Merch item 1" class="rounded">
+      <img src="merch2.jpeg" alt="Merch item 2" class="rounded">
+      <img src="merch3.jpeg" alt="Merch item 3" class="rounded">
+      <img src="merch4.jpeg" alt="Merch item 4" class="rounded">
+      <img src="merch5.jpeg" alt="Merch item 5" class="rounded">
+      <img src="merch6.jpeg" alt="Merch item 6" class="rounded">
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
+    <div class="max-w-md mx-auto">
+      <form id="regForm">
+        <input id="name" required placeholder="Full Name">
+        <input id="email" type="email" required placeholder="Email">
+        <input id="phone" required placeholder="Phone">
+
+        <select id="country" required>
+          <option value="">Country</option>
+          <option>Ethiopia</option>
+          <option>USA</option>
+          <option>Germany</option>
+        </select>
+
+        <select id="city" required>
+          <option value="">City</option>
+          <option>Addis Ababa</option>
+          <option>Dallas</option>
+          <option>Berlin</option>
+        </select>
+
+        <input id="location" placeholder="Location / Area">
+
+        <button class="submit-btn" type="submit">Confirm Registration</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    lucide.createIcons();
+
+    // NAV
+    function showSection(id, btn) {
+      document.querySelectorAll('section,header').for
 
-<nav>
-<div class="nav-links">
-
-<button onclick="showSection('home',this)" class="active">HOME</button>
-<button onclick="showSection('magazine',this)">MAGAZINE</button>
-<button onclick="showSection('events',this)">EVENTS</button>
-<button onclick="showSection('merch',this)">MERCH</button>
-<button onclick="showSection('join',this)">JOIN</button>
-
-</div>
-</nav>
-
-
-<!-- HOME -->
-
-<header id="home" class="hero">
-
-<div class="hero-inner">
-
-<h1>
-COFFEE MEETS<br>
-<span>THE WORD</span>
-</h1>
-
-<p class="mt-3 text-[#FCA311] font-bold">
-Thank God It’s Friday
-</p>
-
-<div class="hero-btns">
-
-<button onclick="showSection('magazine')" class="btn-main">
-MAGAZINE
-</button>
-
-<button onclick="showSection('merch')" class="btn-outline">
-MERCH
-</button>
-
-</div>
-
-</div>
-
-</header>
-
-
-<!-- MAG -->
-
-<section id="magazine">
-
-<h2 class="text-4xl font-bold text-[#FCA311] mb-6">
-Weekly Magazine
-</h2>
-
-<div class="mag-box">
-
-<iframe src="megazine.pdf"></iframe>
-
-<a href="megazine.pdf" download
-class="btn-main block mt-4 text-center">
-Download PDF
-</a>
-
-</div>
-
-</section>
-
-
-<!-- EVENTS -->
-
-<section id="events">
-
-<h2 class="text-4xl font-bold text-[#FCA311] mb-4">
-Events
-</h2>
-
-<p class="text-white/30 tracking-[6px] text-xl py-20">
-COMING SOON
-</p>
-
-</section>
-
-
-<!-- MERCH -->
-
-<section id="merch">
-
-<h2 class="text-4xl font-bold mb-8">
-The Merch
-</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-<img src="merch1.jpeg" class="rounded">
-<img src="merch2.jpeg" class="rounded">
-<img src="merch3.jpeg" class="rounded">
-<img src="merch4.jpeg" class="rounded">
-<img src="merch5.jpeg" class="rounded">
-<img src="merch6.jpeg" class="rounded">
-
-</div>
-
-</section>
-
-
-<!-- JOIN -->
-
-<section id="join">
-
-<h2 class="text-4xl font-bold text-[#FCA311] mb-8">
-Join Movement
-</h2>
-
-<div class="max-w-md mx-auto">
-
-<form id="regForm">
-
-<input id="name" required placeholder="Full Name">
-
-<input id="email" type="email" required placeholder="Email">
-
-<input id="phone" required placeholder="Phone">
-
-<select id="country" required>
-<option value="">Country</option>
-<option>Ethiopia</option>
-<option>USA</option>
-<option>Germany</option>
-</select>
-
-<select id="city" required>
-<option value="">City</option>
-<option>Addis Ababa</option>
-<option>Dallas</option>
-<option>Berlin</option>
-</select>
-
-<input id="location" placeholder="Location / Area">
-
-<button class="submit-btn" type="submit">
-Confirm Registration
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-
-<!-- SCRIPT -->
-
-<script>
-
-lucide.createIcons();
-
-/* NAV */
-
-function showSection(id,btn){
-
-document.querySelectorAll('section,header').forEach(s=>{
-s.style.display='none';
-});
-
-document.getElementById(id).style.display='block';
-
-document.querySelectorAll('.nav-links button')
-.forEach(b=>b.classList.remove('active'));
-
-btn.classList.add('active');
-
-window.scrollTo(0,0);
-}
-
-/* FORM */
-
-document.getElementById('regForm')
-.addEventListener('submit',e=>{
-
-e.preventDefault();
-
-alert("Registration submitted 🙏");
-
-e.target.reset();
-
-});
-
-</script>
-
-</body>
-</html>

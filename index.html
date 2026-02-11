@@ -2,245 +2,178 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bible & Coffee | Global</title>
-
-  <!-- Tailwind & Icons -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0a0a0a;
-      color: #fff;
-      margin: 0;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      background: #000;
-      border-bottom: 1px solid #222;
-      display: flex;
-      justify-content: flex-end;
-      padding: 10px 20px;
-    }
-    .nav-links { display: flex; gap: 18px; }
-    .nav-links button {
-      color: #aaa; font-size: 12px; font-weight: 700; letter-spacing: 1px;
-      border: none; background: none; cursor: pointer; transition: .3s; position: relative;
-    }
-    .nav-links button:hover, .nav-links .active { color: #FCA311; }
-    .nav-links button::after {
-      content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0;
-      background: #FCA311; transition: width .3s;
-    }
-    .nav-links button:hover::after { width: 100%; }
-
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("hero.jpeg");
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center;
-      padding: 80px 25px; text-align: center;
-    }
-    .hero h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; line-height: 1.1; }
-    .hero span { color: #FCA311; }
-    .motto { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 20px; color: #FCA311; font-weight: bold; }
-
-    section {
-      display: none; max-width: 1200px; margin: auto; padding: 110px 20px; text-align: center;
-    }
-    #home, #vision { display: block; }
-
-    .mag-box {
-      max-width: 700px; margin: auto; background: #111; padding: 25px;
-      border-radius: 8px; border: 1px solid #333;
-    }
-
-    .form-card {
-      background: #111; padding: 30px; border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.6);
-    }
-    input, select {
-      width: 100%; background: #151515; border: 1px solid #333; color: white;
-      padding: 14px; border-radius: 5px; margin-bottom: 14px; transition: .3s;
-    }
-    input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 0 6px #FCA311; }
-    .submit-btn {
-      background: #FCA311; color: black; font-weight: 900; letter-spacing: 2px;
-      padding: 16px; border-radius: 6px; width: 100%; transition: .3s;
-    }
-    .submit-btn:hover { background: #fff; transform: scale(1.03); }
-
-    @media(max-width:768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .motto { font-size: 1.4rem; }
-      nav { justify-content: center; }
-    }
-  </style>
+  <title>Registration & Homepage</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+  <!-- Navigation Bar (Vision button removed) -->
   <nav>
-    <div class="nav-links">
-      <button onclick="showSection('home',this)" class="active">HOME</button>
-      <button onclick="showSection('vision',this)">VISION</button>
-      <button onclick="showSection('magazine',this)">MAGAZINE</button>
-      <button onclick="showSection('events',this)">EVENTS</button>
-      <button onclick="showSection('merch',this)">MERCH</button>
-      <button onclick="showSection('join',this)">JOIN</button>
-    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#registrationForm">Register</a></li>
+      <!-- Vision button intentionally removed -->
+    </ul>
   </nav>
 
-  <header id="home" class="hero">
-    <div>
-      <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
-      <p class="motto">Thank God It’s Friday</p>
-    </div>
-  </header>
+  <!-- Homepage Image -->
+  <img src="homepage.jpg" alt="Homepage Image" class="bright-image">
 
-  <!-- Vision embedded on Home -->
+  <!-- Vision Section -->
   <section id="vision">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
-    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded">
-    <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-      This is where you can place your vision text or a JPEG banner.
-    </p>
+    <h2>Our Vision</h2>
+    <p>Building a global, open-hearted community rooted in clarity and restoration.</p>
   </section>
 
-  <section id="magazine">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
-    <div class="mag-box">
-      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded">
-      <a href="magazine.pdf" download class="submit-btn">Download PDF</a>
-    </div>
-  </section>
+  <!-- Registration Form -->
+  <form id="registrationForm">
+    <label for="location">Choose Location:</label>
+    <select id="location" name="location" required>
+      <option value="Bali">Bali</option>
+      <option value="Mexico">Mexico</option>
+    </select>
 
-  <section id="events">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
-    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
-  </section>
+    <button type="submit">Register</button>
+  </form>
 
-  <section id="merch">
-    <h2 class="text-4xl font-bold mb-8">The Merch</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <img src="merch1.jpeg" alt="Merch item 1" class="rounded">
-      <img src="merch2.jpeg" alt="Merch item 2" class="rounded">
-      <img src="merch3.jpeg" alt="Merch item 3" class="rounded">
-      <img src="merch4.jpeg" alt="Merch item 4" class="rounded">
-      <img src="merch5.jpeg" alt="Merch item 5" class="rounded">
-      <img src="merch6.jpeg" alt="Merch item 6" class="rounded">
-    </div>
-  </section>
+  <!-- Availability Display -->
+  <div id="availability"></div>
 
-    <section id="join">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
-    <div class="max-w-md mx-auto form-card">
-      <form id="regForm" class="space-y-4">
-        <input id="name" name="Name" required placeholder="Full Name">
-        <input id="email" name="Email" type="email" required placeholder="Email">
-        <input id="phone" name="Phone" required placeholder="Phone">
-
-        <select id="country" name="Country" required>
-          <option value="">Country</option>
-          <option>Ethiopia</option>
-          <option>USA</option>
-          <option>Germany</option>
-          <option>Kenya</option>
-          <option>South Africa</option>
-          <option>United Kingdom</option>
-          <option>Canada</option>
-          <option>Brazil</option>
-          <option>India</option>
-          <option>Japan</option>
-          <option>Australia</option>
-          <option>France</option>
-          <option>Italy</option>
-        </select>
-
-        <select id="city" name="City" required>
-          <option value="">City</option>
-          <option>Addis Ababa</option>
-          <option>Dallas</option>
-          <option>Berlin</option>
-          <option>Nairobi</option>
-          <option>Cape Town</option>
-          <option>London</option>
-          <option>Toronto</option>
-          <option>São Paulo</option>
-          <option>Mumbai</option>
-          <option>Tokyo</option>
-          <option>Sydney</option>
-          <option>Paris</option>
-          <option>Rome</option>
-        </select>
-
-        <!-- Specific locations for Addis Ababa -->
-        <select id="location" name="Location">
-          <option value="">Location / Area</option>
-          <option>Bole</option>
-          <option>Piazza</option>
-          <option>Mexico</option>
-          <option>Sar Bet</option>
-          <option>4 Kilo</option>
-        </select>
-
-        <!-- Auto-fill date/time -->
-        <input id="regDate" name="Registration Date" type="date">
-        <input id="regTime" name="Registration Time" type="time">
-
-        <button class="submit-btn" type="submit">Confirm Registration</button>
-      </form>
-    </div>
-  </section>
-
-    <!-- SCRIPT -->
-  <script>
-    // Navigation toggle
-    function showSection(id, btn) {
-      // Hide all sections and header
-      document.querySelectorAll('section,header').forEach(sec => sec.style.display = 'none');
-      // Show the selected section
-      document.getElementById(id).style.display = 'block';
-      // Update active nav button
-      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-      if(btn) btn.classList.add('active');
-    }
-
-    // SheetDB form submission
-    const form = document.getElementById('regForm');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const data = {
-        Name: document.getElementById('name').value,
-        Email: document.getElementById('email').value,
-        Phone: document.getElementById('phone').value,
-        Country: document.getElementById('country').value,
-        City: document.getElementById('city').value,
-        Location: document.getElementById('location').value,
-        "Registration Date": document.getElementById('regDate').value,
-        "Registration Time": document.getElementById('regTime').value
-      };
-
-      await fetch("https://sheetdb.io/api/v1/9q45d3e7oe5ks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: data })
-      });
-
-      alert("Registration submitted successfully!");
-      form.reset();
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+nav {
+  background: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Registration Form Styling */
+form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+select, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  background: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+#availability {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Homepage Image */
+.bright-image {
+  filter: brightness(1.2) contrast(1.1);
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Vision Section */
+#vision {
+  background: #ffffff;
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+#vision h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+#vision p {
+  font-size: 18px;
+  color: #555;
+}
+
+// Initial slots per location
+const slots = {
+  Bali: 8,
+  Mexico: 8
+};
+
+const form = document.getElementById('registrationForm');
+const availability = document.getElementById('availability');
+
+// Show initial availability
+function updateAvailability() {
+  availability.innerHTML = `
+    Bali: ${slots.Bali} spots left<br>
+    Mexico: ${slots.Mexico} spots left
+  `;
+}
+updateAvailability();
+
+// Handle registration
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const location = document.getElementById('location').value;
+
+  if (slots[location] > 0) {
+    slots[location]--;
+    alert(`Registered for ${location}!`);
+  } else {
+    alert(`Sorry, ${location} is full.`);
+  }
+  updateAvailability();
+});

@@ -92,12 +92,47 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
 }
 .submit-btn:hover { background: #fff; transform: scale(1.03); }
 
-@media(max-width:768px) {
-  .hero h1 { font-size: 2.5rem; }
-  .motto { font-size: 1.4rem; }
-  nav { justify-content: center; }
+  @media(max-width:768px) {
+  nav {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 1px solid #222;
+    border-bottom: none;
+    background: #000;
+  }
+
   .hamburger-menu {
-    bottom: 80px;
-    right: 20px;
+    display: none;
+    position: fixed;
+    bottom: 60px; /* just above the nav bar */
+    left: 0;
+    right: 0;
+    background: #111;
+    padding: 20px;
+    border-top: 1px solid #333;
+    text-align: center;
+  }
+
+  .hamburger-menu button {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .hamburger-menu button:hover {
+    color: #FCA311;
   }
 }
+

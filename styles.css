@@ -29,31 +29,12 @@ nav {
 }
 .nav-links button:hover::after { width: 100%; }
 
-/* Hamburger Menu Styling */
+/* Base hamburger menu (hidden by default) */
 .hamburger-menu {
   display: none;
-  position: fixed;
-  bottom: 60px;
-  right: 10px;
-  background: #333;
-  padding: 15px;
-  border-radius: 8px;
 }
-.hamburger-menu button {
-  display: block;
-  color: #fff;
-  margin: 10px 0;
-  text-decoration: none;
-  border: none;
-  background: none;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: .3s;
-}
-.hamburger-menu button:hover { color: #FCA311; }
 
+/* Hero */
 .hero {
   min-height: 100vh;
   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("hero.jpeg");
@@ -92,7 +73,8 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
 }
 .submit-btn:hover { background: #fff; transform: scale(1.03); }
 
- @media(max-width:768px) {
+/* Mobile styles */
+@media(max-width:768px) {
   nav {
     position: fixed;
     bottom: 0;
@@ -103,7 +85,7 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
     background: #000;
   }
 
-  /* Hide all nav buttons except hamburger on mobile */
+  /* Hide all nav buttons except hamburger */
   .nav-links button {
     display: none;
   }

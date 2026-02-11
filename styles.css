@@ -1,144 +1,53 @@
-html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #fff;
   margin: 0;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
+  font-family: 'Inter', sans-serif;
   background: #000;
-  border-bottom: 1px solid #222;
+  color: #fff;
+}
+
+/* Navigation */
+.nav-links {
   display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
+  gap: 1rem;
+  background: #222;
+  padding: 0.5rem;
 }
-.nav-links { display: flex; gap: 18px; }
 .nav-links button {
-  color: #aaa; font-size: 12px; font-weight: 700; letter-spacing: 1px;
-  border: none; background: none; cursor: pointer; transition: .3s; position: relative;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }
-.nav-links button:hover, .nav-links .active { color: #FCA311; }
-.nav-links button::after {
-  content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0;
-  background: #FCA311; transition: width .3s;
-}
-.nav-links button:hover::after { width: 100%; }
-
-/* Hide hamburger on desktop */
-#menuToggle {
-  display: none;
+.nav-links button.active {
+  color: #FCA311;
+  font-weight: bold;
 }
 
-/* Base hamburger menu (hidden by default) */
+/* Hamburger menu hidden by default */
 .hamburger-menu {
   display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 999;
+}
+.hamburger-menu.show {
+  display: flex;
 }
 
 /* Hero */
 .hero {
-  min-height: 100vh;
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("hero.jpeg");
-  background-size: cover; background-position: center;
-  display: flex; align-items: center; justify-content: center;
-  padding: 80px 25px; text-align: center;
-  filter: brightness(1.1) contrast(1.05);
+  text-align: center;
+  padding: 4rem 1rem;
 }
-.hero h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; line-height: 1.1; }
-.hero span { color: #FCA311; }
-.motto { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 20px; color: #FCA311; font-weight: bold; }
-
-section {
-  display: none; max-width: 1200px; margin: auto; padding: 110px 20px; text-align: center;
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
 }
-#home, #vision { display: block; }
-
-.mag-box {
-  max-width: 700px; margin: auto; background: #111; padding: 25px;
-  border-radius: 8px; border: 1px solid #333;
-}
-
-.form-card {
-  background: #111; padding: 30px; border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.6);
-}
-input, select {
-  width: 100%; background: #151515; border: 1px solid #333; color: white;
-  padding: 14px; border-radius: 5px; margin-bottom: 14px; transition: .3s;
-}
-input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 0 6px #FCA311; }
-
-.submit-btn {
-  background: #FCA311; color: black; font-weight: 900; letter-spacing: 2px;
-  padding: 16px; border-radius: 6px; width: 100%; transition: .3s;
-}
-.submit-btn:hover { background: #fff; transform: scale(1.03); }
-
-/* Mobile styles */
-@media(max-width:768px) {
-  nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    justify-content: flex-end;
-    padding: 10px;
-    border-top: 1px solid #222;
-    background: #000;
-  }
-
-  /* Hide all nav buttons except hamburger */
-  .nav-links button {
-    display: none;
-  }
-  #menuToggle {
-    display: block;
-    color: #FCA311;
-    font-size: 22px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px 12px;
-  }
-
-  /* Vertical menu with slide-up animation */
-  .hamburger-menu {
-    display: none;
-    position: fixed;
-    bottom: 60px;
-    left: 0;
-    right: 0;
-    background: #111;
-    padding: 20px;
-    border-top: 1px solid #333;
-    text-align: center;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-out;
-  }
-
-  .hamburger-menu.show {
-    display: block;
-    transform: translateY(0);
-  }
-
-  .hamburger-menu button {
-    display: block;
-    width: 100%;
-    margin: 12px 0;
-    color: #aaa;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    transition: .3s;
-  }
-
-  .hamburger-menu button:hover {
-    color: #FCA311;
-  }
+.hero span {
+  color: #FCA311;
 }

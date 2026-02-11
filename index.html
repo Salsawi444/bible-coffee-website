@@ -2,42 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Registration & Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible & Coffee | Global</title>
+
+  <!-- Tailwind & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Navigation Bar (Vision button removed) -->
   <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#registrationForm">Register</a></li>
-      <!-- Vision button intentionally removed -->
-    </ul>
+    <div class="nav-links">
+      <button onclick="showSection('home',this)" class="active">HOME</button>
+      <!-- Vision button removed -->
+      <button onclick="showSection('magazine',this)">MAGAZINE</button>
+      <button onclick="showSection('events',this)">EVENTS</button>
+      <button onclick="showSection('merch',this)">MERCH</button>
+      <button onclick="showSection('join',this)">JOIN</button>
+    </div>
   </nav>
 
-  <!-- Homepage Image -->
-  <img src="homepage.jpg" alt="Homepage Image" class="bright-image">
+  <header id="home" class="hero">
+    <div>
+      <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
+      <p class="motto">Thank God It’s Friday</p>
+    </div>
+  </header>
 
-  <!-- Vision Section -->
   <section id="vision">
-    <h2>Our Vision</h2>
-    <p>Building a global, open-hearted community rooted in clarity and restoration.</p>
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
+    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded">
+    <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+      This is where you can place your vision text or a JPEG banner.
+    </p>
   </section>
 
-  <!-- Registration Form -->
-  <form id="registrationForm">
-    <label for="location">Choose Location:</label>
-    <select id="location" name="location" required>
-      <option value="Bali">Bali</option>
-      <option value="Mexico">Mexico</option>
-    </select>
+  <section id="magazine">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
+    <div class="mag-box">
+      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded">
+      <a href="magazine.pdf" download class="submit-btn">Download PDF</a>
+    </div>
+  </section>
 
-    <button type="submit">Register</button>
-  </form>
+  <section id="events">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
+    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
+  </section>
 
-  <!-- Availability Display -->
-  <div id="availability"></div>
+  <section id="merch">
+    <h2 class="text-4xl font-bold mb-8">The Merch</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <img src="merch1.jpeg" alt="Merch item 1" class="rounded">
+      <img src="merch2.jpeg" alt="Merch item 2" class="rounded">
+      <img src="merch3.jpeg" alt="Merch item 3" class="rounded">
+      <img src="merch4.jpeg" alt="Merch item 4" class="rounded">
+      <img src="merch5.jpeg" alt="Merch item 5" class="rounded">
+      <img src="merch6.jpeg" alt="Merch item 6" class="rounded">
+    </div>
+  </section>
+
+  <section id="join">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
+    <div class="max-w-md mx-auto form-card">
+      <form id="regForm" class="space-y-4">
+        <input id="name" name="Name" required placeholder="Full Name">
+        <input id="email" name="Email" type="email" required placeholder="Email">
+        <input id="phone" name="Phone" required placeholder="Phone">
+
+        <select id="country" name="Country" required>
+          <option value="">Country</option>
+          <option>Ethiopia</option>
+          <option>USA</option>
+          <option>Germany</option>
+          <option>Kenya</option>
+          <option>South Africa</option>
+          <option>United Kingdom</option>
+          <option>Canada</option>
+          <option>Brazil</option>
+          <option>India</option>
+          <option>Japan</option>
+          <option>Australia</option>
+          <option>France</option>
+          <option>Italy</option>
+        </select>
+
+        <select id="city" name="City" required>
+          <option value="">City</option>
+          <option>Addis Ababa</option>
+          <option>Dallas</option>
+          <option>Berlin</option>
+          <option>Nairobi</option>
+          <option>Cape Town</option>
+          <option>London</option>
+          <option>Toronto</option>
+          <option>São Paulo</option>
+          <option>Mumbai</option>
+          <option>Tokyo</option>
+          <option>Sydney</option>
+          <option>Paris</option>
+          <option>Rome</option>
+        </select>
+
+        <select id="location" name="Location">
+          <option value="">Location / Area</option>
+          <option>Bole</option>
+          <option>Piazza</option>
+          <option>Mexico</option>
+          <option>Sar Bet</option>
+          <option>4 Kilo</option>
+        </select>
+
+        <input id="regDate" name="Registration Date" type="date">
+        <input id="regTime" name="Registration Time" type="time">
+
+        <button class="submit-btn" type="submit">Confirm Registration</button>
+      </form>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>

@@ -1,29 +1,37 @@
-// Navigation toggle
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active-menu');
+});
+
+// Navigation function
 function showSection(id, btn) {
-  // Hide all sections and header
+  // Hide all
   document.querySelectorAll('section,header').forEach(sec => sec.style.display = 'none');
-  // Show the selected section
+  // Show selected
   document.getElementById(id).style.display = 'block';
-  // Update active nav button
+  
+  // Update buttons
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
+
+  // Close mobile menu after clicking
+  navLinks.classList.remove('active-menu');
+  window.scrollTo(0,0);
 }
 
-// Auto-fill date/time fields
+// Auto-fill date/time
 document.addEventListener("DOMContentLoaded", () => {
   const today = new Date();
   document.getElementById("regDate").value = today.toISOString().split("T")[0];
   document.getElementById("regTime").value = today.toTimeString().slice(0,5);
+  lucide.createIcons(); // Initialize icons
 });
 
-// Slot tracking for Addis Ababa locations
-const slots = {
-  Bole: 8,
-  Piazza: 8,
-  Mexico: 8,
-  "Sar Bet": 8,
-  "4 Kilo": 8
-};
+// Original Slot tracking
+const slots = { Bole: 8, Piazza: 8, Mexico: 8, "Sar Bet": 8, "4 Kilo": 8 };
 
 const form = document.getElementById('regForm');
 form.addEventListener('submit', async function(e) {
@@ -35,9 +43,9 @@ form.addEventListener('submit', async function(e) {
     alert(`Registered for ${location}! Spots left: ${slots[location]}`);
   } else if (location) {
     alert(`Sorry, ${location} is full.`);
+    return;
   }
 
-  // Continue with SheetDB submission
   const data = {
     Name: document.getElementById('name').value,
     Email: document.getElementById('email').value,
@@ -45,8 +53,8 @@ form.addEventListener('submit', async function(e) {
     Country: document.getElementById('country').value,
     City: document.getElementById('city').value,
     Location: location,
-    "Registration Date": document.getElementById('regDate').value,
-    "Registration Time": document.getElementById('regTime').value
+    "Registration Date": document.getElementById.value,
+    "Registration Time": document.getElementById.value
   };
 
   await fetch("https://sheetdb.io/api/v1/9q45d3e7oe5ks", {

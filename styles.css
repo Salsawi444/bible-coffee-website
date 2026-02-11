@@ -29,6 +29,11 @@ nav {
 }
 .nav-links button:hover::after { width: 100%; }
 
+/* Hide hamburger on desktop */
+#menuToggle {
+  display: none;
+}
+
 /* Base hamburger menu (hidden by default) */
 .hamburger-menu {
   display: none;
@@ -137,4 +142,3 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
     color: #FCA311;
   }
 }
-

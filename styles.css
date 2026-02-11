@@ -13,9 +13,9 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.95);
-  border-bottom: 1px solid #222;
-  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.98);
+  border-bottom: 1px solid #1a1a1a;
+  padding: 12px 0;
 }
 .nav-container {
   max-width: 1200px;
@@ -23,58 +23,52 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 25px;
 }
-.brand { color: #FCA311; font-weight: 800; font-size: 1.2rem; margin-right: auto; }
 
-.nav-links { display: flex; gap: 18px; }
+.nav-links { display: flex; gap: 20px; }
 .nav-links button {
-  color: #aaa; font-size: 12px; font-weight: 700; letter-spacing: 1px;
-  border: none; background: none; cursor: pointer; transition: .3s; position: relative;
+  color: #666; font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  border: none; background: none; cursor: pointer; transition: .4s;
 }
 .nav-links button:hover, .nav-links .active { color: #FCA311; }
 
-/* Mobile Navigation logic */
 @media(max-width:768px) {
   .nav-links {
-    display: none; /* Hidden by default on mobile */
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #000;
-    padding: 20px;
-    gap: 20px;
-    border-bottom: 1px solid #222;
+    display: none; flex-direction: column; position: absolute; top: 100%; left: 0;
+    width: 100%; background: #000; padding: 40px 20px; gap: 30px; border-bottom: 1px solid #1a1a1a;
   }
   .nav-links.active-menu { display: flex; }
-  .hero h1 { font-size: 2.2rem; }
-  .motto { font-size: 1.2rem; }
-  section { padding: 80px 20px; }
 }
 
 /* Hero Section */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("hero.jpeg");
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), url("hero.jpeg");
   background-size: cover; background-position: center;
   display: flex; align-items: center; justify-content: center;
-  padding: 80px 25px; text-align: center;
+  text-align: center; padding: 0 20px;
 }
-.hero h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; line-height: 1.1; }
+.hero h1 { font-family: 'Oswald', sans-serif; font-size: 4.5rem; line-height: 1.05; letter-spacing: -2px; }
 .hero span { color: #FCA311; }
-.motto { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 20px; color: #FCA311; font-weight: bold; }
+.motto { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-top: 25px; color: #FCA311; font-weight: 400; font-style: italic; }
 
-section { display: none; max-width: 1200px; margin: auto; padding: 110px 20px; text-align: center; }
-#home, #vision { display: block; }
+/* Editorial List Hover */
+.editorial-list p { transition: color 0.4s ease; cursor: default; }
+.editorial-list p:hover { color: #FCA311; }
 
-/* Form & Buttons */
+section { display: none; max-width: 1200px; margin: auto; padding: 120px 20px; text-align: center; }
+
+/* Global UI Elements */
+.mag-box, .form-card { background: #0d0d0d; padding: 40px; border: 1px solid #1a1a1a; border-radius: 2px; }
 input, select {
-  width: 100%; background: #151515; border: 1px solid #333; color: white;
-  padding: 14px; border-radius: 5px; font-size: 16px; /* Prevents mobile zoom */
+  width: 100%; background: #000; border: 1px solid #222; color: white;
+  padding: 16px; font-size: 14px; margin-bottom: 15px; border-radius: 0;
 }
+input:focus { border-color: #FCA311; outline: none; }
 .submit-btn {
-  background: #FCA311; color: black; font-weight: 900; letter-spacing: 2px;
-  padding: 16px; border-radius: 6px; width: 100%; cursor: pointer;
+  background: #FCA311; color: #000; font-weight: 900; letter-spacing: 4px;
+  padding: 20px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px;
+  transition: .3s;
 }
+.submit-btn:hover { background: #fff; }

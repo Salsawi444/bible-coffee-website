@@ -67,3 +67,10 @@ document.getElementById('menuToggle').addEventListener('click', function() {
     menu.style.display = 'block';
   }
 });
+
+// Close hamburger menu after selecting a button
+document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('hamburgerMenu').style.display = 'none';
+  });
+});

@@ -4,31 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bible & Coffee | Global</title>
-
-  <!-- Fonts & Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-links">
-      <button onclick="showSection('home',this)" class="active">HOME</button>
-      <button onclick="showSection('magazine',this)">MAGAZINE</button>
-      <button onclick="showSection('events',this)">EVENTS</button>
-      <button onclick="showSection('merch',this)">MERCH</button>
-      <button onclick="showSection('sermon',this)">SERMON</button>
-      <button onclick="showSection('support',this)">SUPPORT</button>
-      <button onclick="showSection('join',this)">JOIN</button>
-      <button id="menuToggle">☰ MENU</button>
-    </div>
+  <!-- Bottom Navigation (mobile) -->
+  <nav class="mobile-nav">
+    <button id="menuToggle">☰</button>
   </nav>
 
-  <!-- Mobile Hamburger Menu -->
+  <!-- Hamburger Menu -->
   <div id="hamburgerMenu" class="hamburger-menu">
     <button onclick="showSection('home',this)">HOME</button>
     <button onclick="showSection('magazine',this)">MAGAZINE</button>
@@ -47,17 +32,14 @@
 
   <section id="magazine"><h2>Magazine</h2><p>Weekly magazine content.</p></section>
   <section id="events"><h2>Events</h2><p>Events content.</p></section>
-
   <section id="merch">
     <h2>Merch</h2>
-    <img src="merch.jpeg" alt="Merch Banner" class="mx-auto mb-6 rounded">
+    <img src="merch.jpeg" alt="Merch Banner">
     <p>Browse our merchandise below.</p>
     <a href="merch.pdf" target="_blank">Download Merch Catalog (PDF)</a>
   </section>
-
   <section id="sermon"><h2>Sermon</h2><p>Sermon content.</p></section>
   <section id="support"><h2>Support</h2><p>Support content.</p></section>
-
   <section id="join">
     <h2>Join Us</h2>
     <form id="regForm">
@@ -80,7 +62,6 @@
     </form>
   </section>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@
       <button onclick="showSection('sermon',this)">SERMON</button>
       <button onclick="showSection('support',this)">SUPPORT</button>
       <button onclick="showSection('join',this)">JOIN</button>
-      <!-- Hamburger toggle (hidden on desktop, shown only on mobile via CSS) -->
+      <!-- Hamburger toggle (mobile only) -->
       <button id="menuToggle">☰ MENU</button>
     </div>
   </nav>
@@ -63,3 +63,59 @@
   <!-- Magazine -->
   <section id="magazine">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
+    <div class="mag-box">
+      <p>Magazine content goes here.</p>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Events</h2>
+    <p>Events content goes here.</p>
+  </section>
+
+  <!-- Merch -->
+  <section id="merch">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Merch</h2>
+    <p>Merchandise content goes here.</p>
+  </section>
+
+  <!-- Sermon -->
+  <section id="sermon">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Sermon</h2>
+    <p>Sermon content goes here.</p>
+  </section>
+
+  <!-- Support -->
+  <section id="support">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Support</h2>
+    <p>Support content goes here.</p>
+  </section>
+
+  <!-- Join (with form) -->
+  <section id="join">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Join Us</h2>
+    <form id="regForm" class="form-card">
+      <input type="text" id="name" placeholder="Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="phone" placeholder="Phone" required>
+      <input type="text" id="country" placeholder="Country" required>
+      <input type="text" id="city" placeholder="City" required>
+      <select id="location" required>
+        <option value="">Select Location</option>
+        <option value="Bole">Bole</option>
+        <option value="Piazza">Piazza</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Sar Bet">Sar Bet</option>
+        <option value="4 Kilo">4 Kilo</option>
+      </select>
+      <input type="date" id="regDate" required>
+      <input type="time" id="regTime" required>
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+  </section>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

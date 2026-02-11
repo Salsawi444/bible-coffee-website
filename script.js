@@ -2,13 +2,8 @@
 function showSection(id, btn) {
   // Hide all sections and header
   document.querySelectorAll('section,header').forEach(sec => sec.style.display = 'none');
-  
-  // Show the selected section if it exists
-  const target = document.getElementById(id);
-  if (target) {
-    target.style.display = 'block';
-  }
-
+  // Show the selected section
+  document.getElementById(id).style.display = 'block';
   // Update active nav button
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');

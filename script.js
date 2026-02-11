@@ -58,41 +58,6 @@ form.addEventListener('submit', async function(e) {
   form.reset();
 });
 
-// Hamburger toggle for mobile nav
-document.getElementById('menuToggle').addEventListener('click', function() {
-  const menu = document.getElementById('hamburgerMenu');
-  if (menu.style.display === 'block') {
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'block';
-  }
-});
-
-// Close hamburger menu after selecting a button
-document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.getElementById('hamburgerMenu').style.display = 'none';
-  });
-});
-
-
-// Hamburger toggle for mobile nav
-document.getElementById('menuToggle').addEventListener('click', function() {
-  const menu = document.getElementById('hamburgerMenu');
-  if (menu.style.display === 'block') {
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'block';
-  }
-});
-
-// Close hamburger menu after selecting a button
-document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.getElementById('hamburgerMenu').style.display = 'none';
-  });
-});
-
 // Hamburger toggle for mobile nav with animation
 document.getElementById('menuToggle').addEventListener('click', function() {
   const menu = document.getElementById('hamburgerMenu');
@@ -105,6 +70,4 @@ document.querySelectorAll('#hamburgerMenu button').forEach(btn => {
     document.getElementById('hamburgerMenu').classList.remove('show');
   });
 });
-
-
 

@@ -92,7 +92,7 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
 }
 .submit-btn:hover { background: #fff; transform: scale(1.03); }
 
-  @media(max-width:768px) {
+ @media(max-width:768px) {
   nav {
     position: fixed;
     bottom: 0;
@@ -103,7 +103,7 @@ input:focus, select:focus { border-color: #FCA311; outline: none; box-shadow: 0 
     background: #000;
   }
 
-  /* Only hamburger visible in bottom bar */
+  /* Hide all nav buttons except hamburger on mobile */
   .nav-links button {
     display: none;
   }

@@ -27,7 +27,7 @@
       <button onclick="showSection('sermon',this)">SERMON</button>
       <button onclick="showSection('support',this)">SUPPORT</button>
       <button onclick="showSection('join',this)">JOIN</button>
-      <!-- Hamburger toggle (shows only on mobile) -->
+      <!-- Hamburger toggle (hidden on desktop, shown only on mobile via CSS) -->
       <button id="menuToggle">☰ MENU</button>
     </div>
   </nav>
@@ -63,103 +63,3 @@
   <!-- Magazine -->
   <section id="magazine">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
-    <div class="mag-box">
-      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded">
-      <a href="magazine.pdf" download class="submit-btn">Download PDF</a>
-    </div>
-  </section>
-
-  <!-- Events -->
-  <section id="events">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-4">Events</h2>
-    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
-  </section>
-
-  <!-- Merch -->
-  <section id="merch">
-    <h2 class="text-4xl font-bold mb-8">The Merch</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <img src="merch1.jpeg" alt="Merch item 1" class="rounded">
-      <img src="merch2.jpeg" alt="Merch item 2" class="rounded">
-      <img src="merch3.jpeg" alt="Merch item 3" class="rounded">
-      <img src="merch4.jpeg" alt="Merch item 4" class="rounded">
-      <img src="merch5.jpeg" alt="Merch item 5" class="rounded">
-      <img src="merch6.jpeg" alt="Merch item 6" class="rounded">
-    </div>
-  </section>
-
-  <!-- Sermon -->
-  <section id="sermon">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Latest Sermon</h2>
-    <p class="text-white/80">Embed your YouTube sermon video here.</p>
-  </section>
-
-  <!-- Support -->
-  <section id="support">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Support the Movement</h2>
-    <p class="text-white/80">Add donation or support information here.</p>
-  </section>
-
-  <!-- Join -->
-  <section id="join">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
-    <div class="max-w-md mx-auto form-card">
-      <form id="regForm" class="space-y-4">
-        <input id="name" name="Name" required placeholder="Full Name">
-        <input id="email" name="Email" type="email" required placeholder="Email">
-        <input id="phone" name="Phone" required placeholder="Phone">
-
-        <select id="country" name="Country" required>
-          <option value="">Country</option>
-          <option>Ethiopia</option>
-          <option>USA</option>
-          <option>Germany</option>
-          <option>Kenya</option>
-          <option>South Africa</option>
-          <option>United Kingdom</option>
-          <option>Canada</option>
-          <option>Brazil</option>
-          <option>India</option>
-          <option>Japan</option>
-          <option>Australia</option>
-          <option>France</option>
-          <option>Italy</option>
-        </select>
-
-        <select id="city" name="City" required>
-          <option value="">City</option>
-          <option>Addis Ababa</option>
-          <option>Dallas</option>
-          <option>Berlin</option>
-          <option>Nairobi</option>
-          <option>Cape Town</option>
-          <option>London</option>
-          <option>Toronto</option>
-          <option>São Paulo</option>
-          <option>Mumbai</option>
-          <option>Tokyo</option>
-          <option>Sydney</option>
-          <option>Paris</option>
-          <option>Rome</option>
-        </select>
-
-        <select id="location" name="Location">
-          <option value="">Location / Area</option>
-          <option>Bole</option>
-          <option>Piazza</option>
-          <option>Mexico</option>
-          <option>Sar Bet</option>
-          <option>4 Kilo</option>
-        </select>
-
-        <input id="regDate" name="Registration Date" type="date">
-        <input id="regTime" name="Registration Time" type="time">
-
-        <button class="submit-btn" type="submit">Confirm Registration</button>
-      </form>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
-</body>
-</html>

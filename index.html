@@ -18,14 +18,23 @@
 <body>
 
   <nav>
-    <div class="nav-links">
-      <button onclick="showSection('home',this)" class="active">HOME</button>
-      <!-- Vision button removed -->
-      <button onclick="showSection('magazine',this)">MAGAZINE</button>
-      <button onclick="showSection('events',this)">EVENTS</button>
-      <button onclick="showSection('merch',this)">MERCH</button>
-      <button onclick="showSection('join',this)">JOIN</button>
-    </div>
+    <nav class="main-nav">
+  <ul class="nav-list">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#sermon">Sermon</a></li>
+    <li><a href="#support">Support</a></li>
+    <li class="hamburger"><button id="menuToggle">☰</button></li>
+  </ul>
+</nav>
+
+<!-- Expandable Hamburger Menu -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <a href="#home">Home</a>
+  <a href="#sermon">Latest Sermon</a>
+  <a href="#support">Support the Movement</a>
+</div>
+
+
   </nav>
 
   <header id="home" class="hero">

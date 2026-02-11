@@ -17,25 +17,33 @@
 </head>
 <body>
 
+  <!-- Navigation -->
   <nav>
-    <nav class="main-nav">
-  <ul class="nav-list">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#sermon">Sermon</a></li>
-    <li><a href="#support">Support</a></li>
-    <li class="hamburger"><button id="menuToggle">☰</button></li>
-  </ul>
-</nav>
-
-<!-- Expandable Hamburger Menu -->
-<div class="hamburger-menu" id="hamburgerMenu">
-  <a href="#home">Home</a>
-  <a href="#sermon">Latest Sermon</a>
-  <a href="#support">Support the Movement</a>
-</div>
-
-
+    <div class="nav-links">
+      <button onclick="showSection('home',this)" class="active">HOME</button>
+      <button onclick="showSection('magazine',this)">MAGAZINE</button>
+      <button onclick="showSection('events',this)">EVENTS</button>
+      <button onclick="showSection('merch',this)">MERCH</button>
+      <!-- New buttons go right after MERCH -->
+      <button onclick="showSection('sermon',this)">SERMON</button>
+      <button onclick="showSection('support',this)">SUPPORT</button>
+      <!-- JOIN moved to the very end -->
+      <button onclick="showSection('join',this)">JOIN</button>
+      <!-- Hamburger toggle -->
+      <button id="menuToggle">☰</button>
+    </div>
   </nav>
+
+  <!-- Expandable Hamburger Menu -->
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <button onclick="showSection('home',this)">HOME</button>
+    <button onclick="showSection('magazine',this)">MAGAZINE</button>
+    <button onclick="showSection('events',this)">EVENTS</button>
+    <button onclick="showSection('merch',this)">MERCH</button>
+    <button onclick="showSection('sermon',this)">SERMON</button>
+    <button onclick="showSection('support',this)">SUPPORT</button>
+    <button onclick="showSection('join',this)">JOIN</button>
+  </div>
 
   <header id="home" class="hero">
     <div>
@@ -75,6 +83,16 @@
       <img src="merch5.jpeg" alt="Merch item 5" class="rounded">
       <img src="merch6.jpeg" alt="Merch item 6" class="rounded">
     </div>
+  </section>
+
+  <section id="sermon">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Latest Sermon</h2>
+    <p class="text-white/80">Embed your YouTube sermon video here.</p>
+  </section>
+
+  <section id="support">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Support the Movement</h2>
+    <p class="text-white/80">Add donation or support information here.</p>
   </section>
 
   <section id="join">

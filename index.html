@@ -58,7 +58,7 @@
     section {
       display: none; max-width: 1200px; margin: auto; padding: 110px 20px; text-align: center;
     }
-    #home, #join { display: block; }
+    #home, #vision { display: block; }
 
     .mag-box {
       max-width: 700px; margin: auto; background: #111; padding: 25px;
@@ -107,19 +107,20 @@
     </div>
   </header>
 
+  <!-- Vision embedded on Home -->
   <section id="vision">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
+    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded">
     <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-      This space is dedicated to sharing the vision, mission, and values of the movement.
-      You can post inspiring text here, or replace it with a JPEG banner later.
+      This is where you can place your vision text or a JPEG banner.
     </p>
   </section>
 
   <section id="magazine">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
     <div class="mag-box">
-      <p class="text-white/70 mb-4">Download the latest issue below:</p>
-      <a href="megazine.pdf" download class="btn-main block text-center">Download PDF</a>
+      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded">
+      <a href="magazine.pdf" download class="submit-btn">Download PDF</a>
     </div>
   </section>
 
@@ -140,15 +141,15 @@
     </div>
   </section>
 
-  <section id="join">
+    <section id="join">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
     <div class="max-w-md mx-auto form-card">
-      <form id="regForm">
-        <input id="name" required placeholder="Full Name">
-        <input id="email" type="email" required placeholder="Email">
-        <input id="phone" required placeholder="Phone">
+      <form id="regForm" class="space-y-4">
+        <input id="name" name="Name" required placeholder="Full Name">
+        <input id="email" name="Email" type="email" required placeholder="Email">
+        <input id="phone" name="Phone" required placeholder="Phone">
 
-        <select id="country" required>
+        <select id="country" name="Country" required>
           <option value="">Country</option>
           <option>Ethiopia</option>
           <option>USA</option>
@@ -165,7 +166,7 @@
           <option>Italy</option>
         </select>
 
-        <select id="city" required>
+        <select id="city" name="City" required>
           <option value="">City</option>
           <option>Addis Ababa</option>
           <option>Dallas</option>
@@ -180,18 +181,30 @@
           <option>Sydney</option>
           <option>Paris</option>
           <option>Rome</option>
-
         </select>
 
-        <input id="location" placeholder="Location / Area">
+        <!-- Specific locations for Addis Ababa -->
+        <select id="location" name="Location">
+          <option value="">Location / Area</option>
+          <option>Bole</option>
+          <option>Piazza</option>
+          <option>Mexico</option>
+          <option>Sar Bet</option>
+          <option>4 Kilo</option>
+        </select>
+
+        <!-- Auto-fill date/time -->
+        <input id="regDate" name="Registration Date" type="date">
+        <input id="regTime" name="Registration Time" type="time">
 
         <button class="submit-btn" type="submit">Confirm Registration</button>
       </form>
     </div>
   </section>
 
-  <!-- SCRIPT -->
+    <!-- SCRIPT -->
   <script>
+    // Navigation toggle
     function showSection(id, btn) {
       // Hide all sections and header
       document.querySelectorAll('section,header').forEach(sec => sec.style.display = 'none');
@@ -201,6 +214,32 @@
       document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
       if(btn) btn.classList.add('active');
     }
+
+    // SheetDB form submission
+    const form = document.getElementById('regForm');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const data = {
+        Name: document.getElementById('name').value,
+        Email: document.getElementById('email').value,
+        Phone: document.getElementById('phone').value,
+        Country: document.getElementById('country').value,
+        City: document.getElementById('city').value,
+        Location: document.getElementById('location').value,
+        "Registration Date": document.getElementById('regDate').value,
+        "Registration Time": document.getElementById('regTime').value
+      };
+
+      await fetch("https://sheetdb.io/api/v1/9q45d3e7oe5ks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: data })
+      });
+
+      alert("Registration submitted successfully!");
+      form.reset();
+    });
   </script>
 
 </body>

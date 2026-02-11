@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,8 +16,6 @@
 
   <nav>
     <div class="nav-container">
-      <div class="brand md:hidden">B&C</div>
-      
       <button id="menu-toggle" class="md:hidden text-[#FCA311]">
         <i data-lucide="menu"></i>
       </button>
@@ -41,13 +39,59 @@
     </div>
   </header>
 
-  <section id="vision">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Our Vision</h2>
-    <img src="vision.jpeg" alt="Vision Banner" class="mx-auto mb-6 rounded w-full max-w-2xl">
-    <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-      This is where you can place your vision text or a JPEG banner.
-    </p>
-  </section>
+  <div id="home-content" class="bg-[#0a0a0a] px-6 py-16 md:py-24">
+    <div class="max-w-4xl mx-auto">
+      
+      <article class="border-t border-b border-white/10 py-16 mb-24 text-center">
+        <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[0.5em] uppercase mb-10 opacity-60">The Narrative</h2>
+        <h3 class="text-4xl md:text-6xl font-['Playfair_Display'] text-white mb-12 leading-tight">More Than a Gathering</h3>
+        
+        <div class="max-w-2xl mx-auto">
+          <p class="text-xl md:text-2xl text-white/90 font-light leading-relaxed mb-16 italic">
+            "Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left text-white/70 text-base leading-relaxed pt-12 border-t border-white/5">
+            <div class="space-y-4">
+              <p class="font-['Oswald'] text-[#FCA311] uppercase tracking-widest text-[10px]">The Essence</p>
+              <p>Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know.</p>
+            </div>
+            <div class="space-y-4">
+              <p class="font-['Oswald'] text-[#FCA311] uppercase tracking-widest text-[10px]">The Table</p>
+              <p>In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and discover Kingdom life.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="relative py-20 px-8 md:px-24 bg-[#0d0d0d] border border-white/5 shadow-2xl">
+        <div class="absolute -top-3 left-10 bg-[#0a0a0a] px-4">
+          <h2 class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[0.6em] uppercase">The Horizon</h2>
+        </div>
+
+        <div class="text-center mb-16">
+          <p class="text-white/40 text-[11px] uppercase tracking-[0.3em] mb-12">Driven by Purpose</p>
+          
+          <div class="space-y-8 text-2xl md:text-3xl font-['Playfair_Display'] text-white/90 editorial-list">
+            <p>Understand the Bible simply</p>
+            <p>Develop a genuine relationship with God</p>
+            <p>Build authentic Christian community</p>
+            <p>Live out faith boldly in everyday life</p>
+          </div>
+        </div>
+
+        <div class="pt-12 border-t border-white/5 text-center">
+          <div class="inline-block max-w-lg">
+            <p class="text-white text-lg md:text-xl font-light leading-relaxed">
+              This is not about church culture. It’s about <span class="text-[#FCA311]">Kingdom</span>. 
+              This is not about religion. It’s about <span class="text-[#FCA311]">Relationship</span>.
+            </p>
+            <p class="text-white/30 italic mt-8 font-['Playfair_Display'] text-base">And there is always a seat for you at the table.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section id="magazine">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-6">Weekly Magazine</h2>
@@ -65,12 +109,12 @@
   <section id="merch">
     <h2 class="text-4xl font-bold mb-8">The Merch</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-      <img src="merch1.jpeg" alt="Merch item 1" class="rounded w-full">
-      <img src="merch2.jpeg" alt="Merch item 2" class="rounded w-full">
-      <img src="merch3.jpeg" alt="Merch item 3" class="rounded w-full">
-      <img src="merch4.jpeg" alt="Merch item 4" class="rounded w-full">
-      <img src="merch5.jpeg" alt="Merch item 5" class="rounded w-full">
-      <img src="merch6.jpeg" alt="Merch item 6" class="rounded w-full">
+      <img src="merch1.jpeg" alt="Merch item 1" class="rounded w-full hover:scale-[1.02] transition-transform">
+      <img src="merch2.jpeg" alt="Merch item 2" class="rounded w-full hover:scale-[1.02] transition-transform">
+      <img src="merch3.jpeg" alt="Merch item 3" class="rounded w-full hover:scale-[1.02] transition-transform">
+      <img src="merch4.jpeg" alt="Merch item 4" class="rounded w-full hover:scale-[1.02] transition-transform">
+      <img src="merch5.jpeg" alt="Merch item 5" class="rounded w-full hover:scale-[1.02] transition-transform">
+      <img src="merch6.jpeg" alt="Merch item 6" class="rounded w-full hover:scale-[1.02] transition-transform">
     </div>
   </section>
 
@@ -87,58 +131,33 @@
   <section id="join">
     <h2 class="text-4xl font-bold text-[#FCA311] mb-8">Join Movement</h2>
     <div class="max-w-md mx-auto form-card">
-      <form id="regForm" class="space-y-4">
+      <form id="regForm" class="space-y-4 text-left">
+        <label class="text-[10px] uppercase tracking-widest text-white/40 ml-1">Identity</label>
         <input id="name" name="Name" required placeholder="Full Name">
         <input id="email" name="Email" type="email" required placeholder="Email">
+        
+        <label class="text-[10px] uppercase tracking-widest text-white/40 ml-1">Connectivity</label>
         <input id="phone" name="Phone" required placeholder="Phone">
 
         <select id="country" name="Country" required>
           <option value="">Country</option>
-          <option>Ethiopia</option>
-          <option>USA</option>
-          <option>Germany</option>
-          <option>Kenya</option>
-          <option>South Africa</option>
-          <option>United Kingdom</option>
-          <option>Canada</option>
-          <option>Brazil</option>
-          <option>India</option>
-          <option>Japan</option>
-          <option>Australia</option>
-          <option>France</option>
-          <option>Italy</option>
+          <option>Ethiopia</option><option>USA</option><option>Germany</option>
         </select>
 
         <select id="city" name="City" required>
           <option value="">City</option>
-          <option>Addis Ababa</option>
-          <option>Dallas</option>
-          <option>Berlin</option>
-          <option>Nairobi</option>
-          <option>Cape Town</option>
-          <option>London</option>
-          <option>Toronto</option>
-          <option>São Paulo</option>
-          <option>Mumbai</option>
-          <option>Tokyo</option>
-          <option>Sydney</option>
-          <option>Paris</option>
-          <option>Rome</option>
+          <option>Addis Ababa</option><option>Dallas</option><option>Berlin</option>
         </select>
 
         <select id="location" name="Location">
           <option value="">Location / Area</option>
-          <option>Bole</option>
-          <option>Piazza</option>
-          <option>Mexico</option>
-          <option>Sar Bet</option>
-          <option>4 Kilo</option>
+          <option>Bole</option><option>Piazza</option><option>Mexico</option>
         </select>
 
         <input id="regDate" name="Registration Date" type="date">
         <input id="regTime" name="Registration Time" type="time">
 
-        <button class="submit-btn" type="submit">Confirm Registration</button>
+        <button class="submit-btn mt-6" type="submit">Confirm Registration</button>
       </form>
     </div>
   </section>

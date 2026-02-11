@@ -58,7 +58,7 @@ form.addEventListener('submit', async function(e) {
   form.reset();
 });
 
-// Toggle Hamburger Menu
+// Hamburger toggle for mobile nav
 document.getElementById('menuToggle').addEventListener('click', function() {
   const menu = document.getElementById('hamburgerMenu');
   if (menu.style.display === 'block') {

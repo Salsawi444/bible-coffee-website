@@ -27,15 +27,23 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
   }
   .nav-links.active-menu { display: flex; }
 
-  /* --- MOBILE GAP REPAIR: SURGICAL FIX --- */
+  /* --- THE REAL FIX: VARIABLE OVERRIDE --- */
+  :root {
+    --hero-gap: 15px; /* This forces the HTML to shrink the gap */
+  }
+
   .hero-content-layer { 
     padding: 60px 25px 20px 25px !important; 
   }
-  
-  /* Pulls the title and text closer together */
-  .hero h1, .hero-content-layer h1 { 
-    margin-bottom: 15px !important; 
+
+  .hero-cta { 
+    margin-top: 15px !important; 
   }
+
+  .hero-content-layer div[style*="border-left"] {
+    margin-top: 10px !important;
+  }
+}
 
   /* Moves button up to eliminate the "empty" feel */
   .hero-cta { 

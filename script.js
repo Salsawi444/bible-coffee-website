@@ -26,22 +26,36 @@ const sermons = [
     }
 ];
 
+/* --- MERCH SURGERY: WHATSAPP ORDER LOGIC --- */
+function orderMerch(itemName) {
+    const phone = "251910884585";
+    const message = encodeURIComponent(`Hi Bible & Coffee, I am interested in the ${itemName} from the collection.`);
+    window.location.href = `https://wa.me/${phone}?text=${message}`;
+}
+
 menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active-menu');
 });
 
+/* --- SECTION SWITCHER (FIREWALL SECURE) --- */
 function showSection(id, btn) {
+    // Hide everything
     document.querySelectorAll('.section-container, #home-wrapper').forEach(el => el.style.display = 'none');
+    
+    // Show target
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
     if(target) target.style.display = 'block';
+    
+    // Update Nav UI
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
+    
     navLinks.classList.remove('active-menu');
     window.scrollTo(0,0);
 }
 
-/* --- SURGICAL REPAIR: MOBILE-FIRST VIDEO LOGIC --- */
+/* --- VIDEO LOGIC --- */
 function openVideo(videoId) {
     const overlay = document.createElement('div');
     overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; display:flex; align-items:center; justify-content:center; padding:10px;";
@@ -65,6 +79,7 @@ function openVideo(videoId) {
     document.body.appendChild(overlay);
 }
 
+/* --- REGISTRATION DB --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
@@ -124,6 +139,7 @@ async function checkSlots() {
     }
 }
 
+/* --- REGISTRATION SUBMIT --- */
 document.getElementById('regForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -160,4 +176,14 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
     }
 });
 
-document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
+document.addEventListener("DOMContentLoaded", () => {
+    if(window.lucide) lucide.createIcons();
+    
+    // Auto-link Merch cards to WhatsApp order
+    document.querySelectorAll('.merch-card-v2').forEach(card => {
+        card.addEventListener('click', () => {
+            const itemName = card.querySelector('h3').innerText;
+            orderMerch(itemName);
+        });
+    });
+});

@@ -6,7 +6,7 @@
   <title>Bible & Coffee | Global</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -28,32 +28,41 @@
 
   <div id="home-wrapper">
     <header id="home" class="hero">
-      <div class="hero-content">
-        <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
-        <p class="motto">Thank God It’s Friday</p>
+      <div class="hero-content-left">
+        <h1 class="hero-title">BIBLE &<br>COFFEE.<br><span>FRIDAYS.</span><br>GLOBAL.</h1>
+        <p class="hero-subtitle">Not a Club. ቤተሰብ!</p>
+        <button onclick="showSection('join')" class="hero-cta">Claim My Seat</button>
       </div>
     </header>
-    <div class="bg-[#0a0a0a] px-6 py-20">
-      <div class="max-w-4xl mx-auto">
-        <article class="border-t border-b border-white/10 py-16 mb-20 text-center">
-          <h3 class="text-4xl md:text-5xl font-['Playfair_Display'] text-white mb-8">More Than a Gathering</h3>
-          <p class="text-xl text-white/70 italic mb-10">"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span class="ticker-item">ADDIS ABABA</span>
+        <span class="ticker-item">FRANKFURT</span>
+        <span class="ticker-item">BERLIN</span>
+        <span class="ticker-item">JOHANNESBURG</span>
+        <span class="ticker-item">STOCKHOLM</span>
+        <span class="ticker-item">ROTTERDAM</span>
+        <span class="ticker-item">ADDIS ABABA</span>
+        <span class="ticker-item">FRANKFURT</span>
+      </div>
+    </div>
+
+    <div class="bg-[#0a0a0a] px-6 py-24">
+      <div class="max-w-5xl mx-auto">
+        <article class="text-left mb-32">
+          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.5em] uppercase text-xs mb-6">The Friday Covenant</h2>
+          <h3 class="text-5xl md:text-7xl font-['Playfair_Display'] text-white leading-tight mb-8">Relationship over Faith.</h3>
+          <p class="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-2xl">
+            A movement of modern believers who choose depth over hype and authentic community over religion.
+          </p>
         </article>
-        <div class="text-center">
-          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.4em] uppercase mb-12 text-xs">Living With Purpose</h2>
-          <div class="space-y-8 text-2xl md:text-3xl font-['Playfair_Display'] text-white/90">
-            <p>Understand the Bible simply</p>
-            <p>Develop a genuine relationship with God</p>
-            <p>Build authentic Christian community</p>
-            <p>Live out faith boldly in everyday life</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
   <section id="join" class="section-container px-4">
-    <div class="max-w-md mx-auto">
+    <div class="max-w-md mx-auto py-20">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
         <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Secure your seat at the table</p>
@@ -76,6 +85,7 @@
               <select id="country" name="Country" required class="floating-input" onchange="updateCities()">
                 <option value="" disabled selected></option>
                 <option value="Ethiopia">Ethiopia</option>
+                <option value="Germany">Germany</option>
                 <option value="South Africa">South Africa</option>
                 <option value="Sweden">Sweden</option>
                 <option value="Netherlands">Netherlands</option>
@@ -107,18 +117,20 @@
     </div>
   </section>
 
-  <section id="magazine" class="section-container">
-    <h2 class="text-3xl font-bold text-[#FCA311] mb-8 uppercase">Magazine</h2>
-    <div class="mag-box mx-auto max-w-sm">
-      <img src="megimage.jpeg" class="w-full mb-6">
-      <a href="magazine.pdf" download class="submit-btn-premium block text-center no-underline">Download PDF</a>
+  <section id="magazine" class="section-container py-20">
+    <div class="max-w-md mx-auto">
+      <h2 class="text-3xl font-bold text-[#FCA311] mb-8 uppercase">Magazine</h2>
+      <div class="mag-box border border-white/10 p-6 bg-[#0d0d0d]">
+        <img src="megimage.jpeg" class="w-full mb-6" alt="Magazine Cover">
+        <a href="magazine.pdf" download class="submit-btn-premium block text-center no-underline">Download PDF</a>
+      </div>
     </div>
   </section>
 
-  <section id="events" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">EVENTS</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
-  <section id="merch" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">MERCH</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
-  <section id="sermon" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">SERMONS</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
-  <section id="support" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">SUPPORT</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
+  <section id="events" class="section-container text-center py-40"><h1>EVENTS COMING SOON</h1></section>
+  <section id="merch" class="section-container text-center py-40"><h1>MERCH COMING SOON</h1></section>
+  <section id="sermon" class="section-container text-center py-40"><h1>SERMONS COMING SOON</h1></section>
+  <section id="support" class="section-container text-center py-40"><h1>SUPPORT COMING SOON</h1></section>
 
   <script src="script.js"></script>
 </body>

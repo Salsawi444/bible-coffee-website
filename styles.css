@@ -41,8 +41,8 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .motto { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FCA311; font-style: italic; margin-top: 20px; }
 .hero-cta { margin-top: 30px; border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
 
-/* --- MERCH SECTION (FULL COLOR) --- */
-.merch-grid {
+/* --- MERCH SECTION (ISOLATED) --- */
+#merch .merch-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
@@ -61,8 +61,8 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
     display: block;
     transition: transform 0.6s ease;
 }
-.merch-card:hover .merch-img { transform: scale(1.05); }
-.merch-card h3 { font-family: 'Oswald'; font-size: 14px; margin-top: 15px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+#merch .merch-card:hover .merch-img { transform: scale(1.05); }
+#merch h3 { font-family: 'Oswald'; font-size: 14px; margin-top: 15px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
 /* --- GLOBAL SECTION CONTAINER --- */
 .section-container { display: none; padding: 120px 20px; min-height: 100vh; }
@@ -75,9 +75,18 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
 .submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: 0.3s; }
 
-/* --- MAGAZINE SECTION (LOCKED) --- */
-#magazine.section-container { background: #050505; }
-#magazine .submit-btn-premium { display: inline-block; text-decoration: none; text-align: center; width: auto; min-width: 200px; }
+/* --- MAGAZINE SECTION (RESTORED & LOCKED) --- */
+#magazine.section-container { 
+    background: #050505 !important; 
+    display: none; /* Controlled by JS */
+}
+#magazine .submit-btn-premium { 
+    display: inline-block !important; 
+    text-decoration: none; 
+    text-align: center; 
+    width: auto !important; 
+    min-width: 200px; 
+}
 
 /* --- SERMON VAULT STYLES (LOCKED) --- */
 .sermon-card { transition: transform 0.4s ease; }

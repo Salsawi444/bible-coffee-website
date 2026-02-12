@@ -38,23 +38,21 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url("hero.jpeg") center/cover; }
 .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1; color: white; margin: 0; }
 .hero h1 span { color: #FCA311; }
-.motto { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FCA311; font-style: italic; margin-top: 20px; }
-.hero-cta { margin-top: 30px; border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
 
-/* --- MERCH SECTION (ISOLATED) --- */
+/* --- MERCH SECTION (ISOLATED DNA) --- */
 #merch .merch-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
-.merch-img-wrapper {
+#merch .merch-img-wrapper {
     width: 100%;
     aspect-ratio: 4/5;
     background: #111;
     border: 1px solid #1a1a1a;
     overflow: hidden;
 }
-.merch-img {
+#merch .merch-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -62,7 +60,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
     transition: transform 0.6s ease;
 }
 #merch .merch-card:hover .merch-img { transform: scale(1.05); }
-#merch h3 { font-family: 'Oswald'; font-size: 14px; margin-top: 15px; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+#merch h3 { font-family: 'Oswald'; font-size: 14px; margin-top: 15px; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-align: left; }
 
 /* --- GLOBAL SECTION CONTAINER --- */
 .section-container { display: none; padding: 120px 20px; min-height: 100vh; }
@@ -75,17 +73,14 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
 .submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: 0.3s; }
 
-/* --- MAGAZINE SECTION (RESTORED & LOCKED) --- */
-#magazine.section-container { 
-    background: #050505 !important; 
-    display: none; /* Controlled by JS */
-}
+/* --- MAGAZINE SECTION (RE-LOCKED) --- */
+#magazine.section-container { background: #050505 !important; }
 #magazine .submit-btn-premium { 
     display: inline-block !important; 
-    text-decoration: none; 
-    text-align: center; 
     width: auto !important; 
     min-width: 200px; 
+    padding: 15px 30px;
+    margin-top: 20px;
 }
 
 /* --- SERMON VAULT STYLES (LOCKED) --- */

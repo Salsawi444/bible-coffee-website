@@ -1,36 +1,130 @@
-<section id="join">
-  <h2 class="text-4xl font-bold text-[#FCA311] mb-8 uppercase text-center">Join Movement</h2>
-  <div class="max-w-md mx-auto form-card">
-    <form id="regForm" class="space-y-4">
-      <input id="name" name="Name" required placeholder="Full Name" class="form-input">
-      <input id="email" name="Email" type="email" required placeholder="Email" class="form-input">
-      <input id="phone" name="Phone" required placeholder="Phone" class="form-input">
-      
-      <select id="country" name="Country" required class="form-input">
-        <option value="">Country</option>
-        <option>Ethiopia</option>
-        <option>USA</option>
-        <option>Germany</option>
-      </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible & Coffee | Global</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-      <select id="city" name="City" required class="form-input">
-        <option value="">City</option>
-        <option>Addis Ababa</option>
-        <option>Dallas</option>
-        <option>Berlin</option>
-      </select>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
 
-      <select id="location" name="Location" class="form-input">
-        <option value="">Location / Area</option>
-        <option>Bole</option>
-        <option>Piazza</option>
-        <option>Mexico</option>
-      </select>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      <input type="hidden" id="regDate" name="Registration Date">
-      <input type="hidden" id="regTime" name="Registration Time">
+  <nav>
+    <div class="nav-container">
+      <button id="menu-toggle" class="md:hidden text-[#FCA311]">
+        <i data-lucide="menu"></i>
+      </button>
 
-      <button class="submit-btn" type="submit">Confirm Registration</button>
-    </form>
+      <div id="nav-links" class="nav-links">
+        <button onclick="showSection('home',this)" class="active">HOME</button>
+        <button onclick="showSection('magazine',this)">MAGAZINE</button>
+        <button onclick="showSection('events',this)">EVENTS</button>
+        <button onclick="showSection('merch',this)">MERCH</button>
+        <button onclick="showSection('sermon',this)">SERMON</button>
+        <button onclick="showSection('support',this)">SUPPORT</button>
+        <button onclick="showSection('join',this)">JOIN</button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="home-wrapper">
+    <header id="home" class="hero">
+      <div>
+        <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
+        <p class="motto">Thank God It’s Friday</p>
+      </div>
+    </header>
+
+    <div class="bg-[#0a0a0a] px-6 py-16 md:py-24">
+      <div class="max-w-4xl mx-auto">
+        <article class="border-t border-b border-white/10 py-16 mb-20 text-center">
+          <h3 class="text-4xl md:text-5xl font-['Playfair_Display'] text-white mb-8">More Than a Gathering</h3>
+          <p class="text-xl text-white/80 italic">"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
+        </article>
+
+        <div class="text-center">
+          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.3em] uppercase mb-10">Living With Purpose</h2>
+          <div class="space-y-6 text-2xl font-['Playfair_Display'] text-white/90">
+            <p>Understand the Bible simply</p>
+            <p>Develop a genuine relationship with God</p>
+            <p>Build authentic Christian community</p>
+            <p>Live out faith boldly in everyday life</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+
+  <section id="join" class="section-container">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-8 uppercase">Join Movement</h2>
+    <div class="max-w-md mx-auto form-card">
+      <form id="regForm" class="space-y-4 text-left">
+        <input id="name" name="Name" required placeholder="Full Name">
+        <input id="email" name="Email" type="email" required placeholder="Email">
+        <input id="phone" name="Phone" required placeholder="Phone">
+        
+        <select id="country" name="Country" required>
+          <option value="">Country</option>
+          <option>Ethiopia</option>
+          <option>USA</option>
+          <option>Germany</option>
+        </select>
+
+        <select id="city" name="City" required>
+          <option value="">City</option>
+          <option>Addis Ababa</option>
+          <option>Dallas</option>
+          <option>Berlin</option>
+        </select>
+
+        <select id="location" name="Location">
+          <option value="">Location / Area</option>
+          <option>Bole</option>
+          <option>Piazza</option>
+          <option>Mexico</option>
+        </select>
+
+        <input type="hidden" id="regDate" name="Registration Date">
+        <input type="hidden" id="regTime" name="Registration Time">
+
+        <button class="submit-btn" type="submit">Confirm Registration</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="magazine" class="section-container">
+    <h2 class="text-4xl font-bold text-[#FCA311] mb-6 uppercase">Weekly Magazine</h2>
+    <div class="mag-box">
+      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded w-full">
+      <a href="magazine.pdf" download class="submit-btn block text-center no-underline">Download PDF</a>
+    </div>
+  </section>
+
+  <section id="events" class="section-container">
+    <h2 class="text-4xl font-bold text-[#FCA311]">Events</h2>
+    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+  </section>
+
+  <section id="merch" class="section-container">
+    <h2 class="text-4xl font-bold text-[#FCA311]">Merch</h2>
+    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+  </section>
+
+  <section id="sermon" class="section-container">
+    <h2 class="text-4xl font-bold text-[#FCA311]">Sermons</h2>
+    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+  </section>
+
+  <section id="support" class="section-container">
+    <h2 class="text-4xl font-bold text-[#FCA311]">Support</h2>
+    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

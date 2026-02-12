@@ -16,6 +16,20 @@ function showSection(id, btn) {
     window.scrollTo(0,0);
 }
 
+/* --- SURGICAL INJECTION: VIDEO VAULT LOGIC --- */
+function openVideo(videoId) {
+    // This creates a premium fullscreen overlay for the sermon
+    const overlay = document.createElement('div');
+    overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px;";
+    overlay.innerHTML = `
+        <div style="position:relative; width:100%; max-width:900px; aspect-ratio:16/9;">
+            <button onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:-40px; right:0; color:#FCA311; background:none; border:none; font-family:'Oswald'; cursor:pointer; letter-spacing:2px;">CLOSE [X]</button>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+}
+
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],

@@ -42,16 +42,13 @@
 
         <div class="bg-[#0a0a0a] pb-24">
             <div class="max-w-4xl mx-auto px-6">
-                
                 <article class="narrative-section">
                     <h2 class="editorial-label">The Narrative</h2>
                     <h3 class="editorial-header">More Than a Gathering</h3>
-                    
                     <div class="max-w-2xl mx-auto">
                         <p class="editorial-quote">
                             "Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."
                         </p>
-                        
                         <div class="grid md:grid-cols-2 gap-12 text-left pt-12 border-t border-white/10">
                             <div class="info-cell">
                                 <p class="cell-label">The Essence</p>
@@ -66,9 +63,7 @@
                 </article>
 
                 <div class="horizon-card">
-                    <div class="horizon-tag">
-                        <h2 class="editorial-label !mb-0">The Horizon</h2>
-                    </div>
+                    <div class="horizon-tag"><h2 class="editorial-label !mb-0">The Horizon</h2></div>
                     <div class="text-center py-12">
                         <p class="editorial-sublabel">Driven by Purpose</p>
                         <div class="vision-list">
@@ -100,82 +95,64 @@
         </div>
     </section>
 
-    <section id="events" class="hidden-section">
-        <h2 class="page-heading">Events</h2>
-        <div class="coming-soon-box">COMING SOON</div>
-    </section>
-
+    <section id="events" class="hidden-section"><h2 class="page-heading">Events</h2><div class="coming-soon-box">COMING SOON</div></section>
     <section id="merch" class="hidden-section">
         <h2 class="page-heading">The Merch</h2>
         <div class="merch-gallery">
-            <div class="merch-item"><img src="merch1.jpeg"></div>
-            <div class="merch-item"><img src="merch2.jpeg"></div>
-            <div class="merch-item"><img src="merch3.jpeg"></div>
-            <div class="merch-item"><img src="merch4.jpeg"></div>
-            <div class="merch-item"><img src="merch5.jpeg"></div>
-            <div class="merch-item"><img src="merch6.jpeg"></div>
+            <div class="merch-item"><img src="merch1.jpeg"></div><div class="merch-item"><img src="merch2.jpeg"></div>
+            <div class="merch-item"><img src="merch3.jpeg"></div><div class="merch-item"><img src="merch4.jpeg"></div>
+            <div class="merch-item"><img src="merch5.jpeg"></div><div class="merch-item"><img src="merch6.jpeg"></div>
         </div>
     </section>
-
-    <section id="sermon" class="hidden-section">
-        <h2 class="page-heading">Sermons</h2>
-        <div class="coming-soon-box">COMING SOON</div>
-    </section>
-
-    <section id="support" class="hidden-section">
-        <h2 class="page-heading">Support</h2>
-        <div class="coming-soon-box">COMING SOON</div>
-    </section>
+    <section id="sermon" class="hidden-section"><h2 class="page-heading">Sermons</h2><div class="coming-soon-box">COMING SOON</div></section>
+    <section id="support" class="hidden-section"><h2 class="page-heading">Support</h2><div class="coming-soon-box">COMING SOON</div></section>
 
     <section id="join" class="hidden-section">
         <div class="max-w-md mx-auto">
             <h2 class="page-heading">Join Movement</h2>
-            
             <div id="counterBox" class="hidden status-indicator">
-                <p class="status-text">
-                    LIVE STATUS: <span id="spotsLeft">--</span> 
-                    <span class="opacity-50">Spots Left</span>
-                </p>
+                <p class="status-text">LIVE STATUS: <span id="spotsLeft">--</span> <span class="opacity-50">Spots Left</span></p>
             </div>
-
             <div class="safari-form-card">
                 <form id="regForm" class="space-y-5">
                     <div class="form-group">
                         <label>FULL IDENTITY</label>
                         <input type="text" id="name" placeholder="Full Name" required>
                     </div>
-                    
                     <div class="form-group">
                         <label>CONTACT DETAILS</label>
                         <input type="email" id="email" placeholder="Email Address" required>
                         <input type="tel" id="phone" placeholder="Phone (+251...)" required class="mt-2">
                     </div>
-
                     <div class="form-group">
                         <label>GEOGRAPHY</label>
                         <div class="grid grid-cols-2 gap-3">
                             <select id="country" onchange="updateCities()" required>
                                 <option value="" disabled selected>Country</option>
                                 <option value="Ethiopia">Ethiopia</option>
-                                <option value="USA">USA</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Sweden">Sweden</option>
                                 <option value="Germany">Germany</option>
+                                <option value="UK">UK</option>
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="UAE">UAE</option>
+                                <option value="Australia">Australia</option>
                             </select>
                             <select id="city" onchange="updateSubCities()" required disabled>
                                 <option value="" disabled selected>City</option>
                             </select>
                         </div>
                     </div>
-
                     <div id="subCityGroup" class="hidden form-group animate-in">
                         <label class="text-[#FCA311]">CHOOSE YOUR SPOT</label>
                         <select id="subCity" onchange="checkSpots()" class="highlight-select">
                             <option value="" disabled selected>Select Area</option>
                         </select>
                     </div>
-
-                    <button type="submit" id="subBtn" class="submit-action-btn">
-                        Confirm Registration
-                    </button>
+                    <button type="submit" id="subBtn" class="submit-action-btn">Confirm Registration</button>
                 </form>
             </div>
         </div>

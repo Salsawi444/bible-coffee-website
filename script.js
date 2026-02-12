@@ -14,10 +14,10 @@ function showSection(id, btn) {
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// DYNAMIC DATA MAP
+// DYNAMIC DATA MAP (Addis Ababa Focused)
 const db = {
     "Ethiopia": { 
-        "Addis Ababa": ["Bole", "Piazza", "Mexico", "Sar Bet"], 
+        "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"], 
         "Adama": ["Main St", "Station Area"],
         "Bahir Dar": ["Lake Front"]
     },
@@ -27,8 +27,21 @@ const db = {
     }
 };
 
-// SLOT TRACKING (Adjust these numbers as needed)
-const slots = { "Bole": 5, "Piazza": 0, "Uptown": 2 };
+/**
+ * CAPACITY SETTINGS
+ * Every location starts with 8 spots. 
+ * Change the number here to manually simulate a full location for testing.
+ */
+const capacityMap = {
+    "Bole": 8,
+    "Mexico": 8,
+    "Megenagna": 8,
+    "Haile Garment": 8,
+    "Piassa": 8,
+    "Old Airport": 8,
+    "CMC": 8,
+    "Sar Bet": 8
+};
 
 function updateCities() {
     const country = document.getElementById('country').value;
@@ -51,17 +64,22 @@ function checkSlots() {
     const count = document.getElementById('slot-count');
     const btn = document.getElementById('submit-btn');
     const err = document.getElementById('error-message');
-    const available = slots[loc] !== undefined ? slots[loc] : 10;
+    
+    // Default to 8 if not specifically defined in capacityMap
+    const available = capacityMap[loc] !== undefined ? capacityMap[loc] : 8;
     
     badge.classList.remove('hidden');
     count.innerText = available;
+
     if (available <= 0) {
         btn.disabled = true; 
         btn.innerText = "FULLY BOOKED";
-        err.innerHTML = "LOCATION FULL. SELECT ANOTHER AREA."; 
+        btn.style.opacity = "0.5";
+        err.innerHTML = "THIS LOCATION IS FULL.<br>PLEASE SELECT ANOTHER AREA OR CONTACT US FOR ASSISTANCE."; 
         err.classList.remove('hidden');
     } else {
         btn.disabled = false; 
+        btn.style.opacity = "1";
         btn.innerText = "CONFIRM REGISTRATION"; 
         err.classList.add('hidden');
     }
@@ -83,7 +101,6 @@ form.addEventListener('submit', e => {
     const btn = document.getElementById('submit-btn');
     const err = document.getElementById('error-message');
     
-    // Final Validation Check
     const inputs = form.querySelectorAll('[required]');
     let isOk = true;
     inputs.forEach(i => {
@@ -94,16 +111,14 @@ form.addEventListener('submit', e => {
     });
 
     if (!isOk) {
-        err.innerText = "PLEASE FILL ALL FIELDS";
+        err.innerText = "PLEASE FILL ALL REQUIRED FIELDS";
         err.classList.remove('hidden');
         return;
     }
 
-    // Processing State
     btn.disabled = true;
     btn.innerText = "PROCESSING...";
 
-    // Send to SheetDB
     fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
         method: 'POST',
         headers: {
@@ -125,25 +140,27 @@ form.addEventListener('submit', e => {
             ]
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        btn.innerText = "SUCCESSFUL!";
-        btn.style.background = "#22c55e"; // Green for success
-        form.reset();
-        setTimeout(() => {
-            alert("Registration Confirmed! We'll see you at the table.");
-            showSection('home');
-            // Reset button
-            btn.disabled = false;
-            btn.style.background = "#FCA311";
-            btn.innerText = "CONFIRM REGISTRATION";
-        }, 1500);
+    .then(response => {
+        if(response.ok) {
+            btn.innerText = "SUCCESSFUL!";
+            btn.style.background = "#22c55e"; 
+            form.reset();
+            setTimeout(() => {
+                alert("Registration Confirmed! We'll see you at the table.");
+                showSection('home');
+                btn.disabled = false;
+                btn.style.background = "#FCA311";
+                btn.innerText = "CONFIRM REGISTRATION";
+                document.getElementById('slot-badge').classList.add('hidden');
+            }, 2000);
+        } else {
+            throw new Error('Network response was not ok.');
+        }
     })
     .catch(error => {
         btn.disabled = false;
         btn.innerText = "TRY AGAIN";
-        err.innerText = "CONNECTION ERROR. PLEASE TRY AGAIN.";
+        err.innerText = "SYSTEM BUSY. PLEASE TRY AGAIN IN A MOMENT.";
         err.classList.remove('hidden');
-        console.error('Error:', error);
     });
 });

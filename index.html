@@ -1,118 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bible & Coffee | Global</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible & Coffee | Global</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <button id="menu-toggle" class="md:hidden text-[#FCA311] p-2"><i data-lucide="menu"></i></button>
-            <div id="nav-links" class="nav-links">
-                <button onclick="showSection('home',this)" class="active">HOME</button>
-                <button onclick="showSection('magazine',this)">MAGAZINE</button>
-                <button onclick="showSection('events',this)">EVENTS</button>
-                <button onclick="showSection('merch',this)">MERCH</button>
-                <button onclick="showSection('sermon',this)">SERMON</button>
-                <button onclick="showSection('support',this)">SUPPORT</button>
-                <button onclick="showSection('join',this)">JOIN</button>
-            </div>
-        </div>
-    </nav>
+  <nav>
+    <div class="nav-container">
+      <button id="menu-toggle" class="md:hidden text-[#FCA311] p-2">
+        <i data-lucide="menu"></i>
+      </button>
 
-    <div id="home-wrapper">
-        <header id="home" class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">COFFEE MEETS<br><span>THE WORD</span></h1>
-                <p class="motto">Thank God It’s Friday</p>
-            </div>
-        </header>
-        <div class="bg-[#0a0a0a] pb-24">
-            <div class="max-w-4xl mx-auto px-6">
-                <article class="narrative-section">
-                    <h2 class="editorial-label">The Narrative</h2>
-                    <h3 class="editorial-header">More Than a Gathering</h3>
-                    <div class="max-w-2xl mx-auto">
-                        <p class="editorial-quote">"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
-                    </div>
-                </article>
-            </div>
-        </div>
+      <div id="nav-links" class="nav-links">
+        <button onclick="showSection('home',this)" class="active">HOME</button>
+        <button onclick="showSection('magazine',this)">MAGAZINE</button>
+        <button onclick="showSection('events',this)">EVENTS</button>
+        <button onclick="showSection('merch',this)">MERCH</button>
+        <button onclick="showSection('sermon',this)">SERMON</button>
+        <button onclick="showSection('support',this)">SUPPORT</button>
+        <button onclick="showSection('join',this)">JOIN</button>
+      </div>
     </div>
+  </nav>
 
-    <section id="magazine" class="hidden-section">
-        <h2 class="page-heading">Weekly Magazine</h2>
-        <div class="mag-container">
-            <img src="megimage.jpeg" class="mag-img">
-            <a href="magazine.pdf" download class="action-btn">Download PDF</a>
+  <div id="home-wrapper">
+    <header id="home" class="hero-fullscreen">
+      <div class="hero-overlay"></div>
+      <div class="max-w-7xl mx-auto px-6 md:px-12 w-full z-10">
+        <div class="hero-left-content">
+          <p class="hero-tagline">Bible & Coffee | Global</p>
+          <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
+          <div class="h-1 w-12 bg-[#FCA311] my-8 hidden md:block"></div>
+          <p class="motto">Thank God It’s Friday</p>
+          
+          <div class="scroll-indicator hidden md:flex">
+            <p>Explore Narrative</p>
+            <div class="line"></div>
+          </div>
         </div>
-    </section>
+      </div>
+    </header>
 
-    <section id="join" class="hidden-section">
-        <div class="max-w-md mx-auto">
-            <h2 class="page-heading">Join Movement</h2>
+    <div class="content-clean">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <article class="narrative-block scroll-reveal">
+          <h2 class="section-label">The Narrative</h2>
+          <h3 class="editorial-title">More Than a Gathering</h3>
+          
+          <div class="max-w-2xl mx-auto">
+            <p class="main-quote font-serif italic">
+              "Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."
+            </p>
             
-            <div id="statusMessage" class="hidden mb-4 p-3 border border-red-900 bg-red-950/30 text-red-400 text-xs tracking-widest text-center uppercase">
-                Location Full. Please select another area.
+            <div class="grid md:grid-cols-2 gap-12 text-left pt-12 border-t border-white/5 mt-10">
+              <div class="sub-block">
+                <p class="sub-label">The Essence</p>
+                <p class="text-white/70">Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know.</p>
+              </div>
+              <div class="sub-block">
+                <p class="sub-label">The Table</p>
+                <p class="text-white/70">In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and discover Kingdom life.</p>
+              </div>
             </div>
+          </div>
+        </article>
 
-            <div id="counterBox" class="hidden status-indicator">
-                <p class="status-text">LIVE STATUS: <span id="spotsLeft">--</span> <span class="opacity-50">Spots Left</span></p>
+        <div class="horizon-block scroll-reveal">
+          <div class="horizon-header text-center">
+            <h2 class="section-label inline-block">The Horizon</h2>
+          </div>
+          <div class="text-center py-16">
+            <p class="sub-label mb-12 opacity-40">Driven by Purpose</p>
+            <div class="purpose-list space-y-6">
+              <p class="purpose-item">Understand the Bible simply</p>
+              <p class="purpose-item">Develop a genuine relationship with God</p>
+              <p class="purpose-item">Build authentic Christian community</p>
+              <p class="purpose-item">Live out faith boldly in everyday life</p>
             </div>
-
-            <div class="safari-form-card">
-                <form id="regForm" class="space-y-5">
-                    <div class="form-group">
-                        <label>IDENTITY</label>
-                        <input type="text" id="name" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>CONTACT</label>
-                        <input type="tel" id="phone" placeholder="Phone Number" required>
-                        <input type="email" id="email" placeholder="Email Address" required class="mt-2">
-                    </div>
-                    <div class="form-group">
-                        <label>GEOGRAPHY</label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <select id="country" onchange="updateCities()" required>
-                                <option value="" disabled selected>Country</option>
-                                <option value="Ethiopia">Ethiopia</option>
-                                <option value="Kenya">Kenya</option>
-                                <option value="Netherlands">Netherlands</option>
-                                <option value="Sweden">Sweden</option>
-                                <option value="Germany">Germany</option>
-                                <option value="UK">UK</option>
-                                <option value="USA">USA</option>
-                                <option value="Canada">Canada</option>
-                            </select>
-                            <select id="city" onchange="updateSubCities()" required disabled>
-                                <option value="" disabled selected>City</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="subCityGroup" class="hidden form-group">
-                        <label class="text-[#FCA311]">CHOOSE YOUR SPOT</label>
-                        <select id="subCity" onchange="checkSpots()" class="highlight-select" required>
-                            <option value="" disabled selected>Select Area</option>
-                        </select>
-                    </div>
-                    <button type="submit" id="subBtn" class="submit-action-btn">Confirm Registration</button>
-                </form>
-            </div>
+          </div>
+          <div class="pt-12 border-t border-white/5 text-center">
+            <p class="mission-text text-xl font-light">
+              This is not about church culture. It’s about <span class="text-[#FCA311] font-bold">Kingdom</span>. <br>
+              This is not about religion. It’s about <span class="text-[#FCA311] font-bold">Relationship</span>.
+            </p>
+            <p class="final-note text-white/30 italic mt-10">And there is always a seat for you at the table.</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
 
-    <section id="events" class="hidden-section"><h2 class="page-heading">Events</h2><div class="coming-soon-box">COMING SOON</div></section>
-    <section id="merch" class="hidden-section"><h2 class="page-heading">Merch</h2><div class="coming-soon-box">COMING SOON</div></section>
-    <section id="sermon" class="hidden-section"><h2 class="page-heading">Sermons</h2><div class="coming-soon-box">COMING SOON</div></section>
-    <section id="support" class="hidden-section"><h2 class="page-heading">Support</h2><div class="coming-soon-box">COMING SOON</div></section>
+  <section id="magazine" class="hidden-section">
+    <h2 class="section-heading">Weekly Magazine</h2>
+    <div class="mag-box">
+      <img src="megimage.jpeg" alt="Magazine Preview" class="magazine-preview">
+      <a href="magazine.pdf" download class="download-btn">Download PDF</a>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <section id="events" class="hidden-section">
+    <h2 class="section-heading">Events</h2>
+    <p class="coming-soon">COMING SOON</p>
+  </section>
+
+  <section id="merch" class="hidden-section">
+    <h2 class="section-heading">The Merch</h2>
+    <div class="merch-grid">
+      <img src="merch1.jpeg" alt="Item"><img src="merch2.jpeg" alt="Item"><img src="merch3.jpeg" alt="Item">
+      <img src="merch4.jpeg" alt="Item"><img src="merch5.jpeg" alt="Item"><img src="merch6.jpeg" alt="Item">
+    </div>
+  </section>
+
+  <section id="sermon" class="hidden-section">
+    <h2 class="section-heading">Sermons</h2>
+    <p class="coming-soon">COMING SOON</p>
+  </section>
+
+  <section id="support" class="hidden-section">
+    <h2 class="section-heading">Support</h2>
+    <p class="coming-soon">COMING SOON</p>
+  </section>
+
+  <section id="join" class="hidden-section">
+    <h2 class="section-heading">Join Movement</h2>
+    <div class="form-wrapper">
+      <form id="regForm" class="space-y-4 text-left">
+        <input id="name" required placeholder="Full Name">
+        <input id="email" type="email" required placeholder="Email">
+        <input id="phone" required placeholder="Phone">
+        <div class="grid grid-cols-2 gap-4">
+            <select id="country" required><option value="">Country</option><option>Ethiopia</option></select>
+            <select id="city" required><option value="">City</option><option>Addis Ababa</option></select>
+        </div>
+        <select id="location"><option value="">Location / Area</option><option>Bole</option></select>
+        <div class="grid grid-cols-2 gap-4">
+            <input id="regDate" type="date">
+            <input id="regTime" type="time">
+        </div>
+        <button class="confirm-btn" type="submit">Confirm Registration</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>

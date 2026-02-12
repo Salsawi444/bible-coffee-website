@@ -1,88 +1,65 @@
-/* --- CORE ARCHITECTURE --- */
+/* --- 1. CORE ARCHITECTURE --- */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; overflow-x: hidden; }
+body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; padding: 0; overflow-x: hidden; }
 
-/* --- NAVIGATION --- */
+/* --- 2. NAVIGATION (LOCKED) --- */
 nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; border-bottom: 1px solid #1a1a1a; padding: 15px 0; }
 .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
 .nav-links { display: flex; gap: 20px; }
-.nav-links button { color: #555; font-size: 11px; font-weight: 700; letter-spacing: 2px; border: none; background: none; cursor: pointer; text-transform: uppercase; }
+.nav-links button { color: #555; font-size: 11px; font-weight: 700; border: none; background: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
 .nav-links button.active { color: #FCA311; }
 
 .mobile-toggle { display: none; background: none; border: none; color: #FCA311; font-size: 24px; cursor: pointer; }
 
 @media(max-width:768px) {
   .mobile-toggle { display: block; }
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #000; padding: 40px; gap: 30px; border-bottom: 1px solid #1a1a1a; }
+  .nav-links { 
+    display: none; 
+    flex-direction: column; 
+    position: absolute; 
+    top: 60px; left: 0; width: 100%; 
+    background: #000; padding: 40px; gap: 30px; 
+    border-bottom: 1px solid #1a1a1a; 
+  }
   .nav-links.active-menu { display: flex; }
-  
-  /* MOBILE HERO CENTERED SURGERY (LOCKED) */
-  :root { --hero-gap: 15px; }
-  .hero-content-layer { padding: 130px 25px 40px 25px !important; }
 }
 
-/* --- GLOBAL VISIBILITY FIX --- */
-.section-container { display: none; padding: 120px 20px; min-height: 100vh; }
+/* --- 3. THE "LOCK" VISIBILITY LOGIC --- */
+/* This is the most important part. We hide EVERYTHING by default. */
+.section-container, #home-wrapper { 
+    display: none !important; 
+}
 
-/* Forces visibility when active via JS */
-#magazine:not([style*="display: none"]),
-#merch:not([style*="display: none"]),
-#join:not([style*="display: none"]),
-#sermon:not([style*="display: none"]) {
+/* Only the section explicitly set to 'block' by our JavaScript will show. */
+[style*="display: block"] {
     display: block !important;
 }
 
-/* --- MERCH GRID (THE FIX) --- */
+/* --- 4. MERCH SECTION (ISOLATED) --- */
 #merch .merch-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-    gap: 30px !important;
-    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
 }
-
-#merch .merch-img-wrapper {
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: #111;
-    border: 1px solid #1a1a1a;
-    overflow: hidden;
-}
-
-#merch .merch-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease;
-}
-
+#merch .merch-img-wrapper { width: 100%; aspect-ratio: 4/5; background: #111; border: 1px solid #1a1a1a; overflow: hidden; }
+#merch .merch-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 #merch .merch-card:hover .merch-img { transform: scale(1.05); }
-#merch h3 { font-family: 'Oswald'; font-size: 14px; margin-top: 15px; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-align: left; }
 
-/* --- MAGAZINE SECTION (RE-LOCKED) --- */
-#magazine.section-container { background: #050505 !important; }
+/* --- 5. MAGAZINE SECTION (ISOLATED) --- */
+#magazine { background: #050505 !important; padding: 120px 20px; }
+#magazine .flex { display: flex !important; }
 
-/* --- PREMIUM FORM & BUTTONS --- */
-.form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
-.group { position: relative; width: 100%; margin-bottom: 25px; }
-.floating-input { width: 100%; padding: 10px 0; background: transparent !important; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 16px; outline: none; }
-.floating-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.3); font-size: 12px; text-transform: uppercase; pointer-events: none; transition: 0.3s; }
-.floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
-
+/* --- 6. FORMS & BUTTONS --- */
 .submit-btn-premium { 
-    display: inline-block !important;
-    background: #FCA311; 
-    color: #000; 
-    font-weight: 900; 
-    padding: 18px 35px; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    border: none; 
-    cursor: pointer; 
-    text-decoration: none;
-    text-align: center;
+    display: inline-block !important; 
+    background: #FCA311; color: #000; font-weight: 900; 
+    padding: 18px 35px; text-transform: uppercase; 
+    text-decoration: none; border: none; cursor: pointer; 
 }
+.form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
+.floating-input { width: 100%; padding: 10px 0; background: transparent !important; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; outline: none; }
 
-/* --- SERMON VAULT (LOCKED) --- */
-.sermon-thumb { filter: grayscale(100%) brightness(0.6); transition: all 0.8s ease; }
-.sermon-card:hover .sermon-thumb { filter: grayscale(0%) brightness(1); transform: scale(1.05); }
+/* --- 7. SERMON VAULT --- */
+.sermon-thumb { filter: grayscale(100%); transition: 0.8s; }
+.sermon-card:hover .sermon-thumb { filter: grayscale(0%); transform: scale(1.05); }

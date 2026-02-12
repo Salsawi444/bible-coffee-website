@@ -9,6 +9,30 @@ const cityData = {
     "Germany": ["Frankfurt", "Berlin"]
 };
 
+// --- NAVIGATION & MOBILE MENU ---
+function showSection(id, btn) {
+    document.querySelectorAll('.section-container').forEach(s => s.style.display = 'none');
+    const homeWrapper = document.getElementById('home-wrapper');
+    
+    if (id === 'home') {
+        homeWrapper.style.display = 'block';
+    } else {
+        homeWrapper.style.display = 'none';
+        const target = document.getElementById(id);
+        if (target) target.style.display = 'block';
+    }
+    
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.getElementById('nav-links').classList.remove('active');
+    window.scrollTo(0, 0);
+}
+
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('active');
+});
+
+// --- DROPDOWNS & FORM ---
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
@@ -23,17 +47,6 @@ function updateCities() {
     }
 }
 
-function showSection(id, btn) {
-    document.querySelectorAll('.section-container').forEach(s => s.style.display = 'none');
-    document.getElementById('home-wrapper').style.display = (id === 'home') ? 'block' : 'none';
-    if(id !== 'home') document.getElementById(id).style.display = 'block';
-    
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
-    window.scrollTo(0,0);
-}
-
-// FORM SUBMISSION (Untouched Logic)
 document.getElementById('regForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -53,7 +66,7 @@ document.getElementById('regForm').addEventListener('submit', function(e) {
         window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     })
     .catch(err => {
-        alert("Connection error. Please try again.");
+        alert("Error connecting. Try again.");
         btn.disabled = false;
         btn.innerHTML = "CLAIM MY SEAT";
     });

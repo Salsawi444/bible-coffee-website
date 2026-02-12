@@ -16,15 +16,26 @@ function showSection(id, btn) {
     window.scrollTo(0,0);
 }
 
-/* --- SURGICAL INJECTION: VIDEO VAULT LOGIC --- */
+/* --- SURGICAL REPAIR: MOBILE-FIRST VIDEO LOGIC --- */
 function openVideo(videoId) {
-    // This creates a premium fullscreen overlay for the sermon
+    // We use youtube-nocookie and extra parameters to bypass the mobile playback error
     const overlay = document.createElement('div');
-    overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px;";
+    overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; display:flex; align-items:center; justify-content:center; padding:10px;";
+    
     overlay.innerHTML = `
-        <div style="position:relative; width:100%; max-width:900px; aspect-ratio:16/9;">
-            <button onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:-40px; right:0; color:#FCA311; background:none; border:none; font-family:'Oswald'; cursor:pointer; letter-spacing:2px;">CLOSE [X]</button>
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div style="position:relative; width:100%; max-width:850px; aspect-ratio:16/9; background:#000; box-shadow: 0 0 50px rgba(0,0,0,1);">
+            <button onclick="this.parentElement.parentElement.remove()" 
+                    style="position:absolute; top:-45px; right:0; color:#FCA311; background:none; border:none; font-family:'Oswald'; font-size:14px; font-weight:700; cursor:pointer; letter-spacing:2px; padding:10px;">
+                CLOSE [X]
+            </button>
+            <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
     `;
     document.body.appendChild(overlay);

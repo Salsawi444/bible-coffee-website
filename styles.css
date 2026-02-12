@@ -59,3 +59,23 @@ select.floating-input option {
 
 .submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: 0.3s; }
 .submit-btn-premium:disabled { background: #333; color: #777; cursor: not-allowed; }
+
+/* --- MAGAZINE SECTION ADDITION --- */
+#magazine .submit-btn-premium {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    width: auto;
+    min-width: 200px;
+}
+
+#magazine.section-container {
+    background: #050505;
+}
+
+/* Fix for responsive layout on small screens */
+@media (max-width: 768px) {
+    #magazine .submit-btn-premium {
+        width: 100%;
+    }
+}

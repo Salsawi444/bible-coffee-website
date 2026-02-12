@@ -1,65 +1,37 @@
-/* --- 1. CORE ARCHITECTURE --- */
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; padding: 0; overflow-x: hidden; }
+/* --- CORE --- */
+* { box-sizing: border-box; }
+body { background: #0a0a0a; color: #fff; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-/* --- 2. NAVIGATION (LOCKED) --- */
+/* --- VISIBILITY CONTROL (THE FIX) --- */
+.section-container, #home-wrapper { display: none; }
+#home-wrapper { display: block; } /* Show home by default */
+
+/* --- NAV --- */
 nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; border-bottom: 1px solid #1a1a1a; padding: 15px 0; }
-.nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
-.nav-links { display: flex; gap: 20px; }
-.nav-links button { color: #555; font-size: 11px; font-weight: 700; border: none; background: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
+.nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; }
+.nav-links button { color: #555; font-size: 11px; font-weight: 700; border: none; background: none; cursor: pointer; letter-spacing: 2px; }
 .nav-links button.active { color: #FCA311; }
 
-.mobile-toggle { display: none; background: none; border: none; color: #FCA311; font-size: 24px; cursor: pointer; }
-
-@media(max-width:768px) {
-  .mobile-toggle { display: block; }
-  .nav-links { 
-    display: none; 
-    flex-direction: column; 
-    position: absolute; 
-    top: 60px; left: 0; width: 100%; 
-    background: #000; padding: 40px; gap: 30px; 
-    border-bottom: 1px solid #1a1a1a; 
-  }
-  .nav-links.active-menu { display: flex; }
-}
-
-/* --- 3. THE "LOCK" VISIBILITY LOGIC --- */
-/* This is the most important part. We hide EVERYTHING by default. */
-.section-container, #home-wrapper { 
-    display: none !important; 
-}
-
-/* Only the section explicitly set to 'block' by our JavaScript will show. */
-[style*="display: block"] {
-    display: block !important;
-}
-
-/* --- 4. MERCH SECTION (ISOLATED) --- */
-#merch .merch-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 20px 0;
-}
-#merch .merch-img-wrapper { width: 100%; aspect-ratio: 4/5; background: #111; border: 1px solid #1a1a1a; overflow: hidden; }
-#merch .merch-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-#merch .merch-card:hover .merch-img { transform: scale(1.05); }
-
-/* --- 5. MAGAZINE SECTION (ISOLATED) --- */
-#magazine { background: #050505 !important; padding: 120px 20px; }
+/* --- MAGAZINE (FLEXBOX) --- */
+#magazine { padding: 120px 20px; background: #050505; }
 #magazine .flex { display: flex !important; }
 
-/* --- 6. FORMS & BUTTONS --- */
-.submit-btn-premium { 
-    display: inline-block !important; 
-    background: #FCA311; color: #000; font-weight: 900; 
-    padding: 18px 35px; text-transform: uppercase; 
-    text-decoration: none; border: none; cursor: pointer; 
+/* --- MERCH (GRID) --- */
+#merch { padding: 120px 20px; }
+#merch .merch-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 30px;
 }
-.form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
-.floating-input { width: 100%; padding: 10px 0; background: transparent !important; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; outline: none; }
+.merch-img-wrapper { aspect-ratio: 4/5; overflow: hidden; background: #111; border: 1px solid #1a1a1a; }
+.merch-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+.merch-card:hover .merch-img { transform: scale(1.05); }
 
-/* --- 7. SERMON VAULT --- */
-.sermon-thumb { filter: grayscale(100%); transition: 0.8s; }
-.sermon-card:hover .sermon-thumb { filter: grayscale(0%); transform: scale(1.05); }
+/* --- BUTTONS --- */
+.submit-btn-premium { background: #FCA311; color: #000; font-weight: 900; padding: 18px 35px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+
+@media(max-width:768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #000; padding: 40px; }
+    .nav-links.active-menu { display: flex; }
+    .mobile-toggle { display: block; color: #FCA311; background: none; border: none; font-size: 20px; cursor: pointer; }
+}

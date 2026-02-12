@@ -43,7 +43,6 @@
     <div class="max-w-md mx-auto">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
-        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Secure your seat</p>
       </div>
       <div class="form-card relative">
         <div id="slot-badge" class="hidden absolute top-0 right-0 bg-[#FCA311] text-black text-[9px] font-black px-3 py-1 uppercase">
@@ -51,16 +50,16 @@
         </div>
         <form id="regForm" class="space-y-8">
           <div class="group">
-            <input id="name" name="Name" required placeholder=" " class="floating-input">
+            <input id="name" required placeholder=" " class="floating-input">
             <label class="floating-label">Full Name</label>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="group"><input id="email" name="Email" type="email" required placeholder=" " class="floating-input"><label class="floating-label">Email</label></div>
-            <div class="group"><input id="phone" name="Phone" required placeholder=" " class="floating-input"><label class="floating-label">Phone</label></div>
+            <div class="group"><input id="email" type="email" required placeholder=" " class="floating-input"><label class="floating-label">Email</label></div>
+            <div class="group"><input id="phone" required placeholder=" " class="floating-input"><label class="floating-label">Phone</label></div>
           </div>
           <div class="space-y-8">
             <div class="group">
-              <select id="country" name="Country" required class="floating-input" onchange="updateCities()">
+              <select id="country" required class="floating-input" onchange="updateCities()">
                 <option value="" disabled selected></option>
                 <option value="Ethiopia">Ethiopia</option>
                 <option value="Germany">Germany</option>
@@ -74,21 +73,19 @@
               <label class="floating-label">Country</label>
             </div>
             <div class="group">
-              <select id="city" name="City" required class="floating-input" onchange="updateLocations()">
+              <select id="city" required class="floating-input" onchange="updateLocations()">
                 <option value="" disabled selected></option>
               </select>
               <label class="floating-label">City</label>
             </div>
             <div class="group">
-              <select id="location" name="Location" required class="floating-input" onchange="checkSlots()">
+              <select id="location" required class="floating-input" onchange="checkSlots()">
                 <option value="" disabled selected></option>
               </select>
               <label class="floating-label">Meeting Point</label>
             </div>
           </div>
-          <input type="hidden" id="regDate" name="Registration Date">
-          <input type="hidden" id="regTime" name="Registration Time">
-          <div id="error-message" class="hidden text-red-500 text-xs text-center"></div>
+          <div id="error-message" class="hidden text-red-500 text-xs text-center border border-red-500/20 p-2"></div>
           <button id="submit-btn" class="submit-btn-premium" type="submit">Confirm Reservation</button>
         </form>
       </div>

@@ -13,9 +13,7 @@
 
     <nav>
         <div class="nav-container">
-            <button id="menu-toggle" class="md:hidden text-[#FCA311] p-2">
-                <i data-lucide="menu"></i>
-            </button>
+            <button id="menu-toggle" class="md:hidden text-[#FCA311] p-2"><i data-lucide="menu"></i></button>
             <div id="nav-links" class="nav-links">
                 <button onclick="showSection('home',this)" class="active">HOME</button>
                 <button onclick="showSection('magazine',this)">MAGAZINE</button>
@@ -35,7 +33,6 @@
                 <p class="motto">Thank God It’s Friday</p>
             </div>
         </header>
-
         <div class="bg-[#0a0a0a] pb-24">
             <div class="max-w-4xl mx-auto px-6">
                 <article class="narrative-section">
@@ -58,16 +55,22 @@
     </section>
 
     <section id="events" class="hidden-section"><h2 class="page-heading">Events</h2><div class="coming-soon-box">COMING SOON</div></section>
-    <section id="merch" class="hidden-section"><h2 class="page-heading">The Merch</h2><div class="coming-soon-box">COLLECTION COMING SOON</div></section>
+    <section id="merch" class="hidden-section"><h2 class="page-heading">The Merch</h2><div class="coming-soon-box">COMING SOON</div></section>
     <section id="sermon" class="hidden-section"><h2 class="page-heading">Sermons</h2><div class="coming-soon-box">COMING SOON</div></section>
     <section id="support" class="hidden-section"><h2 class="page-heading">Support</h2><div class="coming-soon-box">COMING SOON</div></section>
 
     <section id="join" class="hidden-section">
         <div class="max-w-md mx-auto">
             <h2 class="page-heading">Join Movement</h2>
+            
+            <div id="statusMessage" class="hidden mb-4 p-3 border border-red-900 bg-red-950/30 text-red-400 text-xs tracking-widest text-center uppercase">
+                Location Full. Please select another area.
+            </div>
+
             <div id="counterBox" class="hidden status-indicator">
                 <p class="status-text">LIVE STATUS: <span id="spotsLeft">--</span> <span class="opacity-50">Spots Left</span></p>
             </div>
+
             <div class="safari-form-card">
                 <form id="regForm" class="space-y-5">
                     <div class="form-group">

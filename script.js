@@ -16,15 +16,20 @@ const locs = {
     "Canada": { "Toronto": ["Downtown"] }
 };
 
+// NAV LOGIC
 function showSection(id, btn) {
     document.querySelectorAll('.hidden-section').forEach(el => el.style.display = 'none');
     document.getElementById('home-wrapper').style.display = (id === 'home') ? 'block' : 'none';
-    if (id !== 'home') document.getElementById(id).style.display = 'block';
+    if (id !== 'home') {
+        const target = document.getElementById(id);
+        if(target) target.style.display = 'block';
+    }
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
+// CASCADE DROPDOWNS
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySel = document.getElementById('city');
@@ -32,7 +37,6 @@ function updateCities() {
     citySel.disabled = true;
     document.getElementById('subCityGroup').classList.add('hidden');
     document.getElementById('counterBox').classList.add('hidden');
-    document.getElementById('statusMessage').classList.add('hidden');
     if(locs[country]) {
         Object.keys(locs[country]).forEach(city => citySel.add(new Option(city, city)));
         citySel.disabled = false;
@@ -50,14 +54,15 @@ function updateSubCities() {
     }
 }
 
+// REACTIVE SPOT CHECKER
 async function checkSpots() {
     const spot = document.getElementById('subCity').value;
-    if (!spot) return;
-
     const countBox = document.getElementById('counterBox');
     const statusMsg = document.getElementById('statusMessage');
     const countSpan = document.getElementById('spotsLeft');
     const btn = document.getElementById('subBtn');
+
+    if (!spot) return;
 
     countBox.classList.remove('hidden');
     statusMsg.classList.add('hidden');
@@ -72,7 +77,7 @@ async function checkSpots() {
         countSpan.innerText = remaining > 0 ? remaining : 0;
 
         if (remaining <= 0) {
-            statusMsg.classList.remove('hidden'); // Show "Please select another area"
+            statusMsg.classList.remove('hidden');
             btn.innerText = "LOCATION FULL";
             btn.disabled = true;
         } else {
@@ -80,17 +85,25 @@ async function checkSpots() {
             btn.innerText = "Confirm Registration";
             btn.disabled = false;
         }
-    } catch (e) {
-        countSpan.innerText = "!";
-    }
+    } catch (e) { countSpan.innerText = "!"; }
 }
 
+// FINAL SUBMISSION HANDLER
 document.getElementById('regForm').onsubmit = async (e) => {
     e.preventDefault();
+    
+    // Strict Field Check
+    const locationVal = document.getElementById('subCity').value;
+    if (!locationVal) {
+        alert("Please select a specific spot/area to join.");
+        return;
+    }
+
     const btn = document.getElementById('subBtn');
     btn.innerText = "SYNCING...";
     btn.disabled = true;
 
+    // Fixed Date/Time Logic (DD/MM/YYYY)
     const now = new Date();
     const cleanDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
     const cleanTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
@@ -101,7 +114,7 @@ document.getElementById('regForm').onsubmit = async (e) => {
         "Email": document.getElementById('email').value,
         "Country": document.getElementById('country').value,
         "City": document.getElementById('city').value,
-        "Location": document.getElementById('subCity').value,
+        "Location": locationVal,
         "Registration Date": cleanDate,
         "Registration Time": cleanTime
     };
@@ -113,11 +126,12 @@ document.getElementById('regForm').onsubmit = async (e) => {
             body: JSON.stringify({ data: [payload] })
         });
         window.open(`https://wa.me/${ADMIN_PHONE}?text=New Registration: ${payload.Name} for ${payload.Location}`, '_blank');
-        alert("Success!");
+        alert("Success! Welcome to the movement.");
         location.reload(); 
     } catch (err) {
-        alert("Error.");
+        alert("Sync Error.");
         btn.disabled = false;
+        btn.innerText = "Confirm Registration";
     }
 };
 

@@ -45,17 +45,19 @@
       margin: 0 auto;
     }
 
-    /* 2. MOBILE RECOVERY LOGIC */
+    /* 2. MOBILE RECOVERY LOGIC - THE PROFESSOR'S LIFT */
     @media (max-width: 768px) {
       .hero-container { 
-        align-items: flex-end; /* Groups text/button at bottom to kill the gap */
-        min-height: 90vh; 
+        align-items: flex-start; /* Locked to Top */
+        min-height: 100vh; 
       }
       .hero-overlay-layer {
-        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 40%, #000000 90%);
+        /* Darker top-fade for white text protection in the Lift Zone */
+        background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, #000000 90%);
       }
       .hero-content-layer { 
-        padding: 120px 25px 60px 25px; 
+        /* THE SURGICAL LIFT: 70px top padding for the 'Vogue' look */
+        padding: 70px 25px 60px 25px; 
       }
       .responsive-title { font-size: clamp(3.2rem, 12vw, 5rem) !important; }
     }

@@ -8,6 +8,15 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Surgical CSS for Hero Mobile Flow */
+    @media (max-width: 768px) {
+      .hero-flex-container { flex-direction: column !important; padding-top: 60px !important; }
+      .hero-text-side { order: 1 !important; width: 100% !important; }
+      .hero-image-side { order: 2 !important; width: 100% !important; margin: 20px 0 !important; }
+      .hero-manifesto-side { order: 3 !important; width: 100% !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,43 +38,51 @@
   <div id="home-wrapper">
     <header id="home" class="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: black; overflow: hidden;">
       
-      <div style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; width: 100%; margin: 0 auto; padding: 100px 40px 40px 40px; gap: 60px; flex-wrap: wrap;">
+      <div class="hero-flex-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; width: 100%; margin: 0 auto; padding: 100px 40px 40px 40px; gap: 40px; flex-wrap: wrap;">
         
-        <div style="flex: 1.2; min-width: 320px; text-align: left;">
+        <div class="hero-text-side" style="flex: 1.2; min-width: 320px; text-align: left;">
           <h1 style="font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 0.9; margin: 0;">
               <span style="color: white; font-size: clamp(3.5rem, 8vw, 6rem); display: block; text-transform: uppercase;">BIBLE &</span>
               <span style="color: white; font-size: clamp(3.5rem, 8vw, 6rem); display: block; text-transform: uppercase;">COFFEE.</span>
               <span style="color: #FCA311; font-size: clamp(3.5rem, 8vw, 6rem); display: block; text-transform: uppercase;">FRIDAYS.</span>
           </h1>
           
-          <div style="margin-top: 40px; border-left: 3px solid #FCA311; padding-left: 25px;">
-              <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.6rem; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase;">
+          <div class="hero-manifesto-side" style="margin-top: 35px; border-left: 3px solid #FCA311; padding-left: 25px;">
+              <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase;">
                   THE KINGDOM > THE CULTURE
               </h2>
-              <p style="color: white; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; margin-bottom: 15px;">
+              <p style="color: white; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 15px;">
                   Authentic faith. Unfiltered Family.
               </p>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; max-width: 450px; font-family: 'Inter', sans-serif;">
-                  We stopped performing. We started living. Bible & Coffee isn't a program; it's a return to the table. No stages. No scripts. Just open Bibles and the pursuit of a Savior who is already in our midst.
+
+              <div style="display: flex; gap: 25px; margin: 20px 0; color: #FCA311;">
+                <i data-lucide="book-open" style="width: 18px; height: 18px;" title="Understand Simply"></i>
+                <i data-lucide="heart" style="width: 18px; height: 18px;" title="Relate Genuinely"></i>
+                <i data-lucide="users" style="width: 18px; height: 18px;" title="Belong Authentically"></i>
+                <i data-lucide="zap" style="width: 18px; height: 18px;" title="Live Boldly"></i>
+              </div>
+
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 440px; font-family: 'Inter', sans-serif;">
+                  We stopped performing. We started living. Bible & Coffee isn't a program; it's a return to the table. No stages. No scripts. Just open Bibles.
               </p>
           </div>
 
-          <button onclick="showSection('join')" class="hero-cta" style="margin-top: 40px; display: inline-block;">
+          <button onclick="showSection('join')" class="hero-cta" style="margin-top: 35px; display: inline-block;">
               Claim My Seat
           </button>
         </div>
 
-        <div style="flex: 1; min-width: 320px; display: flex; justify-content: center;">
+        <div class="hero-image-side" style="flex: 1; min-width: 320px; display: flex; justify-content: center;">
           <div style="position: relative; width: 100%; max-width: 500px;">
               <img src="hero-family.jpg" alt="Bible and Coffee Family" 
-                   style="width: 100%; border-radius: 4px; filter: grayscale(10%); display: block; 
-                          mask-image: radial-gradient(circle, black 55%, transparent 100%); 
-                          -webkit-mask-image: radial-gradient(circle, black 55%, transparent 100%);">
+                   style="width: 100%; border-radius: 2px; filter: grayscale(10%); display: block; 
+                          mask-image: linear-gradient(to bottom, black 85%, transparent 100%), radial-gradient(circle, black 60%, transparent 100%);
+                          -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%), radial-gradient(circle, black 60%, transparent 100%);">
           </div>
         </div>
 
       </div>
-      </header>
+    </header>
   </div>
 
   <section id="join" class="section-container px-4">

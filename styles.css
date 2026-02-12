@@ -1,4 +1,4 @@
-/* BASE & TYPOGRAPHY */
+/* BASE RESET */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; overflow-x: hidden; }
 
@@ -9,7 +9,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0,0,
 .nav-links button { color: #555; font-size: 11px; font-weight: 700; letter-spacing: 2px; border: none; background: none; cursor: pointer; transition: .4s; text-transform: uppercase; }
 .nav-links button:hover, .nav-links .active { color: #FCA311; }
 
-/* HERO SECTION (LEFT ALIGNED) */
+/* HERO SECTION */
 .hero { 
   height: 100vh; 
   display: flex; 
@@ -23,23 +23,27 @@ nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0,0,
 .hero-cta { border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
 .hero-cta:hover { background: #FCA311; color: black; }
 
-/* GLOBAL TICKER */
+/* TICKER */
 .ticker-wrap { width: 100%; background: #000; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; overflow: hidden; padding: 15px 0; }
 .ticker { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; }
 .ticker-item { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 5px; color: #333; padding: 0 50px; }
 @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* SECTION CONTAINERS */
+/* FORM & SECTIONS */
 .section-container { display: none; padding: 120px 20px; animation: fadeIn 0.8s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-/* FORM STYLES (Locked) */
 .form-card { background: #0d0d0d; padding: 40px; border: 1px solid #1a1a1a; }
 .group { position: relative; width: 100%; }
 .floating-input { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; font-size: 16px; transition: 0.3s; border-radius: 0; }
-select.floating-input { background-color: #0d0d0d; cursor: pointer; }
-select.floating-input option { background-color: #111 !important; color: #fff !important; }
 .floating-input:focus { outline: none; border-bottom: 1px solid #FCA311; }
 .floating-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.3); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; pointer-events: none; transition: 0.3s; }
 .floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
-.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 22px; text-transform: uppercase; letter-spacing: 3px; font-size: 12px; border: none; cursor: pointer; transition: 0.3s; margin-top: 20px; }
+.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 22px; text-transform: uppercase; letter-spacing: 3px; font-size: 12px; border: none; cursor: pointer; transition: 0.3s; }
+
+/* MOBILE HAMBURGER */
+@media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: rgba(0,0,0,0.95); flex-direction: column; padding: 20px; border-bottom: 1px solid #1a1a1a; }
+    .nav-links.active { display: flex; }
+    .hero { padding-left: 5%; background-position: 70% center; }
+    .hero-title { font-size: 3rem; }
+}

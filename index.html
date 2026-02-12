@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Bible & Coffee | Global</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +17,6 @@
       <button id="menu-toggle" class="md:hidden text-[#FCA311]">
         <i data-lucide="menu"></i>
       </button>
-
       <div id="nav-links" class="nav-links">
         <button onclick="showSection('home',this)" class="active">HOME</button>
         <button onclick="showSection('magazine',this)">MAGAZINE</button>
@@ -34,22 +31,32 @@
 
   <div id="home-wrapper">
     <header id="home" class="hero">
-      <div>
+      <div class="hero-content">
         <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
         <p class="motto">Thank God It’s Friday</p>
       </div>
     </header>
 
-    <div class="bg-[#0a0a0a] px-6 py-16 md:py-24">
+    <div class="bg-[#0a0a0a] px-6 py-20">
       <div class="max-w-4xl mx-auto">
         <article class="border-t border-b border-white/10 py-16 mb-20 text-center">
           <h3 class="text-4xl md:text-5xl font-['Playfair_Display'] text-white mb-8">More Than a Gathering</h3>
-          <p class="text-xl text-white/80 italic">"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
+          <p class="text-xl text-white/70 italic mb-10">"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left text-white/50 text-sm pt-10 border-t border-white/5">
+            <div>
+              <p class="mb-2 font-bold text-[#FCA311] uppercase tracking-widest text-[10px]">The Essence</p>
+              <p>Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know.</p>
+            </div>
+            <div>
+              <p class="mb-2 font-bold text-[#FCA311] uppercase tracking-widest text-[10px]">The Table</p>
+              <p>In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and grow in faith.</p>
+            </div>
+          </div>
         </article>
 
         <div class="text-center">
-          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.3em] uppercase mb-10">Living With Purpose</h2>
-          <div class="space-y-6 text-2xl font-['Playfair_Display'] text-white/90">
+          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.4em] uppercase mb-12 text-xs">Living With Purpose</h2>
+          <div class="space-y-8 text-2xl md:text-3xl font-['Playfair_Display'] text-white/90">
             <p>Understand the Bible simply</p>
             <p>Develop a genuine relationship with God</p>
             <p>Build authentic Christian community</p>
@@ -60,69 +67,92 @@
     </div>
   </div>
 
-  <section id="join" class="section-container">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-8 uppercase">Join Movement</h2>
-    <div class="max-w-md mx-auto form-card">
-      <form id="regForm" class="space-y-4 text-left">
-        <input id="name" name="Name" required placeholder="Full Name">
-        <input id="email" name="Email" type="email" required placeholder="Email">
-        <input id="phone" name="Phone" required placeholder="Phone">
-        
-        <select id="country" name="Country" required>
-          <option value="">Country</option>
-          <option>Ethiopia</option>
-          <option>USA</option>
-          <option>Germany</option>
-        </select>
+  <section id="join" class="section-container px-4">
+    <div class="max-w-md mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
+        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Secure your seat at the table</p>
+      </div>
 
-        <select id="city" name="City" required>
-          <option value="">City</option>
-          <option>Addis Ababa</option>
-          <option>Dallas</option>
-          <option>Berlin</option>
-        </select>
+      <div class="form-card relative">
+        <div id="slot-badge" class="hidden absolute top-0 right-0 bg-[#FCA311] text-black text-[9px] font-black px-3 py-1 uppercase">
+          <span id="slot-count">0</span> Spots Left
+        </div>
 
-        <select id="location" name="Location">
-          <option value="">Location / Area</option>
-          <option>Bole</option>
-          <option>Piazza</option>
-          <option>Mexico</option>
-        </select>
+        <form id="regForm" class="space-y-8">
+          <div class="group">
+            <input id="name" name="Name" required placeholder=" " class="floating-input">
+            <label class="floating-label">Full Name</label>
+          </div>
 
-        <input type="hidden" id="regDate" name="Registration Date">
-        <input type="hidden" id="regTime" name="Registration Time">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="group">
+              <input id="email" name="Email" type="email" required placeholder=" " class="floating-input">
+              <label class="floating-label">Email</label>
+            </div>
+            <div class="group">
+              <input id="phone" name="Phone" required placeholder=" " class="floating-input">
+              <label class="floating-label">Phone</label>
+            </div>
+          </div>
 
-        <button class="submit-btn" type="submit">Confirm Registration</button>
-      </form>
+          <div class="space-y-8">
+            <div class="group">
+              <select id="country" name="Country" required class="floating-input" onchange="updateCities()">
+                <option value="" disabled selected></option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="USA">USA</option>
+              </select>
+              <label class="floating-label">Country</label>
+            </div>
+            <div class="group">
+              <select id="city" name="City" required class="floating-input" onchange="updateLocations()">
+                <option value="" disabled selected></option>
+              </select>
+              <label class="floating-label">City</label>
+            </div>
+            <div class="group">
+              <select id="location" name="Location" required class="floating-input" onchange="checkSlots()">
+                <option value="" disabled selected></option>
+              </select>
+              <label class="floating-label">Meeting Point</label>
+            </div>
+          </div>
+
+          <input type="hidden" id="regDate" name="Registration Date">
+          <input type="hidden" id="regTime" name="Registration Time">
+
+          <div id="error-message" class="hidden text-[10px] uppercase tracking-widest text-red-500 bg-red-500/5 p-4 border border-red-500/10 text-center"></div>
+
+          <button id="submit-btn" class="submit-btn-premium" type="submit">Confirm Registration</button>
+        </form>
+      </div>
     </div>
   </section>
 
   <section id="magazine" class="section-container">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6 uppercase">Weekly Magazine</h2>
-    <div class="mag-box">
-      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded w-full">
-      <a href="magazine.pdf" download class="submit-btn block text-center no-underline">Download PDF</a>
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-8 uppercase">Weekly Magazine</h2>
+    <div class="mag-box mx-auto max-w-sm">
+      <img src="megimage.jpeg" alt="Magazine" class="w-full mb-6">
+      <a href="magazine.pdf" download class="submit-btn-premium block no-underline text-center">Download PDF</a>
     </div>
   </section>
 
   <section id="events" class="section-container">
-    <h2 class="text-4xl font-bold text-[#FCA311]">Events</h2>
-    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-4">EVENTS</h2>
+    <p class="opacity-20 tracking-[10px] py-20">COMING SOON</p>
   </section>
-
   <section id="merch" class="section-container">
-    <h2 class="text-4xl font-bold text-[#FCA311]">Merch</h2>
-    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-4">MERCH</h2>
+    <p class="opacity-20 tracking-[10px] py-20">COMING SOON</p>
   </section>
-
   <section id="sermon" class="section-container">
-    <h2 class="text-4xl font-bold text-[#FCA311]">Sermons</h2>
-    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-4">SERMONS</h2>
+    <p class="opacity-20 tracking-[10px] py-20">COMING SOON</p>
   </section>
-
   <section id="support" class="section-container">
-    <h2 class="text-4xl font-bold text-[#FCA311]">Support</h2>
-    <p class="py-20 opacity-30 tracking-[5px]">COMING SOON</p>
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-4">SUPPORT</h2>
+    <p class="opacity-20 tracking-[10px] py-20">COMING SOON</p>
   </section>
 
   <script src="script.js"></script>

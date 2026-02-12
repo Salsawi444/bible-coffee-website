@@ -1,5 +1,5 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; overflow-x: hidden; }
+body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; overflow-x: hidden; width: 100%; }
 
 nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; border-bottom: 1px solid #1a1a1a; padding: 15px 0; }
 .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
@@ -7,11 +7,11 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .nav-links button { color: #555; font-size: 11px; font-weight: 700; letter-spacing: 2px; border: none; background: none; cursor: pointer; text-transform: uppercase; }
 .nav-links button.active { color: #FCA311; }
 
-.mobile-toggle { display: none; background: none; border: none; color: #FCA311; }
+.mobile-toggle { display: none; background: none; border: none; color: #FCA311; padding: 5px; }
 
 @media(max-width:768px) {
   .mobile-toggle { display: block; }
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #000; padding: 40px; gap: 30px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #000; padding: 40px; gap: 30px; border-bottom: 1px solid #1a1a1a; }
   .nav-links.active-menu { display: flex; }
 }
 
@@ -20,13 +20,15 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .hero h1 span { color: #FCA311; }
 .motto { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FCA311; font-style: italic; margin-top: 20px; }
 
-.section-container { display: none; padding: 120px 20px; min-height: 100vh; }
+.section-container { display: none; padding: 120px 20px; min-height: 100vh; width: 100%; }
 
 .form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
 .group { position: relative; width: 100%; margin-bottom: 25px; }
-.floating-input { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; font-size: 16px; border-radius: 0; outline: none; }
+.floating-input { width: 100%; padding: 10px 0; background: transparent !important; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 16px; border-radius: 0; outline: none; }
+select.floating-input { appearance: none; -webkit-appearance: none; }
 select.floating-input option { background: #111; color: white; }
 .floating-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.3); font-size: 12px; text-transform: uppercase; pointer-events: none; transition: 0.3s; }
 .floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
 
-.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; }
+.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: 0.3s; }
+.submit-btn-premium:disabled { background: #333; color: #666; }

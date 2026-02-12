@@ -45,35 +45,15 @@
       margin: 0 auto;
     }
 
-    /* 2. MOBILE RECOVERY LOGIC */
     @media (max-width: 768px) {
-      .hero-container { 
-        align-items: flex-start; 
-        min-height: 100vh; 
-      }
-      .hero-overlay-layer {
-        background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, #000000 90%);
-      }
-      .hero-content-layer { 
-        padding: 70px 25px 60px 25px; 
-      }
+      .hero-container { align-items: flex-start; min-height: 100vh; }
+      .hero-overlay-layer { background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, #000000 90%); }
+      .hero-content-layer { padding: 70px 25px 60px 25px; }
       .responsive-title { font-size: clamp(3.2rem, 12vw, 5rem) !important; }
     }
 
-    /* 3. PREMIUM TYPOGRAPHY CLASSES */
-    .manifesto-quote {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: white;
-      line-height: 1.6;
-    }
-    
-    .manifesto-sub {
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.03em;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-    }
+    .manifesto-quote { font-family: 'Playfair Display', serif; font-style: italic; color: white; line-height: 1.6; }
+    .manifesto-sub { font-family: 'Inter', sans-serif; letter-spacing: 0.03em; color: rgba(255,255,255,0.6); font-size: 0.95rem; }
   </style>
 </head>
 <body>
@@ -84,9 +64,9 @@
       <div id="nav-links" class="nav-links">
         <button onclick="showSection('home',this)" class="active">HOME</button>
         <button onclick="showSection('magazine',this)">MAGAZINE</button>
-        <button onclick="showSection('events',this)">EVENTS</button>
         <button onclick="showSection('merch',this)">MERCH</button>
         <button onclick="showSection('sermon',this)">SERMON</button>
+        <button onclick="showSection('events',this)">EVENTS</button>
         <button onclick="showSection('support',this)">SUPPORT</button>
         <button onclick="showSection('join',this)">JOIN</button>
       </div>
@@ -97,97 +77,23 @@
     <header id="home" class="hero-container">
       <div class="hero-bg-layer"></div>
       <div class="hero-overlay-layer"></div>
-      
       <div class="hero-content-layer">
         <h1 style="font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 0.85; margin: 0; margin-bottom: 40px;">
             <span class="responsive-title" style="color: white; font-size: clamp(3.5rem, 8vw, 6rem); display: block; text-transform: uppercase;">BIBLE &</span>
             <span class="responsive-title" style="color: white; font-size: clamp(3.5rem, 8vw, 6rem); display: block; text-transform: uppercase;">COFFEE.</span>
             <span class="responsive-title" style="color: #FCA311; font-size: clamp(3.5rem, 8vw, 6rem); display: block; text-transform: uppercase;">FRIDAYS.</span>
         </h1>
-        
         <div style="border-left: 2px solid #FCA311; padding-left: 20px; max-width: 500px;">
-            <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase;">
-                THE KINGDOM > THE CULTURE
-            </h2>
-            <p class="manifesto-quote" style="font-size: 1.25rem; margin-bottom: 20px;">
-                Authentic faith. Unfiltered Family.
-            </p>
+            <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase;">THE KINGDOM > THE CULTURE</h2>
+            <p class="manifesto-quote" style="font-size: 1.25rem; margin-bottom: 20px;">Authentic faith. Unfiltered Family.</p>
             <p style="color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.6; font-family: 'Inter', sans-serif;">
                 We stopped performing. We started living. Bible & Coffee isn't a program; it's a return to the table.
             </p>
-            
-            <button onclick="showSection('join')" class="hero-cta" style="margin-top: 35px; display: inline-block;">
-                Claim My Seat
-            </button>
+            <button onclick="showSection('join')" class="hero-cta" style="margin-top: 35px; display: inline-block;">Claim My Seat</button>
         </div>
       </div>
     </header>
-
-    <section style="background: black; padding: 100px 25px; border-top: 1px solid rgba(252, 163, 17, 0.1);">
-      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <h3 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 3px;">More Than a Gathering</h3>
-        <div class="manifesto-quote" style="font-size: 1.4rem;">
-          <p>"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
-          <p style="margin-top: 30px;">"Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know."</p>
-        </div>
-        <p class="manifesto-sub" style="margin-top: 50px;">
-          In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and grow in faith together.
-        </p>
-      </div>
-    </section>
   </div>
-
-  <section id="join" class="section-container px-4">
-    <div class="max-w-md mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
-      </div>
-      <div class="form-card relative">
-        <div id="slot-badge" class="hidden absolute top-0 right-0 bg-[#FCA311] text-black text-[9px] font-black px-3 py-1 uppercase">
-          <span id="slot-count">0</span> Spots Left
-        </div>
-        <form id="regForm" class="space-y-8">
-          <div class="group">
-            <input id="name" required placeholder=" " class="floating-input">
-            <label class="floating-label">Full Name</label>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="group"><input id="email" type="email" required placeholder=" " class="floating-input"><label class="floating-label">Email</label></div>
-            <div class="group"><input id="phone" required placeholder=" " class="floating-input"><label class="floating-label">Phone</label></div>
-          </div>
-          <div class="space-y-8">
-            <div class="group">
-              <select id="country" required class="floating-input" onchange="updateCities()">
-                <option value="" disabled selected></option>
-                <option value="Ethiopia">Ethiopia</option>
-                <option value="Germany">Germany</option>
-                <option value="South Africa">South Africa</option>
-                <option value="Sweden">Sweden</option>
-                <option value="Netherlands">Netherlands</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Kenya">Kenya</option>
-              </select>
-              <label class="floating-label">Country</label>
-            </div>
-            <div class="group">
-              <select id="city" required class="floating-input" onchange="updateLocations()">
-                <option value="" disabled selected></option>
-              </select>
-              <label class="floating-label">City</label>
-            </div>
-            <div class="group">
-              <select id="location" required class="floating-input" onchange="checkSlots()">
-                <option value="" disabled selected></option>
-              </select>
-              <label class="floating-label">Meeting Point</label>
-            </div>
-          </div>
-          <button id="submit-btn" class="submit-btn-premium" type="submit">Confirm Reservation</button>
-        </form>
-      </div>
-    </div>
-  </section>
 
   <section id="magazine" class="section-container">
     <div class="max-w-4xl mx-auto px-4 py-10">
@@ -199,94 +105,69 @@
         <div class="w-full md:w-1/2">
           <div class="relative group cursor-pointer overflow-hidden border border-white/10">
             <img src="megimage.jpeg" alt="Magazine Cover" class="w-full h-auto transform transition-transform duration-700 group-hover:scale-105">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
           </div>
         </div>
         <div class="w-full md:w-1/2 space-y-6 text-left">
           <h3 class="text-2xl font-['Playfair_Display'] text-white italic">Digital Edition</h3>
           <p class="text-white/70 leading-relaxed">Dive deeper into our community stories, biblical insights, and the latest from the movement.</p>
-          <div class="pt-4">
-            <a href="magazine.pdf" download="BibleAndCoffee_Magazine" class="submit-btn-premium inline-block text-center no-underline">Download PDF</a>
-          </div>
+          <div class="pt-4"><a href="magazine.pdf" download class="submit-btn-premium inline-block text-center no-underline">Download PDF</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="events" class="section-container text-center py-20"><h1>EVENTS</h1></section>
-  <section id="merch" class="section-container text-center py-20"><h1>MERCH</h1></section>
-  
+  <section id="merch" class="section-container bg-[#050505] py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
+        <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The Collection</h2>
+        <p class="text-[#FCA311] font-['Inter'] uppercase text-sm tracking-[0.2em] mt-2">Kingdom Streetwear • Limited Drop</p>
+      </div>
+      <div class="merch-vault-grid">
+        <div class="merch-card-v2 group">
+          <div class="merch-img-box">
+            <img src="merch1.jpeg" alt="KC-01" class="merch-display-img">
+            <div class="merch-status">New Drop</div>
+          </div>
+          <div class="merch-info"><h3>KC-01 // IDENTITY</h3><p>STREETWEAR TEE</p></div>
+        </div>
+        <div class="merch-card-v2 group">
+          <div class="merch-img-box"><img src="merch2.jpeg" alt="KC-02" class="merch-display-img"></div>
+          <div class="merch-info"><h3>KC-02 // VISION</h3><p>STREETWEAR TEE</p></div>
+        </div>
+        <div class="merch-card-v2 group">
+          <div class="merch-img-box"><img src="merch3.jpeg" alt="KC-03" class="merch-display-img"></div>
+          <div class="merch-info"><h3>KC-03 // CULTURE</h3><p>STREETWEAR TEE</p></div>
+        </div>
+        <div class="merch-card-v2 group">
+          <div class="merch-img-box"><img src="merch4.jpeg" alt="KC-04" class="merch-display-img"></div>
+          <div class="merch-info"><h3>KC-04 // ESSENTIAL</h3><p>STREETWEAR TEE</p></div>
+        </div>
+        <div class="merch-card-v2 group">
+          <div class="merch-img-box"><img src="merch5.jpeg" alt="KC-05" class="merch-display-img"></div>
+          <div class="merch-info"><h3>KC-05 // KINGDOM</h3><p>STREETWEAR TEE</p></div>
+        </div>
+        <div class="merch-card-v2 group">
+          <div class="merch-img-box"><img src="merch6.jpeg" alt="KC-06" class="merch-display-img"></div>
+          <div class="merch-info"><h3>KC-06 // LEGACY</h3><p>STREETWEAR TEE</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="sermon" class="section-container bg-black py-24 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
         <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
-        <p class="text-[#FCA311] font-['Inter'] uppercase text-sm tracking-[0.2em] mt-2">Unfiltered Truth • Weekly Series</p>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="sermon-card group cursor-pointer" onclick="openVideo('UQM5zM8XIaw')">
-          <div class="relative aspect-video overflow-hidden border border-white/10 bg-[#111]">
-            <img src="https://img.youtube.com/vi/UQM5zM8XIaw/mqdefault.jpg" class="sermon-thumb w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="ወጣቱ ባለሃብት!">
-            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent transition-all">
-              <div class="w-14 h-14 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:border-[#FCA311] transition-transform">
-                <i data-lucide="play" class="text-white fill-white w-5 h-5 group-hover:text-[#FCA311] group-hover:fill-[#FCA311]"></i>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 text-left">
-            <span class="text-[10px] text-[#FCA311] font-black uppercase tracking-[0.2em]">Latest Release</span>
-            <h3 class="text-lg font-['Oswald'] text-white mt-1 group-hover:text-[#FCA311] transition-colors uppercase">ወጣቱ ባለሃብት!</h3>
-          </div>
         </div>
-
-        <div class="sermon-card group cursor-pointer" onclick="openVideo('Q7p0wt29a04')">
-          <div class="relative aspect-video overflow-hidden border border-white/10 bg-[#111]">
-            <img src="https://img.youtube.com/vi/Q7p0wt29a04/mqdefault.jpg" class="sermon-thumb w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="በሰማርያም ሊያልፍ ግድ ሆነበት!">
-            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent">
-              <div class="w-14 h-14 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <i data-lucide="play" class="text-white fill-white w-5 h-5"></i>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 text-left">
-            <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">Kingdom Culture</span>
-            <h3 class="text-lg font-['Oswald'] text-white mt-1 group-hover:text-[#FCA311] transition-colors uppercase">በሰማርያም ሊያልፍ ግድ ሆነበት!</h3>
-          </div>
-        </div>
-
-        <div class="sermon-card group cursor-pointer" onclick="openVideo('uoUSXNjBgAg')">
-          <div class="relative aspect-video overflow-hidden border border-white/10 bg-[#111]">
-            <img src="https://img.youtube.com/vi/uoUSXNjBgAg/mqdefault.jpg" class="sermon-thumb w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="ለውጥ እና ፈተናው!">
-            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent">
-              <div class="w-14 h-14 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <i data-lucide="play" class="text-white fill-white w-5 h-5"></i>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 text-left">
-            <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">Identity Series</span>
-            <h3 class="text-lg font-['Oswald'] text-white mt-1 group-hover:text-[#FCA311] transition-colors uppercase">ለውጥ እና ፈተናው!</h3>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
+  <section id="events" class="section-container text-center py-20"><h1>EVENTS</h1></section>
   <section id="support" class="section-container text-center py-20"><h1>SUPPORT</h1></section>
-
-  <footer style="background: black; padding: 60px 25px; border-top: 1px solid rgba(255,255,255,0.05);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 20px;">
-      <div style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px;">BIBLE & COFFEE <span style="color: #FCA311;">© 2026</span></div>
-      <div style="display: flex; gap: 25px; color: #FCA311;">
-        <a href="#"><i data-lucide="instagram" style="width: 18px;"></i></a>
-        <a href="#"><i data-lucide="video" style="width: 18px;"></i></a>
-        <a href="#"><i data-lucide="youtube" style="width: 18px;"></i></a>
-        <a href="#"><i data-lucide="facebook" style="width: 18px;"></i></a>
-        <a href="mailto:hello@bibleandcoffee.com"><i data-lucide="mail" style="width: 18px;"></i></a>
-      </div>
-      <p style="color: rgba(255,255,255,0.3); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">The Kingdom > The Culture</p>
-    </div>
-  </footer>
+  <section id="join" class="section-container px-4">
+    </section>
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>

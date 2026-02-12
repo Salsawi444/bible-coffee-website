@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="styles.css">
   
   <style>
-    /* MOBILE-FIRST EDITORIAL SURGERY */
+    /* 1. HERO ARCHITECTURE */
     .hero-container {
       position: relative;
       min-height: 100vh;
       display: flex;
-      align-items: flex-start; /* Editorial Top-Down Alignment */
+      align-items: flex-start; /* Desktop: Top alignment */
       overflow: hidden;
       background-color: black;
     }
@@ -29,45 +29,50 @@
       z-index: 0;
     }
 
-    /* Double-Fade Overlay for Mobile Legibility */
     .hero-overlay-layer {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: 1;
-      /* Fades from dark at top to solid black at bottom to protect the button */
-      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 40%, #000000 85%);
-    }
-
-    @media (min-width: 769px) {
-      .hero-overlay-layer {
-        /* Desktop: Solid black on left side */
-        background: linear-gradient(90deg, #000000 0%, #000000 35%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.2) 100%);
-      }
+      background: linear-gradient(90deg, #000000 0%, #000000 35%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.2) 100%);
     }
 
     .hero-content-layer {
       position: relative;
       z-index: 10;
-      padding: 120px 40px 40px 40px; /* Safe Zone for Mobile Nav */
+      padding: 140px 40px 60px 40px; 
       max-width: 1200px;
       width: 100%;
       margin: 0 auto;
     }
 
-    .social-signature {
-      position: absolute;
-      bottom: 30px;
-      left: 40px;
-      display: flex;
-      gap: 18px;
-      z-index: 20;
-      color: #FCA311;
+    /* 2. MOBILE RECOVERY LOGIC */
+    @media (max-width: 768px) {
+      .hero-container { 
+        align-items: flex-end; /* Groups text/button at bottom to kill the gap */
+        min-height: 90vh; 
+      }
+      .hero-overlay-layer {
+        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 40%, #000000 90%);
+      }
+      .hero-content-layer { 
+        padding: 120px 25px 60px 25px; 
+      }
+      .responsive-title { font-size: clamp(3.2rem, 12vw, 5rem) !important; }
     }
 
-    @media (max-width: 768px) {
-      .hero-content-layer { padding: 120px 25px 80px 25px; }
-      .social-signature { left: 25px; bottom: 25px; }
-      .responsive-title { font-size: clamp(3.2rem, 12vw, 5rem) !important; }
+    /* 3. PREMIUM TYPOGRAPHY CLASSES */
+    .manifesto-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: white;
+      line-height: 1.6;
+    }
+    
+    .manifesto-sub {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -104,11 +109,11 @@
             <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase;">
                 THE KINGDOM > THE CULTURE
             </h2>
-            <p style="color: white; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 20px;">
+            <p class="manifesto-quote" style="font-size: 1.25rem; margin-bottom: 20px;">
                 Authentic faith. Unfiltered Family.
             </p>
-            <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.6; font-family: 'Inter', sans-serif; text-shadow: 0px 2px 4px rgba(0,0,0,0.5);">
-                We stopped performing. We started living. Bible & Coffee isn't a program; it's a return to the table. No stages. No scripts. Just open Bibles.
+            <p style="color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.6; font-family: 'Inter', sans-serif;">
+                We stopped performing. We started living. Bible & Coffee isn't a program; it's a return to the table.
             </p>
             
             <button onclick="showSection('join')" class="hero-cta" style="margin-top: 35px; display: inline-block;">
@@ -116,25 +121,18 @@
             </button>
         </div>
       </div>
-
-      <div class="social-signature">
-        <a href="#"><i data-lucide="instagram" style="width: 18px;"></i></a>
-        <a href="#"><i data-lucide="video" style="width: 18px;"></i></a> <a href="#"><i data-lucide="youtube" style="width: 18px;"></i></a>
-        <a href="#"><i data-lucide="facebook" style="width: 18px;"></i></a>
-        <a href="mailto:hello@bibleandcoffee.com"><i data-lucide="mail" style="width: 18px;"></i></a>
-      </div>
     </header>
 
     <section style="background: black; padding: 100px 25px; border-top: 1px solid rgba(252, 163, 17, 0.1);">
       <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <h3 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px;">More Than a Gathering</h3>
-        <div style="color: rgba(255,255,255,0.9); font-family: 'Playfair Display'; font-style: italic; font-size: 1.3rem; line-height: 1.8;">
+        <h3 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 3px;">More Than a Gathering</h3>
+        <div class="manifesto-quote" style="font-size: 1.4rem;">
           <p>"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
-          <p style="margin-top: 25px;">"Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know."</p>
-          <p style="margin-top: 40px; font-size: 1rem; font-family: 'Inter'; font-style: normal; opacity: 0.6; line-height: 1.6;">
-            In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and grow in faith together.
-          </p>
+          <p style="margin-top: 30px;">"Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know."</p>
         </div>
+        <p class="manifesto-sub" style="margin-top: 50px;">
+          In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and grow in faith together.
+        </p>
       </div>
     </section>
   </div>
@@ -219,6 +217,20 @@
   <section id="merch" class="section-container text-center py-20"><h1>MERCH</h1></section>
   <section id="sermon" class="section-container text-center py-20"><h1>SERMONS</h1></section>
   <section id="support" class="section-container text-center py-20"><h1>SUPPORT</h1></section>
+
+  <footer style="background: black; padding: 60px 25px; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 20px;">
+      <div style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px;">BIBLE & COFFEE <span style="color: #FCA311;">© 2026</span></div>
+      <div style="display: flex; gap: 25px; color: #FCA311;">
+        <a href="#"><i data-lucide="instagram" style="width: 18px;"></i></a>
+        <a href="#"><i data-lucide="video" style="width: 18px;"></i></a>
+        <a href="#"><i data-lucide="youtube" style="width: 18px;"></i></a>
+        <a href="#"><i data-lucide="facebook" style="width: 18px;"></i></a>
+        <a href="mailto:hello@bibleandcoffee.com"><i data-lucide="mail" style="width: 18px;"></i></a>
+      </div>
+      <p style="color: rgba(255,255,255,0.3); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">The Kingdom > The Culture</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>

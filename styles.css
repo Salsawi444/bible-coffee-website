@@ -37,12 +37,11 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
   font-size: 16px; 
   border-radius: 0; 
   outline: none; 
-  appearance: none; /* Removes Safari/Chrome default white style */
+  appearance: none; 
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-/* Adds a custom arrow since appearance:none removes the default one */
 select.floating-input {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FCA311' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -73,9 +72,33 @@ select.floating-input option {
     background: #050505;
 }
 
-/* Fix for responsive layout on small screens */
 @media (max-width: 768px) {
     #magazine .submit-btn-premium {
         width: 100%;
     }
+}
+
+/* --- SURGICAL INJECTION: SERMON VAULT CSS --- */
+.sermon-card {
+    transition: transform 0.3s ease;
+}
+
+.sermon-card:hover {
+    transform: translateY(-5px);
+}
+
+.sermon-thumb {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(100%) brightness(0.7);
+}
+
+.sermon-card:hover .sermon-thumb {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+}
+
+/* Ensure the Lucide icons in the sermon vault are sized correctly */
+.sermon-card i {
+    width: 24px;
+    height: 24px;
 }

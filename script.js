@@ -1,21 +1,17 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
-menuToggle.addEventListener('click', () => {
+menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     navLinks.classList.toggle('active-menu');
 });
 
 function showSection(id, btn) {
-    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
-        el.style.display = 'none';
-    });
-    
+    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => el.style.display = 'none');
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
     if(target) target.style.display = 'block';
-
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    
     navLinks.classList.remove('active-menu');
     window.scrollTo(0,0);
 }
@@ -34,10 +30,7 @@ const db = {
     "Kenya": { "Nairobi": ["Downtown"] }
 };
 
-const capacityMap = { 
-    "Bole": 8, "Mexico": 8, "Megenagna": 8, "Haile Garment": 8, 
-    "Piassa": 8, "Old Airport": 8, "CMC": 8, "Sar Bet": 8, "Downtown": 8 
-};
+const capacityMap = { "Bole": 8, "Mexico": 8, "Megenagna": 8, "Haile Garment": 8, "Piassa": 8, "Old Airport": 8, "CMC": 8, "Sar Bet": 8, "Downtown": 8 };
 
 function updateCities() {
     const country = document.getElementById('country').value;
@@ -67,39 +60,49 @@ function checkSlots() {
 
 document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
-    const now = new Date();
-    document.getElementById("regDate").value = now.toLocaleDateString();
-    document.getElementById("regTime").value = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 });
 
-document.getElementById('regForm').addEventListener('submit', function(e) {
+document.getElementById('regForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
+    const err = document.getElementById('error-message');
+    
     const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        country: document.getElementById('country').value,
-        city: document.getElementById('city').value,
-        location: document.getElementById('location').value,
-        date: document.getElementById('regDate').value,
-        time: document.getElementById('regTime').value
+        'Name': document.getElementById('name').value,
+        'Email': document.getElementById('email').value,
+        'Phone': document.getElementById('phone').value,
+        'Country': document.getElementById('country').value,
+        'City': document.getElementById('city').value,
+        'Location': document.getElementById('location').value,
+        'Registration Date': new Date().toLocaleDateString(),
+        'Registration Time': new Date().toLocaleTimeString()
     };
 
-    btn.disabled = true; btn.innerText = "SENDING...";
+    btn.disabled = true;
+    btn.innerText = "PROCESSING...";
+    err.classList.add('hidden');
 
-    fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: [formData] })
-    })
-    .then(res => {
-        if(res.ok) {
-            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.name}%0A*City:* ${formData.city}%0A*Location:* ${formData.location}`;
-            window.open(`https://wa.me/251910884585?text=${msg}`, '_blank');
-            this.reset();
-            showSection('home');
-            btn.disabled = false; btn.innerText = "CONFIRM RESERVATION";
+    try {
+        const response = await fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: [formData] })
+        });
+
+        if (response.ok) {
+            btn.innerText = "SUCCESSFUL!";
+            btn.style.background = "#22c55e";
+            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*City:* ${formData.City}%0A*Location:* ${formData.Location}`;
+            
+            // Redirect to WhatsApp
+            window.location.href = `https://wa.me/251910884585?text=${msg}`;
+        } else {
+            throw new Error('Database Error');
         }
-    });
+    } catch (error) {
+        btn.disabled = false;
+        btn.innerText = "RETRY";
+        err.innerText = "CONNECTION ERROR. PLEASE TRY AGAIN.";
+        err.classList.remove('hidden');
+    }
 });

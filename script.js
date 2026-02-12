@@ -61,8 +61,6 @@ async function checkSlots() {
     try {
         const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks?t=${Date.now()}`);
         const data = await response.json();
-        
-        // Match column name 'Location' exactly
         const bookings = data.filter(row => {
             return row.Location && row.Location.toString().trim().toLowerCase() === loc.trim().toLowerCase();
         }).length;
@@ -86,7 +84,6 @@ async function checkSlots() {
 document.getElementById('regForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    
     const formData = {
         'Name': document.getElementById('name').value,
         'Phone': document.getElementById('phone').value,
@@ -97,17 +94,14 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
         'Registration Date': new Date().toLocaleDateString(),
         'Registration Time': new Date().toLocaleTimeString()
     };
-
     btn.disabled = true;
     btn.innerText = "RESERVING...";
-
     try {
         const response = await fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ data: [formData] })
         });
-
         if (response.ok) {
             const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*City:* ${formData.City}%0A*Location:* ${formData.Location}`;
             this.reset();

@@ -11,42 +11,35 @@ const cityData = {
 
 // --- NAVIGATION LOGIC ---
 function showSection(id, btn) {
-    // Hide ALL sections
+    // 1. Hide Home Wrapper and ALL Sections
+    document.getElementById('home-wrapper').style.display = 'none';
     document.querySelectorAll('.section-container').forEach(s => s.style.display = 'none');
-    const homeWrapper = document.getElementById('home-wrapper');
-    
-    // Toggle Home Wrapper
+
+    // 2. Show the requested section
     if (id === 'home') {
-        homeWrapper.style.display = 'block';
+        document.getElementById('home-wrapper').style.display = 'block';
     } else {
-        homeWrapper.style.display = 'none';
         const target = document.getElementById(id);
         if (target) target.style.display = 'block';
     }
-    
-    // UI Updates
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    if (btn) {
-        btn.classList.add('active');
-    } else if (id === 'join') {
-        // Highlight Join button if clicked from Hero CTA
-        document.querySelectorAll('.nav-links button').forEach(b => {
-            if(b.textContent.includes('JOIN')) b.classList.add('active');
-        });
-    }
 
-    // Close Mobile Menu
+    // 3. Update Buttons
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    // 4. Close Mobile Menu
     document.getElementById('nav-links').classList.remove('active');
+    
+    // 5. Scroll to Top
     window.scrollTo(0, 0);
 }
 
-// Fixed Hamburger Toggle
-document.getElementById('menu-toggle').addEventListener('click', function(e) {
-    e.stopPropagation();
+// Mobile Menu Toggle
+document.getElementById('menu-toggle').addEventListener('click', function() {
     document.getElementById('nav-links').classList.toggle('active');
 });
 
-// --- FORM LOGIC ---
+// --- DROPDOWN LOGIC (Untouched) ---
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
@@ -61,6 +54,7 @@ function updateCities() {
     }
 }
 
+// --- FORM SUBMISSION (Untouched) ---
 document.getElementById('regForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -80,7 +74,7 @@ document.getElementById('regForm').addEventListener('submit', function(e) {
         window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     })
     .catch(err => {
-        alert("Error connecting. Try again.");
+        alert("Connection error. Please try again.");
         btn.disabled = false;
         btn.innerHTML = "CLAIM MY SEAT";
     });

@@ -1,44 +1,44 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
-/* --- SERMON DATA --- */
-const sermons = [
-    { id: "UQM5zM8XIaw", title: "ወጣቱ ባለሃብት!", description: "The cost of the Kingdom and why you can't play 50/50 with God.", date: "Feb 7, 2026", category: "Kingdom Culture" },
-    { id: "Q7p0wt29a04", title: "በሰማርያም ሊያልፍ ግድ ሆነበት!", description: "Breaking barriers and finding the 'Living Water' that actually satisfies.", date: "Jan 31, 2026", category: "Identity" },
-    { id: "uoUSXNjBgAg", title: "ለውጥ እና ፈተናው!", description: "Why pressure is a package deal with change. Choose purpose over panic.", date: "Jan 24, 2026", category: "Growth" }
-];
+/* --- 1. THE SWITCHER (THE FIX FOR MOBILE SPILL) --- */
+function showSection(id, btn) {
+    // Force hide every section and the home wrapper using !important
+    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+    });
 
-/* --- NAVIGATION LOGIC (THE FIX) --- */
+    // Identify the target
+    const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
+    
+    // Force show the target
+    if(target) {
+        target.style.setProperty('display', 'block', 'important');
+        target.classList.remove('hidden'); 
+    }
+
+    // Nav UI Updates
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    
+    // If the button wasn't passed directly (like from the Hero CTA), find it in the nav
+    const activeBtn = btn || document.querySelector(`.nav-links button[onclick*="'${id}'"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+    
+    // Close mobile menu and reset scroll
+    navLinks.classList.remove('active-menu');
+    window.scrollTo(0, 0);
+}
+
+/* --- 2. MOBILE MENU TOGGLE --- */
 menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active-menu');
 });
 
-function showSection(id, btn) {
-    // 1. Hide every possible container
-    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
-        el.style.display = 'none';
-    });
+// Close menu if clicking outside
+document.addEventListener('click', () => navLinks.classList.remove('active-menu'));
 
-    // 2. Identify the target
-    const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
-    
-    // 3. Show and Force Display
-    if(target) {
-        target.style.display = 'block';
-        // Special case for Tailwind/CSS conflicts
-        target.classList.remove('hidden'); 
-    }
-
-    // 4. UI Updates
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    
-    navLinks.classList.remove('active-menu');
-    window.scrollTo(0,0);
-}
-
-/* --- VIDEO OVERLAY LOGIC --- */
+/* --- 3. SERMONS & VIDEO OVERLAY (GOLDEN CODE) --- */
 function openVideo(videoId) {
     const overlay = document.createElement('div');
     overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; display:flex; align-items:center; justify-content:center; padding:10px;";
@@ -50,7 +50,7 @@ function openVideo(videoId) {
                 CLOSE [X]
             </button>
             <iframe width="100%" height="100%" 
-                src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0" 
+                src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1" 
                 frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen>
             </iframe>
         </div>
@@ -58,12 +58,13 @@ function openVideo(videoId) {
     document.body.appendChild(overlay);
 }
 
-/* --- LOCATION DATABASE --- */
+/* --- 4. REGISTRATION & DATABASE (GOLDEN CODE) --- */
 const db = {
     "Ethiopia": { "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"], "Hawassa": ["Downtown"], "Dire Dawa": ["Downtown"] },
+    "Germany": { "Berlin": ["Downtown"], "Frankfurt": ["Downtown"] },
+    "South Africa": { "Cape Town": ["Downtown"] },
     "USA": { "Dallas": ["Downtown"], "New York": ["Downtown"] },
-    "UK": { "London": ["Downtown"] },
-    "Germany": { "Berlin": ["Downtown"] }
+    "UK": { "London": ["Downtown"] }
 };
 
 function updateCities() {
@@ -83,7 +84,6 @@ function updateLocations() {
     }
 }
 
-/* --- SHEETDB INTEGRATION --- */
 async function checkSlots() {
     const loc = document.getElementById('location').value;
     const badge = document.getElementById('slot-badge');
@@ -101,14 +101,8 @@ async function checkSlots() {
         const bookings = data.filter(row => row.Location === loc).length;
         const available = 8 - bookings;
         countSpan.innerText = available > 0 ? available : 0;
-        
-        if (available <= 0) {
-            btn.innerText = "FULLY BOOKED";
-            btn.disabled = true;
-        } else {
-            btn.innerText = "CONFIRM RESERVATION";
-            btn.disabled = false;
-        }
+        btn.disabled = available <= 0;
+        btn.innerText = available <= 0 ? "FULLY BOOKED" : "CONFIRM RESERVATION";
     } catch (error) {
         countSpan.innerText = "8";
         btn.disabled = false;
@@ -125,8 +119,7 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
         'Country': document.getElementById('country').value,
         'City': document.getElementById('city').value,
         'Location': document.getElementById('location').value,
-        'Registration Date': new Date().toLocaleDateString(),
-        'Registration Time': new Date().toLocaleTimeString()
+        'Registration Date': new Date().toLocaleDateString()
     };
 
     btn.disabled = true;
@@ -140,13 +133,10 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
         });
 
         if (response.ok) {
-            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*City:* ${formData.City}%0A*Location:* ${formData.Location}`;
+            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*Location:* ${formData.Location}`;
             this.reset();
-            document.getElementById('slot-badge').classList.add('hidden');
             showSection('home');
-            setTimeout(() => {
-                window.location.href = `https://wa.me/251910884585?text=${msg}`;
-            }, 600);
+            window.location.href = `https://wa.me/251910884585?text=${msg}`;
         }
     } catch (error) {
         btn.disabled = false;

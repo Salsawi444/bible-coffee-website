@@ -52,11 +52,9 @@
         min-height: 100vh; 
       }
       .hero-overlay-layer {
-        /* Darker top-fade for white text protection in the Lift Zone */
         background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, #000000 90%);
       }
       .hero-content-layer { 
-        /* THE SURGICAL LIFT: 70px top padding for the 'Vogue' look */
         padding: 70px 25px 60px 25px; 
       }
       .responsive-title { font-size: clamp(3.2rem, 12vw, 5rem) !important; }
@@ -217,7 +215,62 @@
 
   <section id="events" class="section-container text-center py-20"><h1>EVENTS</h1></section>
   <section id="merch" class="section-container text-center py-20"><h1>MERCH</h1></section>
-  <section id="sermon" class="section-container text-center py-20"><h1>SERMONS</h1></section>
+  
+  <section id="sermon" class="section-container bg-black py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
+        <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
+        <p class="text-[#FCA311] font-['Inter'] uppercase text-sm tracking-[0.2em] mt-2">Unfiltered Truth • Weekly Series</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="sermon-card group cursor-pointer" onclick="openVideo('ID1')">
+          <div class="relative aspect-video overflow-hidden border border-white/10">
+            <img src="https://img.youtube.com/vi/ID1/maxresdefault.jpg" class="sermon-thumb w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Video">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent">
+              <div class="w-14 h-14 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="text-white fill-white w-5 h-5"></i>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-left">
+            <span class="text-[10px] text-[#FCA311] font-black uppercase tracking-[0.2em]">Latest Release</span>
+            <h3 class="text-lg font-['Oswald'] text-white mt-1 group-hover:text-[#FCA311] transition-colors uppercase">The Return to the Table</h3>
+          </div>
+        </div>
+
+        <div class="sermon-card group cursor-pointer" onclick="openVideo('ID2')">
+          <div class="relative aspect-video overflow-hidden border border-white/10">
+            <img src="https://img.youtube.com/vi/ID2/maxresdefault.jpg" class="sermon-thumb w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Video">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent">
+              <div class="w-14 h-14 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="text-white fill-white w-5 h-5"></i>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-left">
+            <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">Part 02</span>
+            <h3 class="text-lg font-['Oswald'] text-white mt-1 group-hover:text-[#FCA311] transition-colors uppercase">Identity Over Performance</h3>
+          </div>
+        </div>
+
+        <div class="sermon-card group cursor-pointer" onclick="openVideo('ID3')">
+          <div class="relative aspect-video overflow-hidden border border-white/10">
+            <img src="https://img.youtube.com/vi/ID3/maxresdefault.jpg" class="sermon-thumb w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Video">
+            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-transparent">
+              <div class="w-14 h-14 border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="text-white fill-white w-5 h-5"></i>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-left">
+            <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">Part 01</span>
+            <h3 class="text-lg font-['Oswald'] text-white mt-1 group-hover:text-[#FCA311] transition-colors uppercase">The Culture Shift</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="support" class="section-container text-center py-20"><h1>SUPPORT</h1></section>
 
   <footer style="background: black; padding: 60px 25px; border-top: 1px solid rgba(255,255,255,0.05);">

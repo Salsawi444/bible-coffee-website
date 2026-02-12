@@ -40,17 +40,20 @@ if (menuToggle) {
     });
 }
 
-/* --- SECTION SWITCHER (SURGICAL REPAIR LOCKED) --- */
+/* --- SECTION SWITCHER (UPDATED FOR NEW HOME WRAPPER) --- */
 function showSection(id, btn) {
+    // Hide everything including the home-wrapper
     document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
         el.style.display = 'none';
     });
     
+    // Target logic: 'home' maps to 'home-wrapper'
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
     if(target) {
         target.style.setProperty('display', 'block', 'important');
     }
     
+    // UI Cleanup
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     
@@ -81,39 +84,17 @@ const db = {
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
         "Hawassa": ["Location"], "Dire Dawa": ["Location"], "Bahir Dar": ["Location"]
     },
-    "Uganda": {
-        "Kampala": ["Location"], "Entebbe": ["Location"], "Jinja": ["Location"], "Mbarara": ["Location"], "Gulu": ["Location"]
-    },
-    "Rwanda": {
-        "Kigali": ["Location"], "Musanze": ["Location"], "Rubavu": ["Location"], "Huye": ["Location"]
-    },
-    "Kenya": { 
-        "Nairobi": ["Location"], "Mombasa": ["Location"], "Kisumu": ["Location"], "Nakuru": ["Location"]
-    },
-    "South Africa": { 
-        "Johannesburg": ["Location"], "Cape Town": ["Location"], "Durban": ["Location"], "Pretoria": ["Location"]
-    },
-    "Germany": { 
-        "Berlin": ["Location"], "Frankfurt": ["Location"], "Munich": ["Location"], "Hamburg": ["Location"]
-    },
-    "Netherlands": { 
-        "Amsterdam": ["Location"], "Rotterdam": ["Location"], "The Hague": ["Location"], "Utrecht": ["Location"]
-    },
-    "Sweden": { 
-        "Stockholm": ["Location"], "Gothenburg": ["Location"], "Malmö": ["Location"], "Uppsala": ["Location"]
-    },
-    "Norway": {
-        "Oslo": ["Location"], "Bergen": ["Location"], "Stavanger": ["Location"], "Trondheim": ["Location"]
-    },
-    "Denmark": {
-        "Copenhagen": ["Location"], "Aarhus": ["Location"], "Odense": ["Location"], "Aalborg": ["Location"]
-    },
-    "USA": { 
-        "Dallas": ["Location"], "New York": ["Location"], "Los Angeles": ["Location"], "Atlanta": ["Location"]
-    },
-    "UK": { 
-        "London": ["Location"], "Manchester": ["Location"], "Birmingham": ["Location"], "Leeds": ["Location"]
-    }
+    "Uganda": { "Kampala": ["Location"], "Entebbe": ["Location"] },
+    "Rwanda": { "Kigali": ["Location"] },
+    "Kenya": { "Nairobi": ["Location"] },
+    "South Africa": { "Johannesburg": ["Location"] },
+    "Germany": { "Berlin": ["Location"] },
+    "Netherlands": { "Amsterdam": ["Location"] },
+    "Sweden": { "Stockholm": ["Location"] },
+    "Norway": { "Oslo": ["Location"] },
+    "Denmark": { "Copenhagen": ["Location"] },
+    "USA": { "Dallas": ["Location"], "New York": ["Location"] },
+    "UK": { "London": ["Location"] }
 };
 
 function updateCities() {
@@ -207,7 +188,11 @@ if(regForm) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if(window.lucide) lucide.createIcons();
+    // Vital: Re-trigger Lucide to find new footer/manifesto icons
+    if(window.lucide) {
+        lucide.createIcons();
+    }
+    
     const merchItems = document.querySelectorAll('.merch-card-v2');
     if (merchItems.length > 0) {
         merchItems.forEach(card => {

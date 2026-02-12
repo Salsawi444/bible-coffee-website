@@ -1,11 +1,13 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
+// Toggle Menu
 menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active-menu');
 });
 
+// Section Switcher
 function showSection(id, btn) {
     document.querySelectorAll('.section-container, #home-wrapper').forEach(el => el.style.display = 'none');
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
@@ -49,23 +51,45 @@ function updateLocations() {
     }
 }
 
-function checkSlots() {
+// LIVE COUNTDOWN LOGIC
+async function checkSlots() {
     const loc = document.getElementById('location').value;
     const badge = document.getElementById('slot-badge');
-    const count = document.getElementById('slot-count');
-    const available = capacityMap[loc] || 8;
+    const countSpan = document.getElementById('slot-count');
+    const btn = document.getElementById('submit-btn');
+    
     badge.classList.remove('hidden');
-    count.innerText = available;
+    countSpan.innerText = "...";
+
+    try {
+        // Fetches only entries that match the chosen location
+        const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks/search?Location=${loc}`);
+        const data = await response.json();
+        
+        const totalCapacity = 8;
+        const bookings = data.length; 
+        const available = totalCapacity - bookings;
+
+        countSpan.innerText = available > 0 ? available : 0;
+
+        if (available <= 0) {
+            btn.disabled = true;
+            btn.innerText = "FULLY BOOKED";
+            btn.style.background = "#333";
+        } else {
+            btn.disabled = false;
+            btn.innerText = "CONFIRM RESERVATION";
+            btn.style.background = "#FCA311";
+        }
+    } catch (error) {
+        countSpan.innerText = "8"; 
+    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    lucide.createIcons();
-});
-
+// Form Submission Workflow
 document.getElementById('regForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    const err = document.getElementById('error-message');
     
     const formData = {
         'Name': document.getElementById('name').value,
@@ -79,8 +103,7 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
     };
 
     btn.disabled = true;
-    btn.innerText = "PROCESSING...";
-    err.classList.add('hidden');
+    btn.innerText = "HOLD ON...";
 
     try {
         const response = await fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
@@ -90,19 +113,29 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
         });
 
         if (response.ok) {
-            btn.innerText = "SUCCESSFUL!";
+            btn.innerText = "RESERVED!";
             btn.style.background = "#22c55e";
-            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*City:* ${formData.City}%0A*Location:* ${formData.Location}`;
             
-            // Redirect to WhatsApp
-            window.location.href = `https://wa.me/251910884585?text=${msg}`;
-        } else {
-            throw new Error('Database Error');
+            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*Location:* ${formData.Location}%0A*City:* ${formData.City}`;
+            
+            // TAKE USER HOME IMMEDIATELY
+            showSection('home');
+            
+            // RESET FORM
+            this.reset();
+            document.getElementById('slot-badge').classList.add('hidden');
+
+            // OPEN WHATSAPP (Mobile Friendly)
+            setTimeout(() => {
+                window.location.href = `https://wa.me/251910884585?text=${msg}`;
+            }, 600);
         }
     } catch (error) {
         btn.disabled = false;
         btn.innerText = "RETRY";
-        err.innerText = "CONNECTION ERROR. PLEASE TRY AGAIN.";
-        err.classList.remove('hidden');
     }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
 });

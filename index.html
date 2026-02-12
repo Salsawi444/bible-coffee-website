@@ -1,49 +1,121 @@
-<nav>
-    <div class="nav-container">
-        <button class="mobile-toggle" id="menu-toggle">MENU</button>
-        <div class="nav-links" id="nav-links">
-            <button onclick="showSection('home', this)" class="active">HOME</button>
-            <button onclick="showSection('magazine', this)">MAGAZINE</button>
-            <button onclick="showSection('merch', this)">MERCH</button>
-            <button onclick="showSection('sermon', this)">SERMONS</button>
-            <button onclick="showSection('join', this)">JOIN US</button>
-        </div>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom Culture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
 
-<div id="home-wrapper">
-    <section class="hero">
-        <div class="hero-content-layer">
-            <h1>KINGDOM <span>CULTURE</span></h1>
-            <button class="submit-btn-premium" onclick="showSection('join')">CLAIM MY SEAT</button>
-        </div>
-    </section>
-    </div>
-
-<div id="magazine" class="section-container">
-    <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto">
-        <div class="w-full md:w-1/2">
-            <img src="megimage.jpeg" alt="Magazine Cover" class="w-full rounded shadow-2xl">
-        </div>
-        <div class="w-full md:w-1/2 text-left">
-            <h2 class="text-4xl font-bold mb-4">FEBRUARY EDITION</h2>
-            <p class="mb-6">Deep dive into the culture of the Kingdom.</p>
-            <a href="magazine.pdf" download class="submit-btn-premium">DOWNLOAD PDF</a>
-        </div>
-    </div>
-</div>
-
-<div id="merch" class="section-container">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center">OFFICIAL MERCH</h2>
-        <div class="merch-grid">
-            <div class="merch-card">
-                <div class="merch-img-wrapper"><img src="merch1.jpeg" class="merch-img"></div>
-                <h3>KINGDOM TEE - BLACK</h3>
+    <nav>
+        <div class="nav-container">
+            <button class="mobile-toggle" id="menu-toggle">MENU</button>
+            <div class="nav-links" id="nav-links">
+                <button onclick="showSection('home', this)" class="active">HOME</button>
+                <button onclick="showSection('magazine', this)">MAGAZINE</button>
+                <button onclick="showSection('merch', this)">MERCH</button>
+                <button onclick="showSection('sermon', this)">SERMONS</button>
+                <button onclick="showSection('join', this)">JOIN US</button>
             </div>
-            </div>
-    </div>
-</div>
+        </div>
+    </nav>
 
-<div id="join" class="section-container"> </div>
-<div id="sermon" class="section-container"> </div>
+    <div id="home-wrapper">
+        <section class="hero">
+            <div class="hero-content-layer">
+                <h1>KINGDOM <span>CULTURE</span></h1>
+                <div class="hero-cta">
+                    <button class="submit-btn-premium" onclick="showSection('join')">CLAIM MY SEAT</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-20 px-6 bg-[#0a0a0a]">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-8 text-[#FCA311]">OUR MANIFESTO</h2>
+                <p class="text-xl leading-relaxed text-gray-300">We are not just a gathering; we are a movement. Defining culture through the lens of the Kingdom.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="magazine" class="section-container">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="megimage.jpeg" alt="Magazine" class="w-full rounded-lg shadow-2xl border border-white/10">
+            </div>
+            <div class="w-full md:w-1/2 text-left">
+                <h2 class="text-5xl font-black mb-6">FEBRUARY <span class="text-[#FCA311]">EDITION</span></h2>
+                <p class="text-gray-400 text-lg mb-8">Exclusive insights into the upcoming season of Kingdom Culture. Strategies, visions, and the word for 2026.</p>
+                <a href="magazine.pdf" download class="submit-btn-premium">DOWNLOAD PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="merch" class="section-container">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black mb-12 text-center">OFFICIAL <span class="text-[#FCA311]">MERCH</span></h2>
+            <div class="merch-grid">
+                <div class="merch-card">
+                    <div class="merch-img-wrapper"><img src="merch1.jpeg" class="merch-img"></div>
+                    <h3>KINGDOM TEE - NOIR</h3>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div id="sermon" class="section-container">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black mb-12 text-center">SERMON <span class="text-[#FCA311]">VAULT</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="sermon-container">
+                </div>
+        </div>
+    </div>
+
+    <div id="join" class="section-container">
+        <div class="max-w-xl mx-auto">
+            <div class="form-card">
+                <h2 class="text-2xl font-bold mb-8 text-[#FCA311]">RESERVE YOUR SEAT</h2>
+                <form id="regForm">
+                    <div class="group">
+                        <input type="text" id="name" required class="floating-input" placeholder=" ">
+                        <label class="floating-label">Full Name</label>
+                    </div>
+                    <div class="group">
+                        <input type="tel" id="phone" required class="floating-input" placeholder=" ">
+                        <label class="floating-label">Phone Number</label>
+                    </div>
+                    <div class="group">
+                        <input type="email" id="email" required class="floating-input" placeholder=" ">
+                        <label class="floating-label">Email Address</label>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <select id="country" onchange="updateCities()" class="floating-input bg-black" required>
+                            <option value="" disabled selected>Country</option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="USA">USA</option>
+                        </select>
+                        <select id="city" onchange="updateLocations()" class="floating-input bg-black" required>
+                            <option value="" disabled selected>City</option>
+                        </select>
+                    </div>
+                    <select id="location" onchange="checkSlots()" class="floating-input bg-black mt-4" required>
+                        <option value="" disabled selected>Select Campus Location</option>
+                    </select>
+
+                    <div id="slot-badge" class="hidden mt-4 p-3 bg-white/5 text-center">
+                        Available Slots: <span id="slot-count" class="text-[#FCA311] font-bold">...</span>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="submit-btn-premium mt-8 w-full">CONFIRM RESERVATION</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

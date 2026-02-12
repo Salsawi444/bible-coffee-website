@@ -13,6 +13,7 @@
 
   <nav>
     <div class="nav-container">
+      <div class="logo">B&C</div>
       <button id="menu-toggle" class="mobile-hamburger"><i data-lucide="menu"></i></button>
       <div id="nav-links" class="nav-links">
         <button onclick="showSection('home',this)" class="active">HOME</button>
@@ -21,7 +22,7 @@
         <button onclick="showSection('merch',this)">MERCH</button>
         <button onclick="showSection('sermon',this)">SERMON</button>
         <button onclick="showSection('support',this)">SUPPORT</button>
-        <button onclick="showSection('join',this)">JOIN</button>
+        <button onclick="showSection('join',this)" class="join-nav-btn">JOIN</button>
       </div>
     </div>
   </nav>
@@ -45,8 +46,6 @@
         <span class="ticker-item">ADDIS ABABA</span>
         <span class="ticker-item">FRANKFURT</span>
         <span class="ticker-item">JOHANNESBURG</span>
-        <span class="ticker-item">STOCKHOLM</span>
-        <span class="ticker-item">ROTTERDAM</span>
       </div>
     </div>
 
@@ -78,10 +77,37 @@
     </div>
   </div>
 
+  <section id="magazine" class="section-container">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <h2 class="text-[#FCA311] font-['Oswald'] text-4xl mb-12">THE EDITORIAL</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article class="bg-[#111] border border-[#222] p-8 hover:border-[#FCA311] transition duration-500">
+          <div class="text-[#FCA311] text-xs tracking-widest mb-4">THEOLOGY</div>
+          <h3 class="text-2xl font-['Playfair_Display'] mb-4">The Sacred Brew</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Why the gathering around coffee is more than just caffeine—it is a biblical rhythm of rest.</p>
+          <a href="#" class="text-white text-xs uppercase border-b border-[#FCA311] pb-1">Read Article</a>
+        </article>
+        <article class="bg-[#111] border border-[#222] p-8 hover:border-[#FCA311] transition duration-500">
+          <div class="text-[#FCA311] text-xs tracking-widest mb-4">CULTURE</div>
+          <h3 class="text-2xl font-['Playfair_Display'] mb-4">Addis at Night</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Exploring the spiritual heartbeat of the city when the sun goes down and the Bibles open.</p>
+          <a href="#" class="text-white text-xs uppercase border-b border-[#FCA311] pb-1">Read Article</a>
+        </article>
+        <article class="bg-[#111] border border-[#222] p-8 hover:border-[#FCA311] transition duration-500">
+          <div class="text-[#FCA311] text-xs tracking-widest mb-4">COMMUNITY</div>
+          <h3 class="text-2xl font-['Playfair_Display'] mb-4">The Empty Chair</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">We always set one extra seat at the table. Find out who it is for.</p>
+          <a href="#" class="text-white text-xs uppercase border-b border-[#FCA311] pb-1">Read Article</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="join" class="section-container px-4">
-    <div class="max-w-md mx-auto py-20">
+    <div class="max-w-md mx-auto py-32">
       <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
+        <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Claim Your Seat</h2>
+        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Fridays. Global.</p>
       </div>
       <div class="form-card relative">
         <form id="regForm" class="space-y-8">
@@ -112,17 +138,16 @@
               <label class="floating-label">City</label>
             </div>
           </div>
-          <button type="submit" id="submit-btn" class="submit-btn-premium">Claim My Seat</button>
+          <button type="submit" id="submit-btn" class="submit-btn-premium">Confirm Reservation</button>
         </form>
       </div>
     </div>
   </section>
 
-  <section id="magazine" class="section-container text-center py-40"><h1>Magazine - Coming Soon</h1></section>
-  <section id="events" class="section-container text-center py-40"><h1>Events - Coming Soon</h1></section>
-  <section id="merch" class="section-container text-center py-40"><h1>Merch - Coming Soon</h1></section>
-  <section id="sermon" class="section-container text-center py-40"><h1>Sermon - Coming Soon</h1></section>
-  <section id="support" class="section-container text-center py-40"><h1>Support - Coming Soon</h1></section>
+  <section id="events" class="section-container text-center py-40"><h1>Events Section</h1></section>
+  <section id="merch" class="section-container text-center py-40"><h1>Merch Section</h1></section>
+  <section id="sermon" class="section-container text-center py-40"><h1>Sermon Section</h1></section>
+  <section id="support" class="section-container text-center py-40"><h1>Support Section</h1></section>
 
   <script src="script.js"></script>
 </body>

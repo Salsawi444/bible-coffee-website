@@ -15,22 +15,20 @@ function showSection(id, btn) {
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
-        "Hawassa": ["Lake Side", "Piazza", "Mobile Sefer"], 
-        "Dire Dawa": ["Kezira", "Ashawa"], 
-        "Mekelle": ["Romanat", "Adi Haki"],
-        "Bahir Dar": ["Tana", "Piazza"]
+        "Hawassa": ["Downtown"], "Dire Dawa": ["Downtown"], "Mekelle": ["Downtown"], "Bahir Dar": ["Downtown"]
     },
-    "South Africa": { "Cape Town": ["Waterfront", "Sea Point"], "Johannesburg": ["Sandton", "Soweto"] },
-    "Sweden": { "Stockholm": ["Gamla Stan", "Södermalm"], "Gothenburg": ["City Center"] },
-    "Netherlands": { "Amsterdam": ["Centrum", "De Pijp"], "Rotterdam": ["Erasmus"] },
-    "USA": { "Dallas": ["Uptown", "Downtown"], "New York": ["Brooklyn", "Manhattan"] },
-    "UK": { "London": ["Soho", "Paddington"], "Manchester": ["Center"] },
-    "Kenya": { "Nairobi": ["Westlands", "Kilimani"], "Mombasa": ["Nyali"] }
+    "Germany": { "Berlin": ["Downtown"], "Frankfurt": ["Downtown"], "Munich": ["Downtown"], "Hamburg": ["Downtown"] },
+    "South Africa": { "Cape Town": ["Downtown"], "Johannesburg": ["Downtown"] },
+    "Sweden": { "Stockholm": ["Downtown"], "Gothenburg": ["Downtown"] },
+    "Netherlands": { "Amsterdam": ["Downtown"], "Rotterdam": ["Downtown"] },
+    "USA": { "Dallas": ["Downtown"], "New York": ["Downtown"] },
+    "UK": { "London": ["Downtown"], "Manchester": ["Downtown"] },
+    "Kenya": { "Nairobi": ["Downtown"], "Mombasa": ["Downtown"] }
 };
 
 const capacityMap = { 
     "Bole": 8, "Mexico": 8, "Megenagna": 8, "Haile Garment": 8, 
-    "Piassa": 8, "Old Airport": 8, "CMC": 8, "Sar Bet": 8 
+    "Piassa": 8, "Old Airport": 8, "CMC": 8, "Sar Bet": 8, "Downtown": 8 
 };
 
 function updateCities() {
@@ -47,8 +45,6 @@ function updateLocations() {
     locSelect.innerHTML = '<option value="" disabled selected></option>';
     if (db[country] && db[country][city]) {
         db[country][city].forEach(l => locSelect.add(new Option(l, l)));
-    } else {
-        locSelect.add(new Option("General Gathering", "General"));
     }
 }
 
@@ -63,7 +59,7 @@ function checkSlots() {
     count.innerText = available;
     if (available <= 0) {
         btn.disabled = true; btn.innerText = "FULLY BOOKED"; btn.style.opacity = "0.5";
-        err.innerHTML = "THIS LOCATION IS FULL.<br>CHOOSE ANOTHER AREA OR CONTACT US."; err.classList.remove('hidden');
+        err.innerHTML = "THIS LOCATION IS FULL."; err.classList.remove('hidden');
     } else {
         btn.disabled = false; btn.style.opacity = "1"; btn.innerText = "CONFIRM REGISTRATION"; err.classList.add('hidden');
     }
@@ -79,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById('regForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    const err = document.getElementById('error-message');
     const formData = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
@@ -90,29 +85,20 @@ document.getElementById('regForm').addEventListener('submit', function(e) {
         date: document.getElementById('regDate').value,
         time: document.getElementById('regTime').value
     };
-
     btn.disabled = true; btn.innerText = "PROCESSING...";
-
     fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            data: [{
-                'Name': formData.name, 'Email': formData.email, 'Phone': formData.phone,
-                'Country': formData.country, 'City': formData.city, 'Location': formData.location,
-                'Registration Date': formData.date, 'Registration Time': formData.time
-            }]
-        })
+        body: JSON.stringify({ data: [formData] })
     })
     .then(res => {
         if(res.ok) {
-            btn.innerText = "SUCCESSFUL!"; btn.style.background = "#22c55e";
-            const msg = `*NEW REGISTRATION*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Country:* ${formData.country}%0A*City:* ${formData.city}%0A*Location:* ${formData.location}%0A%0A_See you at the table!_`;
+            btn.innerText = "SUCCESSFUL!";
+            const msg = `*NEW REGISTRATION*%0A%0A*Name:* ${formData.name}%0A*City:* ${formData.city}%0A*Location:* ${formData.location}`;
             setTimeout(() => {
                 window.open(`https://wa.me/251910884585?text=${msg}`, '_blank');
                 this.reset(); showSection('home');
-                btn.disabled = false; btn.style.background = "#FCA311"; btn.innerText = "CONFIRM REGISTRATION";
-                document.getElementById('slot-badge').classList.add('hidden');
+                btn.disabled = false; btn.innerText = "CONFIRM REGISTRATION";
             }, 1500);
         }
     }).catch(() => { btn.disabled = false; btn.innerText = "RETRY"; });

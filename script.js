@@ -1,6 +1,31 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
+/* --- SERMON DATA: AUTHENTIC CONTENT INJECTED --- */
+const sermons = [
+    {
+        id: "UQM5zM8XIaw",
+        title: "ወጣቱ ባለሃብት!",
+        description: "The cost of the Kingdom and why you can't play 50/50 with God.",
+        date: "Feb 7, 2026",
+        category: "Kingdom Culture"
+    },
+    {
+        id: "Q7p0wt29a04",
+        title: "በሰማርያም ሊያልፍ ግድ ሆነበት!",
+        description: "Breaking barriers and finding the 'Living Water' that actually satisfies.",
+        date: "Jan 31, 2026",
+        category: "Identity"
+    },
+    {
+        id: "uoUSXNjBgAg",
+        title: "ለውጥ እና ፈተናው!",
+        description: "Why pressure is a package deal with change. Choose purpose over panic.",
+        date: "Jan 24, 2026",
+        category: "Growth"
+    }
+];
+
 menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active-menu');
@@ -18,7 +43,6 @@ function showSection(id, btn) {
 
 /* --- SURGICAL REPAIR: MOBILE-FIRST VIDEO LOGIC --- */
 function openVideo(videoId) {
-    // We use youtube-nocookie and extra parameters to bypass the mobile playback error
     const overlay = document.createElement('div');
     overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; display:flex; align-items:center; justify-content:center; padding:10px;";
     

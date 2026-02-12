@@ -13,7 +13,7 @@
 
   <nav>
     <div class="nav-container">
-      <button id="menu-toggle" class="md:hidden text-[#FCA311]"><i data-lucide="menu"></i></button>
+      <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></i></button>
       <div id="nav-links" class="nav-links">
         <button onclick="showSection('home',this)" class="active">HOME</button>
         <button onclick="showSection('magazine',this)">MAGAZINE</button>
@@ -28,44 +28,22 @@
 
   <div id="home-wrapper">
     <header id="home" class="hero">
-      <div class="hero-content-left">
-        <h1 class="hero-title">BIBLE &<br>COFFEE.<br><span>FRIDAYS.</span><br>GLOBAL.</h1>
-        <p class="hero-subtitle">Not a Club. ቤተሰብ!</p>
-        <button onclick="showSection('join')" class="hero-cta">Claim My Seat</button>
+      <div class="hero-content">
+        <h1>BIBLE &<br>COFFEE.<br><span>FRIDAYS.</span></h1>
+        <p class="motto">Not a Club. ቤተሰብ!</p>
       </div>
     </header>
-
-    <div class="ticker-wrap">
-      <div class="ticker">
-        <span class="ticker-item">ADDIS ABABA</span>
-        <span class="ticker-item">FRANKFURT</span>
-        <span class="ticker-item">BERLIN</span>
-        <span class="ticker-item">JOHANNESBURG</span>
-        <span class="ticker-item">STOCKHOLM</span>
-        <span class="ticker-item">ROTTERDAM</span>
-        <span class="ticker-item">ADDIS ABABA</span>
-        <span class="ticker-item">FRANKFURT</span>
-      </div>
-    </div>
-
-    <div class="bg-[#0a0a0a] px-6 py-24">
-      <div class="max-w-5xl mx-auto">
-        <article class="text-left mb-32">
-          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.5em] uppercase text-xs mb-6">The Friday Covenant</h2>
-          <h3 class="text-5xl md:text-7xl font-['Playfair_Display'] text-white leading-tight mb-8">Relationship over Faith.</h3>
-          <p class="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-2xl">
-            A movement of modern believers who choose depth over hype and authentic community over religion.
-          </p>
-        </article>
-      </div>
+    <div class="bg-[#0a0a0a] px-6 py-20 text-center">
+      <h3 class="text-4xl font-['Playfair_Display'] text-white mb-8">Relationship over Religion.</h3>
+      <p class="text-xl text-white/50 italic max-w-2xl mx-auto">"Understand the Bible simply. Build authentic community. Live out faith boldly."</p>
     </div>
   </div>
 
   <section id="join" class="section-container px-4">
-    <div class="max-w-md mx-auto py-20">
+    <div class="max-w-md mx-auto">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
-        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Secure your seat at the table</p>
+        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Secure your seat</p>
       </div>
       <div class="form-card relative">
         <div id="slot-badge" class="hidden absolute top-0 right-0 bg-[#FCA311] text-black text-[9px] font-black px-3 py-1 uppercase">
@@ -110,27 +88,25 @@
           </div>
           <input type="hidden" id="regDate" name="Registration Date">
           <input type="hidden" id="regTime" name="Registration Time">
-          <div id="error-message" class="hidden text-[10px] uppercase tracking-widest text-red-500 bg-red-500/5 p-4 border border-red-500/10 text-center"></div>
-          <button id="submit-btn" class="submit-btn-premium" type="submit">Confirm Registration</button>
+          <div id="error-message" class="hidden text-red-500 text-xs text-center"></div>
+          <button id="submit-btn" class="submit-btn-premium" type="submit">Confirm Reservation</button>
         </form>
       </div>
     </div>
   </section>
 
   <section id="magazine" class="section-container py-20">
-    <div class="max-w-md mx-auto">
-      <h2 class="text-3xl font-bold text-[#FCA311] mb-8 uppercase">Magazine</h2>
-      <div class="mag-box border border-white/10 p-6 bg-[#0d0d0d]">
-        <img src="megimage.jpeg" class="w-full mb-6" alt="Magazine Cover">
-        <a href="magazine.pdf" download class="submit-btn-premium block text-center no-underline">Download PDF</a>
-      </div>
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-8 text-center uppercase">Magazine</h2>
+    <div class="max-w-sm mx-auto bg-[#0d0d0d] p-4 border border-white/10">
+      <img src="megimage.jpeg" class="w-full mb-6">
+      <a href="magazine.pdf" download class="submit-btn-premium block text-center no-underline">Download PDF</a>
     </div>
   </section>
 
-  <section id="events" class="section-container text-center py-40"><h1>EVENTS COMING SOON</h1></section>
-  <section id="merch" class="section-container text-center py-40"><h1>MERCH COMING SOON</h1></section>
-  <section id="sermon" class="section-container text-center py-40"><h1>SERMONS COMING SOON</h1></section>
-  <section id="support" class="section-container text-center py-40"><h1>SUPPORT COMING SOON</h1></section>
+  <section id="events" class="section-container text-center py-20"><h1>EVENTS</h1></section>
+  <section id="merch" class="section-container text-center py-20"><h1>MERCH</h1></section>
+  <section id="sermon" class="section-container text-center py-20"><h1>SERMONS</h1></section>
+  <section id="support" class="section-container text-center py-20"><h1>SUPPORT</h1></section>
 
   <script src="script.js"></script>
 </body>

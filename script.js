@@ -1,13 +1,11 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
-// Toggle Menu
 menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active-menu');
 });
 
-// Section Switcher
 function showSection(id, btn) {
     document.querySelectorAll('.section-container, #home-wrapper').forEach(el => el.style.display = 'none');
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
@@ -32,8 +30,6 @@ const db = {
     "Kenya": { "Nairobi": ["Downtown"] }
 };
 
-const capacityMap = { "Bole": 8, "Mexico": 8, "Megenagna": 8, "Haile Garment": 8, "Piassa": 8, "Old Airport": 8, "CMC": 8, "Sar Bet": 8, "Downtown": 8 };
-
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
@@ -51,44 +47,42 @@ function updateLocations() {
     }
 }
 
-// --- LIVE COUNTDOWN WITH CACHE BUSTING ---
 async function checkSlots() {
     const loc = document.getElementById('location').value;
     const badge = document.getElementById('slot-badge');
     const countSpan = document.getElementById('slot-count');
     const btn = document.getElementById('submit-btn');
     
+    if(!loc) return;
     badge.classList.remove('hidden');
     countSpan.innerText = "...";
+    btn.disabled = true;
 
     try {
-        // We add a timestamp (?t=...) so the phone doesn't use old saved data
         const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks?t=${Date.now()}`);
         const data = await response.json();
         
-        // Count entries matching the 'Location' field exactly as it appears in your sheet
-        const bookings = data.filter(row => row.Location === loc).length;
+        // Match column name 'Location' exactly
+        const bookings = data.filter(row => {
+            return row.Location && row.Location.toString().trim().toLowerCase() === loc.trim().toLowerCase();
+        }).length;
         
-        const totalCapacity = 8;
-        const available = totalCapacity - bookings;
-
+        const available = 8 - bookings;
         countSpan.innerText = available > 0 ? available : 0;
 
         if (available <= 0) {
-            btn.disabled = true;
             btn.innerText = "FULLY BOOKED";
-            btn.style.background = "#333";
+            btn.disabled = true;
         } else {
-            btn.disabled = false;
             btn.innerText = "CONFIRM RESERVATION";
-            btn.style.background = "#FCA311";
+            btn.disabled = false;
         }
     } catch (error) {
-        countSpan.innerText = "8"; 
+        countSpan.innerText = "8";
+        btn.disabled = false;
     }
 }
 
-// Form Submission Workflow
 document.getElementById('regForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -115,22 +109,13 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
         });
 
         if (response.ok) {
-            btn.innerText = "SUCCESSFUL!";
-            btn.style.background = "#22c55e";
-            
             const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*City:* ${formData.City}%0A*Location:* ${formData.Location}`;
-            
-            // 1. Reset everything visually
             this.reset();
             document.getElementById('slot-badge').classList.add('hidden');
-            
-            // 2. Go Home
             showSection('home');
-
-            // 3. Trigger WhatsApp
             setTimeout(() => {
                 window.location.href = `https://wa.me/251910884585?text=${msg}`;
-            }, 500);
+            }, 600);
         }
     } catch (error) {
         btn.disabled = false;
@@ -138,6 +123,4 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
     }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    lucide.createIcons();
-});
+document.addEventListener("DOMContentLoaded", () => lucide.createIcons());

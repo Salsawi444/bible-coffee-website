@@ -51,7 +51,7 @@ function updateLocations() {
     }
 }
 
-// LIVE COUNTDOWN LOGIC
+// --- LIVE COUNTDOWN WITH CACHE BUSTING ---
 async function checkSlots() {
     const loc = document.getElementById('location').value;
     const badge = document.getElementById('slot-badge');
@@ -62,12 +62,14 @@ async function checkSlots() {
     countSpan.innerText = "...";
 
     try {
-        // Fetches only entries that match the chosen location
-        const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks/search?Location=${loc}`);
+        // We add a timestamp (?t=...) so the phone doesn't use old saved data
+        const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks?t=${Date.now()}`);
         const data = await response.json();
         
+        // Count entries matching the 'Location' field exactly as it appears in your sheet
+        const bookings = data.filter(row => row.Location === loc).length;
+        
         const totalCapacity = 8;
-        const bookings = data.length; 
         const available = totalCapacity - bookings;
 
         countSpan.innerText = available > 0 ? available : 0;
@@ -93,8 +95,8 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
     
     const formData = {
         'Name': document.getElementById('name').value,
-        'Email': document.getElementById('email').value,
         'Phone': document.getElementById('phone').value,
+        'Email': document.getElementById('email').value,
         'Country': document.getElementById('country').value,
         'City': document.getElementById('city').value,
         'Location': document.getElementById('location').value,
@@ -103,7 +105,7 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
     };
 
     btn.disabled = true;
-    btn.innerText = "HOLD ON...";
+    btn.innerText = "RESERVING...";
 
     try {
         const response = await fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
@@ -113,22 +115,22 @@ document.getElementById('regForm').addEventListener('submit', async function(e) 
         });
 
         if (response.ok) {
-            btn.innerText = "RESERVED!";
+            btn.innerText = "SUCCESSFUL!";
             btn.style.background = "#22c55e";
             
-            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*Location:* ${formData.Location}%0A*City:* ${formData.City}`;
+            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.Name}%0A*City:* ${formData.City}%0A*Location:* ${formData.Location}`;
             
-            // TAKE USER HOME IMMEDIATELY
-            showSection('home');
-            
-            // RESET FORM
+            // 1. Reset everything visually
             this.reset();
             document.getElementById('slot-badge').classList.add('hidden');
+            
+            // 2. Go Home
+            showSection('home');
 
-            // OPEN WHATSAPP (Mobile Friendly)
+            // 3. Trigger WhatsApp
             setTimeout(() => {
                 window.location.href = `https://wa.me/251910884585?text=${msg}`;
-            }, 600);
+            }, 500);
         }
     } catch (error) {
         btn.disabled = false;

@@ -1,29 +1,37 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
-menuToggle.addEventListener('click', () => navLinks.classList.toggle('active-menu'));
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active-menu');
+});
 
 function showSection(id, btn) {
-    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => el.style.display = 'none');
-    if (id === 'home') document.getElementById('home-wrapper').style.display = 'block';
-    else document.getElementById(id).style.display = 'block';
+    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
+        el.style.display = 'none';
+    });
+    
+    const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
+    if(target) target.style.display = 'block';
+
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
+    
     navLinks.classList.remove('active-menu');
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo(0,0);
 }
 
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
-        "Hawassa": ["Downtown"], "Dire Dawa": ["Downtown"], "Mekelle": ["Downtown"], "Bahir Dar": ["Downtown"]
+        "Hawassa": ["Downtown"], "Dire Dawa": ["Downtown"]
     },
-    "Germany": { "Berlin": ["Downtown"], "Frankfurt": ["Downtown"], "Munich": ["Downtown"], "Hamburg": ["Downtown"] },
+    "Germany": { "Berlin": ["Downtown"], "Frankfurt": ["Downtown"], "Munich": ["Downtown"] },
     "South Africa": { "Cape Town": ["Downtown"], "Johannesburg": ["Downtown"] },
-    "Sweden": { "Stockholm": ["Downtown"], "Gothenburg": ["Downtown"] },
-    "Netherlands": { "Amsterdam": ["Downtown"], "Rotterdam": ["Downtown"] },
+    "Sweden": { "Stockholm": ["Downtown"] },
+    "Netherlands": { "Amsterdam": ["Downtown"] },
     "USA": { "Dallas": ["Downtown"], "New York": ["Downtown"] },
-    "UK": { "London": ["Downtown"], "Manchester": ["Downtown"] },
-    "Kenya": { "Nairobi": ["Downtown"], "Mombasa": ["Downtown"] }
+    "UK": { "London": ["Downtown"] },
+    "Kenya": { "Nairobi": ["Downtown"] }
 };
 
 const capacityMap = { 
@@ -52,17 +60,9 @@ function checkSlots() {
     const loc = document.getElementById('location').value;
     const badge = document.getElementById('slot-badge');
     const count = document.getElementById('slot-count');
-    const btn = document.getElementById('submit-btn');
-    const err = document.getElementById('error-message');
-    const available = capacityMap[loc] !== undefined ? capacityMap[loc] : 8;
+    const available = capacityMap[loc] || 8;
     badge.classList.remove('hidden');
     count.innerText = available;
-    if (available <= 0) {
-        btn.disabled = true; btn.innerText = "FULLY BOOKED"; btn.style.opacity = "0.5";
-        err.innerHTML = "THIS LOCATION IS FULL."; err.classList.remove('hidden');
-    } else {
-        btn.disabled = false; btn.style.opacity = "1"; btn.innerText = "CONFIRM REGISTRATION"; err.classList.add('hidden');
-    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -85,21 +85,21 @@ document.getElementById('regForm').addEventListener('submit', function(e) {
         date: document.getElementById('regDate').value,
         time: document.getElementById('regTime').value
     };
-    btn.disabled = true; btn.innerText = "PROCESSING...";
+
+    btn.disabled = true; btn.innerText = "SENDING...";
+
     fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: [formData] })
     })
     .then(res => {
         if(res.ok) {
-            btn.innerText = "SUCCESSFUL!";
-            const msg = `*NEW REGISTRATION*%0A%0A*Name:* ${formData.name}%0A*City:* ${formData.city}%0A*Location:* ${formData.location}`;
-            setTimeout(() => {
-                window.open(`https://wa.me/251910884585?text=${msg}`, '_blank');
-                this.reset(); showSection('home');
-                btn.disabled = false; btn.innerText = "CONFIRM REGISTRATION";
-            }, 1500);
+            const msg = `*NEW REGISTRATION*%0A*Name:* ${formData.name}%0A*City:* ${formData.city}%0A*Location:* ${formData.location}`;
+            window.open(`https://wa.me/251910884585?text=${msg}`, '_blank');
+            this.reset();
+            showSection('home');
+            btn.disabled = false; btn.innerText = "CONFIRM RESERVATION";
         }
-    }).catch(() => { btn.disabled = false; btn.innerText = "RETRY"; });
+    });
 });

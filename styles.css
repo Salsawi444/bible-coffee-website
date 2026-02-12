@@ -1,6 +1,8 @@
+/* --- CORE ARCHITECTURE --- */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; overflow-x: hidden; }
 
+/* --- NAVIGATION --- */
 nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; border-bottom: 1px solid #1a1a1a; padding: 15px 0; }
 .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
 .nav-links { display: flex; gap: 20px; }
@@ -15,18 +17,20 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
   .nav-links.active-menu { display: flex; }
 }
 
+/* --- HERO SECTION --- */
 .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url("hero.jpeg") center/cover; }
 .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1; color: white; margin: 0; }
 .hero h1 span { color: #FCA311; }
 .motto { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FCA311; font-style: italic; margin-top: 20px; }
 .hero-cta { margin-top: 30px; border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
 
+/* --- GLOBAL SECTION CONTAINER --- */
 .section-container { display: none; padding: 120px 20px; min-height: 100vh; }
 
+/* --- PREMIUM FORM --- */
 .form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
 .group { position: relative; width: 100%; margin-bottom: 25px; }
 
-/* THE FIX: Forcing Dark Mode on Desktop Dropdowns */
 .floating-input { 
   width: 100%; 
   padding: 10px 0; 
@@ -59,7 +63,7 @@ select.floating-input option {
 .submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: 0.3s; }
 .submit-btn-premium:disabled { background: #333; color: #777; cursor: not-allowed; }
 
-/* --- MAGAZINE SECTION ADDITION --- */
+/* --- MAGAZINE SECTION --- */
 #magazine .submit-btn-premium {
     display: inline-block;
     text-decoration: none;
@@ -78,27 +82,33 @@ select.floating-input option {
     }
 }
 
-/* --- SURGICAL INJECTION: SERMON VAULT CSS --- */
+/* --- SURGICAL REPAIR: SERMON VAULT (THE SKIN) --- */
 .sermon-card {
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .sermon-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
 .sermon-thumb {
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: grayscale(100%) brightness(0.7);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(100%) brightness(0.6);
 }
 
 .sermon-card:hover .sermon-thumb {
     filter: grayscale(0%) brightness(1);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-/* Ensure the Lucide icons in the sermon vault are sized correctly */
+/* Icon Sizing for Play Button */
 .sermon-card i {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    transition: color 0.3s ease;
+}
+
+/* This ensures the Lucide icons don't vanish or look weird */
+[data-lucide] {
+    stroke-width: 2.5px;
 }

@@ -16,20 +16,26 @@ const locs = {
     "Canada": { "Toronto": ["Downtown"] }
 };
 
-// --- NAVIGATION ---
+// NAVIGATION LOGIC
 function showSection(id, btn) {
     document.querySelectorAll('.hidden-section').forEach(el => el.style.display = 'none');
-    const wrapper = document.getElementById('home-wrapper');
-    if (wrapper) wrapper.style.display = (id === 'home') ? 'block' : 'none';
-    const section = document.getElementById(id);
-    if (section && id !== 'home') section.style.display = 'block';
-    
+    document.getElementById('home-wrapper').style.display = (id === 'home') ? 'block' : 'none';
+    if (id !== 'home') document.getElementById(id).style.display = 'block';
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
+    const navLinks = document.getElementById('nav-links');
+    if(navLinks) navLinks.classList.remove('active-menu');
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// --- DROPDOWN CASCADE ---
+const menuToggle = document.getElementById('menu-toggle');
+if(menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.toggle('active-menu');
+    });
+}
+
+// DROPDOWN CASCADE
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySel = document.getElementById('city');
@@ -37,7 +43,6 @@ function updateCities() {
     citySel.disabled = true;
     document.getElementById('subCityGroup').classList.add('hidden');
     document.getElementById('counterBox').classList.add('hidden');
-
     if(locs[country]) {
         Object.keys(locs[country]).forEach(city => citySel.add(new Option(city, city)));
         citySel.disabled = false;
@@ -55,45 +60,36 @@ function updateSubCities() {
     }
 }
 
-// --- SEARCH ALGORITHM (CHECKING AVAILABILITY) ---
+// LIVE SPOT CHECK
 async function checkSpots() {
     const spot = document.getElementById('subCity').value;
     if (!spot) return;
-    
     document.getElementById('counterBox').classList.remove('hidden');
     const countSpan = document.getElementById('spotsLeft');
     countSpan.innerText = "...";
-
     try {
-        // Querying based on the "Location" column in your sheet
-        const res = await fetch(`${API_URL}/search?Location=${spot}`); 
+        const res = await fetch(`${API_URL}/search?Location=${spot}`);
         const data = await res.json();
         const remaining = MAX_CAPACITY - data.length;
-        
         countSpan.innerText = remaining > 0 ? remaining : 0;
         const btn = document.getElementById('subBtn');
-        
-        if (remaining <= 0) {
-            btn.disabled = true;
-            btn.innerText = "LOCATION FULL";
-        } else {
-            btn.disabled = false;
-            btn.innerText = "Confirm Registration";
-        }
-    } catch (e) { 
-        countSpan.innerText = "!";
-        console.error("Sync Error"); 
-    }
+        btn.disabled = (remaining <= 0);
+        btn.innerText = (remaining <= 0) ? "LOCATION FULL" : "Confirm Registration";
+    } catch (e) { countSpan.innerText = "!"; }
 }
 
-// --- SUBMISSION (RECORDING TO DATABASE) ---
+// FORM SUBMISSION (Correct Order & Clean Date/Time)
 document.getElementById('regForm').onsubmit = async (e) => {
     e.preventDefault();
     const btn = document.getElementById('subBtn');
     btn.innerText = "SYNCING...";
     btn.disabled = true;
 
+    // Manual Date Construction (DD/MM/YYYY)
     const now = new Date();
+    const cleanDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+    const cleanTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
     const payload = {
         "Name": document.getElementById('name').value,
         "Phone": document.getElementById('phone').value,
@@ -101,8 +97,8 @@ document.getElementById('regForm').onsubmit = async (e) => {
         "Country": document.getElementById('country').value,
         "City": document.getElementById('city').value,
         "Location": document.getElementById('subCity').value,
-        "Registration Date": now.toLocaleDateString(),
-        "Registration Time": now.toLocaleTimeString()
+        "Registration Date": cleanDate,
+        "Registration Time": cleanTime
     };
 
     try {
@@ -111,15 +107,12 @@ document.getElementById('regForm').onsubmit = async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ data: [payload] })
         });
-
-        // WhatsApp trigger
         const waMsg = `New Registration:%0AName: ${payload.Name}%0APhone: ${payload.Phone}%0ALocation: ${payload.Location}`;
         window.open(`https://wa.me/${ADMIN_PHONE}?text=${waMsg}`, '_blank');
-        
         alert("Registration Secured!");
-        location.reload(); // Refreshes to clear form and update counts
+        location.reload(); 
     } catch (err) {
-        alert("Database Sync Error.");
+        alert("Sync Error.");
         btn.disabled = false;
         btn.innerText = "Confirm Registration";
     }

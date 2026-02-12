@@ -1,7 +1,7 @@
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
-/* --- SERMON DATA: AUTHENTIC CONTENT INJECTED --- */
+/* --- SERMON DATA --- */
 const sermons = [
     {
         id: "UQM5zM8XIaw",
@@ -26,7 +26,7 @@ const sermons = [
     }
 ];
 
-/* --- MERCH SURGERY: WHATSAPP ORDER LOGIC --- */
+/* --- MERCH LOGIC --- */
 function orderMerch(itemName) {
     const phone = "251910884585";
     const message = encodeURIComponent(`Hi Bible & Coffee, I am interested in the ${itemName} from the collection.`);
@@ -38,14 +38,18 @@ menuToggle.addEventListener('click', (e) => {
     navLinks.classList.toggle('active-menu');
 });
 
-/* --- SECTION SWITCHER (FIREWALL SECURE) --- */
+/* --- SECTION SWITCHER (SURGICAL REPAIR) --- */
 function showSection(id, btn) {
     // Hide everything
-    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
+        el.style.display = 'none';
+    });
     
-    // Show target
+    // Show target using !important to pierce the CSS firewall
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
-    if(target) target.style.display = 'block';
+    if(target) {
+        target.style.setProperty('display', 'block', 'important');
+    }
     
     // Update Nav UI
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
@@ -180,10 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if(window.lucide) lucide.createIcons();
     
     // Auto-link Merch cards to WhatsApp order
-    document.querySelectorAll('.merch-card-v2').forEach(card => {
-        card.addEventListener('click', () => {
-            const itemName = card.querySelector('h3').innerText;
-            orderMerch(itemName);
+    // Surgical Check: Only run if merch items exist to prevent script errors
+    const merchItems = document.querySelectorAll('.merch-card-v2');
+    if (merchItems.length > 0) {
+        merchItems.forEach(card => {
+            card.addEventListener('click', () => {
+                const titleEl = card.querySelector('h3');
+                if (titleEl) orderMerch(titleEl.innerText);
+            });
         });
-    });
+    }
 });

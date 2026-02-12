@@ -26,23 +26,32 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
 .group { position: relative; width: 100%; margin-bottom: 25px; }
 
-/* DROPDOWN & INPUT VISIBILITY FIX */
+/* THE FIX: Forcing Dark Mode on Desktop Dropdowns */
 .floating-input { 
   width: 100%; 
   padding: 10px 0; 
-  background: #0d0d0d !important; /* Forces dark background */
+  background-color: #0d0d0d !important; 
   border: none; 
   border-bottom: 1px solid rgba(255,255,255,0.1); 
   color: white !important; 
   font-size: 16px; 
   border-radius: 0; 
   outline: none; 
+  appearance: none; /* Removes Safari/Chrome default white style */
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-/* Fixes the dropdown options list background */
+/* Adds a custom arrow since appearance:none removes the default one */
+select.floating-input {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FCA311' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
 select.floating-input option {
-  background: #0d0d0d;
-  color: white;
+  background-color: #0d0d0d !important;
+  color: white !important;
 }
 
 .floating-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.3); font-size: 12px; text-transform: uppercase; pointer-events: none; transition: 0.3s; }

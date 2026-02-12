@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bible & Coffee | Fridays Global</title>
+  <title>Bible & Coffee | Global</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <nav>
     <div class="nav-container">
-      <div class="logo">B&C</div>
-      <button id="menu-toggle" class="mobile-hamburger"><i data-lucide="menu"></i></button>
+      <button id="menu-toggle" class="md:hidden text-[#FCA311]"><i data-lucide="menu"></i></button>
       <div id="nav-links" class="nav-links">
         <button onclick="showSection('home',this)" class="active">HOME</button>
         <button onclick="showSection('magazine',this)">MAGAZINE</button>
@@ -22,94 +21,47 @@
         <button onclick="showSection('merch',this)">MERCH</button>
         <button onclick="showSection('sermon',this)">SERMON</button>
         <button onclick="showSection('support',this)">SUPPORT</button>
-        <button onclick="showSection('join',this)" class="join-nav-btn">JOIN</button>
+        <button onclick="showSection('join',this)">JOIN</button>
       </div>
     </div>
   </nav>
 
   <div id="home-wrapper">
     <header id="home" class="hero">
-      <div class="hero-content-left">
-        <h1 class="hero-title">BIBLE &<br>COFFEE.<br><span>FRIDAYS.</span><br>GLOBAL.</h1>
-        <p class="hero-subtitle">A Family at the Table.</p>
-        <button onclick="showSection('join')" class="hero-cta">Claim My Seat</button>
+      <div class="hero-content">
+        <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
+        <p class="motto">Thank God It’s Friday</p>
       </div>
     </header>
-
-    <div class="ticker-wrap">
-      <div class="ticker">
-        <span class="ticker-item">ADDIS ABABA</span>
-        <span class="ticker-item">FRANKFURT</span>
-        <span class="ticker-item">JOHANNESBURG</span>
-        <span class="ticker-item">STOCKHOLM</span>
-        <span class="ticker-item">ROTTERDAM</span>
-        <span class="ticker-item">ADDIS ABABA</span>
-        <span class="ticker-item">FRANKFURT</span>
-        <span class="ticker-item">JOHANNESBURG</span>
-      </div>
-    </div>
-
-    <div class="bg-[#0a0a0a] px-6 py-24">
-      <div class="max-w-5xl mx-auto">
-        <article class="text-left mb-32">
-          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.5em] uppercase text-xs mb-6">The Friday Covenant</h2>
-          <h3 class="text-5xl md:text-7xl font-['Playfair_Display'] text-white leading-tight mb-8">Not a Club.<br>ቤተሰብ!</h3>
-          <p class="text-xl md:text-2xl text-white/60 font-light leading-relaxed max-w-2xl">
-            Fridays aren't just the end of the week. They are the beginning of the conversation. In a world of noise, we find silence in the Scripture and community in the Cup.
-          </p>
+    <div class="bg-[#0a0a0a] px-6 py-20">
+      <div class="max-w-4xl mx-auto">
+        <article class="border-t border-b border-white/10 py-16 mb-20 text-center">
+          <h3 class="text-4xl md:text-5xl font-['Playfair_Display'] text-white mb-8">More Than a Gathering</h3>
+          <p class="text-xl text-white/70 italic mb-10">"Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."</p>
         </article>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-          <div class="pillar">
-            <h4 class="text-[#FCA311] font-bold tracking-widest uppercase text-sm mb-4">The Warmth</h4>
-            <p class="text-white/80 italic font-['Playfair_Display']">Fellowship that feels like home.</p>
-          </div>
-          <div class="pillar">
-            <h4 class="text-[#FCA311] font-bold tracking-widest uppercase text-sm mb-4">The Depth</h4>
-            <p class="text-white/80 italic font-['Playfair_Display']">The Word as our foundation.</p>
-          </div>
-          <div class="pillar">
-            <h4 class="text-[#FCA311] font-bold tracking-widest uppercase text-sm mb-4">The Bond</h4>
-            <p class="text-white/80 italic font-['Playfair_Display']">Relationship over faith.</p>
+        <div class="text-center">
+          <h2 class="text-[#FCA311] font-['Oswald'] tracking-[0.4em] uppercase mb-12 text-xs">Living With Purpose</h2>
+          <div class="space-y-8 text-2xl md:text-3xl font-['Playfair_Display'] text-white/90">
+            <p>Understand the Bible simply</p>
+            <p>Develop a genuine relationship with God</p>
+            <p>Build authentic Christian community</p>
+            <p>Live out faith boldly in everyday life</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <section id="magazine" class="section-container">
-    <div class="max-w-6xl mx-auto px-6 py-24">
-      <h2 class="text-[#FCA311] font-['Oswald'] text-4xl mb-12">THE EDITORIAL</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <article class="bg-[#111] border border-[#222] p-8 hover:border-[#FCA311] transition duration-500">
-          <div class="text-[#FCA311] text-xs tracking-widest mb-4">THEOLOGY</div>
-          <h3 class="text-2xl font-['Playfair_Display'] mb-4">The Sacred Brew</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">Why the gathering around coffee is more than just caffeine—it is a biblical rhythm of rest.</p>
-          <a href="#" class="text-white text-xs uppercase border-b border-[#FCA311] pb-1">Read Article</a>
-        </article>
-        <article class="bg-[#111] border border-[#222] p-8 hover:border-[#FCA311] transition duration-500">
-          <div class="text-[#FCA311] text-xs tracking-widest mb-4">CULTURE</div>
-          <h3 class="text-2xl font-['Playfair_Display'] mb-4">Addis at Night</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">Exploring the spiritual heartbeat of the city when the sun goes down and the Bibles open.</p>
-          <a href="#" class="text-white text-xs uppercase border-b border-[#FCA311] pb-1">Read Article</a>
-        </article>
-        <article class="bg-[#111] border border-[#222] p-8 hover:border-[#FCA311] transition duration-500">
-          <div class="text-[#FCA311] text-xs tracking-widest mb-4">COMMUNITY</div>
-          <h3 class="text-2xl font-['Playfair_Display'] mb-4">The Empty Chair</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">We always set one extra seat at the table. Find out who it is for.</p>
-          <a href="#" class="text-white text-xs uppercase border-b border-[#FCA311] pb-1">Read Article</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section id="join" class="section-container px-4">
-    <div class="max-w-md mx-auto py-32">
+    <div class="max-w-md mx-auto">
       <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Claim Your Seat</h2>
-        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Fridays. Global.</p>
+        <h2 class="text-3xl font-bold text-[#FCA311] uppercase tracking-tighter">Join Movement</h2>
+        <p class="text-white/30 text-[10px] mt-2 tracking-[3px] uppercase">Secure your seat at the table</p>
       </div>
       <div class="form-card relative">
+        <div id="slot-badge" class="hidden absolute top-0 right-0 bg-[#FCA311] text-black text-[9px] font-black px-3 py-1 uppercase">
+          <span id="slot-count">0</span> Spots Left
+        </div>
         <form id="regForm" class="space-y-8">
           <div class="group">
             <input id="name" name="Name" required placeholder=" " class="floating-input">
@@ -127,27 +79,46 @@
                 <option value="South Africa">South Africa</option>
                 <option value="Sweden">Sweden</option>
                 <option value="Netherlands">Netherlands</option>
-                <option value="Germany">Germany</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Kenya">Kenya</option>
               </select>
               <label class="floating-label">Country</label>
             </div>
             <div class="group">
-              <select id="city" name="City" required class="floating-input">
+              <select id="city" name="City" required class="floating-input" onchange="updateLocations()">
                 <option value="" disabled selected></option>
               </select>
               <label class="floating-label">City</label>
             </div>
+            <div class="group">
+              <select id="location" name="Location" required class="floating-input" onchange="checkSlots()">
+                <option value="" disabled selected></option>
+              </select>
+              <label class="floating-label">Meeting Point</label>
+            </div>
           </div>
-          <button type="submit" id="submit-btn" class="submit-btn-premium">Confirm Reservation</button>
+          <input type="hidden" id="regDate" name="Registration Date">
+          <input type="hidden" id="regTime" name="Registration Time">
+          <div id="error-message" class="hidden text-[10px] uppercase tracking-widest text-red-500 bg-red-500/5 p-4 border border-red-500/10 text-center"></div>
+          <button id="submit-btn" class="submit-btn-premium" type="submit">Confirm Registration</button>
         </form>
       </div>
     </div>
   </section>
 
-  <section id="events" class="section-container text-center py-40"><h1>Events Section</h1></section>
-  <section id="merch" class="section-container text-center py-40"><h1>Merch Section</h1></section>
-  <section id="sermon" class="section-container text-center py-40"><h1>Sermon Section</h1></section>
-  <section id="support" class="section-container text-center py-40"><h1>Support Section</h1></section>
+  <section id="magazine" class="section-container">
+    <h2 class="text-3xl font-bold text-[#FCA311] mb-8 uppercase">Magazine</h2>
+    <div class="mag-box mx-auto max-w-sm">
+      <img src="megimage.jpeg" class="w-full mb-6">
+      <a href="magazine.pdf" download class="submit-btn-premium block text-center no-underline">Download PDF</a>
+    </div>
+  </section>
+
+  <section id="events" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">EVENTS</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
+  <section id="merch" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">MERCH</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
+  <section id="sermon" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">SERMONS</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
+  <section id="support" class="section-container"><h2 class="text-3xl font-bold text-[#FCA311]">SUPPORT</h2><p class="opacity-20 tracking-[10px] py-20">COMING SOON</p></section>
 
   <script src="script.js"></script>
 </body>

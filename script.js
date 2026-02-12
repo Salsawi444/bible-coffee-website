@@ -9,11 +9,13 @@ const cityData = {
     "Germany": ["Frankfurt", "Berlin"]
 };
 
-// --- NAVIGATION & MOBILE MENU ---
+// --- NAVIGATION LOGIC ---
 function showSection(id, btn) {
+    // Hide ALL sections
     document.querySelectorAll('.section-container').forEach(s => s.style.display = 'none');
     const homeWrapper = document.getElementById('home-wrapper');
     
+    // Toggle Home Wrapper
     if (id === 'home') {
         homeWrapper.style.display = 'block';
     } else {
@@ -22,17 +24,29 @@ function showSection(id, btn) {
         if (target) target.style.display = 'block';
     }
     
+    // UI Updates
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    if (btn) {
+        btn.classList.add('active');
+    } else if (id === 'join') {
+        // Highlight Join button if clicked from Hero CTA
+        document.querySelectorAll('.nav-links button').forEach(b => {
+            if(b.textContent.includes('JOIN')) b.classList.add('active');
+        });
+    }
+
+    // Close Mobile Menu
     document.getElementById('nav-links').classList.remove('active');
     window.scrollTo(0, 0);
 }
 
-document.getElementById('menu-toggle').addEventListener('click', function() {
+// Fixed Hamburger Toggle
+document.getElementById('menu-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
     document.getElementById('nav-links').classList.toggle('active');
 });
 
-// --- DROPDOWNS & FORM ---
+// --- FORM LOGIC ---
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');

@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,7 +16,7 @@
 
   <nav>
     <div class="nav-container">
-      <button id="menu-toggle" class="md:hidden text-[#FCA311]">
+      <button id="menu-toggle" class="md:hidden text-[#FCA311] p-2">
         <i data-lucide="menu"></i>
       </button>
 
@@ -34,114 +34,110 @@
 
   <div id="home-wrapper">
     <header id="home" class="hero">
-      <div>
+      <div class="hero-content">
         <h1>COFFEE MEETS<br><span>THE WORD</span></h1>
         <p class="motto">Thank God It’s Friday</p>
       </div>
     </header>
 
-    <div class="bg-[#0a0a0a] px-6 py-16 md:py-24">
-      <div class="max-w-4xl mx-auto">
+    <div class="content-clean">
+      <div class="max-w-4xl mx-auto px-6">
         
-        <article class="border-t border-b border-white/10 py-16 mb-24 text-center">
-          <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[0.5em] uppercase mb-10 opacity-60">The Narrative</h2>
-          <h3 class="text-4xl md:text-6xl font-['Playfair_Display'] text-white mb-12 leading-tight">More Than a Gathering</h3>
+        <article class="narrative-block">
+          <h2 class="section-label">The Narrative</h2>
+          <h3 class="editorial-title">More Than a Gathering</h3>
+          
           <div class="max-w-2xl mx-auto">
-            <p class="text-xl md:text-2xl text-white/90 font-light leading-relaxed mb-16 italic">
+            <p class="main-quote">
               "Bible & Coffee is a movement of modern believers who choose depth over hype and relationship over religion."
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left text-white/70 text-base border-t border-white/5 pt-12">
-              <div class="space-y-4">
-                <p class="font-['Oswald'] text-[#FCA311] uppercase tracking-widest text-[10px]">The Essence</p>
+            
+            <div class="grid md:grid-cols-2 gap-12 text-left pt-12 border-t border-white/5">
+              <div class="sub-block">
+                <p class="sub-label">The Essence</p>
                 <p>Christianity is not a tradition to perform, but a relationship to live. Not rules to follow, but a Savior to know.</p>
               </div>
-              <div class="space-y-4">
-                <p class="font-['Oswald'] text-[#FCA311] uppercase tracking-widest text-[10px]">The Table</p>
+              <div class="sub-block">
+                <p class="sub-label">The Table</p>
                 <p>In coffee shops, young people gather with open Bibles and open hearts. Over coffee, we study scripture, ask honest questions, and discover Kingdom life.</p>
               </div>
             </div>
           </div>
         </article>
 
-        <div class="relative py-20 px-8 md:px-24 bg-[#0d0d0d] border border-white/5">
-          <div class="absolute -top-3 left-10 bg-[#0a0a0a] px-4">
-            <h2 class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[0.6em] uppercase">The Horizon</h2>
+        <div class="horizon-block">
+          <div class="horizon-header">
+            <h2 class="section-label text-center">The Horizon</h2>
           </div>
-          <div class="text-center mb-16">
-            <p class="text-white/40 text-[11px] uppercase tracking-[0.3em] mb-12">Driven by Purpose</p>
-            <div class="space-y-8 text-2xl md:text-3xl font-['Playfair_Display'] text-white/90 editorial-list">
+          <div class="text-center py-10">
+            <p class="sub-label mb-10 opacity-50">Driven by Purpose</p>
+            <div class="purpose-list">
               <p>Understand the Bible simply</p>
               <p>Develop a genuine relationship with God</p>
               <p>Build authentic Christian community</p>
               <p>Live out faith boldly in everyday life</p>
             </div>
           </div>
-          <div class="pt-12 border-t border-white/5 text-center">
-            <p class="text-white text-lg md:text-xl font-light">
-              This is not about church culture. It’s about <span class="text-[#FCA311]">Kingdom</span>. <br>
-              This is not about religion. It’s about <span class="text-[#FCA311]">Relationship</span>.
+          <div class="pt-10 border-t border-white/5 text-center">
+            <p class="mission-text text-white">
+              This is not about church culture. It’s about <span>Kingdom</span>. <br>
+              This is not about religion. It’s about <span>Relationship</span>.
             </p>
-            <p class="text-white/30 italic mt-8 font-['Playfair_Display']">And there is always a seat for you at the table.</p>
+            <p class="final-note">And there is always a seat for you at the table.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <section id="magazine">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-6 uppercase">Weekly Magazine</h2>
+  <section id="magazine" class="hidden-section">
+    <h2 class="section-heading">Weekly Magazine</h2>
     <div class="mag-box">
-      <img src="megimage.jpeg" alt="Magazine Preview" class="mx-auto mb-4 rounded w-full">
-      <a href="magazine.pdf" download class="submit-btn block text-center">Download PDF</a>
+      <img src="megimage.jpeg" alt="Magazine Preview" class="magazine-preview">
+      <a href="magazine.pdf" download class="download-btn">Download PDF</a>
     </div>
   </section>
 
-  <section id="events">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-4 uppercase">Events</h2>
-    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
+  <section id="events" class="hidden-section">
+    <h2 class="section-heading">Events</h2>
+    <p class="coming-soon">COMING SOON</p>
   </section>
 
-  <section id="merch">
-    <h2 class="text-4xl font-bold mb-8 uppercase">The Merch</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-      <img src="merch1.jpeg" alt="Merch item 1" class="rounded w-full">
-      <img src="merch2.jpeg" alt="Merch item 2" class="rounded w-full">
-      <img src="merch3.jpeg" alt="Merch item 3" class="rounded w-full">
-      <img src="merch4.jpeg" alt="Merch item 4" class="rounded w-full">
-      <img src="merch5.jpeg" alt="Merch item 5" class="rounded w-full">
-      <img src="merch6.jpeg" alt="Merch item 6" class="rounded w-full">
+  <section id="merch" class="hidden-section">
+    <h2 class="section-heading">The Merch</h2>
+    <div class="merch-grid">
+      <img src="merch1.jpeg" alt="Item"><img src="merch2.jpeg" alt="Item"><img src="merch3.jpeg" alt="Item">
+      <img src="merch4.jpeg" alt="Item"><img src="merch5.jpeg" alt="Item"><img src="merch6.jpeg" alt="Item">
     </div>
   </section>
 
-  <section id="sermon">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-4 uppercase">Sermons</h2>
-    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
+  <section id="sermon" class="hidden-section">
+    <h2 class="section-heading">Sermons</h2>
+    <p class="coming-soon">COMING SOON</p>
   </section>
 
-  <section id="support">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-4 uppercase">Support</h2>
-    <p class="text-white/30 tracking-[6px] text-xl py-20">COMING SOON</p>
+  <section id="support" class="hidden-section">
+    <h2 class="section-heading">Support</h2>
+    <p class="coming-soon">COMING SOON</p>
   </section>
 
-  <section id="join">
-    <h2 class="text-4xl font-bold text-[#FCA311] mb-8 uppercase">Join Movement</h2>
-    <div class="max-w-md mx-auto form-card">
+  <section id="join" class="hidden-section">
+    <h2 class="section-heading">Join Movement</h2>
+    <div class="form-wrapper">
       <form id="regForm" class="space-y-4 text-left">
-        <input id="name" name="Name" required placeholder="Full Name">
-        <input id="email" name="Email" type="email" required placeholder="Email">
-        <input id="phone" name="Phone" required placeholder="Phone">
-        <select id="country" name="Country" required>
-          <option value="">Country</option><option>Ethiopia</option><option>USA</option>
-        </select>
-        <select id="city" name="City" required>
-          <option value="">City</option><option>Addis Ababa</option><option>Dallas</option>
-        </select>
-        <select id="location" name="Location">
-          <option value="">Location / Area</option><option>Bole</option><option>Piazza</option>
-        </select>
-        <input id="regDate" name="Registration Date" type="date">
-        <input id="regTime" name="Registration Time" type="time">
-        <button class="submit-btn mt-4" type="submit">Confirm Registration</button>
+        <input id="name" required placeholder="Full Name">
+        <input id="email" type="email" required placeholder="Email">
+        <input id="phone" required placeholder="Phone">
+        <div class="grid grid-cols-2 gap-4">
+            <select id="country" required><option value="">Country</option><option>Ethiopia</option></select>
+            <select id="city" required><option value="">City</option><option>Addis Ababa</option></select>
+        </div>
+        <select id="location"><option value="">Location / Area</option><option>Bole</option></select>
+        <div class="grid grid-cols-2 gap-4">
+            <input id="regDate" type="date">
+            <input id="regTime" type="time">
+        </div>
+        <button class="confirm-btn" type="submit">Confirm Registration</button>
       </form>
     </div>
   </section>

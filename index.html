@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles.css">
   
   <style>
-    /* 1. HERO ARCHITECTURE */
+    /* HERO ARCHITECTURE */
     .hero-container {
       position: relative;
       min-height: 100vh;
@@ -19,7 +19,6 @@
       overflow: hidden;
       background-color: black;
     }
-
     .hero-bg-layer {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -28,14 +27,12 @@
       background-position: center 20%;
       z-index: 0;
     }
-
     .hero-overlay-layer {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: 1;
       background: linear-gradient(90deg, #000000 0%, #000000 35%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.2) 100%);
     }
-
     .hero-content-layer {
       position: relative;
       z-index: 10;
@@ -44,16 +41,13 @@
       width: 100%;
       margin: 0 auto;
     }
-
     @media (max-width: 768px) {
       .hero-container { align-items: flex-start; min-height: 100vh; }
       .hero-overlay-layer { background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 30%, #000000 90%); }
-      .hero-content-layer { padding: 70px 25px 60px 25px; }
+      .hero-content-layer { padding: 130px 25px 60px 25px; }
       .responsive-title { font-size: clamp(3.2rem, 12vw, 5rem) !important; }
     }
-
     .manifesto-quote { font-family: 'Playfair Display', serif; font-style: italic; color: white; line-height: 1.6; }
-    .manifesto-sub { font-family: 'Inter', sans-serif; letter-spacing: 0.03em; color: rgba(255,255,255,0.6); font-size: 0.95rem; }
   </style>
 </head>
 <body>
@@ -89,7 +83,7 @@
             <p style="color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.6; font-family: 'Inter', sans-serif;">
                 We stopped performing. We started living. Bible & Coffee isn't a program; it's a return to the table.
             </p>
-            <button onclick="showSection('join')" class="hero-cta" style="margin-top: 35px; display: inline-block;">Claim My Seat</button>
+            <button onclick="showSection('join')" class="hero-cta">Claim My Seat</button>
         </div>
       </div>
     </header>
@@ -103,14 +97,12 @@
       </div>
       <div class="flex flex-col md:flex-row items-center gap-12 bg-[#0d0d0d] border border-white/5 p-8 rounded-sm shadow-2xl">
         <div class="w-full md:w-1/2">
-          <div class="relative group cursor-pointer overflow-hidden border border-white/10">
-            <img src="megimage.jpeg" alt="Magazine Cover" class="w-full h-auto transform transition-transform duration-700 group-hover:scale-105">
-          </div>
+          <img src="megimage.jpeg" alt="Cover" class="w-full h-auto border border-white/10">
         </div>
         <div class="w-full md:w-1/2 space-y-6 text-left">
           <h3 class="text-2xl font-['Playfair_Display'] text-white italic">Digital Edition</h3>
-          <p class="text-white/70 leading-relaxed">Dive deeper into our community stories, biblical insights, and the latest from the movement.</p>
-          <div class="pt-4"><a href="magazine.pdf" download class="submit-btn-premium inline-block text-center no-underline">Download PDF</a></div>
+          <p class="text-white/70">Dive deeper into our community stories and biblical insights.</p>
+          <a href="magazine.pdf" download class="submit-btn-premium inline-block no-underline">Download PDF</a>
         </div>
       </div>
     </div>
@@ -120,56 +112,74 @@
     <div class="max-w-6xl mx-auto">
       <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
         <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The Collection</h2>
-        <p class="text-[#FCA311] font-['Inter'] uppercase text-sm tracking-[0.2em] mt-2">Kingdom Streetwear • Limited Drop</p>
       </div>
       <div class="merch-vault-grid">
-        <div class="merch-card-v2 group">
-          <div class="merch-img-box">
-            <img src="merch1.jpeg" alt="KC-01" class="merch-display-img">
-            <div class="merch-status">New Drop</div>
-          </div>
-          <div class="merch-info"><h3>KC-01 // IDENTITY</h3><p>STREETWEAR TEE</p></div>
-        </div>
-        <div class="merch-card-v2 group">
-          <div class="merch-img-box"><img src="merch2.jpeg" alt="KC-02" class="merch-display-img"></div>
-          <div class="merch-info"><h3>KC-02 // VISION</h3><p>STREETWEAR TEE</p></div>
-        </div>
-        <div class="merch-card-v2 group">
-          <div class="merch-img-box"><img src="merch3.jpeg" alt="KC-03" class="merch-display-img"></div>
-          <div class="merch-info"><h3>KC-03 // CULTURE</h3><p>STREETWEAR TEE</p></div>
-        </div>
-        <div class="merch-card-v2 group">
-          <div class="merch-img-box"><img src="merch4.jpeg" alt="KC-04" class="merch-display-img"></div>
-          <div class="merch-info"><h3>KC-04 // ESSENTIAL</h3><p>STREETWEAR TEE</p></div>
-        </div>
-        <div class="merch-card-v2 group">
-          <div class="merch-img-box"><img src="merch5.jpeg" alt="KC-05" class="merch-display-img"></div>
-          <div class="merch-info"><h3>KC-05 // KINGDOM</h3><p>STREETWEAR TEE</p></div>
-        </div>
-        <div class="merch-card-v2 group">
-          <div class="merch-img-box"><img src="merch6.jpeg" alt="KC-06" class="merch-display-img"></div>
-          <div class="merch-info"><h3>KC-06 // LEGACY</h3><p>STREETWEAR TEE</p></div>
-        </div>
+        <div class="merch-card-v2"><div class="merch-img-box"><img src="merch1.jpeg" class="merch-display-img"></div><div class="merch-info"><h3>KC-01 // IDENTITY</h3><p>STREETWEAR TEE</p></div></div>
+        <div class="merch-card-v2"><div class="merch-img-box"><img src="merch2.jpeg" class="merch-display-img"></div><div class="merch-info"><h3>KC-02 // VISION</h3><p>STREETWEAR TEE</p></div></div>
+        <div class="merch-card-v2"><div class="merch-img-box"><img src="merch3.jpeg" class="merch-display-img"></div><div class="merch-info"><h3>KC-03 // CULTURE</h3><p>STREETWEAR TEE</p></div></div>
       </div>
     </div>
   </section>
 
   <section id="sermon" class="section-container bg-black py-24 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
+      <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
         <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="sermon-card bg-[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('UQM5zM8XIaw')">
+            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
+            <div class="p-6"><h3>ወጣቱ ባለሃብት!</h3><p class="text-white/50 text-xs mt-2 uppercase">Kingdom Culture</p></div>
         </div>
+        <div class="sermon-card bg-[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('Q7p0wt29a04')">
+            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
+            <div class="p-6"><h3>በሰማርያም ሊያልፍ ግድ ሆነበት!</h3><p class="text-white/50 text-xs mt-2 uppercase">Identity</p></div>
+        </div>
+        <div class="sermon-card bg-[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('uoUSXNjBgAg')">
+            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
+            <div class="p-6"><h3>ለውጥ እና ፈተናው!</h3><p class="text-white/50 text-xs mt-2 uppercase">Growth</p></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="events" class="section-container text-center py-20"><h1>EVENTS</h1></section>
-  <section id="support" class="section-container text-center py-20"><h1>SUPPORT</h1></section>
   <section id="join" class="section-container px-4">
-    </section>
+    <div class="max-w-xl mx-auto py-10">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-['Oswald'] font-bold text-white tracking-widest uppercase">Reserve Your Seat</h2>
+        <p class="text-[#FCA311] text-xs font-bold mt-2 uppercase tracking-widest">Limited to 8 People per Location</p>
+      </div>
+      <div class="form-card">
+        <form id="regForm" class="space-y-6">
+          <div class="group"><input type="text" id="name" class="floating-input" placeholder=" " required><label class="floating-label">Full Name</label></div>
+          <div class="group"><input type="tel" id="phone" class="floating-input" placeholder=" " required><label class="floating-label">Phone Number</label></div>
+          <div class="group"><input type="email" id="email" class="floating-input" placeholder=" " required><label class="floating-label">Email Address</label></div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="group">
+                <select id="country" onchange="updateCities()" class="floating-input" required><option value="" disabled selected></option><option value="Ethiopia">Ethiopia</option><option value="USA">USA</option></select>
+                <label class="floating-label">Country</label>
+            </div>
+            <div class="group">
+                <select id="city" onchange="updateLocations()" class="floating-input" required><option value="" disabled selected></option></select>
+                <label class="floating-label">City</label>
+            </div>
+          </div>
+          <div class="group">
+              <select id="location" onchange="checkSlots()" class="floating-input" required><option value="" disabled selected></option></select>
+              <label class="floating-label">Specific Table/Location</label>
+          </div>
+          <div id="slot-badge" class="hidden text-center py-2 bg-[#FCA311]/10 border border-[#FCA311]/20 mb-4">
+            <span class="text-[#FCA311] text-[10px] font-black uppercase">Available Slots: <span id="slot-count">8</span>/8</span>
+          </div>
+          <button type="submit" id="submit-btn" class="submit-btn-premium">Confirm Reservation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="section-container text-center py-20"><h1>UPCOMING EVENTS</h1><p class="text-white/50">Stay tuned for local gathering updates.</p></section>
+  <section id="support" class="section-container text-center py-20"><h1>SUPPORT THE MOVEMENT</h1><p class="text-white/50">Details coming soon.</p></section>
 
   <script src="script.js"></script>
-  <script>lucide.createIcons();</script>
 </body>
 </html>

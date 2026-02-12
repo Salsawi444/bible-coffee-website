@@ -33,7 +33,6 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
   }
 
   .hero-content-layer { 
-    /* Pushes content down to center it vertically on mobile screens */
     padding: 130px 25px 40px 25px !important; 
   }
 
@@ -52,7 +51,8 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; bor
 .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1; color: white; margin: 0; }
 .hero h1 span { color: #FCA311; }
 .motto { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FCA311; font-style: italic; margin-top: 20px; }
-.hero-cta { margin-top: 30px; border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
+.hero-cta { margin-top: 35px; border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
+.hero-cta:hover { background: #FCA311; color: #000; }
 
 /* --- GLOBAL SECTION CONTAINER --- */
 .section-container { display: none; padding: 120px 20px; min-height: 100vh; }
@@ -112,7 +112,7 @@ select.floating-input option {
     }
 }
 
-/* --- SURGICAL REPAIR: SERMON VAULT (THE SKIN) --- */
+/* --- SURGICAL REPAIR: SERMON VAULT --- */
 .sermon-card {
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -131,14 +131,91 @@ select.floating-input option {
     transform: scale(1.08);
 }
 
-/* Icon Sizing for Play Button */
 .sermon-card i {
     width: 22px;
     height: 22px;
-    transition: color 0.3s ease;
 }
 
-/* This ensures the Lucide icons don't vanish or look weird */
 [data-lucide] {
     stroke-width: 2.5px;
+}
+
+/* --- FIREWALLED MERCH SURGERY --- */
+#merch .merch-vault-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+}
+
+.merch-card-v2 {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.merch-img-box {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: #111;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.merch-display-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.merch-card-v2:hover .merch-display-img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+.merch-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #FCA311;
+    color: #000;
+    font-size: 9px;
+    font-weight: 900;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.merch-info {
+    padding: 20px 0;
+    text-align: left;
+}
+
+.merch-info h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.merch-info p {
+    font-size: 10px;
+    color: #555;
+    margin-top: 5px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    #merch .merch-vault-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    .merch-info h3 {
+        font-size: 13px;
+    }
 }

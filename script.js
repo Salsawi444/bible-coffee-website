@@ -52,22 +52,16 @@ async function checkSlots() {
     const badge = document.getElementById('slot-badge');
     const countSpan = document.getElementById('slot-count');
     const btn = document.getElementById('submit-btn');
-    
     if(!loc) return;
     badge.classList.remove('hidden');
     countSpan.innerText = "...";
     btn.disabled = true;
-
     try {
         const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks?t=${Date.now()}`);
         const data = await response.json();
-        const bookings = data.filter(row => {
-            return row.Location && row.Location.toString().trim().toLowerCase() === loc.trim().toLowerCase();
-        }).length;
-        
+        const bookings = data.filter(row => row.Location && row.Location.toString().trim().toLowerCase() === loc.trim().toLowerCase()).length;
         const available = 8 - bookings;
         countSpan.innerText = available > 0 ? available : 0;
-
         if (available <= 0) {
             btn.innerText = "FULLY BOOKED";
             btn.disabled = true;

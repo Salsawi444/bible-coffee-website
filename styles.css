@@ -1,221 +1,60 @@
 /* --- CORE ARCHITECTURE --- */
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; margin: 0; overflow-x: hidden; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
 
 /* --- NAVIGATION --- */
 nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: #000; border-bottom: 1px solid #1a1a1a; padding: 15px 0; }
 .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
 .nav-links { display: flex; gap: 20px; }
-.nav-links button { color: #555; font-size: 11px; font-weight: 700; letter-spacing: 2px; border: none; background: none; cursor: pointer; text-transform: uppercase; }
+.nav-links button { color: #555; font-size: 11px; font-weight: 700; letter-spacing: 2px; border: none; background: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
 .nav-links button.active { color: #FCA311; }
-
 .mobile-toggle { display: none; background: none; border: none; color: #FCA311; font-size: 24px; cursor: pointer; }
 
-@media(max-width:768px) {
-  .mobile-toggle { display: block; }
-  .nav-links { 
+/* --- GLOBAL SECTION CONTAINER (The Fix for Empty Sections) --- */
+.section-container { 
     display: none; 
-    flex-direction: column; 
-    position: absolute; 
-    top: 60px; 
-    left: 0; 
-    width: 100%; 
-    background: #000; 
-    padding: 40px; 
-    gap: 30px; 
-    border-bottom: 1px solid #1a1a1a; 
-  }
-  .nav-links.active-menu { display: flex; }
-
-  /* --- MOBILE HERO CENTERED SURGERY --- */
-  :root {
-    --hero-gap: 15px; 
-  }
-
-  .hero-content-layer { 
-    padding: 130px 25px 40px 25px !important; 
-  }
-
-  .hero-cta { 
-    margin-top: 20px !important; 
-  }
-
-  .hero-content-layer div[style*="border-left"] {
-    padding-top: 0 !important;
-    margin-top: 10px !important;
-  }
-}
-
-/* --- HERO SECTION (DESKTOP) --- */
-.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url("hero.jpeg") center/cover; }
-.hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1; color: white; margin: 0; }
-.hero h1 span { color: #FCA311; }
-.motto { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FCA311; font-style: italic; margin-top: 20px; }
-.hero-cta { margin-top: 35px; border: 1px solid #FCA311; color: #FCA311; padding: 15px 35px; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 10px; cursor: pointer; background: transparent; transition: 0.4s; }
-.hero-cta:hover { background: #FCA311; color: #000; }
-
-/* --- GLOBAL SECTION CONTAINER --- */
-.section-container { display: none; padding: 120px 20px; min-height: 100vh; }
-
-/* --- PREMIUM FORM --- */
-.form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; }
-.group { position: relative; width: 100%; margin-bottom: 25px; }
-
-.floating-input { 
-  width: 100%; 
-  padding: 10px 0; 
-  background-color: #0d0d0d !important; 
-  border: none; 
-  border-bottom: 1px solid rgba(255,255,255,0.1); 
-  color: white !important; 
-  font-size: 16px; 
-  border-radius: 0; 
-  outline: none; 
-  appearance: none; 
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-select.floating-input {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FCA311' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right center;
-}
-
-select.floating-input option {
-  background-color: #0d0d0d !important;
-  color: white !important;
-}
-
-.floating-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.3); font-size: 12px; text-transform: uppercase; pointer-events: none; transition: 0.3s; }
-.floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
-
-.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: 0.3s; }
-.submit-btn-premium:disabled { background: #333; color: #777; cursor: not-allowed; }
-
-/* --- MAGAZINE SECTION --- */
-#magazine .submit-btn-premium {
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    width: auto;
-    min-width: 200px;
-}
-
-#magazine.section-container {
-    background: #050505;
-}
-
-@media (max-width: 768px) {
-    #magazine .submit-btn-premium {
-        width: 100%;
-    }
-}
-
-/* --- SURGICAL REPAIR: SERMON VAULT --- */
-.sermon-card {
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.sermon-card:hover {
-    transform: translateY(-8px);
-}
-
-.sermon-thumb {
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: grayscale(100%) brightness(0.6);
-}
-
-.sermon-card:hover .sermon-thumb {
-    filter: grayscale(0%) brightness(1);
-    transform: scale(1.08);
-}
-
-.sermon-card i {
-    width: 22px;
-    height: 22px;
-}
-
-[data-lucide] {
-    stroke-width: 2.5px;
-}
-
-/* --- FIREWALLED MERCH SURGERY --- */
-#merch .merch-vault-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 30px !important;
-}
-
-.merch-card-v2 {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.merch-img-box {
-    position: relative;
-    aspect-ratio: 4/5;
-    background: #111;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-.merch-display-img {
+    padding: 120px 20px; 
+    min-height: 100vh; 
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.8);
-    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1), filter 0.5s ease;
+    background: #0a0a0a;
 }
 
-.merch-card-v2:hover .merch-display-img {
-    transform: scale(1.1);
-    filter: brightness(1);
+/* --- HERO WRAPPER --- */
+#home-wrapper { width: 100%; }
+
+/* --- MERCH GRID --- */
+.merch-vault-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
 }
 
-.merch-status {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #FCA311;
-    color: #000;
-    font-size: 9px;
-    font-weight: 900;
-    padding: 4px 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+.merch-card-v2 { display: flex; flex-direction: column; cursor: pointer; }
+.merch-img-box { position: relative; aspect-ratio: 4/5; background: #111; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+.merch-display-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
+.merch-card-v2:hover .merch-display-img { transform: scale(1.1); filter: brightness(1); }
+.merch-status { position: absolute; top: 15px; left: 15px; background: #FCA311; color: #000; font-size: 9px; font-weight: 900; padding: 4px 8px; text-transform: uppercase; }
+.merch-info { padding: 20px 0; text-align: left; }
+.merch-info h3 { font-family: 'Oswald', sans-serif; font-size: 16px; letter-spacing: 1px; color: #fff; }
+.merch-info p { font-size: 10px; color: #555; margin-top: 5px; letter-spacing: 2px; font-weight: 700; }
 
-.merch-info {
-    padding: 20px 0;
-    text-align: left;
-}
+/* --- FORM & JOIN SECTION --- */
+.form-card { background: #0d0d0d; padding: 30px; border: 1px solid #1a1a1a; max-width: 600px; margin: 0 auto; }
+.group { position: relative; width: 100%; margin-bottom: 25px; }
+.floating-input { width: 100%; padding: 10px 0; background: transparent !important; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; outline: none; }
+.floating-label { position: absolute; top: 10px; left: 0; color: rgba(255,255,255,0.3); font-size: 12px; text-transform: uppercase; transition: 0.3s; pointer-events: none; }
+.floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; }
+.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 20px; text-transform: uppercase; border: none; cursor: pointer; }
 
-.merch-info h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    letter-spacing: 1px;
-    margin: 0;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.merch-info p {
-    font-size: 10px;
-    color: #555;
-    margin-top: 5px;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
-
-@media (max-width: 768px) {
-    #merch .merch-vault-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px !important;
+/* --- RESPONSIVE SURGERY --- */
+@media(max-width:768px) {
+    .mobile-toggle { display: block; }
+    .nav-links { 
+        display: none; flex-direction: column; position: absolute; 
+        top: 60px; left: 0; width: 100%; background: #000; padding: 40px; gap: 30px; 
     }
-    
-    .merch-info h3 {
-        font-size: 13px;
-    }
+    .nav-links.active-menu { display: flex; }
+    .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
+    .hero-content-layer { padding: 120px 25px 40px 25px !important; }
 }

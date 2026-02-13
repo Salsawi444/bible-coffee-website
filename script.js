@@ -93,21 +93,48 @@ async function checkSlots() {
     }
 }
 
-/* --- DATABASE --- */
+/* --- DATABASE (EXPANDED & LOCKED) --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], 
         "Hawassa": ["City Center"] 
     },
-    "Kenya": { "Nairobi": ["Kilimani", "Westlands"] }
+    "Kenya": { 
+        "Nairobi": ["Kilimani", "Westlands"] 
+    },
+    "USA": { 
+        "Dallas": ["Downtown", "Plano"],
+        "Houston": ["Galleria"]
+    },
+    "UK": { 
+        "London": ["Central", "Canary Wharf"] 
+    },
+    "Germany": { 
+        "Berlin": ["Mitte", "Charlottenburg"] 
+    },
+    "Netherlands": { 
+        "Amsterdam": ["Zuid", "Centrum"] 
+    },
+    "Sweden": { 
+        "Stockholm": ["Norrmalm"] 
+    },
+    "Norway": { 
+        "Oslo": ["Sentrum"] 
+    },
+    "Denmark": { 
+        "Copenhagen": ["Indre By"] 
+    },
+    "South Africa": { 
+        "Johannesburg": ["Sandton"],
+        "Cape Town": ["City Bowl"]
+    },
+    "Uganda": { 
+        "Kampala": ["Central"] 
+    },
+    "Rwanda": { 
+        "Kigali": ["Nyarugenge"] 
+    }
 };
-
-function updateCities() {
-    const country = document.getElementById('country').value;
-    const citySelect = document.getElementById('city');
-    citySelect.innerHTML = '<option value="" disabled selected></option>';
-    if (db[country]) Object.keys(db[country]).forEach(c => citySelect.add(new Option(c, c)));
-}
 
 function updateLocations() {
     const country = document.getElementById('country').value;

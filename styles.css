@@ -234,13 +234,13 @@ select.floating-input option {
 /* --- FULL MOBILE OVERRIDE: SNAP LINE TO FAR LEFT --- */
 @media(max-width:768px) {
     
-    /* 1. MASTER GROUP - Value: 40px / 1px (LOCKED) */
+    /* 1. MASTER GROUP - LOCKED AT 40px / 1px */
     .hero-content-layer {
         margin-top: 40px !important;    
         padding-left: 1px !important;   
     }
 
-    /* 2. BIG TITLE JOYSTICK - Value: 3.2rem / 0.85 (LOCKED) */
+    /* 2. BIG TITLE JOYSTICK - LOCKED AT 3.2rem */
     .responsive-title {
         display: block !important;
         transform: translate(0px, 0px) !important; 
@@ -249,48 +249,54 @@ select.floating-input option {
         margin-bottom: 10px !important; 
     }
 
-    /* 3. THE MAIN GOLD LINE - Value: -5px (LOCKED) */
+    /* 3. THE MAIN GOLD LINE - LOCKED AT -5px */
     .manifesto-quote {
         border-left: 2px solid #FCA311 !important; /* THE ONLY LINE ALLOWED */
         padding-left: 15px !important;              
         margin-left: -5px !important;              
     }
 
-    /* --- THE KILL SWITCH FOR THE SECOND LINE (NO VALUES CHANGED) --- */
-    .manifesto-quote blockquote,
-    .manifesto-quote .manifesto-text-block,
-    .manifesto-quote p {
-        border-left: none !important;  /* Kills the line next to 'Authentic Faith' */
-        padding-left: 0 !important;    
+    /* --- THE NUCLEAR KILL SWITCH: NO VALUES CHANGED --- */
+    /* This targets the exact line visible in your screenshots */
+    .manifesto-quote p, 
+    .manifesto-quote blockquote, 
+    .manifesto-quote div,
+    .manifesto-text-block {
+        border-left: 0px solid transparent !important; /* Forces line to zero/transparent */
+        border: none !important; 
+        padding-left: 0 !important;
+        margin-left: 0 !important;
     }
 
-    /* 4. "THE KINGDOM" - Value: -5px (LOCKED) */
+    /* 4. "THE KINGDOM" - LOCKED AT -5px */
     .manifesto-quote span:first-of-type {
         display: block;
         margin-top: -5px !important; 
         color: #FCA311 !important; 
+        border-left: none !important;
     }
 
-    /* 5. "AUTHENTIC FAITH" - Value: 8px (LOCKED) */
+    /* 5. "AUTHENTIC FAITH" - LOCKED AT 8px */
     .manifesto-quote p {
         display: block;
         margin-top: 8px !important; 
-        margin-left: 0px !important; 
+        border-left: none !important; /* Specific kill for this line */
     }
 
-    /* 6. "WE CHOOSE..." - Value: 15px (LOCKED) */
+    /* 6. "WE CHOOSE..." - LOCKED AT 15px */
     .manifesto-quote small {
         display: block;
         margin-top: 15px !important; 
         line-height: 1.4 !important;
+        border-left: none !important;
     }
 
-    /* 7. THE BUTTON - Value: 30px (LOCKED) */
+    /* 7. THE BUTTON - LOCKED AT 30px */
     .hero-cta {
         margin-top: 30px !important; 
     }
 
-    /* --- NAVIGATION SYSTEM (LOCKED) --- */
+    /* --- NAVIGATION SYSTEM (UNTOUCHED) --- */
     .hero-container { align-items: flex-start !important; }
     .mobile-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: #000; padding: 60px 40px; border-bottom: 1px solid #1a1a1a; text-align: center; }

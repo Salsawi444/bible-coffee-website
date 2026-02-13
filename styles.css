@@ -252,7 +252,7 @@ select.floating-input option {
     /* 3. THE GOLD LINE - Move it without shifting the text */
     .manifesto-quote {
         border-left: 2px solid #FCA311 !important; /* The Gold Line style */
-        padding-left: 15px !important;              /* Gap: Between Line & Text */
+        padding-left: 25px !important;              /* Gap: Between Line & Text */
         margin-left: 0px !important;               /* Line: LEFT/RIGHT nudge */
     }
 
@@ -281,7 +281,7 @@ select.floating-input option {
         line-height: 1.4 !important;    /* Spacing between text lines */
     }
 
-    /* 7. THE BUTTON - "CLAIM MY SEAT" */
+    /* 7. THE BUTTON - "Reserve MY SEAT" */
     .hero-cta {
         margin-top: 30px !important;    /* Button: UP/DOWN nudge */
         margin-left: 0px !important;    /* Button: LEFT/RIGHT nudge */

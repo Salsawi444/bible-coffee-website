@@ -243,7 +243,7 @@ select.floating-input option {
     .responsive-title {
         display: block !important;
         /* (Left/Right , Up/Down) - Forces the title to move independently */
-        transform: translate(-15px, 0px) !important; 
+        transform: translate(-5px, 0px) !important; 
         font-size: 3.2rem !important;   /* Adjusts size for mobile */
         line-height: 0.85 !important;   /* Gap between BIBLE and COFFEE */
         margin-bottom: 10px !important; /* Space between title and Kingdom line */

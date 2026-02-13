@@ -171,45 +171,68 @@
     </div>
   </section>
 
-  <section id="join" class="section-container px-4">
-    <div class="max-w-xl mx-auto py-10">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-['Oswald'] font-bold text-white tracking-widest uppercase">Reserve Your Seat</h2>
-        <p class="text-[#FCA311] text-xs font-bold mt-2 uppercase tracking-widest">Limited to 8 People per Location</p>
-      </div>
-      <div class="form-card">
-        <form id="regForm" class="space-y-6">
-          <div class="group"><input type="text" id="name" class="floating-input" placeholder=" " required><label class="floating-label">Full Name</label></div>
-          <div class="group"><input type="tel" id="phone" class="floating-input" placeholder=" " required><label class="floating-label">Phone Number</label></div>
-          <div class="group"><input type="email" id="email" class="floating-input" placeholder=" " required><label class="floating-label">Email Address</label></div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="group">
-                <select id="country" onchange="updateCities()" class="floating-input" required>
-                    <option value="" disabled selected></option>
-                    <option value="Ethiopia">Ethiopia</option>
-                    <option value="Kenya">Kenya</option>
-                    <option value="USA">USA</option>
-                </select>
-                <label class="floating-label">Country</label>
-            </div>
-            <div class="group">
-                <select id="city" onchange="updateLocations()" class="floating-input" required>
-                    <option value="" disabled selected></option>
-                </select>
-                <label class="floating-label">City</label>
-            </div>
-          </div>
-          <div class="group">
-              <select id="location" class="floating-input" required>
-                  <option value="" disabled selected></option>
-              </select>
-              <label class="floating-label">Specific Location</label>
-          </div>
-          <button type="submit" id="submit-btn" class="submit-btn-premium">Confirm Reservation</button>
-        </form>
-      </div>
+  <section id="join" class="section-container px-4" style="background: #000;">
+    <div class="max-w-xl mx-auto py-20">
+        <div class="text-center mb-16">
+            <h2 style="font-family: 'Oswald'; font-size: 2.5rem; letter-spacing: 8px; color: white; text-transform: uppercase;">Reserve Your Seat</h2>
+            <div style="width: 50px; height: 2px; background: #FCA311; margin: 20px auto;"></div>
+            <p style="color: #FCA311; font-family: 'Inter'; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">Strictly Limited to 8 Seats Per Table</p>
+        </div>
+
+        <div class="form-card" style="background: #050505; border: 1px solid rgba(252, 163, 17, 0.1); padding: 50px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+            <form id="regForm" class="space-y-8">
+                <div class="group">
+                    <input type="text" id="name" name="Name" class="floating-input" placeholder=" " required>
+                    <label class="floating-label">Full Name</label>
+                </div>
+                
+                <div class="group">
+                    <input type="tel" id="phone" name="Phone" class="floating-input" placeholder=" " required>
+                    <label class="floating-label">Phone Number</label>
+                </div>
+
+                <div class="group">
+                    <input type="email" id="email" name="Email" class="floating-input" placeholder=" " required>
+                    <label class="floating-label">Email Address</label>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="group">
+                        <select id="country" name="Country" onchange="updateCities()" class="floating-input" required>
+                            <option value="" disabled selected></option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="Kenya">Kenya</option>
+                        </select>
+                        <label class="floating-label">Country</label>
+                    </div>
+                    <div class="group">
+                        <select id="city" name="City" onchange="updateLocations()" class="floating-input" required>
+                            <option value="" disabled selected></option>
+                        </select>
+                        <label class="floating-label">City</label>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <select id="location" name="Location" onchange="checkSlots()" class="floating-input" required>
+                        <option value="" disabled selected></option>
+                    </select>
+                    <label class="floating-label">Choose Location</label>
+                </div>
+
+                <div id="slot-badge" class="hidden" style="margin-bottom: 25px; padding: 15px; background: rgba(252, 163, 17, 0.05); border: 1px dashed rgba(252, 163, 17, 0.3); text-align: center;">
+                    <span id="slot-status-text" style="font-family: 'Oswald'; font-size: 11px; letter-spacing: 2px; color: #FCA311; text-transform: uppercase;">
+                        Checking Availability...
+                    </span>
+                </div>
+
+                <button type="submit" id="submit-btn" class="submit-btn-premium">
+                    <span id="btn-text">Confirm Reservation</span>
+                </button>
+            </form>
+        </div>
     </div>
-  </section>
+</section>
 
   <section id="events" class="section-container text-center py-20"><h1>UPCOMING EVENTS</h1></section>
   <section id="support" class="section-container" style="background: #000; padding: 120px 25px;">

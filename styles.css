@@ -223,9 +223,22 @@ select.floating-input option {
 .sermon-thumb { transition: 1s cubic-bezier(0.4, 0, 0.2, 1); filter: grayscale(100%) contrast(1.2); }
 .sermon-card:hover .sermon-thumb { filter: grayscale(0%); transform: scale(1.05); }
 
-@media (max-width: 768px) {
-    .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
-    .section-container { padding: 80px 15px; }
+/* --- MOBILE ONLY: NUDGING THE TEXT HIGHER --- */
+@media(max-width:768px) {
+    .hero-container {
+        /* This tells the container to stop centering the text vertically */
+        align-items: flex-start !important; 
+    }
+
+    .hero-content-layer {
+        /* This is the magic number. 
+           Lower = Higher on the screen. 
+           Higher = Lower on the screen. */
+        margin-top: 70px !important; 
+        
+        /* This keeps it in your white rectangle on the left */
+        padding-left: 15px !important; 
+    }
 }
 
 /* --- UTILITIES --- */

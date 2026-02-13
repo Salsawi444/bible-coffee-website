@@ -1,18 +1,26 @@
-/* --- HERO SECTION (RESTORED TO BLACK) --- */
+/* 1. FORCE GLOBAL BLACK (Kills white bars) */
+html, body, nav, .hero-container, .hero-marquee {
+    background-color: #000000 !important;
+}
+
+/* 2. REPAIR NAVIGATION (Screenshot Fix) */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background: #000000 !important; /* Fixes white nav in Screenshot 140228 */
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* 3. HERO REPAIR (Left Aligned like your drawing) */
 .hero-container { 
     position: relative; 
     min-height: 100vh; 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; 
-    overflow: hidden; 
-    background: #000000 !important; /* Forces black background */
-}
-
-/* Fixes the white bar issue in your screenshot */
-nav { 
-    background: #000000 !important; 
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    justify-content: flex-start; /* Snaps content to the left side */
+    padding-left: 8%; /* Aligns with your gold vertical line */
 }
 
 .hero-bg-layer { 
@@ -22,57 +30,38 @@ nav {
     background-image: url('hero-family.jpg'); 
     background-size: cover; 
     background-position: center; 
+    opacity: 0.5; /* Keeps image visible but subtle */
     z-index: 0;
-    opacity: 0.5; /* Keeps image subtle so text pops */
 }
 
 .hero-overlay-layer { 
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%; 
     z-index: 1; 
-    /* Dark fade to ensure text on left is perfectly readable */
-    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%); 
+    /* Solid black fade to protect text on the left */
+    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0) 80%); 
 }
 
-.hero-content-layer { 
-    position: relative; 
-    z-index: 10; 
-    padding-left: 5%; 
-    width: 100%; 
-    max-width: 1400px;
-}
-
-/* --- MOBILE ALIGNMENT (THE WHITE RECTANGLE FIX) --- */
+/* 4. MOBILE EMERGENCY FIX (Responsive Title) */
 @media(max-width:768px) {
     .hero-container { 
+        padding-left: 25px !important; /* Rectangle area from 1000097076.jpg */
         justify-content: flex-start !important; 
-        padding-left: 20px !important; /* Snaps content to the left edge */
     }
-
-    .hero-content-layer {
-        text-align: left !important;
-        margin-top: 60px;
-    }
-
+    
     .responsive-title {
-        font-size: 3.8rem !important; /* Keeps it bold but fitting */
+        font-size: clamp(3rem, 10vw, 4.5rem) !important; /* Restores the bold size */
         text-align: left !important;
         margin-left: 0 !important;
     }
 
     .manifesto-quote { 
-        border-left: 2px solid #FCA311 !important; 
-        padding-left: 15px !important;
+        border-left: 2px solid #FCA311 !important; /* Gold line from 1000097075.jpg */
+        padding-left: 15px !important; 
         text-align: left !important;
-        margin-left: 0 !important;
     }
 
-    .hero-cta {
-        margin-left: 0 !important;
-    }
-
-    .hero-overlay-layer {
-        /* Stronger mobile-specific dark overlay */
-        background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, #000000 90%);
+    .hero-marquee {
+        background: #000000 !important; /* Kills bottom white bar */
     }
 }

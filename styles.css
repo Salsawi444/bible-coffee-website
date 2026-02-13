@@ -234,64 +234,63 @@ select.floating-input option {
 /* --- FULL MOBILE OVERRIDE: SNAP LINE TO FAR LEFT --- */
 @media(max-width:768px) {
     
-    /* 1. MASTER GROUP */
+    /* 1. MASTER GROUP - Value: 40px / 1px (LOCKED) */
     .hero-content-layer {
-        margin-top: 40px !important;    /* Whole block: UP/DOWN */
-        padding-left: 1px !important;   /* Pushed to the LEFT edge */
+        margin-top: 40px !important;    
+        padding-left: 1px !important;   
     }
 
-    /* 2. BIG TITLE JOYSTICK */
+    /* 2. BIG TITLE JOYSTICK - Value: 3.2rem / 0.85 (LOCKED) */
     .responsive-title {
         display: block !important;
-        transform: translate(0px, 0px) !important; /* (Left/Right, Up/Down) */
+        transform: translate(0px, 0px) !important; 
         font-size: 3.2rem !important; 
         line-height: 0.85 !important; 
         margin-bottom: 10px !important; 
     }
 
-    /* 3. THE MAIN GOLD LINE */
+    /* 3. THE MAIN GOLD LINE - Value: -5px (LOCKED) */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; /* The ONLY line we want */
+        border-left: 2px solid #FCA311 !important; 
         padding-left: 15px !important;              
         margin-left: -5px !important;              
     }
 
-    /* --- THE KILL SWITCH: This removes borders from EVERYTHING else inside --- */
+    /* --- THE KILL SWITCH: Only kills the extra line, touches NO values --- */
     .manifesto-quote p, 
     .manifesto-quote span, 
-    .manifesto-quote small,
-    .manifesto-text-block {
-        border-left: none !important;  /* Kills any hidden lines */
-        padding-left: 0 !important;    /* Removes the gap */
+    .manifesto-quote small {
+        border-left: none !important;  
+        padding-left: 0 !important;    
     }
 
-    /* 4. "THE KINGDOM" - Individual Control */
+    /* 4. "THE KINGDOM" - Value: -5px (LOCKED) */
     .manifesto-quote span:first-of-type {
         display: block;
         margin-top: -5px !important; 
         color: #FCA311 !important; 
     }
 
-    /* 5. "AUTHENTIC FAITH" - Individual Control */
+    /* 5. "AUTHENTIC FAITH" - Value: 8px (LOCKED) */
     .manifesto-quote p {
         display: block;
         margin-top: 8px !important; 
         margin-left: 0px !important; 
     }
 
-    /* 6. "WE CHOOSE..." - Individual Control */
+    /* 6. "WE CHOOSE..." - Value: 15px (LOCKED) */
     .manifesto-quote small {
         display: block;
         margin-top: 15px !important; 
         line-height: 1.4 !important;
     }
 
-    /* 7. THE BUTTON - "CLAIM MY SEAT" */
+    /* 7. THE BUTTON - Value: 30px (LOCKED) */
     .hero-cta {
         margin-top: 30px !important; 
     }
 
-    /* --- NAVIGATION & CORE SYSTEM --- */
+    /* --- NAVIGATION SYSTEM (LOCKED) --- */
     .hero-container { align-items: flex-start !important; }
     .mobile-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: #000; padding: 60px 40px; border-bottom: 1px solid #1a1a1a; text-align: center; }

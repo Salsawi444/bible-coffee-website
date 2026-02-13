@@ -1,4 +1,165 @@
+/* --- GLOBAL CONFIG --- */
 const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+/* --- SECTION SWITCHER (THE FIX) --- */
+function showSection(id, btn) {
+    // 1. Identify all possible main content IDs
+    const sectionIds = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
+    
+    // 2. Hide everything first
+    sectionIds.forEach(sectionId => {
+        const el = document.getElementById(sectionId);
+        if(el) {
+            el.style.display = 'none';
+            el.classList.add('hidden'); // Ensure tailwind hidden is applied
+        }
+    });
+
+    // 3. Show the target
+    // Special case: if 'home' is clicked, show 'home-wrapper'
+    const targetId = (id === 'home') ? 'home-wrapper' : id;
+    const target = document.getElementById(targetId);
+    
+    if(target) {
+        target.style.display = 'block';
+        target.classList.remove('hidden');
+    }
+
+    // 4. Update Navigation UI
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    
+    // 5. Mobile Menu Cleanup
+    if(navLinks) navLinks.classList.remove('active-menu');
+    
+    // 6. Reset view to top
+    window.scrollTo(0,0);
+}
+
+/* --- MOBILE MENU TOGGLE --- */
+if (menuToggle) {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active-menu');
+    });
+}
+
+/* --- VIDEO PLAYER --- */
+function openVideo(videoId) {
+    const overlay = document.createElement('div');
+    overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; display:flex; align-items:center; justify-content:center; padding:10px;";
+    
+    overlay.innerHTML = `
+        <div style="position:relative; width:100%; max-width:850px; aspect-ratio:16/9; background:#000;">
+            <button onclick="this.parentElement.parentElement.remove()" 
+                    style="position:absolute; top:-40px; right:0; color:#FCA311; background:none; border:none; font-family:'Oswald'; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:2px;">
+                CLOSE [X]
+            </button>
+            <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+}
+
+/* --- REGISTRATION DATABASE --- */
+const db = {
+    "Ethiopia": { 
+        "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
+        "Hawassa": ["City Center"], "Dire Dawa": ["Kezira"], "Bahir Dar": ["Piazza"]
+    },
+    "Kenya": { "Nairobi": ["Kilimani", "Westlands", "Karen"], "Mombasa": ["Nyali"] },
+    "USA": { "Dallas": ["Downtown", "Plano"], "New York": ["Manhattan"] },
+    "UK": { "London": ["Canary Wharf", "Westminster"] }
+};
+
+function updateCities() {
+    const country = document.getElementById('country').value;
+    const citySelect = document.getElementById('city');
+    citySelect.innerHTML = '<option value="" disabled selected></option>';
+    if (db[country]) Object.keys(db[country]).forEach(c => citySelect.add(new Option(c, c)));
+}
+
+function updateLocations() {
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const locSelect = document.getElementById('location');
+    locSelect.innerHTML = '<option value="" disabled selected></option>';
+    if (db[country] && db[country][city]) {
+        db[country][city].forEach(l => locSelect.add(new Option(l, l)));
+    }
+}
+
+async function checkSlots() {
+    const loc = document.getElementById('location').value;
+    const badge = document.getElementById('slot-badge');
+    const countSpan = document.getElementById('slot-count');
+    const btn = document.getElementById('submit-btn');
+    if(!loc) return;
+    
+    badge.classList.remove('hidden');
+    countSpan.innerText = "...";
+    try {
+        const response = await fetch(`https://sheetdb.io/api/v1/9q45d3e7oe5ks?t=${Date.now()}`);
+        const data = await response.json();
+        const bookings = data.filter(row => row.Location === loc).length;
+        const available = 8 - bookings;
+        countSpan.innerText = available > 0 ? available : 0;
+        btn.disabled = available <= 0;
+        if(available <= 0) btn.innerText = "LOCALLY FULL";
+    } catch (e) {
+        countSpan.innerText = "8";
+    }
+}
+
+/* --- FORM SUBMISSION --- */
+const regForm = document.getElementById('regForm');
+if(regForm) {
+    regForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const formData = {
+            'Name': document.getElementById('name').value,
+            'Phone': document.getElementById('phone').value,
+            'Email': document.getElementById('email').value,
+            'Country': document.getElementById('country').value,
+            'City': document.getElementById('city').value,
+            'Location': document.getElementById('location').value,
+            'Date': new Date().toLocaleString()
+        };
+
+        btn.disabled = true;
+        btn.innerText = "RESERVING...";
+
+        try {
+            await fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [formData] })
+            });
+            
+            const waMsg = `*NEW RESERVATION*%0A*Name:* ${formData.Name}%0A*Location:* ${formData.Location}`;
+            window.location.href = `https://wa.me/251910884585?text=${waMsg}`;
+        } catch (err) {
+            alert("Connection error. Please try again.");
+            btn.disabled = false;
+            btn.innerText = "Confirm Reservation";
+        }
+    });
+}
+
+/* --- INITIALIZE --- */
+document.addEventListener('DOMContentLoaded', () => {
+    if(window.lucide) lucide.createIcons();
+    
+    // Merch click handling
+    document.querySelectorAll('.merch-card-v2').forEach(card => {
+        card.addEventListener('click', () => {
+            const item = card.querySelector('h3').innerText;
+            window.location.href = `https://wa.me/251910884585?text=I want to order: ${item}`;
+        });
+    });
+});const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
 /* --- SERMON DATA --- */

@@ -234,7 +234,7 @@ select.floating-input option {
 
     .hero-content-layer {
         /* Pushes the text and yellow lines to the LEFT */
-        padding-left: -10px !important; 
+        padding-left: 50px !important; 
         padding-right: 20px !important;
         margin-top: 0 !important;
         margin-left: 0 !important;

@@ -228,58 +228,65 @@ select.floating-input option {
 
 /* --- TOTAL FREEDOM MOBILE CONTROLS (PLACE AT BOTTOM) --- */
 /* --- INDIVIDUAL MOBILE CONTROLS (PLACE AT BOTTOM) --- */
+/* --- INDIVIDUAL MOBILE CONTROLS (SINGLE GOLD LINE) --- */
+/* --- INDIVIDUAL MOBILE CONTROLS (FULL FREEDOM) --- */
 @media(max-width:768px) {
     
     /* 1. MASTER GROUP - Moves the whole block at once */
     .hero-content-layer {
-        margin-top: 50px !important;    /* Whole block: UP/DOWN */
-        padding-left: 15px !important;  /* Whole block: LEFT/RIGHT */
+        margin-top: 40px !important;    /* Whole block: UP/DOWN nudge */
+        padding-left: 15px !important;  /* Whole block: LEFT/RIGHT nudge */
     }
 
-    /* 2. BIG TITLE - "BIBLE & COFFEE" */
+    /* 2. BIG TITLE CONTROL - "BIBLE & COFFEE" */
     .responsive-title {
+        position: relative !important;  /* Enables individual movement */
+        top: 0px !important;            /* Title: UP (negative) or DOWN (positive) */
+        left: 5px !important;           /* Title: LEFT (negative) or RIGHT (positive) */
         font-size: 3.2rem !important;   /* Size of the words */
-        margin-bottom: 5px !important;  /* Space below "BIBLE & COFFEE" */
         line-height: 0.85 !important;   /* Vertical gap between words */
+        margin-bottom: 10px !important; /* Space below the title */
     }
 
-    /* 3. THE GOLD LINE - Individual control */
+    /* 3. THE ONLY GOLD LINE - Individual control */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; /* Gold Line: Thickness/Color */
+        border-left: 2px solid #FCA311 !important; /* The MAIN Gold Line */
         padding-left: 15px !important;              /* Gap: Between Line & Text */
-        margin-left: 0px !important;               /* Line: LEFT/RIGHT Nudge */
+        margin-left: 0px !important;               /* Line: LEFT/RIGHT nudge */
     }
 
     /* 4. "THE KINGDOM" - Individual line control */
     .manifesto-quote span:first-of-type, .kingdom-line {
         display: block;
-        margin-top: -5px !important;    /* Kingdom Line: UP/DOWN */
-        margin-left: 0px !important;    /* Kingdom Line: LEFT/RIGHT */
+        margin-top: -5px !important;    /* Kingdom Line: UP/DOWN nudge */
+        margin-left: 0px !important;    /* Kingdom Line: LEFT/RIGHT nudge */
     }
 
-    /* 5. "AUTHENTIC FAITH" - Individual line control */
+    /* 5. "AUTHENTIC FAITH" - (NO SECOND GOLD LINE) */
     .manifesto-quote p, .manifesto-text-block {
         display: block;
-        margin-top: 10px !important;    /* Authentic Faith: UP/DOWN */
-        margin-left: 0px !important;    /* Authentic Faith: LEFT/RIGHT */
+        border-left: none !important;   /* Kills secondary lines */
+        padding-left: 0 !important;
+        margin-top: 8px !important;     /* Authentic Faith: UP/DOWN nudge */
+        margin-left: 0px !important;    /* Authentic Faith: LEFT/RIGHT nudge */
     }
 
-    /* 6. "WE CHOOSE..." - The bottom paragraph control */
+    /* 6. "WE CHOOSE..." - Bottom paragraph control */
     .manifesto-quote small, .description-text {
         display: block;
-        margin-top: 15px !important;    /* "We Choose": UP/DOWN */
-        margin-left: 0px !important;    /* "We Choose": LEFT/RIGHT */
-        line-height: 1.4 !important;    /* Space between paragraph lines */
+        margin-top: 15px !important;    /* "We Choose": UP/DOWN nudge */
+        margin-left: 0px !important;    /* "We Choose": LEFT/RIGHT nudge */
+        line-height: 1.4 !important;    /* Line spacing */
     }
 
     /* 7. THE BUTTON - "CLAIM MY SEAT" */
     .hero-cta {
-        margin-top: 30px !important;    /* Button: UP/DOWN */
-        margin-left: 0px !important;    /* Button: LEFT/RIGHT */
+        margin-top: 30px !important;    /* Button: UP/DOWN nudge */
+        margin-left: 0px !important;    /* Button: LEFT/RIGHT nudge */
     }
 
-    /* --- EMERGENCY SYSTEM DEFAULTS (DON'T TOUCH) --- */
-    .hero-container { align-items: flex-start !important; padding-top: 0 !important; }
+    /* --- NAVIGATION & CORE SYSTEM --- */
+    .hero-container { align-items: flex-start !important; }
     .mobile-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: #000; padding: 60px 40px; gap: 35px; border-bottom: 1px solid #1a1a1a; text-align: center; }
     .nav-links.active-menu { display: flex; }

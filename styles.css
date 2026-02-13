@@ -10,7 +10,21 @@ body {
 
 /* --- WORLD-CLASS TYPOGRAPHY --- */
 h1, h2, h3, .nav-links button { font-family: 'Oswald', sans-serif; }
-.manifesto-quote, .magazine-title { font-family: 'Playfair Display', serif; }
+
+/* REFINED BOLD EDITORIAL QUOTE */
+.manifesto-quote { 
+    font-family: 'Playfair Display', serif; 
+    font-style: italic; 
+    font-weight: 900; /* SURGERY: Maximum Bold Impact */
+    color: white; 
+    line-height: 1.2; 
+    font-size: clamp(1.8rem, 6vw, 2.6rem); /* SURGERY: Refined Sophisticated Size */
+    letter-spacing: 0.01em;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.magazine-title { font-family: 'Playfair Display', serif; }
 
 /* --- NAVIGATION --- */
 nav { 
@@ -24,13 +38,13 @@ nav {
     padding: 20px 0; 
 }
 .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
-.nav-links { display: flex; gap: 30px; } /* Increased gap for desktop breathability */
+.nav-links { display: flex; gap: 30px; } 
 
 .nav-links button { 
     color: rgba(255,255,255,0.5); 
-    font-size: 14px; /* SURGERY: Upscaled from 10px for Desktop */
+    font-size: 14px; /* SURGERY: Upscaled for Desktop Presence */
     font-weight: 700; 
-    letter-spacing: 4px; /* SURGERY: Increased tracking for premium feel */
+    letter-spacing: 4px; 
     border: none; 
     background: none; 
     cursor: pointer; 
@@ -56,7 +70,7 @@ nav {
         text-align: center;
     }
     .nav-links.active-menu { display: flex; }
-    .nav-links button { font-size: 14px; letter-spacing: 5px; } /* Mobile stays consistent */
+    .nav-links button { font-size: 14px; letter-spacing: 5px; } 
 }
 
 /* --- GLOBAL SECTION CONTAINER --- */

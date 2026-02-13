@@ -230,53 +230,55 @@ select.floating-input option {
 /* --- INDIVIDUAL MOBILE CONTROLS (PLACE AT BOTTOM) --- */
 /* --- INDIVIDUAL MOBILE CONTROLS (SINGLE GOLD LINE) --- */
 /* --- INDIVIDUAL MOBILE CONTROLS (FULL FREEDOM) --- */
+/* --- THE INDIVIDUAL FREEDOM MOBILE CONTROLS (PLACE AT BOTTOM) --- */
 @media(max-width:768px) {
     
-    /* 1. MASTER GROUP - Moves the whole block at once */
+    /* 1. MASTER GROUP - Moves the entire content block together */
     .hero-content-layer {
-        margin-top: 40px !important;    /* Whole block: UP/DOWN nudge */
-        padding-left: 15px !important;  /* Whole block: LEFT/RIGHT nudge */
+        margin-top: 40px !important;    /* MASTER: UP/DOWN nudge */
+        padding-left: 15px !important;  /* MASTER: LEFT/RIGHT nudge */
     }
 
-    /* 2. BIG TITLE CONTROL - "BIBLE & COFFEE" */
+    /* 2. BIG TITLE JOYSTICK - "BIBLE & COFFEE" */
     .responsive-title {
-        position: relative !important;  /* Enables individual movement */
-        top: 0px !important;            /* Title: UP (negative) or DOWN (positive) */
-        left: 40px !important;           /* Title: LEFT (negative) or RIGHT (positive) */
-        font-size: 3.2rem !important;   /* Size of the words */
-        line-height: 0.85 !important;   /* Vertical gap between words */
-        margin-bottom: 10px !important; /* Space below the title */
+        display: block !important;
+        /* (Left/Right , Up/Down) - Forces the title to move independently */
+        transform: translate(-20px, -30px) !important; 
+        font-size: 3.2rem !important;   /* Adjusts size for mobile */
+        line-height: 0.85 !important;   /* Gap between BIBLE and COFFEE */
+        margin-bottom: 10px !important; /* Space between title and Kingdom line */
     }
 
-    /* 3. THE ONLY GOLD LINE - Individual control */
+    /* 3. THE GOLD LINE - Move it without shifting the text */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; /* The MAIN Gold Line */
+        border-left: 2px solid #FCA311 !important; /* The Gold Line style */
         padding-left: 15px !important;              /* Gap: Between Line & Text */
         margin-left: 0px !important;               /* Line: LEFT/RIGHT nudge */
     }
 
-    /* 4. "THE KINGDOM" - Individual line control */
+    /* 4. "THE KINGDOM" - Orange text individual control */
     .manifesto-quote span:first-of-type, .kingdom-line {
         display: block;
-        margin-top: -5px !important;    /* Kingdom Line: UP/DOWN nudge */
-        margin-left: 0px !important;    /* Kingdom Line: LEFT/RIGHT nudge */
+        margin-top: -5px !important;    /* Kingdom: UP/DOWN nudge */
+        margin-left: 0px !important;    /* Kingdom: LEFT/RIGHT nudge */
+        color: #FCA311 !important;      /* Forces gold/orange color */
     }
 
-    /* 5. "AUTHENTIC FAITH" - (NO SECOND GOLD LINE) */
+    /* 5. "AUTHENTIC FAITH" - Secondary text (NO second gold line) */
     .manifesto-quote p, .manifesto-text-block {
         display: block;
-        border-left: none !important;   /* Kills secondary lines */
-        padding-left: 0 !important;
+        border-left: none !important;   /* KILLS THE SECOND LINE */
+        padding-left: 0 !important;     /* Removes padding since line is gone */
         margin-top: 8px !important;     /* Authentic Faith: UP/DOWN nudge */
         margin-left: 0px !important;    /* Authentic Faith: LEFT/RIGHT nudge */
     }
 
-    /* 6. "WE CHOOSE..." - Bottom paragraph control */
+    /* 6. "WE CHOOSE..." - The lower paragraph control */
     .manifesto-quote small, .description-text {
         display: block;
         margin-top: 15px !important;    /* "We Choose": UP/DOWN nudge */
         margin-left: 0px !important;    /* "We Choose": LEFT/RIGHT nudge */
-        line-height: 1.4 !important;    /* Line spacing */
+        line-height: 1.4 !important;    /* Spacing between text lines */
     }
 
     /* 7. THE BUTTON - "CLAIM MY SEAT" */
@@ -285,8 +287,8 @@ select.floating-input option {
         margin-left: 0px !important;    /* Button: LEFT/RIGHT nudge */
     }
 
-    /* --- NAVIGATION & CORE SYSTEM --- */
-    .hero-container { align-items: flex-start !important; }
+    /* --- CORE SYSTEM OVERRIDES (REQUIRED) --- */
+    .hero-container { align-items: flex-start !important; padding-top: 0 !important; }
     .mobile-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: #000; padding: 60px 40px; gap: 35px; border-bottom: 1px solid #1a1a1a; text-align: center; }
     .nav-links.active-menu { display: flex; }

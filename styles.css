@@ -242,7 +242,7 @@ select.floating-input option {
     .responsive-title {
         position: relative !important;  /* Enables individual movement */
         top: 0px !important;            /* Title: UP (negative) or DOWN (positive) */
-        left: 20px !important;           /* Title: LEFT (negative) or RIGHT (positive) */
+        left: 40px !important;           /* Title: LEFT (negative) or RIGHT (positive) */
         font-size: 3.2rem !important;   /* Size of the words */
         line-height: 0.85 !important;   /* Vertical gap between words */
         margin-bottom: 10px !important; /* Space below the title */

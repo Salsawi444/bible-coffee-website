@@ -78,25 +78,26 @@ function openVideo(videoId) {
     document.body.appendChild(overlay);
 }
 
-/* --- GLOBAL REGISTRATION DB --- */
+/* --- GLOBAL REGISTRATION DB (REFINED) --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
-        "Hawassa": ["Location"], "Dire Dawa": ["Location"], "Bahir Dar": ["Location"]
+        "Hawassa": ["City Center", "Lake Front"], 
+        "Dire Dawa": ["Kezira", "Taiwan"], 
+        "Bahir Dar": ["Piazza", "Shoreline"]
     },
-    "Uganda": { "Kampala": ["Location"], "Entebbe": ["Location"] },
-    "Rwanda": { "Kigali": ["Location"] },
-    "Kenya": { "Nairobi": ["Location"] },
-    "South Africa": { "Johannesburg": ["Location"] },
-    "Germany": { "Berlin": ["Location"] },
-    "Netherlands": { "Amsterdam": ["Location"] },
-    "Sweden": { "Stockholm": ["Location"] },
-    "Norway": { "Oslo": ["Location"] },
-    "Denmark": { "Copenhagen": ["Location"] },
-    "USA": { "Dallas": ["Location"], "New York": ["Location"] },
-    "UK": { "London": ["Location"] }
+    "Kenya": { "Nairobi": ["Kilimani", "Westlands", "Karen", "CBD"], "Mombasa": ["Nyali", "Old Town"] },
+    "Uganda": { "Kampala": ["Kololo", "Nakasero", "Kiwatule"], "Entebbe": ["Victoria Side"] },
+    "Rwanda": { "Kigali": ["Kiyovu", "Kimihurura", "Nyabugogo"] },
+    "South Africa": { "Johannesburg": ["Sandton", "Rosebank", "Soweto"], "Cape Town": ["Waterfront", "Sea Point"] },
+    "Germany": { "Berlin": ["Mitte", "Kreuzberg"], "Frankfurt": ["Innenstadt"], "Munich": ["Altstadt"] },
+    "Netherlands": { "Amsterdam": ["Centrum", "Zuid"], "Rotterdam": ["Coolsingel"] },
+    "Sweden": { "Stockholm": ["Norrmalm", "Södermalm", "Östermalm"] },
+    "Norway": { "Oslo": ["Sentrum", "Grünerløkka"] },
+    "Denmark": { "Copenhagen": ["Vesterbro", "Nørrebro"] },
+    "USA": { "Dallas": ["Downtown", "Plano", "Frisco"], "New York": ["Manhattan", "Brooklyn", "Queens"] },
+    "UK": { "London": ["Canary Wharf", "Westminster", "Shoreditch"], "Manchester": ["City Centre"] }
 };
-
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');

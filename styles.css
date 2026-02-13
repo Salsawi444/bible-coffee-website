@@ -8,34 +8,38 @@ body {
     line-height: 1.6;
 }
 
-/* --- HERO SECTION (BLENDING & PLACEMENT FIX) --- */
+/* --- HERO SECTION (MOBILE & DESKTOP ALIGNMENT FIX) --- */
 .hero-container { 
     position: relative; 
     min-height: 100vh; 
     display: flex; 
-    align-items: center; /* Vertical center */
-    justify-content: flex-start; /* Horizontal start to move text left */
+    align-items: center; 
+    justify-content: flex-start; 
     overflow: hidden; 
-    background-color: black; 
+    background-color: #000; 
 }
 
 .hero-bg-layer { 
     position: absolute; 
-    top: 0; right: 0; /* Align image to the right to leave space for text */
-    width: 70%; /* Image takes up the right side */
+    top: 0; 
+    right: 0; 
+    width: 70%; 
     height: 100%; 
     background-image: url('hero-family.jpg'); 
     background-size: cover; 
     background-position: center; 
-    z-index: 0; 
+    z-index: 0;
+    /* This creates the 'Desktop' blending effect */
+    mix-blend-mode: screen; 
+    opacity: 0.9;
 }
 
 .hero-overlay-layer { 
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%; 
     z-index: 1; 
-    /* High-end blend: Fades from solid black on the left to transparent on the right */
-    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%); 
+    /* High-end blend: Desktop Transition */
+    background: linear-gradient(90deg, #000000 15%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0) 100%); 
 }
 
 .hero-content-layer { 
@@ -50,12 +54,13 @@ body {
 /* --- THE TITLE FIX --- */
 .responsive-title { 
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(3rem, 12vw, 7rem) !important; 
-    line-height: 0.82; /* Tight magazine look */
+    font-size: clamp(3.2rem, 12vw, 7.5rem) !important; 
+    line-height: 0.85; 
     letter-spacing: -2px; 
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 20px;
+    color: #ffffff;
 }
 
 /* --- SCROLLING TEXT --- */
@@ -76,12 +81,24 @@ nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(0,0,
 .nav-links button { color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 700; letter-spacing: 3px; border: none; background: none; cursor: pointer; text-transform: uppercase; transition: 0.4s; }
 .nav-links button.active { color: #FCA311; }
 
-/* --- MOBILE --- */
+/* --- MOBILE SPECIFIC UPDATES --- */
 .mobile-toggle { display: none; background: none; border: none; color: #FCA311; cursor: pointer; }
+
 @media(max-width:768px) {
-    .nav-container { justify-content: flex-start; }
-    .hero-bg-layer { width: 100%; opacity: 0.6; } /* Better text readability on mobile */
-    .hero-overlay-layer { background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, #000000 90%); }
+    .hero-container { justify-content: center; text-align: center; }
+    .hero-bg-layer { 
+        width: 100%; 
+        opacity: 0.7; 
+        mix-blend-mode: lighten; /* Smoother mobile blending */
+        filter: brightness(0.8) contrast(1.2); 
+    } 
+    .hero-overlay-layer { 
+        /* Mobile-first gradient: darkens bottom to keep text legible over the image */
+        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 70%, #000000 100%); 
+    }
+    .manifesto-quote { border-left: none; border-top: 2px solid #FCA311; padding-left: 0; padding-top: 15px; }
+    
+    .nav-container { justify-content: space-between; }
     .mobile-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #000; padding: 50px 40px; gap: 30px; border-bottom: 1px solid #1a1a1a; text-align: center; }
     .nav-links.active-menu { display: flex; }

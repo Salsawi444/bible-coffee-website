@@ -1,464 +1,196 @@
-/* --- CORE ARCHITECTURE --- */
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
-body {
-    font-family: 'Inter', sans-serif;
-    background: #000000;
-    color: #ffffff;
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+/* --- CONFIGURATION --- */
+const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
 
-/* --- HERO SECTION (RESTORED) --- */
-.hero-container {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center; /* Centered vertically for impact */
-    overflow: hidden;
-    background-color: black;
-}
+/* --- NAVIGATION LOGIC --- */
+function showSection(id, btn) {
+    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
+    sections.forEach(sectionId => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+            el.style.display = 'none';
+            el.classList.add('hidden');
+        }
+    });
 
-.hero-bg-layer {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('hero-family.jpg'); /* Ensure this file exists */
-    background-size: cover;
-    background-position: center center;
-    z-index: 0;
-}
-
-.hero-overlay-layer {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 60%, #000000 100%);
-}
-
-.hero-content-layer {
-    position: relative;
-    z-index: 10;
-    padding: 0 25px;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 80px; /* Offset for nav */
-}
-
-/* THIS RESTORES THE BIG TITLE */
-.responsive-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(3.5rem, 15vw, 7rem) !important;
-    line-height: 0.9;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-/* --- SCROLLING MARQUEE (RESTORED) --- */
-.hero-marquee {
-    width: 100%;
-    overflow: hidden;
-    background: #000;
-    padding: 20px 0;
-    border-bottom: 1px solid #111;
-}
-.marquee-content {
-    display: inline-block;
-    white-space: nowrap;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 1px #FCA311;
-    animation: marquee 40s linear infinite;
-    letter-spacing: 2px;
-}
-.marquee-content .dot {
-    color: #FCA311;
-    -webkit-text-stroke: 0;
-    margin: 0 20px;
-    font-size: 0.8rem;
-    vertical-align: middle;
-}
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* --- TYPOGRAPHY --- */
-h1, h2, h3, .nav-links button { font-family: 'Oswald', sans-serif; }
-
-/* REFINED MANIFESTO - HIGH END FIX */
-.manifesto-quote {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 500; /* Increased weight for clarity */
-    font-style: normal; /* Removed italic so it looks solid */
-    color: #ffffff;
-    line-height: 1.3;
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Slightly larger */
-    letter-spacing: 3px; /* Premium spacing */
-    margin-top: 15px;
-    margin-bottom: 30px;
-    display: block;
-    text-transform: uppercase;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-}
-
-.magazine-title { font-family: 'Playfair Display', serif; }
-
-/* --- NAVIGATION --- */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    background: rgba(0,0,0,0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 20px 0;
-}
-.nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
-.nav-links { display: flex; gap: 30px; }
-
-.nav-links button {
-    color: rgba(255,255,255,0.5);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.nav-links button.active { color: #FCA311; }
-.nav-links button:hover { color: #fff; }
-
-.mobile-toggle { display: none; background: none; border: none; color: #FCA311; cursor: pointer; }
-
-@media(max-width:768px) {
-    .mobile-toggle { display: block; }
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 65px; left: 0; width: 100%;
-        background: #000;
-        padding: 60px 40px;
-        gap: 35px;
-        border-bottom: 1px solid #1a1a1a;
-        text-align: center;
+    if (id === 'home') {
+        const wrapper = document.getElementById('home-wrapper');
+        const homeHeader = document.getElementById('home');
+        if (wrapper) { wrapper.style.display = 'block'; wrapper.classList.remove('hidden'); }
+        if (homeHeader) { homeHeader.style.display = 'flex'; homeHeader.classList.remove('hidden'); }
+    } else {
+        const target = document.getElementById(id);
+        if (target) { target.style.display = 'block'; target.classList.remove('hidden'); }
     }
-    .nav-links.active-menu { display: flex; }
-    .nav-links button { font-size: 14px; letter-spacing: 5px; }
+
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks) navLinks.classList.remove('active-menu');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* --- GLOBAL SECTION CONTAINER --- */
-.section-container { display: none; padding: 100px 0; min-height: 100vh; width: 100%; background: #000; }
-#home-wrapper { width: 100%; background: #000; }
+/* --- MOBILE MENU --- */
+document.getElementById('menu-toggle')?.addEventListener('click', function(e) {
+    e.stopPropagation();
+    document.getElementById('nav-links')?.classList.toggle('active-menu');
+});
 
-.hero-cta {
-    margin-top: 35px;
-    border: 1px solid #FCA311;
-    color: #FCA311;
-    padding: 18px 45px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-weight: 700;
-    font-size: 10px;
-    cursor: pointer;
-    background: transparent;
-    transition: 0.5s;
-}
-.hero-cta:hover { background: #FCA311; color: #000; box-shadow: 0 0 30px rgba(252, 163, 17, 0.3); }
-
-/* --- PREMIUM FORM --- */
-.form-card { background: #080808; padding: 40px; border: 1px solid rgba(255,255,255,0.05); max-width: 550px; margin: 0 auto; border-radius: 2px; }
-.group { position: relative; width: 100%; margin-bottom: 30px; }
-
-.floating-input {
-    width: 100%; padding: 12px 0; background: transparent !important;
-    border: none; border-bottom: 1px solid rgba(255,255,255,0.1);
-    color: white !important; font-size: 16px; outline: none; border-radius: 0;
-    transition: 0.3s;
-}
-.floating-input:focus { border-bottom: 1px solid #FCA311; }
-
-select.floating-input option {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-}
-
-.floating-label { position: absolute; top: 12px; left: 0; color: rgba(255,255,255,0.3); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; pointer-events: none; }
-.floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label { top: -15px; font-size: 9px; color: #FCA311; font-weight: 700; }
-
-.submit-btn-premium { width: 100%; background: #FCA311; color: #000; font-weight: 900; padding: 22px; text-transform: uppercase; letter-spacing: 3px; border: none; cursor: pointer; transition: 0.4s; }
-.submit-btn-premium:hover { background: #fff; }
-.submit-btn-premium:disabled { background: #1a1a1a; color: #444; cursor: not-allowed; }
-
-/* --- MERCH VAULT (MOBILE PRIORITY) --- */
-.merch-vault-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 40px !important; }
-.merch-card-v2 { display: flex; flex-direction: column; cursor: pointer; }
-.merch-img-box { position: relative; aspect-ratio: 3/4; background: #0a0a0a; overflow: hidden; border: 1px solid rgba(255,255,255,0.03); }
-.merch-display-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
-.merch-card-v2:hover .merch-display-img { transform: scale(1.08); filter: brightness(1); }
-.merch-info { padding: 25px 0; text-align: left; }
-.merch-info h3 { font-size: 14px; letter-spacing: 2px; color: #fff; }
-.merch-info p { font-size: 9px; color: #FCA311; margin-top: 8px; letter-spacing: 3px; font-weight: 700; opacity: 0.7; }
-
-/* --- SERMON VAULT --- */
-.sermon-card { transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); background: #080808; border: 1px solid rgba(255,255,255,0.03); border-radius: 2px; overflow: hidden; }
-.sermon-card:hover { transform: translateY(-10px); border-color: rgba(252, 163, 17, 0.4); }
-.sermon-thumb { transition: 1s cubic-bezier(0.4, 0, 0.2, 1); filter: grayscale(100%) contrast(1.2); }
-.sermon-card:hover .sermon-thumb { filter: grayscale(0%); transform: scale(1.05); }
-
-@media (max-width: 768px) {
-    .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
-    .section-container { padding: 80px 15px; }
-}
-
-/* --- UTILITIES --- */
-.hidden { display: none; }
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #FCA311; }
-
-
-
-
-
-
-
-
-index.html
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bible & Coffee | Global</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900\&family=Oswald:wght@600;700\&family=Playfair+Display:ital,wght@0,400;1,700\&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <nav>
-    <div class="nav-container">
-      <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></button>
-      <div id="nav-links" class="nav-links">
-        <button onclick="showSection('home',this)" class="active">HOME</button>
-        <button onclick="showSection('magazine',this)">MAGAZINE</button>
-        <button onclick="showSection('merch',this)">MERCH</button>
-        <button onclick="showSection('sermon',this)">SERMON</button>
-        <button onclick="showSection('events',this)">EVENTS</button>
-        <button onclick="showSection('support',this)">SUPPORT</button>
-        <button onclick="showSection('join',this)">JOIN</button>
-      </div>
-    </div>
-  </nav>
-
-  <div id="home-wrapper">
-    <header id="home" class="hero-container">
-      <div class="hero-bg-layer"></div>
-      <div class="hero-overlay-layer"></div>
-      <div class="hero-content-layer">
-       <h1 style="font-family: 'Oswald', sans-serif; font-weight: 700; margin: 0; margin-bottom: 35px;">
-        <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">BIBLE &</span>
-        <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">COFFEE</span>
-        <span class="responsive-title" style="color: #FCA311; display: block; text-transform: uppercase;">FRIDAYS</span>
-       </h1>
-        <div style="border-left: 2px solid #FCA311; padding-left: 20px; max-width: 500px;">
-            <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 12px; text-transform: uppercase;">THE KINGDOM > THE CULTURE</h2>
-            <p class="manifesto-quote">Authentic faith. Unfiltered Family.</p>
-            <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.8; font-family: 'Inter', sans-serif; margin-bottom: 35px; font-weight: 300;">
-                We choose depth over hype and relationship over religion. There is always a seat for you at our table.
-            </p>
-            <button onclick="showSection('join')" class="hero-cta">CLAIM MY SEAT</button>
+/* --- VIDEO OVERLAY --- */
+function openVideo(videoId) {
+    const overlay = document.createElement('div');
+    overlay.style = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; display:flex; align-items:center; justify-content:center; backdrop-filter: blur(5px);";
+    overlay.innerHTML = `
+        <div style="width:90%; max-width:800px; aspect-ratio:16/9; position:relative;">
+            <button onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:-40px; right:0; color:#FCA311; background:none; border:none; font-family:'Oswald'; cursor:pointer; letter-spacing:2px; font-weight:bold;">CLOSE [X]</button>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-      </div>
-    </header>
+    `;
+    document.body.appendChild(overlay);
+}
 
-    <div class="hero-marquee">
-        <div class="marquee-content">
-            ADDIS ABABA <span class="dot">●</span> LONDON <span class="dot">●</span> DALLAS <span class="dot">●</span> NAIROBI <span class="dot">●</span> STOCKHOLM <span class="dot">●</span> JOHANNESBURG <span class="dot">●</span> DUBAI <span class="dot">●</span> NEW YORK <span class="dot">●</span>
-            ADDIS ABABA <span class="dot">●</span> LONDON <span class="dot">●</span> DALLAS <span class="dot">●</span> NAIROBI <span class="dot">●</span> STOCKHOLM <span class="dot">●</span> JOHANNESBURG <span class="dot">●</span> DUBAI <span class="dot">●</span> NEW YORK <span class="dot">●</span>
-        </div>
-    </div>
-
-    <section style="background: #000; padding: 80px 25px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: white; margin-bottom: 25px; font-style: italic;">More Than a Gathering</h2>
-            <p style="color: #FCA311; font-size: 1.2rem; line-height: 1.7; font-family: 'Inter', sans-serif; font-weight: 700;">
-                "We stopped performing and started living. Bible & Coffee is where judgment and egos die. It’s a movement of believers seeking the Savior, not the system."
-            </p>
-        </div>
-    </section>
-  </div>
+/* --- LIVE SLOT CHECKER --- */
+async function checkSlots() {
+    const loc = document.getElementById('location').value;
+    const badge = document.getElementById('slot-badge');
+    const statusText = document.getElementById('slot-status-text');
+    const submitBtn = document.getElementById('submit-btn');
  
-  <section id="magazine" class="section-container">
-    <div class="max-w-4xl mx-auto px-4 py-10">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-\['Oswald'] font-bold text-\[#FCA311] uppercase tracking-widest">The Magazine</h2>
-        <p class="text-white/50 italic mt-2">Issue #01 — Faith, Culture & Coffee</p>
-      </div>
-      <div class="flex flex-col md:flex-row items-center gap-12 bg-\[#0d0d0d] border border-white/5 p-8 rounded-sm shadow-2xl">
-        <div class="w-full md:w-1/2"><img src="megimage.jpeg" alt="Cover" class="w-full h-auto border border-white/10"></div>
-        <div class="w-full md:w-1/2 space-y-6 text-left">
-          <h3 class="text-2xl font-\['Playfair\_Display'] text-white italic">Digital Edition</h3>
-          <p class="text-white/70">Dive deeper into our community stories and biblical insights.</p>
-          <a href="magazine.pdf" download class="submit-btn-premium inline-block no-underline">Download PDF</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="merch" class="section-container bg-\[#050505] py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-16 border-l-4 border-\[#FCA311] pl-6 text-left">
-        <h2 class="text-4xl font-\['Oswald'] font-bold text-white uppercase tracking-tighter">The Collection</h2>
-      </div>
-      <div class="merch-vault-grid">
-        <div class="merch-card-v2"><div class="merch-img-box"><img src="merch1.jpeg" class="merch-display-img"></div><div class="merch-info"><h3>KC-01 // IDENTITY</h3><p>STREETWEAR TEE</p></div></div>
-        <div class="merch-card-v2"><div class="merch-img-box"><img src="merch2.jpeg" class="merch-display-img"></div><div class="merch-info"><h3>KC-02 // VISION</h3><p>STREETWEAR TEE</p></div></div>
-        <div class="merch-card-v2"><div class="merch-img-box"><img src="merch3.jpeg" class="merch-display-img"></div><div class="merch-info"><h3>KC-03 // CULTURE</h3><p>STREETWEAR TEE</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sermon" class="section-container bg-black py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-16 border-l-4 border-\[#FCA311] pl-6">
-        <h2 class="text-4xl font-\['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="sermon-card bg-\[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('UQM5zM8XIaw')">
-            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
-            <div class="p-6"><h3>ወጣቱ ባለሃብት!</h3><p class="text-white/50 text-xs mt-2 uppercase">Kingdom Culture</p></div>
-        </div>
-        <div class="sermon-card bg-\[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('Q7p0wt29a04')">
-            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
-            <div class="p-6"><h3>በሰማርያም ሊያልፍ ግድ ሆነበት!</h3><p class="text-white/50 text-xs mt-2 uppercase">Identity</p></div>
-        </div>
-        <div class="sermon-card bg-\[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('uoUSXNjBgAg')">
-            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
-            <div class="p-6"><h3>ለውጥ እና ፈተናው!</h3><p class="text-white/50 text-xs mt-2 uppercase">Growth</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="join" class="section-container px-4" style="background: #000;">
-    <div class="max-w-xl mx-auto py-20">
-        <div class="text-center mb-16">
-            <h2 style="font-family: 'Oswald'; font-size: 2.5rem; letter-spacing: 8px; color: white; text-transform: uppercase;">Reserve Your Seat</h2>
-            <div style="width: 50px; height: 2px; background: #FCA311; margin: 20px auto;"></div>
-            <p style="color: #FCA311; font-family: 'Inter'; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">Strictly Limited to 8 Seats Per Table</p>
-        </div>
-
-        <div class="form-card" style="background: #050505; border: 1px solid rgba(252, 163, 17, 0.1); padding: 50px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
-            <form id="regForm" class="space-y-8">
-                <div class="group">
-                    <input type="text" id="name" name="Name" class="floating-input" placeholder=" " required>
-                    <label class="floating-label">Full Name</label>
-                </div>
+    if(!loc) return;
  
-                <div class="group">
-                    <input type="tel" id="phone" name="Phone" class="floating-input" placeholder=" " required>
-                    <label class="floating-label">Phone Number</label>
-                </div>
+    // UI Feedback: Show badge immediately
+    if(badge) {
+        badge.classList.remove('hidden');
+        badge.style.display = 'block';
+        badge.style.background = 'rgba(252, 163, 17, 0.05)';
+    }
+    if(statusText) statusText.innerHTML = `<span style="letter-spacing:2px; color: #aaa;">VERIFYING DATABASE...</span>`;
+ 
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.5";
 
-                <div class="group">
-                    <input type="email" id="email" name="Email" class="floating-input" placeholder=" " required>
-                    <label class="floating-label">Email Address</label>
-                </div>
+    try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        const taken = data.filter(r => r.Location === loc).length;
+        const available = 8 - taken;
 
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="group">
-                        <select id="country" name="Country" onchange="updateCities()" class="floating-input" required>
-                            <option value="" disabled selected></option>
-                            <option value="Ethiopia">Ethiopia</option>
-                            <option value="Kenya">Kenya</option>
-                            <option value="USA">USA</option>
-                            <option value="UK">UK</option>
-                            <option value="Germany">Germany</option>
-                            <option value="Netherlands">Netherlands</option>
-                            <option value="Sweden">Sweden</option>
-                            <option value="Norway">Norway</option>
-                            <option value="Denmark">Denmark</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Uganda">Uganda</option>
-                            <option value="Rwanda">Rwanda</option>
-                        </select>
-                        <label class="floating-label">Country</label>
-                    </div>
-                    <div class="group">
-                        <select id="city" name="City" onchange="updateLocations()" class="floating-input" required>
-                            <option value="" disabled selected></option>
-                        </select>
-                        <label class="floating-label">City</label>
-                    </div>
-                </div>
+        if (available <= 0) {
+            statusText.innerHTML = `<span style="color: #ff4444; font-weight: bold; letter-spacing: 1px;">SECURED \[0/8] — LOCATION FULL</span>`;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.2";
+            submitBtn.innerText = "NO SEATS REMAINING";
+        } else {
+            // High-end counter text
+            statusText.innerHTML = `LIVE AVAILABILITY: <span style="font-size: 1.1rem; color: #fff; margin: 0 4px;">${available}</span> SEATS REMAINING`;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            submitBtn.innerText = "CONFIRM RESERVATION";
+        }
+    } catch(e) {
+        statusText.innerText = "CONNECTION ERROR. PLEASE REFRESH.";
+        submitBtn.disabled = false;
+    }
+}
 
-                <div class="group">
-                    <select id="location" name="Location" onchange="checkSlots()" class="floating-input" required>
-                        <option value="" disabled selected></option>
-                    </select>
-                    <label class="floating-label">Choose Location</label>
-                </div>
+/* --- DATABASE --- */
+const db = {
+    "Ethiopia": {
+        "Addis Ababa": ["Bole", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"],
+        "Hawassa": ["City Center"]
+    },
+    "Kenya": { "Nairobi": ["Kilimani", "Westlands"] },
+    "USA": { "Dallas": ["Downtown", "Plano"], "Houston": ["Galleria"] },
+    "UK": { "London": ["Central", "Canary Wharf"] },
+    "Germany": { "Berlin": ["Mitte"] },
+    "Netherlands": { "Amsterdam": ["Zuid"] },
+    "Sweden": { "Stockholm": ["Norrmalm"] },
+    "Norway": { "Oslo": ["Sentrum"] },
+    "Denmark": { "Copenhagen": ["Indre By"] },
+    "South Africa": { "Johannesburg": ["Sandton"], "Cape Town": ["City Bowl"] },
+    "Uganda": { "Kampala": ["Central"] },
+    "Rwanda": { "Kigali": ["Nyarugenge"] }
+};
 
-                <div id="slot-badge" class="hidden" style="margin-bottom: 25px; padding: 15px; background: rgba(252, 163, 17, 0.05); border: 1px dashed rgba(252, 163, 17, 0.3); text-align: center;">
-                    <span id="slot-status-text" style="font-family: 'Oswald'; font-size: 11px; letter-spacing: 2px; color: #FCA311; text-transform: uppercase;">
-                        Checking Availability...
-                    </span>
-                </div>
+function updateCities() {
+    const country = document.getElementById('country').value;
+    const citySelect = document.getElementById('city');
+    citySelect.innerHTML = '<option value="" disabled selected></option>';
+    if (db[country]) Object.keys(db[country]).forEach(c => citySelect.add(new Option(c, c)));
+}
 
-                <button type="submit" id="submit-btn" class="submit-btn-premium">
-                    <span id="btn-text">Confirm Reservation</span>
-                </button>
-            </form>
-        </div>
-    </div>
-</section>
+function updateLocations() {
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const locSelect = document.getElementById('location');
+    locSelect.innerHTML = '<option value="" disabled selected></option>';
+    if (db[country] && db[country][city]) db[country][city].forEach(l => locSelect.add(new Option(l, l)));
+}
 
-  <section id="events" class="section-container text-center py-20"><h1>UPCOMING EVENTS</h1></section>
-  <section id="support" class="section-container" style="background: #000; padding: 120px 25px;">
-    <div style="max-width: 900px; margin: 0 auto;">
-        <div style="margin-bottom: 80px;">
-            <h2 style="font-family: 'Oswald'; font-size: 0.8rem; color: #FCA311; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px;">Support the Shift</h2>
-            <h3 style="font-family: 'Playfair Display'; font-size: clamp(2rem, 8vw, 3.5rem); color: white; line-height: 1.1; font-style: italic;">
-                "The pulpit reaches an audience, but only a table reaches a heart."
-            </h3>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px;">
-            <div style="border-left: 1px solid #333; padding-left: 30px;">
-                <p style="font-family: 'Inter'; color: white; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
-                    <span style="color: #FCA311; font-weight: 900;">BIBLE & COFFEE</span> is a "Safe Mode" for faith. We’ve traded the stage for a coffee table.
-                </p>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div onclick="window.location.href='https://wa.me/251910884585'" style="cursor: pointer; background: #111; padding: 30px; border: 1px solid #222;">
-                <span style="font-family: 'Oswald'; color: white; display: block; font-size: 1.2rem;">LOCAL PARTNER</span>
-            </div>
-            <div onclick="window.location.href='https://wa.me/251910884585'" style="cursor: pointer; background: #111; padding: 30px; border: 1px solid #222;">
-                <span style="font-family: 'Oswald'; color: white; display: block; font-size: 1.2rem;">GLOBAL PARTNER</span>
-            </div>
-        </div>
-    </div>
-</section>
+/* --- INITIALIZE & SUBMIT --- */
+document.addEventListener('DOMContentLoaded', () => {
+    if(window.lucide) lucide.createIcons();
+    showSection('home', document.querySelector('.nav-links button:first-child'));
 
-  <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
-    <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px;">
-        <i data-lucide="instagram">
-        <i data-lucide="facebook">
-        <i data-lucide="youtube">
-    </div>
-    <p style="color: #222; font-size: 9px; letter-spacing: 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase;">Kingdom Culture over Everything</p>
-</footer>
+    document.getElementById('regForm')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const loc = document.getElementById('location').value;
+ 
+        btn.disabled = true;
+        btn.innerText = "VALIDATING SEAT...";
 
-  <script src="script.js"></script>
-  <script>lucide.createIcons();</script>
-</body>
-</html>
+        try {
+            // Final hard-check before allowing the POST
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const taken = data.filter(r => r.Location === loc).length;
+
+            if (taken >= 8) {
+                alert("This location reached its 8-seat limit while you were filling the form. Please select a different location.");
+                checkSlots();
+                return;
+            }
+
+            btn.innerText = "PROCESSING...";
+            const now = new Date();
+            const payload = {
+                "Name": document.getElementById('name').value,
+                "Phone": document.getElementById('phone').value,
+                "Email": document.getElementById('email').value,
+                "Country": document.getElementById('country').value,
+                "City": document.getElementById('city').value,
+                "Location": loc,
+                "Registration Date": now.toLocaleDateString(),
+                "Registration Time": now.toLocaleTimeString()
+            };
+
+            const postRes = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [payload] })
+            });
+
+            if(postRes.ok) {
+                btn.innerText = "RESERVATION SECURED";
+                btn.style.background = "#fff";
+                btn.style.color = "#000";
+                this.reset();
+ 
+                // Keep success message for 3 seconds before returning home
+                setTimeout(() => {
+                    showSection('home');
+                    btn.style.background = "#FCA311";
+                    btn.style.color = "white";
+                    btn.innerText = "CONFIRM RESERVATION";
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                }, 3000);
+            }
+        } catch (err) {
+            btn.disabled = false;
+            btn.innerText = "CONFIRM RESERVATION";
+            alert("Submission failed. Check your internet connection.");
+        }
+    });
+});

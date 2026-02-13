@@ -253,7 +253,7 @@ select.floating-input option {
     .manifesto-quote {
         border-left: 2px solid #FCA311 !important; /* The Gold Line style */
         padding-left: 10px !important;              /* Gap: Between Line & Text */
-        margin-left: 20px !important;               /* Line: LEFT/RIGHT nudge */
+        margin-left: 50px !important;               /* Line: LEFT/RIGHT nudge */
     }
 
     /* 4. "THE KINGDOM" - Orange text individual control */

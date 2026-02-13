@@ -136,74 +136,71 @@ nav {
 
 @media(max-width:768px) {
     
-    /* 1. MASTER GROUP - Moves everything together */
+    /* 1. MASTER GROUP - LOCKED AT 40px / 1px */
     .hero-content-layer {
-        margin-top: 40px !important;    /* Whole block: UP/DOWN nudge */
-        padding-left: 1px !important;   /* PUSHED LEFT: Hugging the edge */
+        margin-top: 40px !important;    
+        padding-left: 1px !important;   
     }
 
-    /* 2. BIG TITLE JOYSTICK - "BIBLE & COFFEE" */
+    /* 2. BIG TITLE JOYSTICK - LOCKED AT 3.2rem */
     .responsive-title {
         display: block !important;
-        transform: translate(0px, 0px) !important; /* (Left/Right, Up/Down) nudge */
+        transform: translate(0px, 0px) !important; 
         font-size: 3.2rem !important; 
         line-height: 0.85 !important; 
         margin-bottom: 10px !important; 
     }
 
-    /* 3. THE GOLD LINE - INDIVIDUAL MOVE TO LEFT */
+    /* 3. THE MAIN GOLD LINE - LOCKED AT -5px */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; /* The Big Gold Line */
-        padding-left: 15px !important;              /* Space between line and text */
-        margin-left: -5px !important;               /* Pulls ONLY the line/quote left */
-        margin-top: 0px !important; 
+        border-left: 2px solid #FCA311 !important; /* THE ONLY LINE ALLOWED */
+        padding-left: 15px !important;              
+        margin-left: -5px !important;              
     }
 
-    /* 4. "THE KINGDOM" - Individual line control */
-    .manifesto-quote span:first-of-type, .kingdom-line {
+    /* --- THE NUCLEAR KILL SWITCH: NO VALUES CHANGED --- */
+    /* This targets the exact line visible in your screenshots */
+    .manifesto-quote p, 
+    .manifesto-quote blockquote, 
+    .manifesto-quote div,
+    .manifesto-text-block {
+        border-left: 0px solid transparent !important; /* Forces line to zero/transparent */
+        border: none !important; 
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* 4. "THE KINGDOM" - LOCKED AT -5px */
+    .manifesto-quote span:first-of-type {
         display: block;
         margin-top: -5px !important; 
-        margin-left: 0px !important; 
         color: #FCA311 !important; 
+        border-left: none !important;
     }
 
-    /* 5. "AUTHENTIC FAITH" - SMALL LINE KILLED HERE */
-    .manifesto-quote p, .manifesto-text-block {
+    /* 5. "AUTHENTIC FAITH" - LOCKED AT 8px */
+    .manifesto-quote p {
         display: block;
-        border-left: none !important;   /* THE KILL SWITCH FOR SMALL LINE */
-        padding-left: 0 !important;     /* Removes gap since line is gone */
         margin-top: 8px !important; 
-        margin-left: 0px !important; 
+        border-left: none !important; /* Specific kill for this line */
     }
 
-    /* 6. "WE CHOOSE..." - Individual paragraph control */
-    .manifesto-quote small, .description-text {
+    /* 6. "WE CHOOSE..." - LOCKED AT 15px */
+    .manifesto-quote small {
         display: block;
-        border-left: none !important;   /* Ensures no line here either */
         margin-top: 15px !important; 
-        margin-left: 0px !important; 
         line-height: 1.4 !important;
+        border-left: none !important;
     }
 
-    /* 7. THE BUTTON - RESERVE MY SEAT */
+    /* 7. THE BUTTON - LOCKED AT 30px */
     .hero-cta {
         margin-top: 30px !important; 
-        margin-left: 0px !important; 
     }
 
-    /* --- NAVIGATION & CORE SYSTEM (LOCKED) --- */
+    /* --- NAVIGATION SYSTEM (UNTOUCHED) --- */
     .hero-container { align-items: flex-start !important; }
     .mobile-toggle { display: block; }
-    .nav-links { 
-        display: none; 
-        flex-direction: column; 
-        position: absolute; 
-        top: 65px; left: 0; width: 100%; 
-        background: #000; 
-        padding: 60px 40px; 
-        gap: 35px; 
-        border-bottom: 1px solid #1a1a1a; 
-        text-align: center; 
-    }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: #000; padding: 60px 40px; border-bottom: 1px solid #1a1a1a; text-align: center; }
     .nav-links.active-menu { display: flex; }
 }

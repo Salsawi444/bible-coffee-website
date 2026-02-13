@@ -8,95 +8,82 @@ body {
     line-height: 1.6;
 }
 
-/* --- HERO SECTION (LOCKED) --- */
-.hero-container { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background-color: black; }
-.hero-bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('hero-family.jpg'); background-size: cover; background-position: center center; z-index: 0; }
-.hero-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 60%, #000000 100%); }
-.hero-content-layer { position: relative; z-index: 10; padding: 0 25px; max-width: 1200px; width: 100%; margin: 0 auto; margin-top: 60px; }
+/* --- HERO SECTION (BLENDING & PLACEMENT FIX) --- */
+.hero-container { 
+    position: relative; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; /* Vertical center */
+    justify-content: flex-start; /* Horizontal start to move text left */
+    overflow: hidden; 
+    background-color: black; 
+}
 
-/* THE FIX: TIGHTENING THE TITLE BLOCK */
+.hero-bg-layer { 
+    position: absolute; 
+    top: 0; right: 0; /* Align image to the right to leave space for text */
+    width: 70%; /* Image takes up the right side */
+    height: 100%; 
+    background-image: url('hero-family.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    z-index: 0; 
+}
+
+.hero-overlay-layer { 
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    z-index: 1; 
+    /* High-end blend: Fades from solid black on the left to transparent on the right */
+    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%); 
+}
+
+.hero-content-layer { 
+    position: relative; 
+    z-index: 10; 
+    padding: 0 5%; 
+    max-width: 1400px; 
+    width: 100%; 
+    margin-top: 40px;
+}
+
+/* --- THE TITLE FIX --- */
 .responsive-title { 
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(3.5rem, 15vw, 7.5rem) !important; 
-    line-height: 0.82; /* Tighter vertical gap to fix the loose space */
-    letter-spacing: -3px; /* Pulls letters together for high-end impact */
+    font-size: clamp(3rem, 12vw, 7rem) !important; 
+    line-height: 0.82; /* Tight magazine look */
+    letter-spacing: -2px; 
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
-/* --- HIGH-END SCROLLING TEXT --- */
-.hero-marquee { 
-    width: 100%; 
-    overflow: hidden; 
-    background: #000; 
-    padding: 15px 0; 
-    border-bottom: 1px solid #111; 
-}
-.marquee-content { 
-    display: inline-block; 
-    white-space: nowrap; 
-    font-family: 'Oswald', sans-serif; 
-    font-size: 1.1rem; /* Smaller, high-end size */
-    font-weight: 400; 
-    text-transform: uppercase; 
-    color: transparent; 
-    -webkit-text-stroke: 0.5px #FCA311; 
-    animation: marquee 50s linear infinite; 
-    letter-spacing: 4px; 
-}
+/* --- SCROLLING TEXT --- */
+.hero-marquee { width: 100%; overflow: hidden; background: #000; padding: 15px 0; border-bottom: 1px solid #111; }
+.marquee-content { display: inline-block; white-space: nowrap; font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 400; text-transform: uppercase; color: transparent; -webkit-text-stroke: 0.5px #FCA311; animation: marquee 50s linear infinite; letter-spacing: 4px; }
 .marquee-content .dot { color: #FCA311; -webkit-text-stroke: 0; margin: 0 15px; font-size: 0.6rem; vertical-align: middle; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* --- TYPOGRAPHY & MANIFESTO --- */
 h1, h2, h3, .nav-links button { font-family: 'Oswald', sans-serif; }
-.manifesto-quote { 
-    font-family: 'Oswald', sans-serif; 
-    font-weight: 500; 
-    font-style: normal; 
-    color: #ffffff; 
-    line-height: 1.3; 
-    font-size: clamp(1.2rem, 4vw, 1.8rem); 
-    letter-spacing: 3px; 
-    margin-top: 15px;
-    margin-bottom: 30px;
-    display: block;
-    text-transform: uppercase;
-}
+.manifesto-quote { font-family: 'Oswald', sans-serif; font-weight: 500; color: #ffffff; line-height: 1.3; font-size: clamp(1.1rem, 3vw, 1.6rem); letter-spacing: 3px; margin-top: 15px; margin-bottom: 30px; display: block; text-transform: uppercase; border-left: 2px solid #FCA311; padding-left: 20px; }
 
-/* --- NAVIGATION (FIXING THE GAP & ALIGNMENT) --- */
+/* --- NAVIGATION --- */
 nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 15px 0; }
-.nav-container { 
-    max-width: 1200px; 
-    margin: auto; 
-    display: flex; 
-    justify-content: flex-end; /* Links on the right for desktop */
-    padding: 0 25px; 
-    align-items: center; 
-}
-.nav-logo { height: 40px; width: auto; cursor: pointer; margin-right: auto; } 
-
+.nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
+.nav-logo { height: 35px; width: auto; cursor: pointer; margin-right: auto; } 
 .nav-links { display: flex; gap: 30px; } 
 .nav-links button { color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 700; letter-spacing: 3px; border: none; background: none; cursor: pointer; text-transform: uppercase; transition: 0.4s; }
 .nav-links button.active { color: #FCA311; }
 
-/* --- MOBILE HAMBURGER (UNTOUCHED AS REQUESTED) --- */
+/* --- MOBILE --- */
 .mobile-toggle { display: none; background: none; border: none; color: #FCA311; cursor: pointer; }
-
 @media(max-width:768px) {
-    .nav-container { justify-content: flex-start; } /* Keeps hamburger on left for mobile */
+    .nav-container { justify-content: flex-start; }
+    .hero-bg-layer { width: 100%; opacity: 0.6; } /* Better text readability on mobile */
+    .hero-overlay-layer { background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, #000000 90%); }
     .mobile-toggle { display: block; }
-    .nav-links { 
-        display: none; 
-        flex-direction: column; 
-        position: absolute; 
-        top: 60px; left: 0; width: 100%; 
-        background: #000; 
-        padding: 50px 40px; 
-        gap: 30px; 
-        border-bottom: 1px solid #1a1a1a;
-        text-align: center;
-    }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #000; padding: 50px 40px; gap: 30px; border-bottom: 1px solid #1a1a1a; text-align: center; }
     .nav-links.active-menu { display: flex; }
 }
 

@@ -1,46 +1,73 @@
-/* --- MOBILE SPECIFIC UPDATES (FIXED ALIGNMENT) --- */
-.mobile-toggle { display: block; background: none; border: none; color: #FCA311; cursor: pointer; }
+/* --- HERO SECTION (RESTORED & FIXED) --- */
+.hero-container { 
+    position: relative; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; /* Keeps desktop anchored left */
+    overflow: hidden; 
+    background-color: #000000 !important; /* Force black background */
+}
 
+.hero-bg-layer { 
+    position: absolute; 
+    top: 0; right: 0; 
+    width: 100%; height: 100%; 
+    background-image: url('hero-family.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    z-index: 0;
+    opacity: 0.6; /* Balanced for both mobile and desktop */
+}
+
+.hero-overlay-layer { 
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    z-index: 1; 
+    /* Ensures a dark fade from the left for text readability */
+    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%); 
+}
+
+.hero-content-layer { 
+    position: relative; 
+    z-index: 10; 
+    padding-left: 8%; /* This aligns text with your gold line */
+    max-width: 1200px; 
+    width: 100%; 
+}
+
+/* --- MOBILE SPECIFIC FIX (LEFT ALIGNMENT) --- */
 @media(max-width:768px) {
-    /* MAGIC 1: Snap everything to the left side (the white rectangle) */
     .hero-container { 
-        justify-content: flex-start !important; 
+        justify-content: flex-start !important; /* Forces content to your white rectangle */
         text-align: left !important; 
-        padding-left: 8%; /* Adjust this to line up with your gold line */
+        padding-left: 5%; 
     }
 
-    .hero-content-layer {
-        margin-left: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* MAGIC 2: Deskto-style Blending for Mobile */
     .hero-bg-layer { 
-        width: 100%; 
-        opacity: 0.8; 
-        mix-blend-mode: screen; /* Same as desktop for consistency */
-        filter: brightness(0.7) contrast(1.3); 
-    } 
+        width: 100%;
+        opacity: 0.5; /* Darker on mobile for better text contrast */
+    }
 
     .hero-overlay-layer { 
-        /* Stronger left-to-right gradient to keep text readable on the left */
-        background: linear-gradient(90deg, #000000 25%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 100%); 
+        /* Stronger vertical fade for mobile */
+        background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 80%); 
     }
 
-    /* Alignment for Manifesto and Button */
+    .responsive-title {
+        font-size: 3.5rem !important; /* Corrects the huge size on mobile */
+        text-align: left !important;
+    }
+
     .manifesto-quote { 
-        border-left: 2px solid #FCA311 !important; /* Keep the gold line vertical */
+        border-left: 2px solid #FCA311 !important; 
         border-top: none !important; 
         padding-left: 15px !important; 
-        padding-top: 0 !important; 
-        margin-left: 0 !important;
+        text-align: left !important;
     }
 
     .hero-cta {
         margin-left: 0 !important;
+        margin-right: auto !important;
     }
-    
-    .nav-container { justify-content: space-between; }
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: #000; padding: 50px 40px; gap: 30px; border-bottom: 1px solid #1a1a1a; text-align: center; }
-    .nav-links.active-menu { display: flex; }
 }

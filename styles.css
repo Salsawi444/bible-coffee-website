@@ -11,17 +11,20 @@ body {
 /* --- WORLD-CLASS TYPOGRAPHY --- */
 h1, h2, h3, .nav-links button { font-family: 'Oswald', sans-serif; }
 
-/* THE FINAL BOLD SURGERY */
+/* REFINED MINIMALIST MANIFESTO - THE CLEAN FIX */
 .manifesto-quote { 
-    font-family: 'Playfair Display', serif; 
+    font-family: 'Oswald', sans-serif; 
     font-style: italic; 
-    font-weight: 900; /* Max Boldness */
+    font-weight: 300; /* Light weight for elegance */
     color: white; 
-    line-height: 1.1; 
-    font-size: clamp(2.2rem, 8vw, 3.5rem); /* Significantly Bigger Presence */
-    letter-spacing: -0.02em; /* Tighter tracking for a high-end editorial look */
+    line-height: 1.2; 
+    font-size: clamp(1.1rem, 3vw, 1.5rem); /* Controlled, professional size */
+    letter-spacing: 2px;
+    margin-top: 10px;
     margin-bottom: 25px;
     display: block;
+    text-transform: uppercase;
+    opacity: 0.8; /* Subtle transparency for that "premium" look */
 }
 
 .magazine-title { font-family: 'Playfair Display', serif; }

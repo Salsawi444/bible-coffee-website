@@ -251,17 +251,21 @@ select.floating-input option {
 
     /* 3. THE MAIN GOLD LINE - Value: -5px (LOCKED) */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; 
+        border-left: 2px solid #FCA311 !important; /* This is the ONLY one allowed */
         padding-left: 15px !important;              
         margin-left: -5px !important;              
     }
 
-    /* --- THE KILL SWITCH: Only kills the extra line, touches NO values --- */
+    /* --- THE ULTIMATE KILL SWITCH --- */
+    /* This strips borders from every possible element inside the quote */
+    .manifesto-quote *, 
+    .manifesto-text-block, 
     .manifesto-quote p, 
     .manifesto-quote span, 
     .manifesto-quote small {
-        border-left: none !important;  
-        padding-left: 0 !important;    
+        border: none !important;       /* Kills ALL borders */
+        border-left: none !important;  /* Kills LEFT borders specifically */
+        padding-left: 0 !important;    /* Clears the gap */
     }
 
     /* 4. "THE KINGDOM" - Value: -5px (LOCKED) */

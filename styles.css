@@ -234,7 +234,7 @@ select.floating-input option {
         /* This is the magic number. 
            Lower = Higher on the screen. 
            Higher = Lower on the screen. */
-        margin-top: 70px !important; 
+        margin-top: 50px !important; 
         
         /* This keeps it in your white rectangle on the left */
         padding-left: 15px !important; 

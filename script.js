@@ -58,10 +58,16 @@ async function checkSlots() {
     
     if(!loc) return;
     
-    // Show badge immediately
-    if(badge) { badge.classList.remove('hidden'); badge.style.display = 'block'; }
-    if(statusText) statusText.innerText = "VERIFYING SEATS...";
+    // UI Feedback: Show badge immediately
+    if(badge) { 
+        badge.classList.remove('hidden'); 
+        badge.style.display = 'block'; 
+        badge.style.background = 'rgba(252, 163, 17, 0.05)';
+    }
+    if(statusText) statusText.innerHTML = `<span style="letter-spacing:2px; color: #aaa;">VERIFYING DATABASE...</span>`;
+    
     submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.5";
 
     try {
         const res = await fetch(API_URL);
@@ -70,18 +76,19 @@ async function checkSlots() {
         const available = 8 - taken;
 
         if (available <= 0) {
-            statusText.innerHTML = `<span style="color: #ff4444;">LOCATION FULL</span>`;
+            statusText.innerHTML = `<span style="color: #ff4444; font-weight: bold; letter-spacing: 1px;">SECURED [0/8] — LOCATION FULL</span>`;
             submitBtn.disabled = true;
-            submitBtn.style.opacity = "0.3";
+            submitBtn.style.opacity = "0.2";
             submitBtn.innerText = "NO SEATS REMAINING";
         } else {
-            statusText.innerText = `SEATS AVAILABLE: ${available} / 8`;
+            // High-end counter text
+            statusText.innerHTML = `LIVE AVAILABILITY: <span style="font-size: 1.1rem; color: #fff; margin: 0 4px;">${available}</span> SEATS REMAINING`;
             submitBtn.disabled = false;
             submitBtn.style.opacity = "1";
             submitBtn.innerText = "CONFIRM RESERVATION";
         }
     } catch(e) { 
-        statusText.innerText = "8 SEATS AVAILABLE";
+        statusText.innerText = "CONNECTION ERROR. PLEASE REFRESH.";
         submitBtn.disabled = false;
     }
 }
@@ -121,21 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const loc = document.getElementById('location').value;
         
         btn.disabled = true;
-        btn.innerText = "VERIFYING FINAL SEAT...";
+        btn.innerText = "VALIDATING SEAT...";
 
         try {
-            // Anti-cheating check: check one last time before posting
+            // Final hard-check before allowing the POST
             const res = await fetch(API_URL);
             const data = await res.json();
             const taken = data.filter(r => r.Location === loc).length;
 
             if (taken >= 8) {
-                alert("This location just filled up! Please choose another.");
-                checkSlots();
+                alert("This location reached its 8-seat limit while you were filling the form. Please select a different location.");
+                checkSlots(); 
                 return;
             }
 
-            btn.innerText = "SECURING SEAT...";
+            btn.innerText = "PROCESSING...";
             const now = new Date();
             const payload = {
                 "Name": document.getElementById('name').value,
@@ -155,19 +162,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if(postRes.ok) {
-                btn.innerText = "RESERVATION SUCCESSFUL";
+                btn.innerText = "RESERVATION SECURED";
                 btn.style.background = "#fff";
+                btn.style.color = "#000";
                 this.reset();
+                
+                // Keep success message for 3 seconds before returning home
                 setTimeout(() => {
                     showSection('home');
                     btn.style.background = "#FCA311";
+                    btn.style.color = "white";
                     btn.innerText = "CONFIRM RESERVATION";
                     btn.disabled = false;
+                    btn.style.opacity = "1";
                 }, 3000);
             }
         } catch (err) {
             btn.disabled = false;
             btn.innerText = "CONFIRM RESERVATION";
+            alert("Submission failed. Check your internet connection.");
         }
     });
 });

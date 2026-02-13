@@ -231,64 +231,67 @@ select.floating-input option {
 /* --- INDIVIDUAL MOBILE CONTROLS (SINGLE GOLD LINE) --- */
 /* --- INDIVIDUAL MOBILE CONTROLS (FULL FREEDOM) --- */
 /* --- THE INDIVIDUAL FREEDOM MOBILE CONTROLS (PLACE AT BOTTOM) --- */
+/* --- FULL MOBILE OVERRIDE: SNAP LINE TO FAR LEFT --- */
 @media(max-width:768px) {
     
-    /* 1. MASTER GROUP - Moves the entire content block together */
+    /* 1. MASTER GROUP - Moves everything together */
     .hero-content-layer {
-        margin-top: 40px !important;    /* MASTER: UP/DOWN nudge */
-        padding-left: 15px !important;  /* MASTER: LEFT/RIGHT nudge */
+        margin-top: 40px !important;    /* Whole block: UP/DOWN nudge */
+        padding-left: 1px !important;   /* PUSHED LEFT: Reduced from 15px to 5px to hug the edge */
     }
 
     /* 2. BIG TITLE JOYSTICK - "BIBLE & COFFEE" */
     .responsive-title {
         display: block !important;
-        /* (Left/Right , Up/Down) - Forces the title to move independently */
-        transform: translate(-10px, 10px) !important; 
-        font-size: 3.2rem !important;   /* Adjusts size for mobile */
-        line-height: 0.85 !important;   /* Gap between BIBLE and COFFEE */
-        margin-bottom: 10px !important; /* Space between title and Kingdom line */
+        transform: translate(0px, 0px) !important; /* (Left/Right, Up/Down) nudge */
+        font-size: 3.2rem !important; 
+        line-height: 0.85 !important; 
+        margin-bottom: 10px !important; 
     }
 
-    /* 3. THE GOLD LINE - Move it without shifting the text */
+    /* 3. THE GOLD LINE - INDIVIDUAL MOVE TO LEFT */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; /* The Gold Line style */
-        padding-left: 10px !important;              /* Gap: Between Line & Text */
-        margin-left: -5px !important;               /* Line: LEFT/RIGHT nudge */
+        border-left: 2px solid #FCA311 !important; /* The Big Gold Line */
+        padding-left: -5px !important;              /* Gap between Line and Text */
+        
+        /* TO MOVE LINE TO THE VERY LEFT: Use a larger negative number here */
+        margin-left: -5px !important;               /* Pulls ONLY the line/quote left */
+        margin-top: 0px !important; 
     }
 
-    /* 4. "THE KINGDOM" - Orange text individual control */
+    /* 4. "THE KINGDOM" - Individual line control */
     .manifesto-quote span:first-of-type, .kingdom-line {
         display: block;
         margin-top: -5px !important;    /* Kingdom: UP/DOWN nudge */
         margin-left: 0px !important;    /* Kingdom: LEFT/RIGHT nudge */
-        color: #FCA311 !important;      /* Forces gold/orange color */
+        color: #FCA311 !important; 
     }
 
-    /* 5. "AUTHENTIC FAITH" - Secondary text (NO second gold line) */
+    /* 5. "AUTHENTIC FAITH" - Individual text control (No Line) */
     .manifesto-quote p, .manifesto-text-block {
         display: block;
-        border-left: none !important;   /* KILLS THE SECOND LINE */
-        padding-left: 0 !important;     /* Removes padding since line is gone */
-        margin-top: 8px !important;     /* Authentic Faith: UP/DOWN nudge */
-        margin-left: 0px !important;    /* Authentic Faith: LEFT/RIGHT nudge */
+        border-left: none !important;   /* Kills secondary gold line */
+        padding-left: 0 !important;
+        margin-top: 8px !important; 
+        margin-left: 0px !important; 
     }
 
-    /* 6. "WE CHOOSE..." - The lower paragraph control */
+    /* 6. "WE CHOOSE..." - Individual paragraph control */
     .manifesto-quote small, .description-text {
         display: block;
-        margin-top: 15px !important;    /* "We Choose": UP/DOWN nudge */
-        margin-left: 0px !important;    /* "We Choose": LEFT/RIGHT nudge */
-        line-height: 1.4 !important;    /* Spacing between text lines */
+        margin-top: 15px !important; 
+        margin-left: 0px !important; 
+        line-height: 1.4 !important;
     }
 
-    /* 7. THE BUTTON - "Reserve MY SEAT" */
+    /* 7. THE BUTTON - RESERVE MY SEAT" */
     .hero-cta {
-        margin-top: 30px !important;    /* Button: UP/DOWN nudge */
-        margin-left: 0px !important;    /* Button: LEFT/RIGHT nudge */
+        margin-top: 30px !important; 
+        margin-left: 0px !important; 
     }
 
-    /* --- CORE SYSTEM OVERRIDES (REQUIRED) --- */
-    .hero-container { align-items: flex-start !important; padding-top: 0 !important; }
+    /* --- NAVIGATION & CORE SYSTEM --- */
+    .hero-container { align-items: flex-start !important; }
     .mobile-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: #000; padding: 60px 40px; gap: 35px; border-bottom: 1px solid #1a1a1a; text-align: center; }
     .nav-links.active-menu { display: flex; }

@@ -256,16 +256,13 @@ select.floating-input option {
         margin-left: -5px !important;              
     }
 
-    /* --- THE NUCLEAR KILL SWITCH: NO VALUES CHANGED --- */
-    /* This targets the exact line visible in your screenshots */
-    .manifesto-quote p, 
-    .manifesto-quote blockquote, 
-    .manifesto-quote div,
-    .manifesto-text-block {
-        border-left: 0px solid transparent !important; /* Forces line to zero/transparent */
-        border: none !important; 
+    /* --- THE TOTAL ERASER: NO VALUES CHANGED --- */
+    /* This specifically targets the 'blockquote' line seen in your image */
+    .manifesto-quote blockquote {
+        border-left: none !important;  
+        border: none !important;
         padding-left: 0 !important;
-        margin-left: 0 !important;
+        margin: 0 !important;
     }
 
     /* 4. "THE KINGDOM" - LOCKED AT -5px */
@@ -273,22 +270,21 @@ select.floating-input option {
         display: block;
         margin-top: -5px !important; 
         color: #FCA311 !important; 
-        border-left: none !important;
     }
 
     /* 5. "AUTHENTIC FAITH" - LOCKED AT 8px */
     .manifesto-quote p {
         display: block;
+        border-left: none !important; 
         margin-top: 8px !important; 
-        border-left: none !important; /* Specific kill for this line */
     }
 
     /* 6. "WE CHOOSE..." - LOCKED AT 15px */
     .manifesto-quote small {
         display: block;
+        border-left: none !important;
         margin-top: 15px !important; 
         line-height: 1.4 !important;
-        border-left: none !important;
     }
 
     /* 7. THE BUTTON - LOCKED AT 30px */

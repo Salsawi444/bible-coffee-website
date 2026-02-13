@@ -225,56 +225,64 @@ select.floating-input option {
 
 /* --- MOBILE ONLY: NUDGING THE TEXT HIGHER --- */
 /* --- THE FINAL MOBILE CORNER SNAP (Place at the very bottom) --- */
+
 @media(max-width:768px) {
+    /* --- 1. THE MAIN CONTAINER (PULLS EVERYTHING UP/LEFT) --- */
     .hero-container {
-        /* Un-centers the content so we can move it up */
         align-items: flex-start !important; 
-        padding-top: 60px !important; /* Adjust this to move the whole block UP or DOWN */
+        padding-top: 60px !important; 
     }
 
     .hero-content-layer {
-        /* Pushes the text and yellow lines to the LEFT */
-        padding-left: 5px !important; 
-        padding-right: 20px !important;
+        padding-left: 15px !important; 
         margin-top: 0 !important;
-        margin-left: 0 !important;
     }
 
+    /* --- 2. TITLE CONTROL (BIBLE & COFFEE) --- */
     .responsive-title {
-        /* Makes sure the big title stays tight and doesn't float away */
         font-size: 3.2rem !important;
         line-height: 0.85 !important;
         margin-bottom: 10px !important;
     }
 
+    /* --- 3. "THE KINGDOM" INDIVIDUAL CONTROL --- */
+    /* Adjust margin-top to move it closer to "FRIDAYS" */
     .manifesto-quote {
-        /* Keeps the vertical gold line tight to the left edge */
-        border-left: 2px solid #FCA311 !important;
-        padding-left: 15px !important;
-        margin-top: 10px !important;
+        border-left: none !important; /* Gold line is officially gone */
+        padding-left: 0 !important;
+        margin-top: -5px !important; 
+        margin-left: 0 !important;
+        color: #FCA311; /* Targets the Kingdom line color */
     }
 
+    /* --- 4. "AUTHENTIC FAITH" INDIVIDUAL CONTROL --- */
+    /* This moves the smaller white text block on its own */
+    .manifesto-quote br + span, 
+    .manifesto-quote p {
+        display: block;
+        margin-top: 10px !important; /* Move this UP or DOWN alone */
+        margin-left: 0 !important;   /* Move this LEFT or RIGHT alone */
+        color: #ffffff;
+    }
+
+    /* --- 5. "CLAIM MY SEAT" BUTTON CONTROL --- */
     .hero-cta {
-        /* Aligns the button to the left edge of your rectangle */
+        margin-top: 25px !important; /* Moves only the button UP or DOWN */
         margin-left: 0 !important;
     }
-}
 
-
-@media(max-width:768px) {
-    .manifesto-quote {
-        /* 1. KILLS THE LINE */
-        border-left: none !important;
-        padding-left: 0 !important;
-
-        /* 2. MOVE IT UP: Negative margin pulls it toward the title */
-        margin-top: -25px !important; 
-
-        /* 3. MOVE IT LEFT: Pulls it toward the screen edge */
-        margin-left: -15px !important; 
-
-        /* 4. TEXT STYLE: Keeps it solid and clean */
-        display: block;
-        width: 100%;
+    /* --- NAVIGATION --- */
+    .mobile-toggle { display: block; }
+    .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 65px; left: 0; width: 100%; 
+        background: #000; 
+        padding: 60px 40px; 
+        gap: 35px; 
+        border-bottom: 1px solid #1a1a1a;
+        text-align: center;
     }
+    .nav-links.active-menu { display: flex; }
 }

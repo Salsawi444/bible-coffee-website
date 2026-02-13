@@ -251,21 +251,21 @@ select.floating-input option {
 
     /* 3. THE MAIN GOLD LINE - Value: -5px (LOCKED) */
     .manifesto-quote {
-        border-left: 2px solid #FCA311 !important; /* This is the ONLY one allowed */
+        border-left: 2px solid #FCA311 !important; 
         padding-left: 15px !important;              
         margin-left: -5px !important;              
     }
 
-    /* --- THE ULTIMATE KILL SWITCH --- */
-    /* This strips borders from every possible element inside the quote */
+    /* --- THE GHOST KILLER: Removes hidden CSS lines --- */
     .manifesto-quote *, 
-    .manifesto-text-block, 
-    .manifesto-quote p, 
-    .manifesto-quote span, 
-    .manifesto-quote small {
-        border: none !important;       /* Kills ALL borders */
-        border-left: none !important;  /* Kills LEFT borders specifically */
-        padding-left: 0 !important;    /* Clears the gap */
+    .manifesto-quote::before, 
+    .manifesto-quote::after,
+    .manifesto-text-block::before,
+    .manifesto-text-block::after {
+        border: none !important;
+        border-left: none !important;
+        content: none !important;      /* This kills lines created by "before/after" */
+        display: block; 
     }
 
     /* 4. "THE KINGDOM" - Value: -5px (LOCKED) */
@@ -280,6 +280,7 @@ select.floating-input option {
         display: block;
         margin-top: 8px !important; 
         margin-left: 0px !important; 
+        border-left: none !important;
     }
 
     /* 6. "WE CHOOSE..." - Value: 15px (LOCKED) */
@@ -287,6 +288,7 @@ select.floating-input option {
         display: block;
         margin-top: 15px !important; 
         line-height: 1.4 !important;
+        border-left: none !important;
     }
 
     /* 7. THE BUTTON - Value: 30px (LOCKED) */

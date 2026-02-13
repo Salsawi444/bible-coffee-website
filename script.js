@@ -41,34 +41,36 @@ if (menuToggle) {
     });
 }
 
-/* --- SECTION SWITCHER (Surgical Fix Applied) --- */
+/* --- SECTION SWITCHER (SURGICAL REPAIR) --- */
 function showSection(id, btn) {
-    // 1. Hide the Home Wrapper (Hero + Marquee)
-    const homeWrap = document.getElementById('home-wrapper');
-    if(homeWrap) homeWrap.style.display = 'none';
-
-    // 2. Hide ALL other possible section elements
-    // We target both the class and the tag to be 100% sure nothing stays visible
-    document.querySelectorAll('.section-container, section').forEach(el => {
-        el.style.display = 'none';
-    });
+    // 1. Target the specific sections we want to manage
+    // We target IDs directly to ensure they are found regardless of class
+    const sectionIds = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
     
-    // 3. Target logic: 'home' maps to 'home-wrapper', others map to their ID
-    const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
+    sectionIds.forEach(sectionId => {
+        const el = document.getElementById(sectionId);
+        if(el) {
+            el.style.display = 'none';
+        }
+    });
+
+    // 2. Map 'home' to 'home-wrapper' specifically
+    const targetId = (id === 'home') ? 'home-wrapper' : id;
+    const target = document.getElementById(targetId);
     
     if(target) {
-        // We use !important to override any accidental CSS collisions from Tailwind
+        // Force display block and use !important to override any tailwind hidden classes
         target.style.setProperty('display', 'block', 'important');
     }
-    
-    // 4. UI Cleanup: Update button highlighting
+
+    // 3. UI Cleanup: Update button highlighting
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     
-    // 5. Close mobile menu if open
+    // 4. Close mobile menu
     if(navLinks) navLinks.classList.remove('active-menu');
     
-    // 6. Scroll to top so user sees the start of the section
+    // 5. Reset scroll
     window.scrollTo(0,0);
 }
 
@@ -89,7 +91,7 @@ function openVideo(videoId) {
     document.body.appendChild(overlay);
 }
 
-/* --- GLOBAL REGISTRATION DB --- */
+/* --- REGISTRATION DATABASE --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
@@ -200,7 +202,7 @@ if(regForm) {
     });
 }
 
-/* --- DOM INITIALIZATION --- */
+/* --- DOM INIT --- */
 document.addEventListener("DOMContentLoaded", () => {
     if(window.lucide) {
         lucide.createIcons();

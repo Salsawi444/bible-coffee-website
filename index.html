@@ -59,6 +59,38 @@
     
     .social-icon { transition: 0.3s; color: #666; }
     .social-icon:hover { color: #FCA311; }
+
+    /* MARQUEE ADDITION - SURGICAL & SAFE */
+    .hero-marquee {
+        width: 100%;
+        overflow: hidden;
+        background: transparent;
+        margin-top: 40px;
+        padding: 10px 0;
+        opacity: 0.8;
+    }
+    .marquee-content {
+        display: inline-block;
+        white-space: nowrap;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+        animation: marquee 40s linear infinite;
+    }
+    .marquee-content .dot {
+        color: #FCA311;
+        -webkit-text-stroke: 0;
+        margin: 0 15px;
+        font-size: 0.8rem;
+        vertical-align: middle;
+    }
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body>
@@ -104,6 +136,13 @@
             </p>
             
             <button onclick="showSection('join')" class="hero-cta">CLAIM MY SEAT</button>
+
+            <div class="hero-marquee">
+                <div class="marquee-content">
+                    ADDIS ABABA <span class="dot">●</span> LONDON <span class="dot">●</span> DALLAS <span class="dot">●</span> NAIROBI <span class="dot">●</span> STOCKHOLM <span class="dot">●</span> JOHANNESBURG <span class="dot">●</span> DUBAI <span class="dot">●</span> NEW YORK <span class="dot">●</span>
+                    ADDIS ABABA <span class="dot">●</span> LONDON <span class="dot">●</span> DALLAS <span class="dot">●</span> NAIROBI <span class="dot">●</span> STOCKHOLM <span class="dot">●</span> JOHANNESBURG <span class="dot">●</span> DUBAI <span class="dot">●</span> NEW YORK
+                </div>
+            </div>
         </div>
       </div>
     </header>

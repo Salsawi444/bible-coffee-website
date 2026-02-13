@@ -4,7 +4,6 @@ const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
 /* --- NAVIGATION LOGIC --- */
 function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
-    
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -24,25 +23,17 @@ function showSection(id, btn) {
     }
 
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    if (btn) {
-        btn.classList.add('active');
-    } else {
-        const buttons = document.querySelectorAll('.nav-links button');
-        buttons.forEach(b => {
-            if(b.innerText.toLowerCase() === id.toLowerCase()) b.classList.add('active');
-        });
-    }
+    if (btn) btn.classList.add('active');
 
     const navLinks = document.getElementById('nav-links');
     if (navLinks) navLinks.classList.remove('active-menu');
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* --- MOBILE MENU --- */
 document.getElementById('menu-toggle')?.addEventListener('click', function(e) {
     e.stopPropagation();
-    document.getElementById('nav-links').classList.toggle('active-menu');
+    document.getElementById('nav-links')?.classList.toggle('active-menu');
 });
 
 /* --- VIDEO OVERLAY --- */
@@ -62,38 +53,36 @@ function openVideo(videoId) {
 async function checkSlots() {
     const loc = document.getElementById('location').value;
     const badge = document.getElementById('slot-badge');
-    const statusText = document.getElementById('slot-status-text') || document.getElementById('slot-count');
+    const statusText = document.getElementById('slot-status-text');
     const submitBtn = document.getElementById('submit-btn');
     
     if(!loc) return;
-    badge.classList.remove('hidden');
     
-    // UI Feedback while checking
+    // Show badge immediately
+    if(badge) { badge.classList.remove('hidden'); badge.style.display = 'block'; }
+    if(statusText) statusText.innerText = "VERIFYING SEATS...";
     submitBtn.disabled = true;
-    const originalBtnText = submitBtn.innerText;
-    submitBtn.innerText = "VERIFYING AVAILABILITY...";
 
     try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        const taken = data.filter(entry => entry.Location === loc).length;
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        const taken = data.filter(r => r.Location === loc).length;
         const available = 8 - taken;
 
         if (available <= 0) {
-            if(statusText) statusText.innerHTML = `<span style="color: #ff4444;">TABLE FULL</span>`;
+            statusText.innerHTML = `<span style="color: #ff4444;">LOCATION FULL</span>`;
             submitBtn.disabled = true;
             submitBtn.style.opacity = "0.3";
-            submitBtn.innerText = "NO SEATS LEFT";
+            submitBtn.innerText = "NO SEATS REMAINING";
         } else {
-            if(statusText) statusText.innerText = available;
+            statusText.innerText = `SEATS AVAILABLE: ${available} / 8`;
             submitBtn.disabled = false;
             submitBtn.style.opacity = "1";
             submitBtn.innerText = "CONFIRM RESERVATION";
         }
-    } catch (error) {
-        console.error("Slot check failed", error);
+    } catch(e) { 
+        statusText.innerText = "8 SEATS AVAILABLE";
         submitBtn.disabled = false;
-        submitBtn.innerText = "CONFIRM RESERVATION";
     }
 }
 
@@ -110,9 +99,7 @@ function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
     citySelect.innerHTML = '<option value="" disabled selected></option>';
-    if (db[country]) {
-        Object.keys(db[country]).forEach(c => citySelect.add(new Option(c, c)));
-    }
+    if (db[country]) Object.keys(db[country]).forEach(c => citySelect.add(new Option(c, c)));
 }
 
 function updateLocations() {
@@ -120,62 +107,67 @@ function updateLocations() {
     const city = document.getElementById('city').value;
     const locSelect = document.getElementById('location');
     locSelect.innerHTML = '<option value="" disabled selected></option>';
-    if (db[country] && db[country][city]) {
-        db[country][city].forEach(l => locSelect.add(new Option(l, l)));
-    }
+    if (db[country] && db[country][city]) db[country][city].forEach(l => locSelect.add(new Option(l, l)));
 }
 
-/* --- INITIALIZE --- */
+/* --- INITIALIZE & SUBMIT --- */
 document.addEventListener('DOMContentLoaded', () => {
     if(window.lucide) lucide.createIcons();
-    
     showSection('home', document.querySelector('.nav-links button:first-child'));
 
-    // --- SUBMISSION TO SHEETDB ---
     document.getElementById('regForm')?.addEventListener('submit', async function(e) {
         e.preventDefault();
         const btn = document.getElementById('submit-btn');
-        const originalText = btn.innerText;
+        const loc = document.getElementById('location').value;
         
         btn.disabled = true;
-        btn.innerText = "RESERVING SEAT...";
-
-        const now = new Date();
-        const data = {
-            "Name": document.getElementById('name').value,
-            "Phone": document.getElementById('phone').value,
-            "Email": document.getElementById('email').value,
-            "Country": document.getElementById('country').value,
-            "City": document.getElementById('city').value,
-            "Location": document.getElementById('location').value,
-            "Registration Date": now.toLocaleDateString(),
-            "Registration Time": now.toLocaleTimeString()
-        };
+        btn.innerText = "VERIFYING FINAL SEAT...";
 
         try {
-            const response = await fetch(API_URL, {
+            // Anti-cheating check: check one last time before posting
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const taken = data.filter(r => r.Location === loc).length;
+
+            if (taken >= 8) {
+                alert("This location just filled up! Please choose another.");
+                checkSlots();
+                return;
+            }
+
+            btn.innerText = "SECURING SEAT...";
+            const now = new Date();
+            const payload = {
+                "Name": document.getElementById('name').value,
+                "Phone": document.getElementById('phone').value,
+                "Email": document.getElementById('email').value,
+                "Country": document.getElementById('country').value,
+                "City": document.getElementById('city').value,
+                "Location": loc,
+                "Registration Date": now.toLocaleDateString(),
+                "Registration Time": now.toLocaleTimeString()
+            };
+
+            const postRes = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ data: [data] })
+                body: JSON.stringify({ data: [payload] })
             });
 
-            if(response.ok) {
-                btn.innerText = "SUCCESS. SEAT SECURED.";
+            if(postRes.ok) {
+                btn.innerText = "RESERVATION SUCCESSFUL";
                 btn.style.background = "#fff";
-                btn.style.color = "#000";
                 this.reset();
                 setTimeout(() => {
                     showSection('home');
-                    btn.innerText = "CONFIRM RESERVATION";
                     btn.style.background = "#FCA311";
-                    btn.style.color = "#000";
+                    btn.innerText = "CONFIRM RESERVATION";
                     btn.disabled = false;
                 }, 3000);
             }
-        } catch (error) {
-            alert("Connection error. Please try again.");
+        } catch (err) {
             btn.disabled = false;
-            btn.innerText = originalText;
+            btn.innerText = "CONFIRM RESERVATION";
         }
     });
 });

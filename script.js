@@ -1,10 +1,10 @@
+/* --- CONFIGURATION --- */
+const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
+
 /* --- NAVIGATION LOGIC --- */
 function showSection(id, btn) {
-    // 1. Identify all top-level containers
-    // Note: 'home' is a child of 'home-wrapper', so we handle them as one unit for visibility
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
     
-    // 2. Hide all main sections
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -13,45 +13,29 @@ function showSection(id, btn) {
         }
     });
 
-    // 3. Show requested section logic
     if (id === 'home') {
         const wrapper = document.getElementById('home-wrapper');
         const homeHeader = document.getElementById('home');
-        if (wrapper) {
-            wrapper.style.display = 'block';
-            wrapper.classList.remove('hidden');
-        }
-        if (homeHeader) {
-            // Hero section specifically needs flex for the layout to look right
-            homeHeader.style.display = 'flex'; 
-            homeHeader.classList.remove('hidden');
-        }
+        if (wrapper) { wrapper.style.display = 'block'; wrapper.classList.remove('hidden'); }
+        if (homeHeader) { homeHeader.style.display = 'flex'; homeHeader.classList.remove('hidden'); }
     } else {
         const target = document.getElementById(id);
-        if (target) {
-            target.style.display = 'block';
-            target.classList.remove('hidden');
-        }
+        if (target) { target.style.display = 'block'; target.classList.remove('hidden'); }
     }
 
-    // 4. UI Updates
-    // Update active button state
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) {
         btn.classList.add('active');
     } else {
-        // Fallback: Find the button by text if 'btn' wasn't passed (e.g., from "Claim My Seat")
         const buttons = document.querySelectorAll('.nav-links button');
         buttons.forEach(b => {
             if(b.innerText.toLowerCase() === id.toLowerCase()) b.classList.add('active');
         });
     }
 
-    // Close mobile menu after selection
     const navLinks = document.getElementById('nav-links');
     if (navLinks) navLinks.classList.remove('active-menu');
 
-    // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -74,23 +58,52 @@ function openVideo(videoId) {
     document.body.appendChild(overlay);
 }
 
-/* --- DATABASE & DROPDOWNS --- */
+/* --- LIVE SLOT CHECKER --- */
+async function checkSlots() {
+    const loc = document.getElementById('location').value;
+    const badge = document.getElementById('slot-badge');
+    const statusText = document.getElementById('slot-status-text') || document.getElementById('slot-count');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    if(!loc) return;
+    badge.classList.remove('hidden');
+    
+    // UI Feedback while checking
+    submitBtn.disabled = true;
+    const originalBtnText = submitBtn.innerText;
+    submitBtn.innerText = "VERIFYING AVAILABILITY...";
+
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        const taken = data.filter(entry => entry.Location === loc).length;
+        const available = 8 - taken;
+
+        if (available <= 0) {
+            if(statusText) statusText.innerHTML = `<span style="color: #ff4444;">TABLE FULL</span>`;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.3";
+            submitBtn.innerText = "NO SEATS LEFT";
+        } else {
+            if(statusText) statusText.innerText = available;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            submitBtn.innerText = "CONFIRM RESERVATION";
+        }
+    } catch (error) {
+        console.error("Slot check failed", error);
+        submitBtn.disabled = false;
+        submitBtn.innerText = "CONFIRM RESERVATION";
+    }
+}
+
+/* --- DATABASE --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], 
         "Hawassa": ["City Center"] 
     },
-    "Kenya": { "Nairobi": ["Kilimani", "Westlands"] },
-    "USA": { "Dallas": ["Downtown", "Plano"] },
-    "UK": { "London": ["Central"] },
-    "Germany": { "Berlin": ["Mitte"] },
-    "Netherlands": { "Amsterdam": ["Center"] },
-    "Sweden": { "Stockholm": ["Gamla Stan"] },
-    "Norway": { "Oslo": ["Center"] },
-    "Denmark": { "Copenhagen": ["Center"] },
-    "South Africa": { "Johannesburg": ["Sandton"] },
-    "Uganda": { "Kampala": ["Central"] },
-    "Rwanda": { "Kigali": ["City Center"] }
+    "Kenya": { "Nairobi": ["Kilimani", "Westlands"] }
 };
 
 function updateCities() {
@@ -98,9 +111,7 @@ function updateCities() {
     const citySelect = document.getElementById('city');
     citySelect.innerHTML = '<option value="" disabled selected></option>';
     if (db[country]) {
-        Object.keys(db[country]).forEach(c => {
-            citySelect.add(new Option(c, c));
-        });
+        Object.keys(db[country]).forEach(c => citySelect.add(new Option(c, c)));
     }
 }
 
@@ -110,44 +121,61 @@ function updateLocations() {
     const locSelect = document.getElementById('location');
     locSelect.innerHTML = '<option value="" disabled selected></option>';
     if (db[country] && db[country][city]) {
-        db[country][city].forEach(l => {
-            locSelect.add(new Option(l, l));
-        });
-    }
-}
-
-async function checkSlots() {
-    const loc = document.getElementById('location').value;
-    const countSpan = document.getElementById('slot-count');
-    const badge = document.getElementById('slot-badge');
-    if(!loc) return;
-    
-    badge.classList.remove('hidden');
-    try {
-        const res = await fetch('https://sheetdb.io/api/v1/9q45d3e7oe5ks');
-        const data = await res.json();
-        const taken = data.filter(r => r.Location === loc).length;
-        countSpan.innerText = Math.max(0, 8 - taken);
-    } catch(e) { 
-        console.error("Slot check failed", e);
-        countSpan.innerText = "8"; 
+        db[country][city].forEach(l => locSelect.add(new Option(l, l)));
     }
 }
 
 /* --- INITIALIZE --- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Lucide Icons
-    if(window.lucide) {
-        lucide.createIcons();
-    }
+    if(window.lucide) lucide.createIcons();
     
-    // 2. Default View
     showSection('home', document.querySelector('.nav-links button:first-child'));
 
-    // 3. Form Submission Handling (Preventing page reload)
-    document.getElementById('regForm')?.addEventListener('submit', function(e) {
-        // Here you would typically add your fetch call to post data to SheetDB
-        // For now, it prevents the default refresh to keep the "surgery" stable
-        console.log("Form submitted locally.");
+    // --- SUBMISSION TO SHEETDB ---
+    document.getElementById('regForm')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const originalText = btn.innerText;
+        
+        btn.disabled = true;
+        btn.innerText = "RESERVING SEAT...";
+
+        const now = new Date();
+        const data = {
+            "Name": document.getElementById('name').value,
+            "Phone": document.getElementById('phone').value,
+            "Email": document.getElementById('email').value,
+            "Country": document.getElementById('country').value,
+            "City": document.getElementById('city').value,
+            "Location": document.getElementById('location').value,
+            "Registration Date": now.toLocaleDateString(),
+            "Registration Time": now.toLocaleTimeString()
+        };
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [data] })
+            });
+
+            if(response.ok) {
+                btn.innerText = "SUCCESS. SEAT SECURED.";
+                btn.style.background = "#fff";
+                btn.style.color = "#000";
+                this.reset();
+                setTimeout(() => {
+                    showSection('home');
+                    btn.innerText = "CONFIRM RESERVATION";
+                    btn.style.background = "#FCA311";
+                    btn.style.color = "#000";
+                    btn.disabled = false;
+                }, 3000);
+            }
+        } catch (error) {
+            alert("Connection error. Please try again.");
+            btn.disabled = false;
+            btn.innerText = originalText;
+        }
     });
 });

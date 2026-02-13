@@ -1,69 +1,60 @@
-/* --- HERO SECTION (DESKTOP & MOBILE ALIGNMENT FIX) --- */
+/* --- HERO SECTION (BALANCED ALIGNMENT) --- */
 .hero-container { 
     position: relative; 
     min-height: 100vh; 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; 
+    justify-content: flex-start; /* Aligns content to the left side globally */
     overflow: hidden; 
-    background-color: #000000 !important; /* Total black restore */
+    background-color: #000 !important; 
 }
 
 .hero-content-layer { 
     position: relative; 
     z-index: 10; 
-    /* DESKTOP FIX: Giving it 10% space so it doesn't hit the screen edge */
+    /* DESKTOP: 10% padding keeps text from hitting the screen edge */
     padding: 0 10%; 
-    max-width: 1600px; 
+    max-width: 1400px; 
     width: 100%; 
-    margin-top: 80px; 
-    text-align: left; /* Ensures everything anchors left */
+    margin-top: 80px;
+    text-align: left; /* Ensures all text elements are left-aligned */
 }
 
-/* Ensure the title stays huge but doesn't break the layout */
+/* Fixes the text explosion/cutoff on Desktop */
 .responsive-title { 
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(3.5rem, 12vw, 7.5rem) !important; 
+    font-size: clamp(3rem, 11vw, 7rem) !important; /* Adjusted to prevent cutoff */
     line-height: 0.85; 
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 20px;
-    display: block;
 }
 
-/* --- MOBILE SPECIFIC (THE RECTANGLE & ALIGNMENT FIX) --- */
+/* --- MOBILE SPECIFIC (THE RECTANGLE FIX) --- */
 @media(max-width:768px) {
     .hero-container { 
         justify-content: flex-start !important; 
     }
 
     .hero-content-layer {
-        /* MOBILE FIX: Moves content exactly into your white rectangle */
+        /* MOBILE: Moves content specifically into your drawn white rectangle */
         padding-left: 30px !important; 
         padding-right: 20px !important;
         margin-top: 100px;
     }
 
     .responsive-title {
-        /* Adjusted for mobile width so it doesn't overlap the gold line */
-        font-size: 3.4rem !important; 
+        font-size: 3.2rem !important; /* Prevents text from being too wide for mobile */
         line-height: 0.95;
     }
 
     .manifesto-quote { 
-        border-left: 2px solid #FCA311 !important; /* Restores your golden line */
+        border-left: 2px solid #FCA311 !important; /* Restores the gold line you liked */
         padding-left: 20px !important;
-        margin-left: 0 !important;
         text-align: left !important;
     }
 
     .hero-cta {
         margin-left: 0 !important; /* Snaps button to the left edge of the rectangle */
     }
-}
-
-/* --- NAVIGATION PITCH BLACK FIX --- */
-nav { 
-    background: #000000 !important; 
-    border-bottom: 1px solid rgba(255,255,255,0.05); 
 }

@@ -224,25 +224,38 @@ select.floating-input option {
 .sermon-card:hover .sermon-thumb { filter: grayscale(0%); transform: scale(1.05); }
 
 /* --- MOBILE ONLY: NUDGING THE TEXT HIGHER --- */
+/* --- THE FINAL MOBILE CORNER SNAP (Place at the very bottom) --- */
 @media(max-width:768px) {
     .hero-container {
-        /* This tells the container to stop centering the text vertically */
+        /* Un-centers the content so we can move it up */
         align-items: flex-start !important; 
+        padding-top: 60px !important; /* Adjust this to move the whole block UP or DOWN */
     }
 
     .hero-content-layer {
-        /* This is the magic number. 
-           Lower = Higher on the screen. 
-           Higher = Lower on the screen. */
-        margin-top: 50px !important; 
-        
-        /* This keeps it in your white rectangle on the left */
-        padding-left: 15px !important; 
+        /* Pushes the text and yellow lines to the LEFT */
+        padding-left: 10px !important; 
+        padding-right: 20px !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .responsive-title {
+        /* Makes sure the big title stays tight and doesn't float away */
+        font-size: 3.2rem !important;
+        line-height: 0.85 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .manifesto-quote {
+        /* Keeps the vertical gold line tight to the left edge */
+        border-left: 2px solid #FCA311 !important;
+        padding-left: 15px !important;
+        margin-top: 10px !important;
+    }
+
+    .hero-cta {
+        /* Aligns the button to the left edge of your rectangle */
+        margin-left: 0 !important;
     }
 }
-
-/* --- UTILITIES --- */
-.hidden { display: none; }
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #FCA311; }

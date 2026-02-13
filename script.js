@@ -33,6 +33,7 @@ function orderMerch(itemName) {
     window.location.href = `https://wa.me/${phone}?text=${message}`;
 }
 
+/* --- MOBILE MENU TOGGLE --- */
 if (menuToggle) {
     menuToggle.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -40,24 +41,34 @@ if (menuToggle) {
     });
 }
 
-/* --- SECTION SWITCHER (UPDATED FOR NEW HOME WRAPPER) --- */
+/* --- SECTION SWITCHER (Surgical Fix Applied) --- */
 function showSection(id, btn) {
-    // Hide everything including the home-wrapper
-    document.querySelectorAll('.section-container, #home-wrapper').forEach(el => {
+    // 1. Hide the Home Wrapper (Hero + Marquee)
+    const homeWrap = document.getElementById('home-wrapper');
+    if(homeWrap) homeWrap.style.display = 'none';
+
+    // 2. Hide ALL other possible section elements
+    // We target both the class and the tag to be 100% sure nothing stays visible
+    document.querySelectorAll('.section-container, section').forEach(el => {
         el.style.display = 'none';
     });
     
-    // Target logic: 'home' maps to 'home-wrapper'
+    // 3. Target logic: 'home' maps to 'home-wrapper', others map to their ID
     const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
+    
     if(target) {
+        // We use !important to override any accidental CSS collisions from Tailwind
         target.style.setProperty('display', 'block', 'important');
     }
     
-    // UI Cleanup
+    // 4. UI Cleanup: Update button highlighting
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     
+    // 5. Close mobile menu if open
     if(navLinks) navLinks.classList.remove('active-menu');
+    
+    // 6. Scroll to top so user sees the start of the section
     window.scrollTo(0,0);
 }
 
@@ -78,7 +89,7 @@ function openVideo(videoId) {
     document.body.appendChild(overlay);
 }
 
-/* --- GLOBAL REGISTRATION DB (REFINED) --- */
+/* --- GLOBAL REGISTRATION DB --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole", "Mexico", "Megenagna", "Haile Garment", "Piassa", "Old Airport", "CMC", "Sar Bet"],
@@ -98,6 +109,7 @@ const db = {
     "USA": { "Dallas": ["Downtown", "Plano", "Frisco"], "New York": ["Manhattan", "Brooklyn", "Queens"] },
     "UK": { "London": ["Canary Wharf", "Westminster", "Shoreditch"], "Manchester": ["City Centre"] }
 };
+
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
@@ -188,8 +200,8 @@ if(regForm) {
     });
 }
 
+/* --- DOM INITIALIZATION --- */
 document.addEventListener("DOMContentLoaded", () => {
-    // Vital: Re-trigger Lucide to find new footer/manifesto icons
     if(window.lucide) {
         lucide.createIcons();
     }

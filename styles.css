@@ -1,12 +1,18 @@
-/* --- HERO SECTION (RESTORED & FIXED) --- */
+/* --- HERO SECTION (RESTORED TO BLACK) --- */
 .hero-container { 
     position: relative; 
     min-height: 100vh; 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; /* Keeps desktop anchored left */
+    justify-content: flex-start; 
     overflow: hidden; 
-    background-color: #000000 !important; /* Force black background */
+    background: #000000 !important; /* Forces black background */
+}
+
+/* Fixes the white bar issue in your screenshot */
+nav { 
+    background: #000000 !important; 
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .hero-bg-layer { 
@@ -17,57 +23,56 @@
     background-size: cover; 
     background-position: center; 
     z-index: 0;
-    opacity: 0.6; /* Balanced for both mobile and desktop */
+    opacity: 0.5; /* Keeps image subtle so text pops */
 }
 
 .hero-overlay-layer { 
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%; 
     z-index: 1; 
-    /* Ensures a dark fade from the left for text readability */
-    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%); 
+    /* Dark fade to ensure text on left is perfectly readable */
+    background: linear-gradient(90deg, #000000 20%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%); 
 }
 
 .hero-content-layer { 
     position: relative; 
     z-index: 10; 
-    padding-left: 8%; /* This aligns text with your gold line */
-    max-width: 1200px; 
+    padding-left: 5%; 
     width: 100%; 
+    max-width: 1400px;
 }
 
-/* --- MOBILE SPECIFIC FIX (LEFT ALIGNMENT) --- */
+/* --- MOBILE ALIGNMENT (THE WHITE RECTANGLE FIX) --- */
 @media(max-width:768px) {
     .hero-container { 
-        justify-content: flex-start !important; /* Forces content to your white rectangle */
-        text-align: left !important; 
-        padding-left: 5%; 
+        justify-content: flex-start !important; 
+        padding-left: 20px !important; /* Snaps content to the left edge */
     }
 
-    .hero-bg-layer { 
-        width: 100%;
-        opacity: 0.5; /* Darker on mobile for better text contrast */
-    }
-
-    .hero-overlay-layer { 
-        /* Stronger vertical fade for mobile */
-        background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 80%); 
+    .hero-content-layer {
+        text-align: left !important;
+        margin-top: 60px;
     }
 
     .responsive-title {
-        font-size: 3.5rem !important; /* Corrects the huge size on mobile */
+        font-size: 3.8rem !important; /* Keeps it bold but fitting */
         text-align: left !important;
+        margin-left: 0 !important;
     }
 
     .manifesto-quote { 
         border-left: 2px solid #FCA311 !important; 
-        border-top: none !important; 
-        padding-left: 15px !important; 
+        padding-left: 15px !important;
         text-align: left !important;
+        margin-left: 0 !important;
     }
 
     .hero-cta {
         margin-left: 0 !important;
-        margin-right: auto !important;
+    }
+
+    .hero-overlay-layer {
+        /* Stronger mobile-specific dark overlay */
+        background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, #000000 90%);
     }
 }

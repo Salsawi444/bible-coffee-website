@@ -76,8 +76,8 @@ nav {
 
 /* THE MINI © FIX */
 .copyright-mark {
-    font-size: 0.2em; /* Tiny size */
-    vertical-align: 40px; /* High position like red dot */
+    font-size: 0.2em; /* This makes it tiny */
+    vertical-align: 40px; /* This puts it up high like your red dot */
     margin-left: 6px;
     color: white;
     font-weight: 400;

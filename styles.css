@@ -1,171 +1,120 @@
-/* --- BRAND IDENTITY VARIABLES --- */
 :root {
     --brand-gold: #FCA311;
     --brand-white: #FFFFFF;
-    --brand-gray: rgba(255, 255, 255, 0.6);
     --bg-black: #000000;
-    --font-main: 'Inter', sans-serif;
     --font-heading: 'Oswald', sans-serif;
+    --font-main: 'Inter', sans-serif;
 }
 
-/* --- CORE ARCHITECTURE --- */
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
-body { 
-    font-family: var(--font-main); 
-    background: var(--bg-black); 
-    color: var(--brand-white); 
-    overflow-x: hidden;
-    line-height: 1.6;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg-black); color: var(--brand-white); font-family: var(--font-main); overflow-x: hidden; }
+
+/* --- HERO ENGINE --- */
+.hero-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 120px 40px 60px 40px;
+    overflow: hidden;
 }
 
-/* --- HERO SECTION (DESKTOP STABLE) --- */
-.hero-container { 
-    position: relative; 
-    min-height: 100vh; 
-    display: flex; 
-    align-items: center; /* Keeps Desktop Centered */
-    overflow: hidden; 
-    background-color: black; 
+.hero-bg-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: url('hero-family.jpg') center/cover no-repeat;
+    z-index: 0;
 }
 
-.hero-bg-layer { 
-    position: absolute; 
-    top: 0; left: 0; width: 100%; height: 100%; 
-    background-image: url('hero-family.jpg'); 
-    background-size: cover; 
-    background-position: center center; 
-    z-index: 0; 
+.hero-overlay-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
 }
 
-.hero-overlay-layer { 
-    position: absolute; 
-    top: 0; left: 0; width: 100%; height: 100%; 
-    z-index: 1; 
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 60%, #000000 100%); 
+.hero-content-layer {
+    position: relative; z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to top and bottom corners */
 }
 
-.hero-content-layer { 
-    position: relative; 
-    z-index: 10; 
-    padding: 0 25px; 
-    max-width: 1200px; 
-    width: 100%; 
-    margin: 0 auto; 
-    margin-top: 80px; 
-}
-
-/* --- TYPOGRAPHY & BUTTONS --- */
-.responsive-title { 
+.responsive-title {
+    display: block;
     font-family: var(--font-heading);
-    font-size: clamp(3.5rem, 15vw, 7rem) !important; 
-    line-height: 0.9; 
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 900;
+    line-height: 0.85;
     text-transform: uppercase;
-    font-weight: 700;
+}
+
+.gold-text { color: var(--brand-gold); position: relative; }
+
+.copyright-mark {
+    font-size: 0.2em;
+    vertical-align: top;
+    position: relative;
+    top: 10px;
+    margin-left: 5px;
     color: var(--brand-white);
 }
 
-.sub-header {
-    color: var(--brand-gold) !important;
+.manifesto-wrapper {
+    max-width: 500px;
+    border-left: 2px solid var(--brand-gold);
+    padding-left: 25px;
+    margin-bottom: 30px;
+}
+
+.manifesto-quote { font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; }
+.hero-subtext { font-weight: 300; opacity: 0.8; font-size: 0.95rem; }
+
+/* --- TICKER (WELL-OILED MACHINE) --- */
+.ticker-wrap {
+    width: 100%;
+    background: #000;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: tickerLoop 30s linear infinite;
+    will-change: transform; /* Hardware Acceleration */
+}
+
+.ticker-item {
     font-family: var(--font-heading);
-    text-transform: uppercase;
+    font-size: 12px;
     letter-spacing: 4px;
-    font-size: 14px;
-    margin-top: 10px;
+    padding: 0 20px;
+    color: var(--brand-white);
 }
 
-.manifesto-quote { 
-    font-family: var(--font-heading); 
-    font-weight: 500; 
-    color: var(--brand-white); 
-    font-size: clamp(1.2rem, 4vw, 1.8rem); 
-    text-transform: uppercase;
-    border-left: 3px solid var(--brand-gold);
-    padding-left: 20px;
-    margin: 25px 0;
+.ticker-item span { color: var(--brand-gold); margin-left: 20px; }
+
+@keyframes tickerLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-.hero-cta { 
-    border: 1px solid var(--brand-gold); 
-    color: var(--brand-gold); 
-    padding: 18px 45px; 
-    text-transform: uppercase; 
-    letter-spacing: 5px; 
-    font-weight: 700; 
-    font-size: 10px; 
-    cursor: pointer; 
-    background: transparent; 
-    transition: 0.4s; 
+/* --- SECTION STYLES --- */
+.hidden { display: none !important; }
+.section-container { padding: 100px 20px; min-height: 100vh; }
+
+/* --- MISSION SECTION --- */
+.mission-statement { padding: 100px 0; text-align: center; }
+.serif-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px; }
+.gold-statement { color: var(--brand-gold); font-size: 1.4rem; font-weight: 700; max-width: 800px; margin: 0 auto; line-height: 1.4; }
+
+/* --- MOBILE SURGERY --- */
+@media (max-width: 768px) {
+    .hero-container { padding: 100px 25px 40px 25px; }
+    .responsive-title { font-size: 4rem; }
+    .manifesto-wrapper { padding-left: 15px; }
+    .hero-cta { width: 100%; }
 }
-.hero-cta:hover { background: var(--brand-gold); color: #000; box-shadow: 0 0 30px rgba(252, 163, 17, 0.3); }
-
-/* --- NAVIGATION --- */
-nav { 
-    position: fixed; top: 0; width: 100%; z-index: 9999; 
-    background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 0; 
-}
-.nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; align-items: center; }
-.nav-links { display: flex; gap: 30px; } 
-.nav-links button { color: rgba(255,255,255,0.5); font-family: var(--font-heading); font-size: 14px; font-weight: 700; letter-spacing: 4px; border: none; background: none; cursor: pointer; text-transform: uppercase; transition: 0.4s; }
-.nav-links button.active { color: var(--brand-gold); }
-.mobile-toggle { display: none; background: none; border: none; color: var(--brand-gold); cursor: pointer; }
-
-/* --- MOBILE OPTIMIZATION (THE SURGERY) --- */
-@media(max-width:768px) {
-    .hero-container {
-        align-items: stretch !important;
-        padding-top: 100px; 
-    }
-
-    .hero-content-layer {
-        margin-top: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important; 
-        height: 78vh !important; /* THE WINDOW FOR THE FACES */
-    }
-
-    .responsive-title { 
-        font-size: 3.8rem !important; 
-        line-height: 0.85 !important;
-        letter-spacing: -1px;
-    }
-
-    .sub-header {
-        font-size: 11px !important;
-        margin-bottom: 40px !important;
-    }
-
-    .manifesto-quote {
-        font-size: 1.1rem !important;
-        margin-bottom: 15px !important;
-        line-height: 1.3;
-    }
-
-    .hero-cta {
-        width: 100%;
-        text-align: center;
-    }
-
-    /* Dual-Focus Gradient: Darkens top/bottom, keeps middle clear */
-    .hero-overlay-layer {
-        background: linear-gradient(180deg, 
-            rgba(0,0,0,0.9) 0%, 
-            rgba(0,0,0,0.2) 35%, 
-            rgba(0,0,0,0.3) 65%, 
-            rgba(0,0,0,1) 100%) !important;
-    }
-
-    .mobile-toggle { display: block; }
-    .nav-links { 
-        display: none; flex-direction: column; position: absolute; 
-        top: 65px; left: 0; width: 100%; background: #000; 
-        padding: 50px 40px; gap: 30px; border-bottom: 1px solid #1a1a1a;
-    }
-    .nav-links.active-menu { display: flex; }
-}
-
-/* --- UTILITIES --- */
-.section-container { display: none; padding: 100px 0; min-height: 100vh; width: 100%; background: #000; }
-#home-wrapper { width: 100%; background: #000; }
-.hidden { display: none; }

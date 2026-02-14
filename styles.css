@@ -1,120 +1,97 @@
-:root {
-    --brand-gold: #FCA311;
-    --brand-white: #FFFFFF;
-    --bg-black: #000000;
-    --font-heading: 'Oswald', sans-serif;
-    --font-main: 'Inter', sans-serif;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg-black); color: var(--brand-white); font-family: var(--font-main); overflow-x: hidden; }
-
-/* --- HERO ENGINE --- */
+/* --- NASA-GRADE HERO RESET --- */
 .hero-container {
     position: relative;
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 120px 40px 60px 40px;
-    overflow: hidden;
+    padding: 0; /* Remove padding here to control it inside layers */
 }
 
 .hero-bg-layer {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: url('hero-family.jpg') center/cover no-repeat;
     z-index: 0;
 }
 
 .hero-overlay-layer {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Dual-focus gradient to keep the center clear for the family */
+    background: linear-gradient(180deg, 
+        rgba(0,0,0,0.8) 0%, 
+        rgba(0,0,0,0) 30%, 
+        rgba(0,0,0,0) 70%, 
+        rgba(0,0,0,0.9) 100%);
     z-index: 1;
 }
 
 .hero-content-layer {
-    position: relative; z-index: 2;
-    height: 100%;
+    position: relative;
+    z-index: 10;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes content to top and bottom corners */
+    justify-content: space-between; /* Force items to absolute Top and Bottom */
+    padding: 100px 5% 60px 5%; /* Responsive side padding */
 }
 
+/* Typography Controls */
 .responsive-title {
     display: block;
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 12vw, 8rem);
+    font-size: clamp(2.5rem, 10vw, 6rem); /* Smaller clamp to prevent overlap */
     font-weight: 900;
-    line-height: 0.85;
+    line-height: 0.9;
     text-transform: uppercase;
+    color: #FFF;
 }
 
-.gold-text { color: var(--brand-gold); position: relative; }
+.gold-text { color: var(--brand-gold); }
 
 .copyright-mark {
-    font-size: 0.2em;
-    vertical-align: top;
-    position: relative;
-    top: 10px;
-    margin-left: 5px;
-    color: var(--brand-white);
+    font-size: 0.25em;
+    vertical-align: super;
+    margin-left: 4px;
+    color: #FFF;
+}
+
+/* Bottom Meta Controls */
+.bottom-meta {
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
 .manifesto-wrapper {
-    max-width: 500px;
-    border-left: 2px solid var(--brand-gold);
-    padding-left: 25px;
-    margin-bottom: 30px;
+    border-left: 3px solid var(--brand-gold);
+    padding-left: 20px;
+    margin-bottom: 25px;
 }
 
-.manifesto-quote { font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; }
-.hero-subtext { font-weight: 300; opacity: 0.8; font-size: 0.95rem; }
-
-/* --- TICKER (WELL-OILED MACHINE) --- */
-.ticker-wrap {
-    width: 100%;
-    background: #000;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 1px solid #1a1a1a;
-    padding: 15px 0;
-    overflow: hidden;
-}
-
-.ticker {
-    display: flex;
-    white-space: nowrap;
-    animation: tickerLoop 30s linear infinite;
-    will-change: transform; /* Hardware Acceleration */
-}
-
-.ticker-item {
-    font-family: var(--font-heading);
-    font-size: 12px;
-    letter-spacing: 4px;
-    padding: 0 20px;
-    color: var(--brand-white);
-}
-
-.ticker-item span { color: var(--brand-gold); margin-left: 20px; }
-
-@keyframes tickerLoop {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* --- SECTION STYLES --- */
-.hidden { display: none !important; }
-.section-container { padding: 100px 20px; min-height: 100vh; }
-
-/* --- MISSION SECTION --- */
-.mission-statement { padding: 100px 0; text-align: center; }
-.serif-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px; }
-.gold-statement { color: var(--brand-gold); font-size: 1.4rem; font-weight: 700; max-width: 800px; margin: 0 auto; line-height: 1.4; }
-
-/* --- MOBILE SURGERY --- */
+/* --- THE MOBILE EMERGENCY FIX --- */
 @media (max-width: 768px) {
-    .hero-container { padding: 100px 25px 40px 25px; }
-    .responsive-title { font-size: 4rem; }
-    .manifesto-wrapper { padding-left: 15px; }
-    .hero-cta { width: 100%; }
+    .hero-content-layer {
+        padding: 80px 20px 40px 20px;
+        justify-content: space-between;
+    }
+
+    .responsive-title {
+        font-size: 3.2rem; /* Hard limit for mobile screens */
+    }
+
+    .manifesto-quote {
+        font-size: 1.2rem;
+    }
+
+    .hero-subtext {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    /* Keep Nav compact */
+    .nav-links.active-menu {
+        padding: 30px 20px;
+    }
 }

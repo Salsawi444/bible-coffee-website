@@ -31,20 +31,17 @@
       <div class="hero-bg-layer"></div>
       <div class="hero-overlay-layer"></div>
       <div class="hero-content-layer">
-        <div class="brand-block">
-          <h1 style="font-family: 'Oswald', sans-serif; font-weight: 700; margin: 0;">
-            <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">BIBLE &</span>
-            <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">COFFEE</span>
-            <span class="responsive-title" style="color: #FCA311; display: block; text-transform: uppercase;">
-              FRIDAYS<span style="font-size: 0.3em; vertical-align: super; margin-left: 8px; color: white; font-weight: 400;">©</span>
-            </span>
-          </h1>
-          
-          <div style="border-left: 2px solid #FCA311; padding-left: 20px; max-width: 500px; margin-top: 40px; margin-bottom: 45px;">
-            <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin: 0;">THE KINGDOM > THE CULTURE</h2>
-          </div>
-
-          <button onclick="showSection('join')" class="hero-cta">CLAIM MY SEAT</button>
+       <h1 style="font-family: 'Oswald', sans-serif; font-weight: 700; margin: 0; margin-bottom: 35px;">
+        <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">BIBLE &</span>
+        <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">COFFEE</span>
+        <span class="responsive-title" style="color: #FCA311; display: block; text-transform: uppercase;">FRIDAYS ©</span>
+       </h1>
+        <div style="border-left: 2px solid #FCA311; padding-left: 20px; max-width: 500px;">
+            <p class="manifesto-quote">Authentic faith. Unfiltered Family.</p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.8; font-family: 'Inter', sans-serif; margin-bottom: 35px; font-weight: 300;">
+                We choose depth over hype and relationship over religion. There is always a seat for you at our table.
+            </p>
+            <button onclick="showSection('join')" class="hero-cta">CLAIM MY SEAT</button>
         </div>
       </div>
     </header>
@@ -125,21 +122,11 @@
             <div style="width: 50px; height: 2px; background: #FCA311; margin: 20px auto;"></div>
             <p style="color: #FCA311; font-family: 'Inter'; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">Strictly Limited to 8 Seats Per Table</p>
         </div>
-
         <div class="form-card" style="background: #050505; border: 1px solid rgba(252, 163, 17, 0.1); padding: 50px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
             <form id="regForm" class="space-y-8">
-                <div class="group">
-                    <input type="text" id="name" name="Name" class="floating-input" placeholder=" " required>
-                    <label class="floating-label">Full Name</label>
-                </div>
-                <div class="group">
-                    <input type="tel" id="phone" name="Phone" class="floating-input" placeholder=" " required>
-                    <label class="floating-label">Phone Number</label>
-                </div>
-                <div class="group">
-                    <input type="email" id="email" name="Email" class="floating-input" placeholder=" " required>
-                    <label class="floating-label">Email Address</label>
-                </div>
+                <div class="group"><input type="text" id="name" name="Name" class="floating-input" placeholder=" " required><label class="floating-label">Full Name</label></div>
+                <div class="group"><input type="tel" id="phone" name="Phone" class="floating-input" placeholder=" " required><label class="floating-label">Phone Number</label></div>
+                <div class="group"><input type="email" id="email" name="Email" class="floating-input" placeholder=" " required><label class="floating-label">Email Address</label></div>
                 <div class="grid grid-cols-2 gap-8">
                     <div class="group">
                         <select id="country" name="Country" onchange="updateCities()" class="floating-input" required>
@@ -182,10 +169,34 @@
   </section>
 
   <section id="events" class="section-container text-center py-20"><h1>UPCOMING EVENTS</h1></section>
+
   <section id="support" class="section-container" style="background: #000; padding: 120px 25px;">
     <div style="max-width: 900px; margin: 0 auto;">
         <div style="margin-bottom: 80px;">
             <h2 style="font-family: 'Oswald'; font-size: 0.8rem; color: #FCA311; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px;">Support the Shift</h2>
-            <h3 style="font-family: 'Playfair Display'; font-size: clamp(2rem, 8vw, 3.5rem); color: white; line-height: 1.1; font-style: italic;">"The pulpit reaches an audience, but only a table reaches a heart."</h3>
+            <h3 style="font-family: 'Playfair Display'; font-size: clamp(2rem, 8vw, 3.5rem); color: white; line-height: 1.1; font-style: italic;">
+                "The pulpit reaches an audience, but only a table reaches a heart."
+            </h3>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div onclick="window.location.href='https://wa.me/251910884585'" style="cursor: pointer; background: #111; padding: 30px; border: 1px solid #222;">
+                <span style="font-family: 'Oswald'; color: white; display: block; font-size: 1.2rem;">LOCAL PARTNER</span>
+            </div>
+            <div onclick="window.location.href='https://wa.me/251910884585'" style="cursor: pointer; background: #111; padding: 30px; border: 1px solid #222;">
+                <span style="font-family: 'Oswald'; color: white; display: block; font-size: 1.2rem;">GLOBAL PARTNER</span>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
+    <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px;">
+        <i data-lucide="instagram"></i><i data-lucide="facebook"></i><i data-lucide="youtube"></i>
+    </div>
+    <p style="color: #222; font-size: 9px; letter-spacing: 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase;">Kingdom Culture over Everything</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

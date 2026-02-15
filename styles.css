@@ -426,3 +426,59 @@ nav {
     background: transparent;
     color: #fff;
 }
+
+
+/* FIX: Dropdowns - Dark background with white text */
+select.floating-input {
+    background-color: #050505 !important;
+    color: white !important;
+}
+
+select.floating-input option {
+    background-color: #050505 !important;
+    color: white !important;
+}
+
+/* FIX: Active Navigation Button Color */
+.nav-links button {
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.nav-links button.active {
+    color: #FCA311 !important; /* Stays gold when clicked */
+}
+
+/* FIX: Mobile Menu Responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide by default on mobile */
+    }
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Adjust based on nav height */
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.95);
+        padding: 30px;
+        z-index: 1000;
+        border-bottom: 1px solid #FCA311;
+    }
+    .nav-links button {
+        padding: 15px 0;
+        font-size: 1.2rem;
+    }
+}
+
+/* FIX: Copyright symbol size */
+.copyright-mark {
+    font-size: 0.5em;
+    vertical-align: super;
+}

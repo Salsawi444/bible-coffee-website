@@ -289,16 +289,3 @@ nav {
 #hostModal .bg-[#0d0d0d] {
     pointer-events: auto !important;
 }
-
-
-/* --- SURGICAL FORM LAYOUT FIX --- */
-#hostForm .group:first-of-type {
-    display: block !important;
-    width: 100% !important;
-    margin-bottom: 35px !important;
-}
-
-#hostForm .floating-input {
-    width: 100% !important;
-    border-bottom: 1px solid rgba(252, 163, 17, 0.5) !important;
-}

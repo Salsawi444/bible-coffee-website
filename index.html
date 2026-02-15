@@ -328,9 +328,106 @@
     </div>
 </footer>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  lucide.createIcons();
-</script>
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // 1. NAVIGATION SYSTEM
+    function showSection(sectionId, btn) {
+      // Hide the Home Wrapper (Header + Manifesto)
+      const homeWrapper = document.getElementById('home-wrapper');
+      
+      // Hide all other sections
+      const sections = document.querySelectorAll('.section-container');
+      sections.forEach(sec => {
+        sec.classList.add('hidden');
+        sec.style.display = 'none';
+      });
+
+      // Logic for switching
+      if (sectionId === 'home') {
+        homeWrapper.style.display = 'block';
+      } else {
+        homeWrapper.style.display = 'none';
+        const target = document.getElementById(sectionId);
+        if (target) {
+          target.classList.remove('hidden');
+          target.style.display = 'block';
+        }
+      }
+
+      // Update Active Button State
+      const buttons = document.querySelectorAll('.nav-links button');
+      buttons.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      // Close Mobile Menu on click
+      const navLinks = document.getElementById('nav-links');
+      if (window.innerWidth < 768) {
+        navLinks.classList.remove('active');
+      }
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. MOBILE MENU TOGGLE
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('nav-links');
+      nav.classList.toggle('active');
+    });
+
+    // 3. VIDEO MODAL LOGIC (For Sermon Vault)
+    function openVideo(id) {
+      const overlay = document.createElement('div');
+      overlay.style = "position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px;";
+      overlay.innerHTML = `
+        <div style="width:100%; max-width:900px; position:relative;">
+          <button onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:-40px; right:0; color:white; font-family:'Oswald'; letter-spacing:2px;">CLOSE [X]</button>
+          <div style="padding-top:56.25%; position:relative;">
+            <iframe src="https://www.youtube.com/embed/${id}?autoplay=1" style="position:absolute; inset:0; width:100%; height:100%;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+    }
+
+    // 4. DATA FOR JOIN FORM (Dropdowns)
+    const geoData = {
+      "Ethiopia": { "Addis Ababa": ["Bole Atlas (The Cup)", "Old Airport"] },
+      "Kenya": { "Nairobi": ["Westlands", "Kilimani"] },
+      "USA": { "Dallas": ["Deep Ellum"], "New York": ["Brooklyn"] },
+      "UK": { "London": ["Shoreditch"] }
+    };
+
+    function updateCities() {
+      const country = document.getElementById('country').value;
+      const citySelect = document.getElementById('city');
+      citySelect.innerHTML = '<option value="" disabled selected></option>';
+      if (geoData[country]) {
+        Object.keys(geoData[country]).forEach(city => {
+          citySelect.innerHTML += `<option value="${city}">${city}</option>`;
+        });
+      }
+    }
+
+    function updateLocations() {
+      const country = document.getElementById('country').value;
+      const city = document.getElementById('city').value;
+      const locSelect = document.getElementById('location');
+      locSelect.innerHTML = '<option value="" disabled selected></option>';
+      if (geoData[country] && geoData[country][city]) {
+        geoData[country][city].forEach(loc => {
+          locSelect.innerHTML += `<option value="${loc}">${loc}</option>`;
+        });
+      }
+    }
+
+    // 5. STARTUP
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ensure we start at home
+      showSection('home', document.querySelector('button[onclick*="home"]'));
+    });
+  </script>
 </body>
 </html>

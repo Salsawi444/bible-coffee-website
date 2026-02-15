@@ -289,3 +289,67 @@ nav {
 #hostModal .bg-[#0d0d0d] {
     pointer-events: auto !important;
 }
+
+
+/* --- SUPPORT SECTION STYLING --- */
+.steward-card {
+    background: #050505;
+    border: 1px solid #111;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.steward-card:hover {
+    border-color: #FCA311;
+    transform: translateY(-5px);
+}
+
+.steward-icon-box {
+    color: #FCA311;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.steward-card h3 {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.steward-card p {
+    color: #666;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.support-action-btn {
+    display: inline-block;
+    background: #FCA311;
+    color: black;
+    padding: 20px 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.support-action-btn .btn-sub {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.support-action-btn .btn-main {
+    display: block;
+    font-family: 'Oswald';
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.support-action-btn:hover {
+    background: white;
+}

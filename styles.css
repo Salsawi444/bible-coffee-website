@@ -253,3 +253,39 @@ nav {
 }
 
 .hidden { display: none; }
+
+
+
+/* --- EMERGENCY FORM FIX --- */
+
+/* 1. Force the boxes to be transparent so you can see your typing */
+#hostModal .floating-input {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(252, 163, 17, 0.5) !important;
+    color: white !important;
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 9999 !important; /* Brings the input to the absolute front */
+}
+
+/* 2. Fix the white background issue appearing in your screenshot */
+#hostModal input, 
+#hostModal select {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background-image: none !important;
+}
+
+/* 3. Make sure the labels don't block your mouse click */
+#hostModal .floating-label {
+    pointer-events: none !important; 
+    z-index: 1 !important;
+}
+
+/* 4. This ensures the modal content is "active" */
+#hostModal .bg-[#0d0d0d] {
+    pointer-events: auto !important;
+}

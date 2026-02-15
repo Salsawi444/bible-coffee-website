@@ -34,13 +34,21 @@ function showSection(id, btn) {
     if (id === 'home') {
         const wrapper = document.getElementById('home-wrapper');
         const homeHeader = document.getElementById('home');
-        if (wrapper) { wrapper.style.display = 'block'; wrapper.classList.remove('hidden'); }
-        if (homeHeader) { homeHeader.style.display = 'flex'; homeHeader.classList.remove('hidden'); }
+        if (wrapper) { 
+            // FIXED: Added !important to override the black screen bug
+            wrapper.style.setProperty('display', 'block', 'important'); 
+            wrapper.classList.remove('hidden'); 
+        }
+        if (homeHeader) { 
+            homeHeader.style.setProperty('display', 'flex', 'important'); 
+            homeHeader.classList.remove('hidden'); 
+        }
         if (marquee) { marquee.style.display = 'block'; }
     } else {
         const target = document.getElementById(id);
         if (target) { 
-            target.style.display = 'block'; 
+            // FIXED: Force show section to stop black screen
+            target.style.setProperty('display', 'block', 'important'); 
             target.classList.remove('hidden'); 
         }
         if (marquee) { marquee.style.display = 'none'; }

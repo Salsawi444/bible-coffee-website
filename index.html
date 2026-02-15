@@ -70,20 +70,20 @@
           
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; border-top: 1px solid #222; padding-top: 40px;">
               <div>
-                 <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Understand the Bible simply</p>
-                 <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Clear. Honest. Real.</p>
+                  <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Understand the Bible simply</p>
+                  <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Clear. Honest. Real.</p>
               </div>
               <div>
-                 <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Genuine relationship with God</p>
-                 <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Intimacy over ritual.</p>
+                  <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Genuine relationship with God</p>
+                  <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Intimacy over ritual.</p>
               </div>
               <div>
-                 <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Authentic Community</p>
-                 <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Real connection, not just attendance.</p>
+                  <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Authentic Community</p>
+                  <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Real connection, not just attendance.</p>
               </div>
               <div>
-                 <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Live out faith boldly</p>
-                 <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Everyday life, not just Sunday.</p>
+                  <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; margin-bottom: 10px;">Live out faith boldly</p>
+                  <p style="color: #555; font-size: 0.85rem; font-family: 'Inter';">Everyday life, not just Sunday.</p>
               </div>
           </div>
 
@@ -209,16 +209,28 @@
                             <option value="" disabled selected></option>
                             <option value="Ethiopia">Ethiopia</option>
                             <option value="Kenya">Kenya</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Uganda">Uganda</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="UAE">UAE</option>
+                            <option value="Israel">Israel</option>
                             <option value="USA">USA</option>
+                            <option value="Canada">Canada</option>
                             <option value="UK">UK</option>
+                            <option value="Australia">Australia</option>
                             <option value="Germany">Germany</option>
+                            <option value="France">France</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Switzerland">Switzerland</option>
                             <option value="Netherlands">Netherlands</option>
                             <option value="Sweden">Sweden</option>
                             <option value="Norway">Norway</option>
                             <option value="Denmark">Denmark</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="Uganda">Uganda</option>
-                            <option value="Rwanda">Rwanda</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Japan">Japan</option>
+                            <option value="South Korea">South Korea</option>
                         </select>
                         <label class="floating-label">Country</label>
                     </div>
@@ -300,9 +312,9 @@
         <h3 class="text-black font-['Oswald'] text-3xl font-bold uppercase leading-none mb-2">Don't see your city?</h3>
         <p class="text-black/70 font-['Inter'] font-medium">Bring the movement to your local coffee shop.</p>
       </div>
-      <a href="https://wa.me/251910884585" target="_blank" class="bg-black text-white font-['Oswald'] px-10 py-4 uppercase tracking-[3px] text-sm font-bold hover:bg-white hover:text-black transition-all">
+      <button onclick="toggleHostModal()" class="bg-black text-white font-['Oswald'] px-10 py-4 uppercase tracking-[3px] text-sm font-bold hover:bg-white hover:text-black transition-all">
         Host a Table
-      </a>
+      </button>
     </div>
 
   </div>
@@ -314,6 +326,48 @@
     </div>
     <p style="color: #222; font-size: 9px; letter-spacing: 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase;">Kingdom Culture over Everything</p>
   </footer>
+
+  <div id="hostModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
+      <div class="bg-[#0d0d0d] border border-[#FCA311]/30 w-full max-w-lg p-8 relative">
+          <button onclick="toggleHostModal()" class="absolute top-4 right-4 text-white/50 hover:text-white">
+              <i data-lucide="x"></i>
+          </button>
+          
+          <div class="text-center mb-8">
+              <h2 class="text-[#FCA311] font-['Oswald'] text-2xl tracking-widest uppercase">Become an Ambassador</h2>
+              <div class="w-12 h-[1px] bg-[#FCA311] mx-auto mt-2"></div>
+          </div>
+
+          <form id="hostForm" class="space-y-6">
+              <div class="group">
+                  <input type="text" id="hostName" class="floating-input" placeholder=" " required>
+                  <label class="floating-label">Full Name</label>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                  <div class="group">
+                      <input type="text" id="hostCountry" class="floating-input" placeholder=" " required>
+                      <label class="floating-label">Country</label>
+                  </div>
+                  <div class="group">
+                      <input type="text" id="hostCity" class="floating-input" placeholder=" " required>
+                      <label class="floating-label">City</label>
+                  </div>
+              </div>
+              <div class="group">
+                  <input type="text" id="hostVenue" class="floating-input" placeholder=" " required>
+                  <label class="floating-label">Suggested Coffee Shop / Venue</label>
+              </div>
+              <div class="group">
+                  <input type="tel" id="hostPhone" class="floating-input" placeholder=" " required>
+                  <label class="floating-label">Phone Number (WhatsApp preferred)</label>
+              </div>
+
+              <button type="submit" class="w-full bg-[#FCA311] text-black font-['Oswald'] py-4 uppercase tracking-[3px] font-bold hover:bg-white transition-all">
+                  Submit Application
+              </button>
+          </form>
+      </div>
+  </div>
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>

@@ -1,4 +1,3 @@
-
 /* --- CONFIGURATION & DATABASE --- */
 const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
 

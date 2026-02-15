@@ -126,7 +126,7 @@ nav {
 @media (max-width: 768px) {
     .copyright-mark {
         /* Mobile Coordinates - adjusted for the smaller clamp() font size */
-        top: -5rem; 
+        top: -10rem; 
         left: 0rem;
         font-size: 0.25em; /* Slightly bigger so it's readable on small screens */
     }

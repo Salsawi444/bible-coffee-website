@@ -116,3 +116,108 @@ nav {
     .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
 }
 .hidden { display: none; }
+
+
+/* Update your form container CSS with these specific tweaks */
+
+.registration-form-container {
+    padding: 20px;
+    max-width: 450px; /* Ensures it doesn't stretch too wide on mobile */
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column; /* Stack label and input properly */
+    align-items: flex-start;
+}
+
+input[type="text"], 
+input[type="tel"], 
+input[type="email"], 
+select {
+    width: 100%;
+    height: 40px;
+    background-color: #ffffff;
+    border: none;
+    margin-bottom: 5px; /* Space between input and label below it */
+    padding: 0 10px;
+}
+
+label {
+    font-size: 14px;
+    color: #e0e0e0;
+    text-transform: capitalize;
+}
+
+/* Fix for the side-by-side Country/City fields */
+.location-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.location-row div {
+    flex: 1;
+}
+
+
+
+/* --- REGISTRATION FORM FIX --- */
+
+/* 1. Ensure the form card has the right spacing */
+.form-card {
+    padding: 40px 20px !important; /* Adjusting for mobile comfort */
+}
+
+/* 2. Fix the Group container to handle the label placement */
+#regForm .group {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. Style the Inputs to match the white boxes in your screenshot */
+#regForm .floating-input {
+    width: 100%;
+    height: 45px;
+    background-color: white !important; /* Matches screenshot */
+    color: black !important;
+    border: none;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    order: 1; /* Puts input first */
+}
+
+/* 4. Style the Labels to sit below the inputs */
+#regForm .floating-label {
+    order: 2; /* Moves label below the input */
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin-top: 5px;
+    pointer-events: none;
+    text-transform: capitalize;
+    display: block;
+    position: static; /* Disables the "floating" overlay */
+}
+
+/* 5. Fix the Grid for Country/City */
+#regForm .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* 6. Fix Select dropdowns to look like the inputs */
+#regForm select.floating-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}

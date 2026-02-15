@@ -298,14 +298,33 @@
   <section id="join" class="section-container px-4 hidden" style="background: #000; display: none;">
     </section>
 
-  <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
-    <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px;">
-        <i data-lucide="instagram"></i><i data-lucide="facebook"></i><i data-lucide="youtube"></i>
-    </div>
-    <p style="color: #222; font-size: 9px; letter-spacing: 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase;">Kingdom Culture over Everything</p>
-  </footer>
+ <footer class="py-12 bg-black border-t border-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        
+        <div class="flex justify-center space-x-8 mb-8">
+            <a href="#" class="text-zinc-500 hover:text-[#FCA311] transition-colors">
+                <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="text-zinc-500 hover:text-[#FCA311] transition-colors">
+                <i data-lucide="video" class="w-6 h-6"></i> </a>
+            <a href="#" class="text-zinc-500 hover:text-[#FCA311] transition-colors">
+                <i data-lucide="youtube" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="text-zinc-500 hover:text-[#FCA311] transition-colors">
+                <i data-lucide="facebook" class="w-6 h-6"></i>
+            </a>
+        </div>
 
-  <script src="script.js"></script>
-  <script>lucide.createIcons();</script>
+        <p style="font-family: 'Oswald'; font-size: 0.7rem; letter-spacing: 5px; color: #333; text-transform: uppercase;">
+            Faith Over Fear
+        </p>
+        
+    </div>
+</footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
 </body>
 </html>

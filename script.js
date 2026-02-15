@@ -16,49 +16,51 @@ const db = {
     "Rwanda": { "Kigali": ["Nyarugenge"] }
 };
 
-/* --- NAVIGATION LOGIC --- */
+/* --- NAVIGATION LOGIC (FIXED) --- */
 function showSection(id, btn) {
+    // List of all top-level section containers
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
     const marquee = document.querySelector('.hero-marquee');
+    const manifesto = document.getElementById('manifesto');
 
-    // Hide all sections
+    // 1. Hide every main section first
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
-            el.style.display = 'none';
+            el.style.setProperty('display', 'none', 'important');
             el.classList.add('hidden');
         }
     });
 
-    // Show Target Section
+    // 2. Logic for showing the Target
     if (id === 'home') {
         const wrapper = document.getElementById('home-wrapper');
-        const homeHeader = document.getElementById('home');
-        if (wrapper) { 
-            // FIXED: Added !important to override the black screen bug
-            wrapper.style.setProperty('display', 'block', 'important'); 
-            wrapper.classList.remove('hidden'); 
+        if (wrapper) {
+            wrapper.style.setProperty('display', 'block', 'important');
+            wrapper.classList.remove('hidden');
         }
-        if (homeHeader) { 
-            homeHeader.style.setProperty('display', 'flex', 'important'); 
-            homeHeader.classList.remove('hidden'); 
+        // Ensure the sub-parts of home are visible
+        if (marquee) marquee.style.display = 'block';
+        if (manifesto) {
+            manifesto.style.setProperty('display', 'block', 'important');
+            manifesto.classList.remove('hidden');
         }
-        if (marquee) { marquee.style.display = 'block'; }
     } else {
         const target = document.getElementById(id);
-        if (target) { 
-            // FIXED: Force show section to stop black screen
-            target.style.setProperty('display', 'block', 'important'); 
-            target.classList.remove('hidden'); 
+        if (target) {
+            target.style.setProperty('display', 'block', 'important');
+            target.classList.remove('hidden');
         }
-        if (marquee) { marquee.style.display = 'none'; }
+        // Hide home-specific extras when on other pages
+        if (marquee) marquee.style.display = 'none';
+        if (manifesto) manifesto.style.display = 'none';
     }
 
-    // Update Nav Button States
+    // 3. Update Nav Button Styles
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
 
-    // Close Mobile Menu After Selection
+    // 4. Close Mobile Menu
     const navLinks = document.getElementById('nav-links');
     if (navLinks) navLinks.classList.remove('active-menu');
 
@@ -132,7 +134,6 @@ async function checkSlots() {
 document.addEventListener('DOMContentLoaded', () => {
     if(window.lucide) lucide.createIcons();
 
-    // HAMBURGER TOGGLE LOGIC
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
@@ -144,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // FORM SUBMISSION
     document.getElementById('regForm')?.addEventListener('submit', async function(e) {
         e.preventDefault();
         const btn = document.getElementById('submit-btn');

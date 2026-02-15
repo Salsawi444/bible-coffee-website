@@ -106,16 +106,31 @@ nav {
 
 /* THE MINI © FIX - Reeled in closer to the S */
 /* THE PIXEL-PERFECT © FIX */
+/* --- RESPONSIVE © POSITIONING --- */
+
+/* 1. Default (Desktop View) */
 .copyright-mark {
-    font-size: 0.25em;      /* Slightly larger to be legible */
-    position: relative;     /* Allows for precise X and Y movement */
-    top: -5rem;           /* Moves it UP (Adjust this to hit the top of the S) */
-    left: -15px;            /* Moves it LEFT (Adjust this to hug the S) */
+    font-size: 0.2em;
+    position: relative;
+    display: inline-block; /* Essential for precise movement */
     color: white;
     font-weight: 400;
-    font-family: 'Inter', sans-serif; /* Cleaner font for the symbol */
+    font-family: 'Inter', sans-serif;
+    
+    /* Desktop Coordinates */
+    top: -5rem; 
+    left: -15rem;
 }
 
+/* 2. Mobile View (Screens smaller than 768px) */
+@media (max-width: 768px) {
+    .copyright-mark {
+        /* Mobile Coordinates - adjusted for the smaller clamp() font size */
+        top: -1.8rem; 
+        left: -0.5rem;
+        font-size: 0.25em; /* Slightly bigger so it's readable on small screens */
+    }
+}
 .hero-cta { 
     margin-top: auto; 
     margin-bottom: 60px;

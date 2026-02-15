@@ -18,12 +18,10 @@ const db = {
 
 /* --- NAVIGATION LOGIC (FIXED) --- */
 function showSection(id, btn) {
-    // List of all top-level section containers
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
     const marquee = document.querySelector('.hero-marquee');
     const manifesto = document.getElementById('manifesto');
 
-    // 1. Hide every main section first
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -32,14 +30,12 @@ function showSection(id, btn) {
         }
     });
 
-    // 2. Logic for showing the Target
     if (id === 'home') {
         const wrapper = document.getElementById('home-wrapper');
         if (wrapper) {
             wrapper.style.setProperty('display', 'block', 'important');
             wrapper.classList.remove('hidden');
         }
-        // Ensure the sub-parts of home are visible
         if (marquee) marquee.style.display = 'block';
         if (manifesto) {
             manifesto.style.setProperty('display', 'block', 'important');
@@ -51,16 +47,13 @@ function showSection(id, btn) {
             target.style.setProperty('display', 'block', 'important');
             target.classList.remove('hidden');
         }
-        // Hide home-specific extras when on other pages
         if (marquee) marquee.style.display = 'none';
         if (manifesto) manifesto.style.display = 'none';
     }
 
-    // 3. Update Nav Button Styles
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
 
-    // 4. Close Mobile Menu
     const navLinks = document.getElementById('nav-links');
     if (navLinks) navLinks.classList.remove('active-menu');
 
@@ -102,20 +95,15 @@ async function checkSlots() {
     const badge = document.getElementById('slot-badge');
     const statusText = document.getElementById('slot-status-text');
     const submitBtn = document.getElementById('submit-btn');
-    
     if(!loc) return;
-    
     if(badge) { badge.classList.remove('hidden'); badge.style.display = 'block'; }
     if(statusText) statusText.innerHTML = `<span style="letter-spacing:2px; color: #aaa;">VERIFYING...</span>`;
-    
     submitBtn.disabled = true;
-
     try {
         const res = await fetch(API_URL);
         const data = await res.json();
         const taken = data.filter(r => r.Location === loc).length;
         const available = 8 - taken;
-
         if (available <= 0) {
             statusText.innerHTML = `<span style="color: #ff4444; font-weight: bold;">LOCATION FULL</span>`;
             submitBtn.innerText = "NO SEATS REMAINING";
@@ -127,6 +115,20 @@ async function checkSlots() {
     } catch(e) { 
         statusText.innerText = "CONNECTION ERROR.";
         submitBtn.disabled = false;
+    }
+}
+
+/* --- HOST MODAL LOGIC --- */
+function toggleHostModal() {
+    const modal = document.getElementById('hostModal');
+    if (modal) {
+        modal.classList.toggle('hidden');
+        if (!modal.classList.contains('hidden')) {
+            modal.style.display = 'flex';
+            if (window.lucide) lucide.createIcons();
+        } else {
+            modal.style.display = 'none';
+        }
     }
 }
 
@@ -150,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = document.getElementById('submit-btn');
         btn.disabled = true;
         btn.innerText = "RESERVING...";
-
         try {
             const payload = {
                 "Name": document.getElementById('name').value,
@@ -161,13 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Location": document.getElementById('location').value,
                 "Registration Date": new Date().toLocaleDateString()
             };
-
             const postRes = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ data: [payload] })
             });
-
             if(postRes.ok) {
                 btn.innerText = "RESERVATION SECURED";
                 this.reset();
@@ -178,5 +177,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerText = "CONFIRM RESERVATION";
             alert("Error connecting to server.");
         }
+    });
+
+    // Handle Host Form Submission
+    document.getElementById('hostForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('hostName').value;
+        const country = document.getElementById('hostCountry').value;
+        const city = document.getElementById('hostCity').value;
+        const venue = document.getElementById('hostVenue').value;
+        const phone = document.getElementById('hostPhone').value;
+        const message = `Hello! I'm ${name}. I want to host Bible & Coffee. %0A%0A- Country: ${country}%0A- City: ${city}%0A- Venue: ${venue}%0A- Phone: ${phone}`;
+        window.open(`https://wa.me/251910884585?text=${message}`, '_blank');
+        toggleHostModal();
     });
 });

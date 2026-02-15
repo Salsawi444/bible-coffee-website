@@ -109,7 +109,7 @@ nav {
 .copyright-mark {
     font-size: 0.25em;      /* Slightly larger to be legible */
     position: relative;     /* Allows for precise X and Y movement */
-    top: 1rem;           /* Moves it UP (Adjust this to hit the top of the S) */
+    top: -5rem;           /* Moves it UP (Adjust this to hit the top of the S) */
     left: -15px;            /* Moves it LEFT (Adjust this to hug the S) */
     color: white;
     font-weight: 400;

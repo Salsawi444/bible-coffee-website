@@ -192,3 +192,27 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleHostModal();
     });
 });
+
+
+/* --- WHATSAPP MESSAGE LOGIC --- */
+document.getElementById('hostForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Pulling the data from your fields
+    const name = document.getElementById('hostName').value;
+    const country = document.getElementById('hostCountry').value;
+    const city = document.getElementById('hostCity').value;
+    const venue = document.getElementById('hostVenue').value;
+
+    // Your exact requested message format
+    const message = `Hello my name is ${name}. I'm interested to host Bible and Coffee. Here is my detail: Country: ${country}, City: ${city}, Location: ${venue}.`;
+    
+    // Redirect to WhatsApp with the formatted text
+    const whatsappUrl = `https://wa.me/251910884584?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    // Close the modal after submission
+    if (typeof toggleHostModal === "function") {
+        toggleHostModal();
+    }
+});

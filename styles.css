@@ -107,7 +107,7 @@ nav {
 /* THE MINI © FIX - Reeled in closer to the S */
 .copyright-mark {
     font-size: 0.2em; 
-    vertical-align: 60px; /* Adjusted height to align with the top of the S */
+    vertical-align: 1px; /* Adjusted height to align with the top of the S */
     margin-left: -2px;    /* Negative margin pulls it tight to the letter */
     color: white;
     font-weight: 400;

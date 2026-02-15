@@ -197,7 +197,7 @@ document.getElementById('hostForm').addEventListener('submit', function(e) {
                     `Phone: ${phone}`;
     
     // Open WhatsApp with the formatted text
-    const whatsappUrl = `https://wa.me/251910884584?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/251910884585?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     
     if (typeof toggleHostModal === "function") {

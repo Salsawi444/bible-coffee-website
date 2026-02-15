@@ -289,3 +289,36 @@ nav {
 #hostModal .bg-[#0d0d0d] {
     pointer-events: auto !important;
 }
+
+/* --- PREMIUM SUPPORT SECTION --- */
+.premium-support-btn {
+    display: block;
+    width: 100%;
+    background: #FCA311;
+    color: #000;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.4s ease;
+    border: 1px solid #FCA311;
+    cursor: pointer;
+}
+
+.premium-support-btn:hover {
+    background: white;
+    border-color: white;
+    color: black;
+    letter-spacing: 6px;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(252, 163, 17, 0.2);
+}
+
+/* Ensure section spacing is consistent */
+#support.section-container {
+    min-height: 80vh;
+}

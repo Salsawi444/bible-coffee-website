@@ -180,17 +180,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle Host Form Submission
-    document.getElementById('hostForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('hostName').value;
-        const country = document.getElementById('hostCountry').value;
-        const city = document.getElementById('hostCity').value;
-        const venue = document.getElementById('hostVenue').value;
-        const phone = document.getElementById('hostPhone').value;
-        const message = `Hello! I'm ${name}. I want to host Bible & Coffee. %0A%0A- Country: ${country}%0A- City: ${city}%0A- Venue: ${venue}%0A- Phone: ${phone}`;
-        window.open(`https://wa.me/251910884585?text=${message}`, '_blank');
+   /* --- FINAL WHATSAPP MESSAGE LOGIC --- */
+document.getElementById('hostForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Get the exact data from your fields
+    const name = document.getElementById('hostName').value;
+    const country = document.getElementById('hostCountry').value;
+    const city = document.getElementById('hostCity').value;
+    const phone = document.getElementById('hostPhone').value;
+
+    // Building your exact requested format with line breaks
+    const message = `Hello my name is ${name} here are my details\n` +
+                    `Country: ${country}\n` +
+                    `City: ${city}\n` +
+                    `Phone: ${phone}`;
+    
+    // Open WhatsApp with the formatted text
+    const whatsappUrl = `https://wa.me/251910884584?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    if (typeof toggleHostModal === "function") {
         toggleHostModal();
-    });
+    }
 });
 
 

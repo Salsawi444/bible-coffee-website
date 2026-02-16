@@ -73,45 +73,58 @@ function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
     const marquee = document.querySelector('.hero-marquee');
     const manifesto = document.getElementById('manifesto');
+    const navLinks = document.getElementById('nav-links');
 
+    // 1. Hide all sections
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
-            el.style.setProperty('display', 'none', 'important');
+            el.style.display = 'none';
             el.classList.add('hidden');
         }
     });
 
+    // 2. Show the target section
     if (id === 'home') {
         const wrapper = document.getElementById('home-wrapper');
         if (wrapper) {
-            wrapper.style.setProperty('display', 'block', 'important');
+            wrapper.style.display = 'block';
             wrapper.classList.remove('hidden');
         }
         if (marquee) marquee.style.display = 'block';
         if (manifesto) {
-            manifesto.style.setProperty('display', 'block', 'important');
+            manifesto.style.display = 'block';
             manifesto.classList.remove('hidden');
         }
     } else {
         const target = document.getElementById(id);
         if (target) {
-            target.style.setProperty('display', 'block', 'important');
+            target.style.display = 'block';
             target.classList.remove('hidden');
         }
+        // Hide marquee/manifesto on sub-pages to keep it clean
         if (marquee) marquee.style.display = 'none';
-        if (manifesto) manifesto.style.display = 'none';
     }
 
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    // 3. Update Active Button UI
+    const buttons = document.querySelectorAll('.nav-links button');
+    buttons.forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
 
-    const navLinks = document.getElementById('nav-links');
-    if (navLinks) navLinks.classList.remove('active-menu');
+    // 4. Close mobile menu after clicking
+    if (navLinks && navLinks.classList.contains('active-menu')) {
+        navLinks.classList.remove('active-menu');
+    }
 
+    // Scroll to top of the new section
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+/* --- MOBILE TOGGLE FIX --- */
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active-menu');
+});
 /* --- VIDEO OVERLAY --- */
 function openVideo(videoId) {
     const overlay = document.createElement('div');

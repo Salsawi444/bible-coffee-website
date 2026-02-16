@@ -207,12 +207,13 @@ nav {
     text-decoration: none;
 }
 
-/* --- 9. MOBILE MASTER CONTROLLER --- */
+/* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + CONTENT JOYSTICK) --- */
 @media (max-width: 768px) {
     
+    /* 9.1 THE IMAGE FIX (Background to very top) */
     nav {
         background: transparent !important;
-        backdrop-filter: blur(5px) !important; /* Kept a tiny bit of blur for the menu area */
+        backdrop-filter: none !important;
         border-bottom: none !important;
         position: absolute !important; 
         width: 100%;
@@ -226,29 +227,30 @@ nav {
         min-height: -webkit-fill-available;
     }
 
-    /* 9.1 THE FULL IMAGE FIX */
     .hero-bg-layer {
-        background-position: center top !important; 
-        background-size: contain !important; /* SHOWS THE WHOLE PHOTO */
-        background-repeat: no-repeat !important;
+        background-position: center top !important;
         height: 100vh !important;
-        background-color: #000; 
     }
 
-    /* 9.2 YOUR SAVED JOYSTICK VALUES (100% PROTECTED) */
+    /* 9.2 THE MASTER JOYSTICK - Moving the whole text container */
     .hero-content-layer {
         position: relative !important; 
         display: flex !important;
         z-index: 999 !important;
-        top: 100px !important;    
-        left: -10px !important;   
-        padding-top: 0 !important; 
+
+        /* >>> ADJUST THESE TO MOVE THE TEXT <<< */
+        /* Currently set high so you can see it move! */
+        top: 100px !important;    /* (+) moves everything DOWN | (-) moves everything UP */
+        left: -10px !important;     /* (+) moves RIGHT | (-) moves LEFT */
+        
+        padding-top: 0 !important; /* Clears default padding so joystick is accurate */
     }
 
+    /* 9.3 REFINEMENTS */
     .hero-overlay-layer {
         background: linear-gradient(180deg, 
-            rgba(0,0,0,0.5) 0%, 
-            rgba(0,0,0,0) 40%, 
+            rgba(0,0,0,0.6) 0%, 
+            rgba(0,0,0,0.2) 40%, 
             rgba(0,0,0,0.9) 100%) !important;
     }
 

@@ -1,3 +1,11 @@
+/* --- 0. THE CODE JOYSTICK (DESKTOP ONLY) --- */
+/* Tune these numbers to move your content. Negative = Up/Left, Positive = Down/Right */
+const DESKTOP_POS = {
+    titleY: 0,      // Move "BIBLE & COFFEE" Up/Down (px)
+    contentY: 0,    // Move Subtitle & Paragraph Up/Down (px)
+    globalX: 0      // Move Everything Left/Right (px)
+};
+
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
 const db = {
     "Ethiopia": { 
@@ -164,6 +172,7 @@ function showSuccess() {
 
 /* --- 4. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
+    // A. MENU LOGIC
     const menuBtn = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     if (menuBtn && navLinks) {
@@ -171,6 +180,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (window.lucide) { lucide.createIcons(); }
 
+    // B. THE CODE JOYSTICK ENGINE (DESKTOP ONLY)
+    if (window.innerWidth >= 1024) {
+        const title = document.querySelector('.brand-block h1');
+        const content = document.querySelector('.brand-block > div');
+        const wrapper = document.querySelector('.brand-block');
+
+        if (title) title.style.transform = `translateY(${DESKTOP_POS.titleY}px)`;
+        if (content) content.style.transform = `translateY(${DESKTOP_POS.contentY}px)`;
+        if (wrapper) wrapper.style.transform = `translateX(${DESKTOP_POS.globalX}px)`;
+    }
+
+    // C. FORM SUBMISSION
     const form = document.getElementById('regForm');
     if (form) {
         form.addEventListener("submit", async (e) => {
@@ -211,4 +232,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-

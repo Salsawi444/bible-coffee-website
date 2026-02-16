@@ -240,15 +240,15 @@ nav {
     #joystick-title {
         position: relative !important;
         top: -140px !important;    /* (+) Down | (-) Up */
-        left: -10px !important;   /* (+) Right | (-) Left */
+        left: -15px !important;   /* (+) Right | (-) Left */
         z-index: 1000 !important;
     }
 
     /* Controller B: Subtitle + Text Group */
     #joystick-text-group {
         position: relative !important;
-        top: 120px !important;  /* Your Saved Value */
-        left: -6px !important; /* Your Saved Value */
+        top: 90px !important;  /* Your Saved Value */
+        left: -12px !important; /* Your Saved Value */
         z-index: 999 !important;
     }
 

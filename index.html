@@ -261,6 +261,102 @@
     </div>
   </div>
 </section>
+
+<section id="events" class="section-container bg-black py-32 px-6 hidden">
+    <div class="max-w-6xl mx-auto">
+        
+        <div class="mb-24">
+            <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-4">The Friday Sequence</h2>
+            <h3 class="text-7xl md:text-9xl font-['Oswald'] font-black text-white uppercase leading-[0.8] tracking-tighter">
+                ACTIVE <br><span class="text-[#FCA311]">TABLES.</span>
+            </h3>
+            <p class="text-white/30 font-['Playfair_Display'] italic text-2xl mt-8 max-w-xl">
+                "We don't do crowds. We do deep-table fellowship. 10 Seats. One City. No Filter."
+            </p>
+        </div>
+
+        <div class="border-t border-white/10">
+            <div class="group border-b border-white/10 py-16 hover:bg-[#FCA311]/[0.02] transition-all duration-700 cursor-pointer" onclick="openProtocol('Addis Ababa')">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                    <div class="flex items-baseline gap-8">
+                        <span class="text-[#FCA311] font-['Oswald'] text-xl opacity-30 group-hover:opacity-100 transition-opacity">01</span>
+                        <div>
+                            <h4 class="text-white font-['Oswald'] text-5xl md:text-7xl uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500">ADDIS ABABA</h4>
+                            <p class="text-white/30 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Current Protocol: The Cup (Bole Atlas)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col items-end gap-4">
+                        <span class="text-[#FCA311] font-['Oswald'] text-sm tracking-[3px]">STATUS: 07/10 SECURED</span>
+                        <div class="h-[1px] w-32 bg-white/10 group-hover:w-48 group-hover:bg-[#FCA311] transition-all duration-700"></div>
+                        <span class="text-white/40 font-['Inter'] text-[10px] uppercase tracking-[4px]">Access: Open</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group border-b border-white/10 py-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                    <div class="flex items-baseline gap-8">
+                        <span class="text-white/20 font-['Oswald'] text-xl">02</span>
+                        <div>
+                            <h4 class="text-white/40 font-['Oswald'] text-5xl md:text-7xl uppercase tracking-tighter">NAIROBI</h4>
+                            <p class="text-white/20 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Status: Full Capacity</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-red-900 font-['Oswald'] text-sm tracking-[3px] uppercase">Waitlist Only</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center">
+            <p class="text-white/20 font-['Oswald'] text-xs tracking-[6px] uppercase mb-8">Don't see your city in the sequence?</p>
+            <button onclick="showSection('join')" class="border border-white/10 px-10 py-4 text-white/60 hover:text-[#FCA311] hover:border-[#FCA311] transition-all font-['Oswald'] tracking-[4px] text-xs uppercase">
+                Initialize New Location
+            </button>
+        </div>
+    </div>
+</section>
+
+<div id="reservation-overlay" class="fixed inset-0 z-[20000] bg-black/98 backdrop-blur-2xl hidden flex items-center justify-center p-6">
+    <div class="max-w-lg w-full">
+        <div class="mb-12">
+            <button onclick="closeProtocol()" class="text-white/20 hover:text-[#FCA311] mb-12 tracking-[5px] uppercase text-[10px] flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> ABORT TRANSMISSION
+            </button>
+            <h5 class="text-[#FCA311] font-['Oswald'] text-4xl uppercase leading-none mb-2">Initialize <br>Access Protocol</h5>
+            <p id="target-city" class="text-white/40 font-['Inter'] text-xs tracking-[4px] uppercase">Location: --</p>
+        </div>
+        
+        <form id="regForm" class="space-y-6">
+            <div class="group border-b border-white/10 focus-within:border-[#FCA311] transition-colors">
+                <label class="block text-[10px] text-white/30 tracking-[3px] mb-2 uppercase">Identity</label>
+                <input type="text" name="Name" placeholder="ENTER FULL NAME" required class="w-full bg-transparent pb-4 text-white font-['Oswald'] text-xl tracking-widest outline-none placeholder:text-white/5">
+            </div>
+
+            <div class="group border-b border-white/10 focus-within:border-[#FCA311] transition-colors">
+                <label class="block text-[10px] text-white/30 tracking-[3px] mb-2 uppercase">Secure Line</label>
+                <input type="email" name="Email" placeholder="ENTER EMAIL ADDRESS" required class="w-full bg-transparent pb-4 text-white font-['Oswald'] text-xl tracking-widest outline-none placeholder:text-white/5">
+            </div>
+
+            <div class="group border-b border-white/10 focus-within:border-[#FCA311] transition-colors">
+                <label class="block text-[10px] text-white/30 tracking-[3px] mb-2 uppercase">Comms (WhatsApp)</label>
+                <input type="tel" name="Phone" placeholder="+251 ..." required class="w-full bg-transparent pb-4 text-white font-['Oswald'] text-xl tracking-widest outline-none placeholder:text-white/5">
+            </div>
+            
+            <input type="hidden" name="City" id="hidden-city">
+            <input type="hidden" name="Country" value="Auto-Sequence">
+            <input type="hidden" name="Location" value="The Friday Table">
+
+            <button type="submit" class="max-capacity-btn w-full mt-10 h-20">
+                <span class="btn-shine"></span>
+                <span id="btn-text" class="relative z-10 text-xl tracking-[8px]">TRANSMIT</span>
+            </button>
+        </form>
+    </div>
+</div>
+  
   <section id="support" class="section-container bg-black py-32 px-6 hidden" style="display: none;">
   <div class="max-w-7xl mx-auto">
     

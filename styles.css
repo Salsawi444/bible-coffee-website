@@ -427,9 +427,3 @@ nav {
     color: #fff;
 }
 
-/* Keeps the space occupied even if text is removed */
-.hidden-subtitle {
-    height: 1.1rem; /* Matches the original font size */
-    margin-bottom: 20px; /* Matches the original spacing */
-    visibility: hidden; /* Makes it invisible but keeps the physical space */
-}

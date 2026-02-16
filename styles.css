@@ -314,3 +314,23 @@ nav {
     color: #FCA311 !important;         /* Brand color on hover */
     transform: translateY(-3px);       /* Subtle lift effect */
 }
+
+
+/* --- SURGERY: DROPDOWN VISIBILITY FIX --- */
+select option {
+    background-color: #ffffff !important;
+    color: #000000 !important; /* Forces text to be black so it's visible */
+    font-family: 'Inter', sans-serif;
+}
+
+/* Specific fix for desktop hover/focus on selects */
+.group select.floating-input {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.group select.floating-input:focus {
+    outline: none;
+    border-bottom: 2px solid #FCA311 !important;
+}

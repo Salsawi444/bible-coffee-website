@@ -212,29 +212,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/* --- 5. POSITION COMMAND LOGIC (THE JOYSTICK) --- */
-function adjustPos(type, val) {
-    if (window.innerWidth < 1024) return; // Desktop Only
-
-    const title = document.querySelector('.brand-block h1');
-    const subBlock = document.querySelector('.brand-block div'); // Selects the div containing subtitle/p
-    const brandBlock = document.querySelector('.brand-block');
-    const display = document.getElementById('coord-display');
-
-    if (type === 'title') {
-        title.style.transform = `translateY(${val}px)`;
-    }
-    if (type === 'sub') {
-        subBlock.style.transform = `translateY(${val}px)`;
-    }
-    if (type === 'globalX') {
-        brandBlock.style.transform = `translateX(${val}px)`;
-    }
-
-    // Refresh Display Text
-    const tY = title.style.transform || "translateY(0px)";
-    const sY = subBlock.style.transform || "translateY(0px)";
-    const gX = brandBlock.style.transform.includes('translateX') ? brandBlock.style.transform : "translateX(0px)";
-    
-    display.innerText = `TITLE: ${tY} | SUB: ${sY} | X: ${gX}`;
-}

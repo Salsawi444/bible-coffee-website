@@ -251,65 +251,97 @@
 </section>
 
 <section id="join" class="section-container px-4 hidden" style="background: #000; display: none;">
-  <div class="max-w-xl mx-auto py-20">
+  <div class="max-w-4xl mx-auto py-20">
     <div class="text-center mb-16">
-      <h2 style="font-family: 'Oswald'; font-size: 2.5rem; letter-spacing: 8px; color: white; text-transform: uppercase;">Reserve Your Seat</h2>
-      <div style="width: 50px; height: 2px; background: #FCA311; margin: 20px auto;"></div>
-      <p style="color: #FCA311; font-family: 'Inter'; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">Strictly Limited to 8 Seats Per Table</p>
+      <h2 class="premium-glitch-title">Request a Seat</h2>
+      <div class="premium-divider"></div>
+      <p class="premium-subtitle">GLOBAL GATHERINGS // KINGDOM CULTURE</p>
     </div>
-    <div class="form-card" style="background: #050505; border: 1px solid rgba(252, 163, 17, 0.1); padding: 50px 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
-      <form id="regForm" class="space-y-8">
-        <div class="group"><input type="text" id="name" name="Name" class="floating-input" placeholder=" " required><label class="floating-label">Full Name</label></div>
-        <div class="group"><input type="tel" id="phone" name="Phone" class="floating-input" placeholder=" " required><label class="floating-label">Phone Number</label></div>
-        <div class="group"><input type="email" id="email" name="Email" class="floating-input" placeholder=" " required><label class="floating-label">Email Address</label></div>
-        <div class="grid grid-cols-2 gap-8">
-         <div class="group">
-  <select id="country" name="Country" onchange="updateCities()" class="floating-input" required>
-    <option value="" disabled selected></option>
-    <option value="Australia">Australia</option>
-    <option value="Brazil">Brazil</option>
-    <option value="Canada">Canada</option>
-    <option value="China">China</option>
-    <option value="Egypt">Egypt</option>
-    <option value="Ethiopia">Ethiopia</option>
-    <option value="France">France</option>
-    <option value="Germany">Germany</option>
-    <option value="Ghana">Ghana</option>
-    <option value="Israel">Israel</option>
-    <option value="Italy">Italy</option>
-    <option value="Japan">Japan</option>
-    <option value="Kenya">Kenya</option>
-    <option value="Netherlands">Netherlands</option>
-    <option value="Nigeria">Nigeria</option>
-    <option value="Norway">Norway</option>
-    <option value="Rwanda">Rwanda</option>
-    <option value="South Africa">South Africa</option>
-    <option value="South Korea">South Korea</option>
-    <option value="Sweden">Sweden</option>
-    <option value="UAE">UAE</option>
-    <option value="Uganda">Uganda</option>
-    <option value="UK">UK</option>
-    <option value="USA">USA</option>
-</select>
-  <label class="floating-label">Country</label>
-</div>
-          <div class="group">
-            <select id="city" name="City" onchange="updateLocations()" class="floating-input" required>
-              <option value="" disabled selected></option>
-            </select>
-            <label class="floating-label">City</label>
+
+    <div class="premium-form-wrapper">
+      <div class="form-glass-overlay"></div>
+      
+      <form id="regForm" class="relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="space-y-8">
+             <div class="input-container">
+                <input type="text" id="name" name="Name" class="ultra-input" placeholder=" " required>
+                <label class="ultra-label">FULL NAME</label>
+                <div class="input-line"></div>
+             </div>
+             <div class="input-container">
+                <input type="tel" id="phone" name="Phone" class="ultra-input" placeholder=" " required>
+                <label class="ultra-label">PHONE NUMBER</label>
+                <div class="input-line"></div>
+             </div>
+             <div class="input-container">
+                <input type="email" id="email" name="Email" class="ultra-input" placeholder=" " required>
+                <label class="ultra-label">EMAIL ADDRESS</label>
+                <div class="input-line"></div>
+             </div>
+          </div>
+
+          <div class="space-y-8">
+            <div class="input-container">
+              <select id="country" name="Country" onchange="updateCities()" class="ultra-input" required>
+                <option value="" disabled selected></option>
+                <option value="Australia">Australia</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Canada">Canada</option>
+                <option value="China">China</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Israel">Israel</option>
+                <option value="Italy">Italy</option>
+                <option value="Japan">Japan</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Norway">Norway</option>
+                <option value="Rwanda">Rwanda</option>
+                <option value="South Africa">South Africa</option>
+                <option value="South Korea">South Korea</option>
+                <option value="Sweden">Sweden</option>
+                <option value="UAE">UAE</option>
+                <option value="Uganda">Uganda</option>
+                <option value="UK">UK</option>
+                <option value="USA">USA</option>
+              </select>
+              <label class="ultra-label">SELECT COUNTRY</label>
+              <div class="input-line"></div>
+            </div>
+
+            <div class="input-container">
+              <select id="city" name="City" onchange="updateLocations()" class="ultra-input" required>
+                <option value="" disabled selected></option>
+              </select>
+              <label class="ultra-label">SELECT CITY</label>
+              <div class="input-line"></div>
+            </div>
+
+            <div class="input-container">
+              <select id="location" name="Location" onchange="checkSlots()" class="ultra-input" required>
+                <option value="" disabled selected></option>
+              </select>
+              <label class="ultra-label">TABLE LOCATION</label>
+              <div class="input-line"></div>
+            </div>
           </div>
         </div>
-        <div class="group">
-            <select id="location" name="Location" onchange="checkSlots()" class="floating-input" required>
-                 <option value="" disabled selected></option>
-            </select>
-            <label class="floating-label">Choose Location</label>
+
+        <div id="slot-badge" class="hidden mt-10">
+            <span id="slot-status-text" class="status-glow-text">Checking Availability...</span>
         </div>
-        <div id="slot-badge" class="hidden" style="margin-bottom: 25px; padding: 15px; background: rgba(252, 163, 17, 0.05); border: 1px dashed rgba(252, 163, 17, 0.3); text-align: center;">
-             <span id="slot-status-text" style="font-family: 'Oswald'; font-size: 11px; letter-spacing: 2px; color: #FCA311; text-transform: uppercase;">Checking Availability...</span>
+
+        <div class="mt-12">
+          <button type="submit" id="submit-btn" class="max-capacity-btn">
+            <span class="btn-shine"></span>
+            <span id="btn-text" class="relative z-10">CONFIRM ACCESS</span>
+          </button>
         </div>
-        <button type="submit" id="submit-btn" class="submit-btn-premium"><span id="btn-text">Confirm Reservation</span></button>
       </form>
     </div>
   </div>

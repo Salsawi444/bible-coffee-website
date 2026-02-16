@@ -467,3 +467,45 @@ nav {
         z-index: 999 !important;  /* Ensures it stays on top of the background */
     }
 }
+
+
+/* --- THE MOBILE FULL-BLEED PATCH --- */
+@media (max-width: 768px) {
+    /* 1. Remove the black nav bar and make it transparent */
+    nav {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border-bottom: none !important;
+        position: absolute !important; /* This "floats" the menu over the image */
+        width: 100%;
+        z-index: 10001;
+    }
+
+    /* 2. Push the image container to the absolute top of the screen */
+    .hero-container {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+        min-height: -webkit-fill-available;
+    }
+
+    /* 3. Anchor the image to the top edge */
+    .hero-bg-layer {
+        background-position: center top !important;
+        height: 100vh !important;
+    }
+
+    /* 4. Nudge the content down so it doesn't overlap the hamburger */
+    .hero-content-layer {
+        padding-top: 120px !important; 
+        justify-content: flex-start !important;
+    }
+
+    /* 5. Contrast fix for the title area */
+    .hero-overlay-layer {
+        background: linear-gradient(180deg, 
+            rgba(0,0,0,0.4) 0%, 
+            rgba(0,0,0,0.1) 30%, 
+            rgba(0,0,0,0.8) 100%) !important;
+    }
+}

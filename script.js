@@ -232,3 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+function openVideo(id) {
+    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+}

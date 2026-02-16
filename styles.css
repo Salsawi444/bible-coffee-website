@@ -104,33 +104,25 @@ nav {
     font-weight: 700; 
 }
 
-/* THE MINI © FIX - Reeled in closer to the S */
-/* THE PIXEL-PERFECT © FIX */
-/* --- RESPONSIVE © POSITIONING --- */
-
-/* 1. Default (Desktop View) */
 .copyright-mark {
     font-size: 0.2em;
     position: relative;
-    display: inline-block; /* Essential for precise movement */
+    display: inline-block; 
     color: white;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
-    
-    /* Desktop Coordinates */
     top: -5rem; 
     left: 0rem;
 }
 
-/* 2. Mobile View (Screens smaller than 768px) */
 @media (max-width: 768px) {
     .copyright-mark {
-        /* Mobile Coordinates - adjusted for the smaller clamp() font size */
         top: -2rem; 
         left: 0rem;
-        font-size: 0.22em; /* Slightly bigger so it's readable on small screens */
+        font-size: 0.22em; 
     }
 }
+
 .hero-cta { 
     margin-top: auto; 
     margin-bottom: 60px;
@@ -155,7 +147,7 @@ nav {
 .marquee-content .dot { color: #FCA311; -webkit-text-stroke: 0; margin: 0 20px; font-size: 0.8rem; vertical-align: middle; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* --- 5. REGISTRATION FORM (PREMIUM UI) --- */
+/* --- 5. REGISTRATION FORM --- */
 .section-container { display: none; padding: 100px 0; min-height: 100vh; background: #000; }
 #home-wrapper { width: 100%; background: #000; }
 
@@ -163,15 +155,8 @@ nav {
     padding: 50px 40px !important;
     background: #050505 !important;
     border: 1px solid rgba(252, 163, 17, 0.1) !important;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
-#regForm .group {
-    position: relative !important;
-    margin-bottom: 35px !important;
-}
-
-/* Modern Underline Input */
 #regForm .floating-input {
     width: 100% !important;
     height: 50px !important;
@@ -180,217 +165,37 @@ nav {
     border: none !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: white !important;
-    font-size: 16px !important;
-    transition: all 0.3s ease;
-    border-radius: 0 !important;
 }
 
-#regForm .floating-input:focus {
-    outline: none !important;
-    border-bottom: 1px solid #FCA311 !important;
-}
-
-/* The Floating Label */
-#regForm .floating-label {
-    position: absolute !important;
-    left: 0 !important;
-    top: 20px !important; 
-    color: rgba(255, 255, 255, 0.4) !important;
-    font-size: 14px !important;
-    pointer-events: none !important;
-    transition: all 0.2s ease !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-}
-
-/* Float Animation */
-#regForm .floating-input:focus ~ .floating-label,
-#regForm .floating-input:not(:placeholder-shown) ~ .floating-label {
-    top: -12px !important;
-    font-size: 10px !important;
-    color: #FCA311 !important;
-    font-weight: 700 !important;
-}
-
-/* Select Dropdowns Fix */
-#regForm select.floating-input {
-    background-color: transparent !important;
-    appearance: none;
-}
-
-/* Grid for Country/City */
-#regForm .grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 20px !important;
-}
-
-/* Premium Button */
 .submit-btn-premium {
     width: 100%;
     background: #FCA311;
     color: #000;
-    border: none;
     padding: 18px;
     font-family: 'Oswald';
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.submit-btn-premium:hover {
-    background: #fff;
-    letter-spacing: 5px;
 }
 
 /* --- 6. MERCH & SERMONS --- */
 .merch-vault-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 40px !important; }
-
-@media (max-width: 768px) {
-    .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
-}
-
 .hidden { display: none; }
 
-
-
-/* --- EMERGENCY FORM FIX --- */
-
-/* 1. Force the boxes to be transparent so you can see your typing */
+/* --- 7. EMERGENCY FORM FIX --- */
 #hostModal .floating-input {
     background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
     border-bottom: 1px solid rgba(252, 163, 17, 0.5) !important;
     color: white !important;
     display: block !important;
-    visibility: visible !important;
-    position: relative !important;
-    z-index: 9999 !important; /* Brings the input to the absolute front */
+    z-index: 9999 !important;
 }
 
-/* 2. Fix the white background issue appearing in your screenshot */
-#hostModal input, 
-#hostModal select {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    background-image: none !important;
-}
-
-/* 3. Make sure the labels don't block your mouse click */
-#hostModal .floating-label {
-    pointer-events: none !important; 
-    z-index: 1 !important;
-}
-
-/* 4. This ensures the modal content is "active" */
-#hostModal .bg-[#0d0d0d] {
-    pointer-events: auto !important;
-}
-
-
-/* --- SUPPORT SECTION STYLING --- */
-.steward-card {
-    background: #050505;
-    border: 1px solid #111;
-    padding: 40px 30px;
-    text-align: center;
-    transition: all 0.4s ease;
-}
-
-.steward-card:hover {
-    border-color: #FCA311;
-    transform: translateY(-5px);
-}
-
-.steward-icon-box {
-    color: #FCA311;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.steward-card h3 {
-    font-family: 'Oswald', sans-serif;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.steward-card p {
-    color: #666;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    line-height: 1.5;
-}
-
-.support-action-btn {
-    display: inline-block;
-    background: #FCA311;
-    color: black;
-    padding: 20px 40px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.support-action-btn .btn-sub {
-    display: block;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-.support-action-btn .btn-main {
-    display: block;
-    font-family: 'Oswald';
-    font-size: 1.2rem;
-    text-transform: uppercase;
-}
-
-.support-action-btn:hover {
-    background: white;
-}
-
-/* --- SUPPORT SECTION CARDS & BUTTONS --- */
+/* --- 8. SUPPORT & STEWARDSHIP --- */
 .steward-card {
     background: #080808;
     border: 1px solid #1a1a1a;
     padding: 50px 30px;
     text-align: center;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    border-radius: 2px;
-}
-
-.steward-card:hover {
-    border-color: #FCA311;
-    background: #0c0c0c;
-    transform: translateY(-8px);
-}
-
-.steward-icon-box svg {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 20px;
-    stroke: #FCA311;
-    stroke-width: 1.5;
-}
-
-.steward-card h3 {
-    font-family: 'Oswald', sans-serif;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.steward-card p {
-    color: #888;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.6;
 }
 
 .support-action-btn {
@@ -398,90 +203,23 @@ nav {
     background: #FCA311;
     color: #000;
     padding: 24px 50px;
-    text-decoration: none;
     font-weight: 700;
-    transition: all 0.3s ease;
-    border: 1px solid #FCA311;
-    margin-top: 20px;
+    text-decoration: none;
 }
 
-.support-action-btn .btn-sub {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    font-weight: 800;
-    margin-bottom: 4px;
-    opacity: 0.8;
-}
-
-.support-action-btn .btn-main {
-    display: block;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-}
-
-.support-action-btn:hover {
-    background: transparent;
-    color: #fff;
-}
-
-/* FOOTER ICON CONTROL STATION */
-.footer-socials {
-    display: flex; 
-    justify-content: center; 
-    gap: 30px; 
-    margin-bottom: 30px;
-}
-
-.footer-socials a {
-    color: #ffffff;            /* Keep icons white */
-    text-decoration: none;     /* Remove any underline */
-    transition: transform 0.3s ease, color 0.3s ease;
-    display: flex;
-    align-items: center;
-}
-
-/* Hover Effect: Turns Gold and pops up slightly */
-.footer-socials a:hover {
-    color: #FCA311;
-    transform: translateY(-3px); 
-}
-
-.footer-socials i {
-    width: 24px;
-    height: 24px;
-}
-
-/* --- POWER MOBILE HERO JOYSTICK --- */
+/* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + JOYSTICK) --- */
 @media (max-width: 768px) {
-    body #home-wrapper header#home .brand-block {
-        position: relative !important; 
-        display: block !important;
-        
-        /* ADJUST THESE TO MOVE THE ENTIRE BOX */
-        top: 0px !important;    /* Try -50px just to see it jump up */
-        left: -5px !important;     /* Positive moves right, Negative moves left */
-        
-        z-index: 999 !important;  /* Ensures it stays on top of the background */
-    }
-}
-
-
-/* --- THE MOBILE FULL-BLEED PATCH --- */
-@media (max-width: 768px) {
-    /* 1. Remove the black nav bar and make it transparent */
+    
+    /* 9.1 THE IMAGE FIX: Slides image to top, makes Nav a ghost */
     nav {
         background: transparent !important;
         backdrop-filter: none !important;
         border-bottom: none !important;
-        position: absolute !important; /* This "floats" the menu over the image */
+        position: absolute !important; 
         width: 100%;
         z-index: 10001;
     }
 
-    /* 2. Push the image container to the absolute top of the screen */
     .hero-container {
         margin-top: 0 !important;
         padding-top: 0 !important;
@@ -489,23 +227,37 @@ nav {
         min-height: -webkit-fill-available;
     }
 
-    /* 3. Anchor the image to the top edge */
     .hero-bg-layer {
         background-position: center top !important;
         height: 100vh !important;
     }
 
-    /* 4. Nudge the content down so it doesn't overlap the hamburger */
+    /* 9.2 YOUR CORPORATE JOYSTICK: Move ONLY your text here */
+    body #home-wrapper header#home .brand-block {
+        position: relative !important; 
+        display: block !important;
+        z-index: 999 !important;
+
+        /* ADJUST THESE TO MOVE THE TEXT BOX */
+        top: 0px !important;    /* (+) moves DOWN | (-) moves UP */
+        left: -5px !important;  /* (+) moves RIGHT | (-) moves LEFT */
+    }
+
+    /* 9.3 REFINEMENTS: Readability and Grids */
     .hero-content-layer {
         padding-top: 120px !important; 
         justify-content: flex-start !important;
     }
 
-    /* 5. Contrast fix for the title area */
     .hero-overlay-layer {
         background: linear-gradient(180deg, 
-            rgba(0,0,0,0.4) 0%, 
-            rgba(0,0,0,0.1) 30%, 
+            rgba(0,0,0,0.5) 0%, 
+            rgba(0,0,0,0.2) 30%, 
             rgba(0,0,0,0.8) 100%) !important;
+    }
+
+    .merch-vault-grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px !important; 
     }
 }

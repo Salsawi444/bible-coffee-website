@@ -1,20 +1,72 @@
 /* --- CONFIGURATION & DATABASE --- */
 const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
 
+const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
+
 const db = {
-    "Ethiopia": { "Addis Ababa": ["Bole", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], "Hawassa": ["City Center"] },
-    "Kenya": { "Nairobi": ["Kilimani", "Westlands"] },
-    "USA": { "Dallas": ["Downtown", "Plano"], "Houston": ["Galleria"] },
-    "UK": { "London": ["Central", "Canary Wharf"] },
-    "Germany": { "Berlin": ["Mitte"] },
-    "Netherlands": { "Amsterdam": ["Zuid"] },
+    "Ethiopia": { 
+        "Addis Ababa": ["Bole Atlas (The Cup)", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], 
+        "Hawassa": ["Lake Side Coffee"] 
+    },
+    "Kenya": { 
+        "Nairobi": ["Kilimani District", "Westlands"],
+        "Mombasa": ["City Center"]
+    },
+    "USA": { 
+        "Dallas": ["Downtown", "Plano"], 
+        "Houston": ["Galleria Area"],
+        "New York": ["Brooklyn", "Manhattan"]
+    },
+    "UK": { 
+        "London": ["Central London", "Canary Wharf"],
+        "Manchester": ["Northern Quarter"]
+    },
+    "South Africa": { 
+        "Johannesburg": ["Sandton"], 
+        "Cape Town": ["City Bowl"] 
+    },
     "Sweden": { "Stockholm": ["Norrmalm"] },
     "Norway": { "Oslo": ["Sentrum"] },
-    "Denmark": { "Copenhagen": ["Indre By"] },
-    "South Africa": { "Johannesburg": ["Sandton"], "Cape Town": ["City Bowl"] },
-    "Uganda": { "Kampala": ["Central"] },
+    "Germany": { "Berlin": ["Mitte"] },
+    "Uganda": { "Kampala": ["Central District"] },
     "Rwanda": { "Kigali": ["Nyarugenge"] }
 };
+
+/* --- DROPDOWN SURGERY --- */
+function updateCities() {
+    const country = document.getElementById('country').value;
+    const citySelect = document.getElementById('city');
+    const locSelect = document.getElementById('location');
+    
+    citySelect.innerHTML = '<option value="" disabled selected>Select City</option>';
+    locSelect.innerHTML = '<option value="" disabled selected>Select Location</option>';
+    
+    if (db[country]) {
+        Object.keys(db[country]).forEach(city => {
+            let opt = document.createElement('option');
+            opt.value = city;
+            opt.innerHTML = city;
+            citySelect.appendChild(opt);
+        });
+    }
+}
+
+function updateLocations() {
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const locSelect = document.getElementById('location');
+    
+    locSelect.innerHTML = '<option value="" disabled selected>Select Location</option>';
+    
+    if (db[country] && db[country][city]) {
+        db[country][city].forEach(loc => {
+            let opt = document.createElement('option');
+            opt.value = loc;
+            opt.innerHTML = loc;
+            locSelect.appendChild(opt);
+        });
+    }
+}
 
 /* --- NAVIGATION LOGIC (FIXED) --- */
 function showSection(id, btn) {

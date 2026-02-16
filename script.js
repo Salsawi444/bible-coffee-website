@@ -76,31 +76,62 @@ function showSection(id, btn) {
 }
 
 /* --- 3. FORM & SEAT COUNTER LOGIC --- */
-const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; // <--- PASTE YOUR ID HERE
+const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
-// Form Submission Logic
-const form = document.getElementById('regForm');
-if (form) {
-    form.addEventListener("submit", e => {
-        e.preventDefault();
-        const btnText = document.getElementById('btn-text');
-        const originalText = btnText.innerHTML;
-        
-        btnText.innerHTML = "ESTABLISHING CONNECTION...";
-
-        fetch(API_URL, {
-            method: "POST",
-            body: new FormData(form),
-        }).then(res => res.json())
-        .then(data => {
-            showSuccess(); // Trigger the premium success screen
-            form.reset();
-        })
-        .catch(err => {
-            alert("Protocol Interrupted. Please check your connection.");
-            btnText.innerHTML = originalText;
+function updateCities() {
+    const country = document.getElementById('country').value;
+    const citySelect = document.getElementById('city');
+    const locSelect = document.getElementById('location');
+    
+    citySelect.innerHTML = '<option value="" disabled selected></option>'; 
+    locSelect.innerHTML = '<option value="" disabled selected></option>';
+    
+    if (db[country]) {
+        Object.keys(db[country]).forEach(city => {
+            let opt = document.createElement('option');
+            opt.value = city; opt.textContent = city;
+            citySelect.appendChild(opt);
         });
-    });
+    }
+}
+
+function updateLocations() {
+    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
+    const locSelect = document.getElementById('location');
+    
+    locSelect.innerHTML = '<option value="" disabled selected></option>';
+    
+    if (db[country] && db[country][city]) {
+        db[country][city].forEach(loc => {
+            let opt = document.createElement('option');
+            opt.value = loc; opt.textContent = loc;
+            locSelect.appendChild(opt);
+        });
+    }
+}
+
+async function checkSlots() {
+    const location = document.getElementById('location').value;
+    const statusText = document.getElementById('slot-status-text');
+
+    if (!location) return;
+    statusText.innerText = "VERIFYING CAPACITY...";
+
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        const booked = data.filter(entry => entry.Location === location).length;
+        const available = 8 - booked;
+
+        if (available <= 0) {
+            statusText.innerHTML = `<span style="color: #ff4444;">[ TABLE FULL ]</span> JOIN WAITLIST BELOW`;
+        } else {
+            statusText.innerHTML = `<span style="color: #FCA311;">[ ${available} SEATS REMAINING ]</span> AT THIS TABLE`;
+        }
+    } catch (error) {
+        statusText.innerText = "CONNECTION ACTIVE. PROCEED WITH RESERVATION.";
+    }
 }
 
 function showSuccess() {
@@ -120,47 +151,6 @@ function showSuccess() {
     if (window.lucide) { lucide.createIcons(); }
 }
 
-function updateLocations() {
-    const country = document.getElementById('country').value;
-    const city = document.getElementById('city').value;
-    const locSelect = document.getElementById('location');
-    locSelect.innerHTML = '<option value="" disabled selected>Select Location</option>';
-    if (db[country] && db[country][city]) {
-        db[country][city].forEach(loc => {
-            let opt = document.createElement('option');
-            opt.value = loc; opt.textContent = loc;
-            locSelect.appendChild(opt);
-        });
-    }
-}
-
-async function checkSlots() {
-    const location = document.getElementById('location').value;
-    const badge = document.getElementById('slot-badge');
-    const statusText = document.getElementById('slot-status-text');
-
-    if (!location) return;
-
-    badge.style.display = "block";
-    badge.classList.remove('hidden');
-    statusText.innerText = "Checking table availability...";
-
-    try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        const booked = data.filter(entry => entry.Location === location).length;
-        const available = 8 - booked;
-
-        if (available <= 0) {
-            statusText.innerHTML = `<span style="color: #ff4444;">TABLE FULL</span> - Join waitlist below`;
-        } else {
-            statusText.innerHTML = `<span style="color: #FCA311;">${available} SEATS REMAINING</span> at this table`;
-        }
-    } catch (error) {
-        statusText.innerText = "System online. Proceed with request.";
-    }
-}
-
 /* --- 4. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menu-toggle');
@@ -170,26 +160,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (window.lucide) { lucide.createIcons(); }
 
-    // Form Submission
     const form = document.getElementById('regForm');
     if (form) {
         form.addEventListener("submit", e => {
             e.preventDefault();
             const btnText = document.getElementById('btn-text');
-            btnText.innerHTML = "SENDING REQUEST...";
+            btnText.innerHTML = "ESTABLISHING CONNECTION...";
 
             fetch(API_URL, {
                 method: "POST",
                 body: new FormData(form),
             }).then(res => res.json())
             .then(() => {
-                alert("Request Sent. We'll contact you shortly.");
-                btnText.innerHTML = "CONFIRM ACCESS";
+                showSuccess();
                 form.reset();
-                document.getElementById('slot-badge').style.display = "none";
             })
             .catch(err => {
-                alert("Connection error. Please try again.");
+                alert("Protocol Interrupted. Please check your connection.");
                 btnText.innerHTML = "RESERVE YOUR SEAT";
             });
         });

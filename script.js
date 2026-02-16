@@ -76,21 +76,48 @@ function showSection(id, btn) {
 }
 
 /* --- 3. FORM & SEAT COUNTER LOGIC --- */
-const API_URL = "https://sheetdb.io/api/v1/YOUR_API_ID"; // Replace with your actual ID
+const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; // <--- PASTE YOUR ID HERE
 
-function updateCities() {
-    const country = document.getElementById('country').value;
-    const citySelect = document.getElementById('city');
-    const locSelect = document.getElementById('location');
-    citySelect.innerHTML = '<option value="" disabled selected>Select City</option>';
-    locSelect.innerHTML = '<option value="" disabled selected>Select Location</option>';
-    if (db[country]) {
-        Object.keys(db[country]).forEach(city => {
-            let opt = document.createElement('option');
-            opt.value = city; opt.textContent = city;
-            citySelect.appendChild(opt);
+// Form Submission Logic
+const form = document.getElementById('regForm');
+if (form) {
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        const btnText = document.getElementById('btn-text');
+        const originalText = btnText.innerHTML;
+        
+        btnText.innerHTML = "ESTABLISHING CONNECTION...";
+
+        fetch(API_URL, {
+            method: "POST",
+            body: new FormData(form),
+        }).then(res => res.json())
+        .then(data => {
+            showSuccess(); // Trigger the premium success screen
+            form.reset();
+        })
+        .catch(err => {
+            alert("Protocol Interrupted. Please check your connection.");
+            btnText.innerHTML = originalText;
         });
-    }
+    });
+}
+
+function showSuccess() {
+    const wrapper = document.querySelector('.premium-form-wrapper');
+    wrapper.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px; animation: fadeIn 0.8s ease;">
+            <div style="width: 80px; height: 80px; border: 2px solid #FCA311; border-radius: 50%; margin: 0 auto 30px; display: flex; align-items: center; justify-content: center;">
+                <i data-lucide="check" style="color: #FCA311; width: 40px; height: 40px;"></i>
+            </div>
+            <h2 class="premium-glitch-title" style="font-size: 2rem; letter-spacing: 5px;">ACCESS GRANTED</h2>
+            <div class="premium-divider"></div>
+            <p class="premium-subtitle" style="font-size: 14px; color: white; opacity: 0.8;">YOUR TABLE IS BEING PREPARED.</p>
+            <p style="font-family: 'Inter'; font-size: 11px; color: #FCA311; margin-top: 20px; letter-spacing: 2px;">CHECK YOUR EMAIL FOR CONFIRMATION</p>
+            <button onclick="location.reload()" class="max-capacity-btn" style="margin-top: 40px; width: auto; padding: 15px 40px; font-size: 12px;">RETURN TO HOME</button>
+        </div>
+    `;
+    if (window.lucide) { lucide.createIcons(); }
 }
 
 function updateLocations() {
@@ -163,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(err => {
                 alert("Connection error. Please try again.");
-                btnText.innerHTML = "CONFIRM ACCESS";
+                btnText.innerHTML = "RESERVE YOUR SEAT";
             });
         });
     }

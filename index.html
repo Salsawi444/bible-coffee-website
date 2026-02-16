@@ -21,7 +21,7 @@
         <button onclick="showSection('sermon',this)">SERMON</button>
         <button onclick="showSection('events',this)">EVENTS</button>
         <button onclick="showSection('support',this)">SUPPORT</button>
-        <button onclick="showSection('join',this)">JOIN</button>
+        <button onclick="showSection('events',this)">JOIN</button>
       </div>
     </div>
   </nav>
@@ -94,7 +94,7 @@
     </section>
   </div>
 
-  <section id="magazine" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
+  <section id="magazine" class="section-container bg-black py-24 px-6 hidden">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
         <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The Magazine</h2>
@@ -144,7 +144,7 @@
     </div>
   </section>
 
-<section id="merch" class="section-container bg-[#050505] py-24 px-6 hidden" style="display: none;">
+  <section id="merch" class="section-container bg-[#050505] py-24 px-6 hidden">
     <div class="max-w-7xl mx-auto">
       <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
         <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The 2026 Collection</h2>
@@ -188,83 +188,85 @@
     </div>
   </section>
 
- <section id="sermon" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-  <div class="max-w-7xl mx-auto">
-    <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
-      <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
-      <p class="text-white/40 font-['Inter'] text-xs tracking-[5px] mt-2">ARCHIVE // KINGDOM KNOWLEDGE</p>
-    </div>
-
-    <div class="sermon-cinema-grid">
-      <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')">
-          <div class="sermon-poster">
-            <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 1">
-            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-          </div>
-          <div class="sermon-details">
-            <span class="category">KINGDOM CULTURE</span>
-            <h3>ወጣቱ ባለሃብት!</h3>
-          </div>
-      </div>
-      
-      <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')">
-          <div class="sermon-poster">
-            <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 2">
-            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-          </div>
-          <div class="sermon-details">
-            <span class="category">IDENTITY</span>
-            <h3>በሰማርያም ሊያልፍ ግድ ሆነበት!</h3>
-          </div>
+  <section id="sermon" class="section-container bg-black py-24 px-6 hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
+        <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
+        <p class="text-white/40 font-['Inter'] text-xs tracking-[5px] mt-2">ARCHIVE // KINGDOM KNOWLEDGE</p>
       </div>
 
-      <div class="sermon-card-premium" onclick="openVideo('uoUSXNjBgAg')">
-          <div class="sermon-poster">
-            <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon 3">
-            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-          </div>
-          <div class="sermon-details">
-            <span class="category">GROWTH</span>
-            <h3>ለውጥ እና ፈተናው!</h3>
-          </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')"> <div class="sermon-poster">
-            <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 4">
-            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-          </div>
-          <div class="sermon-details">
-            <span class="category">PURPOSE</span>
-            <h3>የእግዚአብሔር ድምፅ</h3>
-          </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')"> <div class="sermon-poster">
-            <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 5">
-            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-          </div>
-          <div class="sermon-details">
-            <span class="category">FAITH</span>
-            <h3>የእምነት ጉዞ</h3>
-          </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('uoUSXNjBgAg')"> <div class="sermon-poster">
-            <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon 6">
-            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-          </div>
-          <div class="sermon-details">
-            <span class="category">VISION</span>
-            <h3>ራዕይ እና ትውልድ</h3>
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="events" class="section-container bg-black py-32 px-6 hidden">
-    <div class="max-w-6xl mx-auto">
+      <div class="sermon-cinema-grid">
+        <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')">
+            <div class="sermon-poster">
+              <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 1">
+              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+            </div>
+            <div class="sermon-details">
+              <span class="category">KINGDOM CULTURE</span>
+              <h3>ወጣቱ ባለሃብት!</h3>
+            </div>
+        </div>
         
+        <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')">
+            <div class="sermon-poster">
+              <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 2">
+              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+            </div>
+            <div class="sermon-details">
+              <span class="category">IDENTITY</span>
+              <h3>በሰማርያም ሊያልፍ ግድ ሆነበት!</h3>
+            </div>
+        </div>
+
+        <div class="sermon-card-premium" onclick="openVideo('uoUSXNjBgAg')">
+            <div class="sermon-poster">
+              <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon 3">
+              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+            </div>
+            <div class="sermon-details">
+              <span class="category">GROWTH</span>
+              <h3>ለውጥ እና ፈተናው!</h3>
+            </div>
+        </div>
+
+        <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')"> 
+            <div class="sermon-poster">
+              <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 4">
+              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+            </div>
+            <div class="sermon-details">
+              <span class="category">PURPOSE</span>
+              <h3>የእግዚአብሔር ድምፅ</h3>
+            </div>
+        </div>
+
+        <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')"> 
+            <div class="sermon-poster">
+              <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 5">
+              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+            </div>
+            <div class="sermon-details">
+              <span class="category">FAITH</span>
+              <h3>የእምነት ጉዞ</h3>
+            </div>
+        </div>
+
+        <div class="sermon-card-premium" onclick="openVideo('uoUSXNjBgAg')"> 
+            <div class="sermon-poster">
+              <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon 6">
+              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+            </div>
+            <div class="sermon-details">
+              <span class="category">VISION</span>
+              <h3>ራዕይ እና ትውልድ</h3>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="section-container bg-black py-32 px-6 hidden">
+    <div class="max-w-6xl mx-auto">
         <div class="mb-24">
             <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-4">The Friday Sequence</h2>
             <h3 class="text-7xl md:text-9xl font-['Oswald'] font-black text-white uppercase leading-[0.8] tracking-tighter">
@@ -285,7 +287,6 @@
                             <p class="text-white/30 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Current Protocol: The Cup (Bole Atlas)</p>
                         </div>
                     </div>
-                    
                     <div class="flex flex-col items-end gap-4">
                         <span class="text-[#FCA311] font-['Oswald'] text-sm tracking-[3px]">STATUS: 07/10 SECURED</span>
                         <div class="h-[1px] w-32 bg-white/10 group-hover:w-48 group-hover:bg-[#FCA311] transition-all duration-700"></div>
@@ -310,16 +311,81 @@
             </div>
         </div>
 
-        <div class="mt-20 text-center">
-            <p class="text-white/20 font-['Oswald'] text-xs tracking-[6px] uppercase mb-8">Don't see your city in the sequence?</p>
-            <button onclick="showSection('join')" class="border border-white/10 px-10 py-4 text-white/60 hover:text-[#FCA311] hover:border-[#FCA311] transition-all font-['Oswald'] tracking-[4px] text-xs uppercase">
-                Initialize New Location
-            </button>
+        <div class="mt-20 text-center border-t border-white/5 pt-20">
+            <p class="text-white/20 font-['Oswald'] text-[10px] tracking-[8px] uppercase mb-10">Don't see your city in the sequence?</p>
+            <a href="https://wa.me/251910664585?text=I%20want%20to%20initialize%20a%20new%20Bible%20%26%20Coffee%20table%20in%20my%20city." 
+               target="_blank" class="inline-block group">
+                <h5 class="text-white font-['Oswald'] text-3xl md:text-5xl uppercase tracking-tighter group-hover:text-[#FCA311] transition-colors">
+                    PITCH A <span class="text-[#FCA311] group-hover:text-white">NEW TABLE</span> →
+                </h5>
+                <div class="h-[1px] w-0 group-hover:w-full bg-[#FCA311] transition-all duration-500 mt-2"></div>
+            </a>
+            <p class="text-white/10 font-['Inter'] text-[10px] uppercase tracking-[4px] mt-8">Direct Line: +251 910 664 585</p>
         </div>
     </div>
-</section>
+  </section>
 
-<div id="reservation-overlay" class="fixed inset-0 z-[20000] bg-black/98 backdrop-blur-2xl hidden flex items-center justify-center p-6">
+  <section id="support" class="section-container bg-black py-32 px-6 hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-24 text-center">
+        <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-8">Protocol of the Family</h2>
+        <h3 class="text-6xl md:text-9xl font-['Oswald'] font-black text-white uppercase leading-[0.85] tracking-tighter mb-12">
+          WE DON'T ASK.<br>WE <span class="text-[#FCA311]">BUILD.</span>
+        </h3>
+        <div class="max-w-2xl mx-auto border-t border-white/10 pt-8">
+          <p class="text-white/60 font-['Inter'] text-lg leading-relaxed italic">
+            "Bible & Coffee is a move of God sustained by those who see the value of a seat at the table. We remove the price tag from the Gospel, so the seeker finds only an open door."
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
+        <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-[1px] bg-[#FCA311]"></div>
+            <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">The Zero-Cost Seat</h4>
+          </div>
+          <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
+            Every Friday, across the globe, someone sits in a chair they didn't pay for and drinks coffee they didn't buy. Your stewardship covers the "cost of entry" for the stranger.
+          </p>
+        </div>
+
+        <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-[1px] bg-[#FCA311]"></div>
+            <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">Cultural Infrastructure</h4>
+          </div>
+          <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
+            We refuse to let Kingdom media look like an afterthought. We fund the Magazine and the Vault to ensure the Word has the highest quality aesthetic in the city.
+          </p>
+        </div>
+
+        <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-[1px] bg-[#FCA311]"></div>
+            <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">City Conquest</h4>
+          </div>
+          <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
+            Provision fuels the logistics of the "Friday Tour." We are planting tables in unreached urban centers, turning sterile coffee shops into modern-day upper rooms.
+          </p>
+        </div>
+
+        <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all flex flex-col justify-center items-center text-center">
+          <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase mb-8">Ready to Supply?</h4>
+          <a href="https://www.buymeacoffee.com/YOUR_LINK" target="_blank" class="max-capacity-btn inline-block w-full">
+              <span class="btn-shine"></span>
+              <span class="relative z-10">PARTNER WITH THE VISION</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-20 text-center">
+        <p class="text-white/20 font-['Oswald'] text-[10px] tracking-[6px] uppercase">No Scavenging. No Pressure. Just Kingdom Supply.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="reservation-overlay" class="fixed inset-0 z-[20000] bg-black/98 backdrop-blur-2xl hidden flex items-center justify-center p-6">
     <div class="max-w-lg w-full">
         <div class="mb-12">
             <button onclick="closeProtocol()" class="text-white/20 hover:text-[#FCA311] mb-12 tracking-[5px] uppercase text-[10px] flex items-center gap-2">
@@ -334,218 +400,67 @@
                 <label class="block text-[10px] text-white/30 tracking-[3px] mb-2 uppercase">Identity</label>
                 <input type="text" name="Name" placeholder="ENTER FULL NAME" required class="w-full bg-transparent pb-4 text-white font-['Oswald'] text-xl tracking-widest outline-none placeholder:text-white/5">
             </div>
-
             <div class="group border-b border-white/10 focus-within:border-[#FCA311] transition-colors">
                 <label class="block text-[10px] text-white/30 tracking-[3px] mb-2 uppercase">Secure Line</label>
                 <input type="email" name="Email" placeholder="ENTER EMAIL ADDRESS" required class="w-full bg-transparent pb-4 text-white font-['Oswald'] text-xl tracking-widest outline-none placeholder:text-white/5">
             </div>
-
             <div class="group border-b border-white/10 focus-within:border-[#FCA311] transition-colors">
                 <label class="block text-[10px] text-white/30 tracking-[3px] mb-2 uppercase">Comms (WhatsApp)</label>
                 <input type="tel" name="Phone" placeholder="+251 ..." required class="w-full bg-transparent pb-4 text-white font-['Oswald'] text-xl tracking-widest outline-none placeholder:text-white/5">
             </div>
-            
             <input type="hidden" name="City" id="hidden-city">
             <input type="hidden" name="Country" value="Auto-Sequence">
             <input type="hidden" name="Location" value="The Friday Table">
-
             <button type="submit" class="max-capacity-btn w-full mt-10 h-20">
                 <span class="btn-shine"></span>
                 <span id="btn-text" class="relative z-10 text-xl tracking-[8px]">TRANSMIT</span>
             </button>
         </form>
     </div>
-</div>
-  
-  <section id="support" class="section-container bg-black py-32 px-6 hidden" style="display: none;">
-  <div class="max-w-7xl mx-auto">
-    
-    <div class="mb-24 text-center">
-      <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-8">Protocol of the Family</h2>
-      <h3 class="text-6xl md:text-9xl font-['Oswald'] font-black text-white uppercase leading-[0.85] tracking-tighter mb-12">
-        WE DON'T ASK.<br>WE <span class="text-[#FCA311]">BUILD.</span>
-      </h3>
-      <div class="max-w-2xl mx-auto border-t border-white/10 pt-8">
-        <p class="text-white/60 font-['Inter'] text-lg leading-relaxed italic">
-          "Bible & Coffee is a move of God sustained by those who see the value of a seat at the table. We remove the price tag from the Gospel, so the seeker finds only an open door."
-        </p>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
-      
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
-          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">The Zero-Cost Seat</h4>
-        </div>
-        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
-          Every Friday, across the globe, someone sits in a chair they didn't pay for and drinks coffee they didn't buy—to hear a Word that is priceless. Your stewardship covers the "cost of entry" for the stranger.
-        </p>
-      </div>
-
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
-          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">Cultural Infrastructure</h4>
-        </div>
-        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
-          We refuse to let Kingdom media look like an afterthought. We fund the Magazine and the Vault to ensure the most important message on earth has the highest quality aesthetic in the city.
-        </p>
-      </div>
-
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
-          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">City Conquest</h4>
-        </div>
-        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
-          Provision fuels the logistics of the "Friday Tour." We are planting tables in unreached urban centers, turning sterile coffee shops into modern-day upper rooms.
-        </p>
-      </div>
-
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all flex flex-col justify-center items-center text-center">
-        <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase mb-8">Ready to Supply?</h4>
-        <a href="https://www.buymeacoffee.com/YOUR_LINK" target="_blank" class="max-capacity-btn inline-block w-full">
-            <span class="btn-shine"></span>
-            <span class="relative z-10">PARTNER WITH THE VISION</span>
-        </a>
-      </div>
-
-    </div>
-
-    <div class="mt-20 text-center">
-      <p class="text-white/20 font-['Oswald'] text-[10px] tracking-[6px] uppercase">No Scavenging. No Pressure. Just Kingdom Supply.</p>
-    </div>
-
   </div>
-</section>
+
   <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
-   <div class="footer-socials">
-    <a href="https://www.instagram.com/bunnaqurs?igsh=enlqMGVpNDZyb2o=" target="_blank">
-        <i data-lucide="instagram"></i>
-    </a>
-
-    <a href="https://www.facebook.com/bunnaqurs" target="_blank">
-        <i data-lucide="facebook"></i>
-    </a>
-
-    <a href="https://youtube.com/@bunnaqurs?si=k-WgkgWSJ5XD5jXC" target="_blank">
-        <i data-lucide="youtube"></i>
-    </a>
-
-    <a href="https://www.tiktok.com/@bunnaqurs?_r=1&_t=ZS-93sBNztPxFh" target="_blank">
-        <i data-lucide="music-2"></i>
-    </a>
-</div>
+    <div class="footer-socials">
+     <a href="https://www.instagram.com/bunnaqurs?igsh=enlqMGVpNDZyb2o=" target="_blank"><i data-lucide="instagram"></i></a>
+     <a href="https://www.facebook.com/bunnaqurs" target="_blank"><i data-lucide="facebook"></i></a>
+     <a href="https://youtube.com/@bunnaqurs?si=k-WgkgWSJ5XD5jXC" target="_blank"><i data-lucide="youtube"></i></a>
+     <a href="https://www.tiktok.com/@bunnaqurs?_r=1&_t=ZS-93sBNztPxFh" target="_blank"><i data-lucide="music-2"></i></a>
+    </div>
   </footer>
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>
 
   <style>
-    /* 1. The Background Atmosphere */
-    #sermon {
-        background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #000000 100%) !important;
-        position: relative;
-        overflow: hidden;
-    }
+    #sermon { background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #000000 100%) !important; position: relative; overflow: hidden; }
+    .sermon-cinema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; perspective: 1000px; }
+    .sermon-card-premium { background: #0a0a0a !important; border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important; cursor: pointer; position: relative; overflow: hidden; }
+    .sermon-card-premium:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(252, 163, 17, 0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(252, 163, 17, 0.1); }
+    .sermon-poster { position: relative; overflow: hidden; }
+    .sermon-poster img { filter: grayscale(40%) contrast(1.1); transition: all 0.6s ease; }
+    .sermon-card-premium:hover .sermon-poster img { filter: grayscale(0%) contrast(1); transform: scale(1.1); }
+    .play-overlay i { color: #FCA311; width: 60px !important; height: 60px !important; filter: drop-shadow(0 0 10px rgba(252, 163, 17, 0.8)); transition: transform 0.3s ease; }
+    .sermon-card-premium:hover .play-overlay i { transform: scale(1.2); }
+    .sermon-details h3 { font-family: 'Inter', sans-serif !important; font-weight: 800 !important; letter-spacing: -0.5px; font-size: 1.4rem !important; margin-top: 10px !important; color: #eee !important; }
+    .sermon-details .category { font-family: 'Oswald' !important; letter-spacing: 3px !important; color: #FCA311 !important; font-size: 0.7rem !important; opacity: 0.7; }
+  </style>
 
-    /* 2. Grid Polish - Smooth spacing and perspective */
-    .sermon-cinema-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-        perspective: 1000px; /* Preps the area for 3D motion */
-    }
-
-    /* 3. The Card Transformation */
-    .sermon-card-premium {
-        background: #0a0a0a !important;
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 4px;
-        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* 4. The "Neon Lift" Hover Effect */
-    .sermon-card-premium:hover {
-        transform: translateY(-10px) scale(1.02);
-        border-color: rgba(252, 163, 17, 0.4);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(252, 163, 17, 0.1);
-    }
-
-    /* 5. Image & Play Button Overlay */
-    .sermon-poster {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .sermon-poster img {
-        filter: grayscale(40%) contrast(1.1);
-        transition: all 0.6s ease;
-    }
-
-    .sermon-card-premium:hover .sermon-poster img {
-        filter: grayscale(0%) contrast(1);
-        transform: scale(1.1);
-    }
-
-    /* Custom Play Icon Glow */
-    .play-overlay i {
-        color: #FCA311;
-        width: 60px !important;
-        height: 60px !important;
-        filter: drop-shadow(0 0 10px rgba(252, 163, 17, 0.8));
-        transition: transform 0.3s ease;
-    }
-
-    .sermon-card-premium:hover .play-overlay i {
-        transform: scale(1.2);
-    }
-
-    /* 6. Text Typography Upgrade */
-    .sermon-details h3 {
-        font-family: 'Inter', sans-serif !important;
-        font-weight: 800 !important;
-        letter-spacing: -0.5px;
-        font-size: 1.4rem !important;
-        margin-top: 10px !important;
-        color: #eee !important;
-    }
-
-    .sermon-details .category {
-        font-family: 'Oswald' !important;
-        letter-spacing: 3px !important;
-        color: #FCA311 !important;
-        font-size: 0.7rem !important;
-        opacity: 0.7;
-    }
-</style>
-
-<script>
-    // Subtle parallax tilt for the sermon cards
+  <script>
     document.querySelectorAll('.sermon-card-premium').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             let rect = card.getBoundingClientRect();
             let x = e.clientX - rect.left;
             let y = e.clientY - rect.top;
-            
             let centerX = rect.width / 2;
             let centerY = rect.height / 2;
-            
             let rotateX = (y - centerY) / 15;
             let rotateY = (centerX - x) / 15;
-            
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
         });
-        
         card.addEventListener('mouseleave', () => {
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
         });
     });
-</script>
+  </script>
 </body>
 </html>

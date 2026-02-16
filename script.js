@@ -1,4 +1,3 @@
-/* --- 1. GLOBAL DATABASE --- */
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
 const db = {
     "Ethiopia": { 
@@ -49,12 +48,10 @@ const db = {
     "Egypt": { "Cairo": ["Zamalek", "Maadi"], "Alexandria": ["Corniche"] },
     "Israel": { "Tel Aviv": ["Rothschild Blvd"], "Jerusalem": ["City Center"] }
 };
+
 /* --- 2. NAVIGATION LOGIC --- */
 function showSection(id, btn) {
-    // List of all main section IDs
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
-    
-    // Hide everything first
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -63,46 +60,34 @@ function showSection(id, btn) {
         }
     });
 
-    // Show the specific section
     if (id === 'home') {
         const home = document.getElementById('home-wrapper');
-        if (home) {
-            home.style.display = 'block';
-            home.classList.remove('hidden');
-        }
+        if (home) { home.style.display = 'block'; home.classList.remove('hidden'); }
     } else {
         const target = document.getElementById(id);
-        if (target) {
-            target.style.display = 'block';
-            target.classList.remove('hidden');
-        }
+        if (target) { target.style.display = 'block'; target.classList.remove('hidden'); }
     }
 
-    // UI Updates: Active Button State
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-
-    // Close Mobile Menu if open
     const navLinks = document.getElementById('nav-links');
     if (navLinks) navLinks.classList.remove('active-menu');
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* --- 3. FORM LOGIC --- */
+/* --- 3. FORM & SEAT COUNTER LOGIC --- */
+const API_URL = "https://sheetdb.io/api/v1/YOUR_API_ID"; // Replace with your actual ID
+
 function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
     const locSelect = document.getElementById('location');
-    
     citySelect.innerHTML = '<option value="" disabled selected>Select City</option>';
     locSelect.innerHTML = '<option value="" disabled selected>Select Location</option>';
-    
     if (db[country]) {
         Object.keys(db[country]).forEach(city => {
             let opt = document.createElement('option');
-            opt.value = city;
-            opt.textContent = city;
+            opt.value = city; opt.textContent = city;
             citySelect.appendChild(opt);
         });
     }
@@ -112,33 +97,74 @@ function updateLocations() {
     const country = document.getElementById('country').value;
     const city = document.getElementById('city').value;
     const locSelect = document.getElementById('location');
-    
     locSelect.innerHTML = '<option value="" disabled selected>Select Location</option>';
-    
     if (db[country] && db[country][city]) {
         db[country][city].forEach(loc => {
             let opt = document.createElement('option');
-            opt.value = loc;
-            opt.textContent = loc;
+            opt.value = loc; opt.textContent = loc;
             locSelect.appendChild(opt);
         });
     }
 }
 
-/* --- 4. INITIALIZATION --- */
+async function checkSlots() {
+    const location = document.getElementById('location').value;
+    const badge = document.getElementById('slot-badge');
+    const statusText = document.getElementById('slot-status-text');
+
+    if (!location) return;
+
+    badge.style.display = "block";
+    badge.classList.remove('hidden');
+    statusText.innerText = "Checking table availability...";
+
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        const booked = data.filter(entry => entry.Location === location).length;
+        const available = 8 - booked;
+
+        if (available <= 0) {
+            statusText.innerHTML = `<span style="color: #ff4444;">TABLE FULL</span> - Join waitlist below`;
+        } else {
+            statusText.innerHTML = `<span style="color: #FCA311;">${available} SEATS REMAINING</span> at this table`;
+        }
+    } catch (error) {
+        statusText.innerText = "System online. Proceed with request.";
+    }
+}
+
+/* --- 4. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle logic
     const menuBtn = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    
     if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active-menu');
-        });
+        menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); });
     }
-    
-    // Lucide Icons
-    if (window.lucide) {
-        lucide.createIcons();
+    if (window.lucide) { lucide.createIcons(); }
+
+    // Form Submission
+    const form = document.getElementById('regForm');
+    if (form) {
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            const btnText = document.getElementById('btn-text');
+            btnText.innerHTML = "SENDING REQUEST...";
+
+            fetch(API_URL, {
+                method: "POST",
+                body: new FormData(form),
+            }).then(res => res.json())
+            .then(() => {
+                alert("Request Sent. We'll contact you shortly.");
+                btnText.innerHTML = "CONFIRM ACCESS";
+                form.reset();
+                document.getElementById('slot-badge').style.display = "none";
+            })
+            .catch(err => {
+                alert("Connection error. Please try again.");
+                btnText.innerHTML = "CONFIRM ACCESS";
+            });
+        });
     }
 });

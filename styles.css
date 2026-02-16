@@ -247,8 +247,8 @@ nav {
     /* Controller B: Subtitle + Text Group */
     #joystick-text-group {
         position: relative !important;
-        top: 100px !important;  /* Your Saved Value */
-        left: -10px !important; /* Your Saved Value */
+        top: 120px !important;  /* Your Saved Value */
+        left: -6px !important; /* Your Saved Value */
         z-index: 999 !important;
     }
 

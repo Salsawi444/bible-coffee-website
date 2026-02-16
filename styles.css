@@ -241,8 +241,8 @@ nav {
     .brand-block h1 {
         position: relative !important;
         /* >>> ADJUST TITLE POSITION HERE <<< */
-        top: 0px !important;    /* (+) DOWN | (-) UP */
-        left: 0px !important;   /* (+) RIGHT | (-) LEFT */
+        top: 10px !important;    /* (+) DOWN | (-) UP */
+        left: -8px !important;   /* (+) RIGHT | (-) LEFT */
     }
 
     /* JOYSTICK B: THANK GOD IT'S FRIDAY BLOCK */

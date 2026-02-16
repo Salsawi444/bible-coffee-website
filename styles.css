@@ -240,8 +240,8 @@ nav {
 
         /* >>> ADJUST THESE TO MOVE THE TEXT <<< */
         /* Currently set high so you can see it move! */
-        top: 120px !important;    /* (+) moves everything DOWN | (-) moves everything UP */
-        left: -15px !important;     /* (+) moves RIGHT | (-) moves LEFT */
+        top: 100px !important;    /* (+) moves everything DOWN | (-) moves everything UP */
+        left: -20px !important;     /* (+) moves RIGHT | (-) moves LEFT */
         
         padding-top: 0 !important; /* Clears default padding so joystick is accurate */
     }

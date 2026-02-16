@@ -240,7 +240,7 @@ nav {
     #joystick-title {
         position: relative !important;
         top: -140px !important;    /* (+) Down | (-) Up */
-        left: -40px !important;   /* (+) Right | (-) Left */
+        left: -20px !important;   /* (+) Right | (-) Left */
         z-index: 1000 !important;
     }
 

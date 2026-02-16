@@ -293,18 +293,24 @@ nav {
 }
 
 
-/* --- SURGERY: VERTICAL FOOTER ICONS --- */
-@media (max-width: 768px) {
-    .footer-socials {
-        display: flex !important;
-        flex-direction: column !important; /* Forces vertical stack */
-        align-items: center !important;    /* Centers them horizontally */
-        gap: 30px !important;              /* Creates the space between icons */
-        padding: 20px 0 !important;
-    }
+/* --- SURGERY: UNIVERSAL HORIZONTAL FOOTER ICONS --- */
+.footer-socials {
+    display: flex !important;
+    flex-direction: row !important;    /* Forces horizontal alignment */
+    justify-content: center !important; /* Centers the row on the screen */
+    align-items: center !important;
+    gap: 35px !important;              /* Adds the specific space between each */
+    padding: 30px 0 !important;
+    width: 100% !important;
+}
 
-    .footer-socials a {
-        display: inline-block !important;
-        transform: scale(1.2);             /* Slightly larger for easier tapping */
-    }
+.footer-socials a {
+    display: flex !important;
+    color: #ffffff;                    /* Ensures they are visible */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: #FCA311 !important;         /* Brand color on hover */
+    transform: translateY(-3px);       /* Subtle lift effect */
 }

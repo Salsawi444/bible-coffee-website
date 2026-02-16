@@ -207,10 +207,10 @@ nav {
     text-decoration: none;
 }
 
-/* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + JOYSTICK) --- */
+/* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + CONTENT JOYSTICK) --- */
 @media (max-width: 768px) {
     
-    /* 9.1 THE IMAGE FIX: Slides image to top, makes Nav a ghost */
+    /* 9.1 THE IMAGE FIX (Background to very top) */
     nav {
         background: transparent !important;
         backdrop-filter: none !important;
@@ -232,28 +232,26 @@ nav {
         height: 100vh !important;
     }
 
-    /* 9.2 YOUR CORPORATE JOYSTICK: Move ONLY your text here */
-    body #home-wrapper header#home .brand-block {
+    /* 9.2 THE MASTER JOYSTICK - Moving the whole text container */
+    .hero-content-layer {
         position: relative !important; 
-        display: block !important;
+        display: flex !important;
         z-index: 999 !important;
 
-        /* ADJUST THESE TO MOVE THE TEXT BOX */
-        top: 100px !important;    /* (+) moves DOWN | (-) moves UP */
-        left: -5px !important;  /* (+) moves RIGHT | (-) moves LEFT */
+        /* >>> ADJUST THESE TO MOVE THE TEXT <<< */
+        /* Currently set high so you can see it move! */
+        top: 150px !important;    /* (+) moves everything DOWN | (-) moves everything UP */
+        left: 0px !important;     /* (+) moves RIGHT | (-) moves LEFT */
+        
+        padding-top: 0 !important; /* Clears default padding so joystick is accurate */
     }
 
-    /* 9.3 REFINEMENTS: Readability and Grids */
-    .hero-content-layer {
-        padding-top: 120px !important; 
-        justify-content: flex-start !important;
-    }
-
+    /* 9.3 REFINEMENTS */
     .hero-overlay-layer {
         background: linear-gradient(180deg, 
-            rgba(0,0,0,0.5) 0%, 
-            rgba(0,0,0,0.2) 30%, 
-            rgba(0,0,0,0.8) 100%) !important;
+            rgba(0,0,0,0.6) 0%, 
+            rgba(0,0,0,0.2) 40%, 
+            rgba(0,0,0,0.9) 100%) !important;
     }
 
     .merch-vault-grid { 

@@ -242,7 +242,7 @@ nav {
         position: relative !important;
         /* >>> ADJUST TITLE POSITION HERE <<< */
         top: 10px !important;    /* (+) DOWN | (-) UP */
-        left: -8px !important;   /* (+) RIGHT | (-) LEFT */
+        left: -15px !important;   /* (+) RIGHT | (-) LEFT */
     }
 
     /* JOYSTICK B: THANK GOD IT'S FRIDAY BLOCK */

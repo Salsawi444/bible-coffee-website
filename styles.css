@@ -126,9 +126,9 @@ nav {
 @media (max-width: 768px) {
     .copyright-mark {
         /* Mobile Coordinates - adjusted for the smaller clamp() font size */
-        top: -2rem; 
-        left: 1rem;
-        font-size: 0.25em; /* Slightly bigger so it's readable on small screens */
+        top: 0.1rem; 
+        left: -0.5rem;
+        font-size: 0.22em; /* Slightly bigger so it's readable on small screens */
     }
 }
 .hero-cta { 

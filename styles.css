@@ -239,8 +239,8 @@ nav {
     /* Controller A: The Main Title */
     #joystick-title {
         position: relative !important;
-        top: -120px !important;    /* (+) Down | (-) Up */
-        left: 0px !important;   /* (+) Right | (-) Left */
+        top: -140px !important;    /* (+) Down | (-) Up */
+        left: -7px !important;   /* (+) Right | (-) Left */
         z-index: 1000 !important;
     }
 

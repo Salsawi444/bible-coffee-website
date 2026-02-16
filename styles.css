@@ -229,19 +229,34 @@ nav {
     /* 9.1 THE FULL IMAGE FIX: No more zooming or cutting! */
     .hero-bg-layer {
         background-position: center top !important; 
-        background-size: contain !important; /* Forces the whole photo to fit width-wise */
+        background-size: contain !important; 
         background-repeat: no-repeat !important;
         height: 100vh !important;
-        background-color: #000; /* Fills gaps with black so it looks intentional */
+        background-color: #000; 
     }
 
-    /* 9.2 YOUR SAVED JOYSTICK VALUES */
+    /* 9.2 THE DUAL-JOYSTICK CONTROL CENTER */
+    /* Controller A: The Main Title */
+    #joystick-title {
+        position: relative !important;
+        top: 0px !important;    /* (+) Down | (-) Up */
+        left: 0px !important;   /* (+) Right | (-) Left */
+        z-index: 1000 !important;
+    }
+
+    /* Controller B: Subtitle + Text Group */
+    #joystick-text-group {
+        position: relative !important;
+        top: 100px !important;  /* Your Saved Value */
+        left: -10px !important; /* Your Saved Value */
+        z-index: 999 !important;
+    }
+
+    /* Clean up default layer padding to ensure joystick is accurate */
     .hero-content-layer {
         position: relative !important; 
         display: flex !important;
-        z-index: 999 !important;
-        top: 100px !important;    
-        left: -10px !important;   
+        z-index: 998 !important;
         padding-top: 0 !important; 
     }
 

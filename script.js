@@ -242,3 +242,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+/* --- CINEMATIC EVENT PROTOCOL --- */
+
+/**
+ * Opens the high-stakes reservation overlay
+ * @param {string} city - The target city for the Friday Sequence
+ */
+function openProtocol(city) {
+    const overlay = document.getElementById('reservation-overlay');
+    if (overlay) {
+        overlay.classList.remove('hidden');
+        overlay.style.display = 'flex'; 
+        
+        // Update the UI with the selected city
+        document.getElementById('target-city').innerText = `Target: ${city}`;
+        document.getElementById('hidden-city').value = city;
+        
+        // Lock the background scroll for that focused "Noir" feel
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+/**
+ * Closes the overlay and restores site flow
+ */
+function closeProtocol() {
+    const overlay = document.getElementById('reservation-overlay');
+    if (overlay) {
+        overlay.classList.add('hidden');
+        overlay.style.display = 'none';
+        
+        // Restore scrolling
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Ensure the "Transmit" button reflects the new vibe during submission
+// This hooks into your existing form submission logic
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('regForm');
+    if (form) {
+        form.addEventListener('submit', () => {
+            const btnText = document.getElementById('btn-text');
+            if (btnText) btnText.innerText = "TRANSMITTING...";
+        });
+    }
+});

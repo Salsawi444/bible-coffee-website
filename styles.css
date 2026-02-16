@@ -514,3 +514,82 @@ select.ultra-input option {
 }
 
 
+/* --- 10. NEXT-LEVEL REFINEMENTS --- */
+
+/* Cinematic Entrance for the Hero Section */
+.brand-block {
+    animation: cinematicReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+@keyframes cinematicReveal {
+    0% { 
+        opacity: 0; 
+        transform: translateY(40px) scale(0.95); 
+        filter: blur(10px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+        filter: blur(0); 
+    }
+}
+
+/* Glassmorphism Refinement for Nav & Forms */
+nav {
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(252, 163, 17, 0.15) !important;
+}
+
+.premium-form-wrapper {
+    background: rgba(10, 10, 10, 0.6) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(252, 163, 17, 0.1) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Sophisticated Typography & Hover Effects */
+.nav-links button:hover {
+    color: #FCA311;
+    letter-spacing: 6px; /* Dynamic expansion effect */
+}
+
+/* Section Transition Smoothing */
+.section-container, #home-wrapper {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    display: none !important;
+}
+
+/* Image Treatment for Merch & Sermons */
+.merch-img-wrapper img, .sermon-poster img {
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+/* High-End Scrollbar for Chrome/Safari */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FCA311;
+}
+
+/* Responsive Joystick Correction for Ultra-Wide Screens */
+@media (min-width: 2000px) {
+    .brand-block {
+        transform: translateX(-250px) !important;
+    }
+}
+

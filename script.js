@@ -59,7 +59,9 @@ const db = {
 
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
+    // FIX: Added 'sermon', 'events', and 'support' to the tracking list so they can be toggled
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
+    
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -73,7 +75,10 @@ function showSection(id, btn) {
         if (home) { home.style.display = 'block'; home.classList.remove('hidden'); }
     } else {
         const target = document.getElementById(id);
-        if (target) { target.style.display = 'block'; target.classList.remove('hidden'); }
+        if (target) { 
+            target.style.display = 'block'; 
+            target.classList.remove('hidden'); 
+        }
     }
 
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
@@ -90,7 +95,12 @@ function resetToHome() {
     }, 100);
 }
 
-/* --- 3. FORM & SEAT COUNTER LOGIC --- */
+/* --- 3. VIDEO ENGINE --- */
+function openVideo(id) {
+    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+}
+
+/* --- 4. FORM & SEAT COUNTER LOGIC --- */
 const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
 function updateCities() {
@@ -170,7 +180,7 @@ function showSuccess() {
     if (window.lucide) { lucide.createIcons(); }
 }
 
-/* --- 4. INITIALIZATION & SUBMISSION --- */
+/* --- 5. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
     // A. MENU LOGIC
     const menuBtn = document.getElementById('menu-toggle');
@@ -232,8 +242,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
-function openVideo(id) {
-    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
-}

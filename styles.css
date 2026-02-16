@@ -475,3 +475,34 @@ nav {
         z-index: 999 !important;  /* Ensures it stays on top of the background */
     }
 }
+
+
+/* --- FINAL MOBILE PERSPECTIVE & COPYRIGHT CONTROL --- */
+@media (max-width: 768px) {
+    /* 1. SHIFTS IMAGE UP: Shows faces clearly behind the text on mobile */
+    .hero-bg-layer { 
+        background-position: center 25% !important; 
+    }
+
+    /* 2. BREATHING ROOM: Pushes the title down so it's not hitting the top notch */
+    .hero-content-layer {
+        padding-top: 150px !important; 
+    }
+
+    /* 3. COPYRIGHT JOYSTICK: Tucks the © symbol perfectly next to the 'S' */
+    .copyright-mark {
+        top: 0.15rem !important;   /* Pulls it down into alignment */
+        left: -0.45rem !important; /* Reels it in closer to the S */
+        position: relative !important;
+        display: inline-block !important;
+        font-size: 0.22em !important;
+    }
+
+    /* 4. CONTRAST BOOST: Makes the yellow text easier to read over the coffee table */
+    .hero-overlay-layer {
+        background: linear-gradient(180deg, 
+            rgba(0,0,0,0.2) 0%, 
+            rgba(0,0,0,0.6) 40%, 
+            rgba(0,0,0,0.9) 100%) !important;
+    }
+}

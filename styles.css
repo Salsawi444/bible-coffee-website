@@ -334,3 +334,166 @@ select option {
     outline: none;
     border-bottom: 2px solid #FCA311 !important;
 }
+
+/* --- SURGERY: MAXIMUM DESIGN CAPACITY FORM --- */
+
+.premium-glitch-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    letter-spacing: 12px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.premium-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FCA311, transparent);
+    margin: 25px auto;
+}
+
+.premium-subtitle {
+    color: #FCA311;
+    font-family: 'Inter';
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 6px;
+}
+
+.premium-form-wrapper {
+    position: relative;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 40px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.form-glass-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at top right, rgba(252, 163, 17, 0.05), transparent);
+    pointer-events: none;
+}
+
+/* THE ULTRA INPUTS */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.ultra-input {
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 25px 0 10px 0 !important;
+    color: white !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    transition: all 0.4s ease;
+}
+
+.ultra-label {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    color: rgba(255,255,255,0.3);
+    font-family: 'Oswald';
+    letter-spacing: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.ultra-input:focus ~ .ultra-label,
+.ultra-input:not(:placeholder-shown) ~ .ultra-label {
+    top: 0;
+    color: #FCA311;
+    font-size: 10px;
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FCA311;
+    transition: width 0.4s ease;
+}
+
+.ultra-input:focus ~ .input-line {
+    width: 100%;
+}
+
+/* THE BUTTON */
+.max-capacity-btn {
+    position: relative;
+    width: 100%;
+    background: white;
+    color: black;
+    padding: 22px;
+    font-family: 'Oswald';
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: none;
+}
+
+.max-capacity-btn:hover {
+    background: #FCA311;
+    letter-spacing: 8px;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(252, 163, 17, 0.2);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.5s;
+}
+
+.max-capacity-btn:hover .btn-shine {
+    left: 150%;
+    transition: 0.6s;
+}
+
+.status-glow-text {
+    font-family: 'Oswald';
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #FCA311;
+    text-shadow: 0 0 10px rgba(252, 163, 17, 0.5);
+}
+
+/* Desktop Visibility fix for huge list */
+select.ultra-input option {
+    background: #111 !important;
+    color: white !important;
+}
+
+
+/* --- MOBILE TOUCH OPTIMIZATION --- */
+@media (max-width: 768px) {
+    .premium-form-wrapper {
+        padding: 40px 20px !important; /* Tighter padding for small screens */
+        margin: 0 10px;
+    }
+
+    .premium-glitch-title {
+        letter-spacing: 6px !important; /* Shorter spacing so text doesn't wrap weirdly */
+    }
+
+    .max-capacity-btn {
+        padding: 18px !important; /* Optimized for thumb-clicks */
+    }
+}

@@ -263,16 +263,22 @@
         <div class="group"><input type="tel" id="phone" name="Phone" class="floating-input" placeholder=" " required><label class="floating-label">Phone Number</label></div>
         <div class="group"><input type="email" id="email" name="Email" class="floating-input" placeholder=" " required><label class="floating-label">Email Address</label></div>
         <div class="grid grid-cols-2 gap-8">
-          <div class="group">
-            <select id="country" name="Country" onchange="updateCities()" class="floating-input" required>
-              <option value="" disabled selected></option>
-              <option value="Ethiopia">Ethiopia</option>
-              <option value="Kenya">Kenya</option>
-              <option value="USA">USA</option>
-              <option value="UK">UK</option>
-              </select>
-            <label class="floating-label">Country</label>
-          </div>
+         <div class="group">
+  <select id="country" name="Country" onchange="updateCities()" class="floating-input" required>
+    <option value="" disabled selected></option>
+    <option value="Ethiopia">Ethiopia</option>
+    <option value="Kenya">Kenya</option>
+    <option value="USA">USA</option>
+    <option value="UK">UK</option>
+    <option value="South Africa">South Africa</option>
+    <option value="Sweden">Sweden</option>
+    <option value="Norway">Norway</option>
+    <option value="Germany">Germany</option>
+    <option value="Uganda">Uganda</option>
+    <option value="Rwanda">Rwanda</option>
+  </select>
+  <label class="floating-label">Country</label>
+</div>
           <div class="group">
             <select id="city" name="City" onchange="updateLocations()" class="floating-input" required>
               <option value="" disabled selected></option>

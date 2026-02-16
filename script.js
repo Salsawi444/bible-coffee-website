@@ -1,7 +1,7 @@
 /* --- 0. THE CODE JOYSTICK (DESKTOP ONLY) --- */
 /* Tune these numbers to move your content. Negative = Up/Left, Positive = Down/Right */
 const DESKTOP_POS = {
-    titleY: 0,      // Move "BIBLE & COFFEE" Up/Down (px)
+    titleY: 5,      // Move "BIBLE & COFFEE" Up/Down (px)
     contentY: 0,    // Move Subtitle & Paragraph Up/Down (px)
     globalX: -130      // Move Everything Left/Right (px)
 };

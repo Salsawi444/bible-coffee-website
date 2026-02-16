@@ -291,3 +291,20 @@ nav {
         padding: 15px !important; 
     }
 }
+
+
+/* --- SURGERY: VERTICAL FOOTER ICONS --- */
+@media (max-width: 768px) {
+    .footer-socials {
+        display: flex !important;
+        flex-direction: column !important; /* Forces vertical stack */
+        align-items: center !important;    /* Centers them horizontally */
+        gap: 30px !important;              /* Creates the space between icons */
+        padding: 20px 0 !important;
+    }
+
+    .footer-socials a {
+        display: inline-block !important;
+        transform: scale(1.2);             /* Slightly larger for easier tapping */
+    }
+}

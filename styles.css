@@ -427,3 +427,30 @@ nav {
     color: #fff;
 }
 
+/* FOOTER ICON CONTROL STATION */
+.footer-socials {
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-bottom: 30px;
+}
+
+.footer-socials a {
+    color: #ffffff;            /* Keep icons white */
+    text-decoration: none;     /* Remove any underline */
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Hover Effect: Turns Gold and pops up slightly */
+.footer-socials a:hover {
+    color: #FCA311;
+    transform: translateY(-3px); 
+}
+
+.footer-socials i {
+    width: 24px;
+    height: 24px;
+}
+

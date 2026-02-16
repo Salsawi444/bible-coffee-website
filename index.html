@@ -188,60 +188,79 @@
     </div>
   </section>
 
-  <section id="sermon" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
-        <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
+ <section id="sermon" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
+      <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
+      <p class="text-white/40 font-['Inter'] text-xs tracking-[5px] mt-2">ARCHIVE // KINGDOM KNOWLEDGE</p>
+    </div>
+
+    <div class="sermon-cinema-grid">
+      <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')">
+          <div class="sermon-poster">
+            <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 1">
+            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+          </div>
+          <div class="sermon-details">
+            <span class="category">KINGDOM CULTURE</span>
+            <h3>ወጣቱ ባለሃብት!</h3>
+          </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="sermon-card bg-[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('UQM5zM8XIaw')">
-            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
-            <div class="p-6"><h3>ወጣቱ ባለሃብት!</h3><p class="text-white/50 text-xs mt-2 uppercase">Kingdom Culture</p></div>
-        </div>
-        <div class="sermon-card bg-[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('Q7p0wt29a04')">
-            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
-            <div class="p-6"><h3>በሰማርያም ሊያልፍ ግድ ሆነበት!</h3><p class="text-white/50 text-xs mt-2 uppercase">Identity</p></div>
-        </div>
-        <div class="sermon-card bg-[#0d0d0d] border border-white/5 cursor-pointer" onclick="openVideo('uoUSXNjBgAg')">
-            <div class="overflow-hidden"><img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" class="sermon-thumb w-full aspect-video object-cover"></div>
-            <div class="p-6"><h3>ለውጥ እና ፈተናው!</h3><p class="text-white/50 text-xs mt-2 uppercase">Growth</p></div>
-        </div>
+      
+      <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')">
+          <div class="sermon-poster">
+            <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 2">
+            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+          </div>
+          <div class="sermon-details">
+            <span class="category">IDENTITY</span>
+            <h3>በሰማርያም ሊያልፍ ግድ ሆነበት!</h3>
+          </div>
+      </div>
+
+      <div class="sermon-card-premium" onclick="openVideo('uoUSXNjBgAg')">
+          <div class="sermon-poster">
+            <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon 3">
+            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+          </div>
+          <div class="sermon-details">
+            <span class="category">GROWTH</span>
+            <h3>ለውጥ እና ፈተናው!</h3>
+          </div>
+      </div>
+
+      <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')"> <div class="sermon-poster">
+            <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 4">
+            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+          </div>
+          <div class="sermon-details">
+            <span class="category">PURPOSE</span>
+            <h3>የእግዚአብሔር ድምፅ</h3>
+          </div>
+      </div>
+
+      <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')"> <div class="sermon-poster">
+            <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 5">
+            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+          </div>
+          <div class="sermon-details">
+            <span class="category">FAITH</span>
+            <h3>የእምነት ጉዞ</h3>
+          </div>
+      </div>
+
+      <div class="sermon-card-premium" onclick="openVideo('uoUSXNjBgAg')"> <div class="sermon-poster">
+            <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon 6">
+            <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+          </div>
+          <div class="sermon-details">
+            <span class="category">VISION</span>
+            <h3>ራዕይ እና ትውልድ</h3>
+          </div>
       </div>
     </div>
-  </section>
-
-  <section id="events" class="section-container bg-[#050505] py-24 px-6 hidden" style="display: none;">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
-        <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Global Gatherings</h2>
-        <p class="text-[#FCA311] font-['Inter'] text-sm tracking-widest mt-2">FIND YOUR SEAT AT THE TABLE</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-        <div class="bg-black border border-white/5 p-8 group hover:border-[#FCA311]/50 transition-all duration-300">
-          <div class="flex justify-between items-start mb-6">
-            <span class="text-[#FCA311] font-['Oswald'] tracking-[3px] text-xs">UPCOMING</span>
-            <i data-lucide="map-pin" class="text-white/20 group-hover:text-[#FCA311] transition-colors" size="20"></i>
-          </div>
-          <h3 class="text-white font-['Oswald'] text-2xl mb-1">ADDIS ABABA</h3>
-          <p class="text-white/40 font-['Inter'] text-sm mb-6">The Cup, Bole Atlas</p>
-          <div class="border-t border-white/5 pt-6 flex justify-between items-center">
-            <span class="text-white font-['Inter'] font-bold text-sm">FRI, FEB 27</span>
-            <button onclick="showSection('join')" class="text-[#FCA311] font-['Oswald'] text-xs tracking-widest uppercase hover:text-white">Reserve</button>
-          </div>
-        </div>
-        </div>
-      <div class="bg-[#FCA311] p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
-        <div>
-          <h3 class="text-black font-['Oswald'] text-3xl font-bold uppercase leading-none mb-2">Don't see your city?</h3>
-          <p class="text-black/70 font-['Inter'] font-medium">Bring the movement to your local coffee shop.</p>
-        </div>
-        <button onclick="toggleHostModal()" class="bg-black text-white font-['Oswald'] px-10 py-4 uppercase tracking-[3px] text-sm font-bold hover:bg-white hover:text-black transition-all">
-          Host a Table
-        </button>
-      </div>
-    </div>
-  </section>
-
+  </div>
+</section>
   <section id="support" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
   <div class="max-w-5xl mx-auto">
     

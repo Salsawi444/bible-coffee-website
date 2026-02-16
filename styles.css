@@ -461,7 +461,7 @@ nav {
         display: block !important;
         
         /* ADJUST THESE TO MOVE THE ENTIRE BOX */
-        top: -10px !important;    /* Try -50px just to see it jump up */
+        top: 0px !important;    /* Try -50px just to see it jump up */
         left: -5px !important;     /* Positive moves right, Negative moves left */
         
         z-index: 999 !important;  /* Ensures it stays on top of the background */

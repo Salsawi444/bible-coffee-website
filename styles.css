@@ -243,6 +243,15 @@ nav {
     box-shadow: 0 20px 40px rgba(252, 163, 17, 0.2);
 }
 
+/* --- Add this right after .max-capacity-btn:hover --- */
+
+.max-capacity-btn:active {
+    transform: scale(0.98);    /* The button physically "sinks" slightly when clicked */
+    letter-spacing: 10px;      /* The letters spread out for a sleek, high-end feel */
+    transition: 0.1s;          /* Fast response time for the click */
+    background: #FCA311;       /* Ensures it stays gold while pressed */
+}
+
 .btn-shine {
     position: absolute;
     top: 0;
@@ -319,3 +328,8 @@ nav {
 }
 
 select.ultra-input option { background: #111 !important; color: white !important; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -454,18 +454,16 @@ nav {
     height: 24px;
 }
 
-/* --- MOBILE HERO CONTENT JOYSTICK --- */
+/* --- POWER MOBILE HERO JOYSTICK --- */
 @media (max-width: 768px) {
-    .brand-block {
+    body #home-wrapper header#home .brand-block {
         position: relative !important; 
-        
-        /* ADJUST THESE NUMBERS TO MOVE THE CONTENT */
-        top: -30px;     /* Negative (-) moves it UP | Positive (+) moves it DOWN */
-        left: 0px;    /* Negative (-) moves it LEFT | Positive (+) moves it RIGHT */
-        
-        /* This ensures the block stays full width while moving */
-        width: 100% !important;
         display: block !important;
+        
+        /* ADJUST THESE TO MOVE THE ENTIRE BOX */
+        top: -50px !important;    /* Try -50px just to see it jump up */
+        left: 0px !important;     /* Positive moves right, Negative moves left */
+        
+        z-index: 999 !important;  /* Ensures it stays on top of the background */
     }
 }
-

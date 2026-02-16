@@ -145,7 +145,7 @@ function showSuccess() {
             <h2 class="premium-glitch-title" style="font-size: 2rem; letter-spacing: 5px;">ACCESS GRANTED</h2>
             <div class="premium-divider"></div>
             <p class="premium-subtitle" style="font-size: 14px; color: white; opacity: 0.8;">YOUR TABLE IS BEING PREPARED.</p>
-            <p style="font-family: 'Inter'; font-size: 11px; color: #FCA311; margin-top: 20px; letter-spacing: 2px;">CHECK YOUR EMAIL FOR CONFIRMATION</p>
+            <p style="font-family: 'Inter'; font-size: 11px; color: #FCA311; margin-top: 20px; letter-spacing: 2px;">"REGISTRATION SUCCESSFUL. WE WILL SEND YOU A TEXT MESSAGE FOR CONFIRMATION."</p>
             <button onclick="location.reload()" class="max-capacity-btn" style="margin-top: 40px; width: auto; padding: 15px 40px; font-size: 12px;">RETURN TO HOME</button>
         </div>
     `;

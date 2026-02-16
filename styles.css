@@ -31,7 +31,7 @@ nav {
     margin: auto; 
     display: flex; 
     justify-content: flex-end; 
-    padding: 0 25px; 
+    padding: 0 25px; /* Default desktop padding */
     align-items: center; 
 }
 
@@ -272,5 +272,22 @@ nav {
     .merch-vault-grid { 
         grid-template-columns: repeat(2, 1fr) !important; 
         gap: 15px !important; 
+    }
+}
+
+
+/* --- SURGERY: PUSH MENU TO EDGE --- */
+@media (max-width: 768px) {
+    .nav-container {
+        padding-left: 10px !important;
+        padding-right: 0px !important; 
+        justify-content: flex-end !important;
+        width: 100% !important;
+    }
+
+    .mobile-toggle {
+        display: block !important;
+        margin-right: 5px !important; 
+        padding: 15px !important; 
     }
 }

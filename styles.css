@@ -126,8 +126,8 @@ nav {
 @media (max-width: 768px) {
     .copyright-mark {
         /* Mobile Coordinates - adjusted for the smaller clamp() font size */
-        top: -4rem; 
-        left: -1rem;
+        top: -2rem; 
+        left: 1rem;
         font-size: 0.25em; /* Slightly bigger so it's readable on small screens */
     }
 }
@@ -425,4 +425,11 @@ nav {
 .support-action-btn:hover {
     background: transparent;
     color: #fff;
+}
+
+/* Keeps the space occupied even if text is removed */
+.hidden-subtitle {
+    height: 1.1rem; /* Matches the original font size */
+    margin-bottom: 20px; /* Matches the original spacing */
+    visibility: hidden; /* Makes it invisible but keeps the physical space */
 }

@@ -239,7 +239,7 @@ nav {
         z-index: 999 !important;
 
         /* ADJUST THESE TO MOVE THE TEXT BOX */
-        top: 0px !important;    /* (+) moves DOWN | (-) moves UP */
+        top: 10px !important;    /* (+) moves DOWN | (-) moves UP */
         left: -5px !important;  /* (+) moves RIGHT | (-) moves LEFT */
     }
 

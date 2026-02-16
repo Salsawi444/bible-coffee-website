@@ -117,7 +117,7 @@ nav {
 
 @media (max-width: 768px) {
     .copyright-mark {
-        top: -3rem; 
+        top: -2.5rem; 
         left: 0rem;
         font-size: 0.22em; 
     }

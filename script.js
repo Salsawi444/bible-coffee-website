@@ -3,7 +3,7 @@
 const DESKTOP_POS = {
     titleY: 0,      // Move "BIBLE & COFFEE" Up/Down (px)
     contentY: 0,    // Move Subtitle & Paragraph Up/Down (px)
-    globalX: -10      // Move Everything Left/Right (px)
+    globalX: -100      // Move Everything Left/Right (px)
 };
 
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */

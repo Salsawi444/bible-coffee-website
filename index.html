@@ -369,5 +369,26 @@
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>
+
+  <div id="ui-joystick" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.9); border: 1px solid #FCA311; padding: 20px; z-index: 9999; width: 300px; font-family: 'Oswald'; color: white; border-radius: 8px; box-shadow: 0 0 20px rgba(252, 163, 17, 0.2);">
+    <h4 style="color: #FCA311; margin-bottom: 15px; letter-spacing: 2px; font-size: 14px;">POSITION COMMAND CENTER</h4>
+    
+    <div style="margin-bottom: 15px;">
+        <label style="font-size: 10px; display: block; margin-bottom: 5px;">TITLE POSITION (Y-Axis)</label>
+        <input type="range" min="-200" max="200" value="0" style="width: 100%; accent-color: #FCA311;" oninput="adjustPos('title', this.value)">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label style="font-size: 10px; display: block; margin-bottom: 5px;">SUBTITLE/TEXT (Y-Axis)</label>
+        <input type="range" min="-200" max="200" value="0" style="width: 100%; accent-color: #FCA311;" oninput="adjustPos('sub', this.value)">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label style="font-size: 10px; display: block; margin-bottom: 5px;">GLOBAL X-OFFSET</label>
+        <input type="range" min="-200" max="200" value="0" style="width: 100%; accent-color: #FCA311;" oninput="adjustPos('globalX', this.value)">
+    </div>
+
+    <p id="coord-display" style="font-size: 10px; color: #555; font-family: 'Inter';">COORDS: 0, 0, 0</p>
+</div>
 </body>
 </html>

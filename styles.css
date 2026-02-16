@@ -210,7 +210,7 @@ nav {
 /* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + CONTENT JOYSTICK) --- */
 @media (max-width: 768px) {
     
-    /* 9.1 THE IMAGE FIX (Background to very top) */
+    /* 9.1 THE IMAGE FIX - Full image visibility */
     nav {
         background: transparent !important;
         backdrop-filter: none !important;
@@ -229,27 +229,42 @@ nav {
 
     .hero-bg-layer {
         background-position: center top !important;
+        /* Surgery: Changed to 100% width to prevent cutting people out */
+        background-size: 100% auto !important;
+        background-repeat: no-repeat;
         height: 100vh !important;
     }
 
-    /* 9.2 THE MASTER JOYSTICK - Moving the whole text container */
+    /* 9.2 THE SPLIT JOYSTICKS */
+    
+    /* JOYSTICK A: THE MAIN TITLE (BIBLE & COFFEE) */
+    .brand-block h1 {
+        position: relative !important;
+        /* >>> ADJUST TITLE POSITION HERE <<< */
+        top: 0px !important;    /* (+) DOWN | (-) UP */
+        left: 0px !important;   /* (+) RIGHT | (-) LEFT */
+    }
+
+    /* JOYSTICK B: THANK GOD IT'S FRIDAY BLOCK */
+    .brand-block div[style*="border-left"] {
+        position: relative !important;
+        /* >>> ADJUST SUB-TEXT POSITION HERE <<< */
+        top: 20px !important;   /* (+) DOWN | (-) UP */
+        left: 0px !important;   /* (+) RIGHT | (-) LEFT */
+    }
+
+    /* 9.3 REFINEMENTS */
     .hero-content-layer {
         position: relative !important; 
         display: flex !important;
         z-index: 999 !important;
-
-        /* >>> ADJUST THESE TO MOVE THE TEXT <<< */
-        /* Currently set high so you can see it move! */
-        top: 100px !important;    /* (+) moves everything DOWN | (-) moves everything UP */
-        left: -10px !important;     /* (+) moves RIGHT | (-) moves LEFT */
-        
-        padding-top: 0 !important; /* Clears default padding so joystick is accurate */
+        top: 50px !important; /* Global container adjustment */
+        padding-top: 0 !important;
     }
 
-    /* 9.3 REFINEMENTS */
     .hero-overlay-layer {
         background: linear-gradient(180deg, 
-            rgba(0,0,0,0.6) 0%, 
+            rgba(0,0,0,0.5) 0%, 
             rgba(0,0,0,0.2) 40%, 
             rgba(0,0,0,0.9) 100%) !important;
     }
@@ -259,3 +274,4 @@ nav {
         gap: 15px !important; 
     }
 }
+Key Surgery Notes:

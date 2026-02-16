@@ -31,7 +31,7 @@ nav {
     margin: auto; 
     display: flex; 
     justify-content: flex-end; 
-    padding: 0 25px; /* Default desktop padding */
+    padding: 0 25px; 
     align-items: center; 
 }
 
@@ -123,219 +123,15 @@ nav {
     }
 }
 
-.hero-cta { 
-    margin-top: auto; 
-    margin-bottom: 60px;
-    border: 1px solid #FCA311; 
-    color: #FCA311; 
-    padding: 18px 45px; 
-    text-transform: uppercase; 
-    letter-spacing: 5px; 
-    font-weight: 700; 
-    font-size: 10px; 
-    cursor: pointer; 
-    background: transparent; 
-    transition: 0.5s; 
-    width: fit-content;
-}
-
-.hero-cta:hover { background: #FCA311; color: #000; }
-
 /* --- 4. MARQUEE --- */
 .hero-marquee { width: 100%; overflow: hidden; background: #000; padding: 20px 0; border-bottom: 1px solid #111; }
 .marquee-content { display: inline-block; white-space: nowrap; font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px #FCA311; animation: marquee 40s linear infinite; letter-spacing: 2px; }
 .marquee-content .dot { color: #FCA311; -webkit-text-stroke: 0; margin: 0 20px; font-size: 0.8rem; vertical-align: middle; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* --- 5. REGISTRATION FORM --- */
+/* --- 5. MAXIMUM DESIGN CAPACITY (JOIN SECTION) --- */
 .section-container { display: none; padding: 100px 0; min-height: 100vh; background: #000; }
 #home-wrapper { width: 100%; background: #000; }
-
-.form-card {
-    padding: 50px 40px !important;
-    background: #050505 !important;
-    border: 1px solid rgba(252, 163, 17, 0.1) !important;
-}
-
-#regForm .floating-input {
-    width: 100% !important;
-    height: 50px !important;
-    padding: 20px 0px 5px 0px !important; 
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: white !important;
-}
-
-.submit-btn-premium {
-    width: 100%;
-    background: #FCA311;
-    color: #000;
-    padding: 18px;
-    font-family: 'Oswald';
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-/* --- 6. MERCH & SERMONS --- */
-.merch-vault-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 40px !important; }
-.hidden { display: none; }
-
-/* --- 7. EMERGENCY FORM FIX --- */
-#hostModal .floating-input {
-    background: transparent !important;
-    border-bottom: 1px solid rgba(252, 163, 17, 0.5) !important;
-    color: white !important;
-    display: block !important;
-    z-index: 9999 !important;
-}
-
-/* --- 8. SUPPORT & STEWARDSHIP --- */
-.steward-card {
-    background: #080808;
-    border: 1px solid #1a1a1a;
-    padding: 50px 30px;
-    text-align: center;
-}
-
-.support-action-btn {
-    display: inline-block;
-    background: #FCA311;
-    color: #000;
-    padding: 24px 50px;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-/* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + CONTENT JOYSTICK) --- */
-@media (max-width: 768px) {
-    
-    /* 9.1 THE IMAGE FIX - Full image visibility */
-    nav {
-        background: transparent !important;
-        backdrop-filter: none !important;
-        border-bottom: none !important;
-        position: absolute !important; 
-        width: 100%;
-        z-index: 10001;
-    }
-
-    .hero-container {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        height: 100vh !important;
-        min-height: -webkit-fill-available;
-    }
-
-    .hero-bg-layer {
-        background-position: center top !important;
-        /* Surgery: Changed to 100% width to prevent cutting people out */
-        background-size: 100% auto !important;
-        background-repeat: no-repeat;
-        height: 100vh !important;
-    }
-
-    /* 9.2 THE SPLIT JOYSTICKS */
-    
-    /* JOYSTICK A: THE MAIN TITLE (BIBLE & COFFEE) */
-    .brand-block h1 {
-        position: relative !important;
-        /* >>> ADJUST TITLE POSITION HERE <<< */
-        top: 40px !important;    /* (+) DOWN | (-) UP */
-        left: -20px !important;   /* (+) RIGHT | (-) LEFT */
-    }
-
-    /* JOYSTICK B: THANK GOD IT'S FRIDAY BLOCK */
-    .brand-block div[style*="border-left"] {
-        position: relative !important;
-        /* >>> ADJUST SUB-TEXT POSITION HERE <<< */
-        top: 20px !important;   /* (+) DOWN | (-) UP */
-        left: 0px !important;   /* (+) RIGHT | (-) LEFT */
-    }
-
-    /* 9.3 REFINEMENTS */
-    .hero-content-layer {
-        position: relative !important; 
-        display: flex !important;
-        z-index: 999 !important;
-        top: 50px !important; /* Global container adjustment */
-        padding-top: 0 !important;
-    }
-
-    .hero-overlay-layer {
-        background: linear-gradient(180deg, 
-            rgba(0,0,0,0.5) 0%, 
-            rgba(0,0,0,0.2) 40%, 
-            rgba(0,0,0,0.9) 100%) !important;
-    }
-
-    .merch-vault-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 15px !important; 
-    }
-}
-
-
-/* --- SURGERY: PUSH MENU TO EDGE --- */
-@media (max-width: 768px) {
-    .nav-container {
-        padding-left: 10px !important;
-        padding-right: 0px !important; 
-        justify-content: flex-end !important;
-        width: 100% !important;
-    }
-
-    .mobile-toggle {
-        display: block !important;
-        margin-right: 5px !important; 
-        padding: 15px !important; 
-    }
-}
-
-
-/* --- SURGERY: UNIVERSAL HORIZONTAL FOOTER ICONS --- */
-.footer-socials {
-    display: flex !important;
-    flex-direction: row !important;    /* Forces horizontal alignment */
-    justify-content: center !important; /* Centers the row on the screen */
-    align-items: center !important;
-    gap: 35px !important;              /* Adds the specific space between each */
-    padding: 30px 0 !important;
-    width: 100% !important;
-}
-
-.footer-socials a {
-    display: flex !important;
-    color: #ffffff;                    /* Ensures they are visible */
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-socials a:hover {
-    color: #FCA311 !important;         /* Brand color on hover */
-    transform: translateY(-3px);       /* Subtle lift effect */
-}
-
-
-/* --- SURGERY: DROPDOWN VISIBILITY FIX --- */
-select option {
-    background-color: #ffffff !important;
-    color: #000000 !important; /* Forces text to be black so it's visible */
-    font-family: 'Inter', sans-serif;
-}
-
-/* Specific fix for desktop hover/focus on selects */
-.group select.floating-input {
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-}
-
-.group select.floating-input:focus {
-    outline: none;
-    border-bottom: 2px solid #FCA311 !important;
-}
-
-/* --- SURGERY: MAXIMUM DESIGN CAPACITY FORM --- */
 
 .premium-glitch-title {
     font-family: 'Oswald', sans-serif;
@@ -377,11 +173,7 @@ select option {
     pointer-events: none;
 }
 
-/* THE ULTRA INPUTS */
-.input-container {
-    position: relative;
-    width: 100%;
-}
+.input-container { position: relative; width: 100%; }
 
 .ultra-input {
     width: 100%;
@@ -393,6 +185,7 @@ select option {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     transition: all 0.4s ease;
+    border-radius: 0 !important;
 }
 
 .ultra-label {
@@ -425,11 +218,8 @@ select option {
     transition: width 0.4s ease;
 }
 
-.ultra-input:focus ~ .input-line {
-    width: 100%;
-}
+.ultra-input:focus ~ .input-line { width: 100%; }
 
-/* THE BUTTON */
 .max-capacity-btn {
     position: relative;
     width: 100%;
@@ -443,6 +233,7 @@ select option {
     overflow: hidden;
     transition: all 0.4s ease;
     border: none;
+    cursor: pointer;
 }
 
 .max-capacity-btn:hover {
@@ -462,12 +253,64 @@ select option {
     transition: 0.5s;
 }
 
-.max-capacity-btn:hover .btn-shine {
-    left: 150%;
-    transition: 0.6s;
+.max-capacity-btn:hover .btn-shine { left: 150%; transition: 0.6s; }
+
+/* --- 6. MERCH & SERMONS --- */
+.merch-vault-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.hidden { display: none !important; }
+
+/* --- 7. SUPPORT & STEWARDSHIP --- */
+.steward-card {
+    background: #080808;
+    border: 1px solid #1a1a1a;
+    padding: 50px 30px;
+    text-align: center;
 }
 
+.support-action-btn {
+    display: inline-block;
+    background: #FCA311;
+    color: #000;
+    padding: 24px 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Oswald';
+    letter-spacing: 2px;
+}
+
+/* --- 8. MOBILE OPTIMIZATION & JOYSTICKS --- */
+@media (max-width: 768px) {
+    nav { background: transparent !important; backdrop-filter: none !important; border-bottom: none !important; position: absolute !important; }
+    
+    .nav-container { padding-right: 10px !important; }
+
+    .hero-container { height: 100vh !important; min-height: -webkit-fill-available; }
+    .hero-bg-layer { background-position: center top !important; background-size: 100% auto !important; background-repeat: no-repeat; height: 100vh !important; }
+
+    /* JOYSTICK CONTROLS */
+    .brand-block h1 { position: relative !important; top: 40px !important; left: -20px !important; }
+    .brand-block div[style*="border-left"] { position: relative !important; top: 20px !important; left: 0px !important; }
+
+    .premium-form-wrapper { padding: 40px 20px !important; margin: 0 10px; }
+    .premium-glitch-title { letter-spacing: 6px !important; }
+    
+    .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
+}
+
+/* --- 9. FOOTER & MISC --- */
+.footer-socials {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 35px !important;
+    padding: 30px 0 !important;
+}
+
+.footer-socials a { color: #ffffff; transition: 0.3s; }
+.footer-socials a:hover { color: #FCA311 !important; transform: translateY(-3px); }
+
 .status-glow-text {
+    display: block;
+    margin-top: 15px;
     font-family: 'Oswald';
     font-size: 12px;
     letter-spacing: 3px;
@@ -475,25 +318,4 @@ select option {
     text-shadow: 0 0 10px rgba(252, 163, 17, 0.5);
 }
 
-/* Desktop Visibility fix for huge list */
-select.ultra-input option {
-    background: #111 !important;
-    color: white !important;
-}
-
-
-/* --- MOBILE TOUCH OPTIMIZATION --- */
-@media (max-width: 768px) {
-    .premium-form-wrapper {
-        padding: 40px 20px !important; /* Tighter padding for small screens */
-        margin: 0 10px;
-    }
-
-    .premium-glitch-title {
-        letter-spacing: 6px !important; /* Shorter spacing so text doesn't wrap weirdly */
-    }
-
-    .max-capacity-btn {
-        padding: 18px !important; /* Optimized for thumb-clicks */
-    }
-}
+select.ultra-input option { background: #111 !important; color: white !important; }

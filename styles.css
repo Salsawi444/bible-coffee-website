@@ -460,7 +460,7 @@ nav {
         position: relative !important; 
         
         /* ADJUST THESE NUMBERS TO MOVE THE CONTENT */
-        top: -3px;     /* Negative (-) moves it UP | Positive (+) moves it DOWN */
+        top: -5px;     /* Negative (-) moves it UP | Positive (+) moves it DOWN */
         left: 0px;    /* Negative (-) moves it LEFT | Positive (+) moves it RIGHT */
         
         /* This ensures the block stays full width while moving */

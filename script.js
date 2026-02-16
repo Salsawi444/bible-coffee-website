@@ -49,7 +49,7 @@ const db = {
     "Israel": { "Tel Aviv": ["Rothschild Blvd"], "Jerusalem": ["City Center"] }
 };
 
-/* --- 2. NAVIGATION LOGIC --- */
+/* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
     sections.forEach(sectionId => {
@@ -73,6 +73,14 @@ function showSection(id, btn) {
     const navLinks = document.getElementById('nav-links');
     if (navLinks) navLinks.classList.remove('active-menu');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// FIX: Forces page to top before reloading
+function resetToHome() {
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+        location.reload();
+    }, 100);
 }
 
 /* --- 3. FORM & SEAT COUNTER LOGIC --- */
@@ -111,7 +119,6 @@ function updateLocations() {
     }
 }
 
-// LIVE SEAT CHECKER (LOCKED AT 10 SEATS)
 async function checkSlots() {
     const location = document.getElementById('location').value;
     const statusText = document.getElementById('slot-status-text');
@@ -145,8 +152,12 @@ function showSuccess() {
             <h2 class="premium-glitch-title" style="font-size: 2rem; letter-spacing: 5px;">ACCESS GRANTED</h2>
             <div class="premium-divider"></div>
             <p class="premium-subtitle" style="font-size: 14px; color: white; opacity: 0.8;">YOUR TABLE IS BEING PREPARED.</p>
-            <p style="font-family: 'Inter'; font-size: 11px; color: #FCA311; margin-top: 20px; letter-spacing: 2px;">"REGISTRATION SUCCESSFUL. WE WILL SEND YOU A TEXT MESSAGE FOR CONFIRMATION."</p>
-            <button onclick="location.reload()" class="max-capacity-btn" style="margin-top: 40px; width: auto; padding: 15px 40px; font-size: 12px;">RETURN TO HOME</button>
+            <p style="font-family: 'Inter'; font-size: 11px; color: #FCA311; margin-top: 20px; letter-spacing: 2px; text-transform: uppercase;">
+                REGISTRATION SUCCESSFUL. WE WILL SEND YOU A TEXT MESSAGE FOR CONFIRMATION.
+            </p>
+            <button onclick="resetToHome()" class="max-capacity-btn" style="margin-top: 40px; width: auto; padding: 15px 40px; font-size: 12px;">
+                <span class="relative z-10">RETURN TO HOME</span>
+            </button>
         </div>
     `;
     if (window.lucide) { lucide.createIcons(); }
@@ -170,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const now = new Date();
             
-            // Build payload exactly as required for SheetDB headers
             const payload = {
                 "Name": form.elements["Name"].value,
                 "Phone": form.elements["Phone"].value,

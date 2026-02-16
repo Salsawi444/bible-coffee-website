@@ -62,22 +62,22 @@ nav {
 }
 
 @media(max-width:768px) {
-    /* THE MENU JOYSTICK: Bottom-Right Corner Placement */
-    .mobile-toggle {
-        display: block !important;
-        position: absolute !important; /* Pins it relative to the hero/nav area */
-        
-        /* >>> JOYSTICK: MENU POSITION <<< */
-        top: 85vh !important;   /* Moves it to the bottom quarter of the screen */
-        right: 25px !important;  /* Pins it to the right edge */
-        
-        background: rgba(0,0,0,0.6) !important; 
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(252, 163, 17, 0.3);
-        border-radius: 8px;
-        padding: 10px !important;
-        z-index: 10002;
+    .mobile-toggle { display: block; }
+    .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%; 
+        background: #000; 
+        padding: 40px; 
+        gap: 35px; 
+        border-bottom: 1px solid #1a1a1a; 
+        text-align: center; 
     }
+    .nav-links.active-menu { display: flex !important; }
+}
 
 /* --- 3. HERO & BRANDING --- */
 .hero-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; background-color: black; }
@@ -274,4 +274,3 @@ nav {
         gap: 15px !important; 
     }
 }
-Key Surgery Notes:

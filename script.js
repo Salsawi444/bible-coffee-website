@@ -111,28 +111,27 @@ function updateLocations() {
     }
 }
 
-// LIVE SEAT CHECKER
+// LIVE SEAT CHECKER (LOCKED AT 10 SEATS)
 async function checkSlots() {
     const location = document.getElementById('location').value;
     const statusText = document.getElementById('slot-status-text');
 
     if (!location) return;
-    statusText.innerText = "VERIFYING CAPACITY...";
+    statusText.innerHTML = `<span style="opacity: 0.5;">SCANNING TABLE CAPACITY...</span>`;
 
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
-        // Filters the "Location" column in your Google Sheet
         const booked = data.filter(entry => entry.Location === location).length;
-        const available = 8 - booked;
+        const available = 10 - booked;
 
         if (available <= 0) {
-            statusText.innerHTML = `<span style="color: #ff4444;">[ TABLE FULL ]</span> JOIN WAITLIST BELOW`;
+            statusText.innerHTML = `<span class="counter-full">[ TABLE FULL ]</span> <a href="mailto:info@bibleandcoffee.com?subject=Waitlist:%20${location}" style="color: #FCA311; text-decoration: underline; font-size: 10px;">CONTACT FOR OVERRIDE</a>`;
         } else {
-            statusText.innerHTML = `<span style="color: #FCA311;">[ ${available} SEATS REMAINING ]</span> AT THIS TABLE`;
+            statusText.innerHTML = `<span class="counter-glow">[ ${available} / 10 SEATS REMAINING ]</span>`;
         }
     } catch (error) {
-        statusText.innerText = "CONNECTION ACTIVE. PROCEED WITH RESERVATION.";
+        statusText.innerText = "CONNECTION ACTIVE. PROCEED.";
     }
 }
 
@@ -164,33 +163,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const form = document.getElementById('regForm');
     if (form) {
-        form.addEventListener("submit", e => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
             const btnText = document.getElementById('btn-text');
-            btnText.innerHTML = "ESTABLISHING CONNECTION...";
+            btnText.innerHTML = "LOCKING RESERVATION...";
 
-            // CAPTURE DATE AND TIME
             const now = new Date();
-            const regDate = now.toLocaleDateString();
-            const regTime = now.toLocaleTimeString();
+            
+            // Build payload exactly as required for SheetDB headers
+            const payload = {
+                "Name": form.elements["Name"].value,
+                "Phone": form.elements["Phone"].value,
+                "Email": form.elements["Email"].value,
+                "Country": form.elements["Country"].value,
+                "City": form.elements["City"].value,
+                "Location": form.elements["Location"].value,
+                "Registration Date": now.toLocaleDateString(),
+                "Registration Time": now.toLocaleTimeString()
+            };
 
-            const formData = new FormData(form);
-            // These keys must match your Google Sheet column headers exactly
-            formData.append("Registration Date", regDate);
-            formData.append("Registration Time", regTime);
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: [payload] })
+                });
 
-            fetch(API_URL, {
-                method: "POST",
-                body: formData,
-            }).then(res => res.json())
-            .then(() => {
-                showSuccess();
-                form.reset();
-            })
-            .catch(err => {
+                if (response.ok) {
+                    showSuccess();
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (err) {
                 alert("Protocol Interrupted. Please check your connection.");
                 btnText.innerHTML = "RESERVE YOUR SEAT";
-            });
+            }
         });
     }
 });

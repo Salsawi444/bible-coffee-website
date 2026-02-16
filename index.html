@@ -419,5 +419,110 @@
 
   <script src="script.js"></script>
   <script>lucide.createIcons();</script>
+
+  <style>
+    /* 1. The Background Atmosphere */
+    #sermon {
+        background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #000000 100%) !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 2. Grid Polish - Smooth spacing and perspective */
+    .sermon-cinema-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        perspective: 1000px; /* Preps the area for 3D motion */
+    }
+
+    /* 3. The Card Transformation */
+    .sermon-card-premium {
+        background: #0a0a0a !important;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 4px;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 4. The "Neon Lift" Hover Effect */
+    .sermon-card-premium:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(252, 163, 17, 0.4);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(252, 163, 17, 0.1);
+    }
+
+    /* 5. Image & Play Button Overlay */
+    .sermon-poster {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sermon-poster img {
+        filter: grayscale(40%) contrast(1.1);
+        transition: all 0.6s ease;
+    }
+
+    .sermon-card-premium:hover .sermon-poster img {
+        filter: grayscale(0%) contrast(1);
+        transform: scale(1.1);
+    }
+
+    /* Custom Play Icon Glow */
+    .play-overlay i {
+        color: #FCA311;
+        width: 60px !important;
+        height: 60px !important;
+        filter: drop-shadow(0 0 10px rgba(252, 163, 17, 0.8));
+        transition: transform 0.3s ease;
+    }
+
+    .sermon-card-premium:hover .play-overlay i {
+        transform: scale(1.2);
+    }
+
+    /* 6. Text Typography Upgrade */
+    .sermon-details h3 {
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.5px;
+        font-size: 1.4rem !important;
+        margin-top: 10px !important;
+        color: #eee !important;
+    }
+
+    .sermon-details .category {
+        font-family: 'Oswald' !important;
+        letter-spacing: 3px !important;
+        color: #FCA311 !important;
+        font-size: 0.7rem !important;
+        opacity: 0.7;
+    }
+</style>
+
+<script>
+    // Subtle parallax tilt for the sermon cards
+    document.querySelectorAll('.sermon-card-premium').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            let rect = card.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            
+            let centerX = rect.width / 2;
+            let centerY = rect.height / 2;
+            
+            let rotateX = (y - centerY) / 15;
+            let rotateY = (centerX - x) / 15;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+        });
+    });
+</script>
 </body>
 </html>

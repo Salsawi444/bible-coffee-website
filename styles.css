@@ -354,3 +354,23 @@ select.ultra-input option {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* --- DESKTOP POSITION LOCK (1024px and up) --- */
+@media (min-width: 1024px) {
+    /* The big "BIBLE & COFFEE" Title */
+    .brand-block h1 {
+        transform: translateY(13px) !important; 
+    }
+
+    /* The Subtitle & Paragraph Block */
+    .brand-block > div {
+        transform: translateY(-137px) !important;
+    }
+
+    /* The Global Left/Right Position */
+    .brand-block {
+        transform: translateX(50px) !important;
+        transition: none !important; /* Locks it solid */
+    }
+}

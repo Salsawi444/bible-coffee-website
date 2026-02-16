@@ -1,33 +1,54 @@
 /* --- 1. GLOBAL DATABASE --- */
+/* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
 const db = {
     "Ethiopia": { 
         "Addis Ababa": ["Bole Atlas (The Cup)", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], 
-        "Hawassa": ["Lake Side Coffee"] 
+        "Hawassa": ["Lake Side Coffee"], "Adama": ["City Center"], "Bahir Dar": ["Lake Front"]
     },
     "Kenya": { 
-        "Nairobi": ["Kilimani District", "Westlands"],
-        "Mombasa": ["City Center"]
+        "Nairobi": ["Kilimani District", "Westlands", "Karen", "Gigiri"],
+        "Mombasa": ["Nyali", "Bamburi"], "Kisumu": ["Milimani"]
     },
-    "USA": { 
-        "Dallas": ["Downtown", "Plano"], 
-        "Houston": ["Galleria Area"],
-        "New York": ["Brooklyn", "Manhattan"]
-    },
-    "UK": { 
-        "London": ["Central London", "Canary Wharf"],
-        "Manchester": ["Northern Quarter"]
+    "Nigeria": {
+        "Lagos": ["Victoria Island", "Ikeja", "Lekki Phase 1"],
+        "Abuja": ["Maitama", "Wuse 2"], "Port Harcourt": ["GRA"]
     },
     "South Africa": { 
-        "Johannesburg": ["Sandton"], 
-        "Cape Town": ["City Bowl"] 
+        "Johannesburg": ["Sandton", "Rosebank", "Maboneng"], 
+        "Cape Town": ["City Bowl", "Sea Point", "Stellenbosch"], "Durban": ["Umhlanga"]
     },
-    "Sweden": { "Stockholm": ["Norrmalm"] },
-    "Norway": { "Oslo": ["Sentrum"] },
-    "Germany": { "Berlin": ["Mitte"] },
-    "Uganda": { "Kampala": ["Central District"] },
-    "Rwanda": { "Kigali": ["Nyarugenge"] }
+    "USA": { 
+        "Dallas": ["Downtown", "Plano", "Frisco"], "Houston": ["Galleria Area", "Sugar Land"],
+        "New York": ["Brooklyn", "Manhattan", "Queens"], "Los Angeles": ["Santa Monica", "Pasadena", "Silver Lake"],
+        "Washington DC": ["Georgetown"], "Atlanta": ["Buckhead"], "Chicago": ["Lincoln Park"],
+        "Miami": ["Brickell"], "Seattle": ["Capitol Hill"]
+    },
+    "UK": { 
+        "London": ["Central London", "Canary Wharf", "Shoreditch", "Soho"],
+        "Manchester": ["Northern Quarter"], "Birmingham": ["City Centre"], "Edinburgh": ["Old Town"]
+    },
+    "UAE": {
+        "Dubai": ["Downtown Dubai", "Marina", "Jumeirah"], "Abu Dhabi": ["Corniche", "Yas Island"]
+    },
+    "Canada": { 
+        "Toronto": ["Downtown", "Scarborough", "Liberty Village"], "Vancouver": ["Gastown", "Kitsilano"], "Montreal": ["Plateau"]
+    },
+    "Australia": { 
+        "Sydney": ["CBD", "Surry Hills", "Bondi"], "Melbourne": ["Southbank", "Fitzroy"], "Brisbane": ["Fortitude Valley"]
+    },
+    "Germany": { "Berlin": ["Mitte", "Kreuzberg"], "Frankfurt": ["Innenstadt"], "Munich": ["Altstadt"], "Hamburg": ["Altona"] },
+    "France": { "Paris": ["Le Marais", "Montmartre"], "Lyon": ["Presqu'île"] },
+    "Italy": { "Rome": ["Trastevere"], "Milan": ["Brera"] },
+    "Brazil": { "Rio de Janeiro": ["Ipanema"], "São Paulo": ["Jardins"] },
+    "Japan": { "Tokyo": ["Shibuya", "Shinjuku"], "Osaka": ["Umeda"] },
+    "South Korea": { "Seoul": ["Gangnam", "Itaewon"] },
+    "China": { "Hong Kong": ["Central"], "Shanghai": ["Pudong"] },
+    "Ghana": { "Accra": ["East Legon", "Osu"], "Kumasi": ["Adum"] },
+    "Uganda": { "Kampala": ["Central District", "Kololo", "Entebbe"] },
+    "Rwanda": { "Kigali": ["Nyarugenge", "Kimihurura", "Gacuriro"] },
+    "Egypt": { "Cairo": ["Zamalek", "Maadi"], "Alexandria": ["Corniche"] },
+    "Israel": { "Tel Aviv": ["Rothschild Blvd"], "Jerusalem": ["City Center"] }
 };
-
 /* --- 2. NAVIGATION LOGIC --- */
 function showSection(id, btn) {
     // List of all main section IDs

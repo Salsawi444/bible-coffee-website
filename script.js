@@ -111,6 +111,7 @@ function updateLocations() {
     }
 }
 
+// LIVE SEAT CHECKER
 async function checkSlots() {
     const location = document.getElementById('location').value;
     const statusText = document.getElementById('slot-status-text');
@@ -121,6 +122,7 @@ async function checkSlots() {
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
+        // Filters the "Location" column in your Google Sheet
         const booked = data.filter(entry => entry.Location === location).length;
         const available = 8 - booked;
 
@@ -167,9 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const btnText = document.getElementById('btn-text');
             btnText.innerHTML = "ESTABLISHING CONNECTION...";
 
+            // CAPTURE DATE AND TIME
+            const now = new Date();
+            const regDate = now.toLocaleDateString();
+            const regTime = now.toLocaleTimeString();
+
+            const formData = new FormData(form);
+            // These keys must match your Google Sheet column headers exactly
+            formData.append("Registration Date", regDate);
+            formData.append("Registration Time", regTime);
+
             fetch(API_URL, {
                 method: "POST",
-                body: new FormData(form),
+                body: formData,
             }).then(res => res.json())
             .then(() => {
                 showSuccess();

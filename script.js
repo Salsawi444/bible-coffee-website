@@ -161,23 +161,37 @@ async function checkSlots() {
 
 function showSuccess() {
     const wrapper = document.querySelector('.premium-form-wrapper');
-    wrapper.innerHTML = `
-        <div style="text-align: center; padding: 60px 20px; animation: fadeIn 0.8s ease;">
-            <div style="width: 80px; height: 80px; border: 2px solid #FCA311; border-radius: 50%; margin: 0 auto 30px; display: flex; align-items: center; justify-content: center;">
-                <i data-lucide="check" style="color: #FCA311; width: 40px; height: 40px;"></i>
+    
+    // Smooth transition out
+    wrapper.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    wrapper.style.opacity = '0';
+    wrapper.style.transform = 'scale(0.98)';
+    
+    setTimeout(() => {
+        wrapper.innerHTML = `
+            <div style="padding: 80px 20px; text-align: center; animation: premiumFadeIn 1.2s ease-out forwards;">
+                <div style="width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, #FCA311, transparent); margin: 0 auto 40px; box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);"></div>
+
+                <h2 style="font-family: 'Inter'; font-weight: 200; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">
+                    RESERVED
+                </h2>
+                
+                <p style="font-family: 'Inter'; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; line-height: 2.5; margin-bottom: 40px;">
+                    YOUR SEAT HAS BEEN RESERVED.<br>
+                    <span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span>
+                </p>
+
+                <a href="javascript:void(0)" onclick="window.location.reload()" 
+                   style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;"
+                   onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" 
+                   onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">
+                    BACK TO HOME
+                </a>
             </div>
-            <h2 class="premium-glitch-title" style="font-size: 2rem; letter-spacing: 5px;">ACCESS GRANTED</h2>
-            <div class="premium-divider"></div>
-            <p class="premium-subtitle" style="font-size: 14px; color: white; opacity: 0.8;">YOUR TABLE IS BEING PREPARED.</p>
-            <p style="font-family: 'Inter'; font-size: 11px; color: #FCA311; margin-top: 20px; letter-spacing: 2px; text-transform: uppercase;">
-                REGISTRATION SUCCESSFUL. WE WILL SEND YOU A TEXT MESSAGE FOR CONFIRMATION.
-            </p>
-            <button onclick="resetToHome()" class="max-capacity-btn" style="margin-top: 40px; width: auto; padding: 15px 40px; font-size: 12px;">
-                <span class="relative z-10">RETURN TO HOME</span>
-            </button>
-        </div>
-    `;
-    if (window.lucide) { lucide.createIcons(); }
+        `;
+        wrapper.style.opacity = '1';
+        wrapper.style.transform = 'scale(1)';
+    }, 600);
 }
 
 /* --- 5. INITIALIZATION & SUBMISSION --- */

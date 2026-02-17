@@ -6,351 +6,95 @@
     <title>Bible & Coffee | Global</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Essential overrides to ensure the "slick" look stays intact */
-        .hidden { display: none !important; }
-        .section-container { min-height: 100vh; }
-        select option { background: #000; color: #fff; }
-        .active-menu { display: flex !important; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: black; padding: 20px; border-bottom: 1px solid #FCA311; }
-    </style>
 </head>
 <body class="bg-black text-white selection:bg-[#FCA311] selection:text-black">
 
     <nav>
         <div class="nav-container">
-            <button id="menu-toggle" class="mobile-toggle text-[#FCA311] md:hidden">
-                <i data-lucide="menu"></i>
-            </button>
             <div id="nav-links" class="nav-links">
-                <button onclick="showSection('home',this)" class="active">HOME</button>
-                <button onclick="showSection('magazine',this)">MAGAZINE</button>
-                <button onclick="showSection('merch',this)">MERCH</button>
-                <button onclick="showSection('sermon',this)">SERMON</button>
-                <button onclick="showSection('events',this)">EVENTS</button>
-                <button onclick="showSection('support',this)">SUPPORT</button>
-                <button onclick="showSection('join',this)">JOIN</button>
-                <button onclick="showSection('contact',this)">CONTACT</button>
+                <button onclick="showSection('home', this)" class="active">HOME</button>
+                <button onclick="showSection('events', this)">EVENTS</button>
+                <button onclick="showSection('join', this)">JOIN</button>
+                <button onclick="showSection('magazine', this)">MAGAZINE</button>
             </div>
         </div>
     </nav>
 
-    <div id="home-wrapper">
+    <div id="home-wrapper" class="section-active">
         <header id="home" class="hero-container flex items-center justify-center min-h-screen">
-            <div class="hero-bg-layer"></div>
-            <div class="hero-overlay-layer"></div>
-            <div class="hero-content-layer max-w-6xl w-full px-6 text-left">
-                <div class="brand-block">
-                    <h1 class="font-['Oswald'] font-bold leading-[0.9] uppercase">
-                        <span class="text-6xl md:text-9xl block">BIBLE &</span>
-                        <span class="text-6xl md:text-9xl block">COFFEE</span>
-                        <span class="text-6xl md:text-9xl block text-[#FCA311]">FRIDAYS<small class="text-xl align-top">©</small></span>
-                    </h1>
-                    <div class="border-l-4 border-[#FCA311] pl-8 mt-10">
-                        <h2 class="text-[#FCA311] font-['Oswald'] text-xl tracking-[6px] uppercase mb-4">Thank God It's Friday!</h2>
-                        <p class="max-w-xl text-lg text-white/80 font-['Inter']">More than a gathering—a movement of modern believers choosing <span class="text-[#FCA311] font-bold">depth over hype</span>.</p>
-                    </div>
-                </div>
+            <div class="text-center">
+                <h1 class="font-['Oswald'] text-7xl md:text-9xl font-bold uppercase leading-none">
+                    BIBLE & <br><span class="text-[#FCA311]">COFFEE</span>
+                </h1>
+                <p class="mt-8 tracking-[12px] text-white/30 uppercase text-xs">The Platinum Sequence © 2026</p>
             </div>
         </header>
     </div>
 
-    <section id="magazine" class="section-container bg-black py-24 px-6 hidden">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
-                <h2 class="text-5xl font-['Oswald'] font-bold text-white uppercase italic">The Journal</h2>
-                <p class="text-[#FCA311] text-xs tracking-widest mt-2 uppercase">Volume 01 // Global Edition</p>
-            </div>
-            <div id="magazine-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="magazine-card group cursor-pointer" onclick="window.open('#', '_blank')">
-                    <div class="magazine-image-wrapper overflow-hidden border border-white/10 group-hover:border-[#FCA311]/50 transition-all">
-                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80" class="w-full grayscale hover:grayscale-0 transition-all duration-700" alt="Issue 28">
-                    </div>
-                    <div class="py-6">
-                        <p class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">ISSUE 28</p>
-                        <h3 class="text-white font-['Oswald'] text-xl uppercase mt-2 group-hover:text-[#FCA311] transition-colors">The Modern Faith</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="events" class="section-container bg-black py-24 px-6 hidden">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-24">
-                <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-4">The Friday Sequence</h2>
-                <h3 class="text-6xl md:text-8xl font-['Oswald'] font-black text-white uppercase leading-none tracking-tighter">ACTIVE <br><span class="text-[#FCA311]">TABLES.</span></h3>
-            </div>
+            <h2 class="text-5xl font-['Oswald'] font-bold text-[#FCA311] uppercase italic mb-12">Active Tables</h2>
             <div class="border-t border-white/10">
-                <div class="group border-b border-white/10 py-16 hover:bg-[#FCA311]/[0.02] transition-all cursor-pointer" onclick="showSection('join')">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                        <div class="flex items-center gap-8">
-                            <span class="w-4 h-4 bg-[#FCA311] rounded-full animate-pulse shadow-[0_0_15px_#FCA311]"></span>
-                            <div>
-                                <h4 class="text-white font-['Oswald'] text-5xl md:text-7xl uppercase group-hover:pl-4 transition-all duration-500">ADDIS ABABA</h4>
-                                <p class="text-white/30 text-xs tracking-[4px] uppercase mt-2">Protocol: The Cup (Bole Atlas)</p>
-                            </div>
-                        </div>
-                        <span class="text-[#FCA311] font-['Oswald'] text-sm tracking-[3px] border border-[#FCA311] px-4 py-2">RESERVATIONS OPEN</span>
+                <div class="group border-b border-white/10 py-16 flex justify-between items-center cursor-pointer" onclick="showSection('join')">
+                    <div class="flex items-center gap-8">
+                        <span class="radar-dot"></span>
+                        <h4 class="text-white font-['Oswald'] text-5xl uppercase group-hover:pl-4 transition-all">ADDIS ABABA</h4>
                     </div>
+                    <span class="text-[#FCA311] font-['Oswald'] tracking-[4px]">OPEN PROTOCOL</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="join" class="section-container bg-black py-24 px-6 hidden">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-white font-['Oswald'] text-6xl tracking-[10px] uppercase">JOIN THE TABLE</h2>
-                <div class="h-1 w-20 bg-[#FCA311] mx-auto my-8"></div>
-            </div>
-
-            <div class="bg-[#0A0A0A] p-10 md:p-16 border border-white/10 relative shadow-2xl">
-                <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <input type="text" placeholder="FULL NAME" class="bg-transparent border-b border-white/20 py-4 text-white focus:border-[#FCA311] outline-none font-['Oswald'] tracking-widest uppercase text-lg" required>
-                    <input type="tel" placeholder="PHONE NUMBER" class="bg-transparent border-b border-white/20 py-4 text-white focus:border-[#FCA311] outline-none font-['Oswald'] tracking-widest uppercase text-lg" required>
-                    
-                    <div class="flex flex-col gap-3">
-                        <label class="text-[#FCA311] text-[10px] tracking-[4px] font-bold">COUNTRY</label>
-                        <select id="country" onchange="updateCities()" class="bg-black text-white border-b border-white/20 py-4 outline-none uppercase text-sm font-['Inter']" required>
-                            <option value="" disabled selected>SELECT COUNTRY</option>
+        <div class="max-w-3xl mx-auto">
+            <div class="premium-form-wrapper">
+                <h2 class="text-center font-['Oswald'] text-5xl mb-12 tracking-widest uppercase">Join the Table</h2>
+                <form id="regForm" class="grid grid-cols-1 gap-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <input type="text" placeholder="FULL NAME" class="ultra-input" required>
+                        <input type="tel" placeholder="PHONE" class="ultra-input" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <select id="country" onchange="updateCities()" class="ultra-input" required>
+                            <option value="" disabled selected>COUNTRY</option>
+                        </select>
+                        <select id="city" onchange="updateLocations()" class="ultra-input" required>
+                            <option value="" disabled selected>CITY</option>
                         </select>
                     </div>
-
-                    <div class="flex flex-col gap-3">
-                        <label class="text-[#FCA311] text-[10px] tracking-[4px] font-bold">CITY</label>
-                        <select id="city" onchange="updateLocations()" class="bg-black text-white border-b border-white/20 py-4 outline-none uppercase text-sm font-['Inter']" required>
-                            <option value="" disabled selected>SELECT CITY</option>
-                        </select>
-                    </div>
-
-                    <div class="md:col-span-2 flex flex-col gap-3">
-                        <label class="text-[#FCA311] text-[10px] tracking-[4px] font-bold">MEETING POINT</label>
-                        <select id="location" onchange="checkSlots()" class="bg-black text-white border-b border-white/20 py-4 outline-none uppercase text-sm font-['Inter']" required>
-                            <option value="" disabled selected>SELECT LOCATION</option>
-                        </select>
-                    </div>
-
-                    <div class="md:col-span-2 pt-6">
-                        <button type="submit" class="w-full bg-[#FCA311] py-6 font-['Oswald'] font-bold tracking-[10px] hover:bg-white hover:text-black transition-all duration-500 text-black text-xl">RESERVE MY SEAT</button>
-                        <p id="slot-status-text" class="text-center mt-6 h-6 font-['Oswald'] tracking-widest text-xs"></p>
-                    </div>
+                    <select id="location" onchange="checkSlots()" class="ultra-input" required>
+                        <option value="" disabled selected>SELECT MEETING POINT</option>
+                    </select>
+                    <button type="submit" class="w-full bg-[#FCA311] text-black py-6 font-['Oswald'] font-bold tracking-[10px] hover:bg-white transition-all uppercase">Reserve Seat</button>
+                    <p id="slot-status-text" class="text-center mt-4 h-4 text-xs tracking-[4px]"></p>
                 </form>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-container bg-black py-24 px-6 hidden">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-white font-['Oswald'] text-6xl tracking-[15px] uppercase">CONTACT</h2>
-                <div class="h-1 w-24 bg-[#FCA311] mx-auto mt-8"></div>
+    <div id="admin-panel" class="hidden fixed inset-0 bg-black/98 z-[20000] p-10 overflow-y-auto">
+        <div class="max-w-4xl mx-auto border border-[#FCA311]/20 p-12 bg-black shadow-2xl">
+            <div class="flex justify-between items-center mb-10 border-b border-white/10 pb-6">
+                <h2 class="font-['Oswald'] text-[#FCA311] text-4xl tracking-[12px]">COMMAND CENTER</h2>
+                <button onclick="toggleAdminPanel()" class="text-white hover:text-[#FCA311]"><i data-lucide="x"></i></button>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-1 border border-white/10 bg-white/10">
-                <div class="bg-black p-16 text-center hover:bg-[#FCA311]/5 transition-all">
-                    <i data-lucide="mail" class="mx-auto mb-6 text-[#FCA311]" size="40"></i>
-                    <h3 class="text-white font-['Oswald'] text-2xl tracking-widest mb-4">EMAIL</h3>
-                    <p class="text-white/40 font-['Inter'] uppercase tracking-widest text-sm">info@bibleandcoffee.com</p>
-                </div>
-                <div class="bg-black p-16 text-center hover:bg-[#FCA311]/5 transition-all">
-                    <i data-lucide="instagram" class="mx-auto mb-6 text-[#FCA311]" size="40"></i>
-                    <h3 class="text-white font-['Oswald'] text-2xl tracking-widest mb-4">SOCIAL</h3>
-                    <p class="text-white/40 font-['Inter'] uppercase tracking-widest text-sm">@B&C_FRIDAYS</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="admin-panel" class="hidden fixed inset-0 bg-black/98 z-[20000] overflow-y-auto p-10">
-        <div class="max-w-4xl mx-auto border border-[#FCA311]/20 p-12 bg-[#050505]">
-            <div class="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
-                <h2 class="font-['Oswald'] text-[#FCA311] text-4xl tracking-[12px]">THE PLATINUM PANEL</h2>
-                <button onclick="toggleAdminPanel()" class="text-white hover:text-[#FCA311] transition-transform hover:scale-125"><i data-lucide="x-circle"></i></button>
-            </div>
-            <div class="grid grid-cols-1 gap-12">
-                <div class="space-y-6">
-                    <p class="text-white/40 font-['Oswald'] text-xs tracking-[5px]">MAGAZINE BATCH INJECTOR</p>
-                    <div id="magazine-batch-inputs" class="space-y-4">
-                        <div class="grid grid-cols-3 gap-4">
-                            <input type="text" class="mag-batch-issue bg-white/5 text-white p-4 border border-white/10 outline-none focus:border-[#FCA311]" placeholder="ISSUE #">
-                            <input type="text" class="mag-batch-img bg-white/5 text-white p-4 border border-white/10 outline-none focus:border-[#FCA311]" placeholder="IMAGE URL">
-                            <input type="text" class="mag-batch-pdf bg-white/5 text-white p-4 border border-white/10 outline-none focus:border-[#FCA311]" placeholder="PDF URL">
-                        </div>
-                    </div>
-                    <button onclick="generateBatchMagCode()" class="w-full bg-[#FCA311] text-black font-['Oswald'] py-4 font-bold tracking-[8px] hover:bg-white transition-all">GENERATE ARCHIVE CODE</button>
-                </div>
-                <div class="space-y-4">
-                    <textarea id="admin-output" readonly class="w-full h-48 bg-black text-[#FCA311] font-mono text-xs p-6 border border-white/10 outline-none" placeholder="RAW CODE OUTPUT..."></textarea>
-                    <button onclick="copyAdminCode()" class="w-full border border-[#FCA311] text-[#FCA311] font-['Oswald'] py-4 hover:bg-[#FCA311] hover:text-black transition-all font-bold tracking-[4px]">COPY TO CLIPBOARD</button>
-                </div>
+            <div class="space-y-8">
+                <input type="text" id="mag-issue" class="ultra-input" placeholder="ISSUE NUMBER">
+                <input type="text" id="mag-img" class="ultra-input" placeholder="IMAGE URL">
+                <input type="text" id="mag-pdf" class="ultra-input" placeholder="PDF LINK">
+                <button onclick="generateMagCode()" class="w-full bg-[#FCA311] text-black py-4 font-bold font-['Oswald'] tracking-[5px]">GENERATE MAGAZINE CODE</button>
+                <textarea id="admin-output" readonly class="w-full h-40 bg-white/5 p-6 text-[#FCA311] font-mono text-xs border border-white/10 outline-none"></textarea>
             </div>
         </div>
     </div>
 
-    <footer class="py-20 text-center opacity-20">
-        <p onclick="secureAccess()" class="text-[10px] tracking-[10px] cursor-default uppercase">Authorized Access Only • The Mighty Code © 2026</p>
+    <footer class="py-20 text-center opacity-10">
+        <p onclick="secureAccess()" class="text-[10px] tracking-[10px] cursor-pointer uppercase">Authorized Access Only • The Mighty Code © 2026</p>
     </footer>
 
-    <script>
-        lucide.createIcons();
-
-        // 1. NAVIGATION SYSTEM
-        function showSection(sectionId, element) {
-            const homeWrapper = document.getElementById('home-wrapper');
-            if (homeWrapper) homeWrapper.style.display = (sectionId === 'home') ? 'block' : 'none';
-
-            document.querySelectorAll('.section-container').forEach(s => {
-                s.classList.add('hidden');
-                s.style.display = 'none';
-            });
-
-            if (sectionId !== 'home') {
-                const target = document.getElementById(sectionId);
-                if (target) {
-                    target.classList.remove('hidden');
-                    target.style.display = 'block';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-
-            document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-            if (element) element.classList.add('active');
-            
-            const navLinks = document.getElementById('nav-links');
-            if (navLinks) navLinks.classList.remove('active-menu');
-        }
-
-        document.getElementById('menu-toggle').onclick = () => {
-            document.getElementById('nav-links').classList.toggle('active-menu');
-        };
-
-        // 2. GLOBAL DATABASE
-        const worldData = {
-            "Ethiopia": {
-                "Addis Ababa": ["The Cup (Bole Atlas)", "Tomoca (Piassa)", "Galani Coffee (Summit)", "Sarbet (Old Vic)"],
-                "Hawassa": ["Ker-Awud International", "Haile Resort"],
-                "Adama": ["Central Adama Cafe"]
-            },
-            "Kenya": {
-                "Nairobi": ["CJ's (Kilimani)", "Java House (Westlands)", "Artcaffe (Karen)"],
-                "Mombasa": ["Jahazi Coffee House"]
-            },
-            "USA": {
-                "Dallas": ["Ascension (Design District)", "Method Coffee"],
-                "New York": ["Devocion (Williamsburg)", "Stumptown (Manhattan)"],
-                "Washington DC": ["Compass Coffee"],
-                "Atlanta": ["Brash Coffee"],
-                "Los Angeles": ["Intelligentsia (Silver Lake)"]
-            },
-            "United Kingdom": {
-                "London": ["Monmouth (Borough Market)", "Ozone (Shoreditch)", "Grind (Greenwich)"],
-                "Manchester": ["Takk (Northern Quarter)"]
-            },
-            "UAE": {
-                "Dubai": ["% Arabica (Dubai Mall)", "The Sum of Us", "Nightjar Coffee Roasters"],
-                "Abu Dhabi": ["Rain Cafe"]
-            },
-            "South Africa": {
-                "Johannesburg": ["Father Coffee", "Motherland Coffee"],
-                "Cape Town": ["Truth Coffee Roasting"]
-            }
-        };
-
-        // 3. FORM JOYSTICKS
-        window.onload = () => {
-            const countrySel = document.getElementById('country');
-            if(countrySel) {
-                Object.keys(worldData).sort().forEach(country => {
-                    const opt = document.createElement('option');
-                    opt.value = country;
-                    opt.textContent = country.toUpperCase();
-                    countrySel.appendChild(opt);
-                });
-            }
-        };
-
-        function updateCities() {
-            const country = document.getElementById('country').value;
-            const citySel = document.getElementById('city');
-            const locSel = document.getElementById('location');
-            citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
-            locSel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-            
-            if(worldData[country]) {
-                Object.keys(worldData[country]).sort().forEach(city => {
-                    const opt = document.createElement('option');
-                    opt.value = city;
-                    opt.textContent = city.toUpperCase();
-                    citySel.appendChild(opt);
-                });
-            }
-        }
-
-        function updateLocations() {
-            const country = document.getElementById('country').value;
-            const city = document.getElementById('city').value;
-            const locSel = document.getElementById('location');
-            locSel.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-
-            if(worldData[country] && worldData[country][city]) {
-                worldData[country][city].forEach(loc => {
-                    const opt = document.createElement('option');
-                    opt.value = loc;
-                    opt.textContent = loc.toUpperCase();
-                    locSel.appendChild(opt);
-                });
-            }
-        }
-
-        function checkSlots() {
-            const status = document.getElementById('slot-status-text');
-            status.innerHTML = '<span class="text-[#FCA311] animate-pulse uppercase">CHECKING SECURE DATABASE...</span>';
-            setTimeout(() => {
-                const count = Math.floor(Math.random() * 5) + 1;
-                status.innerHTML = `<span class="text-green-500 uppercase">CONFIRMED: ${count} SEATS REMAINING FOR THIS FRIDAY</span>`;
-            }, 1000);
-        }
-
-        // 4. ADMIN ACCESS
-        let clicks = 0;
-        function secureAccess() {
-            clicks++;
-            if(clicks >= 5) {
-                const pass = prompt("ENTER COMMAND CODE:");
-                if(pass === "777") toggleAdminPanel();
-                clicks = 0;
-            }
-        }
-
-        function toggleAdminPanel() {
-            const p = document.getElementById('admin-panel');
-            p.classList.toggle('hidden');
-        }
-
-        function generateBatchMagCode() {
-            const issue = document.querySelector('.mag-batch-issue').value;
-            const img = document.querySelector('.mag-batch-img').value;
-            const pdf = document.querySelector('.mag-batch-pdf').value;
-            const code = `
-            <div class="magazine-card group cursor-pointer" onclick="window.open('${pdf}', '_blank')">
-                <div class="magazine-image-wrapper overflow-hidden border border-white/10 group-hover:border-[#FCA311]/50 transition-all">
-                    <img src="${img}" class="w-full grayscale hover:grayscale-0 transition-all duration-700" alt="Issue ${issue}">
-                </div>
-                <div class="py-6">
-                    <p class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">ISSUE ${issue}</p>
-                    <h3 class="text-white font-['Oswald'] text-xl uppercase mt-2 group-hover:text-[#FCA311] transition-colors">The Weekly Journal</h3>
-                </div>
-            </div>`;
-            document.getElementById('admin-output').value = code.trim();
-        }
-
-        function copyAdminCode() {
-            const out = document.getElementById('admin-output');
-            out.select();
-            document.execCommand('copy');
-            alert("SECURE CODE COPIED");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

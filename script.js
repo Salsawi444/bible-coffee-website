@@ -60,7 +60,7 @@ const db = {
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
     // FIX: Added 'sermon', 'events', and 'support' to the tracking list so they can be toggled
-    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
+   const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];
     
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);

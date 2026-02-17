@@ -6,30 +6,49 @@ const DESKTOP_POS = {
 };
 
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
-const db = {
-    "Ethiopia": { "Addis Ababa": ["Bole Atlas (The Cup)", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], "Hawassa": ["Lake Side Coffee"], "Adama": ["City Center"], "Bahir Dar": ["Lake Front"] },
-    "Kenya": { "Nairobi": ["Kilimani District", "Westlands", "Karen", "Gigiri"], "Mombasa": ["Nyali", "Bamburi"], "Kisumu": ["Milimani"] },
-    "Nigeria": { "Lagos": ["Victoria Island", "Ikeja", "Lekki Phase 1"], "Abuja": ["Maitama", "Wuse 2"], "Port Harcourt": ["GRA"] },
-    "South Africa": { "Johannesburg": ["Sandton", "Rosebank", "Maboneng"], "Cape Town": ["City Bowl", "Sea Point", "Stellenbosch"], "Durban": ["Umhlanga"] },
-    "USA": { "Dallas": ["Downtown", "Plano", "Frisco"], "Houston": ["Galleria Area", "Sugar Land"], "New York": ["Brooklyn", "Manhattan", "Queens"], "Los Angeles": ["Santa Monica", "Pasadena", "Silver Lake"], "Washington DC": ["Georgetown"], "Atlanta": ["Buckhead"], "Chicago": ["Lincoln Park"], "Miami": ["Brickell"], "Seattle": ["Capitol Hill"] },
-    "UK": { "London": ["Central London", "Canary Wharf", "Shoreditch", "Soho"], "Manchester": ["Northern Quarter"], "Birmingham": ["City Centre"], "Edinburgh": ["Old Town"] },
-    "UAE": { "Dubai": ["Downtown Dubai", "Marina", "Jumeirah"], "Abu Dhabi": ["Corniche", "Yas Island"] },
-    "Canada": { "Toronto": ["Downtown", "Scarborough", "Liberty Village"], "Vancouver": ["Gastown", "Kitsilano"], "Montreal": ["Plateau"] },
-    "Australia": { "Sydney": ["CBD", "Surry Hills", "Bondi"], "Melbourne": ["Southbank", "Fitzroy"], "Brisbane": ["Fortitude Valley"] },
-    "Germany": { "Berlin": ["Mitte", "Kreuzberg"], "Frankfurt": ["Innenstadt"], "Munich": ["Altstadt"], "Hamburg": ["Altona"] },
-    "France": { "Paris": ["Le Marais", "Montmartre"], "Lyon": ["Presqu'île"] },
-    "Italy": { "Rome": ["Trastevere"], "Milan": ["Brera"] },
-    "Brazil": { "Rio de Janeiro": ["Ipanema"], "São Paulo": ["Jardins"] },
-    "Japan": { "Tokyo": ["Shibuya", "Shinjuku"], "Osaka": ["Umeda"] },
-    "South Korea": { "Seoul": ["Gangnam", "Itaewon"] },
-    "China": { "Hong Kong": ["Central"], "Shanghai": ["Pudong"] },
-    "Ghana": { "Accra": ["East Legon", "Osu"], "Kumasi": ["Adum"] },
-    "Uganda": { "Kampala": ["Central District", "Kololo", "Entebbe"] },
-    "Rwanda": { "Kigali": ["Nyarugenge", "Kimihurura", "Gacuriro"] },
-    "Egypt": { "Cairo": ["Zamalek", "Maadi"], "Alexandria": ["Corniche"] },
-    "Israel": { "Tel Aviv": ["Rothschild Blvd"], "Jerusalem": ["City Center"] }
+/* --- THE MIGHTY GLOBAL DATA VAULT --- */
+const globalData = {
+    "Ethiopia": {
+        cities: ["Addis Ababa", "Nazreth", "Hawassa", "Bahir Dar", "Dire Dawa", "Gondar", "Jimma", "Mekelle", "Dessie"],
+        locations: { "Addis Ababa": ["Bole Atlas (The Cup)", "Kazanchis", "Old Airport", "Sarbet", "CMC", "Piyassa"] }
+    },
+    "Kenya": {
+        cities: ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],
+        locations: { "Nairobi": ["Westlands Hub", "Karen Table", "Kilimani Coffee Shop", "CBD Central"] }
+    },
+    "South Africa": {
+        cities: ["Johannesburg", "Cape Town", "Pretoria", "Durban", "Port Elizabeth"],
+        locations: { "Johannesburg": ["Sandton Table", "Soweto Hub", "Braamfontein Vault"] }
+    },
+    "Nigeria": {
+        cities: ["Lagos", "Abuja", "Port Harcourt", "Ibadan"],
+        locations: { "Lagos": ["Lekki Phase 1", "Ikeja Hub", "Victoria Island"] }
+    },
+    "USA": {
+        cities: ["New York", "Dallas", "Washington DC", "Los Angeles", "Atlanta", "Chicago", "Houston", "Seattle", "Minneapolis"],
+        locations: { "Dallas": ["Frisco Hub", "Downtown Dallas", "Plano Table"], "New York": ["Manhattan Vault", "Brooklyn Table"] }
+    },
+    "United Kingdom": {
+        cities: ["London", "Manchester", "Birmingham", "Leeds", "Glasgow", "Liverpool"],
+        locations: { "London": ["Shoreditch Terminal", "Southwark Coffee", "Camden Hub", "Greenwich"] }
+    },
+    "UAE": {
+        cities: ["Dubai", "Abu Dhabi", "Sharjah"],
+        locations: { "Dubai": ["Downtown Dubai Hub", "Marina Table", "Business Bay"] }
+    },
+    "Canada": {
+        cities: ["Toronto", "Vancouver", "Ottawa", "Montreal", "Calgary"],
+        locations: { "Toronto": ["Downtown Core", "North York Table"] }
+    },
+    "Sweden": {
+        cities: ["Stockholm", "Gothenburg", "Malmö", "Uppsala"],
+        locations: { "Stockholm": ["City Center Vault", "Södermalm Coffee"] }
+    },
+    "Germany": {
+        cities: ["Berlin", "Frankfurt", "Munich", "Hamburg"],
+        locations: { "Berlin": ["Mitte Hub", "Kreuzberg Table"] }
+    }
 };
-
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];

@@ -33,19 +33,15 @@
       <div class="hero-content-layer">
         <div class="brand-block">
           <h1>
-            <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">BIBLE &</span>
-            <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">COFFEE</span>
-            <span class="responsive-title" style="color: #FCA311; display: block; text-transform: uppercase;">
-              FRIDAYS<span class="copyright-mark">©</span>
-            </span>
+            <span class="responsive-title" style="color: white; display: block;">BIBLE &</span>
+            <span class="responsive-title" style="color: white; display: block;">COFFEE</span>
+            <span class="responsive-title" style="color: #FCA311; display: block;">FRIDAYS<span class="copyright-mark">©</span></span>
           </h1>
-          <div style="border-left: 2px solid #FCA311; padding-left: 20px; margin-top: 30px;">
-            <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px;">Thank God It's Friday!</h2>
-            <div style="max-width: 600px;">
-              <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; margin-bottom: 15px; font-style: italic;">More Than a Gathering</h3>
-              <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.6; font-family: 'Inter', sans-serif; font-weight: 300;">
-                Bible & Coffee is a movement of modern believers who choose <span style="color: #FCA311; font-weight: 700;">depth over hype</span>. 
-              </p>
+          <div class="brand-sub-block">
+            <h2>Thank God It's Friday!</h2>
+            <div class="brand-desc">
+              <h3>More Than a Gathering</h3>
+              <p>Bible & Coffee is a movement of modern believers who choose <span style="color: #FCA311; font-weight: 700;">depth over hype</span>.</p>
             </div>
           </div>
         </div>
@@ -53,60 +49,46 @@
     </header>
   </div>
 
-  <section id="join" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-    <div class="max-w-4xl mx-auto">
+  <section id="magazine" class="section-container bg-black hidden">
+    </section>
+
+  <section id="merch" class="section-container bg-black hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="section-title">2026 COLLECTION</h2>
+      <div class="merch-grid-premium" id="merch-grid">
+         </div>
+    </div>
+  </section>
+
+  <section id="sermon" class="section-container bg-black hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="section-title">SERMON VAULT</h2>
+      <div class="sermon-cinema-grid">
+        <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')">
+            <div class="sermon-poster"><img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg"><div class="play-overlay"><i data-lucide="play-circle"></i></div></div>
+            <div class="sermon-details"><span>KINGDOM CULTURE</span><h3>ወጣቱ ባለሃብት!</h3></div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="join" class="section-container bg-black hidden">
+    <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-16">
         <h2 class="premium-glitch-title">JOIN THE TABLE</h2>
         <div class="premium-divider"></div>
         <p class="premium-subtitle">SELECT YOUR CITY & RESERVE YOUR SEAT</p>
       </div>
-
       <div class="premium-form-wrapper">
-        <div class="form-glass-overlay"></div>
-        <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 relative z-10">
-          <div class="input-container">
-            <input type="text" name="Name" class="ultra-input" placeholder=" " required>
-            <label class="ultra-label">Full Name</label>
-            <div class="input-line"></div>
-          </div>
-          <div class="input-container">
-            <input type="tel" name="Phone" class="ultra-input" placeholder=" " required>
-            <label class="ultra-label">WhatsApp Number</label>
-            <div class="input-line"></div>
-          </div>
-          <div class="input-container md:col-span-2">
-            <input type="email" name="Email" class="ultra-input" placeholder=" " required>
-            <label class="ultra-label">Email Address</label>
-            <div class="input-line"></div>
-          </div>
-          <div class="input-container">
-            <select id="country" name="Country" onchange="updateCities()" class="ultra-input" required>
-              <option value="" disabled selected></option>
-              <option value="Ethiopia">Ethiopia</option>
-              <option value="Kenya">Kenya</option>
-              <option value="Nigeria">Nigeria</option>
-              <option value="USA">USA</option>
-              <option value="UK">UK</option>
-            </select>
-            <label class="ultra-label">Country</label>
-          </div>
-          <div class="input-container">
-            <select id="city" name="City" onchange="updateLocations()" class="ultra-input" required>
-              <option value="" disabled selected></option>
-            </select>
-            <label class="ultra-label">City</label>
-          </div>
-          <div class="input-container md:col-span-2">
-            <select id="location" name="Location" onchange="checkSlots()" class="ultra-input" required>
-              <option value="" disabled selected></option>
-            </select>
-            <label class="ultra-label">Specific Meeting Point</label>
-          </div>
+        <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          <div class="input-container"><input type="text" name="Name" class="ultra-input" placeholder=" " required><label class="ultra-label">Full Name</label></div>
+          <div class="input-container"><input type="tel" name="Phone" class="ultra-input" placeholder=" " required><label class="ultra-label">WhatsApp Number</label></div>
+          <div class="input-container md:col-span-2"><input type="email" name="Email" class="ultra-input" placeholder=" " required><label class="ultra-label">Email Address</label></div>
+          <div class="input-container"><select id="country" name="Country" onchange="updateCities()" class="ultra-input" required><option value="" disabled selected></option><option value="Ethiopia">Ethiopia</option><option value="Kenya">Kenya</option><option value="USA">USA</option></select><label class="ultra-label">Country</label></div>
+          <div class="input-container"><select id="city" name="City" onchange="updateLocations()" class="ultra-input" required><option value="" disabled selected></option></select><label class="ultra-label">City</label></div>
+          <div class="input-container md:col-span-2"><select id="location" name="Location" onchange="checkSlots()" class="ultra-input" required><option value="" disabled selected></option></select><label class="ultra-label">Meeting Point</label></div>
           <div class="md:col-span-2 mt-12">
-            <button type="submit" class="max-capacity-btn">
-              <span class="btn-shine"></span>
-              <span id="btn-text" class="relative z-10">RESERVE YOUR SEAT</span>
-            </button>
+            <button type="submit" class="max-capacity-btn"><span class="btn-shine"></span><span id="btn-text" class="relative z-10">RESERVE YOUR SEAT</span></button>
             <div id="slot-status-text">SYSTEM READY</div>
           </div>
         </form>
@@ -115,6 +97,5 @@
   </section>
 
   <script src="script.js"></script>
-  <script>lucide.createIcons();</script>
 </body>
 </html>

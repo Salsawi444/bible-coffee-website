@@ -637,13 +637,24 @@
         
         <h2 style="font-family: 'Oswald'; color: #FCA311; letter-spacing: 10px; text-align: center; margin-bottom: 40px;">COMMAND CENTER</h2>
 
-        <div class="admin-field-group">
-            <p>MAGAZINE FORGE</p>
-            <input type="text" id="mag-issue" class="admin-input-premium" placeholder="ISSUE NO (e.g. 05)">
-            <input type="text" id="mag-img" class="admin-input-premium" placeholder="PASTE IMAGE URL/PATH">
-            <input type="text" id="mag-pdf" class="admin-input-premium" placeholder="PASTE PDF URL/PATH">
-            <button class="admin-btn-generate" onclick="generateMagCode()">GENERATE MAGAZINE CODE</button>
-        </div>
+       <div class="admin-field-group">
+    <p>LATEST RELEASES FORGE (4 SLOTS)</p>
+    <div id="magazine-batch-inputs">
+        <script>
+            for(let i=1; i<=4; i++) {
+                document.write(`
+                    <div style="display: grid; grid-template-columns: 0.5fr 1fr 2fr 2fr; gap: 10px; margin-bottom: 10px; align-items: center; border-bottom: 1px solid #111; padding-bottom: 8px;">
+                        <span style="color: #444; font-size: 10px;">${i}</span>
+                        <input type="text" class="mag-batch-issue admin-input-premium" placeholder="ISSUE" style="margin:0">
+                        <input type="text" class="mag-batch-img admin-input-premium" placeholder="IMAGE URL" style="margin:0">
+                        <input type="text" class="mag-batch-pdf admin-input-premium" placeholder="PDF URL" style="margin:0">
+                    </div>
+                `);
+            }
+        </script>
+    </div>
+    <button class="admin-btn-generate" onclick="generateBatchMagCode()" style="margin-top: 15px;">GENERATE 4-SLOT PREVIEW</button>
+</div>
 
         <div class="admin-field-group">
             <p>VIDEO VAULT</p>

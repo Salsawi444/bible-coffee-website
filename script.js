@@ -1,62 +1,278 @@
-/* --- CONFIGURATION & DATABASE --- */
-const API_URL = 'https://sheetdb.io/api/v1/9q45d3e7oe5ks';
-
-const globalData = {
-    "Ethiopia": {
-        cities: ["Addis Ababa", "Nazreth", "Hawassa", "Bahir Dar", "Dire Dawa", "Gondar", "Jimma", "Mekelle", "Dessie"],
-        locations: { "Addis Ababa": ["Bole Atlas (The Cup)", "Kazanchis", "Old Airport", "Sarbet", "CMC", "Piyassa"] }
-    },
-    "Kenya": {
-        cities: ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],
-        locations: { "Nairobi": ["Westlands Hub", "Karen Table", "Kilimani Coffee Shop", "CBD Central"] }
-    },
-    // ... Rest of your mighty data vault is preserved exactly ...
-};
-
-/* --- REVEAL ON SCROLL ENGINE --- */
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.1 });
-
-/* --- NAVIGATION LOGIC --- */
-function showSection(id, btn) {
-    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
-    sections.forEach(s => {
-        const el = document.getElementById(s);
-        if (el) { el.style.setProperty('display', 'none', 'important'); el.classList.add('hidden'); }
-    });
-
-    if (id === 'home') {
-        document.getElementById('home-wrapper').style.setProperty('display', 'block', 'important');
-        document.getElementById('home-wrapper').classList.remove('hidden');
-        document.querySelector('.hero-marquee').style.display = 'block';
-    } else {
-        const target = document.getElementById(id);
-        if (target) { target.style.setProperty('display', 'block', 'important'); target.classList.remove('hidden'); }
-        document.querySelector('.hero-marquee').style.display = 'none';
-    }
-
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+/* --- 1. CORE ARCHITECTURE --- */
+ { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+    margin: 0; 
+    padding: 0; 
 }
 
-/* --- INITIALIZE --- */
-document.addEventListener('DOMContentLoaded', () => {
-    if(window.lucide) lucide.createIcons();
-    
-    // Start Reveal Engine
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: #000000; 
+    color: #ffffff; 
+    overflow-x: hidden; 
+    line-height: 1.6; 
+}
 
-    // Fill Country List
-    const countrySelect = document.getElementById('country');
-    if(countrySelect) {
-        Object.keys(globalData).sort().forEach(c => countrySelect.add(new Option(c, c)));
+/* --- 2. NAVIGATION --- */
+nav { 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 10000; 
+    background: rgba(0,0,0,0.9); 
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    padding: 20px 0; 
+}
+
+.nav-container { 
+    max-width: 1200px; 
+    margin: auto; 
+    display: flex; 
+    justify-content: flex-end; 
+    padding: 0 25px; 
+    align-items: center; 
+}
+
+.nav-links { display: flex; gap: 30px; } 
+
+.nav-links button { 
+    color: rgba(255,255,255,0.5); 
+    font-size: 14px; 
+    font-weight: 700; 
+    letter-spacing: 4px; 
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    transition: 0.4s; 
+}
+
+.nav-links button.active { color: #FCA311; }
+
+.mobile-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    color: #FCA311; 
+    cursor: pointer; 
+    padding: 10px; 
+    z-index: 10001; 
+}
+
+@media(max-width:768px) {
+    .mobile-toggle { display: block; }
+    .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%; 
+        background: #000; 
+        padding: 40px; 
+        gap: 35px; 
+        border-bottom: 1px solid #1a1a1a; 
+        text-align: center; 
     }
-});
+    .nav-links.active-menu { display: flex !important; }
+}
 
-// Your existing updateCities, updateLocations, and form submission logic follows exactly as in your Platinum file...
+/* --- 3. HERO & BRANDING --- */
+.hero-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; background-color: black; }
+.hero-bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('hero-family.jpg'); background-size: cover; background-position: center center; z-index: 0; }
+.hero-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 60%, #000000 100%); }
+
+.hero-content-layer { 
+    position: relative; 
+    z-index: 10; 
+    padding: 100px 25px 0; 
+    max-width: 1200px; 
+    width: 100%; 
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.responsive-title { 
+    font-family: 'Oswald', sans-serif; 
+    font-size: clamp(3rem, 12vw, 6.5rem) !important; 
+    line-height: 0.85; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+}
+
+.copyright-mark {
+    font-size: 0.2em;
+    position: relative;
+    display: inline-block; 
+    color: white;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    top: -5rem; 
+    left: 0rem;
+}
+
+@media (max-width: 768px) {
+    .copyright-mark {
+        top: -2rem; 
+        left: 0rem;
+        font-size: 0.22em; 
+    }
+}
+
+.hero-cta { 
+    margin-top: auto; 
+    margin-bottom: 60px;
+    border: 1px solid #FCA311; 
+    color: #FCA311; 
+    padding: 18px 45px; 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-weight: 700; 
+    font-size: 10px; 
+    cursor: pointer; 
+    background: transparent; 
+    transition: 0.5s; 
+    width: fit-content;
+}
+
+.hero-cta:hover { background: #FCA311; color: #000; }
+
+/* --- 4. MARQUEE --- */
+.hero-marquee { width: 100%; overflow: hidden; background: #000; padding: 20px 0; border-bottom: 1px solid #111; }
+.marquee-content { display: inline-block; white-space: nowrap; font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px #FCA311; animation: marquee 40s linear infinite; letter-spacing: 2px; }
+.marquee-content .dot { color: #FCA311; -webkit-text-stroke: 0; margin: 0 20px; font-size: 0.8rem; vertical-align: middle; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- 5. REGISTRATION FORM --- */
+.section-container { display: none; padding: 100px 0; min-height: 100vh; background: #000; }
+#home-wrapper { width: 100%; background: #000; }
+
+.form-card {
+    padding: 50px 40px !important;
+    background: #050505 !important;
+    border: 1px solid rgba(252, 163, 17, 0.1) !important;
+}
+
+#regForm .floating-input {
+    width: 100% !important;
+    height: 50px !important;
+    padding: 20px 0px 5px 0px !important; 
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.submit-btn-premium {
+    width: 100%;
+    background: #FCA311;
+    color: #000;
+    padding: 18px;
+    font-family: 'Oswald';
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* --- 6. MERCH & SERMONS --- */
+.merch-vault-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 40px !important; }
+.hidden { display: none; }
+
+/* --- 7. EMERGENCY FORM FIX --- */
+#hostModal .floating-input {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(252, 163, 17, 0.5) !important;
+    color: white !important;
+    display: block !important;
+    z-index: 9999 !important;
+}
+
+/* --- 8. SUPPORT & STEWARDSHIP --- */
+.steward-card {
+    background: #080808;
+    border: 1px solid #1a1a1a;
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.support-action-btn {
+    display: inline-block;
+    background: #FCA311;
+    color: #000;
+    padding: 24px 50px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* --- 9. MOBILE MASTER CONTROLLER (EDGE-TO-EDGE + CONTENT JOYSTICK) --- */
+@media (max-width: 768px) {
+    
+    /* 9.1 THE IMAGE FIX - Full image visibility */
+    nav {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border-bottom: none !important;
+        position: absolute !important; 
+        width: 100%;
+        z-index: 10001;
+    }
+
+    .hero-container {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+        min-height: -webkit-fill-available;
+    }
+
+    .hero-bg-layer {
+        background-position: center top !important;
+        /* Surgery: Changed to 100% width to prevent cutting people out */
+        background-size: 100% auto !important;
+        background-repeat: no-repeat;
+        height: 100vh !important;
+    }
+
+    /* 9.2 THE SPLIT JOYSTICKS */
+    
+    /* JOYSTICK A: THE MAIN TITLE (BIBLE & COFFEE) */
+    .brand-block h1 {
+        position: relative !important;
+        /* >>> ADJUST TITLE POSITION HERE <<< */
+        top: 40px !important;    /* (+) DOWN | (-) UP */
+        left: -20px !important;   /* (+) RIGHT | (-) LEFT */
+    }
+
+    /* JOYSTICK B: THANK GOD IT'S FRIDAY BLOCK */
+    .brand-block div[style*="border-left"] {
+        position: relative !important;
+        /* >>> ADJUST SUB-TEXT POSITION HERE <<< */
+        top: 20px !important;   /* (+) DOWN | (-) UP */
+        left: 0px !important;   /* (+) RIGHT | (-) LEFT */
+    }
+
+    /* 9.3 REFINEMENTS */
+    .hero-content-layer {
+        position: relative !important; 
+        display: flex !important;
+        z-index: 999 !important;
+        top: 50px !important; /* Global container adjustment */
+        padding-top: 0 !important;
+    }
+
+    .hero-overlay-layer {
+        background: linear-gradient(180deg, 
+            rgba(0,0,0,0.5) 0%, 
+            rgba(0,0,0,0.2) 40%, 
+            rgba(0,0,0,0.9) 100%) !important;
+    }
+
+    .merch-vault-grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px !important; 
+    }
+}
+
+

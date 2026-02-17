@@ -40,9 +40,9 @@
                 <div class="group border-b border-white/10 py-16 flex justify-between items-center cursor-pointer" onclick="showSection('join')">
                     <div class="flex items-center gap-8">
                         <span class="radar-dot"></span>
-                        <h4 class="text-white font-['Oswald'] text-5xl uppercase group-hover:pl-4 transition-all">ADDIS ABABA</h4>
+                        <h4 class="text-white font-['Oswald'] text-5xl uppercase group-hover:pl-4 transition-all italic">ADDIS ABABA</h4>
                     </div>
-                    <span class="text-[#FCA311] font-['Oswald'] tracking-[4px]">OPEN PROTOCOL</span>
+                    <span class="text-[#FCA311] font-['Oswald'] tracking-[4px]">JOIN PROTOCOL</span>
                 </div>
             </div>
         </div>
@@ -78,21 +78,21 @@
     <div id="admin-panel" class="hidden fixed inset-0 bg-black/98 z-[20000] p-10 overflow-y-auto">
         <div class="max-w-4xl mx-auto border border-[#FCA311]/20 p-12 bg-black shadow-2xl">
             <div class="flex justify-between items-center mb-10 border-b border-white/10 pb-6">
-                <h2 class="font-['Oswald'] text-[#FCA311] text-4xl tracking-[12px]">COMMAND CENTER</h2>
+                <h2 class="font-['Oswald'] text-[#FCA311] text-4xl tracking-[12px]">THE PLATINUM PANEL</h2>
                 <button onclick="toggleAdminPanel()" class="text-white hover:text-[#FCA311]"><i data-lucide="x"></i></button>
             </div>
             <div class="space-y-8">
                 <input type="text" id="mag-issue" class="ultra-input" placeholder="ISSUE NUMBER">
                 <input type="text" id="mag-img" class="ultra-input" placeholder="IMAGE URL">
                 <input type="text" id="mag-pdf" class="ultra-input" placeholder="PDF LINK">
-                <button onclick="generateMagCode()" class="w-full bg-[#FCA311] text-black py-4 font-bold font-['Oswald'] tracking-[5px]">GENERATE MAGAZINE CODE</button>
+                <button onclick="generateMagCode()" class="w-full bg-[#FCA311] text-black py-4 font-bold font-['Oswald'] tracking-[5px]">INJECT DATA</button>
                 <textarea id="admin-output" readonly class="w-full h-40 bg-white/5 p-6 text-[#FCA311] font-mono text-xs border border-white/10 outline-none"></textarea>
             </div>
         </div>
     </div>
 
     <footer class="py-20 text-center opacity-10">
-        <p onclick="secureAccess()" class="text-[10px] tracking-[10px] cursor-pointer uppercase">Authorized Access Only • The Mighty Code © 2026</p>
+        <p onclick="secureAccess()" class="text-[10px] tracking-[10px] cursor-default uppercase">Authorized Access Only • The Mighty Code © 2026</p>
     </footer>
 
     <script src="script.js"></script>

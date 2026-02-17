@@ -706,24 +706,29 @@ nav {
 
 
 /* Fix for the Sermon Card Stretching */
+/* Update your CSS with this */
 .sermon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 20px;
+    /* This creates a grid that automatically adds columns as needed */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 400px)); 
+    gap: 30px;
+    padding: 40px 20px;
+    justify-content: center; /* This centers the cards on desktop */
 }
 
 .sermon-card-premium {
-    background: #1a1a1a;
+    background: #111;
     border-radius: 12px;
     overflow: hidden;
+    transition: transform 0.3s ease;
     border: 1px solid rgba(255,255,255,0.1);
+    width: 100%; /* Fills the grid slot, but slot is capped at 400px */
 }
 
 .sermon-poster {
-    position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9; /* This is the magic line */
+    aspect-ratio: 16 / 9; /* Keeps the rectangle shape perfect */
+    overflow: hidden;
 }
 
 .sermon-poster img {
@@ -731,7 +736,6 @@ nav {
     height: 100%;
     object-fit: cover;
 }
-
 
 .sermon-grid {
     display: grid;

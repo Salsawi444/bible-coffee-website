@@ -1,48 +1,21 @@
 /* --- 0. THE CODE JOYSTICK (DESKTOP ONLY) --- */
-/* Tune these numbers to move your content. Negative = Up/Left, Positive = Down/Right */
 const DESKTOP_POS = {
-    titleY: 5,      // Move "BIBLE & COFFEE" Up/Down (px)
-    contentY: 0,    // Move Subtitle & Paragraph Up/Down (px)
-    globalX: -130      // Move Everything Left/Right (px)
+    titleY: 5,      
+    contentY: 0,    
+    globalX: -130      
 };
 
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
 const db = {
-    "Ethiopia": { 
-        "Addis Ababa": ["Bole Atlas (The Cup)", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], 
-        "Hawassa": ["Lake Side Coffee"], "Adama": ["City Center"], "Bahir Dar": ["Lake Front"]
-    },
-    "Kenya": { 
-        "Nairobi": ["Kilimani District", "Westlands", "Karen", "Gigiri"],
-        "Mombasa": ["Nyali", "Bamburi"], "Kisumu": ["Milimani"]
-    },
-    "Nigeria": {
-        "Lagos": ["Victoria Island", "Ikeja", "Lekki Phase 1"],
-        "Abuja": ["Maitama", "Wuse 2"], "Port Harcourt": ["GRA"]
-    },
-    "South Africa": { 
-        "Johannesburg": ["Sandton", "Rosebank", "Maboneng"], 
-        "Cape Town": ["City Bowl", "Sea Point", "Stellenbosch"], "Durban": ["Umhlanga"]
-    },
-    "USA": { 
-        "Dallas": ["Downtown", "Plano", "Frisco"], "Houston": ["Galleria Area", "Sugar Land"],
-        "New York": ["Brooklyn", "Manhattan", "Queens"], "Los Angeles": ["Santa Monica", "Pasadena", "Silver Lake"],
-        "Washington DC": ["Georgetown"], "Atlanta": ["Buckhead"], "Chicago": ["Lincoln Park"],
-        "Miami": ["Brickell"], "Seattle": ["Capitol Hill"]
-    },
-    "UK": { 
-        "London": ["Central London", "Canary Wharf", "Shoreditch", "Soho"],
-        "Manchester": ["Northern Quarter"], "Birmingham": ["City Centre"], "Edinburgh": ["Old Town"]
-    },
-    "UAE": {
-        "Dubai": ["Downtown Dubai", "Marina", "Jumeirah"], "Abu Dhabi": ["Corniche", "Yas Island"]
-    },
-    "Canada": { 
-        "Toronto": ["Downtown", "Scarborough", "Liberty Village"], "Vancouver": ["Gastown", "Kitsilano"], "Montreal": ["Plateau"]
-    },
-    "Australia": { 
-        "Sydney": ["CBD", "Surry Hills", "Bondi"], "Melbourne": ["Southbank", "Fitzroy"], "Brisbane": ["Fortitude Valley"]
-    },
+    "Ethiopia": { "Addis Ababa": ["Bole Atlas (The Cup)", "Mexico", "Piassa", "Megenagna", "CMC", "Old Airport"], "Hawassa": ["Lake Side Coffee"], "Adama": ["City Center"], "Bahir Dar": ["Lake Front"] },
+    "Kenya": { "Nairobi": ["Kilimani District", "Westlands", "Karen", "Gigiri"], "Mombasa": ["Nyali", "Bamburi"], "Kisumu": ["Milimani"] },
+    "Nigeria": { "Lagos": ["Victoria Island", "Ikeja", "Lekki Phase 1"], "Abuja": ["Maitama", "Wuse 2"], "Port Harcourt": ["GRA"] },
+    "South Africa": { "Johannesburg": ["Sandton", "Rosebank", "Maboneng"], "Cape Town": ["City Bowl", "Sea Point", "Stellenbosch"], "Durban": ["Umhlanga"] },
+    "USA": { "Dallas": ["Downtown", "Plano", "Frisco"], "Houston": ["Galleria Area", "Sugar Land"], "New York": ["Brooklyn", "Manhattan", "Queens"], "Los Angeles": ["Santa Monica", "Pasadena", "Silver Lake"], "Washington DC": ["Georgetown"], "Atlanta": ["Buckhead"], "Chicago": ["Lincoln Park"], "Miami": ["Brickell"], "Seattle": ["Capitol Hill"] },
+    "UK": { "London": ["Central London", "Canary Wharf", "Shoreditch", "Soho"], "Manchester": ["Northern Quarter"], "Birmingham": ["City Centre"], "Edinburgh": ["Old Town"] },
+    "UAE": { "Dubai": ["Downtown Dubai", "Marina", "Jumeirah"], "Abu Dhabi": ["Corniche", "Yas Island"] },
+    "Canada": { "Toronto": ["Downtown", "Scarborough", "Liberty Village"], "Vancouver": ["Gastown", "Kitsilano"], "Montreal": ["Plateau"] },
+    "Australia": { "Sydney": ["CBD", "Surry Hills", "Bondi"], "Melbourne": ["Southbank", "Fitzroy"], "Brisbane": ["Fortitude Valley"] },
     "Germany": { "Berlin": ["Mitte", "Kreuzberg"], "Frankfurt": ["Innenstadt"], "Munich": ["Altstadt"], "Hamburg": ["Altona"] },
     "France": { "Paris": ["Le Marais", "Montmartre"], "Lyon": ["Presqu'île"] },
     "Italy": { "Rome": ["Trastevere"], "Milan": ["Brera"] },
@@ -59,28 +32,13 @@ const db = {
 
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
-    // FIX: Added 'sermon', 'events', and 'support' to the tracking list so they can be toggled
-   const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];
-    
+    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
-        if (el) {
-            el.style.display = 'none';
-            el.classList.add('hidden');
-        }
+        if (el) { el.style.display = 'none'; el.classList.add('hidden'); }
     });
-
-    if (id === 'home') {
-        const home = document.getElementById('home-wrapper');
-        if (home) { home.style.display = 'block'; home.classList.remove('hidden'); }
-    } else {
-        const target = document.getElementById(id);
-        if (target) { 
-            target.style.display = 'block'; 
-            target.classList.remove('hidden'); 
-        }
-    }
-
+    const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
+    if (target) { target.style.display = 'block'; target.classList.remove('hidden'); }
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     const navLinks = document.getElementById('nav-links');
@@ -90,9 +48,7 @@ function showSection(id, btn) {
 
 function resetToHome() {
     window.scrollTo(0, 0);
-    setTimeout(() => {
-        location.reload();
-    }, 100);
+    setTimeout(() => { location.reload(); }, 100);
 }
 
 /* --- 3. VIDEO ENGINE --- */
@@ -107,10 +63,8 @@ function updateCities() {
     const country = document.getElementById('country').value;
     const citySelect = document.getElementById('city');
     const locSelect = document.getElementById('location');
-    
     citySelect.innerHTML = '<option value="" disabled selected></option>'; 
     locSelect.innerHTML = '<option value="" disabled selected></option>';
-    
     if (db[country]) {
         Object.keys(db[country]).forEach(city => {
             let opt = document.createElement('option');
@@ -124,9 +78,7 @@ function updateLocations() {
     const country = document.getElementById('country').value;
     const city = document.getElementById('city').value;
     const locSelect = document.getElementById('location');
-    
     locSelect.innerHTML = '<option value="" disabled selected></option>';
-    
     if (db[country] && db[country][city]) {
         db[country][city].forEach(loc => {
             let opt = document.createElement('option');
@@ -141,74 +93,36 @@ async function checkSlots() {
     const statusText = document.getElementById('slot-status-text');
     const submitBtn = document.querySelector('#regForm button[type="submit"]');
     const btnText = document.getElementById('btn-text');
-
     if (!location) return;
     statusText.innerHTML = `<span style="opacity: 0.5;">SCANNING TABLE CAPACITY...</span>`;
-
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
         const booked = data.filter(entry => entry.Location === location).length;
         const available = 10 - booked;
-
         if (available <= 0) {
-            // TABLE FULL STATE
             statusText.innerHTML = `<span class="counter-full">[ TABLE AT MAXIMUM CAPACITY ]</span>`;
             btnText.innerText = "TABLE FULL - CONTACT FOR WAITLIST";
-            
-            // Change button behavior: instead of submitting, it sends them to Contact
-            submitBtn.onclick = (e) => {
-                e.preventDefault();
-                showSection('contact'); // Jump to the contact section
-            };
+            submitBtn.onclick = (e) => { e.preventDefault(); showSection('contact'); };
             submitBtn.style.background = "#333";
             submitBtn.style.color = "#FCA311";
         } else {
-            // TABLE AVAILABLE STATE
             statusText.innerHTML = `<span class="counter-glow">[ ${available} / 10 SEATS REMAINING ]</span>`;
             btnText.innerText = "RESERVE YOUR SEAT";
-            
-            // Restore original behavior
             submitBtn.onclick = null; 
             submitBtn.style.background = "#FCA311";
             submitBtn.style.color = "black";
         }
-    } catch (error) {
-        statusText.innerText = "CONNECTION ACTIVE. PROCEED.";
-    }
+    } catch (error) { statusText.innerText = "CONNECTION ACTIVE. PROCEED."; }
 }
 
 function showSuccess() {
     const wrapper = document.querySelector('.premium-form-wrapper');
-    
-    // Smooth transition out
     wrapper.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
     wrapper.style.opacity = '0';
     wrapper.style.transform = 'scale(0.98)';
-    
     setTimeout(() => {
-        wrapper.innerHTML = `
-            <div style="padding: 80px 20px; text-align: center; animation: premiumFadeIn 1.2s ease-out forwards;">
-                <div style="width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, #FCA311, transparent); margin: 0 auto 40px; box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);"></div>
-
-                <h2 style="font-family: 'Inter'; font-weight: 200; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">
-                    RESERVED
-                </h2>
-                
-                <p style="font-family: 'Inter'; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; line-height: 2.5; margin-bottom: 40px;">
-                    YOUR SEAT HAS BEEN RESERVED.<br>
-                    <span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span>
-                </p>
-
-                <a href="javascript:void(0)" 
-   onclick="window.scrollTo(0, 0); setTimeout(() => { window.location.href = window.location.pathname; }, 100);" 
-   style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;"
-   onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" 
-   onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">
-    BACK TO HOME
-</a>
-            </div>
-        `;
+        wrapper.innerHTML = `<div style="padding: 80px 20px; text-align: center; animation: premiumFadeIn 1.2s ease-out forwards;"><div style="width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, #FCA311, transparent); margin: 0 auto 40px; box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);"></div><h2 style="font-family: 'Inter'; font-weight: 200; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">RESERVED</h2><p style="font-family: 'Inter'; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; line-height: 2.5; margin-bottom: 40px;">YOUR SEAT HAS BEEN RESERVED.<br><span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span></p><a href="javascript:void(0)" onclick="window.scrollTo(0, 0); setTimeout(() => { window.location.href = window.location.pathname; }, 100);" style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;" onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">BACK TO HOME</a></div>`;
         wrapper.style.opacity = '1';
         wrapper.style.transform = 'scale(1)';
     }, 600);
@@ -216,105 +130,68 @@ function showSuccess() {
 
 /* --- 5. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
-    // A. MENU LOGIC
     const menuBtn = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); });
-    }
+    if (menuBtn && navLinks) { menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); }); }
     if (window.lucide) { lucide.createIcons(); }
-
-    // B. THE CODE JOYSTICK ENGINE (DESKTOP ONLY)
     if (window.innerWidth >= 1024) {
         const title = document.querySelector('.brand-block h1');
         const content = document.querySelector('.brand-block > div');
         const wrapper = document.querySelector('.brand-block');
-
         if (title) title.style.transform = `translateY(${DESKTOP_POS.titleY}px)`;
         if (content) content.style.transform = `translateY(${DESKTOP_POS.contentY}px)`;
         if (wrapper) wrapper.style.transform = `translateX(${DESKTOP_POS.globalX}px)`;
     }
-
-    // C. FORM SUBMISSION
     const form = document.getElementById('regForm');
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
             const btnText = document.getElementById('btn-text');
             btnText.innerHTML = "LOCKING RESERVATION...";
-
             const now = new Date();
-            
-            const payload = {
-                "Name": form.elements["Name"].value,
-                "Phone": form.elements["Phone"].value,
-                "Email": form.elements["Email"].value,
-                "Country": form.elements["Country"].value,
-                "City": form.elements["City"].value,
-                "Location": form.elements["Location"].value,
-                "Registration Date": now.toLocaleDateString(),
-                "Registration Time": now.toLocaleTimeString()
-            };
-
+            const payload = { "Name": form.elements["Name"].value, "Phone": form.elements["Phone"].value, "Email": form.elements["Email"].value, "Country": form.elements["Country"].value, "City": form.elements["City"].value, "Location": form.elements["Location"].value, "Registration Date": now.toLocaleDateString(), "Registration Time": now.toLocaleTimeString() };
             try {
-                const response = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: [payload] })
-                });
-
-                if (response.ok) {
-                    showSuccess();
-                    form.reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            } catch (err) {
-                alert("Protocol Interrupted. Please check your connection.");
-                btnText.innerHTML = "RESERVE YOUR SEAT";
-            }
+                const response = await fetch(API_URL, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) });
+                if (response.ok) { showSuccess(); form.reset(); } else { throw new Error('Network response error'); }
+            } catch (err) { alert("Protocol Interrupted."); btnText.innerHTML = "RESERVE YOUR SEAT"; }
         });
     }
 });
 
-
+/* --- 6. PLATINUM ADMIN CORE --- */
 function secureAccess() {
-    const secretKey = "GOLD77"; // CHANGE YOUR PASSWORD HERE
+    const secretKey = "GOLD77";
     const entry = prompt("ENTER ACCESS PROTOCOL:");
-    
     if (entry === secretKey) {
         const panel = document.getElementById('admin-panel');
         panel.classList.remove('hidden');
         panel.style.display = 'block';
-        alert("ACCESS GRANTED. WELCOME, COMMANDER.");
-    } else if (entry !== null) {
-        alert("PROTOCOL DENIED. ACCESS LOGGED.");
-    }
+    } else if (entry !== null) { alert("ACCESS DENIED."); }
 }
 
-// Update the Terminate button logic to hide the panel properly
 function toggleAdminPanel() {
     const panel = document.getElementById('admin-panel');
     panel.classList.add('hidden');
     panel.style.display = 'none';
 }
 
+function copyAdminCode() {
+    const output = document.getElementById('admin-output');
+    if(!output.value) { alert("Nothing to copy!"); return; }
+    output.select();
+    document.execCommand('copy');
+    alert("CODE SECURED.");
+}
 
-/* --- PLATINUM ADMIN GENERATOR PROTOCOLS --- */
-
-// 1. Smart Magazine Generator (For: magazine-journal-grid)
+/* --- 7. ADMIN GENERATOR TEMPLATES --- */
 function generateMagCode() {
     const issue = document.getElementById('mag-issue').value;
     const img = document.getElementById('mag-img').value;
     const pdf = document.getElementById('mag-pdf').value;
-    
-    if(!issue || !img || !pdf) { alert("Please fill all Magazine fields."); return; }
-
-    const code = `<div class="magazine-card" onclick="window.open('${pdf}', '_blank')" style="cursor: pointer; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s;">
+    if(!issue || !img || !pdf) { alert("Fill all Magazine fields."); return; }
+    document.getElementById('admin-output').value = `<div class="magazine-card" onclick="window.open('${pdf}', '_blank')" style="cursor: pointer; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s;">
     <div style="overflow: hidden; aspect-ratio: 3/4;">
-        <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s;" 
-             onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.05)'" 
-             onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)'">
+        <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.05)'" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)'">
     </div>
     <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
         <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE ${issue}</p>
@@ -322,27 +199,16 @@ function generateMagCode() {
         <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
     </div>
 </div>`;
-    
-    document.getElementById('admin-output').value = code;
 }
 
-// 2. Smart Video Generator (For: sermon-cinema-grid)
 function generateVidCode() {
     const rawUrl = document.getElementById('vid-url').value;
     const title = document.getElementById('vid-title').value;
-    
-    let videoId = "";
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = rawUrl.match(regExp);
-    
     if (match && match[2].length == 11) {
-        videoId = match[2];
-    } else {
-        alert("Invalid YouTube Link.");
-        return;
-    }
-
-    const code = `<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
+        const videoId = match[2];
+        document.getElementById('admin-output').value = `<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
     <div class="sermon-poster">
         <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg">
         <div class="play-overlay"><i data-lucide="play"></i></div>
@@ -352,18 +218,14 @@ function generateVidCode() {
         <h3>${title}</h3>
     </div>
 </div>`;
-    
-    document.getElementById('admin-output').value = code;
+    } else { alert("Invalid YouTube Link."); }
 }
 
-// 3. Merch Generator (For: merch-vault-grid)
 function generateMerchCode() {
     const name = document.getElementById('merch-name').value;
     const img = document.getElementById('merch-img').value;
-    
-    if(!name || !img) { alert("Please fill all Merch fields."); return; }
-
-    const code = `<div class="merch-item" style="background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); padding: 15px;">
+    if(!name || !img) { alert("Fill all Merch fields."); return; }
+    document.getElementById('admin-output').value = `<div class="merch-item" style="background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); padding: 15px;">
     <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111;">
         <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
     </div>
@@ -372,30 +234,4 @@ function generateMerchCode() {
         <h3 style="font-family: 'Oswald'; color: white; margin: 5px 0; text-transform: uppercase;">${name}</h3>
     </div>
 </div>`;
-    
-    document.getElementById('admin-output').value = code;
-}
-
-// 4. Admin Utility Functions
-function copyAdminCode() {
-    const output = document.getElementById('admin-output');
-    if(!output.value) { alert("Nothing to copy! Generate code first."); return; }
-    output.select();
-    document.execCommand('copy');
-    alert("CODE SECURED. Now paste it into your HTML grid.");
-}
-
-function toggleAdminPanel() {
-    const panel = document.getElementById('admin-panel');
-    panel.style.display = 'none';
-}
-
-function secureAccess() {
-    const secretKey = "GOLD77"; 
-    const entry = prompt("ENTER ACCESS PROTOCOL:");
-    if (entry === secretKey) {
-        document.getElementById('admin-panel').style.display = 'block';
-    } else if (entry !== null) {
-        alert("ACCESS DENIED.");
-    }
 }

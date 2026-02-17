@@ -764,3 +764,36 @@ nav {
     height: 100%;
     object-fit: cover; /* Keeps it from stretching horizontally */
 }
+
+
+/* --- TELEGRAM VAULT BUTTON STYLING --- */
+.telegram-vault-btn {
+    display: inline-block;
+    background: transparent;
+    color: #FCA311;
+    border: 1px solid #FCA311;
+    padding: 18px 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.telegram-vault-btn:hover {
+    background: #FCA311;
+    color: #000;
+    box-shadow: 0 0 30px rgba(252, 163, 17, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Ensure the icon inside aligns perfectly */
+.telegram-vault-btn i {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}

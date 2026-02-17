@@ -10,7 +10,7 @@ const DESKTOP_POS = {
 const globalData = {
     "Ethiopia": {
         cities: ["Addis Ababa", "Nazreth", "Hawassa", "Bahir Dar", "Dire Dawa", "Gondar", "Jimma", "Mekelle", "Dessie"],
-        locations: { "Addis Ababa": ["Bole Atlas (The Cup)", "Kazanchis", "Old Airport", "Sarbet", "CMC", "Piyassa"] }
+        locations: { "Addis Ababa": ["Bole", "Kazanchis", "Old Airport", "Sarbet", "CMC", "Piyassa"] }
     },
     "Kenya": {
         cities: ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],

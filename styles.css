@@ -731,3 +731,31 @@ nav {
     height: 100%;
     object-fit: cover;
 }
+
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.sermon-card-premium {
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.sermon-poster {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Keeps it from stretching vertically */
+    overflow: hidden;
+    position: relative;
+}
+
+.sermon-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps it from stretching horizontally */
+}

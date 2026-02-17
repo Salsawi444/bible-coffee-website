@@ -237,23 +237,29 @@ function generateBatchMagCode() {
 function generateVidCode() {
     const rawUrl = document.getElementById('vid-url').value;
     const title = document.getElementById('vid-title').value;
+    const category = document.getElementById('vid-category') ? document.getElementById('vid-category').value : "FRIDAY SERMON";
+    
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = rawUrl.match(regExp);
+    
     if (match && match[2].length == 11) {
         const videoId = match[2];
-        document.getElementById('admin-output').value = `<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
+        // This generates the EXACT code that fits perfectly in your Cinema Grid
+        document.getElementById('admin-output').value = `
+<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
     <div class="sermon-poster">
-        <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg">
-        <div class="play-overlay"><i data-lucide="play"></i></div>
+        <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${title}">
+        <div class="play-overlay"><i data-lucide="play-circle"></i></div>
     </div>
     <div class="sermon-details">
-        <span class="category">FRIDAY SERMON</span>
+        <span class="category">${category.toUpperCase()}</span>
         <h3>${title}</h3>
     </div>
 </div>`;
-    } else { alert("Invalid YouTube Link."); }
+    } else { 
+        alert("Invalid YouTube Link."); 
+    }
 }
-
 function generateMerchCode() {
     const name = document.getElementById('merch-name').value;
     const img = document.getElementById('merch-img').value;

@@ -592,3 +592,11 @@ nav {
         transform: translateX(-250px) !important;
     }
 }
+
+
+.magazine-journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}

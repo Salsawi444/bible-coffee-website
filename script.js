@@ -60,7 +60,7 @@ const db = {
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
     // FIX: Added 'sermon', 'events', and 'support' to the tracking list so they can be toggled
-    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join'];
+   const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact-us'];
     
     sections.forEach(sectionId => {
         const el = document.getElementById(sectionId);
@@ -150,13 +150,11 @@ async function checkSlots() {
         const available = 10 - booked;
 
         if (available <= 0) {
-            statusText.innerHTML = `<span class="counter-full">[ TABLE FULL ]</span> <a href="mailto:info@bibleandcoffee.com?subject=Waitlist:%20${location}" style="color: #FCA311; text-decoration: underline; font-size: 10px;">CONTACT FOR OVERRIDE</a>`;
-        } else {
-            statusText.innerHTML = `<span class="counter-glow">[ ${available} / 10 SEATS REMAINING ]</span>`;
-        }
-    } catch (error) {
-        statusText.innerText = "CONNECTION ACTIVE. PROCEED.";
-    }
+    statusText.innerHTML = `
+        <span class="counter-full">[ TABLE FULL ]</span> 
+        <a href="javascript:void(0)" onclick="showSection('contact-us')" style="color: #FCA311; text-decoration: underline; font-size: 10px; display: block; margin-top: 10px; letter-spacing: 2px;">
+            REQUEST OVERRIDE ACCESS
+        </a>`;
 }
 
 function showSuccess() {

@@ -4,62 +4,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Bible & Coffee | Global</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles1.css">
 </head>
+<body class="bg-black text-white">
 
-<body>
-
-<nav>
-  <div class="nav-container">
-    <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></i></button>
-    <div id="nav-links" class="nav-links">
-      <button onclick="showSection('home',this)" class="active">HOME</button>
-      <button onclick="showSection('magazine',this)">MAGAZINE</button>
-      <button onclick="showSection('merch',this)">MERCH</button>
-      <button onclick="showSection('sermon',this)">SERMON</button>
-      <button onclick="showSection('events',this)">EVENTS</button>
-      <button onclick="showSection('support',this)">SUPPORT</button>
-      <button onclick="showSection('join',this)">JOIN</button>
-      <button onclick="showSection('contact',this)">CONTACT</button>
-    </div>
-  </div>
-</nav>
-
-<div id="home-wrapper">
-  <header id="home" class="hero-container">
-    <div class="hero-bg-layer"></div>
-    <div class="hero-overlay-layer"></div>
-
-    <div class="hero-content-layer">
-      <div class="brand-block">
-        <h1>
-          <span class="responsive-title">BIBLE &</span>
-          <span class="responsive-title">COFFEE</span>
-          <span class="responsive-title accent">
-            FRIDAYS<span class="copyright-mark">©</span>
-          </span>
-        </h1>
-
-        <div class="hero-sub">
-          <h2>Thank God It's Friday!</h2>
-          <h3>More Than a Gathering</h3>
-          <p>
-            Bible & Coffee is a movement of modern believers who choose
-            <span class="highlight">depth over hype</span>.
-          </p>
-        </div>
+  <nav>
+    <div class="nav-container">
+      <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></i></button>
+      <div id="nav-links" class="nav-links">
+        <button onclick="showSection('home',this)" class="active">HOME</button>
+        <button onclick="showSection('magazine',this)">MAGAZINE</button>
+        <button onclick="showSection('merch',this)">MERCH</button>
+        <button onclick="showSection('sermon',this)">SERMON</button>
+        <button onclick="showSection('events',this)">EVENTS</button>
+        <button onclick="showSection('support',this)">SUPPORT</button>
+        <button onclick="showSection('join',this)" style="color:#FCA311">JOIN THE TABLE</button>
       </div>
     </div>
-  </header>
-</div>
+  </nav>
 
-<script src="script.js"></script>
-<script>lucide.createIcons();</script>
+  <div id="home-wrapper">
+    <div class="hero-container">
+      <div class="hero-bg-layer"></div>
+      <div class="hero-overlay-layer"></div>
+      
+      <div class="hero-content-layer reveal">
+        <div class="brand-block">
+          <h1 class="responsive-title">BIBLE & COFFEE<br>FRIDAYS<span class="copyright-mark">©</span></h1>
+          
+          <div class="joystick-subtext-block" style="border-left: 3px solid #FCA311; padding-left: 25px; margin-top: 40px;">
+            <h2 style="font-family:'Playfair Display'; font-style:italic; font-size: 2.2rem; margin-bottom: 10px;">Relationship > Religion.</h2>
+            <h3 style="font-family:'Oswald'; letter-spacing:8px; text-transform:uppercase; font-size:12px; color:#FCA311; margin-bottom: 20px;">Thank God It's Friday</h3>
+            <p style="max-width: 450px; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8;">
+              A global community gathering in coffee shops to explore faith, purpose, and the teachings of Jesus.
+            </p>
+          </div>
+        </div>
+        <button class="hero-cta" onclick="showSection('join')">Reserve Your Seat</button>
+      </div>
+    </div>
 
+    <div class="hero-marquee">
+      <div class="marquee-content">
+        ADDIS ABABA <span class="dot">●</span> NAIROBI <span class="dot">●</span> DALLAS <span class="dot">●</span> LONDON <span class="dot">●</span> BERLIN <span class="dot">●</span> AMSTERDAM <span class="dot">●</span> STOCKHOLM <span class="dot">●</span> OSLO <span class="dot">●</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="magazine" class="section-container reveal">
+    </section>
+
+  <section id="merch" class="section-container reveal">
+    </section>
+
+  <section id="join" class="section-container reveal">
+    <div class="form-card glass-morphism">
+      <form id="regForm" class="space-y-8">
+        <input type="text" id="name" class="floating-input" required placeholder="Full Name">
+        <div class="grid grid-cols-2 gap-6">
+          <select id="country" class="floating-input" onchange="updateCities()" required></select>
+          <select id="city" class="floating-input" onchange="updateLocations()" required></select>
+        </div>
+        <select id="location" class="floating-input" onchange="checkSlots()" required></select>
+        <button type="submit" id="submit-btn" class="submit-btn-premium" disabled>Select A Location</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="script1.js"></script>
 </body>
 </html>

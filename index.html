@@ -615,5 +615,45 @@
         });
     });
 </script>
+
+  <div id="admin-trigger" onclick="toggleAdminPanel()" style="position: fixed; bottom: 0; right: 0; width: 20px; height: 20px; cursor: default; z-index: 99999; opacity: 0;"></div>
+
+<div id="admin-panel" class="hidden" style="position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 100000; padding: 40px; overflow-y: auto; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #FCA311; padding-bottom: 20px; margin-bottom: 40px;">
+            <h2 style="font-family: 'Oswald'; color: #FCA311; letter-spacing: 5px;">COMMAND CENTER</h2>
+            <button onclick="toggleAdminPanel()" style="background: none; border: 1px solid #444; color: white; padding: 10px 20px; cursor: pointer; font-size: 10px; letter-spacing: 2px;">TERMINATE SESSION</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div style="background: #0a0a0a; border: 1px solid #222; padding: 25px;">
+                <h3 style="color: #FCA311; font-family: 'Oswald'; margin-bottom: 15px;">MAGAZINE FORGE</h3>
+                <input type="text" id="mag-issue" placeholder="ISSUE NO (e.g. 05)" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
+                <input type="text" id="mag-img" placeholder="PREVIEW IMAGE (e.g. cover5.jpg)" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
+                <button onclick="generateMagCode()" style="width: 100%; background: #FCA311; color: black; font-weight: bold; padding: 10px; font-family: 'Oswald'; cursor: pointer;">GENERATE CODE</button>
+            </div>
+
+            <div style="background: #0a0a0a; border: 1px solid #222; padding: 25px;">
+                <h3 style="color: #FCA311; font-family: 'Oswald'; margin-bottom: 15px;">VIDEO VAULT</h3>
+                <input type="text" id="vid-id" placeholder="YOUTUBE ID (e.g. dQw4w9WgXcQ)" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
+                <input type="text" id="vid-title" placeholder="SERMON TITLE" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
+                <button onclick="generateVidCode()" style="width: 100%; background: #FCA311; color: black; font-weight: bold; padding: 10px; font-family: 'Oswald'; cursor: pointer;">GENERATE CODE</button>
+            </div>
+
+            <div style="background: #0a0a0a; border: 1px solid #222; padding: 25px;">
+                <h3 style="color: #FCA311; font-family: 'Oswald'; margin-bottom: 15px;">MERCH FOUNDRY</h3>
+                <input type="text" id="merch-name" placeholder="ITEM NAME" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
+                <input type="text" id="merch-img" placeholder="IMAGE NAME (e.g. hoodie.jpg)" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
+                <button onclick="generateMerchCode()" style="width: 100%; background: #FCA311; color: black; font-weight: bold; padding: 10px; font-family: 'Oswald'; cursor: pointer;">GENERATE CODE</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <p style="color: #444; font-size: 10px; letter-spacing: 2px; margin-bottom: 10px;">GENERATED PROTOCOL CODE:</p>
+            <textarea id="admin-output" readonly style="width: 100%; height: 200px; background: #050505; color: #00ff00; font-family: monospace; border: 1px solid #222; padding: 20px; font-size: 12px;"></textarea>
+            <button onclick="copyAdminCode()" style="margin-top: 10px; background: #444; color: white; padding: 10px 20px; border: none; cursor: pointer; font-family: 'Oswald';">COPY TO CLIPBOARD</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

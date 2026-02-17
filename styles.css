@@ -828,3 +828,58 @@ nav {
 .status-active { background-color: #FCA311; }
 .status-full { background-color: #555; }
 .status-full::after { animation: none; opacity: 0; }
+
+
+
+/* JUPITER SUPPORT PROTOCOL STYLES */
+
+/* The Glass Pocket Transparency Bar */
+#support .bg-white\/10 {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Protocol Card Hover Effects */
+.group:hover {
+    border-color: rgba(252, 163, 17, 0.4) !important;
+    transform: translateY(-2px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The Status Pulse */
+.animate-pulse {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(1.2); }
+}
+
+/* The "No Scavengers" Typography tweak */
+#support h3 {
+    text-shadow: 2px 2px 0px rgba(252, 163, 17, 0.1);
+}
+
+/* Tactical Buttons */
+#support button {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+#support button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: #FCA311;
+    transition: width 0.4s ease;
+}
+
+#support button:hover:after {
+    width: 100%;
+}

@@ -184,21 +184,35 @@ function copyAdminCode() {
 }
 
 /* --- 7. ADMIN GENERATOR TEMPLATES --- */
-function generateMagCode() {
-    const issue = document.getElementById('mag-issue').value;
-    const img = document.getElementById('mag-img').value;
-    const pdf = document.getElementById('mag-pdf').value;
-    if(!issue || !img || !pdf) { alert("Fill all Magazine fields."); return; }
-    document.getElementById('admin-output').value = `<div class="magazine-card" onclick="window.open('${pdf}', '_blank')" style="cursor: pointer; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s;">
-    <div style="overflow: hidden; aspect-ratio: 3/4;">
-        <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.05)'" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)'">
+function generateBatchMagCode() {
+    const issues = document.querySelectorAll('.mag-batch-issue');
+    const imgs = document.querySelectorAll('.mag-batch-img');
+    const pdfs = document.querySelectorAll('.mag-batch-pdf');
+    let finalCode = "\n";
+    let count = 0;
+
+    issues.forEach((el, i) => {
+        const issueVal = el.value.trim();
+        const imgVal = imgs[i].value.trim();
+        const pdfVal = pdfs[i].value.trim();
+
+        if(issueVal && imgVal && pdfVal) {
+            count++;
+            finalCode += `
+<div class="magazine-card" onclick="window.open('${pdfVal}', '_blank')" style="cursor: pointer;">
+    <div class="magazine-image-wrapper">
+        <img src="${imgVal}" alt="Issue ${issueVal}">
     </div>
     <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE ${issue}</p>
-        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.2rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
+        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE ${issueVal}</p>
+        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
+        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
     </div>
-</div>`;
+</div>\n`;
+        }
+    });
+
+    document.getElementById('admin-output').value = finalCode;
 }
 
 function generateVidCode() {

@@ -98,17 +98,29 @@ function openVideo(id) {
 const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
 function updateCities() {
-    const country = document.getElementById('country').value;
-    const citySelect = document.getElementById('city');
-    const locSelect = document.getElementById('location');
-    citySelect.innerHTML = '<option value="" disabled selected></option>'; 
-    locSelect.innerHTML = '<option value="" disabled selected></option>';
-    if (db[country]) {
-        Object.keys(db[country]).forEach(city => {
+    const countrySel = document.getElementById('country');
+    const citySel = document.getElementById('city');
+    const selectedCountry = countrySel.value;
+    
+    // Reset City and Location dropdowns
+    citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
+    const locField = document.getElementById('location');
+    if(locField) locField.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+    
+    // THE FIX: Find the key in globalData regardless of BIG or small letters
+    const countryKey = Object.keys(globalData).find(
+        key => key.toLowerCase() === selectedCountry.toLowerCase()
+    );
+
+    if (countryKey && globalData[countryKey]) {
+        globalData[countryKey].cities.forEach(city => {
             let opt = document.createElement('option');
-            opt.value = city; opt.textContent = city;
-            citySelect.appendChild(opt);
+            opt.value = city;
+            opt.innerHTML = city.toUpperCase();
+            citySel.appendChild(opt);
         });
+    } else {
+        console.log("Country not found in database:", selectedCountry);
     }
 }
 

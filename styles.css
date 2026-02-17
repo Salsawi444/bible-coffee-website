@@ -1,10 +1,10 @@
 /* --- THE PLATINUM STYLE ENGINE --- */
 
-/* Navigation */
+/* Navigation Protocol */
 nav { 
     position: fixed; top: 0; width: 100%; z-index: 10000; 
     background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); 
-    border-bottom: 1px solid rgba(252, 163, 17, 0.1); padding: 20px 0; 
+    border-bottom: 1px solid rgba(252, 163, 17, 0.1); padding: 25px 0; 
 }
 
 .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; }
@@ -15,7 +15,7 @@ nav {
     text-transform: uppercase; transition: 0.4s; 
 }
 
-.nav-links button.active { color: #FCA311; }
+.nav-links button.active { color: #FCA311; text-shadow: 0 0 15px rgba(252, 163, 17, 0.4); }
 
 /* The Joysticks (Inputs) */
 .premium-form-wrapper { background: #080808; border: 1px solid rgba(252, 163, 17, 0.1); padding: 60px 40px; }
@@ -29,7 +29,7 @@ nav {
 
 .ultra-input:focus { border-bottom-color: #FCA311; }
 
-/* Radar Protocol */
+/* Radar Protocol (The Pulse) */
 .radar-dot { 
     width: 12px; height: 12px; background: #FCA311; 
     border-radius: 50%; display: inline-block; position: relative; 

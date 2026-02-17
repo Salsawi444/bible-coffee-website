@@ -181,12 +181,13 @@ function showSuccess() {
                     <span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span>
                 </p>
 
-                <a href="javascript:void(0)" onclick="window.location.reload()" 
-                   style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;"
-                   onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" 
-                   onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">
-                    BACK TO HOME
-                </a>
+                <a href="javascript:void(0)" 
+   onclick="window.scrollTo(0, 0); setTimeout(() => { window.location.href = window.location.pathname; }, 100);" 
+   style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;"
+   onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" 
+   onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">
+    BACK TO HOME
+</a>
             </div>
         `;
         wrapper.style.opacity = '1';

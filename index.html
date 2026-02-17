@@ -280,43 +280,45 @@
           <h3 class="text-6xl md:text-8xl font-['Oswald'] font-black text-white uppercase leading-none tracking-tighter">
               ACTIVE <br><span class="text-[#FCA311]">TABLES.</span>
           </h3>
-          <p class="text-white/30 font-['Playfair_Display'] italic text-2xl mt-8 max-w-xl">
-              "We don't do crowds. We do deep-table fellowship. 10 Seats. One City. No Filter."
-          </p>
       </div>
 
       <div class="border-t border-white/10">
+          
           <div class="group border-b border-white/10 py-16 hover:bg-[#FCA311]/[0.02] transition-all duration-700 cursor-pointer" onclick="showSection('join')">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                  <div class="flex items-baseline gap-8">
-                      <span class="text-[#FCA311] font-['Oswald'] text-xl opacity-30 group-hover:opacity-100 transition-opacity">01</span>
-                      <div>
+                  <div class="flex items-center gap-8">
+                      <span class="radar-dot status-active"></span> <div>
                           <h4 class="text-white font-['Oswald'] text-5xl md:text-7xl uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500">ADDIS ABABA</h4>
                           <p class="text-white/30 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Current Protocol: The Cup (Bole Atlas)</p>
                       </div>
                   </div>
                   <div class="flex flex-col items-end gap-4">
-                      <span class="text-[#FCA311] font-['Oswald'] text-sm tracking-[3px]">STATUS: 07/10 SECURED</span>
+                      <span class="text-[#FCA311] font-['Oswald'] text-sm tracking-[3px]">07/10 SECURED</span>
                       <div class="h-[1px] w-32 bg-white/10 group-hover:w-48 group-hover:bg-[#FCA311] transition-all duration-700"></div>
-                      <span class="text-white/40 font-['Inter'] text-[10px] uppercase tracking-[4px]">Access: Open</span>
                   </div>
               </div>
           </div>
 
-          <div class="group border-b border-white/10 py-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+          <div class="group border-b border-white/10 py-16 opacity-40 grayscale transition-all duration-700">
               <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                  <div class="flex items-baseline gap-8">
-                      <span class="text-white/20 font-['Oswald'] text-xl">02</span>
-                      <div>
-                          <h4 class="text-white/40 font-['Oswald'] text-5xl md:text-7xl uppercase tracking-tighter">NAIROBI</h4>
-                          <p class="text-white/20 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Status: Full Capacity</p>
+                  <div class="flex items-center gap-8">
+                      <span class="radar-dot status-full"></span> <div>
+                          <h4 class="text-white font-['Oswald'] text-5xl md:text-7xl uppercase tracking-tighter">NAIROBI</h4>
+                          <p class="text-white/30 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Status: Full Capacity</p>
                       </div>
                   </div>
                   <div class="text-right">
-                      <span class="text-red-900 font-['Oswald'] text-sm tracking-[3px] uppercase">Waitlist Only</span>
+                      <span class="text-white/40 font-['Oswald'] text-sm tracking-[3px]">WAITLIST ONLY</span>
                   </div>
               </div>
           </div>
+      </div>
+
+      <div class="mt-20 py-16 text-center border-t border-white/5">
+          <p class="text-white/40 font-['Inter'] text-xs tracking-[5px] uppercase mb-8">Can't find your city or location?</p>
+          <button onclick="showSection('contact')" class="text-white font-['Oswald'] text-xl tracking-[10px] uppercase border-b-2 border-[#FCA311] pb-2 hover:tracking-[15px] transition-all">
+              CONTACT US
+          </button>
       </div>
   </div>
 </section>

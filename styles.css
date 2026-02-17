@@ -1,44 +1,23 @@
-/* --- THE PLATINUM STYLE ENGINE --- */
-
-/* Navigation Protocol */
-nav { 
-    position: fixed; top: 0; width: 100%; z-index: 10000; 
-    background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); 
-    border-bottom: 1px solid rgba(252, 163, 17, 0.1); padding: 25px 0; 
+/* --- THE PLATINUM RADAR PULSE --- */
+.radar-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #FCA311;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
 }
 
-.nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: flex-end; padding: 0 25px; }
-
-.nav-links button { 
-    color: rgba(255,255,255,0.4); font-size: 13px; font-weight: 700; 
-    letter-spacing: 5px; border: none; background: none; cursor: pointer; 
-    text-transform: uppercase; transition: 0.4s; 
-}
-
-.nav-links button.active { color: #FCA311; text-shadow: 0 0 15px rgba(252, 163, 17, 0.4); }
-
-/* The Joysticks (Inputs) */
-.premium-form-wrapper { background: #080808; border: 1px solid rgba(252, 163, 17, 0.1); padding: 60px 40px; }
-
-.ultra-input { 
-    width: 100%; background: transparent; border: none; 
-    border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 0; 
-    color: white; font-family: 'Oswald'; letter-spacing: 3px; 
-    outline: none; transition: 0.4s; font-size: 16px; border-radius: 0; 
-}
-
-.ultra-input:focus { border-bottom-color: #FCA311; }
-
-/* Radar Protocol (The Pulse) */
-.radar-dot { 
-    width: 12px; height: 12px; background: #FCA311; 
-    border-radius: 50%; display: inline-block; position: relative; 
-}
-
-.radar-dot::after { 
-    content: ''; width: 100%; height: 100%; background: #FCA311; 
-    border-radius: 50%; position: absolute; top: 0; left: 0; 
-    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; 
+.radar-dot::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #FCA311;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
 @keyframes pulse-ring {
@@ -46,5 +25,6 @@ nav {
     80%, 100% { transform: scale(3); opacity: 0; }
 }
 
-/* Visibility Control */
-.hidden { display: none !important; }
+.status-active { background-color: #FCA311; }
+.status-full { background-color: #555; }
+.status-full::after { animation: none; opacity: 0; }

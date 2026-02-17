@@ -278,60 +278,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// A. Toggle Panel
+function secureAccess() {
+    const secretKey = "GOLD77"; // CHANGE YOUR PASSWORD HERE
+    const entry = prompt("ENTER ACCESS PROTOCOL:");
+    
+    if (entry === secretKey) {
+        const panel = document.getElementById('admin-panel');
+        panel.classList.remove('hidden');
+        panel.style.display = 'block';
+        alert("ACCESS GRANTED. WELCOME, COMMANDER.");
+    } else if (entry !== null) {
+        alert("PROTOCOL DENIED. ACCESS LOGGED.");
+    }
+}
+
+// Update the Terminate button logic to hide the panel properly
 function toggleAdminPanel() {
     const panel = document.getElementById('admin-panel');
-    panel.classList.toggle('hidden');
-}
-
-// B. Copy Logic
-function copyAdminCode() {
-    const output = document.getElementById('admin-output');
-    output.select();
-    document.execCommand('copy');
-    alert("CODE SECURED. Ready for manual insertion.");
-}
-
-// C. Magazine Generator
-function generateMagCode() {
-    const issue = document.getElementById('mag-issue').value;
-    const img = document.getElementById('mag-img').value;
-    const code = `<div class="relative group cursor-pointer overflow-hidden border border-white/5 bg-[#0a0a0a]">
-    <img src="${img}" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700">
-    <div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black to-transparent w-full">
-        <p class="font-['Oswald'] text-[#FCA311] text-[10px] tracking-[4px]">VOLUME 01 // ISSUE ${issue}</p>
-    </div>
-</div>`;
-    document.getElementById('admin-output').value = code;
-}
-
-// D. Video Generator
-function generateVidCode() {
-    const id = document.getElementById('vid-id').value;
-    const title = document.getElementById('vid-title').value;
-    const code = `<div class="sermon-card-premium" onclick="openVideo('${id}')">
-    <div class="sermon-poster">
-        <img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg">
-        <div class="play-overlay"><i data-lucide="play"></i></div>
-    </div>
-    <div class="sermon-details">
-        <span class="category">FRIDAY SERMON</span>
-        <h3>${title}</h3>
-    </div>
-</div>`;
-    document.getElementById('admin-output').value = code;
-}
-
-// E. Merch Generator
-function generateMerchCode() {
-    const name = document.getElementById('merch-name').value;
-    const img = document.getElementById('merch-img').value;
-    const code = `<div class="merch-item">
-    <div class="merch-img-wrapper"><img src="${img}"></div>
-    <div class="merch-meta">
-        <span>COLLECTION 01</span>
-        <h3>${name}</h3>
-    </div>
-</div>`;
-    document.getElementById('admin-output').value = code;
+    panel.classList.add('hidden');
+    panel.style.display = 'none';
 }

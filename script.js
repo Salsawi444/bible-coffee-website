@@ -139,6 +139,8 @@ function updateLocations() {
 async function checkSlots() {
     const location = document.getElementById('location').value;
     const statusText = document.getElementById('slot-status-text');
+    const submitBtn = document.querySelector('#regForm button[type="submit"]');
+    const btnText = document.getElementById('btn-text');
 
     if (!location) return;
     statusText.innerHTML = `<span style="opacity: 0.5;">SCANNING TABLE CAPACITY...</span>`;
@@ -150,9 +152,26 @@ async function checkSlots() {
         const available = 10 - booked;
 
         if (available <= 0) {
-            statusText.innerHTML = `<span class="counter-full">[ TABLE FULL ]</span> <a href="mailto:info@bibleandcoffee.com?subject=Waitlist:%20${location}" style="color: #FCA311; text-decoration: underline; font-size: 10px;">CONTACT FOR OVERRIDE</a>`;
+            // TABLE FULL STATE
+            statusText.innerHTML = `<span class="counter-full">[ TABLE AT MAXIMUM CAPACITY ]</span>`;
+            btnText.innerText = "TABLE FULL - CONTACT FOR WAITLIST";
+            
+            // Change button behavior: instead of submitting, it sends them to Contact
+            submitBtn.onclick = (e) => {
+                e.preventDefault();
+                showSection('contact'); // Jump to the contact section
+            };
+            submitBtn.style.background = "#333";
+            submitBtn.style.color = "#FCA311";
         } else {
+            // TABLE AVAILABLE STATE
             statusText.innerHTML = `<span class="counter-glow">[ ${available} / 10 SEATS REMAINING ]</span>`;
+            btnText.innerText = "RESERVE YOUR SEAT";
+            
+            // Restore original behavior
+            submitBtn.onclick = null; 
+            submitBtn.style.background = "#FCA311";
+            submitBtn.style.color = "black";
         }
     } catch (error) {
         statusText.innerText = "CONNECTION ACTIVE. PROCEED.";

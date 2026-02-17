@@ -53,7 +53,26 @@ function resetToHome() {
 
 /* --- 3. VIDEO ENGINE --- */
 function openVideo(id) {
-    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+    const overlay = document.createElement('div');
+    overlay.style = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9); display: flex; align-items: center;
+        justify-content: center; z-index: 10000; cursor: pointer;
+    `;
+    
+    // The Video Box
+    overlay.innerHTML = `
+        <div style="width: 90%; max-width: 900px; aspect-ratio: 16/9;">
+            <iframe width="100%" height="100%" 
+                src="https://www.youtube.com/embed/${id}?autoplay=1" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+            <p style="color: white; text-align: center; margin-top: 15px; font-family: sans-serif;">Click anywhere to close</p>
+        </div>
+    `;
+
+    overlay.onclick = () => overlay.remove();
+    document.body.appendChild(overlay);
 }
 
 /* --- 4. FORM & SEAT COUNTER LOGIC --- */

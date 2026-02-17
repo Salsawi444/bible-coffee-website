@@ -575,10 +575,94 @@
       if(element) element.classList.add('active');
     }
 
-    // Placeholder functions for form logic
-    function updateCities() { console.log('Update cities'); }
-    function updateLocations() { console.log('Update locations'); }
-    function checkSlots() { console.log('Check slots'); }
+    // THE LOGIC CORE FOR DROPDOWNS
+    const worldData = {
+        "Ethiopia": {
+            "Addis Ababa": ["The Cup (Bole Atlas)", "Tomoca (Piassa)", "Galani (Summit)", "Bole Lemi"],
+            "Hawassa": ["Ker-Awud International"]
+        },
+        "Kenya": {
+            "Nairobi": ["CJ's (Kilimani)", "Java House (Westlands)", "Artcaffe (Karen)"]
+        },
+        "UAE": {
+            "Dubai": ["Arabica (Dubai Mall)", "The Sum of Us"]
+        },
+        "United Kingdom": {
+            "London": ["Monmouth (Borough Market)", "Ozone (Shoreditch)"]
+        },
+        "USA": {
+            "Dallas": ["Ascension (Design District)"],
+            "New York": ["Devocion (Williamsburg)"]
+        },
+        "South Africa": {
+            "Johannesburg": ["Father Coffee (Rosebank)"]
+        },
+        "Sweden": {
+            "Stockholm": ["Drop Coffee (Södermalm)"]
+        },
+        "Nigeria": {
+            "Lagos": ["Art Cafe (Victoria Island)"]
+        }
+    };
+
+    function updateCities() {
+        const countrySel = document.getElementById('country');
+        const citySel = document.getElementById('city');
+        const locSel = document.getElementById('location');
+        const statusText = document.getElementById('slot-status-text');
+        
+        // Reset Logic
+        citySel.innerHTML = '<option value="" disabled selected></option>';
+        locSel.innerHTML = '<option value="" disabled selected></option>';
+        
+        const selectedCountry = countrySel.value;
+        
+        if (selectedCountry && worldData[selectedCountry]) {
+            const cities = Object.keys(worldData[selectedCountry]);
+            cities.forEach(city => {
+                const opt = document.createElement('option');
+                opt.value = city;
+                opt.textContent = city.toUpperCase();
+                citySel.appendChild(opt);
+            });
+        }
+        statusText.innerHTML = '<span style="color: #666; font-family: \'Oswald\'; font-size: 10px; letter-spacing: 4px;">AWAITING SELECTION...</span>';
+    }
+
+    function updateLocations() {
+        const countrySel = document.getElementById('country');
+        const citySel = document.getElementById('city');
+        const locSel = document.getElementById('location');
+        
+        // Reset Logic
+        locSel.innerHTML = '<option value="" disabled selected></option>';
+        
+        const selectedCountry = countrySel.value;
+        const selectedCity = citySel.value;
+        
+        if (selectedCountry && selectedCity && worldData[selectedCountry][selectedCity]) {
+            const locations = worldData[selectedCountry][selectedCity];
+            locations.forEach(loc => {
+                const opt = document.createElement('option');
+                opt.value = loc;
+                opt.textContent = loc.toUpperCase();
+                locSel.appendChild(opt);
+            });
+        }
+    }
+
+    function checkSlots() {
+        const statusText = document.getElementById('slot-status-text');
+        const btnText = document.getElementById('btn-text');
+        
+        // Simulation of checking database
+        statusText.innerHTML = '<span style="color: #FCA311; font-family: \'Oswald\'; font-size: 10px; letter-spacing: 4px; animation: pulse 1s infinite;">CHECKING AVAILABILITY...</span>';
+        
+        setTimeout(() => {
+            const slots = Math.floor(Math.random() * 5) + 1; // Random slots 1-5
+            statusText.innerHTML = `<span style="color: #4CAF50; font-family: 'Oswald'; font-size: 10px; letter-spacing: 4px;">${slots} SEATS REMAINING FOR THIS TABLE</span>`;
+        }, 1000);
+    }
   </script>
 </body>
 </html>

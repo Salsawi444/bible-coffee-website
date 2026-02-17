@@ -709,11 +709,12 @@ nav {
 /* Update your CSS with this */
 .sermon-grid {
     display: grid;
-    /* This creates a grid that automatically adds columns as needed */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 400px)); 
-    gap: 30px;
-    padding: 40px 20px;
-    justify-content: center; /* This centers the cards on desktop */
+    /* This forces the videos to stay small and form a row */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limits how wide the whole section can get */
+    margin: 0 auto;    /* Centers the section on the screen */
 }
 
 .sermon-card-premium {

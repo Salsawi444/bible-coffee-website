@@ -616,16 +616,18 @@
     });
 </script>
 
-  <div id="admin-trigger" onclick="toggleAdminPanel()" style="position: fixed; bottom: 0; right: 0; width: 20px; height: 20px; cursor: default; z-index: 99999; opacity: 0;"></div>
-
-<div id="admin-panel" class="hidden" style="position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 100000; padding: 40px; overflow-y: auto; font-family: 'Inter', sans-serif;">
+  <div class="footer-admin-link" style="text-align: center; padding-bottom: 20px;">
+    <button onclick="secureAccess()" style="background: none; border: none; color: rgba(255,255,255,0.1); font-family: 'Oswald'; font-size: 10px; letter-spacing: 3px; cursor: pointer; transition: 0.4s;" onmouseover="this.style.color='#FCA311'" onmouseout="this.style.color='rgba(255,255,255,0.1)'">
+        — TERMINAL ACCESS —
+    </button>
+<div id="admin-panel" class="hidden" style="position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 100000; padding: 40px; overflow-y: auto; font-family: 'Inter', sans-serif; display: none;">
     <div style="max-width: 1000px; margin: 0 auto;">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #FCA311; padding-bottom: 20px; margin-bottom: 40px;">
             <h2 style="font-family: 'Oswald'; color: #FCA311; letter-spacing: 5px;">COMMAND CENTER</h2>
             <button onclick="toggleAdminPanel()" style="background: none; border: 1px solid #444; color: white; padding: 10px 20px; cursor: pointer; font-size: 10px; letter-spacing: 2px;">TERMINATE SESSION</button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
             <div style="background: #0a0a0a; border: 1px solid #222; padding: 25px;">
                 <h3 style="color: #FCA311; font-family: 'Oswald'; margin-bottom: 15px;">MAGAZINE FORGE</h3>
                 <input type="text" id="mag-issue" placeholder="ISSUE NO (e.g. 05)" style="width: 100%; background: #111; border: 1px solid #333; color: white; padding: 10px; margin-bottom: 10px;">
@@ -655,5 +657,6 @@
         </div>
     </div>
 </div>
+ 
 </body>
 </html>

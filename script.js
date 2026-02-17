@@ -59,7 +59,6 @@ const db = {
 
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
-    // FIX: Added 'sermon', 'events', and 'support' to the tracking list so they can be toggled
    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact-us'];
     
     sections.forEach(sectionId => {
@@ -150,42 +149,35 @@ async function checkSlots() {
         const available = 10 - booked;
 
         if (available <= 0) {
-    statusText.innerHTML = `
-        <span class="counter-full">[ TABLE FULL ]</span> 
-        <a href="javascript:void(0)" onclick="showSection('contact-us')" style="color: #FCA311; text-decoration: underline; font-size: 10px; display: block; margin-top: 10px; letter-spacing: 2px;">
-            REQUEST OVERRIDE ACCESS
-        </a>`;
-}
+            statusText.innerHTML = `
+                <span class="counter-full">[ TABLE FULL ]</span> 
+                <a href="javascript:void(0)" onclick="showSection('contact-us')" style="color: #FCA311; text-decoration: underline; font-size: 10px; display: block; margin-top: 10px; letter-spacing: 2px;">
+                    REQUEST OVERRIDE ACCESS
+                </a>`;
+        } else {
+            statusText.innerHTML = `<span class="counter-glow" style="color: #FCA311; letter-spacing: 2px;">${available} SEATS REMAINING</span>`;
+        }
+    } catch (err) {
+        statusText.innerHTML = `<span style="opacity: 0.5;">CAPACITY OFFLINE</span>`;
+    }
+} // <--- THIS WAS THE MISSING BRACKET THAT BROKE YOUR CODE
 
 function showSuccess() {
     const wrapper = document.querySelector('.premium-form-wrapper');
     
-    // Smooth transition out
     wrapper.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
     wrapper.style.opacity = '0';
     wrapper.style.transform = 'scale(0.98)';
     
     setTimeout(() => {
         wrapper.innerHTML = `
-            <div style="padding: 80px 20px; text-align: center; animation: premiumFadeIn 1.2s ease-out forwards;">
-                <div style="width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, #FCA311, transparent); margin: 0 auto 40px; box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);"></div>
-
-                <h2 style="font-family: 'Inter'; font-weight: 200; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">
-                    RESERVED
-                </h2>
-                
+            <div style="padding: 80px 20px; text-align: center;">
+                <h2 style="font-family: 'Oswald'; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">RESERVED</h2>
                 <p style="font-family: 'Inter'; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; line-height: 2.5; margin-bottom: 40px;">
                     YOUR SEAT HAS BEEN RESERVED.<br>
-                    <span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span>
+                    <span style="color: #FCA311;">WE WILL TEXT YOU SOON.</span>
                 </p>
-
-                <a href="javascript:void(0)" 
-   onclick="window.scrollTo(0, 0); setTimeout(() => { window.location.href = window.location.pathname; }, 100);" 
-   style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;"
-   onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" 
-   onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">
-    BACK TO HOME
-</a>
+                <a href="javascript:void(0)" onclick="location.reload()" style="color: #fff; text-decoration: underline; font-size: 9px; letter-spacing: 2px;">BACK TO HOME</a>
             </div>
         `;
         wrapper.style.opacity = '1';
@@ -195,7 +187,6 @@ function showSuccess() {
 
 /* --- 5. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
-    // A. MENU LOGIC
     const menuBtn = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     if (menuBtn && navLinks) {
@@ -203,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (window.lucide) { lucide.createIcons(); }
 
-    // B. THE CODE JOYSTICK ENGINE (DESKTOP ONLY)
     if (window.innerWidth >= 1024) {
         const title = document.querySelector('.brand-block h1');
         const content = document.querySelector('.brand-block > div');
@@ -214,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (wrapper) wrapper.style.transform = `translateX(${DESKTOP_POS.globalX}px)`;
     }
 
-    // C. FORM SUBMISSION
     const form = document.getElementById('regForm');
     if (form) {
         form.addEventListener("submit", async (e) => {
@@ -223,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btnText.innerHTML = "LOCKING RESERVATION...";
 
             const now = new Date();
-            
             const payload = {
                 "Name": form.elements["Name"].value,
                 "Phone": form.elements["Phone"].value,
@@ -246,10 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     showSuccess();
                     form.reset();
                 } else {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Network error');
                 }
             } catch (err) {
-                alert("Protocol Interrupted. Please check your connection.");
+                alert("Protocol Interrupted. Please check connection.");
                 btnText.innerHTML = "RESERVE YOUR SEAT";
             }
         });

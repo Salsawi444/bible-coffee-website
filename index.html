@@ -409,19 +409,44 @@
               </div>
 
               <div class="input-container border-b border-white/10">
-                 <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-    <option value="" disabled selected></option>
-    <option value="Ethiopia">ETHIOPIA</option>
-    <option value="Kenya">KENYA</option>
-    <option value="Nigeria">NIGERIA</option>
-    <option value="South Africa">SOUTH AFRICA</option>
-    <option value="UAE">UAE</option>
-    <option value="United Kingdom">UNITED KINGDOM</option>
-    <option value="USA">USA</option>
-    <option value="Canada">CANADA</option>
-    <option value="Sweden">SWEDEN</option>
-    <option value="Germany">GERMANY</option>
-</select>
+                  <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+                      <option value="" disabled selected>SELECT COUNTRY</option>
+                      <option value="Ethiopia">ETHIOPIA</option>
+                      <option value="Kenya">KENYA</option>
+                      <option value="Nigeria">NIGERIA</option>
+                      <option value="South Africa">SOUTH AFRICA</option>
+                      <option value="USA">USA</option>
+                  </select>
+                  <label class="ultra-label">Country</label>
+              </div>
+
+              <div class="input-container border-b border-white/10">
+                  <select id="city" name="City" onchange="updateLocations()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+                      <option value="" disabled selected>SELECT CITY</option>
+                  </select>
+                  <label class="ultra-label">City</label>
+              </div>
+
+              <div class="input-container md:col-span-2 border-b border-white/10">
+                  <select id="location" name="Location" onchange="checkSlots()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+                      <option value="" disabled selected>SELECT LOCATION</option>
+                  </select>
+                  <label class="ultra-label">Specific Meeting Point</label>
+              </div>
+
+              <div class="md:col-span-2 mt-12">
+                  <button type="submit" class="max-capacity-btn w-full bg-[#FCA311] py-6 text-black font-['Oswald'] font-bold tracking-[6px] hover:bg-white transition-all">
+                      <span class="btn-shine"></span>
+                      <span id="btn-text" class="relative z-10">RESERVE YOUR SEAT</span>
+                  </button>
+                  <div id="slot-status-text" class="mt-6 text-center">
+                      <span style="color: #FCA311; font-family: 'Oswald'; font-size: 10px; letter-spacing: 4px; opacity: 0.6;">SYSTEM READY</span>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</section>
                   <label class="ultra-label">Country</label>
               </div>
 

@@ -499,7 +499,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <div class="bg-[#0a0a0a] p-10 group border border-white/5 hover:border-[#FCA311]/40 transition-all duration-500 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
+        <div id="city-1" class="bg-[#0a0a0a] p-10 border border-white/5 hover:border-[#FCA311]/40 transition-all duration-500 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
             <div class="absolute top-0 left-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             <div class="flex justify-between items-start mb-10">
                 <span class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">01 // ETH</span>
@@ -513,33 +513,32 @@
             </div>
         </div>
 
-        <div class="bg-[#0a0a0a] p-10 group opacity-40 border border-white/5 relative overflow-hidden">
-            <div class="flex justify-between items-start mb-10">
-                <span class="text-white/30 font-['Oswald'] text-[10px] tracking-[4px]">02 // KEN</span>
-                <span class="text-red-900 text-[9px] border border-red-900/30 px-2 py-0.5 uppercase tracking-widest">Full</span>
-            </div>
-            <h4 class="text-white/40 font-['Oswald'] text-5xl uppercase tracking-tighter mb-2">NAIROBI</h4>
-            <p class="text-white/20 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Westlands Hub</p>
-            <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                <p class="text-white/20 font-['Oswald'] text-xl">10/10</p>
-                <i data-lucide="lock" class="text-white/5" size="16"></i>
-            </div>
-        </div>
-
-        <div class="bg-[#0a0a0a] p-10 group border border-white/5 hover:border-[#FCA311]/40 transition-all duration-500 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
-            <div class="absolute top-0 left-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            <div class="flex justify-between items-start mb-10">
-                <span class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">03 // RSA</span>
-                <span class="text-[#FCA311] text-[9px] border border-[#FCA311]/30 px-2 py-0.5 uppercase tracking-widest font-bold">Active</span>
-            </div>
-            <h4 class="text-white font-['Oswald'] text-5xl uppercase tracking-tighter mb-2 group-hover:text-[#FCA311] transition-colors">JOBURG</h4>
-            <p class="text-white/40 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Sandton Table</p>
-            <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                <p class="text-white font-['Oswald'] text-xl">04<span class="text-[#FCA311] mx-1">/</span>10 <span class="text-white/20 text-[10px] uppercase tracking-widest ml-2">Seats</span></p>
-                <i data-lucide="arrow-up-right" class="text-white/10 group-hover:text-[#FCA311] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
-            </div>
-        </div>
+        <div id="city-2" class="bg-[#0a0a0a] p-10 group opacity-40 border border-white/5 relative overflow-hidden">
+    <div class="flex justify-between items-start mb-10">
+        <span class="text-white/30 font-['Oswald'] text-[10px] tracking-[4px]">02 // KEN</span>
+        <span class="city-status text-red-900 text-[9px] border border-red-900/30 px-2 py-0.5 uppercase tracking-widest">Full</span>
     </div>
+    <h4 class="city-name text-white/40 font-['Oswald'] text-5xl uppercase tracking-tighter mb-2">NAIROBI</h4>
+    <p class="city-location text-white/20 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Westlands Hub</p>
+    <div class="flex justify-between items-end border-t border-white/5 pt-6">
+        <p class="text-white/20 font-['Oswald'] text-xl"><span class="city-seats">10</span>/10</p>
+        <i data-lucide="lock" class="text-white/5" size="16"></i>
+    </div>
+</div>
+
+        <div id="city-3" class="bg-[#0a0a0a] p-10 group border border-white/5 hover:border-[#FCA311]/40 transition-all duration-500 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
+    <div class="absolute top-0 left-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+    <div class="flex justify-between items-start mb-10">
+        <span class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">03 // RSA</span>
+        <span class="city-status text-[#FCA311] text-[9px] border border-[#FCA311]/30 px-2 py-0.5 uppercase tracking-widest font-bold">Active</span>
+    </div>
+    <h4 class="city-name text-white font-['Oswald'] text-5xl uppercase tracking-tighter mb-2 group-hover:text-[#FCA311] transition-colors">JOBURG</h4>
+    <p class="city-location text-white/40 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Sandton Table</p>
+    <div class="flex justify-between items-end border-t border-white/5 pt-6">
+        <p class="text-white font-['Oswald'] text-xl"><span class="city-seats">04</span><span class="text-[#FCA311] mx-1">/</span>10 <span class="text-white/20 text-[10px] uppercase tracking-widest ml-2">Seats</span></p>
+        <i data-lucide="arrow-up-right" class="text-white/10 group-hover:text-[#FCA311] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+    </div>
+</div>
 
     <div style="margin-top: 100px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <div style="width: 40px; height: 1px; background: #FCA311; margin-bottom: 25px; opacity: 0.6;"></div>
@@ -895,6 +894,53 @@
         opacity: 0.7;
     }
   </style>
+
+
+  <script>
+async function syncPlatinumEvents() {
+    // Your specific SheetDB API link
+    const apiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
+    
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+
+        data.forEach((item, index) => {
+            // This targets city-1, city-2, city-3 based on the order in your sheet
+            const card = document.getElementById(`city-${index + 1}`);
+            
+            if (card) {
+                // Update the Name, Location, and Seats
+                if (item.city) card.querySelector('.city-name').innerText = item.city;
+                if (item.location) card.querySelector('.city-location').innerText = item.location;
+                if (item.seats) card.querySelector('.city-seats').innerText = item.seats;
+                
+                // Update Status and Visuals
+                const statusTag = card.querySelector('.city-status');
+                if (statusTag && item.status) {
+                    statusTag.innerText = item.status;
+                    
+                    if (item.status.toLowerCase() === 'full') {
+                        card.style.opacity = "0.5";
+                        statusTag.style.color = "#7f1d1d"; // Deep Red for Full
+                        statusTag.style.borderColor = "rgba(127, 29, 29, 0.3)";
+                    } else {
+                        card.style.opacity = "1";
+                        statusTag.style.color = "#FCA311"; // Platinum Gold for Active
+                        statusTag.style.borderColor = "rgba(252, 163, 17, 0.3)";
+                    }
+                }
+            }
+        });
+        console.log("Platinum Engine: Live Sync Complete.");
+    } catch (error) {
+        console.error("Platinum Engine Error:", error);
+    }
+}
+
+// Initialize on load
+window.addEventListener('DOMContentLoaded', syncPlatinumEvents);
+</script>
 
 </body>
 </html>

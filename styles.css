@@ -929,3 +929,14 @@ nav {
     pointer-events: none;
     z-index: 2;
 }
+
+
+.manifesto-card:hover {
+    background: #080808 !important; /* Subtle lift */
+    box-shadow: inset 0 0 30px rgba(252, 163, 17, 0.05);
+}
+
+.manifesto-card:hover p {
+    color: white !important; /* Text brightens on hover */
+    transition: 0.3s ease;
+}

@@ -818,95 +818,71 @@ nav {
 
 
 /* ============================================================
-   SERMON VAULT - THE PLATINUM STYLE
+   SERMON VAULT - UPDATED TOUCH & MOBILE SUPPORT
    ============================================================ */
 
-/* 1. The Category Spans (The part you asked about) */
+/* 1. Ensure the Category is visible and styled on ALL devices */
 #sermon .category {
     font-size: 11px;
     font-weight: 700;
-    color: #FCA311;           /* Your signature orange/gold */
+    color: #FCA311 !important; /* Forces the color to show */
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    margin-bottom: 6px;       /* Space between category and title */
-    display: block;           /* Puts it on its own line */
-    opacity: 0.9;
+    margin-bottom: 6px;
+    display: block;
+    opacity: 1 !important;    /* Ensure it's not hidden on mobile */
 }
 
-/* 2. The Amharic Titles (h3) */
+/* 2. The Titles */
 #sermon .sermon-details h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 1.25rem;
     color: #ffffff;
     line-height: 1.4;
-    font-weight: 500;
-    margin: 0;
 }
 
-/* 3. The Cinematic Hover Effects */
+/* 3. Handling the Hover/Touch Effects */
 .sermon-poster {
-    overflow: hidden;         /* Keeps the zoom inside the box */
+    overflow: hidden;
     position: relative;
+    border-radius: 8px; /* Smooths the edges on mobile */
 }
 
 .sermon-poster img {
-    transition: transform 0.5s ease; /* Smooth zoom transition */
+    transition: transform 0.4s ease;
     display: block;
     width: 100%;
 }
 
-/* Zoom image and change category color on hover */
-.sermon-card-premium:hover .sermon-poster img {
-    transform: scale(1.08);
-}
-
-.sermon-card-premium:hover .category {
-    color: #ffffff;           /* Flashes white on hover for feedback */
-    transition: 0.3s;
-}
-
-/* 4. Play Button Glow */
-.play-overlay {
-    transition: all 0.3s ease;
-}
-
-.sermon-card-premium:hover .play-overlay {
-    background: rgba(0, 0, 0, 0.4);
-    color: #FCA311;           /* Icon turns gold */
-    transform: scale(1.1);    /* Icon grows slightly */
-}
-
-
-
-/* --- Responsive Grid Layout --- */
-.sermon-cinema-grid {
-    display: grid;
-    gap: 2rem; /* Space between cards */
-    grid-template-columns: 1fr; /* Default: 1 column for mobile */
-}
-
-/* Tablet: 2 columns */
-@media (min-width: 768px) {
-    .sermon-cinema-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* Desktop Hover */
+@media (hover: hover) {
+    .sermon-card-premium:hover .sermon-poster img {
+        transform: scale(1.08);
+    }
+    .sermon-card-premium:hover .category {
+        color: #ffffff !important;
     }
 }
 
-/* Desktop: 3 columns */
-@media (min-width: 1024px) {
-    .sermon-cinema-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* 4. MOBILE SPECIFIC FIXES (The "Active" state) */
+/* This makes the effect trigger when the user touches the card */
+.sermon-card-premium:active .sermon-poster img {
+    transform: scale(0.96); /* Slight shrink effect on touch feels more 'clickable' */
 }
 
-/* Mobile-specific adjustments for text */
-@media (max-width: 640px) {
-    #sermon .sermon-details h3 {
-        font-size: 1.1rem; /* Slightly smaller titles on small phones */
+.sermon-card-premium:active .play-overlay {
+    color: #FCA311;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Force the play button to be visible on mobile since there is no hover */
+@media (max-width: 768px) {
+    .play-overlay {
+        opacity: 1 !important;
+        background: rgba(0, 0, 0, 0.2);
     }
     
-    #sermon {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+    .sermon-details {
+        padding-top: 12px; /* Gives more room on smaller screens */
     }
 }

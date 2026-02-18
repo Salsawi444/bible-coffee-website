@@ -384,3 +384,21 @@ function generateMerchCode() {
 
     outputBox.value = finalCode.trim();
 }
+
+
+function updateGlobalClocks() {
+    const clocks = document.querySelectorAll('.digital-clock');
+    clocks.forEach(clock => {
+        const tz = clock.getAttribute('data-timezone');
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString('en-GB', { // en-GB for 24h format
+            timeZone: tz,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: clock.classList.contains('text-[10px]') ? undefined : '2-digit'
+        });
+        clock.textContent = timeStr;
+    });
+}
+setInterval(updateGlobalClocks, 1000);
+updateGlobalClocks();

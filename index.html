@@ -896,51 +896,6 @@
   </style>
 
 
-  <script>
-async function syncPlatinumEvents() {
-    // Your specific SheetDB API link
-    const apiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
-    
-    try {
-        const response = await fetch(apiURL);
-        const data = await response.json();
-
-        data.forEach((item, index) => {
-            // This targets city-1, city-2, city-3 based on the order in your sheet
-            const card = document.getElementById(`city-${index + 1}`);
-            
-            if (card) {
-                // Update the Name, Location, and Seats
-                if (item.city) card.querySelector('.city-name').innerText = item.city;
-                if (item.location) card.querySelector('.city-location').innerText = item.location;
-                if (item.seats) card.querySelector('.city-seats').innerText = item.seats;
-                
-                // Update Status and Visuals
-                const statusTag = card.querySelector('.city-status');
-                if (statusTag && item.status) {
-                    statusTag.innerText = item.status;
-                    
-                    if (item.status.toLowerCase() === 'full') {
-                        card.style.opacity = "0.5";
-                        statusTag.style.color = "#7f1d1d"; // Deep Red for Full
-                        statusTag.style.borderColor = "rgba(127, 29, 29, 0.3)";
-                    } else {
-                        card.style.opacity = "1";
-                        statusTag.style.color = "#FCA311"; // Platinum Gold for Active
-                        statusTag.style.borderColor = "rgba(252, 163, 17, 0.3)";
-                    }
-                }
-            }
-        });
-        console.log("Platinum Engine: Live Sync Complete.");
-    } catch (error) {
-        console.error("Platinum Engine Error:", error);
-    }
-}
-
-// Initialize on load
-window.addEventListener('DOMContentLoaded', syncPlatinumEvents);
-</script>
-
+ 
 </body>
 </html>

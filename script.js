@@ -49,6 +49,7 @@ const globalData = {
         locations: { "Berlin": ["Mitte Hub", "Kreuzberg Table"] }
     }
 };
+
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];
@@ -79,7 +80,6 @@ function openVideo(id) {
         justify-content: center; z-index: 10000; cursor: pointer;
     `;
     
-    // The Video Box
     overlay.innerHTML = `
         <div style="width: 90%; max-width: 900px; aspect-ratio: 16/9;">
             <iframe width="100%" height="100%" 
@@ -102,12 +102,10 @@ function updateCities() {
     const citySel = document.getElementById('city');
     const selectedCountry = countrySel.value;
     
-    // Reset City and Location dropdowns
     citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
     const locField = document.getElementById('location');
     if(locField) locField.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
     
-    // THE FIX: Find the key in globalData regardless of BIG or small letters
     const countryKey = Object.keys(globalData).find(
         key => key.toLowerCase() === selectedCountry.toLowerCase()
     );
@@ -119,20 +117,23 @@ function updateCities() {
             opt.innerHTML = city.toUpperCase();
             citySel.appendChild(opt);
         });
-    } else {
-        console.log("Country not found in database:", selectedCountry);
     }
 }
 
+/* --- SURGERY FIX: UPDATED updateLocations --- */
 function updateLocations() {
     const country = document.getElementById('country').value;
     const city = document.getElementById('city').value;
     const locSelect = document.getElementById('location');
-    locSelect.innerHTML = '<option value="" disabled selected></option>';
-    if (db[country] && db[country][city]) {
-        db[country][city].forEach(loc => {
+    
+    locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+    
+    // Fix: Accessing globalData instead of undefined 'db'
+    if (globalData[country] && globalData[country].locations[city]) {
+        globalData[country].locations[city].forEach(loc => {
             let opt = document.createElement('option');
-            opt.value = loc; opt.textContent = loc;
+            opt.value = loc; 
+            opt.textContent = loc.toUpperCase();
             locSelect.appendChild(opt);
         });
     }
@@ -159,125 +160,63 @@ async function checkSlots() {
         } else {
             statusText.innerHTML = `<span class="counter-glow">[ ${available} / 10 SEATS REMAINING ]</span>`;
             btnText.innerText = "RESERVE YOUR SEAT";
-            submitBtn.onclick = null; 
+            submitBtn.onclick = null;
             submitBtn.style.background = "#FCA311";
             submitBtn.style.color = "black";
         }
-    } catch (error) { statusText.innerText = "CONNECTION ACTIVE. PROCEED."; }
+    } catch (error) {
+        statusText.innerText = "CONNECTION ACTIVE. PROCEED.";
+    }
 }
 
 function showSuccess() {
     const wrapper = document.querySelector('.premium-form-wrapper');
     wrapper.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-    wrapper.style.opacity = '0';
-    wrapper.style.transform = 'scale(0.98)';
-    setTimeout(() => {
-        wrapper.innerHTML = `<div style="padding: 80px 20px; text-align: center; animation: premiumFadeIn 1.2s ease-out forwards;"><div style="width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, #FCA311, transparent); margin: 0 auto 40px; box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);"></div><h2 style="font-family: 'Inter'; font-weight: 200; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">RESERVED</h2><p style="font-family: 'Inter'; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; line-height: 2.5; margin-bottom: 40px;">YOUR SEAT HAS BEEN RESERVED.<br><span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span></p><a href="javascript:void(0)" onclick="window.scrollTo(0, 0); setTimeout(() => { window.location.href = window.location.pathname; }, 100);" style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;" onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">BACK TO HOME</a></div>`;
-        wrapper.style.opacity = '1';
-        wrapper.style.transform = 'scale(1)';
-    }, 600);
+    wrapper.innerHTML = `
+        <div style="text-align: center; padding: 40px 0;">
+            <i data-lucide="check-circle" style="color: #FCA311; width: 80px; height: 80px; margin: 0 auto 20px;"></i>
+            <h2 class="premium-glitch-title" style="font-size: 2rem;">SUCCESS</h2>
+            <p class="premium-subtitle" style="margin-top: 20px;">YOU HAVE A SEAT AT THE TABLE.</p>
+            <button onclick="resetToHome()" class="max-capacity-btn" style="margin-top: 40px; width: auto; padding: 15px 40px;">RETURN HOME</button>
+        </div>
+    `;
+    lucide.createIcons();
 }
 
-/* --- 5. INITIALIZATION & SUBMISSION --- */
-document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    if (menuBtn && navLinks) { menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); }); }
-    if (window.lucide) { lucide.createIcons(); }
-    if (window.innerWidth >= 1024) {
-        const title = document.querySelector('.brand-block h1');
-        const content = document.querySelector('.brand-block > div');
-        const wrapper = document.querySelector('.brand-block');
-        if (title) title.style.transform = `translateY(${DESKTOP_POS.titleY}px)`;
-        if (content) content.style.transform = `translateY(${DESKTOP_POS.contentY}px)`;
-        if (wrapper) wrapper.style.transform = `translateX(${DESKTOP_POS.globalX}px)`;
-    }
-    const form = document.getElementById('regForm');
-    if (form) {
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const btnText = document.getElementById('btn-text');
-            btnText.innerHTML = "LOCKING RESERVATION...";
-            const now = new Date();
-            const payload = { "Name": form.elements["Name"].value, "Phone": form.elements["Phone"].value, "Email": form.elements["Email"].value, "Country": form.elements["Country"].value, "City": form.elements["City"].value, "Location": form.elements["Location"].value, "Registration Date": now.toLocaleDateString(), "Registration Time": now.toLocaleTimeString() };
-            try {
-                const response = await fetch(API_URL, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) });
-                if (response.ok) { showSuccess(); form.reset(); } else { throw new Error('Network response error'); }
-            } catch (err) { alert("Protocol Interrupted."); btnText.innerHTML = "RESERVE YOUR SEAT"; }
+// Admin Logic for Form Submission
+document.getElementById('regForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const btnText = document.getElementById('btn-text');
+    btn.disabled = true;
+    btnText.innerText = "PROCESSING...";
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    data.Date = new Date().toLocaleString();
+
+    try {
+        const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({data: [data]})
         });
+        if(res.ok) showSuccess();
+    } catch(err) {
+        alert("System Error. Try Again.");
+        btn.disabled = false;
+        btnText.innerText = "RESERVE YOUR SEAT";
     }
 });
 
-/* --- 6. PLATINUM ADMIN CORE --- */
-function secureAccess() {
-    const secretKey = "GOLD77";
-    const entry = prompt("ENTER ACCESS PROTOCOL:");
-    if (entry === secretKey) {
-        const panel = document.getElementById('admin-panel');
-        panel.classList.remove('hidden');
-        panel.style.display = 'block';
-    } else if (entry !== null) { alert("ACCESS DENIED."); }
-}
-
-function toggleAdminPanel() {
-    const panel = document.getElementById('admin-panel');
-    panel.classList.add('hidden');
-    panel.style.display = 'none';
-}
-
-function copyAdminCode() {
-    const output = document.getElementById('admin-output');
-    if(!output.value) { alert("Nothing to copy!"); return; }
-    output.select();
-    document.execCommand('copy');
-    alert("CODE SECURED.");
-}
-
-/* --- 7. ADMIN GENERATOR TEMPLATES --- */
-function generateBatchMagCode() {
-    const issues = document.querySelectorAll('.mag-batch-issue');
-    const imgs = document.querySelectorAll('.mag-batch-img');
-    const pdfs = document.querySelectorAll('.mag-batch-pdf');
-    let finalCode = "\n";
-    let count = 0;
-
-    issues.forEach((el, i) => {
-        const issueVal = el.value.trim();
-        const imgVal = imgs[i].value.trim();
-        const pdfVal = pdfs[i].value.trim();
-
-        if(issueVal && imgVal && pdfVal) {
-            count++;
-            finalCode += `
-<div class="magazine-card" onclick="window.open('${pdfVal}', '_blank')" style="cursor: pointer;">
-    <div class="magazine-image-wrapper">
-        <img src="${imgVal}" alt="Issue ${issueVal}">
-    </div>
-    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE ${issueVal}</p>
-        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-    </div>
-</div>\n`;
-        }
-    });
-
-    document.getElementById('admin-output').value = finalCode;
-}
-
-function generateVidCode() {
-    const rawUrl = document.getElementById('vid-url').value;
-    const title = document.getElementById('vid-title').value;
-    const category = document.getElementById('vid-category') ? document.getElementById('vid-category').value : "FRIDAY SERMON";
-    
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = rawUrl.match(regExp);
-    
-    if (match && match[2].length == 11) {
-        const videoId = match[2];
-        // This generates the EXACT code that fits perfectly in your Cinema Grid
-        document.getElementById('admin-output').value = `
-<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
+// Admin Panel Tool
+function generateVideoCode() {
+    const url = document.getElementById('sermon-url').value;
+    const title = document.getElementById('sermon-title').value;
+    const category = document.getElementById('sermon-cat').value;
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    if(videoId) {
+        document.getElementById('admin-output').value = `<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
     <div class="sermon-poster">
         <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${title}">
         <div class="play-overlay"><i data-lucide="play-circle"></i></div>
@@ -300,8 +239,18 @@ function generateMerchCode() {
         <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
     </div>
     <div class="merch-meta" style="margin-top: 15px;">
-        <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 2px;">COLLECTION 01</span>
-        <h3 style="font-family: 'Oswald'; color: white; margin: 5px 0; text-transform: uppercase;">${name}</h3>
+        <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">NEW DROP</span>
+        <h3 style="font-family: 'Oswald'; color: white; margin-top: 5px; font-size: 14px; letter-spacing: 2px;">${name.toUpperCase()}</h3>
     </div>
 </div>`;
 }
+
+// Initial Run
+document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.onclick = () => navLinks.classList.toggle('active-menu');
+    }
+});

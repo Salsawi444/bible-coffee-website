@@ -81,13 +81,6 @@ const globalData = {
             "Dallas": ["DEEP ELLUM", "FRISCO"],
             "Houston": ["DOWNTOWN", "THE HEIGHTS"],
             "New York": ["MANHATTAN", "BROOKLYN"]
-
-             "Canada": {
-        cities: ["Toronto", "Montrial", "Regiana"],
-        locations: {
-            "Toronto": ["Down town"],
-            "Montrial": ["DOWNTOWN"],
-            "Regina": ["DOWNTOWN"]
         }
     },
     "UAE": {
@@ -383,49 +376,4 @@ function generateMerchCode() {
 </div>`;
 
     outputBox.value = finalCode.trim();
-}
-
-
-function updateGlobalClocks() {
-    const clocks = document.querySelectorAll('.digital-clock');
-    clocks.forEach(clock => {
-        const tz = clock.getAttribute('data-timezone');
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString('en-GB', { // en-GB for 24h format
-            timeZone: tz,
-            hour: '2-digit',
-            minute: '2-digit',
-            second: clock.classList.contains('text-[10px]') ? undefined : '2-digit'
-        });
-        clock.textContent = timeStr;
-    });
-}
-setInterval(updateGlobalClocks, 1000);
-updateGlobalClocks();
-
-
-function showSection(sectionId, btn) {
-    // 1. Hide ALL sections
-    const sections = document.querySelectorAll('.section-container');
-    sections.forEach(s => {
-        s.classList.add('hidden');
-        s.style.display = 'none';
-    });
-
-    // 2. Show the TARGET section
-    const target = document.getElementById(sectionId);
-    if (target) {
-        target.classList.remove('hidden');
-        target.style.display = (sectionId === 'support') ? 'flex' : 'block';
-        window.scrollTo(0, 0);
-    }
-
-    // 3. Update Active Button State
-    const buttons = document.querySelectorAll('.nav-links button');
-    buttons.forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-
-    // 4. Close mobile menu if open
-    const navLinks = document.getElementById('nav-links');
-    if (navLinks) navLinks.classList.remove('active');
 }

@@ -7,53 +7,87 @@ const DESKTOP_POS = {
 
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
 /* --- THE MIGHTY GLOBAL DATA VAULT --- */
+/* --- THE MIGHTY GLOBAL DATA VAULT --- */
 const globalData = {
     "Ethiopia": {
-        "Addis Ababa": ["BOLE", "OLD AIRPORT", "CMC", "PIAZZA", "MEXICO", "SARIS"],
-        "Adama": ["POSTA BET", "FRANSAY", "MEBRAT HAYL"],
-        "Hawassa": ["LAKE SIDE", "PIAZZA HUB", "TABOR"],
-        "Bahir Dar": ["TANA HUB", "DIASPORA ROAD"],
-        "Gondar": ["AZEZO", "PIAZZA"],
-        "Jimma": ["KOCHE", "HERMATO"]
+        cities: ["Addis Ababa", "Adama", "Hawassa", "Bahir Dar", "Gondar", "Jimma"],
+        locations: {
+            "Addis Ababa": ["BOLE", "OLD AIRPORT", "CMC", "PIAZZA", "MEXICO", "SARIS"],
+            "Adama": ["POSTA BET", "FRANSAY", "MEBRAT HAYL"],
+            "Hawassa": ["LAKE SIDE", "PIAZZA HUB", "TABOR"],
+            "Bahir Dar": ["TANA HUB", "DIASPORA ROAD"],
+            "Gondar": ["AZEZO", "PIAZZA"],
+            "Jimma": ["KOCHE", "HERMATO"]
+        }
     },
     "Kenya": {
-        "Nairobi": ["WESTLANDS", "KAREN", "KILIMANI"],
-        "Mombasa": ["NYALI", "OLD TOWN"]
+        cities: ["Nairobi", "Mombasa"],
+        locations: {
+            "Nairobi": ["WESTLANDS", "KAREN", "KILIMANI"],
+            "Mombasa": ["NYALI", "OLD TOWN"]
+        }
     },
     "Uganda": {
-        "Kampala": ["KOLOLO", "NAKASERO"],
-        "Entebbe": ["VICTORIA BAY"]
+        cities: ["Kampala", "Entebbe"],
+        locations: {
+            "Kampala": ["KOLOLO", "NAKASERO"],
+            "Entebbe": ["VICTORIA BAY"]
+        }
     },
     "Rwanda": {
-        "Kigali": ["KIMIHRURA", "NYARUTARAMA"]
+        cities: ["Kigali"],
+        locations: {
+            "Kigali": ["KIMIHRURA", "NYARUTARAMA"]
+        }
     },
     "Sweden": {
-        "Stockholm": ["ÖSTERMALM", "SÖDERMALM"],
-        "Gothenburg": ["LINNÉSTADEN"]
+        cities: ["Stockholm", "Gothenburg"],
+        locations: {
+            "Stockholm": ["ÖSTERMALM", "SÖDERMALM"],
+            "Gothenburg": ["LINNÉSTADEN"]
+        }
     },
     "Norway": {
-        "Oslo": ["AKER BRYGGE", "FROGNER"],
-        "Bergen": ["BRYGGEN"]
+        cities: ["Oslo", "Bergen"],
+        locations: {
+            "Oslo": ["AKER BRYGGE", "FROGNER"],
+            "Bergen": ["BRYGGEN"]
+        }
     },
     "Finland": {
-        "Helsinki": ["KAMPPI", "KALLIO"]
+        cities: ["Helsinki"],
+        locations: {
+            "Helsinki": ["KAMPPI", "KALLIO"]
+        }
     },
     "Italy": {
-        "Rome": ["TRASTEVERE", "PRATI"],
-        "Milan": ["BRERA", "NAVIGLI"]
+        cities: ["Rome", "Milan"],
+        locations: {
+            "Rome": ["TRASTEVERE", "PRATI"],
+            "Milan": ["BRERA", "NAVIGLI"]
+        }
     },
     "Netherlands": {
-        "Amsterdam": ["ZUID", "JORDAAN"],
-        "Rotterdam": ["CENTRAAL"]
+        cities: ["Amsterdam", "Rotterdam"],
+        locations: {
+            "Amsterdam": ["ZUID", "JORDAAN"],
+            "Rotterdam": ["CENTRAAL"]
+        }
     },
     "USA": {
-        "Dallas": ["DEEP ELLUM", "FRISCO"],
-        "Houston": ["DOWNTOWN", "THE HEIGHTS"],
-        "New York": ["MANHATTAN", "BROOKLYN"]
+        cities: ["Dallas", "Houston", "New York"],
+        locations: {
+            "Dallas": ["DEEP ELLUM", "FRISCO"],
+            "Houston": ["DOWNTOWN", "THE HEIGHTS"],
+            "New York": ["MANHATTAN", "BROOKLYN"]
+        }
     },
     "UAE": {
-        "Dubai": ["MARINA", "DOWNTOWN"],
-        "Abu Dhabi": ["CORNICHE"]
+        cities: ["Dubai", "Abu Dhabi"],
+        locations: {
+            "Dubai": ["MARINA", "DOWNTOWN"],
+            "Abu Dhabi": ["CORNICHE"]
+        }
     }
 };
 /* --- 2. NAVIGATION & RESET LOGIC --- */

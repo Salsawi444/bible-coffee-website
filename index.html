@@ -635,8 +635,13 @@
               </div>
 
               <div class="input-container border-b border-white/10">
-                  <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-    <option value="" disabled selected>SELECT COUNTRY</option>
+                  <select id="city" name="City" onchange="updateLocations()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+    <option value="" disabled selected>SELECT CITY</option>
+</select>
+
+<select id="location" name="Location" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+    <option value="" disabled selected>SELECT LOCATION</option>
+</select>
     
     <optgroup label="AFRICA">
         <option value="Ethiopia">ETHIOPIA</option>

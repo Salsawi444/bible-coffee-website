@@ -387,3 +387,61 @@ function generateMerchCode() {
 
     outputBox.value = finalCode.trim();
 }
+
+
+/**
+ * THE PLATINUM LIVE-SYNC ENGINE
+ * Fetches Event data from SheetDB and updates the UI
+ */
+async function syncPlatinumEvents() {
+    const apiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
+    
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+
+        data.forEach((item, index) => {
+            // Find the card by ID (city-1, city-2, etc.)
+            const card = document.getElementById(`city-${index + 1}`);
+            
+            if (card) {
+                // Map column data (Checks for both Capital and Lowercase headers)
+                const cityName = item.City || item.city;
+                const locationName = item.Location || item.location;
+                const seatCount = item.Seats || item.seats;
+                const currentStatus = item.Status || item.status;
+
+                // Update text values if the classes exist
+                const nameEl = card.querySelector('.city-name');
+                const locEl = card.querySelector('.city-location');
+                const seatEl = card.querySelector('.city-seats');
+                const statusTag = card.querySelector('.city-status');
+
+                if (nameEl && cityName) nameEl.innerText = cityName;
+                if (locEl && locationName) locEl.innerText = locationName;
+                if (seatEl && seatCount) seatEl.innerText = seatCount;
+                
+                if (statusTag && currentStatus) {
+                    statusTag.innerText = currentStatus;
+                    
+                    // Handle visual "Full" vs "Active" states
+                    if (currentStatus.toLowerCase() === 'full') {
+                        card.style.opacity = "0.4";
+                        statusTag.style.color = "#7f1d1d";
+                        statusTag.style.borderColor = "rgba(127, 29, 29, 0.3)";
+                    } else {
+                        card.style.opacity = "1";
+                        statusTag.style.color = "#FCA311";
+                        statusTag.style.borderColor = "rgba(252, 163, 17, 0.3)";
+                    }
+                }
+            }
+        });
+        console.log("Platinum Engine: Live Sync Complete.");
+    } catch (error) {
+        console.error("Platinum Engine Error:", error);
+    }
+}
+
+// Ensure the sync runs as soon as the page is ready
+document.addEventListener('DOMContentLoaded', syncPlatinumEvents);

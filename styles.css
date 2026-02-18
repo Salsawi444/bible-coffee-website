@@ -940,3 +940,18 @@ nav {
     color: white !important; /* Text brightens on hover */
     transition: 0.3s ease;
 }
+
+
+
+@media (max-width: 768px) {
+    #manifesto {
+        padding: 60px 20px; /* Tighter padding for phones */
+    }
+    #manifesto h2 {
+        font-size: 1.2rem; /* Slightly smaller header for mobile */
+    }
+    .manifesto-card {
+        padding-top: 20px;
+        margin-bottom: 30px; /* Space between cards when stacked */
+    }
+}

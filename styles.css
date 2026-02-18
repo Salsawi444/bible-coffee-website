@@ -146,77 +146,7 @@ function openVideo(id) {
     document.body.appendChild(overlay);
 }
 
-/* --- 1. GLOBAL DATA VAULT (THE SOURCE) --- */
-const globalData = {
-    "Ethiopia": {
-        cities: ["ADDIS ABABA", "DIRE DAWA", "MEKELLE", "GONDAR", "BAHIR DAR", "HAWASSA", "JIMMA", "BISHOFTU"],
-        locations: {
-            "ADDIS ABABA": ["Bole", "Piazza", "Sarbet", "Old Airport", "Kazanchis", "Meskel Square", "Bole Medhanialem", "Entoto Park"],
-            "DIRE DAWA": ["Kezira // Taiwan Market Hub", "Dire Dawa Station Cafe"],
-            "MEKELLE": ["Romanat Square // Coffee House", "Mekelle University Lounge"],
-            "GONDAR": ["Fasil Ghebbi Environs", "Goha Hotel Terrace"],
-            "BAHIR DAR": ["Lake Tana Waterfront", "Kuriftu Resort Cafe"],
-            "HAWASSA": ["Lake View Drive", "Haile Resort Lounge"],
-            "JIMMA": ["Coffee Birthplace Hub", "Central Jimma Hotel"],
-            "BISHOFTU": ["Kuriftu Lake Terrace", "Liesak Sanctuary"]
-        }
-    },
-    "Canada": {
-        cities: ["TORONTO", "CALGARY", "REGINA", "VANCOUVER"],
-        locations: {
-            "REGINA": ["Royal Saskatchewan Museum", "Wascana Centre // Willow Island", "Legislative Assembly Grounds", "Victoria Park // Downtown Hub"],
-            "TORONTO": ["Distillery District", "CN Tower // 360", "Yorkville // Balzac’s", "High Park // Nature Retreat"],
-            "CALGARY": ["Stephen Avenue Walk", "Calgary Tower // Sky 360", "Prince's Island Park", "Mount Royal // Deville Coffee"],
-            "VANCOUVER": ["Stanley Park Totems", "Granville Island Market", "Gastown Steam Clock"]
-        }
-    },
-    "Germany": {
-        cities: ["FRANKFURT", "BERLIN", "MUNICH", "HAMBURG"],
-        locations: { "FRANKFURT": ["Main Tower // Level 4", "Römerberg Square"] }
-    },
-    "South Africa": {
-        cities: ["JOBURG", "CAPE TOWN", "DURBAN", "PRETORIA"],
-        locations: { "JOBURG": ["Sandton City // Nelson Mandela Square", "Rosebank // Starbucks Reserve", "Maboneng // Arts on Main"] }
-    },
-    "Kenya": {
-        cities: ["NAIROBI", "MOMBASA", "KISUMU"],
-        locations: { "NAIROBI": ["Westlands Hub", "Karen // Giraffe Centre Café", "CBD // Java House"] }
-    }
-    // Add other countries here following the same structure
-};
-
-/* --- 2. THE PLATINUM LIVE-SYNC ENGINE (SHEET TO CARDS) --- */
-async function syncPlatinumEvents() {
-    const eventApiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
-    try {
-        const response = await fetch(eventApiURL);
-        const data = await response.json();
-        for (let i = 1; i <= 3; i++) {
-            const card = document.getElementById(`city-${i}`);
-            if (!data[i - 1]) continue; 
-            const item = data[i - 1]; 
-            if (card) {
-                const cityName = item.City || item.city;
-                const loc = item.Location || item.location;
-                const seats = item.Seats || item.seats;
-                const status = (item.Status || item.status || "").toLowerCase();
-
-                if (cityName) card.querySelector('.city-name').innerText = cityName.toUpperCase();
-                if (loc) card.querySelector('.city-location').innerText = loc;
-                if (seats) card.querySelector('.city-seats').innerText = seats.toString().padStart(2, '0');
-
-                const statusTag = card.querySelector('.city-status');
-                if (statusTag) {
-                    statusTag.innerText = status === 'full' ? 'FULL' : 'ACTIVE';
-                    card.style.opacity = status === 'full' ? "0.4" : "1";
-                    card.style.pointerEvents = status === 'full' ? "none" : "auto";
-                }
-            }
-        }
-    } catch (error) { console.error("Sync Failure:", error); }
-}
-
-/* --- 3. FORM DROPDOWN LOGIC --- */
+/* --- 4. FORM & SEAT COUNTER LOGIC --- */
 const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
 function updateCities() {
@@ -224,10 +154,12 @@ function updateCities() {
     const citySel = document.getElementById('city');
     const selectedCountry = countrySel.value;
     
+    // Reset City and Location dropdowns
     citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
     const locField = document.getElementById('location');
     if(locField) locField.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
     
+    // THE FIX: Find the key in globalData regardless of BIG or small letters
     const countryKey = Object.keys(globalData).find(
         key => key.toLowerCase() === selectedCountry.toLowerCase()
     );
@@ -239,6 +171,8 @@ function updateCities() {
             opt.innerHTML = city.toUpperCase();
             citySel.appendChild(opt);
         });
+    } else {
+        console.log("Country not found in database:", selectedCountry);
     }
 }
 
@@ -249,8 +183,11 @@ function updateLocations() {
     
     const country = countrySel.value;
     const city = citySel.value;
+    
+    // Clear the dropdown
     locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
     
+    // SURGERY FIX: This path matches your globalData vault structure exactly
     if (globalData[country] && globalData[country].locations && globalData[country].locations[city]) {
         globalData[country].locations[city].forEach(loc => {
             let opt = document.createElement('option');
@@ -258,11 +195,16 @@ function updateLocations() {
             opt.textContent = loc.toUpperCase();
             locSelect.appendChild(opt);
         });
+    } else {
+        console.log("No locations found for:", country, city);
     }
-    if (typeof checkSlots === "function") { checkSlots(); }
+    
+    // Run the slot check to update the button
+    if (typeof checkSlots === "function") {
+        checkSlots();
+    }
 }
 
-/* --- 4. CAPACITY & SUCCESS LOGIC (KEEPING YOUR SLICK UI) --- */
 async function checkSlots() {
     const location = document.getElementById('location').value;
     const statusText = document.getElementById('slot-status-text');
@@ -305,12 +247,18 @@ function showSuccess() {
 
 /* --- 5. INITIALIZATION & SUBMISSION --- */
 document.addEventListener('DOMContentLoaded', () => {
-    syncPlatinumEvents(); // Sync cards on load
     const menuBtn = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     if (menuBtn && navLinks) { menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); }); }
     if (window.lucide) { lucide.createIcons(); }
-    
+    if (window.innerWidth >= 1024) {
+        const title = document.querySelector('.brand-block h1');
+        const content = document.querySelector('.brand-block > div');
+        const wrapper = document.querySelector('.brand-block');
+        if (title) title.style.transform = `translateY(${DESKTOP_POS.titleY}px)`;
+        if (content) content.style.transform = `translateY(${DESKTOP_POS.contentY}px)`;
+        if (wrapper) wrapper.style.transform = `translateX(${DESKTOP_POS.globalX}px)`;
+    }
     const form = document.getElementById('regForm');
     if (form) {
         form.addEventListener("submit", async (e) => {
@@ -321,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = { "Name": form.elements["Name"].value, "Phone": form.elements["Phone"].value, "Email": form.elements["Email"].value, "Country": form.elements["Country"].value, "City": form.elements["City"].value, "Location": form.elements["Location"].value, "Registration Date": now.toLocaleDateString(), "Registration Time": now.toLocaleTimeString() };
             try {
                 const response = await fetch(API_URL, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) });
-                if (response.ok) { showSuccess(); form.reset(); } else { throw new Error('Network error'); }
+                if (response.ok) { showSuccess(); form.reset(); } else { throw new Error('Network response error'); }
             } catch (err) { alert("Protocol Interrupted."); btnText.innerHTML = "RESERVE YOUR SEAT"; }
         });
     }
@@ -336,6 +284,20 @@ function secureAccess() {
         panel.classList.remove('hidden');
         panel.style.display = 'block';
     } else if (entry !== null) { alert("ACCESS DENIED."); }
+}
+
+function toggleAdminPanel() {
+    const panel = document.getElementById('admin-panel');
+    panel.classList.add('hidden');
+    panel.style.display = 'none';
+}
+
+function copyAdminCode() {
+    const output = document.getElementById('admin-output');
+    if(!output.value) { alert("Nothing to copy!"); return; }
+    output.select();
+    document.execCommand('copy');
+    alert("CODE SECURED.");
 }
 
 /* --- 7. ADMIN GENERATOR TEMPLATES --- */

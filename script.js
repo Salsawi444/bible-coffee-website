@@ -307,16 +307,25 @@ function generateVidCode() {
     }
 }
 function generateMerchCode() {
-    const name = document.getElementById('merch-name').value;
-    const img = document.getElementById('merch-img').value;
-    if(!name || !img) { alert("Fill all Merch fields."); return; }
-    document.getElementById('admin-output').value = `<div class="merch-item" style="background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); padding: 15px;">
-    <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111;">
-        <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
+    const imgUrl = document.getElementById('merchImg').value;
+    const title = document.getElementById('merchTitle').value;
+    const price = document.getElementById('merchPrice').value;
+
+    // This template now matches the "Kingdom Vault" architecture perfectly
+    const code = `
+<div class="merch-item group">
+    <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05);">
+        <img src="${imgUrl}" 
+             style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
+             onmouseover="this.style.filter='grayscale(0%)'" 
+             onmouseout="this.style.filter='grayscale(100%)'">
     </div>
-    <div class="merch-meta" style="margin-top: 15px;">
-        <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 2px;">COLLECTION 01</span>
-        <h3 style="font-family: 'Oswald'; color: white; margin: 5px 0; text-transform: uppercase;">${name}</h3>
+    <div class="mt-6">
+        <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;">COLLECTION 2026</span>
+        <h4 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">${title}</h4>
+        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px; letter-spacing: 1px;">${price}</p>
     </div>
 </div>`;
+
+    document.getElementById('generatedCode').value = code.trim();
 }

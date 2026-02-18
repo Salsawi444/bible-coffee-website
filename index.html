@@ -352,7 +352,65 @@
 </section>
 
   <section id="support" class="section-container bg-black py-32 px-6 hidden" style="display: none;">
-  <section id="support"
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-24 text-center">
+      <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-8">Protocol of the Family</h2>
+      <h3 class="text-6xl md:text-9xl font-['Oswald'] font-black text-white uppercase leading-[0.85] tracking-tighter mb-12">
+        WE DON'T ASK.<br>WE <span class="text-[#FCA311]">BUILD.</span>
+      </h3>
+      <div class="max-w-2xl mx-auto border-t border-white/10 pt-8">
+        <p class="text-white/60 font-['Inter'] text-lg leading-relaxed italic">
+          "Bible & Coffee is a move of God sustained by those who see the value of a seat at the table. We remove the price tag from the Gospel, so the seeker finds only an open door."
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
+      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
+          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">The Zero-Cost Seat</h4>
+        </div>
+        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
+          Every Friday, across the globe, someone sits in a chair they didn't pay for and drinks coffee they didn't buy—to hear a Word that is priceless. Your stewardship covers the "cost of entry" for the stranger.
+        </p>
+      </div>
+
+      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
+          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">Cultural Infrastructure</h4>
+        </div>
+        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
+          We refuse to let Kingdom media look like an afterthought. We fund the Magazine and the Vault to ensure the most important message on earth has the highest quality aesthetic in the city.
+        </p>
+      </div>
+
+      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
+          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">City Conquest</h4>
+        </div>
+        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
+          Provision fuels the logistics of the "Friday Tour." We are planting tables in unreached urban centers, turning sterile coffee shops into modern-day upper rooms.
+        </p>
+      </div>
+
+      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all flex flex-col justify-center items-center text-center">
+        <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase mb-8">Ready to Supply?</h4>
+        <a href="https://www.buymeacoffee.com/YOUR_LINK" target="_blank" class="max-capacity-btn inline-block w-full">
+            <span class="btn-shine"></span>
+            <span class="relative z-10">PARTNER WITH THE VISION</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-20 text-center">
+      <p class="text-white/20 font-['Oswald'] text-[10px] tracking-[6px] uppercase">No Scavenging. No Pressure. Just Kingdom Supply.</p>
+    </div>
+  </div>
+</section>
+
 <section id="join" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
   <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16">
@@ -543,4 +601,84 @@
   <style>
     /* 1. The Background Atmosphere */
     #sermon {
-        background: radial-gradient(circle at 50% -20%, #1a1a1a 
+        background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #000000 100%) !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 2. Grid Polish - Smooth spacing and perspective */
+    .sermon-cinema-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        perspective: 1000px; /* Preps the area for 3D motion */
+    }
+
+    /* 3. The Card Transformation */
+    .sermon-card-premium {
+        background: #0a0a0a !important;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 4px;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 4. The "Neon Lift" Hover Effect */
+    .sermon-card-premium:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(252, 163, 17, 0.4);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(252, 163, 17, 0.1);
+    }
+
+    /* 5. Image & Play Button Overlay */
+    .sermon-poster {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sermon-poster img {
+        filter: grayscale(40%) contrast(1.1);
+        transition: all 0.6s ease;
+    }
+
+    .sermon-card-premium:hover .sermon-poster img {
+        filter: grayscale(0%) contrast(1);
+        transform: scale(1.1);
+    }
+
+    /* Custom Play Icon Glow */
+    .play-overlay i {
+        color: #FCA311;
+        width: 60px !important;
+        height: 60px !important;
+        filter: drop-shadow(0 0 10px rgba(252, 163, 17, 0.8));
+        transition: transform 0.3s ease;
+    }
+
+    .sermon-card-premium:hover .play-overlay i {
+        transform: scale(1.2);
+    }
+
+    /* 6. Text Typography Upgrade */
+    .sermon-details h3 {
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.5px;
+        font-size: 1.4rem !important;
+        margin-top: 10px !important;
+        color: #eee !important;
+    }
+
+    .sermon-details .category {
+        font-family: 'Oswald' !important;
+        letter-spacing: 3px !important;
+        color: #FCA311 !important;
+        font-size: 0.7rem !important;
+        opacity: 0.7;
+    }
+  </style>
+
+</body>
+</html>

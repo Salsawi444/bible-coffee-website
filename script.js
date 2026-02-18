@@ -9,51 +9,44 @@ const DESKTOP_POS = {
 /* --- THE MIGHTY GLOBAL DATA VAULT --- */
 const globalData = {
     "Ethiopia": {
-        "Addis Ababa": ["BOLE", "OLD AIRPORT", "CMC", "PIAZZA", "MEXICO", "SARIS"],
-        "Adama": ["POSTA BET", "FRANSAY", "MEBRAT HAYL"],
-        "Hawassa": ["LAKE SIDE", "PIAZZA HUB", "TABOR"],
-        "Bahir Dar": ["TANA HUB", "DIASPORA ROAD"],
-        "Gondar": ["AZEZO", "PIAZZA"],
-        "Jimma": ["KOCHE", "HERMATO"]
+        cities: ["Addis Ababa", "Nazreth", "Hawassa", "Bahir Dar", "Dire Dawa", "Gondar", "Jimma", "Mekelle", "Dessie"],
+        locations: { "Addis Ababa": ["Bole Atlas (The Cup)", "Kazanchis", "Old Airport", "Sarbet", "CMC", "Piyassa"] }
     },
     "Kenya": {
-        "Nairobi": ["WESTLANDS", "KAREN", "KILIMANI"],
-        "Mombasa": ["NYALI", "OLD TOWN"]
+        cities: ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],
+        locations: { "Nairobi": ["Westlands Hub", "Karen Table", "Kilimani Coffee Shop", "CBD Central"] }
     },
-    "Uganda": {
-        "Kampala": ["KOLOLO", "NAKASERO"],
-        "Entebbe": ["VICTORIA BAY"]
+    "South Africa": {
+        cities: ["Johannesburg", "Cape Town", "Pretoria", "Durban", "Port Elizabeth"],
+        locations: { "Johannesburg": ["Sandton Table", "Soweto Hub", "Braamfontein Vault"] }
     },
-    "Rwanda": {
-        "Kigali": ["KIMIHRURA", "NYARUTARAMA"]
-    },
-    "Sweden": {
-        "Stockholm": ["ÖSTERMALM", "SÖDERMALM"],
-        "Gothenburg": ["LINNÉSTADEN"]
-    },
-    "Norway": {
-        "Oslo": ["AKER BRYGGE", "FROGNER"],
-        "Bergen": ["BRYGGEN"]
-    },
-    "Finland": {
-        "Helsinki": ["KAMPPI", "KALLIO"]
-    },
-    "Italy": {
-        "Rome": ["TRASTEVERE", "PRATI"],
-        "Milan": ["BRERA", "NAVIGLI"]
-    },
-    "Netherlands": {
-        "Amsterdam": ["ZUID", "JORDAAN"],
-        "Rotterdam": ["CENTRAAL"]
+    "Nigeria": {
+        cities: ["Lagos", "Abuja", "Port Harcourt", "Ibadan"],
+        locations: { "Lagos": ["Lekki Phase 1", "Ikeja Hub", "Victoria Island"] }
     },
     "USA": {
-        "Dallas": ["DEEP ELLUM", "FRISCO"],
-        "Houston": ["DOWNTOWN", "THE HEIGHTS"],
-        "New York": ["MANHATTAN", "BROOKLYN"]
+        cities: ["New York", "Dallas", "Washington DC", "Los Angeles", "Atlanta", "Chicago", "Houston", "Seattle", "Minneapolis"],
+        locations: { "Dallas": ["Frisco Hub", "Downtown Dallas", "Plano Table"], "New York": ["Manhattan Vault", "Brooklyn Table"] }
+    },
+    "United Kingdom": {
+        cities: ["London", "Manchester", "Birmingham", "Leeds", "Glasgow", "Liverpool"],
+        locations: { "London": ["Shoreditch Terminal", "Southwark Coffee", "Camden Hub", "Greenwich"] }
     },
     "UAE": {
-        "Dubai": ["MARINA", "DOWNTOWN"],
-        "Abu Dhabi": ["CORNICHE"]
+        cities: ["Dubai", "Abu Dhabi", "Sharjah"],
+        locations: { "Dubai": ["Downtown Dubai Hub", "Marina Table", "Business Bay"] }
+    },
+    "Canada": {
+        cities: ["Toronto", "Vancouver", "Ottawa", "Montreal", "Calgary"],
+        locations: { "Toronto": ["Downtown Core", "North York Table"] }
+    },
+    "Sweden": {
+        cities: ["Stockholm", "Gothenburg", "Malmö", "Uppsala"],
+        locations: { "Stockholm": ["City Center Vault", "Södermalm Coffee"] }
+    },
+    "Germany": {
+        cities: ["Berlin", "Frankfurt", "Munich", "Hamburg"],
+        locations: { "Berlin": ["Mitte Hub", "Kreuzberg Table"] }
     }
 };
 /* --- 2. NAVIGATION & RESET LOGIC --- */

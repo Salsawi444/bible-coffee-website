@@ -89,7 +89,17 @@ const globalData = {
             "Dubai": ["MARINA", "DOWNTOWN"],
             "Abu Dhabi": ["CORNICHE"]
         }
-    }
+    },
+
+    "Canada": {
+        cities: ["Toronto", "Vancouver", "Regina"],
+        locations: {
+            "Toronto": ["DOWNTOWN", "NORTH YORK", "MISSISSAUGA"],
+            "Vancouver": ["KITSILANO", "RICHMOND"],
+            "Regina": ["WASCANA CENTER", "SASKATCHEWAN MUSEUM"]
+        }
+    
+     }
 };
 /* --- 2. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {

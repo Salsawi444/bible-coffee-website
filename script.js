@@ -81,6 +81,13 @@ const globalData = {
             "Dallas": ["DEEP ELLUM", "FRISCO"],
             "Houston": ["DOWNTOWN", "THE HEIGHTS"],
             "New York": ["MANHATTAN", "BROOKLYN"]
+
+             "Canada": {
+        cities: ["Toronto", "Montrial", "Regiana"],
+        locations: {
+            "Toronto": ["Down town"],
+            "Montrial": ["DOWNTOWN"],
+            "Regina": ["DOWNTOWN"]
         }
     },
     "UAE": {

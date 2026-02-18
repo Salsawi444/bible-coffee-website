@@ -183,31 +183,27 @@ function updateCities() {
 }
 
 function updateLocations() {
-    const countrySel = document.getElementById('country');
-    const citySel = document.getElementById('city');
-    const locSelect = document.getElementById('location');
+    const city = document.getElementById('city').value;
+    const locationSelect = document.getElementById('location');
     
-    const country = countrySel.value;
-    const city = citySel.value;
-    
-    // Clear the dropdown
-    locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-    
-    // SURGERY FIX: This path matches your globalData vault structure exactly
-    if (globalData[country] && globalData[country].locations && globalData[country].locations[city]) {
-        globalData[country].locations[city].forEach(loc => {
-            let opt = document.createElement('option');
-            opt.value = loc;
-            opt.textContent = loc.toUpperCase();
-            locSelect.appendChild(opt);
+    locationSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+
+    const locations = {
+        "ADDIS ABABA": ["Bole Atlas // The Cup"],
+        "FRANKFURT": ["Main Tower // Level 4"],
+        "JOBURG": ["Sandton Table"],
+        "NAIROBI": ["Westlands Hub"],
+        "STOCKHOLM": ["Södermalm Coffee Lab"],
+        "DUBAI": ["Downtown Roast"],
+        "DALLAS": ["Deep Ellum Coffee"],
+        "NEW YORK": ["Manhattan Table"]
+    };
+
+    if (locations[city]) {
+        locations[city].forEach(locName => {
+            let option = new Option(locName, locName);
+            locationSelect.add(option);
         });
-    } else {
-        console.log("No locations found for:", country, city);
-    }
-    
-    // Run the slot check to update the button
-    if (typeof checkSlots === "function") {
-        checkSlots();
     }
 }
 

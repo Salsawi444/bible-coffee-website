@@ -149,132 +149,224 @@ function openVideo(id) {
 /* --- 4. FORM & SEAT COUNTER LOGIC --- */
 const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
+/**
+ * THE PLATINUM LIVE-SYNC ENGINE & GLOBAL ARCHITECTURE
+ * Final Build [2026-02-19]
+ */
+
+// Global Configuration
+const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
+const DESKTOP_POS = { titleY: 0, contentY: 0, globalX: 0 }; // Default safety values
+
+/* --- 1. FORM LOGIC: COUNTRY -> CITY --- */
 function updateCities() {
-    const countrySel = document.getElementById('country');
-    const citySel = document.getElementById('city');
-    const selectedCountry = countrySel.value;
-    
-    // Reset City and Location dropdowns
-    citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
-    const locField = document.getElementById('location');
-    if(locField) locField.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-    
-    // THE FIX: Find the key in globalData regardless of BIG or small letters
-    const countryKey = Object.keys(globalData).find(
-        key => key.toLowerCase() === selectedCountry.toLowerCase()
-    );
+    const country = document.getElementById('country').value;
+    const citySelect = document.getElementById('city');
+    citySelect.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
 
-    if (countryKey && globalData[countryKey]) {
-        globalData[countryKey].cities.forEach(city => {
-            let opt = document.createElement('option');
-            opt.value = city;
-            opt.innerHTML = city.toUpperCase();
-            citySel.appendChild(opt);
+    const cityMap = {
+        "Ethiopia": ["ADDIS ABABA", "DIRE DAWA", "MEKELLE", "GONDAR", "BAHIR DAR", "HAWASSA", "JIMMA", "BISHOFTU"],
+        "Canada": ["TORONTO", "CALGARY", "REGINA", "VANCOUVER"],
+        "Germany": ["FRANKFURT", "BERLIN", "MUNICH", "HAMBURG"],
+        "South Africa": ["JOBURG", "CAPE TOWN", "DURBAN", "PRETORIA"],
+        "Kenya": ["NAIROBI", "MOMBASA", "KISUMU"],
+        "USA": ["DALLAS", "NEW YORK", "LOS ANGELES", "CHICAGO"],
+        "UAE": ["DUBAI", "ABU DHABI"],
+        "Uganda": ["KAMPALA"],
+        "Rwanda": ["KIGALI"],
+        "Sweden": ["STOCKHOLM"],
+        "Norway": ["OSLO"],
+        "Finland": ["HELSINKI"],
+        "Italy": ["ROME", "MILAN"],
+        "Netherlands": ["AMSTERDAM"]
+    };
+
+    if (cityMap[country]) {
+        cityMap[country].forEach(city => {
+            citySelect.add(new Option(city, city));
         });
-    } else {
-        console.log("Country not found in database:", selectedCountry);
     }
 }
 
+/* --- 2. FORM LOGIC: CITY -> LOCATION --- */
 function updateLocations() {
-    const countrySel = document.getElementById('country');
-    const citySel = document.getElementById('city');
-    const locSelect = document.getElementById('location');
-    
-    const country = countrySel.value;
-    const city = citySel.value;
-    
-    // Clear the dropdown
-    locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-    
-    // SURGERY FIX: This path matches your globalData vault structure exactly
-    if (globalData[country] && globalData[country].locations && globalData[country].locations[city]) {
-        globalData[country].locations[city].forEach(loc => {
-            let opt = document.createElement('option');
-            opt.value = loc;
-            opt.textContent = loc.toUpperCase();
-            locSelect.appendChild(opt);
+    const city = document.getElementById('city').value;
+    const locationSelect = document.getElementById('location');
+    locationSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+
+    const locationMap = {
+        // ETHIOPIA (8 Major Locations for Addis)
+        "ADDIS ABABA": [
+            "Bole Atlas // The Cup", 
+            "Piazza // Tomoca Coffee", 
+            "Sarbet // Shala Park", 
+            "Old Airport // Kaldi's HQ", 
+            "Kazanchis // Jupiter Terrace", 
+            "Meskel Square // Hyatt Regency Loft", 
+            "Bole Medhanialem // Edelweiss", 
+            "Entoto Park // Viewing Deck"
+        ],
+        "DIRE DAWA": ["Kezira // Taiwan Market Hub", "Dire Dawa Station Cafe"],
+        "MEKELLE": ["Romanat Square // Coffee House", "Mekelle University Lounge"],
+        "GONDAR": ["Fasil Ghebbi Environs", "Goha Hotel Terrace"],
+        "BAHIR DAR": ["Lake Tana Waterfront", "Kuriftu Resort Cafe"],
+        "HAWASSA": ["Lake View Drive", "Haile Resort Lounge"],
+        "JIMMA": ["Coffee Birthplace Hub", "Central Jimma Hotel"],
+        "BISHOFTU": ["Kuriftu Lake Terrace", "Liesak Sanctuary"],
+
+        // CANADA
+        "REGINA": [
+            "Royal Saskatchewan Museum", 
+            "Wascana Centre // Willow Island", 
+            "Legislative Assembly Grounds", 
+            "Victoria Park // Downtown Hub"
+        ],
+        "TORONTO": ["Distillery District", "CN Tower // 360", "Yorkville // Balzac’s", "High Park // Nature Retreat"],
+        "CALGARY": ["Stephen Avenue Walk", "Calgary Tower // Sky 360", "Prince's Island Park", "Mount Royal // Deville Coffee"],
+        "VANCOUVER": ["Stanley Park Totems", "Granville Island Market", "Gastown Steam Clock"],
+
+        // GERMANY & RSA
+        "FRANKFURT": ["Main Tower // Level 4", "Römerberg Square"],
+        "JOBURG": ["Sandton City // Nelson Mandela Square", "Rosebank // Starbucks Reserve", "Maboneng // Arts on Main"],
+        
+        // KENYA
+        "NAIROBI": ["Westlands Hub", "Karen // Giraffe Centre Café", "CBD // Java House"]
+    };
+
+    if (locationMap[city]) {
+        locationMap[city].forEach(loc => {
+            locationSelect.add(new Option(loc, loc));
         });
-    } else {
-        console.log("No locations found for:", country, city);
     }
+}
+
+/* --- 3. THE PLATINUM LIVE-SYNC ENGINE --- */
+async function syncPlatinumEvents() {
+    // Specifically targets the 'Events' sheet tab
+    const eventApiURL = `${API_URL}?sheet=Events`;
     
-    // Run the slot check to update the button
-    if (typeof checkSlots === "function") {
-        checkSlots();
+    try {
+        console.log("Platinum Engine: Initiating Sync...");
+        const response = await fetch(eventApiURL);
+        const data = await response.json();
+
+        // Loop through the 3 UI cards
+        for (let i = 1; i <= 3; i++) {
+            const card = document.getElementById(`city-${i}`);
+            // Safety check: ensure data exists for this row
+            if (!data[i - 1]) continue; 
+            
+            const item = data[i - 1]; 
+
+            if (card) {
+                const cityName = item.City || item.city;
+                const loc = item.Location || item.location;
+                const seats = item.Seats || item.seats;
+                const status = (item.Status || item.status || "").toLowerCase();
+
+                // Update text if data exists
+                if (cityName) card.querySelector('.city-name').innerText = cityName.toUpperCase();
+                if (loc) card.querySelector('.city-location').innerText = loc;
+                if (seats) card.querySelector('.city-seats').innerText = seats.toString().padStart(2, '0');
+
+                // Update Status & Visuals
+                const statusTag = card.querySelector('.city-status');
+                if (statusTag) {
+                    statusTag.innerText = status === 'full' ? 'FULL' : 'ACTIVE';
+                    
+                    if (status === 'full') {
+                        card.style.opacity = "0.4";
+                        card.style.pointerEvents = "none";
+                        statusTag.style.color = "#7f1d1d";
+                        statusTag.style.borderColor = "rgba(127, 29, 29, 0.3)";
+                    } else {
+                        card.style.opacity = "1";
+                        card.style.pointerEvents = "auto";
+                        statusTag.style.color = "#FCA311";
+                        statusTag.style.borderColor = "rgba(252, 163, 17, 0.3)";
+                    }
+                }
+            }
+        }
+        console.log("Platinum Engine: Live Sync Complete.");
+    } catch (error) {
+        console.error("Platinum Engine Error:", error);
     }
 }
 
-async function checkSlots() {
-    const location = document.getElementById('location').value;
-    const statusText = document.getElementById('slot-status-text');
-    const submitBtn = document.querySelector('#regForm button[type="submit"]');
-    const btnText = document.getElementById('btn-text');
-    if (!location) return;
-    statusText.innerHTML = `<span style="opacity: 0.5;">SCANNING TABLE CAPACITY...</span>`;
-    try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        const booked = data.filter(entry => entry.Location === location).length;
-        const available = 10 - booked;
-        if (available <= 0) {
-            statusText.innerHTML = `<span class="counter-full">[ TABLE AT MAXIMUM CAPACITY ]</span>`;
-            btnText.innerText = "TABLE FULL - CONTACT FOR WAITLIST";
-            submitBtn.onclick = (e) => { e.preventDefault(); showSection('contact'); };
-            submitBtn.style.background = "#333";
-            submitBtn.style.color = "#FCA311";
-        } else {
-            statusText.innerHTML = `<span class="counter-glow">[ ${available} / 10 SEATS REMAINING ]</span>`;
-            btnText.innerText = "RESERVE YOUR SEAT";
-            submitBtn.onclick = null; 
-            submitBtn.style.background = "#FCA311";
-            submitBtn.style.color = "black";
-        }
-    } catch (error) { statusText.innerText = "CONNECTION ACTIVE. PROCEED."; }
-}
-
-function showSuccess() {
-    const wrapper = document.querySelector('.premium-form-wrapper');
-    wrapper.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-    wrapper.style.opacity = '0';
-    wrapper.style.transform = 'scale(0.98)';
-    setTimeout(() => {
-        wrapper.innerHTML = `<div style="padding: 80px 20px; text-align: center; animation: premiumFadeIn 1.2s ease-out forwards;"><div style="width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, #FCA311, transparent); margin: 0 auto 40px; box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);"></div><h2 style="font-family: 'Inter'; font-weight: 200; font-size: 22px; letter-spacing: 12px; color: #fff; margin-bottom: 20px; text-transform: uppercase;">RESERVED</h2><p style="font-family: 'Inter'; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; line-height: 2.5; margin-bottom: 40px;">YOUR SEAT HAS BEEN RESERVED.<br><span style="color: #FCA311; opacity: 0.9;">WE WILL TEXT YOU SOON.</span></p><a href="javascript:void(0)" onclick="window.scrollTo(0, 0); setTimeout(() => { window.location.href = window.location.pathname; }, 100);" style="font-family: 'Inter'; font-size: 9px; letter-spacing: 4px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; transition: 0.3s;" onmouseover="this.style.borderColor='#FCA311'; this.style.color='#FCA311'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='#fff'">BACK TO HOME</a></div>`;
-        wrapper.style.opacity = '1';
-        wrapper.style.transform = 'scale(1)';
-    }, 600);
-}
-
-/* --- 5. INITIALIZATION & SUBMISSION --- */
+/* --- 4. INITIALIZATION & SUBMISSION HANDLER --- */
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Run the Sync immediately
+    syncPlatinumEvents();
+
+    // 2. Menu Toggle
     const menuBtn = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    if (menuBtn && navLinks) { menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); }); }
+    if (menuBtn && navLinks) { 
+        menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active-menu'); }); 
+    }
+
+    // 3. Icons
     if (window.lucide) { lucide.createIcons(); }
+
+    // 4. Desktop Positioning (Safety Check)
     if (window.innerWidth >= 1024) {
         const title = document.querySelector('.brand-block h1');
         const content = document.querySelector('.brand-block > div');
         const wrapper = document.querySelector('.brand-block');
+        
+        // Only apply if elements exist
         if (title) title.style.transform = `translateY(${DESKTOP_POS.titleY}px)`;
         if (content) content.style.transform = `translateY(${DESKTOP_POS.contentY}px)`;
         if (wrapper) wrapper.style.transform = `translateX(${DESKTOP_POS.globalX}px)`;
     }
+
+    // 5. Form Submission Logic
     const form = document.getElementById('regForm');
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
             const btnText = document.getElementById('btn-text');
-            btnText.innerHTML = "LOCKING RESERVATION...";
+            if(btnText) btnText.innerHTML = "LOCKING RESERVATION...";
+            
             const now = new Date();
-            const payload = { "Name": form.elements["Name"].value, "Phone": form.elements["Phone"].value, "Email": form.elements["Email"].value, "Country": form.elements["Country"].value, "City": form.elements["City"].value, "Location": form.elements["Location"].value, "Registration Date": now.toLocaleDateString(), "Registration Time": now.toLocaleTimeString() };
+            const payload = { 
+                "Name": form.elements["Name"].value, 
+                "Phone": form.elements["Phone"].value, 
+                "Email": form.elements["Email"].value, 
+                "Country": form.elements["Country"].value, 
+                "City": form.elements["City"].value, 
+                "Location": form.elements["Location"].value, 
+                "Registration Date": now.toLocaleDateString(), 
+                "Registration Time": now.toLocaleTimeString() 
+            };
+            
             try {
-                const response = await fetch(API_URL, { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) });
-                if (response.ok) { showSuccess(); form.reset(); } else { throw new Error('Network response error'); }
-            } catch (err) { alert("Protocol Interrupted."); btnText.innerHTML = "RESERVE YOUR SEAT"; }
+                const response = await fetch(API_URL, { 
+                    method: "POST", 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ data: [payload] }) 
+                });
+                
+                if (response.ok) { 
+                    // Assume showSuccess() is defined in your HTML script tag or you can alert
+                    if (typeof showSuccess === "function") {
+                        showSuccess();
+                    } else {
+                        alert("Reservation Locked. Welcome to the Table.");
+                    }
+                    form.reset(); 
+                    if(btnText) btnText.innerHTML = "RESERVE YOUR SEAT";
+                } else { 
+                    throw new Error('Network response error'); 
+                }
+            } catch (err) { 
+                alert("Protocol Interrupted. Please try again."); 
+                if(btnText) btnText.innerHTML = "RESERVE YOUR SEAT"; 
+            }
         });
     }
 });
-
 /* --- 6. PLATINUM ADMIN CORE --- */
 function secureAccess() {
     const secretKey = "GOLD77";

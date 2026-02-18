@@ -150,29 +150,35 @@ function openVideo(id) {
 const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
 function updateCities() {
-    const countrySel = document.getElementById('country');
-    const citySel = document.getElementById('city');
-    const selectedCountry = countrySel.value;
+    const country = document.getElementById('country').value;
+    const citySelect = document.getElementById('city');
     
-    // Reset City and Location dropdowns
-    citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
-    const locField = document.getElementById('location');
-    if(locField) locField.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-    
-    // THE FIX: Find the key in globalData regardless of BIG or small letters
-    const countryKey = Object.keys(globalData).find(
-        key => key.toLowerCase() === selectedCountry.toLowerCase()
-    );
+    // Clear current options
+    citySelect.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
 
-    if (countryKey && globalData[countryKey]) {
-        globalData[countryKey].cities.forEach(city => {
-            let opt = document.createElement('option');
-            opt.value = city;
-            opt.innerHTML = city.toUpperCase();
-            citySel.appendChild(opt);
+    // The City Map - Matching your HTML values exactly
+    const cities = {
+        "Ethiopia": ["ADDIS ABABA"],
+        "Germany": ["FRANKFURT"],
+        "South Africa": ["JOBURG"], // Fixed: Matches "South Africa" with space
+        "Kenya": ["NAIROBI"],
+        "Uganda": ["KAMPALA"],
+        "Rwanda": ["KIGALI"],
+        "Sweden": ["STOCKHOLM"],
+        "Norway": ["OSLO"],
+        "Finland": ["HELSINKI"],
+        "Italy": ["ROME"],
+        "Netherlands": ["AMSTERDAM"],
+        "USA": ["DALLAS", "NEW YORK"],
+        "UAE": ["DUBAI"],
+        "Canada": ["TORONTO"]
+    };
+
+    if (cities[country]) {
+        cities[country].forEach(cityName => {
+            let option = new Option(cityName, cityName);
+            citySelect.add(option);
         });
-    } else {
-        console.log("Country not found in database:", selectedCountry);
     }
 }
 

@@ -273,78 +273,89 @@
 </section>
 
 <section id="events" class="section-container bg-black py-24 px-6 hidden" style="display: none; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
-  <div class="max-w-6xl mx-auto w-full">
-      <div class="mb-20">
+ <section id="events" class="section-container bg-black py-24 px-6 hidden" style="display: none; min-height: 100vh;">
+  <div class="max-w-6xl mx-auto">
+      <div class="mb-16">
           <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-4">The Friday Sequence</h2>
-          <h3 class="text-6xl md:text-8xl font-['Oswald'] font-black text-white uppercase leading-none tracking-tighter">
+          <h3 class="text-6xl md:text-7xl font-['Oswald'] font-black text-white uppercase leading-none tracking-tighter">
               ACTIVE <br><span class="text-[#FCA311]">TABLES.</span>
           </h3>
-          <p class="text-white/30 font-['Playfair_Display'] italic text-2xl mt-8 max-w-xl">
-              "We don't do crowds. We do deep-table fellowship. 10 Seats. One City. No Filter."
+          <p class="text-white/30 font-['Playfair_Display'] italic text-2xl mt-6 max-w-xl">
+              "10 Seats. One City. No Filter."
           </p>
       </div>
 
-      <div class="border-t border-white/10">
-          <div class="group border-b border-white/10 py-10 hover:bg-[#FCA311]/[0.02] transition-all duration-700 cursor-pointer" onclick="showSection('join')">
-              <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                  <div class="flex items-baseline gap-8">
-                      <span class="text-[#FCA311] font-['Oswald'] text-xl opacity-30 group-hover:opacity-100 transition-opacity">01</span>
-                      <div>
-                          <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500">ADDIS ABABA</h4>
-                          <p class="text-white/30 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Protocol: The Cup (Bole Atlas)</p>
-                      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/5">
+          <div class="bg-black p-8 group hover:bg-[#FCA311]/[0.03] transition-all cursor-pointer" onclick="showSection('join')">
+              <div class="flex justify-between items-start mb-4">
+                  <span class="text-[#FCA311] font-['Oswald'] text-xs tracking-widest">01 // ETH</span>
+                  <span class="text-[#FCA311] text-[10px] border border-[#FCA311]/30 px-2 py-1 uppercase">Active</span>
+              </div>
+              <h4 class="text-white font-['Oswald'] text-3xl uppercase tracking-tighter mb-2">ADDIS ABABA</h4>
+              <p class="text-white/40 font-['Inter'] text-[10px] uppercase tracking-widest mb-6">Bole Atlas // The Cup</p>
+              <div class="flex justify-between items-end">
+                  <div>
+                      <p class="text-white/20 text-[9px] uppercase tracking-[3px]">Capacity</p>
+                      <p class="text-white font-['Oswald'] text-lg">07/10 <span class="text-white/30 text-xs">SEATS</span></p>
                   </div>
-                  <div class="flex flex-col items-end gap-2">
-                      <span class="text-[#FCA311] font-['Oswald'] text-sm tracking-[3px]">07/10 SECURED</span>
-                      <div class="h-[1px] w-24 bg-[#FCA311] opacity-20 group-hover:w-40 group-hover:opacity-100 transition-all duration-700"></div>
+                  <i data-lucide="arrow-up-right" class="text-white/10 group-hover:text-[#FCA311] transition-colors"></i>
+              </div>
+          </div>
+
+          <div class="bg-black p-8 group hover:bg-white/[0.02] transition-all opacity-60">
+              <div class="flex justify-between items-start mb-4">
+                  <span class="text-white/30 font-['Oswald'] text-xs tracking-widest">02 // KEN</span>
+                  <span class="text-red-900 text-[10px] border border-red-900/30 px-2 py-1 uppercase">Full</span>
+              </div>
+              <h4 class="text-white/40 font-['Oswald'] text-3xl uppercase tracking-tighter mb-2">NAIROBI</h4>
+              <p class="text-white/20 font-['Inter'] text-[10px] uppercase tracking-widest mb-6">Westlands Hub</p>
+              <div class="flex justify-between items-end">
+                  <div>
+                      <p class="text-white/20 text-[9px] uppercase tracking-[3px]">Capacity</p>
+                      <p class="text-white/40 font-['Oswald'] text-lg">10/10 <span class="text-white/10 text-xs">SEATS</span></p>
                   </div>
               </div>
           </div>
 
-          <div class="group border-b border-white/10 py-10 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-              <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                  <div class="flex items-baseline gap-8">
-                      <span class="text-white/20 font-['Oswald'] text-xl">02</span>
-                      <div>
-                          <h4 class="text-white/40 font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter">NAIROBI</h4>
-                          <p class="text-white/20 font-['Inter'] text-xs tracking-[4px] uppercase mt-2">Status: Full Capacity</p>
-                      </div>
+          <div class="bg-black p-8 group hover:bg-[#FCA311]/[0.03] transition-all cursor-pointer" onclick="showSection('join')">
+              <div class="flex justify-between items-start mb-4">
+                  <span class="text-[#FCA311] font-['Oswald'] text-xs tracking-widest">03 // RSA</span>
+                  <span class="text-[#FCA311] text-[10px] border border-[#FCA311]/30 px-2 py-1 uppercase">Active</span>
+              </div>
+              <h4 class="text-white font-['Oswald'] text-3xl uppercase tracking-tighter mb-2">JOBURG</h4>
+              <p class="text-white/40 font-['Inter'] text-[10px] uppercase tracking-widest mb-6">Sandton Table</p>
+              <div class="flex justify-between items-end">
+                  <div>
+                      <p class="text-white/20 text-[9px] uppercase tracking-[3px]">Capacity</p>
+                      <p class="text-white font-['Oswald'] text-lg">04/10 <span class="text-white/30 text-xs">SEATS</span></p>
                   </div>
-                  <div class="text-right">
-                      <span class="text-red-900 font-['Oswald'] text-xs tracking-[3px] uppercase border border-red-900/30 px-4 py-1">Waitlist Only</span>
-                  </div>
+                  <i data-lucide="arrow-up-right" class="text-white/10 group-hover:text-[#FCA311] transition-colors"></i>
               </div>
           </div>
       </div>
 
-      <div class="mt-16">
-          <h5 class="text-white/20 font-['Oswald'] text-[10px] tracking-[5px] uppercase mb-8">Expanding Horizons // Upcoming Tables</h5>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-y-10 border-l border-white/10 pl-8">
-              <div>
-                  <p class="text-white font-['Oswald'] tracking-widest text-sm">DALLAS, TX</p>
-                  <p class="text-[#FCA311]/50 text-[10px] font-['Inter']">LAUNCHING Q3</p>
-              </div>
-              <div>
-                  <p class="text-white font-['Oswald'] tracking-widest text-sm">LONDON, UK</p>
-                  <p class="text-[#FCA311]/50 text-[10px] font-['Inter']">RECRUITING</p>
-              </div>
-              <div>
-                  <p class="text-white font-['Oswald'] tracking-widest text-sm">STOCKHOLM</p>
-                  <p class="text-[#FCA311]/50 text-[10px] font-['Inter']">Q4 SEQUENCE</p>
-              </div>
-              <div>
-                  <p class="text-white font-['Oswald'] tracking-widest text-sm">DUBAI, UAE</p>
-                  <p class="text-[#FCA311]/50 text-[10px] font-['Inter']">PLANNING</p>
-              </div>
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/5">
+          <div class="opacity-40 hover:opacity-100 transition-opacity">
+              <p class="text-white font-['Oswald'] text-sm tracking-widest">LAGOS, NG</p>
+              <p class="text-[#FCA311] text-[9px] uppercase tracking-widest">Recruiting</p>
+          </div>
+          <div class="opacity-40 hover:opacity-100 transition-opacity">
+              <p class="text-white font-['Oswald'] text-sm tracking-widest">DALLAS, USA</p>
+              <p class="text-[#FCA311] text-[9px] uppercase tracking-widest">Q3 Launch</p>
+          </div>
+          <div class="opacity-40 hover:opacity-100 transition-opacity">
+              <p class="text-white font-['Oswald'] text-sm tracking-widest">LONDON, UK</p>
+              <p class="text-[#FCA311] text-[9px] uppercase tracking-widest">Vetting</p>
+          </div>
+          <div class="opacity-40 hover:opacity-100 transition-opacity">
+              <p class="text-white font-['Oswald'] text-sm tracking-widest">DUBAI, UAE</p>
+              <p class="text-[#FCA311] text-[9px] uppercase tracking-widest">Planning</p>
           </div>
       </div>
 
-      <div class="mt-20 p-10 border border-white/5 bg-white/[0.01] flex flex-col md:flex-row justify-between items-center gap-8">
-          <div class="text-center md:text-left">
-              <h4 class="text-white font-['Oswald'] text-2xl tracking-tighter uppercase italic">Ready to Lead a Friday?</h4>
-              <p class="text-white/30 font-['Inter'] text-xs tracking-[2px] mt-2 uppercase">We are looking for Table Hosts in new cities.</p>
-          </div>
-          <button onclick="showSection('contact')" class="bg-[#FCA311] text-black font-['Oswald'] px-12 py-5 font-bold tracking-[4px] uppercase hover:bg-white transition-all duration-500 text-sm">
+      <div class="mt-16 flex flex-col md:flex-row justify-between items-center p-10 border border-[#FCA311]/20 bg-[#FCA311]/[0.02] gap-6">
+          <p class="text-white font-['Oswald'] text-xl tracking-tighter uppercase italic">Ready to host a Friday in your city?</p>
+          <button onclick="showSection('contact')" class="bg-[#FCA311] text-black font-['Oswald'] px-10 py-4 font-bold tracking-[3px] uppercase hover:bg-white transition-all text-sm">
               HOST A TABLE
           </button>
       </div>

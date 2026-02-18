@@ -940,3 +940,37 @@ nav {
     color: white !important; /* Text brightens on hover */
     transition: 0.3s ease;
 }
+
+
+/* --- THE PLATINUM MANIFESTO UPDATE --- */
+
+/* Architectural Grid Logic */
+.manifesto-card {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.manifesto-card:hover {
+    border-top-color: #FCA311 !important;
+    transform: translateY(-5px);
+}
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    #manifesto {
+        padding: 60px 20px !important; /* Reduces large void on mobile */
+    }
+    
+    #manifesto .manifesto-card {
+        margin-bottom: 40px; /* Adds breathing room when stacked */
+        border-top: 1px solid rgba(252, 163, 17, 0.3); /* Subtle line for every card on mobile */
+    }
+
+    #manifesto h2 {
+        font-size: 1.2rem !important; /* Keeps header sharp on small screens */
+    }
+
+    /* Shrinks the protocol line so it doesn't break the screen width */
+    #manifesto div[style*="flex-grow: 1"] {
+        opacity: 0.2;
+    }
+}

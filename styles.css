@@ -886,3 +886,62 @@ nav {
         padding-top: 12px; /* Gives more room on smaller screens */
     }
 }
+
+
+
+
+/* --- THE PLATINUM ATMOSPHERE LAYER --- */
+
+/* 1. Global Grain Overlay (Textural Depth) */
+#home::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Subtle noise texture */
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 2. Radial Center Glow (Atmospheric Lift) */
+#home {
+    background: radial-gradient(circle at 50% 50%, rgba(252, 163, 17, 0.08) 0%, rgba(0, 0, 0, 1) 80%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 3. Typography Bloom (Hero & Bottom Text) */
+/* This lifts the look without moving a single pixel of alignment */
+#home h1, 
+#home h2, 
+#home p,
+#home .text-xs {
+    text-shadow: 0 0 25px rgba(252, 163, 17, 0.15);
+    position: relative;
+    z-index: 3; /* Ensures text stays above the grain */
+}
+
+/* 4. The Bottom Stage (Vignette) */
+/* Ensures the bottom text has a "pedestal" to sit on */
+.home-bottom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 5. Mobile Optimization */
+@media (max-width: 768px) {
+    #home::after {
+        opacity: 0.1; /* Lighten grain on mobile for clarity */
+    }
+    #home h1 {
+        text-shadow: 0 0 15px rgba(252, 163, 17, 0.2);
+    }
+}

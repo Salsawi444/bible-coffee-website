@@ -307,11 +307,20 @@ function generateVidCode() {
     }
 }
 function generateMerchCode() {
-    const imgUrl = document.getElementById('merchImg').value;
-    const title = document.getElementById('merchTitle').value;
-    const price = document.getElementById('merchPrice').value;
+    console.log("Platinum Generator Triggered..."); // This tells us the button works
+    
+    const imgInput = document.getElementById('merchImg');
+    const titleInput = document.getElementById('merchTitle');
+    const outputBox = document.getElementById('generatedCode');
 
-    // This template now matches the "Kingdom Vault" architecture perfectly
+    if (!imgInput || !titleInput || !outputBox) {
+        console.error("Mighty Code Error: Missing one of the ID elements!");
+        return;
+    }
+
+    const imgUrl = imgInput.value;
+    const title = titleInput.value;
+
     const code = `
 <div class="merch-item group">
     <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05);">
@@ -323,9 +332,9 @@ function generateMerchCode() {
     <div class="mt-6">
         <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;">COLLECTION 2026</span>
         <h4 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">${title}</h4>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px; letter-spacing: 1px;">${price}</p>
+        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px; letter-spacing: 1px;">Limited Drop</p>
     </div>
 </div>`;
 
-    document.getElementById('generatedCode').value = code.trim();
+    outputBox.value = code.trim();
 }

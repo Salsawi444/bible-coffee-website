@@ -797,3 +797,21 @@ nav {
     display: inline-block;
     vertical-align: middle;
 }
+
+/* --- Sermon Section Category Styling --- */
+#sermon .category {
+    font-size: 11px;           /* Small, clean size */
+    font-weight: 700;         /* Bold for readability */
+    color: #FCA311;           /* Matches your orange border theme */
+    text-transform: uppercase; /* Keeps it professional in all caps */
+    letter-spacing: 0.15em;    /* Adds that 'cinematic' spacing */
+    margin-bottom: 4px;       /* Adds a tiny gap above the title */
+    display: block;            /* Ensures it sits on its own line */
+    opacity: 0.9;              /* Slight transparency for a sophisticated feel */
+}
+
+/* Optional: Subtle glow effect on hover for the card */
+.sermon-card-premium:hover .category {
+    color: #fff;               /* Turns white when you hover over the card */
+    transition: color 0.3s ease;
+}

@@ -19,7 +19,7 @@
         <button onclick="showSection('magazine',this)">MAGAZINE</button>
         <button onclick="showSection('merch',this)">MERCH</button>
         <button onclick="showSection('sermon',this)">SERMON</button>
-        <button onclick="showSection('events',this)">EVENTS</button>
+        <button onclick="showSection('<select id="country"s',this)"><select id="country"S</button>
         <button onclick="showSection('support',this)">SUPPORT</button>
         <button onclick="showSection('join',this)">JOIN</button>
         <button onclick="showSection('contact',this)">CONTACT</button>
@@ -482,7 +482,7 @@
       </div>
     </div> </div> </section>
 
-<section id="events" class="section-container bg-black py-24 px-6 hidden" style="display: none; min-height: 100vh;">
+<section id="<select id="country"s" class="section-container bg-black py-24 px-6 hidden" style="display: none; min-height: 100vh;">
   <div class="max-w-6xl mx-auto">
       
     <div class="mb-16">
@@ -633,23 +633,25 @@
           <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 relative z-10">
               <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
                   <input type="text" name="Name" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
-                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Full Name</label>
+                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-<select id="country"s-none uppercase text-xs tracking-widest transition-all">Full Name</label>
               </div>
 
               <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
                   <input type="tel" name="Phone" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
-                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Tel.Number</label>
+                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-<select id="country"s-none uppercase text-xs tracking-widest transition-all">Tel.Number</label>
               </div>
 
               <div class="input-container md:col-span-2 relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
                   <input type="email" name="Email" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
-                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Email Address</label>
+                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-<select id="country"s-none uppercase text-xs tracking-widest transition-all">Email Address</label>
               </div>
 
               <div class="input-container border-b border-white/10">
-                  <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+                 <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
     <option value="" disabled selected>SELECT COUNTRY</option>
     <option value="Ethiopia">ETHIOPIA</option>
+    <option value="Germany">GERMANY</option> 
+    <option value="South Africa">SOUTH AFRICA</option> 
     <option value="Kenya">KENYA</option>
     <option value="Uganda">UGANDA</option>
     <option value="Rwanda">RWANDA</option>

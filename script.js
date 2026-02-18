@@ -394,7 +394,6 @@ function generateMerchCode() {
  * Fetches Event data from SheetDB and updates the UI
  */
 async function syncPlatinumEvents() {
-    // Calling the Events tab via SheetDB API
     const apiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
     
     try {
@@ -402,48 +401,31 @@ async function syncPlatinumEvents() {
         const data = await response.json();
 
         data.forEach((item, index) => {
-            // Find the specific card (city-1, city-2, or city-3)
             const card = document.getElementById(`city-${index + 1}`);
-            
             if (card) {
-                // Get data from your Google Sheet columns
-                // Using || to handle both Capitalized and lowercase headers
+                // Check both Capitalized and lowercase headers
                 const cityName = item.City || item.city;
-                const locationName = item.Location || item.location;
-                const seatCount = item.Seats || item.seats;
-                const currentStatus = item.Status || item.status;
+                const loc = item.Location || item.location;
+                const seats = item.Seats || item.seats;
+                const status = item.Status || item.status;
 
-                // Surgically update the HTML elements inside the card
-                const nameEl = card.querySelector('.city-name');
-                const locEl = card.querySelector('.city-location');
-                const seatEl = card.querySelector('.city-seats');
-                const statusTag = card.querySelector('.city-status');
-
-                if (nameEl && cityName) nameEl.innerText = cityName;
-                if (locEl && locationName) locEl.innerText = locationName;
-                if (seatEl && seatCount) seatEl.innerText = seatCount;
+                if (cityName) card.querySelector('.city-name').innerText = cityName;
+                if (loc) card.querySelector('.city-location').innerText = loc;
+                if (seats) card.querySelector('.city-seats').innerText = seats;
                 
-                if (statusTag && currentStatus) {
-                    statusTag.innerText = currentStatus;
-                    
-                    // Apply visual "Platinum" logic based on status
-                    if (currentStatus.toLowerCase() === 'full') {
-                        card.classList.add('opacity-40');
-                        statusTag.style.color = "#7f1d1d"; // Deep Red
-                        statusTag.style.borderColor = "rgba(127, 29, 29, 0.3)";
+                const statusTag = card.querySelector('.city-status');
+                if (statusTag && status) {
+                    statusTag.innerText = status;
+                    if (status.toLowerCase() === 'full') {
+                        card.style.opacity = "0.4";
+                        statusTag.style.color = "#7f1d1d";
                     } else {
-                        card.classList.remove('opacity-40');
-                        statusTag.style.color = "#FCA311"; // Platinum Gold
-                        statusTag.style.borderColor = "rgba(252, 163, 17, 0.3)";
+                        card.style.opacity = "1";
+                        statusTag.style.color = "#FCA311";
                     }
                 }
             }
         });
-        console.log("Platinum Engine: Live Sync Complete.");
-    } catch (error) {
-        console.error("Platinum Engine Error:", error);
-    }
+    } catch (e) { console.error("Sync error:", e); }
 }
-
-// Kick off the sync when the browser finishes loading the page
 document.addEventListener('DOMContentLoaded', syncPlatinumEvents);

@@ -974,3 +974,8 @@ nav {
         opacity: 0.2;
     }
 }
+
+
+@media (min-width: 769px) {
+    .mobile-only { display: none; }
+}

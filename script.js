@@ -394,6 +394,7 @@ function generateMerchCode() {
  * Fetches Event data from SheetDB and updates the UI
  */
 async function syncPlatinumEvents() {
+    // Calling the Events tab via SheetDB API
     const apiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
     
     try {
@@ -401,17 +402,18 @@ async function syncPlatinumEvents() {
         const data = await response.json();
 
         data.forEach((item, index) => {
-            // Find the card by ID (city-1, city-2, etc.)
+            // Find the specific card (city-1, city-2, or city-3)
             const card = document.getElementById(`city-${index + 1}`);
             
             if (card) {
-                // Map column data (Checks for both Capital and Lowercase headers)
+                // Get data from your Google Sheet columns
+                // Using || to handle both Capitalized and lowercase headers
                 const cityName = item.City || item.city;
                 const locationName = item.Location || item.location;
                 const seatCount = item.Seats || item.seats;
                 const currentStatus = item.Status || item.status;
 
-                // Update text values if the classes exist
+                // Surgically update the HTML elements inside the card
                 const nameEl = card.querySelector('.city-name');
                 const locEl = card.querySelector('.city-location');
                 const seatEl = card.querySelector('.city-seats');
@@ -424,14 +426,14 @@ async function syncPlatinumEvents() {
                 if (statusTag && currentStatus) {
                     statusTag.innerText = currentStatus;
                     
-                    // Handle visual "Full" vs "Active" states
+                    // Apply visual "Platinum" logic based on status
                     if (currentStatus.toLowerCase() === 'full') {
-                        card.style.opacity = "0.4";
-                        statusTag.style.color = "#7f1d1d";
+                        card.classList.add('opacity-40');
+                        statusTag.style.color = "#7f1d1d"; // Deep Red
                         statusTag.style.borderColor = "rgba(127, 29, 29, 0.3)";
                     } else {
-                        card.style.opacity = "1";
-                        statusTag.style.color = "#FCA311";
+                        card.classList.remove('opacity-40');
+                        statusTag.style.color = "#FCA311"; // Platinum Gold
                         statusTag.style.borderColor = "rgba(252, 163, 17, 0.3)";
                     }
                 }
@@ -443,5 +445,5 @@ async function syncPlatinumEvents() {
     }
 }
 
-// Ensure the sync runs as soon as the page is ready
+// Kick off the sync when the browser finishes loading the page
 document.addEventListener('DOMContentLoaded', syncPlatinumEvents);

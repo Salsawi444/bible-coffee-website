@@ -1,900 +1,957 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bible & Coffee | Global</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <nav>
-    <div class="nav-container">
-      <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></i></button>
-      <div id="nav-links" class="nav-links">
-        <button onclick="showSection('home',this)" class="active">HOME</button>
-        <button onclick="showSection('magazine',this)">MAGAZINE</button>
-        <button onclick="showSection('merch',this)">MERCH</button>
-        <button onclick="showSection('sermon',this)">SERMON</button>
-        <button onclick="showSection('events',this)">EVENTS</button>
-        <button onclick="showSection('support',this)">SUPPORT</button>
-        <button onclick="showSection('join',this)">JOIN</button>
-        <button onclick="showSection('contact',this)">CONTACT</button>
-      </div>
-    </div>
-  </nav>
-
-  <div id="home-wrapper">
-    <header id="home" class="hero-container" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
-      <div class="hero-bg-layer"></div>
-      <div class="hero-overlay-layer"></div>
-      <div class="hero-content-layer" style="max-width: 1100px; width: 100%; padding: 0 25px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
-        <div class="brand-block">
-          <h1 style="font-family: 'Oswald', sans-serif; font-weight: 700; margin: 0; line-height: 0.9;">
-            <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">BIBLE &</span>
-            <span class="responsive-title" style="color: white; display: block; text-transform: uppercase;">COFFEE</span>
-            <span class="responsive-title" style="color: #FCA311; display: block; text-transform: uppercase;">
-              FRIDAYS<span class="copyright-mark">©</span>
-            </span>
-          </h1>
-          <div style="border-left: 2px solid #FCA311; padding-left: 20px; margin-top: 30px;">
-          <h2 style="color: #FCA311; font-family: 'Oswald'; font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px;">Thank God It's Friday!</h2>
-            <div style="max-width: 600px;">
-              <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; margin-bottom: 15px; font-style: italic;">More Than a Gathering</h3>
-              <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.6; font-family: 'Inter', sans-serif; font-weight: 300;">
-                Bible & Coffee is a movement of modern believers who choose <span style="color: #FCA311; font-weight: 700;">depth over hype</span>. 
-                In coffee shops, young people gather with open Bibles and open hearts to study scripture and live out the Kingdom in everyday life.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="home-bottom-gradient"></div>
-    </header>
-
-    <div class="hero-marquee" style="background: #000; border-top: 1px solid #111; border-bottom: 1px solid #111; padding: 12px 0; overflow: hidden;">
-    <div class="marquee-content" style="font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 6px; color: white; opacity: 0.4; white-space: nowrap; text-transform: uppercase;">
-        ADDIS ABABA <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        LONDON <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        DALLAS <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        NAIROBI <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        STOCKHOLM <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        JOHANNESBURG <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        DUBAI <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        NEW YORK <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span>
-        ADDIS ABABA <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        LONDON <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        DALLAS <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        NAIROBI <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        STOCKHOLM <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        JOHANNESBURG <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        DUBAI <span class="dot" style="color: #FCA311; margin: 0 15px;">●</span> 
-        NEW YORK
-    </div>
-</div>
-
- <section id="manifesto" style="background: #000; padding: 60px 25px; border-bottom: 1px solid #111;">
-  <div style="max-width: 1100px; margin: 0 auto;">
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 80px;">
-          
-          <div class="manifesto-card" style="border-top: 2px solid #FCA311; padding-top: 25px;">
-              <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">The Word</p>
-              <p style="color: #888; font-size: 0.9rem; font-family: 'Inter'; line-height: 1.6; font-weight: 300;">Understand the Bible simply. Clear. Honest. Real.</p>
-          </div>
-
-          <div class="manifesto-card" style="border-top: 2px solid #FCA311; padding-top: 25px;">
-              <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">The Spirit</p>
-              <p style="color: #888; font-size: 0.9rem; font-family: 'Inter'; line-height: 1.6; font-weight: 300;">Genuine relationship with God. Intimacy over ritual.</p>
-          </div>
-
-          <div class="manifesto-card" style="border-top: 2px solid #FCA311; padding-top: 25px;">
-              <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">The Table</p>
-              <p style="color: #888; font-size: 0.9rem; font-family: 'Inter'; line-height: 1.6; font-weight: 300;">Authentic Community. Real connection, not just attendance.</p>
-          </div>
-
-          <div class="manifesto-card" style="border-top: 2px solid #FCA311; padding-top: 25px;">
-              <p style="color: white; font-family: 'Inter'; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">The Street</p>
-              <p style="color: #888; font-size: 0.9rem; font-family: 'Inter'; line-height: 1.6; font-weight: 300;">Live out faith boldly. Everyday life, not just Sunday.</p>
-          </div>
-      </div>
-
-      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
-          <div style="width: 40px; height: 1px; background: #FCA311; margin-bottom: 25px;"></div>
-          <p style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 4vw, 1.8rem); font-style: italic; opacity: 0.85; line-height: 1.5; max-width: 600px; margin: 0 auto;">
-            "And there is always a seat <br class="mobile-br" style="display: none;">for you at the table."
-          </p>
-      </div>
-  </div>
-</section>
-  </div>
-
-  <section id="magazine" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
-        <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The Magazine</h2>
-        <p class="text-[#FCA311] font-['Inter'] text-sm tracking-widest mt-2">VOLUME 01 // ISSUE 28</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="relative group cursor-pointer" onclick="window.open('magazine28.pdf', '_blank')">
-          <div class="absolute -inset-1 bg-gradient-to-r from-[#FCA311] to-[#b47b00] rounded-sm blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          <div class="relative bg-black rounded-sm overflow-hidden border border-white/10">
-            <img src="megimage.jpeg" alt="Magazine Cover" class="w-full h-auto transform transition duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div class="text-center">
-                  <i data-lucide="external-link" class="text-[#FCA311] mx-auto mb-2" size="32"></i>
-                  <span class="text-white font-['Oswald'] tracking-widest text-sm">OPEN EDITION</span>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="space-y-8">
-          <div>
-            <h3 class="text-white font-['Playfair Display'] text-4xl italic mb-4">Culture, Faith & The Streets</h3>
-            <p class="text-white/60 font-['Inter'] leading-relaxed text-lg">
-              Our latest issue explores the intersection of ancient scripture and modern urban life. 
-              From coffee-shop theology to kingdom streetwear, Issue 28 is a deep dive into the 
-              identity of a new generation.
-            </p>
-          </div>
-          <div class="space-y-4">
-            <div class="flex items-center gap-4 text-white/40">
-              <i data-lucide="check-circle" size="18" class="text-[#FCA311]"></i>
-              <span class="font-['Inter'] text-sm">Exclusive Interviews</span>
-            </div>
-            <div class="flex items-center gap-4 text-white/40">
-              <i data-lucide="check-circle" size="18" class="text-[#FCA311]"></i>
-              <span class="font-['Inter'] text-sm">Biblical Deep Dives</span>
-            </div>
-            <div class="flex items-center gap-4 text-white/40">
-              <i data-lucide="check-circle" size="18" class="text-[#FCA311]"></i>
-              <span class="font-['Inter'] text-sm">Global Movement Stories</span>
-            </div>
-          </div>
-          <a href="magazine28.pdf" target="_blank" class="inline-block bg-[#FCA311] text-black font-['Oswald'] px-10 py-4 tracking-[4px] uppercase font-bold hover:bg-white transition-colors duration-300">
-            Read Full Issue
-          </a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="magazine-journal-grid">
-      <div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/meg19.pdf', '_blank')" style="cursor: pointer;">
-    <div class="magazine-image-wrapper">
-        <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage19.jpg" alt="Issue 19">
-    </div>
-    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE 19</p>
-        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-    </div>
-</div>
-
-<div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/meg20.pdf', '_blank')" style="cursor: pointer;">
-    <div class="magazine-image-wrapper">
-        <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage20.jpg" alt="Issue 20">
-    </div>
-    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE 20</p>
-        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-    </div>
-</div>
-
-<div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/meg21.pdf', '_blank')" style="pointer: cursor;">
-    <div class="magazine-image-wrapper">
-        <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage21.jpg" alt="Issue 21">
-    </div>
-    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE 21</p>
-        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-    </div>
-</div>
-
-<div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/magazine28.pdf', '_blank')" style="cursor: pointer;">
-    <div class="magazine-image-wrapper">
-        <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage.jpeg" alt="Issue Special edition">
-    </div>
-    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE Special edition</p>
-        <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-    </div>
-</div>
-        </div>
-    
-    </div> <div style="width: 100%; text-align: center; margin-top: 80px; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="color: #555; font-family: 'Oswald'; font-size: 10px; letter-spacing: 5px; margin-bottom: 20px;">ACCESS THE FULL ARCHIVE</p>
-        <a href="https://t.me/bunnaqurs" target="_blank" class="telegram-vault-btn">
-            <i data-lucide="send" style="display: inline-block; vertical-align: middle; margin-right: 10px; width: 18px;"></i>
-            JOIN THE TELEGRAM VAULT
-        </a>
-    </div>
-
-      
-  </section>
-
-  <section id="merch" class="section-container bg-[#050505] py-24 px-6 hidden" style="display: none; min-height: 100vh;">
-  <div class="max-w-7xl mx-auto">
-    
-    <div class="mb-16 border-l-4 border-[#FCA311] pl-6 text-left">
-      <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The 2026 Collection</h2>
-      <p class="text-[#FCA311] font-['Inter'] text-xs tracking-[5px] mt-2">LIMITED DROP // KINGDOM CULTURE</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-      <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch1.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-01</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">Identity Tee</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-      <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch2.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-
-
-      <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch3.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-
-
-      <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch4.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-
-       <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch5.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-
-      <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch6.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-
-       <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch7.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-
-       <div class="merch-item group">
-        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.1);">
-          <img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/merch8.jpeg" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-               onmouseover="this.style.filter='grayscale(0%)'" 
-               onmouseout="this.style.filter='grayscale(100%)'">
-        </div>
-        <div class="mt-6">
-          <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">KC-02</span>
-          <h3 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">NEW ITEM NAME</h3>
-          <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px;">Kingdom Supply // 2026</p>
-        </div>
-      </div>
-
-    </div> </div> </section>
-
-  
-<section id="sermon" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-  <div class="max-w-7xl mx-auto">
-    <div class="mb-16 border-l-4 border-[#FCA311] pl-6">
-      <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">Sermon Vault</h2>
-      <p class="text-white/40 font-['Inter'] text-xs tracking-[5px] mt-2">ARCHIVE // KINGDOM KNOWLEDGE</p>
-    </div>
-
-    <div class="sermon-cinema-grid">
-      <div class="sermon-card-premium" onclick="openVideo('wyENOnwpw1rOM4oi')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/KD5Vc8_zpYU/maxresdefault.jpg" alt="Sermon 1">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">ፍቅር ውይስ ምኞት</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('enICXzebBnGwKfIx')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 2">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">ወጣቱ ባለሃብት</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('NrCARZSrDJ4JdzNV')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 3">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">በሰማርያም ሊያልፍ ግድ</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('3nrsBkV81jVrs2Hg')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/uoUSXNjBgAg/maxresdefault.jpg" alt="Sermon4">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">ለውጥና ፈተናው</span>
-          
-        </div>
-      </div>
-
-     
-      <div class="sermon-card-premium" onclick="openVideo('ijWfwA9A9ko1goz-')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/I3WN85ltC4U/maxresdefault.jpg" alt="Sermon 6">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">መንገዱን እናስፋው</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('9kONN5SvLbQ5KAfN')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/etl9690HH18/maxresdefault.jpg" alt="Sermon 7">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">ለምኑ፣ፈልጉ፣አንኳኩ</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('go4lALKd4hQ8O-LM')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/2MzvndTDPK0/maxresdefault.jpg" alt="Sermon 8">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">አትፍረዱ!</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('JCIzT3XNM41XmtmN')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/MRapEQ_a06s/maxresdefault.jpg" alt="Sermon 9">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">አትፍረዱ!</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('cXRHqxhTpm0Q81g_')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/zjFKPKcAFsM/maxresdefault.jpg" alt="Sermon 10">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">እንዴት እንጸልይ?</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('XtV3CTRUMOmRdkD5')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/Z0PBmegbexw/maxresdefault.jpg" alt="Sermon 11">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">እኔ ግን....</span>
-          
-        </div>
-      </div>
-
-      <div class="sermon-card-premium" onclick="openVideo('7ZY6p9Sw9-X8iQD4')">
-        <div class="sermon-poster">
-          <img src="https://img.youtube.com/vi/FNjG_9j7Qew/maxresdefault.jpg" alt="Sermon 12">
-          <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-        </div>
-        <div class="sermon-details">
-          <span class="category">ጨው ለራስህ ስትል ጣፍጥ!</span>
-          
-        </div>
-      </div>
-    </div> </div> </section>
-
-<section id="events" class="section-container bg-black py-24 px-6 hidden" style="display: none; min-height: 100vh;">
-  <div class="max-w-6xl mx-auto">
-      
-    <div class="mb-16">
-        <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-4">The Friday Sequence</h2>
-        <h3 style="font-family: 'Oswald'; font-weight: 900; color: white; text-transform: uppercase; line-height: 0.85; letter-spacing: -2px; font-size: clamp(3rem, 8vw, 5rem);">
-            ONE VISION.<br>
-            <span style="color: #FCA311;">MANY CITIES.</span>
-        </h3>
-        <p style="color: rgba(255,255,255,0.4); font-family: 'Inter'; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 15px; font-weight: 700;">
-            Same day
-        </p>
-        <div style="width: 30px; height: 2px; background: #FCA311; margin-top: 20px;"></div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="bg-[#0a0a0a] p-10 group border border-white/5 hover:border-[#FCA311]/40 transition-all duration-500 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
-            <div class="absolute top-0 left-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            <div class="flex justify-between items-start mb-10">
-                <span class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">01 // ETH</span>
-                <span class="text-[#FCA311] text-[9px] border border-[#FCA311]/30 px-2 py-0.5 uppercase tracking-widest font-bold">Active</span>
-            </div>
-            <h4 class="text-white font-['Oswald'] text-5xl uppercase tracking-tighter mb-2 group-hover:text-[#FCA311] transition-colors">ADDIS ABABA</h4>
-            <p class="text-white/40 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Bole Atlas // The Cup</p>
-            <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                <p class="text-white font-['Oswald'] text-xl">07<span class="text-[#FCA311] mx-1">/</span>10 <span class="text-white/20 text-[10px] uppercase tracking-widest ml-2">Seats</span></p>
-                <i data-lucide="arrow-up-right" class="text-white/10 group-hover:text-[#FCA311] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
-            </div>
-        </div>
-
-        <div class="bg-[#0a0a0a] p-10 group opacity-40 border border-white/5 relative overflow-hidden">
-            <div class="flex justify-between items-start mb-10">
-                <span class="text-white/30 font-['Oswald'] text-[10px] tracking-[4px]">02 // KEN</span>
-                <span class="text-red-900 text-[9px] border border-red-900/30 px-2 py-0.5 uppercase tracking-widest">Full</span>
-            </div>
-            <h4 class="text-white/40 font-['Oswald'] text-5xl uppercase tracking-tighter mb-2">NAIROBI</h4>
-            <p class="text-white/20 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Westlands Hub</p>
-            <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                <p class="text-white/20 font-['Oswald'] text-xl">10/10</p>
-                <i data-lucide="lock" class="text-white/5" size="16"></i>
-            </div>
-        </div>
-
-        <div class="bg-[#0a0a0a] p-10 group border border-white/5 hover:border-[#FCA311]/40 transition-all duration-500 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
-            <div class="absolute top-0 left-0 w-full h-[2px] bg-[#FCA311] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            <div class="flex justify-between items-start mb-10">
-                <span class="text-[#FCA311] font-['Oswald'] text-[10px] tracking-[4px]">03 // RSA</span>
-                <span class="text-[#FCA311] text-[9px] border border-[#FCA311]/30 px-2 py-0.5 uppercase tracking-widest font-bold">Active</span>
-            </div>
-            <h4 class="text-white font-['Oswald'] text-5xl uppercase tracking-tighter mb-2 group-hover:text-[#FCA311] transition-colors">JOBURG</h4>
-            <p class="text-white/40 font-['Inter'] text-[9px] uppercase tracking-[3px] mb-12">Sandton Table</p>
-            <div class="flex justify-between items-end border-t border-white/5 pt-6">
-                <p class="text-white font-['Oswald'] text-xl">04<span class="text-[#FCA311] mx-1">/</span>10 <span class="text-white/20 text-[10px] uppercase tracking-widest ml-2">Seats</span></p>
-                <i data-lucide="arrow-up-right" class="text-white/10 group-hover:text-[#FCA311] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
-            </div>
-        </div>
-    </div>
-
-    <div style="margin-top: 100px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <div style="width: 40px; height: 1px; background: #FCA311; margin-bottom: 25px; opacity: 0.6;"></div>
-        <p style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 4vw, 1.8rem); font-style: italic; opacity: 0.8; line-height: 1.5; max-width: 600px; margin: 0 auto; text-align: center;">
-          "The Global Architecture of Fellowship."
-        </p>
-    </div>
-
-    <div class="mt-20 flex flex-col md:flex-row justify-between items-center p-10 border border-[#FCA311]/20 bg-[#FCA311]/[0.02] gap-6">
-        <div class="text-center md:text-left">
-            <h4 class="text-white font-['Oswald'] text-xl tracking-tighter uppercase italic">Ready to Lead a Friday?</h4>
-            <p class="text-white/30 font-['Inter'] text-[10px] tracking-[2px] mt-1 uppercase">We are looking for Table Hosts in new cities.</p>
-        </div>
-        <button onclick="showSection('contact')" class="bg-[#FCA311] text-black font-['Oswald'] px-10 py-4 font-bold tracking-[3px] uppercase hover:bg-white transition-all text-sm">
-            HOST A TABLE
-        </button>
-    </div>
-
-  </div> 
-</section>
-  <section id="support" class="section-container bg-black py-32 px-6 hidden" style="display: none; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
-  <div class="max-w-7xl mx-auto w-full">
-    <div class="mb-24 text-center">
-      <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-8">Protocol of the Family</h2>
-      <h3 class="text-6xl md:text-9xl font-['Oswald'] font-black text-white uppercase leading-[0.85] tracking-tighter mb-12">
-        ONE VISION.<br><span class="text-[#FCA311]">MANY CITIES.</span>
-      </h3>
-      <div class="max-w-2xl mx-auto border-t border-white/10 pt-8">
-        <p class="text-white/60 font-['Inter'] text-lg leading-relaxed italic">
-          "We are not just gathering; we are building. Bible & Coffee is the architectural blueprint for a new generation of the Church—unfiltered, urban, and deeply rooted."
-        </p>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
-          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">The Zero-Cost Seat</h4>
-        </div>
-        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
-          Every Friday, across the globe, someone sits in a chair they didn't pay for to hear a Word that is priceless. Your stewardship covers the "cost of entry" for the seeker, ensuring the table remains open to all.
-        </p>
-      </div>
-
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
-          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">Cultural Infrastructure</h4>
-        </div>
-        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
-          We refuse to let Kingdom media look like an afterthought. We fund the Magazine and the Vault to ensure the most important message on earth has the highest quality aesthetic in the city.
-        </p>
-      </div>
-
-      <div class="bg-black p-16 group hover:bg-[#FCA311]/[0.02] transition-all">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-10 h-[1px] bg-[#FCA311]"></div>
-          <h4 class="text-white font-['Oswald'] text-2xl tracking-widest uppercase">City Conquest</h4>
-        </div>
-        <p class="text-white/40 font-['Inter'] leading-relaxed mb-8">
-          Provision fuels the logistics of the "Friday Tour." We are planting tables in unreached urban centers, turning sterile coffee shops into modern-day upper rooms.
-        </p>
-      </div>
-
-      <div class="bg-black p-16 flex flex-col justify-center items-center text-center">
-        <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase mb-8">Ready to Supply?</h4>
-        <a href="https://www.buymeacoffee.com/YOUR_LINK" target="_blank" class="max-capacity-btn inline-block w-full py-5 bg-[#FCA311] text-black font-bold font-['Oswald'] tracking-[4px] hover:bg-white transition-all text-sm relative">
-            <span class="btn-shine"></span>
-            PARTNER WITH THE VISION
-        </a>
-      </div>
-    </div>
-
-    <div class="mt-20 text-center">
-      <p class="text-white/20 font-['Oswald'] text-[10px] tracking-[6px] uppercase italic">No Scavenging. No Pressure. Just Kingdom Supply.</p>
-    </div>
-  </div>
-</section>
-<section id="join" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-  <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16">
-          <h2 class="premium-glitch-title" style="font-family: 'Oswald'; font-size: 3.5rem; color: white; letter-spacing: 12px; text-transform: uppercase;">JOIN THE TABLE</h2>
-          <div class="premium-divider" style="height: 2px; width: 80px; background: #FCA311; margin: 25px auto;"></div>
-          <p class="premium-subtitle" style="font-family: 'Inter'; color: #FCA311; letter-spacing: 6px; font-size: 0.85rem; font-weight: 700;">SELECT YOUR CITY & RESERVE YOUR SEAT</p>
-      </div>
-
-      <div class="premium-form-wrapper" style="position: relative; padding: 60px; background: rgba(10,10,10,0.8); border: 1px solid rgba(252,163,17,0.1); backdrop-filter: blur(20px);">
-          <div class="form-glass-overlay"></div>
-          
-          <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 relative z-10">
-              <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
-                  <input type="text" name="Name" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
-                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Full Name</label>
-              </div>
-
-              <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
-                  <input type="tel" name="Phone" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
-                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Tel.Number</label>
-              </div>
-
-              <div class="input-container md:col-span-2 relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
-                  <input type="email" name="Email" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
-                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Email Address</label>
-              </div>
-
-              <div class="input-container border-b border-white/10">
-                  <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-    <option value="" disabled selected>SELECT COUNTRY</option>
-    <option value="Ethiopia">ETHIOPIA</option>
-    <option value="Kenya">KENYA</option>
-    <option value="Uganda">UGANDA</option>
-    <option value="Rwanda">RWANDA</option>
-    <option value="Sweden">SWEDEN</option>
-    <option value="Norway">NORWAY</option>
-    <option value="Finland">FINLAND</option>
-    <option value="Italy">ITALY</option>
-    <option value="Netherlands">NETHERLANDS</option>
-    <option value="USA">USA</option>
-    <option value="UAE">UAE</option>
-    <option value="Canada">CANADA</option>
-</select>
-                  <label class="ultra-label">Country</label>
-              </div>
-
-              <div class="input-container border-b border-white/10">
-                  <select id="city" name="City" onchange="updateLocations()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-                      <option value="" disabled selected>SELECT CITY</option>
-                  </select>
-                  <label class="ultra-label">City</label>
-              </div>
-
-              <div class="input-container md:col-span-2 border-b border-white/10">
-                  <select id="location" name="Location" onchange="checkSlots()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-                      <option value="" disabled selected>SELECT LOCATION</option>
-                  </select>
-                  <label class="ultra-label">Specific Meeting Point</label>
-              </div>
-
-              <div class="md:col-span-2 mt-12">
-                  <button type="submit" class="max-capacity-btn w-full bg-[#FCA311] py-6 text-black font-['Oswald'] font-bold tracking-[6px] hover:bg-white transition-all">
-                      <span class="btn-shine"></span>
-                      <span id="btn-text" class="relative z-10">RESERVE YOUR SEAT</span>
-                  </button>
-                  <div id="slot-status-text" class="mt-6 text-center">
-                      <span style="color: #FCA311; font-family: 'Oswald'; font-size: 10px; letter-spacing: 4px; opacity: 0.6;">SYSTEM READY</span>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
-</section>
-  
-
-  <section id="contact" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-  <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16">
-          <h2 class="premium-glitch-title" style="font-family: 'Oswald'; font-size: 3.5rem; color: white; letter-spacing: 12px; text-transform: uppercase;">CONTACT</h2>
-          <div class="premium-divider" style="height: 2px; width: 80px; background: #FCA311; margin: 25px auto;"></div>
-          <p class="premium-subtitle" style="font-family: 'Inter'; color: #FCA311; letter-spacing: 6px; font-size: 0.85rem; font-weight: 700;">DIRECT LINES TO THE MOVEMENT</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
-          <div class="bg-black p-12 group hover:bg-[#FCA311]/[0.02] transition-all border-r border-white/5">
-              <div class="flex items-center gap-4 mb-6">
-                  <i data-lucide="phone" class="text-[#FCA311]" size="20"></i>
-                  <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase">Telephone</h4>
-              </div>
-              <p class="text-white/40 font-['Inter'] text-xs tracking-[2px] mb-2 uppercase">Global Headquarters</p>
-              <a href="tel:+251911000000" class="text-white font-['Oswald'] text-2xl hover:text-[#FCA311] transition-colors">+251 911 000 000</a>
-          </div>
-
-          <div class="bg-black p-12 group hover:bg-[#FCA311]/[0.02] transition-all">
-              <div class="flex items-center gap-4 mb-6">
-                  <i data-lucide="mail" class="text-[#FCA311]" size="20"></i>
-                  <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase">Digital Correspondence</h4>
-              </div>
-              <p id="waitlist-hook" class="text-white/40 font-['Inter'] text-xs tracking-[2px] mb-2 uppercase">Official Inquiries & Waitlist</p>
-              <a href="mailto:info@bibleandcoffee.com" class="text-white font-['Oswald'] text-2xl hover:text-[#FCA311] transition-colors">info@bibleandcoffee.com</a>
-          </div>
-      </div>
-
-      <div class="mt-16 text-center">
-          <p class="text-white/20 font-['Oswald'] text-[10px] tracking-[6px] uppercase italic">"Response times follow the pace of depth, not the rush of hype."</p>
-      </div>
-  </div>
-</section>
-
-  <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
-    <div class="footer-socials">
-    <a href="https://www.instagram.com/bunnaqurs?igsh=enlqMGVpNDZyb2o=" target="_blank">
-        <i data-lucide="instagram"></i>
-    </a>
-
-    <a href="https://www.facebook.com/bunnaqurs" target="_blank">
-        <i data-lucide="facebook"></i>
-    </a>
-
-    <a href="https://youtube.com/@bunnaqurs?si=k-WgkgWSJ5XD5jXC" target="_blank">
-        <i data-lucide="youtube"></i>
-    </a>
-
-    <a href="https://www.tiktok.com/@bunnaqurs?_r=1&_t=ZS-93sBNztPxFh" target="_blank">
-        <i data-lucide="music-2"></i>
-    </a>
-</div>
-
-    <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center;">
-      <p style="font-family: 'Oswald', sans-serif; font-size: 10px; color: #444; letter-spacing: 4px; text-transform: uppercase;">
-        © 2026 BIBLE & COFFEE FRIDAYS. ALL RIGHTS RESERVED.
-      </p>
-    </div>
-  </footer>
-
-  <div id="admin-panel" class="hidden">
-    <div style="max-width: 800px; margin: 0 auto; padding-bottom: 100px;">
-        
-        <h2 style="font-family: 'Oswald'; color: #FCA311; letter-spacing: 10px; text-align: center; margin-bottom: 40px;">COMMAND CENTER</h2>
-
-        <div class="admin-field-group">
-            <p style="color: #FCA311; font-family: 'Oswald'; letter-spacing: 2px;">LATEST RELEASES FORGE (4 SLOTS)</p>
-            <div id="magazine-batch-inputs" style="margin-bottom: 15px;">
-                <script>
-                    for(let i=1; i<=4; i++) {
-                        document.write(`
-                            <div style="display: grid; grid-template-columns: 0.5fr 1fr 2fr 2fr; gap: 5px; margin-bottom: 5px;">
-                                <span style="color: #666; font-size: 10px; align-self: center;">0${i}</span>
-                                <input type="text" class="mag-batch-issue admin-input-premium" placeholder="ISSUE #" style="margin:0">
-                                <input type="text" class="mag-batch-img admin-input-premium" placeholder="IMG URL" style="margin:0">
-                                <input type="text" class="mag-batch-pdf admin-input-premium" placeholder="PDF URL" style="margin:0">
-                            </div>
-                        `);
-                    }
-                </script>
-            </div>
-            <button class="admin-btn-generate" onclick="generateBatchMagCode()" style="width: 100%; padding: 10px; background: #222; color: #fff; border: 1px solid #444; cursor: pointer;">
-                GENERATE 4-SLOT PREVIEW
-            </button>
-        </div>
-
-        <div class="admin-field-group">
-            <p>VIDEO VAULT</p>
-            <input type="text" id="vid-url" class="admin-input-premium" placeholder="PASTE YOUTUBE LINK">
-            <input type="text" id="vid-title" class="admin-input-premium" placeholder="SERMON TITLE">
-            <button class="admin-btn-generate" onclick="generateVidCode()">GENERATE VIDEO CODE</button>
-        </div>
-
-        <div class="admin-field-group">
-            <p>MERCH MODULE</p>
-            <input type="text" id="merch-name" class="admin-input-premium" placeholder="ITEM NAME">
-            <input type="text" id="merch-img" class="admin-input-premium" placeholder="PASTE IMAGE URL/PATH">
-            <button class="admin-btn-generate" onclick="generateMerchCode()">GENERATE MERCH CODE</button>
-        </div>
-
-        <div style="margin-top: 40px; border-top: 1px solid #222; padding-top: 20px;">
-            <p style="color: #444; font-family: 'Oswald'; font-size: 10px; letter-spacing: 2px;">GENERATED PROTOCOL CODE:</p>
-            <textarea id="admin-output" readonly style="width: 100%; height: 150px; background: #050505; color: #00ff00; border: 1px solid #222; font-family: monospace; padding: 15px; margin-top: 10px;"></textarea>
-            
-            <button onclick="copyAdminCode()" style="width: 100%; padding: 15px; background: #222; color: white; border: none; font-family: 'Oswald'; letter-spacing: 3px; cursor: pointer; margin-top: 10px;">COPY TO CLIPBOARD</button>
-            
-            <button onclick="toggleAdminPanel()" style="width: 100%; padding: 10px; background: transparent; color: #444; border: none; font-family: 'Oswald'; cursor: pointer; margin-top: 20px;">CLOSE TERMINAL</button>
-        </div>
-    </div>
-</div>
-
-<div style="text-align: center; padding: 40px 0; background: #000;">
-    <button onclick="secureAccess()" style="background: none; border: none; color: #111; font-family: 'Oswald'; font-size: 10px; letter-spacing: 5px; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#111'">
-        — TERMINAL ACCESS —
-    </button>
-</div>
-
-  <script src="script.js"></script>
-  <script>lucide.createIcons();</script>
-
-  <style>
-    /* 1. The Background Atmosphere */
-    #sermon {
-        background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #000000 100%) !important;
-        position: relative;
-        overflow: hidden;
+/* --- 1. CORE ARCHITECTURE --- */
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: #000000; 
+    color: #ffffff; 
+    overflow-x: hidden; 
+    line-height: 1.6; 
+}
+
+/* --- 2. NAVIGATION --- */
+nav { 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 10000; 
+    background: rgba(0,0,0,0.9); 
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    padding: 20px 0; 
+}
+
+.nav-container { 
+    max-width: 1200px; 
+    margin: auto; 
+    display: flex; 
+    justify-content: flex-end; 
+    padding: 0 25px; 
+    align-items: center; 
+}
+
+.nav-links { display: flex; gap: 30px; } 
+
+.nav-links button { 
+    color: rgba(255,255,255,0.5); 
+    font-size: 14px; 
+    font-weight: 700; 
+    letter-spacing: 4px; 
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    transition: 0.4s; 
+}
+
+.nav-links button.active { color: #FCA311; }
+
+.mobile-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    color: #FCA311; 
+    cursor: pointer; 
+    padding: 10px; 
+    z-index: 10001; 
+}
+
+@media(max-width:768px) {
+    .mobile-toggle { display: block; }
+    .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        width: 100%; 
+        background: #000; 
+        padding: 40px; 
+        gap: 35px; 
+        border-bottom: 1px solid #1a1a1a; 
+        text-align: center; 
     }
+    .nav-links.active-menu { display: flex !important; }
+}
 
-    /* 2. Grid Polish - Smooth spacing and perspective */
+/* --- 3. HERO & BRANDING --- */
+.hero-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; background-color: black; }
+.hero-bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('hero-family.jpg'); background-size: cover; background-position: center center; z-index: 0; }
+.hero-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 60%, #000000 100%); }
+
+.hero-content-layer { 
+    position: relative; 
+    z-index: 10; 
+    padding: 100px 25px 0; 
+    max-width: 1200px; 
+    width: 100%; 
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.responsive-title { 
+    font-family: 'Oswald', sans-serif; 
+    font-size: clamp(3rem, 12vw, 6.5rem) !important; 
+    line-height: 0.85; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+}
+
+.copyright-mark {
+    font-size: 0.2em;
+    position: relative;
+    display: inline-block; 
+    color: white;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    top: -5rem; 
+    left: 0rem;
+}
+
+@media (max-width: 768px) {
+    .copyright-mark {
+        top: -2.5rem; 
+        left: 0rem;
+        font-size: 0.22em; 
+    }
+}
+
+/* --- 4. MARQUEE --- */
+.hero-marquee { width: 100%; overflow: hidden; background: #000; padding: 20px 0; border-bottom: 1px solid #111; }
+.marquee-content { display: inline-block; white-space: nowrap; font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px #FCA311; animation: marquee 40s linear infinite; letter-spacing: 2px; }
+.marquee-content .dot { color: #FCA311; -webkit-text-stroke: 0; margin: 0 20px; font-size: 0.8rem; vertical-align: middle; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- 5. MAXIMUM DESIGN CAPACITY (JOIN SECTION) --- */
+.section-container { display: none; padding: 100px 0; min-height: 100vh; background: #000; }
+#home-wrapper { width: 100%; background: #000; }
+
+.premium-glitch-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    letter-spacing: 12px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.premium-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FCA311, transparent);
+    margin: 25px auto;
+}
+
+.premium-subtitle {
+    color: #FCA311;
+    font-family: 'Inter';
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 6px;
+}
+
+.premium-form-wrapper {
+    position: relative;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 40px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.form-glass-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at top right, rgba(252, 163, 17, 0.05), transparent);
+    pointer-events: none;
+}
+
+.input-container { position: relative; width: 100%; }
+
+.ultra-input {
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 25px 0 10px 0 !important;
+    color: white !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    transition: all 0.4s ease;
+    border-radius: 0 !important;
+}
+
+/* Fix for Select dropdown visibility */
+select.ultra-input option {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+.ultra-label {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    color: rgba(255,255,255,0.3);
+    font-family: 'Oswald';
+    letter-spacing: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.ultra-input:focus ~ .ultra-label,
+.ultra-input:not(:placeholder-shown) ~ .ultra-label {
+    top: 0;
+    color: #FCA311;
+    font-size: 10px;
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FCA311;
+    transition: width 0.4s ease;
+}
+
+.ultra-input:focus ~ .input-line { width: 100%; }
+
+.max-capacity-btn {
+    position: relative;
+    width: 100%;
+    background: white;
+    color: black;
+    padding: 22px;
+    font-family: 'Oswald';
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.max-capacity-btn:hover {
+    background: #FCA311;
+    letter-spacing: 8px;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(252, 163, 17, 0.2);
+}
+
+.max-capacity-btn:active {
+    transform: scale(0.98);
+    letter-spacing: 10px;
+    transition: 0.1s;
+    background: #FCA311;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.5s;
+}
+
+.max-capacity-btn:hover .btn-shine { left: 150%; transition: 0.6s; }
+
+/* LIVE COUNTER SLIK STYLES */
+#slot-status-text {
+    display: block;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.counter-glow {
+    color: #FCA311;
+    text-shadow: 0 0 15px rgba(252, 163, 17, 0.6);
+    font-weight: 800;
+}
+
+.counter-full {
+    color: #ff4444;
+    text-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+    animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseRed {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* --- 6. MERCH & SERMONS --- */
+.merch-vault-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.hidden { display: none !important; }
+
+/* --- 7. SUPPORT & STEWARDSHIP --- */
+.steward-card {
+    background: #080808;
+    border: 1px solid #1a1a1a;
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.support-action-btn {
+    display: inline-block;
+    background: #FCA311;
+    color: #000;
+    padding: 24px 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Oswald';
+    letter-spacing: 2px;
+}
+
+/* --- 8. MOBILE OPTIMIZATION & JOYSTICKS --- */
+@media (max-width: 768px) {
+    nav { background: transparent !important; backdrop-filter: none !important; border-bottom: none !important; position: absolute !important; }
+    
+    .nav-container { padding-right: 10px !important; }
+
+    .hero-container { height: 100vh !important; min-height: -webkit-fill-available; }
+    .hero-bg-layer { background-position: center top !important; background-size: 100% auto !important; background-repeat: no-repeat; height: 100vh !important; }
+
+    /* JOYSTICK CONTROLS */
+    .brand-block h1 { position: relative !important; top: 40px !important; left: -20px !important; }
+    .brand-block div[style*="border-left"] { position: relative !important; top: 20px !important; left: 0px !important; }
+
+    .premium-form-wrapper { padding: 40px 20px !important; margin: 0 10px; }
+    .premium-glitch-title { letter-spacing: 6px !important; }
+    
+    .merch-vault-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
+}
+
+/* --- 9. FOOTER & MISC --- */
+.footer-socials {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 35px !important;
+    padding: 30px 0 !important;
+}
+
+.footer-socials a { color: #ffffff; transition: 0.3s; }
+.footer-socials a:hover { color: #FCA311 !important; transform: translateY(-3px); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* PREMIUM MERCH GRID */
+.merch-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.merch-item {
+    background: #0a0a0a;
+    border: 1px solid rgba(252, 163, 17, 0.05);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.merch-item:hover {
+    border-color: #FCA311;
+    transform: translateY(-5px);
+}
+
+.merch-img-wrapper {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: #111;
+}
+
+.merch-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(20%);
+}
+
+.merch-item:hover .merch-img-wrapper img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.merch-meta {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.merch-meta span {
+    color: #FCA311;
+    font-family: 'Oswald';
+    font-size: 10px;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.merch-meta h3 {
+    color: white;
+    font-family: 'Oswald';
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* MOBILE MINEFIELD PROTECTION */
+@media (max-width: 768px) {
+    .merch-grid-premium {
+        grid-template-columns: repeat(2, 1fr); /* 2 items side-by-side on phone */
+        gap: 15px;
+    }
+    .merch-meta h3 {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* SERMON CINEMA DESIGN */
+.sermon-cinema-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.sermon-card-premium {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sermon-poster {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #111;
+    border-radius: 2px;
+}
+
+.sermon-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    opacity: 0.7;
+}
+
+.play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.play-overlay i {
+    color: #FCA311;
+    width: 60px;
+    height: 60px;
+    stroke-width: 1px;
+}
+
+.sermon-card-premium:hover .play-overlay {
+    opacity: 1;
+}
+
+.sermon-card-premium:hover .sermon-poster img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.sermon-details {
+    padding-top: 20px;
+}
+
+.sermon-details .category {
+    color: #FCA311;
+    font-family: 'Oswald';
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.sermon-details h3 {
+    color: white;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 5px;
+    letter-spacing: -0.5px;
+}
+
+/* MOBILE SERMON MINEFIELD */
+@media (max-width: 768px) {
     .sermon-cinema-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-        perspective: 1000px; /* Preps the area for 3D motion */
+        grid-template-columns: 1fr; /* Single column stack for clean mobile viewing */
+        gap: 30px;
     }
+}
 
-    /* 3. The Card Transformation */
-    .sermon-card-premium {
-        background: #0a0a0a !important;
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 4px;
-        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
+
+/* --- 10. NEXT-LEVEL REFINEMENTS --- */
+
+/* Cinematic Entrance for the Hero Section */
+.brand-block {
+    animation: cinematicReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+@keyframes cinematicReveal {
+    0% { 
+        opacity: 0; 
+        transform: translateY(40px) scale(0.95); 
+        filter: blur(10px); 
     }
-
-    /* 4. The "Neon Lift" Hover Effect */
-    .sermon-card-premium:hover {
-        transform: translateY(-10px) scale(1.02);
-        border-color: rgba(252, 163, 17, 0.4);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(252, 163, 17, 0.1);
+    100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+        filter: blur(0); 
     }
+}
 
-    /* 5. Image & Play Button Overlay */
-    .sermon-poster {
-        position: relative;
-        overflow: hidden;
+/* Glassmorphism Refinement for Nav & Forms */
+nav {
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(252, 163, 17, 0.15) !important;
+}
+
+.premium-form-wrapper {
+    background: rgba(10, 10, 10, 0.6) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(252, 163, 17, 0.1) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Sophisticated Typography & Hover Effects */
+.nav-links button:hover {
+    color: #FCA311;
+    letter-spacing: 6px; /* Dynamic expansion effect */
+}
+
+/* Section Transition Smoothing */
+.section-container, #home-wrapper {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    display: none !important;
+}
+
+/* Image Treatment for Merch & Sermons */
+.merch-img-wrapper img, .sermon-poster img {
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+/* High-End Scrollbar for Chrome/Safari */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FCA311;
+}
+
+/* Responsive Joystick Correction for Ultra-Wide Screens */
+@media (min-width: 2000px) {
+    .brand-block {
+        transform: translateX(-250px) !important;
     }
+}
 
-    .sermon-poster img {
-        filter: grayscale(40%) contrast(1.1);
-        transition: all 0.6s ease;
+
+/* --- 11. ADMIN COMMAND CENTER (STRICT VISIBILITY) --- */
+#admin-panel {
+    display: none; /* Default Hidden */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.98);
+    z-index: 999999; /* Above everything */
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Force hidden state when class is present */
+#admin-panel.hidden {
+    display: none !important;
+}
+
+/* Admin Input Styling */
+.admin-field-group {
+    border: 1px solid #222;
+    padding: 20px;
+    background: #050505;
+    margin-bottom: 20px;
+}
+
+.admin-field-group p {
+    color: #FCA311;
+    font-family: 'Oswald';
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.admin-input-premium {
+    width: 100%;
+    background: #111;
+    border: 1px solid #333;
+    color: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    font-family: 'Inter';
+}
+
+.admin-btn-generate {
+    width: 100%;
+    background: #FCA311;
+    color: black;
+    font-family: 'Oswald';
+    font-weight: 700;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.admin-btn-generate:hover {
+    background: white;
+}
+
+/* --- 12. MAGAZINE / JOURNAL GRID REFINEMENT --- */
+.magazine-journal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.magazine-card {
+    background: #0a0a0a;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magazine-card:hover {
+    border-color: #FCA311;
+    transform: translateY(-10px);
+}
+
+/* Portrait Ratio for Journals */
+.magazine-image-wrapper {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+}
+
+.magazine-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: 0.8s ease;
+}
+
+.magazine-card:hover .magazine-image-wrapper img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Mobile Protection for Magazine */
+@media (max-width: 768px) {
+    .magazine-journal-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+        gap: 15px;
     }
+    
+    .magazine-card h3 {
+        font-size: 1rem !important;
+    }
+}
 
+
+/* Fix for the Sermon Card Stretching */
+/* Update your CSS with this */
+.sermon-grid {
+    display: grid;
+    /* This forces the videos to stay small and form a row */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limits how wide the whole section can get */
+    margin: 0 auto;    /* Centers the section on the screen */
+}
+
+.sermon-card-premium {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 100%; /* Fills the grid slot, but slot is capped at 400px */
+}
+
+.sermon-poster {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Keeps the rectangle shape perfect */
+    overflow: hidden;
+}
+
+.sermon-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.sermon-card-premium {
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.sermon-poster {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Keeps it from stretching vertically */
+    overflow: hidden;
+    position: relative;
+}
+
+.sermon-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps it from stretching horizontally */
+}
+
+
+/* --- TELEGRAM VAULT BUTTON STYLING --- */
+.telegram-vault-btn {
+    display: inline-block;
+    background: transparent;
+    color: #FCA311;
+    border: 1px solid #FCA311;
+    padding: 18px 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.telegram-vault-btn:hover {
+    background: #FCA311;
+    color: #000;
+    box-shadow: 0 0 30px rgba(252, 163, 17, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Ensure the icon inside aligns perfectly */
+.telegram-vault-btn i {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* --- Sermon Section Category Styling --- */
+#sermon .category {
+    font-size: 15px;           /* Small, clean size */
+    font-weight: 700;         /* Bold for readability */
+    color: #FCA311;           /* Matches your orange border theme */
+    text-transform: uppercase; /* Keeps it professional in all caps */
+    letter-spacing: 0.15em;    /* Adds that 'cinematic' spacing */
+    margin-bottom: 4px;       /* Adds a tiny gap above the title */
+    display: block;            /* Ensures it sits on its own line */
+    opacity: 0.9;              /* Slight transparency for a sophisticated feel */
+}
+
+/* Optional: Subtle glow effect on hover for the card */
+.sermon-card-premium:hover .category {
+    color: #fff;               /* Turns white when you hover over the card */
+    transition: color 0.3s ease;
+}
+
+
+/* ============================================================
+   SERMON VAULT - UPDATED TOUCH & MOBILE SUPPORT
+   ============================================================ */
+
+/* 1. Ensure the Category is visible and styled on ALL devices */
+#sermon .category {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FCA311 !important; /* Forces the color to show */
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+    display: block;
+    opacity: 1 !important;    /* Ensure it's not hidden on mobile */
+}
+
+/* 2. The Titles */
+#sermon .sermon-details h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+/* 3. Handling the Hover/Touch Effects */
+.sermon-poster {
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px; /* Smooths the edges on mobile */
+}
+
+.sermon-poster img {
+    transition: transform 0.4s ease;
+    display: block;
+    width: 100%;
+}
+
+/* Desktop Hover */
+@media (hover: hover) {
     .sermon-card-premium:hover .sermon-poster img {
-        filter: grayscale(0%) contrast(1);
-        transform: scale(1.1);
+        transform: scale(1.08);
     }
-
-    /* Custom Play Icon Glow */
-    .play-overlay i {
-        color: #FCA311;
-        width: 60px !important;
-        height: 60px !important;
-        filter: drop-shadow(0 0 10px rgba(252, 163, 17, 0.8));
-        transition: transform 0.3s ease;
+    .sermon-card-premium:hover .category {
+        color: #ffffff !important;
     }
+}
 
-    .sermon-card-premium:hover .play-overlay i {
-        transform: scale(1.2);
+/* 4. MOBILE SPECIFIC FIXES (The "Active" state) */
+/* This makes the effect trigger when the user touches the card */
+.sermon-card-premium:active .sermon-poster img {
+    transform: scale(0.96); /* Slight shrink effect on touch feels more 'clickable' */
+}
+
+.sermon-card-premium:active .play-overlay {
+    color: #FCA311;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Force the play button to be visible on mobile since there is no hover */
+@media (max-width: 768px) {
+    .play-overlay {
+        opacity: 1 !important;
+        background: rgba(0, 0, 0, 0.2);
     }
-
-    /* 6. Text Typography Upgrade */
-    .sermon-details h3 {
-        font-family: 'Inter', sans-serif !important;
-        font-weight: 800 !important;
-        letter-spacing: -0.5px;
-        font-size: 1.4rem !important;
-        margin-top: 10px !important;
-        color: #eee !important;
+    
+    .sermon-details {
+        padding-top: 12px; /* Gives more room on smaller screens */
     }
+}
 
-    .sermon-details .category {
-        font-family: 'Oswald' !important;
-        letter-spacing: 3px !important;
-        color: #FCA311 !important;
-        font-size: 0.7rem !important;
-        opacity: 0.7;
+
+/* --- THE PLATINUM ATMOSPHERE LAYER --- */
+
+/* Textural Grain Layer */
+.hero-bg-layer::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Atmospheric Glow */
+.hero-container {
+    background: radial-gradient(circle at 50% 50%, rgba(252, 163, 17, 0.1) 0%, rgba(0, 0, 0, 1) 90%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Typography Bloom - Lifting the White and Gold text */
+.brand-block h1, 
+.brand-block h2, 
+#manifesto p {
+    text-shadow: 0 0 25px rgba(252, 163, 17, 0.2);
+    position: relative;
+    z-index: 5;
+}
+
+/* The Bottom Stage Gradient */
+.home-bottom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35vh;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+.manifesto-card:hover {
+    background: #080808 !important; /* Subtle lift */
+    box-shadow: inset 0 0 30px rgba(252, 163, 17, 0.05);
+}
+
+.manifesto-card:hover p {
+    color: white !important; /* Text brightens on hover */
+    transition: 0.3s ease;
+}
+
+
+
+@media (max-width: 768px) {
+    #manifesto {
+        padding: 60px 20px; /* Tighter padding for phones */
     }
-  </style>
-
-</body>
-</html>
+    #manifesto h2 {
+        font-size: 1.2rem; /* Slightly smaller header for mobile */
+    }
+    .manifesto-card {
+        padding-top: 20px;
+        margin-bottom: 30px; /* Space between cards when stacked */
+    }
+}

@@ -636,43 +636,34 @@
 
               <div class="input-container border-b border-white/10">
                   <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-                      <option value="" disabled selected>SELECT COUNTRY</option>
-                      <option value="Ethiopia">ETHIOPIA</option>
-                      <option value="Kenya">KENYA</option>
-                      <option value="Nigeria">NIGERIA</option>
-                      <option value="South Africa">SOUTH AFRICA</option>
-                      <option value="USA">USA</option>
-                  </select>
-                  <label class="ultra-label">Country</label>
-              </div>
+    <option value="" disabled selected>SELECT COUNTRY</option>
+    
+    <optgroup label="AFRICA">
+        <option value="Ethiopia">ETHIOPIA</option>
+        <option value="Kenya">KENYA</option>
+        <option value="Uganda">UGANDA</option>
+        <option value="Rwanda">RWANDA</option>
+        <option value="Nigeria">NIGERIA</option>
+        <option value="South Africa">SOUTH AFRICA</option>
+    </optgroup>
 
-              <div class="input-container border-b border-white/10">
-                  <select id="city" name="City" onchange="updateLocations()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-                      <option value="" disabled selected>SELECT CITY</option>
-                  </select>
-                  <label class="ultra-label">City</label>
-              </div>
+    <optgroup label="SCANDINAVIA">
+        <option value="Sweden">SWEDEN</option>
+        <option value="Norway">NORWAY</option>
+        <option value="Finland">FINLAND</option>
+    </optgroup>
 
-              <div class="input-container md:col-span-2 border-b border-white/10">
-                  <select id="location" name="Location" onchange="checkSlots()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
-                      <option value="" disabled selected>SELECT LOCATION</option>
-                  </select>
-                  <label class="ultra-label">Specific Meeting Point</label>
-              </div>
+    <optgroup label="EUROPE">
+        <option value="Italy">ITALY</option>
+        <option value="Netherlands">NETHERLANDS</option>
+        <option value="United Kingdom">UNITED KINGDOM</option>
+    </optgroup>
 
-              <div class="md:col-span-2 mt-12">
-                  <button type="submit" class="max-capacity-btn w-full bg-[#FCA311] py-6 text-black font-['Oswald'] font-bold tracking-[6px] hover:bg-white transition-all">
-                      <span class="btn-shine"></span>
-                      <span id="btn-text" class="relative z-10">RESERVE YOUR SEAT</span>
-                  </button>
-                  <div id="slot-status-text" class="mt-6 text-center">
-                      <span style="color: #FCA311; font-family: 'Oswald'; font-size: 10px; letter-spacing: 4px; opacity: 0.6;">SYSTEM READY</span>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
-</section>
+    <optgroup label="MIDDLE EAST & AMERICAS">
+        <option value="UAE">UAE</option>
+        <option value="USA">USA</option>
+    </optgroup>
+</select>
   
 
   <section id="contact" class="section-container bg-black py-24 px-6 hidden" style="display: none;">

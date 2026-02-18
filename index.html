@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-black">
 
   <nav>
     <div class="nav-container">
@@ -118,9 +118,7 @@
           <div>
             <h3 class="text-white font-['Playfair Display'] text-4xl italic mb-4">Culture, Faith & The Streets</h3>
             <p class="text-white/60 font-['Inter'] leading-relaxed text-lg">
-              Our latest issue explores the intersection of ancient scripture and modern urban life. 
-              From coffee-shop theology to kingdom streetwear, Issue 28 is a deep dive into the 
-              identity of a new generation.
+              Our latest issue explores the intersection of ancient scripture and modern urban life. Issue 28 is a deep dive into the identity of a new generation.
             </p>
           </div>
           <div class="space-y-4">
@@ -132,53 +130,12 @@
               <i data-lucide="check-circle" size="18" class="text-[#FCA311]"></i>
               <span class="font-['Inter'] text-sm">Biblical Deep Dives</span>
             </div>
-            <div class="flex items-center gap-4 text-white/40">
-              <i data-lucide="check-circle" size="18" class="text-[#FCA311]"></i>
-              <span class="font-['Inter'] text-sm">Global Movement Stories</span>
-            </div>
           </div>
           <a href="magazine28.pdf" target="_blank" class="inline-block bg-[#FCA311] text-black font-['Oswald'] px-10 py-4 tracking-[4px] uppercase font-bold hover:bg-white transition-colors duration-300">
             Read Full Issue
           </a>
         </div>
       </div>
-    </div>
-    
-    <div class="magazine-journal-grid">
-      <div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/meg19.pdf', '_blank')" style="cursor: pointer;">
-        <div class="magazine-image-wrapper"><img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage19.jpg" alt="Issue 19"></div>
-        <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-            <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE 19</p>
-            <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-            <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-        </div>
-      </div>
-
-      <div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/meg20.pdf', '_blank')" style="cursor: pointer;">
-        <div class="magazine-image-wrapper"><img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage20.jpg" alt="Issue 20"></div>
-        <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-            <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE 20</p>
-            <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-            <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-        </div>
-      </div>
-
-      <div class="magazine-card" onclick="window.open('https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/meg21.pdf', '_blank')" style="cursor: pointer;">
-        <div class="magazine-image-wrapper"><img src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/megimage21.jpg" alt="Issue 21"></div>
-        <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
-            <p style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 4px; margin: 0;">VOLUME 01 // ISSUE 21</p>
-            <h3 style="font-family: 'Oswald'; color: white; font-size: 1.1rem; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase;">The Weekly Journal</h3>
-            <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">Click to Read —</p>
-        </div>
-      </div>
-    </div> 
-
-    <div style="width: 100%; text-align: center; margin-top: 80px; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05);">
-        <p style="color: #555; font-family: 'Oswald'; font-size: 10px; letter-spacing: 5px; margin-bottom: 20px;">ACCESS THE FULL ARCHIVE</p>
-        <a href="https://t.me/bunnaqurs" target="_blank" class="telegram-vault-btn">
-            <i data-lucide="send" style="display: inline-block; vertical-align: middle; margin-right: 10px; width: 18px;"></i>
-            JOIN THE TELEGRAM VAULT
-        </a>
     </div>
   </section>
 
@@ -188,10 +145,15 @@
         <h2 class="text-4xl font-['Oswald'] font-bold text-white uppercase tracking-tighter">The 2026 Collection</h2>
         <p class="text-[#FCA311] font-['Inter'] text-xs tracking-[5px] mt-2">LIMITED DROP // KINGDOM CULTURE</p>
       </div>
-      <div class="merch-grid-premium">
-        <div class="merch-item">
-          <div class="merch-img-wrapper"><img src="merch1.jpeg" alt="Merch 1"></div>
-          <div class="merch-meta"><span>KC-01</span><h3>IDENTITY TEE</h3></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="merch-item group">
+          <div class="overflow-hidden bg-[#111] border border-white/5">
+            <img src="merch1.jpeg" alt="Merch 1" class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-500">
+          </div>
+          <div class="mt-4 flex justify-between items-center">
+            <span class="text-white/20 font-['Oswald'] text-xs">KC-01</span>
+            <h3 class="text-white font-['Oswald'] tracking-widest text-sm">IDENTITY TEE</h3>
+          </div>
         </div>
       </div>
     </div>
@@ -206,93 +168,40 @@
       <div class="sermon-cinema-grid">
         <div class="sermon-card-premium" onclick="openVideo('UQM5zM8XIaw')">
             <div class="sermon-poster">
-              <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 1">
-              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+              <img src="https://img.youtube.com/vi/UQM5zM8XIaw/maxresdefault.jpg" alt="Sermon 1" class="w-full">
+              <div class="play-overlay absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/40">
+                <i data-lucide="play-circle" class="text-[#FCA311]" size="64"></i>
+              </div>
             </div>
-            <div class="sermon-details">
-              <span class="category">SUNDAY</span>
-              <h3>THE MESSAGE</h3>
-            </div>
-        </div>
-        <div class="sermon-card-premium" onclick="openVideo('Q7p0wt29a04')">
-            <div class="sermon-poster">
-              <img src="https://img.youtube.com/vi/Q7p0wt29a04/maxresdefault.jpg" alt="Sermon 2">
-              <div class="play-overlay"><i data-lucide="play-circle"></i></div>
-            </div>
-            <div class="sermon-details">
-              <span class="category">FAITH</span>
-              <h3>የእምነት ጉዞ</h3>
+            <div class="p-6">
+              <span class="text-[#FCA311] font-['Oswald'] text-xs tracking-widest uppercase">Sunday Service</span>
+              <h3 class="text-white font-['Oswald'] text-xl mt-2 tracking-wide uppercase">THE MESSAGE</h3>
             </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="events" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-    <div class="max-w-6xl mx-auto">
-        <div class="mb-24">
-            <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[10px] uppercase mb-4">The Friday Sequence</h2>
-            <h3 class="text-6xl md:text-8xl font-['Oswald'] font-black text-white uppercase leading-none tracking-tighter">
-                ACTIVE <br><span class="text-[#FCA311]">TABLES.</span>
-            </h3>
-        </div>
-        <div class="border-t border-white/10">
-            <div class="group border-b border-white/10 py-16 hover:bg-[#FCA311]/[0.02] transition-all cursor-pointer" onclick="showSection('join')">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                    <div class="flex items-baseline gap-8">
-                        <span class="text-[#FCA311] font-['Oswald'] text-xl opacity-30">01</span>
-                        <div>
-                            <h4 class="text-white font-['Oswald'] text-5xl md:text-7xl uppercase tracking-tighter">ADDIS ABABA</h4>
-                            <p class="text-white/30 font-['Inter'] text-xs tracking-[4px] mt-2">Current Protocol: The Cup (Bole Atlas)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </section>
-
-  <section id="support" class="section-container bg-black py-32 px-6 hidden" style="display: none;">
-    <div class="max-w-7xl mx-auto text-center">
-        <h2 class="text-[#FCA311] font-['Oswald'] text-xs tracking-[12px] uppercase mb-8">BUILD THE FAMILY</h2>
-        <a href="https://www.buymeacoffee.com/YOUR_LINK" target="_blank" class="max-capacity-btn inline-block py-6 px-12 bg-[#FCA311] text-black font-bold font-['Oswald'] tracking-[4px]">
-            PARTNER WITH THE VISION
-        </a>
-    </div>
-  </section>
-
   <section id="join" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
-            <h2 class="premium-glitch-title" style="font-family: 'Oswald'; font-size: 3.5rem; color: white; letter-spacing: 12px; text-transform: uppercase;">JOIN THE TABLE</h2>
-            <p class="premium-subtitle" style="font-family: 'Inter'; color: #FCA311; letter-spacing: 6px; font-size: 0.85rem; font-weight: 700;">SELECT YOUR CITY & RESERVE YOUR SEAT</p>
+            <h2 style="font-family: 'Oswald'; font-size: 3.5rem; color: white; letter-spacing: 12px; text-transform: uppercase;">JOIN THE TABLE</h2>
+            <div style="height: 2px; width: 80px; background: #FCA311; margin: 25px auto;"></div>
+            <p style="font-family: 'Inter'; color: #FCA311; letter-spacing: 6px; font-size: 0.85rem; font-weight: 700;">SELECT YOUR CITY & RESERVE YOUR SEAT</p>
         </div>
 
         <div class="premium-form-wrapper" style="padding: 60px; background: rgba(10,10,10,0.8); border: 1px solid rgba(252,163,17,0.1); backdrop-filter: blur(20px);">
             <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                <div class="input-container relative border-b border-white/10">
-                    <input type="text" name="Name" class="ultra-input w-full bg-transparent py-4 text-white outline-none" placeholder="Full Name" required>
+                <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
+                    <input type="text" name="Name" class="w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
+                    <label class="absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Full Name</label>
                 </div>
-                <div class="input-container relative border-b border-white/10">
-                    <input type="tel" name="Phone" class="ultra-input w-full bg-transparent py-4 text-white outline-none" placeholder="Tel.Number" required>
-                </div>
-                <div class="input-container md:col-span-2 border-b border-white/10">
-                    <input type="email" name="Email" class="ultra-input w-full bg-transparent py-4 text-white outline-none" placeholder="Email Address" required>
-                </div>
-                <div class="input-container border-b border-white/10">
-                    <select id="country" name="Country" class="ultra-input w-full bg-black py-4 text-white outline-none text-xs" required>
-                        <option value="" disabled selected>SELECT COUNTRY</option>
-                        <option value="Ethiopia">ETHIOPIA</option>
-                    </select>
-                </div>
-                <div class="input-container border-b border-white/10">
-                    <select id="city" name="City" class="ultra-input w-full bg-black py-4 text-white outline-none text-xs" required>
-                        <option value="" disabled selected>SELECT CITY</option>
-                        <option value="Addis Ababa">ADDIS ABABA</option>
-                    </select>
+                <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
+                    <input type="tel" name="Phone" class="w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
+                    <label class="absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Tel. Number</label>
                 </div>
                 <div class="md:col-span-2 mt-12">
-                    <button type="submit" class="max-capacity-btn w-full bg-[#FCA311] py-6 text-black font-['Oswald'] font-bold tracking-[6px] hover:bg-white transition-all">
+                    <button type="submit" class="w-full bg-[#FCA311] py-6 text-black font-['Oswald'] font-bold tracking-[6px] hover:bg-white transition-all">
                         RESERVE YOUR SEAT
                     </button>
                 </div>
@@ -302,48 +211,39 @@
   </section>
 
   <section id="contact" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-white font-['Oswald'] text-5xl mb-12 uppercase tracking-widest">CONTACT</h2>
-        <a href="mailto:info@bibleandcoffee.com" class="text-[#FCA311] font-['Oswald'] text-3xl">info@bibleandcoffee.com</a>
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 style="font-family: 'Oswald'; font-size: 3.5rem; color: white; letter-spacing: 12px; text-transform: uppercase;">CONTACT</h2>
+            <div style="height: 2px; width: 80px; background: #FCA311; margin: 25px auto;"></div>
+            <p style="font-family: 'Inter'; color: #FCA311; letter-spacing: 6px; font-size: 0.85rem; font-weight: 700;">DIRECT LINES TO THE MOVEMENT</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
+            <div class="bg-black p-12 border-r border-white/5">
+                <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase mb-4">Telephone</h4>
+                <a href="tel:+251911000000" class="text-white font-['Oswald'] text-2xl hover:text-[#FCA311]">+251 911 000 000</a>
+            </div>
+            <div class="bg-black p-12">
+                <h4 class="text-white font-['Oswald'] text-xl tracking-widest uppercase mb-4">Digital</h4>
+                <a href="mailto:info@bibleandcoffee.com" class="text-white font-['Oswald'] text-2xl hover:text-[#FCA311]">info@bibleandcoffee.com</a>
+            </div>
+        </div>
     </div>
   </section>
 
   <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
-    <div class="footer-socials flex justify-center gap-8 mb-10">
-        <a href="https://www.instagram.com/bunnaqurs" target="_blank" class="text-white/40 hover:text-[#FCA311]"><i data-lucide="instagram"></i></a>
-        <a href="https://www.facebook.com/bunnaqurs" target="_blank" class="text-white/40 hover:text-[#FCA311]"><i data-lucide="facebook"></i></a>
-        <a href="https://youtube.com/@bunnaqurs" target="_blank" class="text-white/40 hover:text-[#FCA311]"><i data-lucide="youtube"></i></a>
-        <a href="https://www.tiktok.com/@bunnaqurs" target="_blank" class="text-white/40 hover:text-[#FCA311]"><i data-lucide="music-2"></i></a>
+    <div class="flex justify-center gap-8">
+        <a href="https://www.instagram.com/bunnaqurs" target="_blank" class="text-white hover:text-[#FCA311]"><i data-lucide="instagram"></i></a>
+        <a href="https://www.facebook.com/bunnaqurs" target="_blank" class="text-white hover:text-[#FCA311]"><i data-lucide="facebook"></i></a>
+        <a href="https://youtube.com/@bunnaqurs" target="_blank" class="text-white hover:text-[#FCA311]"><i data-lucide="youtube"></i></a>
     </div>
-    <p style="color: #444; font-family: 'Oswald'; font-size: 0.7rem; letter-spacing: 5px; margin-top: 40px; text-transform: uppercase;">
-        © 2026 BIBLE & COFFEE FRIDAYS. ALL RIGHTS RESERVED.
-    </p>
+    <div class="mt-8">
+      <button onclick="secureAccess()" class="text-[#111] hover:text-[#222] font-['Oswald'] text-[10px] tracking-[5px] transition-colors">
+        — TERMINAL ACCESS —
+      </button>
+    </div>
   </footer>
 
-  <script>
-    lucide.createIcons();
-    
-    function showSection(sectionId, btn) {
-      document.querySelectorAll('.section-container').forEach(s => {
-          s.classList.add('hidden');
-          s.style.display = 'none';
-      });
-      document.getElementById('home-wrapper').style.display = 'none';
-      
-      const target = document.getElementById(sectionId);
-      if(target) {
-        target.classList.remove('hidden');
-        target.style.display = 'block';
-      }
-      
-      if(sectionId === 'home') {
-        document.getElementById('home-wrapper').style.display = 'block';
-      }
-
-      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-      if(btn) btn.classList.add('active');
-      window.scrollTo(0,0);
-    }
-  </script>
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

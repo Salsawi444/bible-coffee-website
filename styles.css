@@ -800,7 +800,7 @@ nav {
 
 /* --- Sermon Section Category Styling --- */
 #sermon .category {
-    font-size: 11px;           /* Small, clean size */
+    font-size: 15px;           /* Small, clean size */
     font-weight: 700;         /* Bold for readability */
     color: #FCA311;           /* Matches your orange border theme */
     text-transform: uppercase; /* Keeps it professional in all caps */

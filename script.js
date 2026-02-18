@@ -82,6 +82,18 @@ const globalData = {
             "Houston": ["DOWNTOWN", "THE HEIGHTS"],
             "New York": ["MANHATTAN", "BROOKLYN"]
         }
+
+         },
+    "Canada": {
+        cities: ["Dallas", "Houston", "New York"],
+        locations: {
+            "Toronto": ["CN Tower", "Royal Ontario Museum"],
+            "Vancouver": ["Stanley Park", "Granville Island"],
+            "Calgary": ["Calgary Tower", "Calgary Stampede Grounds"]
+            "Regiana": ["Wascana Centre", "Royal Saskatchewan Museum"]
+           
+            
+        }
     },
     "UAE": {
         cities: ["Dubai", "Abu Dhabi"],

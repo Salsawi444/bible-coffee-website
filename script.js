@@ -150,60 +150,58 @@ function openVideo(id) {
 const API_URL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks"; 
 
 function updateCities() {
-    const country = document.getElementById('country').value;
-    const citySelect = document.getElementById('city');
+    const countrySel = document.getElementById('country');
+    const citySel = document.getElementById('city');
+    const selectedCountry = countrySel.value;
     
-    // Clear current options
-    citySelect.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
+    // Reset City and Location dropdowns
+    citySel.innerHTML = '<option value="" disabled selected>SELECT CITY</option>';
+    const locField = document.getElementById('location');
+    if(locField) locField.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+    
+    // THE FIX: Find the key in globalData regardless of BIG or small letters
+    const countryKey = Object.keys(globalData).find(
+        key => key.toLowerCase() === selectedCountry.toLowerCase()
+    );
 
-    // The City Map - Matching your HTML values exactly
-    const cities = {
-        "Ethiopia": ["ADDIS ABABA"],
-        "Germany": ["FRANKFURT"],
-        "South Africa": ["JOBURG"], // Fixed: Matches "South Africa" with space
-        "Kenya": ["NAIROBI"],
-        "Uganda": ["KAMPALA"],
-        "Rwanda": ["KIGALI"],
-        "Sweden": ["STOCKHOLM"],
-        "Norway": ["OSLO"],
-        "Finland": ["HELSINKI"],
-        "Italy": ["ROME"],
-        "Netherlands": ["AMSTERDAM"],
-        "USA": ["DALLAS", "NEW YORK"],
-        "UAE": ["DUBAI"],
-        "Canada": ["TORONTO"]
-    };
-
-    if (cities[country]) {
-        cities[country].forEach(cityName => {
-            let option = new Option(cityName, cityName);
-            citySelect.add(option);
+    if (countryKey && globalData[countryKey]) {
+        globalData[countryKey].cities.forEach(city => {
+            let opt = document.createElement('option');
+            opt.value = city;
+            opt.innerHTML = city.toUpperCase();
+            citySel.appendChild(opt);
         });
+    } else {
+        console.log("Country not found in database:", selectedCountry);
     }
 }
 
 function updateLocations() {
-    const city = document.getElementById('city').value;
-    const locationSelect = document.getElementById('location');
+    const countrySel = document.getElementById('country');
+    const citySel = document.getElementById('city');
+    const locSelect = document.getElementById('location');
     
-    locationSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
-
-    const locations = {
-        "ADDIS ABABA": ["Bole Atlas // The Cup"],
-        "FRANKFURT": ["Main Tower // Level 4"],
-        "JOBURG": ["Sandton Table"],
-        "NAIROBI": ["Westlands Hub"],
-        "STOCKHOLM": ["Södermalm Coffee Lab"],
-        "DUBAI": ["Downtown Roast"],
-        "DALLAS": ["Deep Ellum Coffee"],
-        "NEW YORK": ["Manhattan Table"]
-    };
-
-    if (locations[city]) {
-        locations[city].forEach(locName => {
-            let option = new Option(locName, locName);
-            locationSelect.add(option);
+    const country = countrySel.value;
+    const city = citySel.value;
+    
+    // Clear the dropdown
+    locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+    
+    // SURGERY FIX: This path matches your globalData vault structure exactly
+    if (globalData[country] && globalData[country].locations && globalData[country].locations[city]) {
+        globalData[country].locations[city].forEach(loc => {
+            let opt = document.createElement('option');
+            opt.value = loc;
+            opt.textContent = loc.toUpperCase();
+            locSelect.appendChild(opt);
         });
+    } else {
+        console.log("No locations found for:", country, city);
+    }
+    
+    // Run the slot check to update the button
+    if (typeof checkSlots === "function") {
+        checkSlots();
     }
 }
 
@@ -389,45 +387,3 @@ function generateMerchCode() {
 
     outputBox.value = finalCode.trim();
 }
-
-
-/**
- * THE PLATINUM LIVE-SYNC ENGINE
- * Fetches Event data from SheetDB and updates the UI
- */
-async function syncPlatinumEvents() {
-    const apiURL = "https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events";
-    
-    try {
-        const response = await fetch(apiURL);
-        const data = await response.json();
-
-        data.forEach((item, index) => {
-            const card = document.getElementById(`city-${index + 1}`);
-            if (card) {
-                // Check both Capitalized and lowercase headers
-                const cityName = item.City || item.city;
-                const loc = item.Location || item.location;
-                const seats = item.Seats || item.seats;
-                const status = item.Status || item.status;
-
-                if (cityName) card.querySelector('.city-name').innerText = cityName;
-                if (loc) card.querySelector('.city-location').innerText = loc;
-                if (seats) card.querySelector('.city-seats').innerText = seats;
-                
-                const statusTag = card.querySelector('.city-status');
-                if (statusTag && status) {
-                    statusTag.innerText = status;
-                    if (status.toLowerCase() === 'full') {
-                        card.style.opacity = "0.4";
-                        statusTag.style.color = "#7f1d1d";
-                    } else {
-                        card.style.opacity = "1";
-                        statusTag.style.color = "#FCA311";
-                    }
-                }
-            }
-        });
-    } catch (e) { console.error("Sync error:", e); }
-}
-document.addEventListener('DOMContentLoaded', syncPlatinumEvents);

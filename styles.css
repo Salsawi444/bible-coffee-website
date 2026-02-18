@@ -815,3 +815,98 @@ nav {
     color: #fff;               /* Turns white when you hover over the card */
     transition: color 0.3s ease;
 }
+
+
+/* ============================================================
+   SERMON VAULT - THE PLATINUM STYLE
+   ============================================================ */
+
+/* 1. The Category Spans (The part you asked about) */
+#sermon .category {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FCA311;           /* Your signature orange/gold */
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;       /* Space between category and title */
+    display: block;           /* Puts it on its own line */
+    opacity: 0.9;
+}
+
+/* 2. The Amharic Titles (h3) */
+#sermon .sermon-details h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    color: #ffffff;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* 3. The Cinematic Hover Effects */
+.sermon-poster {
+    overflow: hidden;         /* Keeps the zoom inside the box */
+    position: relative;
+}
+
+.sermon-poster img {
+    transition: transform 0.5s ease; /* Smooth zoom transition */
+    display: block;
+    width: 100%;
+}
+
+/* Zoom image and change category color on hover */
+.sermon-card-premium:hover .sermon-poster img {
+    transform: scale(1.08);
+}
+
+.sermon-card-premium:hover .category {
+    color: #ffffff;           /* Flashes white on hover for feedback */
+    transition: 0.3s;
+}
+
+/* 4. Play Button Glow */
+.play-overlay {
+    transition: all 0.3s ease;
+}
+
+.sermon-card-premium:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    color: #FCA311;           /* Icon turns gold */
+    transform: scale(1.1);    /* Icon grows slightly */
+}
+
+
+
+/* --- Responsive Grid Layout --- */
+.sermon-cinema-grid {
+    display: grid;
+    gap: 2rem; /* Space between cards */
+    grid-template-columns: 1fr; /* Default: 1 column for mobile */
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+    .sermon-cinema-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+    .sermon-cinema-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile-specific adjustments for text */
+@media (max-width: 640px) {
+    #sermon .sermon-details h3 {
+        font-size: 1.1rem; /* Slightly smaller titles on small phones */
+    }
+    
+    #sermon {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

@@ -120,7 +120,7 @@ function updateCities() {
     }
 }
 
-/* --- SURGERY FIX: UPDATED updateLocations --- */
+/* --- THE FIX: updateLocations --- */
 function updateLocations() {
     const country = document.getElementById('country').value;
     const city = document.getElementById('city').value;
@@ -128,7 +128,7 @@ function updateLocations() {
     
     locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
     
-    // Fix: Accessing globalData instead of undefined 'db'
+    // Fixed: Now correctly points to globalData
     if (globalData[country] && globalData[country].locations[city]) {
         globalData[country].locations[city].forEach(loc => {
             let opt = document.createElement('option');
@@ -183,7 +183,6 @@ function showSuccess() {
     lucide.createIcons();
 }
 
-// Admin Logic for Form Submission
 document.getElementById('regForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('button');
@@ -209,20 +208,19 @@ document.getElementById('regForm')?.addEventListener('submit', async function(e)
     }
 });
 
-// Admin Panel Tool
 function generateVideoCode() {
     const url = document.getElementById('sermon-url').value;
     const title = document.getElementById('sermon-title').value;
     const category = document.getElementById('sermon-cat').value;
     const videoId = url.split('v=')[1]?.split('&')[0];
     if(videoId) {
-        document.getElementById('admin-output').value = `<div class="sermon-card-premium" onclick="openVideo('${videoId}')">
-    <div class="sermon-poster">
-        <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${title}">
-        <div class="play-overlay"><i data-lucide="play-circle"></i></div>
+        document.getElementById('admin-output').value = `<div class=\"sermon-card-premium\" onclick=\"openVideo('${videoId}')\">
+    <div class=\"sermon-poster\">
+        <img src=\"https://img.youtube.com/vi/${videoId}/hqdefault.jpg\" alt=\"${title}\">
+        <div class=\"play-overlay\"><i data-lucide=\"play-circle\"></i></div>
     </div>
-    <div class="sermon-details">
-        <span class="category">${category.toUpperCase()}</span>
+    <div class=\"sermon-details\">
+        <span class=\"category\">${category.toUpperCase()}</span>
         <h3>${title}</h3>
     </div>
 </div>`;
@@ -230,22 +228,22 @@ function generateVideoCode() {
         alert("Invalid YouTube Link."); 
     }
 }
+
 function generateMerchCode() {
     const name = document.getElementById('merch-name').value;
     const img = document.getElementById('merch-img').value;
     if(!name || !img) { alert("Fill all Merch fields."); return; }
-    document.getElementById('admin-output').value = `<div class="merch-item" style="background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); padding: 15px;">
-    <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111;">
-        <img src="${img}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
+    document.getElementById('admin-output').value = `<div class=\"merch-item\" style=\"background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); padding: 15px;\">
+    <div class=\"merch-img-wrapper\" style=\"aspect-ratio: 1/1; overflow: hidden; background: #111;\">
+        <img src=\"${img}\" style=\"width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s;\" onmouseover=\"this.style.filter='grayscale(0%)'\" onmouseout=\"this.style.filter='grayscale(100%)'\">
     </div>
-    <div class="merch-meta" style="margin-top: 15px;">
-        <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;">NEW DROP</span>
-        <h3 style="font-family: 'Oswald'; color: white; margin-top: 5px; font-size: 14px; letter-spacing: 2px;">${name.toUpperCase()}</h3>
+    <div class=\"merch-meta\" style=\"margin-top: 15px;\">
+        <span style=\"font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px;\">NEW DROP</span>
+        <h3 style=\"font-family: 'Oswald'; color: white; margin-top: 5px; font-size: 14px; letter-spacing: 2px;\">${name.toUpperCase()}</h3>
     </div>
 </div>`;
 }
 
-// Initial Run
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     const menuToggle = document.getElementById('menu-toggle');

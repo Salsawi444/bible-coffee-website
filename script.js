@@ -387,3 +387,47 @@ function generateMerchCode() {
 
     outputBox.value = finalCode.trim();
 }
+
+
+
+/* --- THE PLATINUM ATMOSPHERE LAYER --- */
+
+/* Textural Grain Layer */
+.hero-bg-layer::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Atmospheric Glow */
+.hero-container {
+    background: radial-gradient(circle at 50% 50%, rgba(252, 163, 17, 0.1) 0%, rgba(0, 0, 0, 1) 90%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Typography Bloom - Lifting the White and Gold text */
+.brand-block h1, 
+.brand-block h2, 
+#manifesto p {
+    text-shadow: 0 0 25px rgba(252, 163, 17, 0.2);
+    position: relative;
+    z-index: 5;
+}
+
+/* The Bottom Stage Gradient */
+.home-bottom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35vh;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+}

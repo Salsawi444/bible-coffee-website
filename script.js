@@ -83,15 +83,6 @@ const globalData = {
             "New York": ["MANHATTAN", "BROOKLYN"]
         }
     },
-     "Canada": {
-        cities: ["Toronto", "Vancouver", "Calgary","Regina"],
-        locations: {
-            "TORONTO": ["CN Tower", "Royal Ontario Museum"],
-            "VANCOUVER": ["Stanley Park" "Granville Island"],
-            "CALGARY": ["Calgary Tower", "Calgary Stampede Grounds"]
-             "REGINA": ["Royal Saskatchewan Museum", "Wascana Centre"]
-        }
-    },
     "UAE": {
         cities: ["Dubai", "Abu Dhabi"],
         locations: {

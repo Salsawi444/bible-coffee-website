@@ -307,34 +307,31 @@ function generateVidCode() {
     }
 }
 function generateMerchCode() {
-    console.log("Platinum Generator Triggered..."); // This tells us the button works
-    
-    const imgInput = document.getElementById('merchImg');
-    const titleInput = document.getElementById('merchTitle');
+    const imgUrl = document.getElementById('merchImg').value;
+    const title = document.getElementById('merchTitle').value;
     const outputBox = document.getElementById('generatedCode');
 
-    if (!imgInput || !titleInput || !outputBox) {
-        console.error("Mighty Code Error: Missing one of the ID elements!");
-        return;
-    }
+    // THE BRICK (The individual item)
+    const itemCode = `
+    <div class="merch-item group">
+        <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05);">
+            <img src="${imgUrl}" 
+                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
+                 onmouseover="this.style.filter='grayscale(0%)'" 
+                 onmouseout="this.style.filter='grayscale(100%)'">
+        </div>
+        <div class="mt-6">
+            <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;">COLLECTION 2026</span>
+            <h4 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">${title}</h4>
+            <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px; letter-spacing: 1px;">Kingdom Supply Drop</p>
+        </div>
+    </div>`;
 
-    const imgUrl = imgInput.value;
-    const title = titleInput.value;
-
-    const code = `
-<div class="merch-item group">
-    <div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05);">
-        <img src="${imgUrl}" 
-             style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" 
-             onmouseover="this.style.filter='grayscale(0%)'" 
-             onmouseout="this.style.filter='grayscale(100%)'">
-    </div>
-    <div class="mt-6">
-        <span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;">COLLECTION 2026</span>
-        <h4 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">${title}</h4>
-        <p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px; letter-spacing: 1px;">Limited Drop</p>
-    </div>
+    // THE FIX: Wrapping it in the Grid if you haven't already
+    const finalCode = `
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
+    ${itemCode}
 </div>`;
 
-    outputBox.value = code.trim();
+    outputBox.value = finalCode.trim();
 }

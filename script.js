@@ -387,6 +387,3 @@ function generateMerchCode() {
 
     outputBox.value = finalCode.trim();
 }
-
-
-

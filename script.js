@@ -125,16 +125,31 @@ function updateCities() {
 }
 
 function updateLocations() {
-    const country = document.getElementById('country').value;
-    const city = document.getElementById('city').value;
+    const countrySel = document.getElementById('country');
+    const citySel = document.getElementById('city');
     const locSelect = document.getElementById('location');
-    locSelect.innerHTML = '<option value="" disabled selected></option>';
-    if (db[country] && db[country][city]) {
-        db[country][city].forEach(loc => {
+    
+    const country = countrySel.value;
+    const city = citySel.value;
+    
+    // Clear the dropdown
+    locSelect.innerHTML = '<option value="" disabled selected>SELECT LOCATION</option>';
+    
+    // SURGERY FIX: This path matches your globalData vault structure exactly
+    if (globalData[country] && globalData[country].locations && globalData[country].locations[city]) {
+        globalData[country].locations[city].forEach(loc => {
             let opt = document.createElement('option');
-            opt.value = loc; opt.textContent = loc;
+            opt.value = loc;
+            opt.textContent = loc.toUpperCase();
             locSelect.appendChild(opt);
         });
+    } else {
+        console.log("No locations found for:", country, city);
+    }
+    
+    // Run the slot check to update the button
+    if (typeof checkSlots === "function") {
+        checkSlots();
     }
 }
 

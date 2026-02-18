@@ -8,6 +8,7 @@ const DESKTOP_POS = {
 /* --- 1. GLOBAL DATABASE (WORLD TOUR EDITION) --- */
 /* --- THE MIGHTY GLOBAL DATA VAULT --- */
 /* --- THE MIGHTY GLOBAL DATA VAULT --- */
+/* --- THE MIGHTY GLOBAL DATA VAULT --- */
 const globalData = {
     "Ethiopia": {
         cities: ["Addis Ababa", "Adama", "Hawassa", "Bahir Dar", "Gondar", "Jimma"],

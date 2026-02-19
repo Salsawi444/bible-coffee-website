@@ -909,70 +909,130 @@ nav {
 }
 
 
-/* --- THE PLATINUM ATMOSPHERE LAYER --- */
+/* --- THE PLATINUM REFINEMENT SUITE --- */
 
-/* Textural Grain Layer */
-.hero-bg-layer::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
+/* 1. Grid & Uniformity */
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
-/* Atmospheric Glow */
-.hero-container {
-    background: radial-gradient(circle at 50% 50%, rgba(252, 163, 17, 0.1) 0%, rgba(0, 0, 0, 1) 90%) !important;
+.manifesto-card {
+    background: linear-gradient(145deg, rgba(15,15,15,1) 0%, rgba(0,0,0,1) 100%);
+    padding: 60px 40px;
+    border: 1px solid rgba(255,255,255,0.03); /* Subtle border */
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
 }
 
-/* Typography Bloom - Lifting the White and Gold text */
-.brand-block h1, 
-.brand-block h2, 
-#manifesto p {
-    text-shadow: 0 0 25px rgba(252, 163, 17, 0.2);
-    position: relative;
-    z-index: 5;
+/* 2. Title & The Signature Underline */
+.manifesto-card h4 {
+    color: white;
+    font-family: 'Oswald';
+    font-size: 1.7rem;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
 }
 
-/* The Bottom Stage Gradient */
-.home-bottom-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 35vh;
-    background: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 2;
+.card-line {
+    width: 50px;
+    height: 2px;
+    background: #FCA311; /* Uniform Gold Line */
+    margin-bottom: 30px;
+    transition: width 0.6s ease, box-shadow 0.6s ease;
 }
 
+.manifesto-card p {
+    color: #555;
+    font-family: 'Inter';
+    font-size: 0.85rem;
+    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.4s ease;
+}
 
+/* 3. High-End Glow & Border Effect */
 .manifesto-card:hover {
-    background: #080808 !important; /* Subtle lift */
-    box-shadow: inset 0 0 30px rgba(252, 163, 17, 0.05);
+    border-color: rgba(252, 163, 17, 0.5); /* Glowing Border */
+    transform: translateY(-12px);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 25px rgba(252, 163, 17, 0.1);
+}
+
+.manifesto-card:hover .card-line {
+    width: 80px; /* Line grows on hover */
+    box-shadow: 0 0 15px #FCA311;
 }
 
 .manifesto-card:hover p {
-    color: white !important; /* Text brightens on hover */
-    transition: 0.3s ease;
+    color: rgba(255,255,255,0.8);
 }
 
+/* 4. The Extraction Mission Box (Soul Robber) */
+.extraction-mission-box {
+    margin-top: 150px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 140px 20px;
+    background: radial-gradient(circle at center, rgba(252, 163, 17, 0.05) 0%, transparent 75%);
+}
 
+.mission-title {
+    font-family: 'Oswald';
+    font-size: clamp(2.5rem, 10vw, 6.5rem);
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -4px;
+    margin-bottom: 70px;
+}
 
+.soul-robber-text {
+    background: linear-gradient(90deg, #FCA311, #fff, #FCA311);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShine 5s linear infinite;
+}
+
+@keyframes goldShine {
+    to { background-position: 200% center; }
+}
+
+.mission-btn {
+    background: #FCA311;
+    color: black;
+    font-family: 'Oswald';
+    font-weight: bold;
+    padding: 25px 70px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+/* 5. ULTIMATE MOBILE STACKING LOGIC */
 @media (max-width: 768px) {
-    #manifesto {
-        padding: 60px 20px; /* Tighter padding for phones */
+    .manifesto-grid {
+        grid-template-columns: 1fr !important; /* Forces vertical stack */
+        gap: 20px !important;
     }
-    #manifesto h2 {
-        font-size: 1.2rem; /* Slightly smaller header for mobile */
-    }
+
     .manifesto-card {
-        padding-top: 20px;
-        margin-bottom: 30px; /* Space between cards when stacked */
+        padding: 50px 30px !important;
+        text-align: center;
+    }
+
+    .card-line {
+        margin: 0 auto 30px !important; /* Centers line on mobile */
+    }
+
+    .mission-title {
+        font-size: 3.5rem !important;
+        letter-spacing: -2px !important;
     }
 }

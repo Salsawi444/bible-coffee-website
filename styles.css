@@ -1015,8 +1015,15 @@ nav {
     transition: 0.5s ease;
 }
 
-/* 5. ULTIMATE MOBILE STACKING LOGIC */
+/* 4. ULTIMATE MOBILE BATTLE-MODE (Platinum Corrected) */
 @media (max-width: 768px) {
+    /* Hero Title Optimization - Safe & Untouched */
+    .responsive-title {
+        font-size: 14vw !important;
+        letter-spacing: -2px !important;
+    }
+
+    /* 1. Manifesto Stacking & Centering */
     .manifesto-grid {
         grid-template-columns: 1fr !important; /* Forces vertical stack */
         gap: 20px !important;
@@ -1024,15 +1031,46 @@ nav {
 
     .manifesto-card {
         padding: 50px 30px !important;
-        text-align: center;
+        text-align: center; /* Centers text for high-end mobile look */
     }
 
     .card-line {
-        margin: 0 auto 30px !important; /* Centers line on mobile */
+        margin: 0 auto 30px !important; /* Centers the tactical line */
     }
 
-    .mission-title {
-        font-size: 3.5rem !important;
+    /* 2. Space Management: The Upward Pull */
+    #manifesto {
+        padding-top: 60px !important; /* Pulls section up toward scrolling text */
+    }
+
+    /* Kill the massive gap between Pillars and the "Rob Souls" Box */
+    #manifesto div[style*="margin-top: 150px"],
+    .mission-container {
+        margin-top: 30px !important; /* Pulls the mission box up significantly */
+        padding: 80px 15px !important; /* Tightens internal spacing */
+    }
+
+    /* 3. High-End Mission Typography */
+    .mission-title, #manifesto h2 {
+        font-size: 13vw !important; /* Brutalist impact on phone */
         letter-spacing: -2px !important;
+        line-height: 0.9 !important;
+    }
+
+    /* 4. Navigation Refinement */
+    .nav-links {
+        background: rgba(0, 0, 0, 0.98) !important;
+        backdrop-filter: blur(25px) saturate(150%);
+        border-left: 1px solid rgba(252, 163, 17, 0.2);
+    }
+
+    /* 5. Button Optimization */
+    .max-capacity-btn, .mission-btn {
+        margin-top: 30px !important;
+        padding: 20px 40px !important;
+        width: 100% !important; /* Full width tactical button */
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

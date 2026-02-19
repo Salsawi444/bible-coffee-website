@@ -124,6 +124,51 @@ const globalData = {
     }
 };
 
+
+/* --- STABLE AUDIO ENGINE --- */
+window.toggleFrequency = function() {
+    const bgAudio = document.getElementById('bg-frequency');
+    const audioControl = document.getElementById('audio-control');
+    const audioStatus = document.getElementById('audio-status');
+
+    if (!bgAudio) return;
+
+    if (bgAudio.paused) {
+        bgAudio.volume = 0;
+        bgAudio.play().then(() => {
+            // Smooth Fade In
+            let vol = 0;
+            let fadeUp = setInterval(() => {
+                if (vol < 0.4) {
+                    vol += 0.05;
+                    bgAudio.volume = vol;
+                } else {
+                    clearInterval(fadeUp);
+                }
+            }, 100);
+        }).catch(e => console.log("User must click to play"));
+        
+        audioControl.classList.add('audio-active');
+        audioStatus.innerText = "MUSIC: ON";
+        audioStatus.style.color = "#FCA311";
+    } else {
+        // Smooth Fade Out
+        let vol = bgAudio.volume;
+        let fadeDown = setInterval(() => {
+            if (vol > 0.05) {
+                vol -= 0.05;
+                bgAudio.volume = vol;
+            } else {
+                bgAudio.pause();
+                clearInterval(fadeDown);
+                audioControl.classList.remove('audio-active');
+                audioStatus.innerText = "MUSIC: OFF";
+                audioStatus.style.color = "rgba(255,255,255,0.3)";
+            }
+        }, 50);
+    }
+};
+
 /* --- 2. NAVIGATION CORE (RESTORED) --- */
 function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];
@@ -424,46 +469,3 @@ function generateMerchCode() {
 }
 
 
-/* --- TACTICAL AUDIO ENGINE: FINAL MISSION READY --- */
-(function() {
-    const bgAudio = document.getElementById('bg-frequency');
-    const audioControl = document.getElementById('audio-control');
-    const audioStatus = document.getElementById('audio-status');
-
-    if (!bgAudio || !audioControl) return;
-
-    window.toggleFrequency = function() {
-        if (bgAudio.paused) {
-            bgAudio.volume = 0;
-            bgAudio.play().then(() => {
-                let vol = 0;
-                let fadeUp = setInterval(() => {
-                    if (vol < 0.4) {
-                        vol += 0.05;
-                        bgAudio.volume = vol;
-                    } else {
-                        clearInterval(fadeUp);
-                    }
-                }, 100);
-            }).catch(e => console.log("Init required"));
-            
-            audioControl.classList.add('audio-active');
-            audioStatus.innerText = "MUSIC: ON";
-            audioStatus.style.color = "#FCA311";
-        } else {
-            let vol = bgAudio.volume;
-            let fadeDown = setInterval(() => {
-                if (vol > 0.05) {
-                    vol -= 0.05;
-                    bgAudio.volume = vol;
-                } else {
-                    bgAudio.pause();
-                    clearInterval(fadeDown);
-                    audioControl.classList.remove('audio-active');
-                    audioStatus.innerText = "MUSIC: OFF";
-                    audioStatus.style.color = "rgba(255,255,255,0.3)";
-                }
-            }, 50);
-        }
-    };
-})();

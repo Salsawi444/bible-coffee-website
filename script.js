@@ -391,3 +391,26 @@ function generateMerchCode() {
 
 
 
+let scrollTimeout;
+const hud = document.getElementById('audio-control');
+const hudText = document.getElementById('audio-text-wrapper');
+
+window.addEventListener('scroll', function() {
+    // 1. When scrolling starts: Hide/Shrink the HUD
+    hud.style.opacity = "0.3"; // Make it a "ghost"
+    hud.style.transform = "translateX(-20px) scale(0.9)"; // Slide it slightly off-screen
+    hudText.style.width = "0px"; // Hide the text
+    hudText.style.opacity = "0";
+
+    // 2. Clear the timeout if we are still scrolling
+    clearTimeout(scrollTimeout);
+
+    // 3. When scrolling stops (after 150ms): Bring it back
+    scrollTimeout = setTimeout(function() {
+        hud.style.opacity = "1";
+        hud.style.transform = "translateX(0) scale(1)";
+        hudText.style.width = "100px"; // Adjust based on your text length
+        hudText.style.opacity = "1";
+    }, 800); // 800ms pause before it reappears
+});
+

@@ -518,40 +518,83 @@
 
   </div>
 </section>
-<section id="join" class="section-container hidden" style="min-height: 100vh; background: #000; padding: 120px 25px;">
+<section id="join" class="section-container bg-black py-24 px-6 hidden" style="display: none;">
   <div class="max-w-4xl mx-auto">
-    <div style="margin-bottom: 60px; text-align: center;">
-      <span style="color: #FCA311; font-family: 'Oswald'; letter-spacing: 12px; font-size: 10px; text-transform: uppercase;">Personnel Onboarding</span>
-      <h2 class="responsive-title" style="font-size: clamp(3rem, 10vw, 6rem) !important;">JOIN THE <span class="soul-robber-text">FAMILY.</span></h2>
-    </div>
-
-    <form id="registrationForm" class="tactical-form">
-      <div class="form-grid-platinum">
-        <div class="input-group">
-          <label>FULL NAME</label>
-          <input type="text" name="name" placeholder="IDENTIFY YOURSELF" required>
-        </div>
-        <div class="input-group">
-          <label>EMAIL ADDRESS</label>
-          <input type="email" name="email" placeholder="SECURE CHANNEL" required>
-        </div>
-        <div class="input-group">
-          <label>TERRITORY</label>
-          <select name="country" id="countrySelect" required>
-            <option value="" disabled selected>SELECT TERRITORY</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label>NODE (CITY)</label>
-          <select name="city" id="citySelect" required>
-            <option value="" disabled selected>SELECT NODE</option>
-          </select>
-        </div>
+      <div class="text-center mb-16">
+          <h2 class="premium-glitch-title" style="font-family: 'Oswald'; font-size: 3.5rem; color: white; letter-spacing: 12px; text-transform: uppercase;">JOIN THE TABLE</h2>
+          <div class="premium-divider" style="height: 2px; width: 80px; background: #FCA311; margin: 25px auto;"></div>
+          <p class="premium-subtitle" style="font-family: 'Inter'; color: #FCA311; letter-spacing: 6px; font-size: 0.85rem; font-weight: 700;">SELECT YOUR CITY & RESERVE YOUR SEAT</p>
       </div>
-      <button type="submit" class="mission-btn" style="width: 100%; margin-top: 40px; padding: 25px;">INITIALIZE DEPLOYMENT</button>
-    </form>
+
+      <div class="premium-form-wrapper" style="position: relative; padding: 60px; background: rgba(10,10,10,0.8); border: 1px solid rgba(252,163,17,0.1); backdrop-filter: blur(20px);">
+          <div class="form-glass-overlay"></div>
+          
+          <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 relative z-10">
+              <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
+                  <input type="text" name="Name" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
+                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Full Name</label>
+              </div>
+
+              <div class="input-container relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
+                  <input type="tel" name="Phone" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
+                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Tel.Number</label>
+              </div>
+
+              <div class="input-container md:col-span-2 relative border-b border-white/10 focus-within:border-[#FCA311] transition-all">
+                  <input type="email" name="Email" class="ultra-input w-full bg-transparent py-4 text-white outline-none placeholder-transparent" placeholder=" " required>
+                  <label class="ultra-label absolute left-0 top-4 text-white/30 pointer-events-none uppercase text-xs tracking-widest transition-all">Email Address</label>
+              </div>
+
+              <div class="input-container border-b border-white/10">
+                  <select id="country" name="Country" onchange="updateCities()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+    <option value="" disabled selected>SELECT COUNTRY</option>
+    <option value="Ethiopia">ETHIOPIA</option>
+    <option value="Kenya">KENYA</option>
+    <option value="Uganda">UGANDA</option>
+    <option value="Rwanda">RWANDA</option>
+    <option value="South Africa">SOUTH AFRICA</option>
+    <option value="Sweden">SWEDEN</option>
+    <option value="Norway">NORWAY</option>
+    <option value="Finland">FINLAND</option>
+    <option value="Italy">ITALY</option>
+    <option value="Netherlands">NETHERLANDS</option>
+    <option value="Germany">GERMANY</option>
+    <option value="USA">USA</option>
+    <option value="Canada">CANADA</option>
+    <option value="UAE">UAE</option>
+</select>
+                  <label class="ultra-label">Country</label>
+              </div>
+
+              <div class="input-container border-b border-white/10">
+                  <select id="city" name="City" onchange="updateLocations()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+                      <option value="" disabled selected>SELECT CITY</option>
+                  </select>
+                  <label class="ultra-label">City</label>
+              </div>
+
+              <div class="input-container md:col-span-2 border-b border-white/10">
+                  <select id="location" name="Location" onchange="checkSlots()" class="ultra-input w-full bg-black py-4 text-white outline-none cursor-pointer text-xs" required>
+                      <option value="" disabled selected>SELECT LOCATION</option>
+                  </select>
+                  <label class="ultra-label">Specific Meeting Point</label>
+              </div>
+
+              <div class="md:col-span-2 mt-12">
+                  <button type="submit" class="max-capacity-btn w-full bg-[#FCA311] py-6 text-black font-['Oswald'] font-bold tracking-[6px] hover:bg-white transition-all">
+                      <span class="btn-shine"></span>
+                      <span id="btn-text" class="relative z-10">RESERVE YOUR SEAT</span>
+                  </button>
+                  <div id="slot-status-text" class="mt-6 text-center">
+                      <span style="color: #FCA311; font-family: 'Oswald'; font-size: 10px; letter-spacing: 4px; opacity: 0.6;">SYSTEM READY</span>
+                  </div>
+              </div>
+          </form>
+      </div>
   </div>
 </section>
+  
+
 
 <section id="contact" class="section-container hidden" style="min-height: 100vh; background: #000; padding: 120px 25px;">
   <div class="max-w-4xl mx-auto">

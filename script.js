@@ -102,8 +102,7 @@ const globalData = {
         }
     },
     
-        }
-    },
+        
     "Canada": {
         cities: ["Toronto", "Vancouver", "Regina"],
         locations: {

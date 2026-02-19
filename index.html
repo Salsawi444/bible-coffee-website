@@ -805,5 +805,27 @@
     </div>
     <span id="audio-status" style="font-family: 'Oswald'; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 3px; font-weight: bold;">MUSIC: OFF</span>
 </div>
+
+<script>
+    // This function is isolated so it won't break your other buttons
+    function toggleFrequency() {
+        const audio = document.getElementById('bg-frequency');
+        const control = document.getElementById('audio-control');
+        const status = document.getElementById('audio-status');
+
+        if (audio.paused) {
+            audio.volume = 0.4; // Set comfortable background volume
+            audio.play().catch(e => console.log("Click required"));
+            control.classList.add('audio-active');
+            status.innerText = "MUSIC: ON";
+            status.style.color = "#FCA311";
+        } else {
+            audio.pause();
+            control.classList.remove('audio-active');
+            status.innerText = "MUSIC: OFF";
+            status.style.color = "rgba(255,255,255,0.4)";
+        }
+    }
+</script>
 </body>
 </html>

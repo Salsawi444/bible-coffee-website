@@ -124,14 +124,12 @@ nav {
 }
 
 /* --- 4. THE MINIMALIST PLATINUM MARQUEE --- */
-/* --- 4. THE MINIMALIST PLATINUM MARQUEE --- */
 .hero-marquee { 
     width: 100%; 
     overflow: hidden; 
     background: #000; 
-    /* LOWERED: More padding on top/bottom to give it space */
-    padding: 35px 0; 
-    margin-top: 20px; 
+    padding: 25px 0; /* Lowered and more compact */
+    margin-top: 10px; 
     border-top: 1px solid rgba(255,255,255,0.03);
     border-bottom: 1px solid rgba(255,255,255,0.03); 
 }
@@ -140,26 +138,17 @@ nav {
     display: inline-block; 
     white-space: nowrap; 
     font-family: 'Oswald', sans-serif; 
-    
-    /* SMALLER & SLEEKER: Reduced from 1.8rem to 0.9rem */
-    font-size: 0.9rem; 
-    
-    font-weight: 400; /* Lighter weight for luxury */
+    font-size: 0.8rem; /* Much smaller as requested */
+    font-weight: 400; 
     text-transform: uppercase; 
-    color: #FCA311; /* Solid Gold instead of a thick stroke */
-    -webkit-text-stroke: 0; /* Remove the outline for a cleaner look */
-    
-    animation: marquee 60s linear infinite; /* Slower = More Premium */
-    letter-spacing: 8px; /* Wide tracking is the key to high-end design */
-    opacity: 0.8;
+    color: #FCA311; 
+    letter-spacing: 10px; /* High-end tracking */
+    animation: marquee 70s linear infinite; /* Restarts the movement */
 }
 
-.marquee-content .dot { 
-    color: #FCA311; 
-    margin: 0 30px; 
-    font-size: 0.5rem; 
-    vertical-align: middle;
-    opacity: 0.4;
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 /* --- 5. MAXIMUM DESIGN CAPACITY (JOIN SECTION) --- */
 .section-container { display: none; padding: 100px 0; min-height: 100vh; background: #000; }

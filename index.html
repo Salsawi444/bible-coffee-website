@@ -782,17 +782,16 @@
     <source src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/Bible%20%20Coffee%204.mp3" type="audio/mpeg">
 </audio>
 
-<div id="audio-control" onclick="toggleFrequency()" 
-     style="position: fixed; bottom: 30px; left: 20px; z-index: 99999; cursor: pointer; display: flex; align-items: center; gap: 0px; background: rgba(0,0,0,0.9); padding: 10px; border: 1px solid rgba(252,163,17,0.3); border-radius: 50px; backdrop-filter: blur(10px); transition: all 0.4s ease; width: auto; max-width: 200px; overflow: hidden;">
+<div id="audio-control" onclick="toggleFrequency()" style="position: fixed; bottom: 30px; left: 20px; z-index: 99999; cursor: pointer; display: flex; align-items: center; background: rgba(0,0,0,0.9); padding: 10px 18px; border: 1px solid rgba(252,163,17,0.3); border-radius: 50px; backdrop-filter: blur(10px);">
     
-    <div class="signal-wrapper" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 8px;">
+    <div class="signal-wrapper" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
         <div class="signal-ring"></div>
         <div class="signal-dot"></div>
     </div>
 
-    <div id="audio-text-wrapper" style="display: flex; flex-direction: column; white-space: nowrap; transition: all 0.4s ease; opacity: 1; width: 110px;">
+    <div id="audio-text-wrapper" style="display: flex; flex-direction: column; white-space: nowrap; margin-left: 10px;">
         <span id="audio-status" style="font-family: 'Oswald'; font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 3px; font-weight: bold;">SIGNAL: MUTED</span>
-        <span id="audio-subtext" style="font-family: 'Inter'; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 1px; text-transform: uppercase;">88.4 MHZ</span>
+        <span style="font-family: 'Inter'; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 1px; text-transform: uppercase;">88.4 MHZ</span>
     </div>
 </div>
 <script>

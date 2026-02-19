@@ -1074,3 +1074,94 @@ nav {
         margin-right: auto;
     }
 }
+
+
+/* --- TACTICAL EVENT ID CARDS --- */
+.event-grid-platinum {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.event-id-card {
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.event-id-card:hover {
+    border-color: #FCA311;
+    background: #080808;
+    transform: translateY(-5px);
+}
+
+/* Tactical "Boarding Pass" Notch */
+.event-id-card::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-id-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.event-city {
+    font-family: 'Oswald';
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: #fff;
+}
+
+.event-status {
+    font-family: 'Oswald';
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 4px 8px;
+    border: 1px solid rgba(252, 163, 17, 0.3);
+    color: #FCA311;
+}
+
+.event-date-auto {
+    font-family: 'Inter';
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Pulse for High Demand */
+.pulse-gold {
+    width: 6px;
+    height: 6px;
+    background: #FCA311;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 10px #FCA311;
+    animation: tacticalPulse 2s infinite;
+}
+
+@keyframes tacticalPulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}

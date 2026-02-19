@@ -106,6 +106,34 @@ const globalData = {
     }
 };
 
+/* --- 2. NAVIGATION CORE (RESTORED) --- */
+function showSection(id, btn) {
+    const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];
+    sections.forEach(sectionId => {
+        const el = document.getElementById(sectionId);
+        if (el) { el.style.display = 'none'; el.classList.add('hidden'); }
+    });
+
+    // Platinum Trigger
+    if (id === 'events') syncGlobalEvents();
+
+    const target = (id === 'home') ? document.getElementById('home-wrapper') : document.getElementById(id);
+    if (target) { target.style.display = 'block'; target.classList.remove('hidden'); }
+    
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks) navLinks.classList.remove('active-menu');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetToHome() {
+    window.scrollTo(0, 0);
+    setTimeout(() => { location.reload(); }, 100);
+}
+
+/* --- 3. THE MIGHTY CODE: DATA TELEMETRY --- */
 async function syncGlobalEvents() {
     const eventGrid = document.getElementById('events-grid');
     if (!eventGrid) return;
@@ -129,7 +157,6 @@ async function syncGlobalEvents() {
         eventGrid.innerHTML = ''; 
 
         rawData.forEach((item, index) => {
-            // NASA PROTOCOL: Map values by checking all possible spellings/cases
             const getVal = (possibleKeys) => {
                 const key = Object.keys(item).find(k => possibleKeys.includes(k.trim().toLowerCase()));
                 return key ? item[key] : null;
@@ -152,14 +179,8 @@ async function syncGlobalEvents() {
                         <span class="text-white/20 font-['Oswald'] text-[10px] tracking-[5px] uppercase">SEQ // 0${index + 1}</span>
                         <span style="${statusStyle}" class="text-[9px] font-bold tracking-[3px] uppercase px-3 py-1 bg-white/5">[ ${status} ]</span>
                     </div>
-                    
-                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">
-                        ${city}
-                    </h4>
-                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">
-                        ${location}
-                    </p>
-                    
+                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">${city}</h4>
+                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">${location}</p>
                     <div class="flex justify-between items-end pt-8 border-t border-white/5">
                         <div>
                             <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Deployment</p>
@@ -172,14 +193,11 @@ async function syncGlobalEvents() {
                     </div>
                     <div class="absolute bottom-0 left-0 w-0 h-[3px] bg-[#FCA311] group-hover:w-full transition-all duration-700"></div>
                 </div>`;
-            
             eventGrid.insertAdjacentHTML('beforeend', card);
         });
 
         if (window.lucide) lucide.createIcons();
-
     } catch (error) {
-        console.error("TELEMETRY ERROR:", error);
         eventGrid.innerHTML = `<div class="col-span-full text-red-900 font-['Oswald'] uppercase tracking-[5px] text-center py-24">Link Interrupted // Critical Failure</div>`;
     }
 }

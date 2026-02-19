@@ -133,7 +133,6 @@ function resetToHome() {
     setTimeout(() => { location.reload(); }, 100);
 }
 
-/* --- 3. THE MIGHTY CODE: DATA TELEMETRY --- */
 async function syncGlobalEvents() {
     const eventGrid = document.getElementById('events-grid');
     if (!eventGrid) return;
@@ -141,7 +140,7 @@ async function syncGlobalEvents() {
     eventGrid.innerHTML = `
         <div class="col-span-full py-24 text-center">
             <span class="text-[#FCA311] font-['Oswald'] tracking-[20px] animate-pulse uppercase text-xs">
-                [ ESTABLISHING TELEMETRY LINK... ]
+                [ SCANNING GLOBAL SIGNALS... ]
             </span>
         </div>`;
 
@@ -164,26 +163,40 @@ async function syncGlobalEvents() {
 
             const city = getVal(['city', 'cities', 'town']) || "LOCATION UNKNOWN";
             const location = getVal(['location', 'venue', 'place', 'address']) || "COORDINATES PENDING";
-            const status = (getVal(['status', 'state']) || "ACTIVE").toUpperCase();
+            const status = (getVal(['status', 'state']) || "PENDING").toUpperCase();
             const date = (getVal(['date', 'time', 'schedule']) || "TBD").toUpperCase();
             const seats = getVal(['seats', 'capacity', 'slots']) || "10";
 
-            const isLive = status === 'LIVE' || status === 'ACTIVE';
-            const statusStyle = isLive 
-                ? 'color: #FCA311; text-shadow: 0 0 10px rgba(252,163,17,0.5); border: 1px solid rgba(252,163,17,0.3);' 
-                : 'color: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.05);';
+            // PLATINUM STATUS STYLING
+            let statusClasses = "text-[9px] font-bold tracking-[3px] uppercase px-3 py-1 bg-white/5 border ";
+            let statusStyle = "";
+
+            if (status === 'ACTIVE' || status === 'LIVE') {
+                // GREEN GLOW & BLINK
+                statusClasses += " animate-pulse";
+                statusStyle = "color: #00FF41; border-color: rgba(0, 255, 65, 0.3); text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);";
+            } else {
+                // YELLOW GLOW (PENDING/PLANNING)
+                statusStyle = "color: #FCA311; border-color: rgba(252, 163, 17, 0.3); text-shadow: 0 0 8px rgba(252, 163, 17, 0.6);";
+            }
 
             const card = `
                 <div class="bg-black p-12 group border border-white/5 hover:border-[#FCA311]/20 transition-all duration-700 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
                     <div class="flex justify-between items-start mb-10">
                         <span class="text-white/20 font-['Oswald'] text-[10px] tracking-[5px] uppercase">SEQ // 0${index + 1}</span>
-                        <span style="${statusStyle}" class="text-[9px] font-bold tracking-[3px] uppercase px-3 py-1 bg-white/5">[ ${status} ]</span>
+                        <span style="${statusStyle}" class="${statusClasses}">[ ${status} ]</span>
                     </div>
-                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">${city}</h4>
-                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">${location}</p>
+                    
+                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">
+                        ${city}
+                    </h4>
+                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">
+                        ${location}
+                    </p>
+                    
                     <div class="flex justify-between items-end pt-8 border-t border-white/5">
                         <div>
-                            <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Deployment</p>
+                            <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Happening On</p>
                             <span class="text-white font-['Oswald'] text-lg tracking-widest">${date}</span>
                         </div>
                         <div class="text-right">
@@ -193,15 +206,17 @@ async function syncGlobalEvents() {
                     </div>
                     <div class="absolute bottom-0 left-0 w-0 h-[3px] bg-[#FCA311] group-hover:w-full transition-all duration-700"></div>
                 </div>`;
+            
             eventGrid.insertAdjacentHTML('beforeend', card);
         });
 
         if (window.lucide) lucide.createIcons();
+
     } catch (error) {
+        console.error("TELEMETRY ERROR:", error);
         eventGrid.innerHTML = `<div class="col-span-full text-red-900 font-['Oswald'] uppercase tracking-[5px] text-center py-24">Link Interrupted // Critical Failure</div>`;
     }
 }
-
 /* --- 4. VIDEO ENGINE --- */
 function openVideo(id) {
     const overlay = document.createElement('div');
@@ -251,6 +266,7 @@ function updateLocations() {
 async function checkSlots() {
     const location = document.getElementById('location').value;
     const statusText = document.getElementById('slot-status-text');
+    
     const submitBtn = document.querySelector('#regForm button[type="submit"]');
     const btnText = document.getElementById('btn-text');
     if (!location) return;

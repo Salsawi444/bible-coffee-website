@@ -81,6 +81,18 @@ const globalData = {
             "Rotterdam": ["CENTRAAL"]
         }
     },
+
+    "Germany": {
+        cities: ["Berlin", "Munich", "Hamburg", "Frankfurt"],
+        locations: {
+            "Berlin": ["MITTE", "KREUZBERG", "PRENZLAUER BERG"],
+            "Munich": ["MARIENPLATZ", "SCHWABING"],
+            "Hamburg": ["ALTONA", "HAFENCITY"],
+            "Frankfurt": ["INNENSTADT", "WESTEND"]
+        }
+    },
+
+    
     "USA": {
         cities: ["Dallas", "Houston", "New York"],
         locations: {
@@ -89,11 +101,7 @@ const globalData = {
             "New York": ["MANHATTAN", "BROOKLYN"]
         }
     },
-    "UAE": {
-        cities: ["Dubai", "Abu Dhabi"],
-        locations: {
-            "Dubai": ["MARINA", "DOWNTOWN"],
-            "Abu Dhabi": ["CORNICHE"]
+    
         }
     },
     "Canada": {
@@ -102,6 +110,17 @@ const globalData = {
             "Toronto": ["DOWNTOWN", "NORTH YORK", "MISSISSAUGA"],
             "Vancouver": ["KITSILANO", "RICHMOND"],
             "Regina": ["WASCANA CENTER", "SASKATCHEWAN MUSEUM"]
+
+         }
+    },
+    
+    "UAE": {
+        cities: ["Dubai", "Abu Dhabi"],
+        locations: {
+            "Dubai": ["MARINA", "DOWNTOWN"],
+            "Abu Dhabi": ["CORNICHE"]
+
+            
         }
     }
 };

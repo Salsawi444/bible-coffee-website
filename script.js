@@ -414,3 +414,36 @@ window.addEventListener('scroll', function() {
     }, 800); // 800ms pause before it reappears
 });
 
+
+
+/* --- THE GHOST SCROLL ENGINE --- */
+(function() {
+    let isScrolling;
+    const hud = document.getElementById('audio-control');
+    const textWrapper = document.getElementById('audio-text-wrapper');
+
+    if (!hud || !textWrapper) return;
+
+    window.addEventListener('scroll', function (event) {
+        // ACTION: Shrink and Fade
+        hud.style.padding = "10px";
+        hud.style.opacity = "0.4";
+        hud.style.backgroundColor = "rgba(0,0,0,0.5)";
+        textWrapper.style.width = "0px";
+        textWrapper.style.opacity = "0";
+        textWrapper.style.marginLeft = "0px";
+
+        // Clear timeout throughout the scroll
+        window.clearTimeout(isScrolling);
+
+        // ACTION: Expand back after scroll stops
+        isScrolling = setTimeout(function() {
+            hud.style.padding = "10px 20px";
+            hud.style.opacity = "1";
+            hud.style.backgroundColor = "rgba(0,0,0,0.9)";
+            textWrapper.style.width = "110px";
+            textWrapper.style.opacity = "1";
+            textWrapper.style.marginLeft = "0px";
+        }, 600); // Re-appears after 0.6 seconds of no scrolling
+    }, false);
+})();

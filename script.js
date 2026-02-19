@@ -424,41 +424,46 @@ function generateMerchCode() {
 }
 
 
-/* --- TACTICAL AUDIO ENGINE --- */
-// We use a check to make sure the elements exist before running to prevent glitches
-const bgAudio = document.getElementById('bg-frequency');
-const audioControl = document.getElementById('audio-control');
-const audioStatus = document.getElementById('audio-status');
+/* --- TACTICAL AUDIO ENGINE: FINAL MISSION READY --- */
+(function() {
+    const bgAudio = document.getElementById('bg-frequency');
+    const audioControl = document.getElementById('audio-control');
+    const audioStatus = document.getElementById('audio-status');
 
-function toggleFrequency() {
-    if (!bgAudio) return; // Safety check
+    if (!bgAudio || !audioControl) return;
 
-    if (bgAudio.paused) {
-        bgAudio.volume = 0;
-        bgAudio.play().then(() => {
-            let volumeInterval = setInterval(() => {
-                if (bgAudio.volume < 0.45) { 
-                    bgAudio.volume += 0.05;
+    window.toggleFrequency = function() {
+        if (bgAudio.paused) {
+            bgAudio.volume = 0;
+            bgAudio.play().then(() => {
+                let vol = 0;
+                let fadeUp = setInterval(() => {
+                    if (vol < 0.4) {
+                        vol += 0.05;
+                        bgAudio.volume = vol;
+                    } else {
+                        clearInterval(fadeUp);
+                    }
+                }, 100);
+            }).catch(e => console.log("Init required"));
+            
+            audioControl.classList.add('audio-active');
+            audioStatus.innerText = "MUSIC: ON";
+            audioStatus.style.color = "#FCA311";
+        } else {
+            let vol = bgAudio.volume;
+            let fadeDown = setInterval(() => {
+                if (vol > 0.05) {
+                    vol -= 0.05;
+                    bgAudio.volume = vol;
                 } else {
-                    clearInterval(volumeInterval);
+                    bgAudio.pause();
+                    clearInterval(fadeDown);
+                    audioControl.classList.remove('audio-active');
+                    audioStatus.innerText = "MUSIC: OFF";
+                    audioStatus.style.color = "rgba(255,255,255,0.3)";
                 }
-            }, 100);
-        }).catch(err => console.log("Interaction required"));
-
-        audioControl.classList.add('audio-active');
-        audioStatus.innerText = "MUSIC: ON"; // Updated text
-        audioStatus.style.color = "#FCA311";
-    } else {
-        let fadeOutInterval = setInterval(() => {
-            if (bgAudio.volume > 0.05) {
-                bgAudio.volume -= 0.05;
-            } else {
-                bgAudio.pause();
-                clearInterval(fadeOutInterval);
-                audioControl.classList.remove('audio-active');
-                audioStatus.innerText = "MUSIC: OFF"; // Updated text
-                audioStatus.style.color = "rgba(255,255,255,0.3)";
-            }
-        }, 50);
-    }
-}
+            }, 50);
+        }
+    };
+})();

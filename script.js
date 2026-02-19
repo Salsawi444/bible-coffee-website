@@ -416,34 +416,51 @@ window.addEventListener('scroll', function() {
 
 
 
-/* --- THE GHOST SCROLL ENGINE --- */
+/* THE GHOST HUD BASE */
+#audio-control {
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    width: 165px; /* Fixed starting width */
+}
+
+/* THE SHRUNKEN STATE */
+#audio-control.hud-shrunken {
+    width: 46px !important; /* Only enough for the circle */
+    opacity: 0.3;
+    padding: 10px !important;
+    left: 10px !important;
+}
+
+#audio-control.hud-shrunken #audio-text-wrapper {
+    width: 0px !important;
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+#audio-text-wrapper {
+    transition: all 0.4s ease;
+    width: 110px;
+    overflow: hidden;
+}
+
+
+
+/* --- ATOMIC SCROLL ENGINE --- */
 (function() {
-    let isScrolling;
+    let scrollStopTimer;
     const hud = document.getElementById('audio-control');
-    const textWrapper = document.getElementById('audio-text-wrapper');
 
-    if (!hud || !textWrapper) return;
+    if (!hud) return;
 
-    window.addEventListener('scroll', function (event) {
-        // ACTION: Shrink and Fade
-        hud.style.padding = "10px";
-        hud.style.opacity = "0.4";
-        hud.style.backgroundColor = "rgba(0,0,0,0.5)";
-        textWrapper.style.width = "0px";
-        textWrapper.style.opacity = "0";
-        textWrapper.style.marginLeft = "0px";
+    window.addEventListener('scroll', function() {
+        // 1. Add the shrink class immediately on scroll
+        hud.classList.add('hud-shrunken');
 
-        // Clear timeout throughout the scroll
-        window.clearTimeout(isScrolling);
+        // 2. Clear timer
+        window.clearTimeout(scrollStopTimer);
 
-        // ACTION: Expand back after scroll stops
-        isScrolling = setTimeout(function() {
-            hud.style.padding = "10px 20px";
-            hud.style.opacity = "1";
-            hud.style.backgroundColor = "rgba(0,0,0,0.9)";
-            textWrapper.style.width = "110px";
-            textWrapper.style.opacity = "1";
-            textWrapper.style.marginLeft = "0px";
-        }, 600); // Re-appears after 0.6 seconds of no scrolling
-    }, false);
+        // 3. Remove shrink class after 800ms of no scrolling
+        scrollStopTimer = setTimeout(function() {
+            hud.classList.remove('hud-shrunken');
+        }, 800);
+    });
 })();

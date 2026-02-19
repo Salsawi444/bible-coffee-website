@@ -156,7 +156,7 @@ async function syncGlobalEvents() {
     const eventGrid = document.getElementById('events-grid');
     if (!eventGrid) return;
 
-    // Tactical Friday Calculator
+    // Helper: Auto-calculate Next Friday
     const getNextFriday = () => {
         let today = new Date();
         let nextFriday = new Date();
@@ -184,27 +184,26 @@ async function syncGlobalEvents() {
             return;
         }
 
-        // Logic to build the "Business Card" grid
         const processedHTML = rawData.map((item) => {
-            const getVal = (possibleKeys) => {
-                const key = Object.keys(item).find(k => possibleKeys.includes(k.trim().toLowerCase()));
+            const getVal = (keys) => {
+                const key = Object.keys(item).find(k => keys.includes(k.trim().toLowerCase()));
                 return key ? item[key] : null;
             };
 
             const city = getVal(['city', 'cities', 'town']) || "LOCATION UNKNOWN";
             const status = (getVal(['status', 'state']) || "STABLE").toUpperCase();
-            const isHighDemand = status === 'CRITICAL' || status === 'ACTIVE' || status === 'LIVE';
+            const isCritical = status === 'CRITICAL' || status === 'ACTIVE';
 
             return `
                 <div class="event-id-card" onclick="showSection('join')">
                     <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items: flex-start;">
-                        <span style="font-family:'Oswald'; font-size:1.5rem; text-transform:uppercase; color:white; line-height:1;">${city}</span>
-                        <span style="font-family:'Oswald'; font-size:9px; color:${isHighDemand ? '#FCA311' : 'rgba(255,255,255,0.4)'}; letter-spacing:2px; border:1px solid ${isHighDemand ? 'rgba(252,163,17,0.3)' : 'rgba(255,255,255,0.1)'}; padding:4px 8px;">
-                            ${isHighDemand ? '<span class="pulse-gold"></span>' : ''}${status}
+                        <span style="font-family:'Oswald'; font-size:1.8rem; text-transform:uppercase; color:white; line-height:1;">${city}</span>
+                        <span style="font-family:'Oswald'; font-size:9px; color:${isCritical ? '#FCA311' : 'rgba(255,255,255,0.4)'}; letter-spacing:2px; border:1px solid ${isCritical ? 'rgba(252,163,17,0.3)' : 'rgba(255,255,255,0.1)'}; padding:4px 8px;">
+                            ${isCritical ? '<span class="pulse-gold"></span>' : ''}${status}
                         </span>
                     </div>
-                    <div style="font-family:'Inter'; font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase;">
-                        NEXT DEPLOYMENT: <span style="color:white; opacity:0.8;">${fridayDate}</span>
+                    <div style="font-family:'Inter'; font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:2px;">
+                        DEPLOYMENT: <span style="color:white; opacity:0.8;">${fridayDate}</span>
                     </div>
                     <button class="mission-btn" style="margin-top:25px; width:100%; padding:15px; font-size:10px; letter-spacing:4px;">SECURE SPOT</button>
                 </div>`;
@@ -213,7 +212,7 @@ async function syncGlobalEvents() {
         eventGrid.innerHTML = processedHTML;
 
     } catch (error) {
-        eventGrid.innerHTML = `<div class="col-span-full text-red-900 font-['Oswald'] uppercase tracking-[5px] text-center py-24">Link Interrupted // Check Mainframe</div>`;
+        eventGrid.innerHTML = `<div class="col-span-full text-red-900 font-['Oswald'] uppercase tracking-[5px] text-center py-24">Link Interrupted</div>`;
     }
 }
 /* --- 4. VIDEO ENGINE --- */

@@ -1165,3 +1165,52 @@ nav {
     50% { opacity: 1; }
     100% { opacity: 0.4; }
 }
+
+
+/* --- SURGICAL UPDATE: TACTICAL EVENT IDs --- */
+.event-id-card { 
+    background: #050505; 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    padding: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    transition: 0.4s ease; 
+    cursor: pointer;
+}
+
+.event-id-card:hover { 
+    border-color: #FCA311; 
+    transform: translateY(-5px); 
+}
+
+/* Tactical Pulse for High Demand Cities */
+.pulse-gold { 
+    width: 6px; 
+    height: 6px; 
+    background: #FCA311; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-right: 8px; 
+    box-shadow: 0 0 10px #FCA311; 
+    animation: tacticalPulse 2s infinite; 
+}
+
+@keyframes tacticalPulse { 
+    0%, 100% { opacity: 0.4; } 
+    50% { opacity: 1; } 
+}
+
+/* --- MOBILE GAP FIX (ONLY FOR THE MISSION SECTION) --- */
+@media (max-width: 768px) {
+    /* Pulls the 'Rob Souls' section up to meet the pillars on mobile */
+    .mission-container, #manifesto div[style*="margin-top: 150px"] {
+        margin-top: 40px !important; 
+        padding: 80px 15px !important;
+    }
+    
+    /* Ensures the "THE ZONES" title looks brutalist on small screens */
+    .event-section-title {
+        font-size: 13vw !important;
+        line-height: 0.9 !important;
+    }
+}

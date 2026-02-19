@@ -385,3 +385,40 @@ function generateMerchCode() {
     const itemCode = `<div class="merch-item group"><div class="merch-img-wrapper" style="aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05);"><img src="${imgUrl}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.7s ease;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'"></div><div class="mt-6"><span style="font-family: 'Oswald'; color: #FCA311; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;">COLLECTION 2026</span><h4 style="font-family: 'Oswald'; color: white; font-size: 24px; text-transform: uppercase; margin-top: 5px;">${title}</h4><p style="font-family: 'Inter'; color: rgba(255,255,255,0.4); font-size: 11px; margin-top: 8px; letter-spacing: 1px;">Kingdom Supply Drop</p></div></div>`;
     document.getElementById('generatedCode').value = `<div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">${itemCode}</div>`.trim();
 }
+
+
+
+/* --- AUDIO HUD STYLES --- */
+.sound-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 12px;
+}
+
+.bar {
+    width: 2px;
+    height: 3px;
+    background: #FCA311;
+    transition: 0.3s;
+}
+
+/* Animation triggers when class is added via JS */
+.audio-active .bar {
+    animation: soundPulse 0.6s infinite ease-in-out alternate;
+}
+
+.audio-active .bar:nth-child(2) { animation-delay: 0.2s; }
+.audio-active .bar:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes soundPulse {
+    0% { height: 3px; }
+    100% { height: 12px; }
+}
+
+@media (max-width: 768px) {
+    #audio-control {
+        bottom: 20px; /* Moves it slightly up on mobile to avoid navigation bars */
+        left: 20px;
+    }
+}

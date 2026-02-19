@@ -1398,92 +1398,63 @@ select.ultra-input {
 }
 
 
-/* --- JOIN THE TABLE: VANGUARD SKIN --- */
 
-/* 1. The High-End Wrapper */
-.premium-form-wrapper {
-    background: #050505 !important; /* Deep tactical black */
-    border: 1px solid rgba(252, 163, 17, 0.2) !important; /* Thin gold wireframe */
-    box-shadow: 0 40px 100px rgba(0,0,0,0.95);
-    padding: 60px !important;
-    position: relative;
-}
-
-/* 2. Tactical Inputs & Labels */
-.ultra-input {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 13px !important;
-    letter-spacing: 2px !important;
-    padding: 1.5rem 0 !important;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.input-container:focus-within {
-    border-bottom-color: #FCA311 !important;
-}
-
-/* Floating Label Animation */
-.ultra-input:focus ~ .ultra-label,
-.ultra-input:not(:placeholder-shown) ~ .ultra-label {
-    transform: translateY(-25px) !important;
-    color: #FCA311 !important;
-    font-size: 9px !important;
-    letter-spacing: 4px !important;
-    font-weight: 700 !important;
-}
-
-/* 3. ANTI-WHITE DROPDOWN GLITCH FIX */
-select.ultra-input {
-    background-color: black !important;
-    color: white !important;
-    cursor: pointer !important;
-    appearance: none !important; /* Remove default browser arrow */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FCA311' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right center !important;
-    background-size: 12px !important;
-}
-
-/* Force the actual list to stay black */
-select.ultra-input option {
-    background: #0c0c0c !important;
-    color: white !important;
-    font-family: 'Oswald', sans-serif;
-}
-
-/* 4. The Reserve Seat Button */
-.max-capacity-btn {
-    position: relative;
-    overflow: hidden;
-    background: #FCA311 !important;
-    color: black !important;
-    transition: all 0.4s ease !important;
-    border: none !important;
-}
-
-.max-capacity-btn:hover {
-    background: white !important;
-    letter-spacing: 12px !important;
-    transform: scale(1.02);
-}
-
-.btn-shine {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: 0.5s;
-}
-
-.max-capacity-btn:hover .btn-shine {
-    left: 100%;
-}
-
-/* Mobile Polish */
+/* --- MOBILE-ONLY VANGUARD SKIN --- */
 @media (max-width: 768px) {
-    .premium-form-wrapper { padding: 30px 20px !important; }
-    .premium-glitch-title { font-size: 2.5rem !important; }
+    
+    /* 1. The High-End Wrapper (Mobile Only) */
+    .premium-form-wrapper {
+        background: #050505 !important;
+        border: 1px solid rgba(252, 163, 17, 0.3) !important; /* Slightly stronger gold for mobile screens */
+        padding: 30px 20px !important;
+        margin-top: 20px;
+    }
+
+    /* 2. Tactical Inputs (Mobile Only) */
+    .ultra-input {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        font-size: 14px !important;
+        padding: 1.2rem 0 !important;
+    }
+
+    /* Floating Label Fix for Mobile */
+    .ultra-input:focus ~ .ultra-label,
+    .ultra-input:not(:placeholder-shown) ~ .ultra-label {
+        transform: translateY(-22px) !important;
+        color: #FCA311 !important;
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* 3. ANTI-WHITE SCREEN DROPDOWN GLITCH (The Mobile Killer) */
+    select.ultra-input {
+        background-color: black !important;
+        color: white !important;
+        appearance: none !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FCA311' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right center !important;
+        background-size: 12px !important;
+    }
+
+    /* This ensures the selection list is black on iOS and Android */
+    select.ultra-input option {
+        background: #000 !important;
+        color: #fff !important;
+    }
+
+    /* 4. The Button (Full Width Mobile) */
+    .max-capacity-btn {
+        background: #FCA311 !important;
+        color: black !important;
+        padding: 20px !important;
+        font-size: 14px !important;
+    }
+
+    .premium-glitch-title {
+        font-size: 2.2rem !important;
+        letter-spacing: 8px !important;
+    }
 }
+
+

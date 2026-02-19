@@ -107,6 +107,7 @@ const globalData = {
 };
 
 /* --- 2. THE MIGHTY CODE: EVENT TELEMETRY ENGINE (NASA-STANDARD) --- */
+/* --- THE MIGHTY CODE: HARDENED TELEMETRY ENGINE --- */
 async function syncGlobalEvents() {
     const eventGrid = document.getElementById('events-grid');
     if (!eventGrid) return;
@@ -120,49 +121,71 @@ async function syncGlobalEvents() {
 
     try {
         const response = await fetch("https://sheetdb.io/api/v1/9q45d3e7oe5ks?sheet=Events");
-        const events = await response.json();
+        const rawData = await response.json();
 
-        if (!events || events.length === 0) {
-            eventGrid.innerHTML = `<div class="col-span-full text-white/10 uppercase tracking-[10px] text-center py-24">[ NO ACTIVE SIGNALS FOUND ]</div>`;
+        if (!rawData || rawData.length === 0) {
+            eventGrid.innerHTML = `<div class="col-span-full text-white/10 uppercase tracking-[10px] text-center py-24">[ NO ACTIVE SIGNALS ]</div>`;
             return;
         }
 
         eventGrid.innerHTML = ''; 
 
-        events.forEach((ev, index) => {
-            const isLive = ev.Status && ev.Status.toUpperCase() === 'LIVE';
+        rawData.forEach((item, index) => {
+            // NASA STANDARD: Normalize keys to handle any capitalization from the sheet
+            const ev = Object.keys(item).reduce((acc, key) => {
+                acc[key.toLowerCase()] = item[key];
+                return acc;
+            }, {});
+
+            // Extraction with Fallbacks
+            const city = ev.city || "UNKNOWN CITY";
+            const location = ev.location || "COORDINATES PENDING";
+            const status = (ev.status || "PENDING").toUpperCase();
+            const date = (ev.date || "TBD").toUpperCase();
+            const seats = ev.seats || "0";
+
+            const isLive = status === 'LIVE';
             const statusStyle = isLive 
-                ? 'color: #FCA311; text-shadow: 0 0 10px rgba(252,163,17,0.5);' 
-                : 'color: rgba(255,255,255,0.2);';
+                ? 'color: #FCA311; text-shadow: 0 0 10px rgba(252,163,17,0.5); border-color: rgba(252,163,17,0.3);' 
+                : 'color: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.05);';
 
             const card = `
                 <div class="bg-black p-12 group border border-white/5 hover:border-[#FCA311]/20 transition-all duration-700 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
                     <div class="flex justify-between items-start mb-10">
                         <span class="text-white/20 font-['Oswald'] text-[10px] tracking-[5px] uppercase">SEQ // 0${index + 1}</span>
-                        <span style="${statusStyle}" class="text-[10px] font-bold tracking-[4px] uppercase">[ ${ev.Status || 'UNKNOWN'} ]</span>
+                        <span style="${statusStyle}" class="text-[10px] font-bold tracking-[4px] uppercase border px-2 py-1">[ ${status} ]</span>
                     </div>
-                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">${ev.City}</h4>
-                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">${ev.Location}</p>
+                    
+                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">
+                        ${city}
+                    </h4>
+                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">
+                        ${location}
+                    </p>
+                    
                     <div class="flex justify-between items-end pt-8 border-t border-white/5">
                         <div>
                             <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Schedule</p>
-                            <span class="text-white font-['Oswald'] text-lg tracking-widest">${(ev.Date || '').toUpperCase()}</span>
+                            <span class="text-white font-['Oswald'] text-lg tracking-widest">${date}</span>
                         </div>
                         <div class="text-right">
                             <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Capacity</p>
-                            <span class="text-[#FCA311] font-['Oswald'] text-lg tracking-widest">${ev.Seats || '0'} SEATS</span>
+                            <span class="text-[#FCA311] font-['Oswald'] text-lg tracking-widest">${seats} SEATS</span>
                         </div>
                     </div>
                     <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#FCA311] group-hover:w-full transition-all duration-700"></div>
                 </div>`;
+            
             eventGrid.insertAdjacentHTML('beforeend', card);
         });
+
         if (window.lucide) lucide.createIcons();
+
     } catch (error) {
+        console.error("TELEMETRY ERROR:", error);
         eventGrid.innerHTML = `<div class="col-span-full text-red-900 font-['Oswald'] uppercase tracking-[5px] text-center py-24">Link Interrupted // Check Mainframe</div>`;
     }
 }
-
 /* --- 3. NAVIGATION & RESET LOGIC --- */
 function showSection(id, btn) {
     const sections = ['home-wrapper', 'magazine', 'merch', 'sermon', 'events', 'support', 'join', 'contact'];

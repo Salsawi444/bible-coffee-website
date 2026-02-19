@@ -41,6 +41,15 @@ const globalData = {
             "Kigali": ["KIMIHRURA", "NYARUTARAMA"]
         }
     },
+    "South Africa": {
+        cities: ["JOHANNESBURG", "CAPE TOWN", "DURBAN", "PRETORIA"],
+        locations: {
+            "JOHANNESBURG": ["Sandton City Hub", "Rosebank Art District", "Maboneng Precinct", "Soweto Vilakazi St"],
+            "CAPE TOWN": ["V&A Waterfront", "Camps Bay Promenade", "Gardens // Truth Coffee", "Stellenbosch Hub"],
+            "DURBAN": ["Umhlanga Arch", "Florida Road", "Ballito Junction"],
+            "PRETORIA": ["Menlyn Maine", "Brooklyn Design Square", "Hatfield Hub"]
+        }
+    },
     "Sweden": {
         cities: ["Stockholm", "Gothenburg"],
         locations: {

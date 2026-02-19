@@ -422,3 +422,44 @@ function generateMerchCode() {
         left: 20px;
     }
 }
+
+
+/* --- TACTICAL AUDIO ENGINE --- */
+const bgAudio = document.getElementById('bg-frequency');
+const audioControl = document.getElementById('audio-control');
+const audioStatus = document.getElementById('audio-status');
+
+function toggleFrequency() {
+    if (bgAudio.paused) {
+        // Set volume to 0 then fade in for a high-end feel
+        bgAudio.volume = 0;
+        bgAudio.play().then(() => {
+            let volumeInterval = setInterval(() => {
+                if (bgAudio.volume < 0.5) { // Set max volume to 50% for background atmosphere
+                    bgAudio.volume += 0.05;
+                } else {
+                    clearInterval(volumeInterval);
+                }
+            }, 100);
+        }).catch(error => {
+            console.log("Transmission Blocked: User interaction required for audio.");
+        });
+
+        audioControl.classList.add('audio-active');
+        audioStatus.innerText = "FREQ: ON";
+        audioStatus.style.color = "#FCA311";
+    } else {
+        // Fade out before pausing
+        let fadeOutInterval = setInterval(() => {
+            if (bgAudio.volume > 0.05) {
+                bgAudio.volume -= 0.05;
+            } else {
+                bgAudio.pause();
+                clearInterval(fadeOutInterval);
+                audioControl.classList.remove('audio-active');
+                audioStatus.innerText = "FREQ: OFF";
+                audioStatus.style.color = "rgba(255,255,255,0.3)";
+            }
+        }, 50);
+    }
+}

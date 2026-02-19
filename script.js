@@ -151,11 +151,23 @@ function resetToHome() {
     setTimeout(() => { location.reload(); }, 100);
 }
 
+/* --- 3. REFINED EVENT MANIFEST (TACTICAL ID EDITION) --- */
 async function syncGlobalEvents() {
     const eventGrid = document.getElementById('events-grid');
     if (!eventGrid) return;
 
-    // Loading State with NASA-standard tracking text
+    // Tactical Friday Calculator
+    const getNextFriday = () => {
+        let today = new Date();
+        let nextFriday = new Date();
+        let daysUntilFriday = (5 - today.getDay() + 7) % 7;
+        if (daysUntilFriday === 0) daysUntilFriday = 7; 
+        nextFriday.setDate(today.getDate() + daysUntilFriday);
+        return nextFriday.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+    };
+
+    const fridayDate = getNextFriday();
+
     eventGrid.innerHTML = `
         <div class="col-span-full py-24 text-center">
             <span class="text-[#FCA311] font-['Oswald'] tracking-[20px] animate-pulse uppercase text-xs">
@@ -172,77 +184,33 @@ async function syncGlobalEvents() {
             return;
         }
 
-        // --- THE "PLATINUM" CALCULATOR ---
-        let totalSeats = 0;
-        let activeNodes = 0;
-
-        const processedHTML = rawData.map((item, index) => {
+        // Logic to build the "Business Card" grid
+        const processedHTML = rawData.map((item) => {
             const getVal = (possibleKeys) => {
                 const key = Object.keys(item).find(k => possibleKeys.includes(k.trim().toLowerCase()));
                 return key ? item[key] : null;
             };
 
             const city = getVal(['city', 'cities', 'town']) || "LOCATION UNKNOWN";
-            const location = getVal(['location', 'venue', 'place', 'address']) || "COORDINATES PENDING";
-            const status = (getVal(['status', 'state']) || "PENDING").toUpperCase();
-            const date = (getVal(['date', 'time', 'schedule']) || "TBD").toUpperCase();
-            const seatsStr = getVal(['seats', 'capacity', 'slots']) || "0";
-            
-            // Accumulate Global Stats
-            const seatCount = parseInt(seatsStr.replace(/[^0-9]/g, '')) || 0;
-            totalSeats += seatCount;
-            if (status === 'ACTIVE' || status === 'LIVE') activeNodes++;
-
-            // Status Styling (Green Pulse vs Yellow Glow)
-            let statusClasses = "text-[9px] font-bold tracking-[3px] uppercase px-3 py-1 bg-white/5 border ";
-            let statusStyle = (status === 'ACTIVE' || status === 'LIVE')
-                ? "color: #00FF41; border-color: rgba(0, 255, 65, 0.3); text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);"
-                : "color: #FCA311; border-color: rgba(252, 163, 17, 0.3); text-shadow: 0 0 8px rgba(252, 163, 17, 0.6);";
-            
-            if (status === 'ACTIVE' || status === 'LIVE') statusClasses += " animate-pulse";
+            const status = (getVal(['status', 'state']) || "STABLE").toUpperCase();
+            const isHighDemand = status === 'CRITICAL' || status === 'ACTIVE' || status === 'LIVE';
 
             return `
-                <div class="bg-black p-12 group border border-white/5 hover:border-[#FCA311]/20 transition-all duration-700 cursor-pointer relative overflow-hidden" onclick="showSection('join')">
-                    <div class="flex justify-between items-start mb-10">
-                        <span class="text-white/20 font-['Oswald'] text-[10px] tracking-[5px] uppercase">SEQ // 0${index + 1}</span>
-                        <span style="${statusStyle}" class="${statusClasses}">[ ${status} ]</span>
+                <div class="event-id-card" onclick="showSection('join')">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:15px; align-items: flex-start;">
+                        <span style="font-family:'Oswald'; font-size:1.5rem; text-transform:uppercase; color:white; line-height:1;">${city}</span>
+                        <span style="font-family:'Oswald'; font-size:9px; color:${isHighDemand ? '#FCA311' : 'rgba(255,255,255,0.4)'}; letter-spacing:2px; border:1px solid ${isHighDemand ? 'rgba(252,163,17,0.3)' : 'rgba(255,255,255,0.1)'}; padding:4px 8px;">
+                            ${isHighDemand ? '<span class="pulse-gold"></span>' : ''}${status}
+                        </span>
                     </div>
-                    <h4 class="text-white font-['Oswald'] text-5xl md:text-6xl uppercase tracking-tighter leading-none mb-4 group-hover:text-[#FCA311] transition-colors">${city}</h4>
-                    <p class="text-white/40 text-[12px] tracking-[4px] uppercase mb-12">${location}</p>
-                    <div class="flex justify-between items-end pt-8 border-t border-white/5">
-                        <div>
-                            <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Happening On</p>
-                            <span class="text-white font-['Oswald'] text-lg tracking-widest">${date}</span>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-white/20 text-[9px] tracking-[3px] uppercase mb-1">Capacity</p>
-                            <span class="text-[#FCA311] font-['Oswald'] text-lg tracking-widest">${seatCount} SEATS</span>
-                        </div>
+                    <div style="font-family:'Inter'; font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase;">
+                        NEXT DEPLOYMENT: <span style="color:white; opacity:0.8;">${fridayDate}</span>
                     </div>
-                    <div class="absolute bottom-0 left-0 w-0 h-[3px] bg-[#FCA311] group-hover:w-full transition-all duration-700"></div>
+                    <button class="mission-btn" style="margin-top:25px; width:100%; padding:15px; font-size:10px; letter-spacing:4px;">SECURE SPOT</button>
                 </div>`;
         }).join('');
 
-        // Inject the Status Bar + the Cards
-        eventGrid.innerHTML = `
-            <div class="col-span-full mb-12 flex flex-wrap gap-8 py-6 border-b border-white/10">
-                <div class="flex flex-col">
-                    <span class="text-white/20 text-[8px] tracking-[3px] uppercase">Active Nodes</span>
-                    <span class="text-[#00FF41] font-['Oswald'] text-2xl tracking-widest animate-pulse">${activeNodes}</span>
-                </div>
-                <div class="flex flex-col border-l border-white/10 pl-8">
-                    <span class="text-white/20 text-[8px] tracking-[3px] uppercase">Global Capacity</span>
-                    <span class="text-white font-['Oswald'] text-2xl tracking-widest">${totalSeats}</span>
-                </div>
-                <div class="flex flex-col border-l border-white/10 pl-8">
-                    <span class="text-white/20 text-[8px] tracking-[3px] uppercase">Protocol Status</span>
-                    <span class="text-[#FCA311] font-['Oswald'] text-2xl tracking-widest">NOMINAL</span>
-                </div>
-            </div>
-            ${processedHTML}
-        `;
-
-        if (window.lucide) lucide.createIcons();
+        eventGrid.innerHTML = processedHTML;
 
     } catch (error) {
         eventGrid.innerHTML = `<div class="col-span-full text-red-900 font-['Oswald'] uppercase tracking-[5px] text-center py-24">Link Interrupted // Check Mainframe</div>`;

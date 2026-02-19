@@ -1216,75 +1216,94 @@ nav {
 }
 
 
-
-/* --- 7. JOIN SECTION FACELIFT (PLATINUM VANGUARD) --- */
-
-/* The Main Container */
-.premium-form-wrapper {
-    background: rgba(5, 5, 5, 0.95) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
-    padding: 60px !important;
-    backdrop-filter: blur(30px) !important;
-}
-
-/* The Inputs */
-.ultra-input {
-    font-family: 'Inter', sans-serif !important;
-    letter-spacing: 1px !important;
-    border-bottom: 1px solid rgba(252, 163, 17, 0.1) !important;
-    transition: all 0.4s ease !important;
-}
-
-/* Floating Label Logic */
-.input-container:focus-within .ultra-label,
-.ultra-input:not(:placeholder-shown) + .ultra-label {
-    transform: translateY(-25px);
-    font-size: 9px !important;
-    color: #FCA311 !important;
-    letter-spacing: 4px !important;
-}
-
-/* ANTI-WHITE SCREEN GLITCH (Dropdown Fix) */
-select.ultra-input option {
-    background: #000 !important;
-    color: white !important;
-    padding: 20px;
-}
-
-/* Tactical Selection Arrow */
-select.ultra-input {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FCA311' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right center !important;
-    background-size: 14px !important;
-}
-
-/* The Button */
-.max-capacity-btn {
+/* --- PLATINUM SUPPORT SECTION STYLES --- */
+.support-card-platinum {
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
 
-.max-capacity-btn:hover {
-    background: #fff !important;
-    letter-spacing: 10px !important;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(252, 163, 17, 0.2);
+.support-card-platinum:hover {
+    border-color: #FCA311;
+    background: #080808;
+    transform: translateX(10px);
 }
 
-.btn-shine {
-    position: absolute;
-    top: 0;
-    left: -100%;
+.support-card-platinum .card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.support-card-platinum .card-number {
+    font-family: 'Oswald';
+    color: #FCA311;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.support-card-platinum .card-title {
+    font-family: 'Oswald';
+    color: white;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.support-card-platinum .card-desc {
+    font-family: 'Inter';
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.support-action-btn {
     width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: all 0.6s;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: 'Oswald';
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.max-capacity-btn:hover .btn-shine {
-    left: 100%;
+.support-action-btn:hover {
+    background: white;
+    color: black;
+}
+
+.support-action-btn.gold-variant {
+    border-color: #FCA311;
+    color: #FCA311;
+}
+
+.support-action-btn.gold-variant:hover {
+    background: #FCA311;
+    color: black;
+}
+
+/* Mobile Adjustment for Support Split */
+@media (max-width: 1024px) {
+    .support-vision {
+        text-align: center;
+    }
+    .support-vision h2 {
+        text-align: center !important;
+    }
+    .support-vision p {
+        margin: 0 auto 40px;
+    }
+    .support-vision div {
+        border-left: none;
+        border-top: 2px solid #FCA311;
+        padding-top: 20px;
+        padding-left: 0;
+    }
 }

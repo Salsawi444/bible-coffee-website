@@ -778,42 +778,77 @@
   </style>
 
 
-<audio id="bg-frequency" loop preload="auto">
-    <source src="https://raw.githubusercontent.com/Salsawi444/bible-coffee-website/main/Bible%20%20Coffee%204.mp3" type="audio/mpeg">
-</audio>
-
-<div id="audio-control" onclick="toggleFrequency()" style="position: fixed; bottom: 30px; left: 20px; z-index: 99999; cursor: pointer; display: flex; align-items: center; background: rgba(0,0,0,0.9); padding: 10px 18px; border: 1px solid rgba(252,163,17,0.3); border-radius: 50px; backdrop-filter: blur(10px);">
+<audio<div id="audio-control" onclick="toggleFrequency()" 
+     style="position: fixed; bottom: 30px; left: 20px; z-index: 99999; cursor: pointer; display: flex; align-items: center; background: rgba(0,0,0,0.95); padding: 0 15px; border: 1px solid rgba(252,163,17,0.4); border-radius: 50px; backdrop-filter: blur(10px); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); width: 180px; height: 50px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     
-    <div class="signal-wrapper" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-        <div class="signal-ring"></div>
-        <div class="signal-dot"></div>
+    <div style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div class="signal-ring" style="position: absolute; width: 24px; height: 24px; border: 1px solid #FCA311; border-radius: 50%; opacity: 0;"></div>
+        <div id="signal-dot" style="width: 8px; height: 8px; background: rgba(255,255,255,0.2); border-radius: 50%; transition: 0.3s;"></div>
     </div>
 
-    <div id="audio-text-wrapper" style="display: flex; flex-direction: column; white-space: nowrap; margin-left: 10px;">
-        <span id="audio-status" style="font-family: 'Oswald'; font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 3px; font-weight: bold;">SIGNAL: MUTED</span>
-        <span style="font-family: 'Inter'; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 1px; text-transform: uppercase;">88.4 MHZ</span>
+    <div id="hud-content" style="display: flex; flex-direction: column; margin-left: 15px; transition: opacity 0.3s ease, transform 0.3s ease;">
+        <span id="audio-status" style="font-family: 'Oswald'; font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 3px; font-weight: bold; white-space: nowrap;">SIGNAL: MUTED</span>
+        <span id="audio-subtext" style="font-family: 'Inter'; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;">88.4 MHZ ARCHIVE</span>
     </div>
 </div>
-<script>
-    // This function is isolated so it won't break your other buttons
-    function toggleFrequency() {
-        const audio = document.getElementById('bg-frequency');
-        const control = document.getElementById('audio-control');
-        const status = document.getElementById('audio-status');
 
-       if (audio.paused) {
-    audio.volume = 0.4; 
-    audio.play().catch(e => console.log("Init required"));
-    control.classList.add('audio-active');
-    status.innerText = "SIGNAL: LIVE"; // High-end vibe
-    status.style.color = "#FCA311";
-} else {
-    audio.pause();
-    control.classList.remove('audio-active');
-    status.innerText = "SIGNAL: MUTED"; // Tactical vibe
-    status.style.color = "rgba(255,255,255,0.4)";
-}
-    }
+<style>
+    /* Radar pulse only activates when signal is live */
+    .audio-active .signal-ring { animation: radar 2s infinite ease-out; }
+    @keyframes radar { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+</style>
+
+<script>
+    (function() {
+        const hud = document.getElementById('audio-control');
+        const content = document.getElementById('hud-content');
+        const status = document.getElementById('audio-status');
+        const subtext = document.getElementById('audio-subtext');
+        const dot = document.getElementById('signal-dot');
+        const audio = document.getElementById('bg-frequency');
+        let isScrolling;
+
+        // THE SHRINK ENGINE
+        window.addEventListener('scroll', () => {
+            // Instant Shrink
+            hud.style.width = "54px"; 
+            hud.style.opacity = "0.4";
+            content.style.opacity = "0";
+            content.style.transform = "translateX(-10px)";
+
+            window.clearTimeout(isScrolling);
+
+            // Re-expand after stop
+            isScrolling = setTimeout(() => {
+                hud.style.width = "180px";
+                hud.style.opacity = "1";
+                content.style.opacity = "1";
+                content.style.transform = "translateX(0)";
+            }, 800);
+        });
+
+        // THE TOGGLE ENGINE
+        window.toggleFrequency = function() {
+            if (audio.paused) {
+                audio.volume = 0.4;
+                audio.play();
+                hud.classList.add('audio-active');
+                status.innerText = "SIGNAL: LIVE";
+                status.style.color = "#FCA311";
+                dot.style.background = "#FCA311";
+                dot.style.boxShadow = "0 0 10px #FCA311";
+                subtext.innerText = "TRANSMITTING...";
+            } else {
+                audio.pause();
+                hud.classList.remove('audio-active');
+                status.innerText = "SIGNAL: MUTED";
+                status.style.color = "rgba(255,255,255,0.4)";
+                dot.style.background = "rgba(255,255,255,0.2)";
+                dot.style.boxShadow = "none";
+                subtext.innerText = "88.4 MHZ ARCHIVE";
+            }
+        };
+    })();
 </script>
 </body>
 </html>

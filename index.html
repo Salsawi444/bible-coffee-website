@@ -795,60 +795,55 @@
         <span id="audio-subtext" style="font-family: 'Inter'; font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;">88.4 MHZ ARCHIVE</span>
     </div>
 </div>
+
 <style>
-    /* Radar pulse only activates when signal is live */
-    .audio-active .signal-ring { animation: radar 2s infinite ease-out; }
-    @keyframes radar { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+    /* Radar Animation */
+    @keyframes radarPulse {
+        0% { transform: scale(0.5); opacity: 1; }
+        100% { transform: scale(1.8); opacity: 0; }
+    }
+    .transmitting { animation: radarPulse 2s infinite ease-out !important; }
 </style>
 
 <script>
     (function() {
+        const audio = document.getElementById('bg-frequency');
         const hud = document.getElementById('audio-control');
         const content = document.getElementById('hud-content');
         const status = document.getElementById('audio-status');
-        const subtext = document.getElementById('audio-subtext');
         const dot = document.getElementById('signal-dot');
-        const audio = document.getElementById('bg-frequency');
+        const ring = document.getElementById('radar-ring');
         let isScrolling;
 
-        // THE SHRINK ENGINE
+        // THE SHRINK LOGIC (Physical)
         window.addEventListener('scroll', () => {
-            // Instant Shrink
             hud.style.width = "54px"; 
             hud.style.opacity = "0.4";
             content.style.opacity = "0";
-            content.style.transform = "translateX(-10px)";
-
             window.clearTimeout(isScrolling);
-
-            // Re-expand after stop
             isScrolling = setTimeout(() => {
                 hud.style.width = "180px";
                 hud.style.opacity = "1";
                 content.style.opacity = "1";
-                content.style.transform = "translateX(0)";
             }, 800);
         });
 
-        // THE TOGGLE ENGINE
-        window.toggleFrequency = function() {
+        // THE SIGNAL LOGIC (Audio)
+        window.handleSignal = function() {
             if (audio.paused) {
-                audio.volume = 0.4;
                 audio.play();
-                hud.classList.add('audio-active');
                 status.innerText = "SIGNAL: LIVE";
                 status.style.color = "#FCA311";
                 dot.style.background = "#FCA311";
                 dot.style.boxShadow = "0 0 10px #FCA311";
-                subtext.innerText = "TRANSMITTING...";
+                ring.classList.add('transmitting');
             } else {
                 audio.pause();
-                hud.classList.remove('audio-active');
                 status.innerText = "SIGNAL: MUTED";
                 status.style.color = "rgba(255,255,255,0.4)";
                 dot.style.background = "rgba(255,255,255,0.2)";
                 dot.style.boxShadow = "none";
-                subtext.innerText = "88.4 MHZ ARCHIVE";
+                ring.classList.remove('transmitting');
             }
         };
     })();

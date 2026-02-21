@@ -1756,3 +1756,35 @@ select.ultra-input {
         font-size: 11px;
     }
 }
+
+/* --- THE PLATINUM HOME UPGRADE --- */
+
+.deployment-ticker {
+    width: 100%;
+    background: #000;
+    border-top: 1px solid rgba(252, 163, 17, 0.2);
+    border-bottom: 1px solid rgba(252, 163, 17, 0.2);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-wrapper {
+    display: inline-block;
+    animation: tickerLoop 35s linear infinite; /* This makes it move */
+    font-family: 'Oswald', sans-serif;
+    color: #FCA311;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+@keyframes tickerLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.vision-briefing { padding: 80px 20px; background: #050505; }
+.briefing-container { max-width: 800px; margin: 0 auto; border-left: 2px solid #FCA311; padding-left: 30px; }
+.briefing-header { font-family: 'Oswald'; font-size: 11px; letter-spacing: 4px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+.vision-briefing p { font-size: 22px; line-height: 1.6; color: #fff; font-weight: 300; }
+.highlight { color: #FCA311; font-weight: bold; }

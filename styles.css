@@ -146,6 +146,105 @@ nav {
     animation: marquee 70s linear infinite; /* Restarts the movement */
 }
 
+
+/* --- MODULE 04: SUPPORT HUB STYLES --- */
+
+.support-grid {
+    padding: 100px 25px;
+    background: #000;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.support-header { margin-bottom: 60px; }
+
+.protocol-tag {
+    font-family: 'Oswald';
+    font-size: 11px;
+    color: #FCA311;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.support-header h2 {
+    font-family: 'Oswald';
+    font-size: 42px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.support-header p {
+    color: rgba(255,255,255,0.5);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.operation-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.op-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(252, 163, 17, 0.2);
+    padding: 50px 40px;
+    text-align: left;
+    position: relative;
+    transition: 0.4s;
+}
+
+.op-card:hover {
+    border-color: #FCA311;
+    background: rgba(252, 163, 17, 0.05);
+    transform: translateY(-5px);
+}
+
+.op-tag {
+    font-family: 'Oswald';
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.op-card h3 {
+    font-family: 'Oswald';
+    font-size: 24px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.op-card p {
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.op-btn {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid #FCA311;
+    color: #FCA311;
+    font-family: 'Oswald';
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.op-btn:hover {
+    background: #FCA311;
+    color: #000;
+}
+
+/* Specific Alliance Glow */
+.op-card.alliance { border-left: 4px solid #FCA311; }
+
 @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }

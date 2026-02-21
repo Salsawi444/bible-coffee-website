@@ -1747,3 +1747,53 @@ select.ultra-input {
     opacity: 0;
 }
 
+
+/* --- PLATINUM MOBILE OPTIMIZATION --- */
+
+@media (max-width: 768px) {
+    /* 1. Recalibrate the Vision Briefing */
+    .vision-briefing {
+        padding: 60px 15px; /* Reduce padding for small screens */
+    }
+
+    .briefing-container {
+        padding: 25px; /* Less interior space */
+        border-left: 2px solid #FCA311; /* Thicker line for visibility on mobile */
+    }
+
+    .vision-briefing p {
+        font-size: 18px; /* Drop font size so it doesn't wrap awkwardly */
+        line-height: 1.5;
+        text-align: left; /* Easier to read on mobile */
+    }
+
+    /* 2. Recalibrate the Strategic Pillars */
+    .pillar-grid {
+        grid-template-columns: 1fr; /* Force single column stacking */
+    }
+
+    .pillar {
+        padding: 40px 25px;
+        border-bottom: 1px solid rgba(252, 163, 17, 0.1); /* Separator lines */
+    }
+
+    /* 3. Recalibrate the Support Hub */
+    .support-header h2 {
+        font-size: 32px; /* Smaller header for mobile */
+    }
+
+    .operation-cards {
+        grid-template-columns: 1fr; /* Stack the Alliance and Deployment cards */
+        padding: 0 10px;
+    }
+
+    .op-card {
+        padding: 30px 20px;
+    }
+
+    /* 4. Fix Ticker Speed for Mobile */
+    .ticker-wrapper {
+        animation: tickerLoop 20s linear infinite; /* Faster loop for shorter width */
+        font-size: 11px;
+    }
+}

@@ -918,25 +918,115 @@ nav {
     gap: 30px;
 }
 
-.manifesto-card {
-    background: linear-gradient(145deg, rgba(15,15,15,1) 0%, rgba(0,0,0,1) 100%);
-    padding: 60px 40px;
-    border: 1px solid rgba(255,255,255,0.03); /* Subtle border */
-    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-    position: relative;
+/* --- THE PLATINUM MOVEMENT UPGRADES --- */
+
+.deployment-ticker {
+    width: 100%;
+    background: #000;
+    border-top: 1px solid rgba(252, 163, 17, 0.2);
+    border-bottom: 1px solid rgba(252, 163, 17, 0.2);
+    padding: 15px 0;
     overflow: hidden;
+    white-space: nowrap;
 }
 
-/* 2. Title & The Signature Underline */
-.manifesto-card h4 {
-    color: white;
-    font-family: 'Oswald';
-    font-size: 1.7rem;
-    letter-spacing: 4px;
-    margin-bottom: 25px;
-    text-transform: uppercase;
+.ticker-wrapper {
+    display: inline-block;
+    animation: tickerLoop 40s linear infinite;
+    font-family: 'Oswald', sans-serif;
+    color: #FCA311;
+    font-size: 12px;
+    letter-spacing: 3px;
 }
 
+@keyframes tickerLoop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.vision-briefing { 
+    padding: 120px 25px; 
+    background: #000; 
+    text-align: center; 
+}
+
+.briefing-container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    border-left: 1px solid #FCA311; 
+    padding: 40px; 
+    background: rgba(255,255,255,0.01); 
+}
+
+.briefing-header { 
+    font-family: 'Oswald'; 
+    font-size: 11px; 
+    letter-spacing: 5px; 
+    color: rgba(255,255,255,0.3); 
+    margin-bottom: 30px; 
+}
+
+.status-light { 
+    display: inline-block; 
+    width: 7px; 
+    height: 7px; 
+    background: #FCA311; 
+    border-radius: 50%; 
+    margin-right: 12px; 
+    box-shadow: 0 0 12px #FCA311; 
+}
+
+.vision-briefing p { 
+    font-size: 28px; 
+    line-height: 1.4; 
+    color: #fff; 
+    font-family: 'Inter', sans-serif; 
+    font-weight: 300; 
+}
+
+.highlight { color: #FCA311; font-weight: 700; }
+
+.pillar-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    background: rgba(252, 163, 17, 0.1); 
+    gap: 1px; 
+}
+
+.pillar { 
+    background: #050505; 
+    padding: 80px 50px; 
+    transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+.pillar:hover { background: rgba(252, 163, 17, 0.02); }
+
+.pillar h4 { 
+    font-family: 'Oswald'; 
+    color: #FCA311; 
+    letter-spacing: 4px; 
+    margin-bottom: 20px; 
+    font-size: 18px; 
+}
+
+.pillar-line { 
+    width: 30px; 
+    height: 2px; 
+    background: #FCA311; 
+    margin-bottom: 25px; 
+}
+
+.pillar p { 
+    color: rgba(255,255,255,0.5); 
+    font-size: 15px; 
+    line-height: 1.8; 
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .vision-briefing p { font-size: 20px; }
+    .pillar { padding: 60px 30px; }
+}
 .card-line {
     width: 50px;
     height: 2px;

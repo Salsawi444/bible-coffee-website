@@ -1017,131 +1017,90 @@ nav {
     gap: 30px;
 }
 
-/* --- THE PLATINUM MOVEMENT UPGRADES --- */
-
+/* --- TICKER GLITCH FIX --- */
 .deployment-ticker {
-    width: 100%;
+    width: 100vw; /* Use viewport width */
+    max-width: 100%;
     background: #000;
     border-top: 1px solid rgba(252, 163, 17, 0.2);
     border-bottom: 1px solid rgba(252, 163, 17, 0.2);
-    padding: 15px 0;
-    overflow: hidden;
-    white-space: nowrap;
+    padding: 12px 0;
+    overflow: hidden; /* This stops the horizontal scroll glitch */
+    position: relative;
 }
 
 .ticker-wrapper {
-    display: inline-block;
-    animation: tickerLoop 40s linear infinite;
+    display: flex;
+    white-space: nowrap;
+    animation: tickerLoop 30s linear infinite;
     font-family: 'Oswald', sans-serif;
     color: #FCA311;
-    font-size: 12px;
-    letter-spacing: 3px;
+    font-size: 13px;
+    letter-spacing: 2px;
 }
 
+/* Ensure the ticker doesn't stop or jump */
 @keyframes tickerLoop {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
+/* --- VISION BRIEFING MOBILE FIX --- */
 .vision-briefing { 
-    padding: 120px 25px; 
+    padding: 80px 20px; 
     background: #000; 
-    text-align: center; 
+    width: 100%;
+    overflow: hidden;
 }
 
 .briefing-container { 
     max-width: 900px; 
     margin: 0 auto; 
-    border-left: 1px solid #FCA311; 
-    padding: 40px; 
+    border-left: 2px solid #FCA311; 
+    padding: 30px 20px; /* Adjusted for mobile breathing room */
     background: rgba(255,255,255,0.01); 
 }
 
-.briefing-header { 
-    font-family: 'Oswald'; 
-    font-size: 11px; 
-    letter-spacing: 5px; 
-    color: rgba(255,255,255,0.3); 
-    margin-bottom: 30px; 
-}
-
-.status-light { 
-    display: inline-block; 
-    width: 7px; 
-    height: 7px; 
-    background: #FCA311; 
-    border-radius: 50%; 
-    margin-right: 12px; 
-    box-shadow: 0 0 12px #FCA311; 
-}
-
 .vision-briefing p { 
-    font-size: 28px; 
-    line-height: 1.4; 
+    font-size: 24px; /* Slightly smaller for better wrapping */
+    line-height: 1.5; 
     color: #fff; 
     font-family: 'Inter', sans-serif; 
     font-weight: 300; 
 }
 
-.highlight { color: #FCA311; font-weight: 700; }
-
+/* --- PILLAR GRID STACKING FIX --- */
 .pillar-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     background: rgba(252, 163, 17, 0.1); 
-    gap: 1px; 
+    gap: 1px;
+    width: 100%;
 }
 
-.pillar { 
-    background: #050505; 
-    padding: 80px 50px; 
-    transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-}
-
-.pillar:hover { background: rgba(252, 163, 17, 0.02); }
-
-.pillar h4 { 
-    font-family: 'Oswald'; 
-    color: #FCA311; 
-    letter-spacing: 4px; 
-    margin-bottom: 20px; 
-    font-size: 18px; 
-}
-
-.pillar-line { 
-    width: 30px; 
-    height: 2px; 
-    background: #FCA311; 
-    margin-bottom: 25px; 
-}
-
-.pillar p { 
-    color: rgba(255,255,255,0.5); 
-    font-size: 15px; 
-    line-height: 1.8; 
-}
-
-/* Mobile Tweak */
+/* --- GLOBAL MOBILE CALIBRATION --- */
 @media (max-width: 768px) {
-    .vision-briefing p { font-size: 20px; }
-    .pillar { padding: 60px 30px; }
-}
-.card-line {
-    width: 50px;
-    height: 2px;
-    background: #FCA311; /* Uniform Gold Line */
-    margin-bottom: 30px;
-    transition: width 0.6s ease, box-shadow 0.6s ease;
-}
+    .vision-briefing {
+        padding: 50px 15px;
+    }
+    
+    .vision-briefing p { 
+        font-size: 18px; /* Critical for mobile readability */
+        text-align: left;
+    }
 
-.manifesto-card p {
-    color: #555;
-    font-family: 'Inter';
-    font-size: 0.85rem;
-    line-height: 1.8;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: color 0.4s ease;
+    .pillar {
+        padding: 40px 25px;
+    }
+
+    .support-header h2 {
+        font-size: 28px;
+    }
+    
+    /* Force columns to stack to prevent overlap glitches */
+    .pillar-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* 3. High-End Glow & Border Effect */

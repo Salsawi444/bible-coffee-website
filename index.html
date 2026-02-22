@@ -29,47 +29,133 @@
 
   <div id="home-wrapper">
     <header id="home" class="hero-container">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-          <p class="mission-tag">MISSION PROTOCOL</p>
-          <h1 class="hero-brand">
-              <span class="serif-brand">Bible</span>
-              <span class="amp-brand">&</span>
-              <span class="sans-brand">Coffee</span>
+      <div class="hero-bg-layer"></div>
+      <div class="hero-overlay-layer"></div>
+      <div class="hero-content-layer">
+        <div class="brand-block">
+          <p class="mission-tag">THE EXTRACTION MISSION</p>
+          <h1 class="responsive-title">
+            <span class="serif-text">Bible</span>
+            <span class="amp-gold">&</span>
+            <span class="sans-text">Coffee</span>
+            <span class="copyright-mark">©</span>
           </h1>
-          <p class="hero-year">FRIDAYS© 2026</p>
+          <p class="hero-subtitle">FRIDAYS — GLOBAL PROTOCOL</p>
+        </div>
       </div>
     </header>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
+    <div class="hero-marquee">
+        <div class="marquee-content">
             ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ● 
             ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ●
         </div>
     </div>
+
+    <section id="manifesto" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto manifesto-grid">
+            <div class="manifesto-card">
+                <div class="card-line"></div>
+                <h4>AUTHENTIC</h4>
+                <p>Beyond the religious walls. Where the Gospel meets reality in its rawest form.</p>
+            </div>
+            <div class="manifesto-card">
+                <div class="card-line"></div>
+                <h4>TRANSFORMATION</h4>
+                <p>We don't do rituals. We do real-time spiritual transformation for the modern soul.</p>
+            </div>
+            <div class="manifesto-card">
+                <div class="card-line"></div>
+                <h4>RECLAIMED</h4>
+                <p>Every seat at our table is a soul reclaimed from the noise of the world.</p>
+            </div>
+            <div class="manifesto-card">
+                <div class="card-line"></div>
+                <h4>RESCUE</h4>
+                <p>The Mission is simple: Establish the Kingdom in every heart we touch.</p>
+            </div>
+        </div>
+        
+        <div class="extraction-mission-box">
+            <h2 class="mission-title">WE ARE <br><span class="soul-robber-text">SOUL ROBBERS</span></h2>
+            <button class="mission-btn" onclick="showSection('join')">Join the Deployment</button>
+        </div>
+    </section>
   </div>
 
   <section id="join" class="section-container hidden">
-      <div class="luxury-form-card">
-          <h2 class="form-title italic">Reserve Your Seat</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <select id="country-select" onchange="updateCities()" class="lux-input">
-                  <option value="" disabled selected>SELECT COUNTRY</option>
-              </select>
-              <select id="city-select" onchange="updateLocations()" class="lux-input">
-                  <option value="" disabled selected>SELECT CITY</option>
-              </select>
-              <select id="location-select" class="lux-input md:col-span-2">
-                  <option value="" disabled selected>SPECIFIC HUB</option>
-              </select>
-              <input type="text" id="name-input" placeholder="FULL NAME" class="lux-input">
-              <input type="email" id="email-input" placeholder="EMAIL ADDRESS" class="lux-input">
-              <input type="tel" id="phone-input" placeholder="SECURE LINE" class="lux-input md:col-span-2">
+      <div class="max-w-4xl mx-auto px-6">
+          <div class="text-center mb-16">
+              <h2 class="premium-glitch-title">Join The Table</h2>
+              <div class="premium-divider"></div>
+              <p class="premium-subtitle">RESERVE YOUR SEAT IN THE GLOBAL MOVEMENT</p>
           </div>
-          <div class="form-footer">
-              <p class="slot-text">REMAINING SLOTS: <span id="slot-counter">--</span></p>
-              <button id="reserve-btn" onclick="handleReservation()" class="lux-btn">Confirm Deployment</button>
+          
+          <div class="premium-form-wrapper">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div class="input-container">
+                      <select id="country-select" onchange="updateCities()" class="ultra-input">
+                          <option value="" disabled selected></option>
+                      </select>
+                      <label class="ultra-label">SELECT COUNTRY</label>
+                  </div>
+                  <div class="input-container">
+                      <select id="city-select" onchange="updateLocations()" class="ultra-input">
+                          <option value="" disabled selected></option>
+                      </select>
+                      <label class="ultra-label">SELECT CITY</label>
+                  </div>
+                  <div class="input-container md:col-span-2">
+                      <select id="location-select" class="ultra-input">
+                          <option value="" disabled selected></option>
+                      </select>
+                      <label class="ultra-label">SPECIFIC HUB / LOCATION</label>
+                  </div>
+                  <div class="input-container">
+                      <input type="text" id="name-input" placeholder=" " class="ultra-input">
+                      <label class="ultra-label">FULL NAME</label>
+                  </div>
+                  <div class="input-container">
+                      <input type="email" id="email-input" placeholder=" " class="ultra-input">
+                      <label class="ultra-label">EMAIL ADDRESS</label>
+                  </div>
+                  <div class="input-container md:col-span-2">
+                      <input type="tel" id="phone-input" placeholder=" " class="ultra-input">
+                      <label class="ultra-label">SECURE PHONE NUMBER</label>
+                  </div>
+              </div>
+
+              <div class="mt-16 text-center">
+                  <button id="reserve-btn" onclick="handleReservation()" class="max-capacity-btn">
+                      Confirm Reservation <div class="btn-shine"></div>
+                  </button>
+                  <p id="slot-status-text">SYSTEM STATUS: <span id="slot-counter" class="counter-glow">--</span> SEATS REMAINING</p>
+              </div>
           </div>
+      </div>
+  </section>
+
+  <section id="magazine" class="section-container hidden">
+      <div class="max-w-7xl mx-auto px-6">
+          <h2 class="premium-glitch-title mb-12">Archives</h2>
+          <div class="magazine-journal-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+              </div>
+      </div>
+  </section>
+
+  <section id="sermon" class="section-container hidden">
+      <div class="max-w-7xl mx-auto px-6">
+          <h2 class="premium-glitch-title mb-12">The Vault</h2>
+          <div class="sermon-cinema-grid grid grid-cols-1 md:grid-cols-2 gap-12">
+              </div>
+      </div>
+  </section>
+
+  <section id="events" class="section-container hidden">
+      <div class="max-w-7xl mx-auto px-6">
+          <h2 class="premium-glitch-title mb-12">World Tour</h2>
+          <div id="events-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              </div>
       </div>
   </section>
 
@@ -84,6 +170,26 @@
               <span class="hz-label">88.4 MHZ ARCHIVE</span>
           </div>
           <button onclick="handleSignal()" class="signal-trigger"><i data-lucide="radio"></i></button>
+      </div>
+  </div>
+
+  <div id="admin-panel" class="hidden">
+      <div class="max-w-2xl mx-auto">
+          <h2 class="text-gold font-bold text-2xl mb-8">COMMAND CENTER</h2>
+          <div class="admin-field-group">
+              <label>SERMON VAULT GENERATOR</label>
+              <input type="text" id="sermonLink" placeholder="YouTube Link" class="admin-input-premium">
+              <input type="text" id="sermonTitle" placeholder="Sermon Title" class="admin-input-premium">
+              <input type="text" id="sermonCat" placeholder="Category" class="admin-input-premium">
+              <button onclick="generateSermonCode()" class="admin-btn-generate">GENERATE CODE</button>
+          </div>
+          <div class="admin-field-group">
+              <label>MERCH VAULT GENERATOR</label>
+              <input type="text" id="merchImg" placeholder="Image URL" class="admin-input-premium">
+              <input type="text" id="merchTitle" placeholder="Product Title" class="admin-input-premium">
+              <button onclick="generateMerchCode()" class="admin-btn-generate">GENERATE CODE</button>
+          </div>
+          <button onclick="document.getElementById('admin-panel').classList.add('hidden')" class="mt-8 text-white opacity-50 underline">EXIT COMMAND</button>
       </div>
   </div>
 

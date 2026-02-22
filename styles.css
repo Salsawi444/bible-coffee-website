@@ -1,128 +1,78 @@
-/* ==========================================================================
-   1. CORE BRANDING & PHYSICS
-   ========================================================================== */
+/* --- CORE BRANDING --- */
 :root {
     --gold: #FCA311;
-    --gold-dim: rgba(252, 163, 17, 0.4);
-    --bg-dark: #050505;
-    --transition-cinema: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    --gold-glow: rgba(252, 163, 17, 0.4);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body { 
-    background: var(--bg-dark); 
-    color: #ffffff; 
-    font-family: 'Inter', sans-serif; 
-    overflow-x: hidden; 
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+/* Cinematic Backgrounds */
+.bg-radial-vignette {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 70%, #000 100%);
 }
 
-/* Luxury Grain Overlay */
-body::after {
-    content: ""; position: fixed; inset: 0;
-    background: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.03; pointer-events: none; z-index: 99999;
+@keyframes slow-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
 }
 
-/* ==========================================================================
-   2. NAVIGATION
-   ========================================================================== */
-nav { 
-    position: fixed; top: 0; width: 100%; z-index: 10000; 
-    background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.03); padding: 25px 0;
+.animate-slow-zoom { animation: slow-zoom 30s infinite alternate linear; }
+
+/* Luxury Typography */
+.responsive-title {
+    font-size: clamp(3rem, 15vw, 10rem);
 }
 
-.nav-container { max-width: 1300px; margin: auto; display: flex; justify-content: flex-end; padding: 0 40px; }
-
-.nav-links button { 
-    background: none; border: none; color: rgba(255,255,255,0.4);
-    font-family: 'Oswald'; font-weight: 600; font-size: 13px; letter-spacing: 4px;
-    text-transform: uppercase; cursor: pointer; margin-left: 35px; transition: 0.4s;
+.copyright-mark {
+    font-size: 1rem;
+    vertical-align: super;
+    font-family: 'Inter';
+    font-weight: 300;
 }
 
-.nav-links button:hover, .nav-links button.active { color: var(--gold); }
-
-/* ==========================================================================
-   3. HERO SECTION
-   ========================================================================== */
-.hero-container { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-
-.hero-bg-layer {
-    position: absolute; inset: 0;
-    background: url('megimage19.jpg') center/cover no-repeat;
-    animation: zoomHero 40s infinite alternate;
-    filter: brightness(0.5); z-index: -1;
+.nav-btn {
+    font-family: 'Oswald';
+    font-size: 12px;
+    letter-spacing: 4px;
+    opacity: 0.4;
+    transition: 0.5s;
 }
 
-@keyframes zoomHero { from { transform: scale(1); } to { transform: scale(1.15); } }
+.nav-btn:hover, .nav-btn.active { opacity: 1; color: var(--gold); }
 
-.hero-overlay-layer { position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 95%); }
+/* The Physical HUD Ring */
+.transmitting {
+    border-color: var(--gold) !important;
+    animation: ring-pulse 1.5s infinite;
+}
 
-.brand-block { text-align: center; z-index: 10; opacity: 0; animation: revealUp 1.5s 0.5s forwards; }
-@keyframes revealUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ring-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
 
-.mission-tag { font-family: 'Oswald'; color: var(--gold); letter-spacing: 10px; font-size: 12px; margin-bottom: 30px; }
+/* Marquee Speed */
+.marquee-content {
+    animation: marquee-scroll 60s linear infinite;
+}
 
-.responsive-title { line-height: 0.8; }
-.serif-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(4rem, 15vw, 10rem); }
-.amp-gold { color: var(--gold); font-size: 3rem; display: block; margin: 10px 0; }
-.sans-text { font-family: 'Oswald'; font-weight: 700; font-size: clamp(3rem, 12vw, 8rem); text-transform: uppercase; letter-spacing: 15px; }
-.copyright-mark { font-size: 1.5rem; vertical-align: super; font-weight: 300; }
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
 
-.hero-marquee { background: #000; border-top: 1px solid #111; padding: 20px 0; overflow: hidden; }
-.marquee-content { display: inline-block; white-space: nowrap; font-family: 'Oswald'; color: var(--gold-dim); letter-spacing: 8px; font-size: 10px; animation: scroll 50s linear infinite; }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* Card Styling */
+.manifesto-card {
+    background: rgba(255,255,255,0.02);
+    padding: 50px 30px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
 
-/* ==========================================================================
-   4. MANIFESTO GRID
-   ========================================================================== */
-.manifesto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-.manifesto-card { padding: 60px 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: var(--transition-cinema); }
-.manifesto-card:hover { transform: translateY(-10px); background: rgba(252, 163, 17, 0.03); border-color: var(--gold-dim); }
-.card-line { width: 40px; height: 1px; background: var(--gold); margin-bottom: 30px; transition: 0.6s; }
-.manifesto-card:hover .card-line { width: 80px; }
-.manifesto-card h4 { font-family: 'Oswald'; font-size: 24px; letter-spacing: 4px; margin-bottom: 20px; }
-.manifesto-card p { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; line-height: 1.8; }
-
-.extraction-mission-box { text-align: center; padding: 150px 20px; }
-.mission-title { font-family: 'Oswald'; font-size: clamp(3rem, 10vw, 7rem); font-weight: 800; line-height: 0.9; margin-bottom: 60px; }
-.soul-robber-text { color: var(--gold); text-shadow: 0 0 30px var(--gold-dim); }
-.mission-btn { background: #fff; color: #000; padding: 25px 60px; font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: 6px; border: none; cursor: pointer; transition: 0.5s; }
-.mission-btn:hover { background: var(--gold); transform: scale(1.05); box-shadow: 0 0 50px var(--gold-dim); }
-
-/* ==========================================================================
-   5. PREMIUM FORM (VANGUARD)
-   ========================================================================== */
-.premium-form-wrapper { background: #000; border: 1px solid #111; padding: 80px 60px; position: relative; overflow: hidden; }
-.ultra-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #222; padding: 20px 0; color: white; font-family: 'Inter'; transition: 0.4s; }
-.ultra-input:focus { outline: none; border-color: var(--gold); }
-.ultra-label { position: absolute; top: 20px; left: 0; font-family: 'Oswald'; font-size: 10px; color: #444; letter-spacing: 3px; pointer-events: none; transition: 0.4s; text-transform: uppercase; }
-.ultra-input:focus ~ .ultra-label, .ultra-input:not(:placeholder-shown) ~ .ultra-label { transform: translateY(-30px); color: var(--gold); font-size: 9px; }
-
-.max-capacity-btn { width: 100%; background: var(--gold); color: black; padding: 25px; font-family: 'Oswald'; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; border: none; cursor: pointer; transition: 0.5s; position: relative; overflow: hidden; }
-.max-capacity-btn:hover { background: #fff; letter-spacing: 8px; }
-
-/* ==========================================================================
-   6. HUD TERMINAL (PROTECTED)
-   ========================================================================== */
-#audio-control { position: fixed; bottom: 40px; left: 40px; background: rgba(0,0,0,0.95); border: 1px solid var(--gold); height: 54px; width: 180px; border-radius: 100px; display: flex; align-items: center; padding: 0 20px; z-index: 10000; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
-#hud-content { display: flex; align-items: center; gap: 15px; width: 100%; transition: opacity 0.3s; }
-.radar-box { position: relative; width: 12px; height: 12px; }
-#signal-dot { width: 100%; height: 100%; border-radius: 50%; background: rgba(255,255,255,0.2); transition: 0.4s; }
-#radar-ring { position: absolute; inset: -5px; border: 1px solid transparent; border-radius: 50%; }
-#radar-ring.transmitting { border-color: var(--gold); animation: hudPulse 1.5s infinite; }
-@keyframes hudPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
-.hud-info { flex: 1; }
-#audio-status { font-family: 'Oswald'; font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.4); display: block; }
-.hz-label { font-size: 7px; color: #444; letter-spacing: 1px; }
-.signal-trigger { background: none; border: none; color: white; cursor: pointer; }
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .nav-container { justify-content: center; }
-    .nav-links { display: none; }
-    .mobile-toggle { display: block; color: var(--gold); font-size: 24px; }
-    .premium-form-wrapper { padding: 40px 20px; }
-    .manifesto-grid { grid-template-columns: 1fr; }
+.manifesto-card:hover {
+    background: rgba(252, 163, 17, 0.03);
+    border-color: var(--gold-glow);
+    transform: translateY(-10px);
 }

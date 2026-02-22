@@ -9,187 +9,139 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bg-black text-white selection:bg-gold selection:text-black">
 
-  <nav>
-    <div class="nav-container">
-      <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></i></button>
-      <div id="nav-links" class="nav-links">
-        <button onclick="showSection('home',this)" class="active">HOME</button>
-        <button onclick="showSection('magazine',this)">MAGAZINE</button>
-        <button onclick="showSection('merch',this)">MERCH</button>
-        <button onclick="showSection('sermon',this)">SERMON</button>
-        <button onclick="showSection('events',this)">EVENTS</button>
-        <button onclick="showSection('support',this)">SUPPORT</button>
-        <button onclick="showSection('join',this)">JOIN</button>
-        <button onclick="showSection('contact',this)">CONTACT</button>
+  <nav class="fixed top-0 w-full z-[10000] bg-black/80 backdrop-blur-xl border-b border-white/5 py-6">
+    <div class="max-w-[1400px] mx-auto flex justify-between items-center px-10">
+      <div class="text-gold font-black tracking-widest text-xl">B&C</div>
+      <button id="menu-toggle" class="md:hidden text-gold"><i data-lucide="menu"></i></button>
+      <div id="nav-links" class="hidden md:flex gap-10">
+        <button onclick="showSection('home',this)" class="nav-btn active">HOME</button>
+        <button onclick="showSection('magazine',this)" class="nav-btn">MAGAZINE</button>
+        <button onclick="showSection('merch',this)" class="nav-btn">MERCH</button>
+        <button onclick="showSection('sermon',this)" class="nav-btn">SERMON</button>
+        <button onclick="showSection('events',this)" class="nav-btn">EVENTS</button>
+        <button onclick="showSection('join',this)" class="nav-btn">JOIN</button>
+        <button onclick="showSection('contact',this)" class="nav-btn">CONTACT</button>
       </div>
     </div>
   </nav>
 
   <div id="home-wrapper">
-    <header id="home" class="hero-container">
-      <div class="hero-bg-layer"></div>
-      <div class="hero-overlay-layer"></div>
-      <div class="hero-content-layer">
-        <div class="brand-block">
-          <p class="mission-tag">THE EXTRACTION MISSION</p>
-          <h1 class="responsive-title">
-            <span class="serif-text">Bible</span>
-            <span class="amp-gold">&</span>
-            <span class="sans-text">Coffee</span>
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-[url('hero-family.jpg')] bg-cover bg-center scale-110 animate-slow-zoom opacity-50"></div>
+      <div class="absolute inset-0 bg-radial-vignette"></div>
+      
+      <div class="relative z-10 text-center px-6">
+        <p class="text-gold tracking-[15px] text-[10px] mb-8 font-bold uppercase">The Extraction Mission</p>
+        <h1 class="responsive-title">
+            <span class="block italic font-serif leading-none">Bible</span>
+            <span class="block text-gold text-4xl my-4">&</span>
+            <span class="block font-sans font-black tracking-[20px]">COFFEE</span>
             <span class="copyright-mark">©</span>
-          </h1>
-          <p class="hero-subtitle">FRIDAYS — GLOBAL PROTOCOL</p>
-        </div>
+        </h1>
+        <p class="mt-10 font-sans tracking-[5px] text-sm opacity-60">GLOBAL PROTOCOL // TGIF</p>
       </div>
     </header>
 
-    <div class="hero-marquee">
-        <div class="marquee-content">
+    <div class="bg-black border-y border-white/5 py-6 overflow-hidden">
+        <div class="marquee-content whitespace-nowrap text-[10px] tracking-[8px] text-gold/40 font-bold">
             ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ● 
             ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ●
         </div>
     </div>
 
-    <section id="manifesto" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto manifesto-grid">
-            <div class="manifesto-card">
-                <div class="card-line"></div>
-                <h4>AUTHENTIC</h4>
-                <p>Beyond the religious walls. Where the Gospel meets reality in its rawest form.</p>
+    <section class="py-32 px-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="manifesto-card group">
+                <div class="h-[1px] w-10 bg-gold mb-8 transition-all group-hover:w-20"></div>
+                <h4 class="font-sans font-bold tracking-widest mb-4">AUTHENTIC</h4>
+                <p class="text-xs tracking-wider text-gray-500 leading-loose">BEYOND THE RELIGIOUS WALLS. RAW GOSPEL. REAL LIVES.</p>
             </div>
-            <div class="manifesto-card">
-                <div class="card-line"></div>
-                <h4>TRANSFORMATION</h4>
-                <p>We don't do rituals. We do real-time spiritual transformation for the modern soul.</p>
+            <div class="manifesto-card group">
+                <div class="h-[1px] w-10 bg-gold mb-8 transition-all group-hover:w-20"></div>
+                <h4 class="font-sans font-bold tracking-widest mb-4">TRANSFORMATION</h4>
+                <p class="text-xs tracking-wider text-gray-500 leading-loose">WE DON'T DO RITUALS. WE DO SPIRITUAL EVOLUTION.</p>
             </div>
-            <div class="manifesto-card">
-                <div class="card-line"></div>
-                <h4>RECLAIMED</h4>
-                <p>Every seat at our table is a soul reclaimed from the noise of the world.</p>
+            <div class="manifesto-card group">
+                <div class="h-[1px] w-10 bg-gold mb-8 transition-all group-hover:w-20"></div>
+                <h4 class="font-sans font-bold tracking-widest mb-4">RECLAIMED</h4>
+                <p class="text-xs tracking-wider text-gray-500 leading-loose">EVERY SEAT AT OUR TABLE IS A SOUL REDEEMED.</p>
             </div>
-            <div class="manifesto-card">
-                <div class="card-line"></div>
-                <h4>RESCUE</h4>
-                <p>The Mission is simple: Establish the Kingdom in every heart we touch.</p>
+            <div class="manifesto-card group">
+                <div class="h-[1px] w-10 bg-gold mb-8 transition-all group-hover:w-20"></div>
+                <h4 class="font-sans font-bold tracking-widest mb-4">RESCUE</h4>
+                <p class="text-xs tracking-wider text-gray-500 leading-loose">ESTABLISHING THE KINGDOM IN EVERY HEART WE TOUCH.</p>
             </div>
         </div>
-        
-        <div class="extraction-mission-box">
-            <h2 class="mission-title">WE ARE <br><span class="soul-robber-text">SOUL ROBBERS</span></h2>
-            <button class="mission-btn" onclick="showSection('join')">Join the Deployment</button>
+
+        <div class="text-center mt-32">
+            <h2 class="text-5xl md:text-8xl font-black leading-tight">WE ARE <br><span class="text-gold">SOUL ROBBERS</span></h2>
+            <button onclick="showSection('join')" class="mt-12 bg-white text-black px-12 py-5 font-bold tracking-widest hover:bg-gold transition-all duration-500">JOIN THE DEPLOYMENT</button>
         </div>
     </section>
   </div>
 
-  <section id="join" class="section-container hidden">
-      <div class="max-w-4xl mx-auto px-6">
-          <div class="text-center mb-16">
-              <h2 class="premium-glitch-title">Join The Table</h2>
-              <div class="premium-divider"></div>
-              <p class="premium-subtitle">RESERVE YOUR SEAT IN THE GLOBAL MOVEMENT</p>
+  <section id="join" class="hidden py-32 px-10">
+      <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-20">
+              <h2 class="text-4xl font-black tracking-[10px]">JOIN THE TABLE</h2>
+              <div class="w-20 h-1 bg-gold mx-auto my-6"></div>
           </div>
           
-          <div class="premium-form-wrapper">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <div class="input-container">
-                      <select id="country-select" onchange="updateCities()" class="ultra-input">
-                          <option value="" disabled selected></option>
-                      </select>
-                      <label class="ultra-label">SELECT COUNTRY</label>
-                  </div>
-                  <div class="input-container">
-                      <select id="city-select" onchange="updateLocations()" class="ultra-input">
-                          <option value="" disabled selected></option>
-                      </select>
-                      <label class="ultra-label">SELECT CITY</label>
-                  </div>
-                  <div class="input-container md:col-span-2">
-                      <select id="location-select" class="ultra-input">
-                          <option value="" disabled selected></option>
-                      </select>
-                      <label class="ultra-label">SPECIFIC HUB / LOCATION</label>
-                  </div>
-                  <div class="input-container">
-                      <input type="text" id="name-input" placeholder=" " class="ultra-input">
-                      <label class="ultra-label">FULL NAME</label>
-                  </div>
-                  <div class="input-container">
-                      <input type="email" id="email-input" placeholder=" " class="ultra-input">
-                      <label class="ultra-label">EMAIL ADDRESS</label>
-                  </div>
-                  <div class="input-container md:col-span-2">
-                      <input type="tel" id="phone-input" placeholder=" " class="ultra-input">
-                      <label class="ultra-label">SECURE PHONE NUMBER</label>
-                  </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div class="relative group">
+                  <select id="country-select" onchange="updateCities()" class="w-full bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-gold transition-colors appearance-none cursor-pointer">
+                      <option value="" disabled selected>SELECT COUNTRY</option>
+                  </select>
               </div>
+              <div class="relative group">
+                  <select id="city-select" onchange="updateLocations()" class="w-full bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-gold transition-colors appearance-none cursor-pointer">
+                      <option value="" disabled selected>SELECT CITY</option>
+                  </select>
+              </div>
+              <div class="md:col-span-2">
+                  <select id="location-select" class="w-full bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-gold transition-colors appearance-none cursor-pointer">
+                      <option value="" disabled selected>SPECIFIC HUB / LOCATION</option>
+                  </select>
+              </div>
+              <input type="text" id="name-input" placeholder="FULL NAME" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-gold transition-colors">
+              <input type="email" id="email-input" placeholder="EMAIL ADDRESS" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-gold transition-colors">
+              <input type="tel" id="phone-input" placeholder="SECURE PHONE NUMBER" class="md:col-span-2 bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-gold transition-colors">
+          </div>
 
-              <div class="mt-16 text-center">
-                  <button id="reserve-btn" onclick="handleReservation()" class="max-capacity-btn">
-                      Confirm Reservation <div class="btn-shine"></div>
-                  </button>
-                  <p id="slot-status-text">SYSTEM STATUS: <span id="slot-counter" class="counter-glow">--</span> SEATS REMAINING</p>
-              </div>
+          <div class="mt-20 text-center">
+              <button id="reserve-btn" onclick="handleReservation()" class="w-full bg-gold text-black py-6 font-black tracking-[5px] hover:bg-white transition-all">CONFIRM RESERVATION</button>
+              <p class="mt-6 text-[10px] tracking-widest opacity-40 uppercase">System Status: <span id="slot-counter" class="text-gold">--</span> Seats Remaining</p>
           </div>
       </div>
   </section>
 
-  <section id="magazine" class="section-container hidden">
-      <div class="max-w-7xl mx-auto px-6">
-          <h2 class="premium-glitch-title mb-12">Archives</h2>
-          <div class="magazine-journal-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-              </div>
-      </div>
-  </section>
+  <section id="magazine" class="hidden py-32 px-10"><div class="max-w-7xl mx-auto"><h2 class="text-4xl font-black tracking-widest mb-16">ARCHIVES</h2><div class="magazine-journal-grid grid grid-cols-1 md:grid-cols-3 gap-10"></div></div></section>
+  <section id="sermon" class="hidden py-32 px-10"><div class="max-w-7xl mx-auto"><h2 class="text-4xl font-black tracking-widest mb-16">THE VAULT</h2><div class="sermon-cinema-grid grid grid-cols-1 md:grid-cols-2 gap-12"></div></div></section>
+  <section id="events" class="hidden py-32 px-10"><div class="max-w-7xl mx-auto"><h2 class="text-4xl font-black tracking-widest mb-16">WORLD TOUR</h2><div id="events-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div></div></section>
 
-  <section id="sermon" class="section-container hidden">
-      <div class="max-w-7xl mx-auto px-6">
-          <h2 class="premium-glitch-title mb-12">The Vault</h2>
-          <div class="sermon-cinema-grid grid grid-cols-1 md:grid-cols-2 gap-12">
-              </div>
-      </div>
-  </section>
-
-  <section id="events" class="section-container hidden">
-      <div class="max-w-7xl mx-auto px-6">
-          <h2 class="premium-glitch-title mb-12">World Tour</h2>
-          <div id="events-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              </div>
-      </div>
-  </section>
-
-  <div id="audio-control">
-      <div id="hud-content">
-          <div class="radar-box">
-              <div id="radar-ring"></div>
-              <div id="signal-dot"></div>
+  <div id="audio-control" class="fixed bottom-10 left-10 h-14 w-[180px] bg-black border border-gold rounded-full flex items-center px-5 z-[10000] transition-all duration-700">
+      <div id="hud-content" class="flex items-center gap-4 w-full transition-opacity duration-300">
+          <div class="relative w-3 h-3">
+              <div id="signal-dot" class="w-full h-full rounded-full bg-white/20 transition-all"></div>
+              <div id="radar-ring" class="absolute inset-[-5px] border border-transparent rounded-full"></div>
           </div>
-          <div class="hud-info">
-              <span id="audio-status">SIGNAL: MUTED</span>
-              <span class="hz-label">88.4 MHZ ARCHIVE</span>
+          <div class="flex-1">
+              <span id="audio-status" class="block text-[9px] tracking-[2px] opacity-40 font-bold uppercase">SIGNAL: MUTED</span>
+              <span class="block text-[7px] text-white/20 tracking-tighter">88.4 MHZ ARCHIVE</span>
           </div>
-          <button onclick="handleSignal()" class="signal-trigger"><i data-lucide="radio"></i></button>
+          <button onclick="handleSignal()" class="text-white hover:text-gold"><i data-lucide="radio" class="w-4 h-4"></i></button>
       </div>
   </div>
 
-  <div id="admin-panel" class="hidden">
-      <div class="max-w-2xl mx-auto">
-          <h2 class="text-gold font-bold text-2xl mb-8">COMMAND CENTER</h2>
-          <div class="admin-field-group">
-              <label>SERMON VAULT GENERATOR</label>
-              <input type="text" id="sermonLink" placeholder="YouTube Link" class="admin-input-premium">
-              <input type="text" id="sermonTitle" placeholder="Sermon Title" class="admin-input-premium">
-              <input type="text" id="sermonCat" placeholder="Category" class="admin-input-premium">
-              <button onclick="generateSermonCode()" class="admin-btn-generate">GENERATE CODE</button>
-          </div>
-          <div class="admin-field-group">
-              <label>MERCH VAULT GENERATOR</label>
-              <input type="text" id="merchImg" placeholder="Image URL" class="admin-input-premium">
-              <input type="text" id="merchTitle" placeholder="Product Title" class="admin-input-premium">
-              <button onclick="generateMerchCode()" class="admin-btn-generate">GENERATE CODE</button>
-          </div>
-          <button onclick="document.getElementById('admin-panel').classList.add('hidden')" class="mt-8 text-white opacity-50 underline">EXIT COMMAND</button>
+  <div id="admin-panel" class="hidden fixed inset-0 bg-black/95 z-[20000] p-10 flex items-center justify-center">
+      <div class="max-w-xl w-full space-y-6">
+          <h2 class="text-gold font-black text-2xl tracking-[10px]">COMMAND CENTER</h2>
+          <input type="text" id="sermonLink" placeholder="YOUTUBE LINK" class="w-full bg-transparent border border-white/10 p-4">
+          <input type="text" id="sermonTitle" placeholder="TITLE" class="w-full bg-transparent border border-white/10 p-4">
+          <button onclick="generateSermonCode()" class="w-full bg-gold text-black py-4 font-bold">GENERATE SERMON</button>
+          <button onclick="document.getElementById('admin-panel').classList.add('hidden')" class="w-full text-white/30 text-xs">CLOSE COMMAND</button>
       </div>
   </div>
 

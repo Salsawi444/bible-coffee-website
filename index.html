@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bible & Coffee | Global</title>
+  <title>Bible & Coffee | Global Black Label</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Inter:wght@200;400;900&family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,21 +29,15 @@
 
   <div id="home-wrapper">
     <header id="home" class="hero-container">
-      <div class="hero-bg-wrapper">
-          <div class="hero-bg"></div>
-      </div>
-      <div class="hero-overlay"></div>
-      
+      <div class="hero-bg"></div>
       <div class="hero-content">
-        <div class="brand-reveal">
-          <p class="hero-pretitle">THE EXTRACTION MISSION</p>
-          <h1 class="hero-title">
-            <span class="serif-text">Bible</span>
-            <span class="ampersand">&</span>
-            <span class="sans-text">Coffee</span>
+          <p class="mission-tag">MISSION PROTOCOL</p>
+          <h1 class="hero-brand">
+              <span class="serif-brand">Bible</span>
+              <span class="amp-brand">&</span>
+              <span class="sans-brand">Coffee</span>
           </h1>
-          <p class="hero-subtitle">FRIDAYS©</p>
-        </div>
+          <p class="hero-year">FRIDAYS© 2026</p>
       </div>
     </header>
 
@@ -53,45 +47,43 @@
             ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ●
         </div>
     </div>
-
-    <section class="mission-grid">
-        <div class="mission-card"><h4>AUTHENTIC</h4><p>Beyond the walls, where the Gospel comes alive.</p></div>
-        <div class="mission-card"><h4>TRANSFORMATION</h4><p>Not rituals — but real transformation.</p></div>
-        <div class="mission-card"><h4>RECLAIMED</h4><p>Every seat at the table is a soul reclaimed.</p></div>
-        <div class="mission-card"><h4>RESCUE</h4><p>Establishing the Kingdom in every heart.</p></div>
-    </section>
   </div>
 
   <section id="join" class="section-container hidden">
-      <div class="join-box">
-          <h2>JOIN THE TABLE</h2>
-          <div class="form-grid">
-              <select id="country-select" onchange="updateCities()">
+      <div class="luxury-form-card">
+          <h2 class="form-title italic">Reserve Your Seat</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <select id="country-select" onchange="updateCities()" class="lux-input">
                   <option value="" disabled selected>SELECT COUNTRY</option>
               </select>
-              <select id="city-select" onchange="updateLocations()">
+              <select id="city-select" onchange="updateLocations()" class="lux-input">
                   <option value="" disabled selected>SELECT CITY</option>
               </select>
-              <select id="location-select">
+              <select id="location-select" class="lux-input md:col-span-2">
                   <option value="" disabled selected>SPECIFIC HUB</option>
               </select>
-              <input type="text" id="name-input" placeholder="FULL NAME">
-              <input type="email" id="email-input" placeholder="EMAIL">
-              <input type="tel" id="phone-input" placeholder="TEL. NUMBER">
+              <input type="text" id="name-input" placeholder="FULL NAME" class="lux-input">
+              <input type="email" id="email-input" placeholder="EMAIL ADDRESS" class="lux-input">
+              <input type="tel" id="phone-input" placeholder="SECURE LINE" class="lux-input md:col-span-2">
           </div>
-          <button id="reserve-btn" onclick="handleReservation()">RESERVE YOUR SEAT</button>
-          <p id="slot-status">SYSTEM READY: <span id="slot-counter">--</span> SEATS</p>
+          <div class="form-footer">
+              <p class="slot-text">REMAINING SLOTS: <span id="slot-counter">--</span></p>
+              <button id="reserve-btn" onclick="handleReservation()" class="lux-btn">Confirm Deployment</button>
+          </div>
       </div>
   </section>
 
   <div id="audio-control">
       <div id="hud-content">
-          <div class="radar"><div id="radar-ring"></div><div id="signal-dot"></div></div>
-          <div class="hud-text">
-              <span id="audio-status">SIGNAL: MUTED</span>
-              <span class="hz">88.4 MHZ ARCHIVE</span>
+          <div class="radar-box">
+              <div id="radar-ring"></div>
+              <div id="signal-dot"></div>
           </div>
-          <button onclick="handleSignal()"><i data-lucide="radio"></i></button>
+          <div class="hud-info">
+              <span id="audio-status">SIGNAL: MUTED</span>
+              <span class="hz-label">88.4 MHZ ARCHIVE</span>
+          </div>
+          <button onclick="handleSignal()" class="signal-trigger"><i data-lucide="radio"></i></button>
       </div>
   </div>
 

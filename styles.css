@@ -1558,3 +1558,34 @@ select.ultra-input {
     opacity: 0;
 }
 
+/* MONACO KINETICS */
+.monaco-ticker {
+    display: flex;
+    overflow: hidden;
+}
+
+.ticker-slide {
+    display: inline-block;
+    animation: monaco-drift 30s linear infinite;
+}
+
+@keyframes monaco-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* MOBILE REFINEMENT */
+@media (max-width: 768px) {
+    #monaco-architecture {
+        padding-top: 8vh !important;
+    }
+    #monaco-architecture h2 {
+        letter-spacing: -2px !important;
+    }
+    #monaco-architecture h2 span {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.5) !important; /* Sharper on mobile */
+    }
+    #monaco-architecture p {
+        font-size: 17px !important;
+    }
+}

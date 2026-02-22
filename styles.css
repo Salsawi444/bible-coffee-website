@@ -1636,3 +1636,31 @@ select.ultra-input {
     .wide { min-height: 80px; }
 }
 
+
+
+/* VANGUARD SYSTEM */
+.vanguard-ticker {
+    overflow: hidden;
+}
+
+.ticker-track {
+    display: inline-block;
+    animation: vanguardScroll 40s linear infinite;
+}
+
+@keyframes vanguardScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* MOBILE FIXES: Silicon Valley standards prioritize the thumb-scroll */
+@media (max-width: 900px) {
+    #mission-vanguard div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important; /* Stacks columns */
+        gap: 40px !important;
+    }
+    
+    .vanguard-content h2 {
+        font-size: 3.5rem !important; /* Large but readable */
+    }
+}

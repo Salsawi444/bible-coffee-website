@@ -3,201 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Bible & Coffee | Black Label Edition</title>
+  <title>Bible & Coffee | Global</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Inter:wght@200;400;700&family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Inter:wght@200;400;900&family=Oswald:wght@300;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#080808] text-white overflow-x-hidden">
-
-  <div class="grain-overlay"></div>
+<body>
 
   <nav>
     <div class="nav-container">
       <button id="menu-toggle" class="mobile-toggle"><i data-lucide="menu"></i></button>
       <div id="nav-links" class="nav-links">
-        <button onclick="showSection('home',this)" class="active">ARCHIVE</button>
+        <button onclick="showSection('home',this)" class="active">HOME</button>
         <button onclick="showSection('magazine',this)">MAGAZINE</button>
-        <button onclick="showSection('merch',this)">PROVISIONS</button>
-        <button onclick="showSection('sermon',this)">TRANSMISSIONS</button>
-        <button onclick="showSection('events',this)">WORLD TOUR</button>
-        <button onclick="showSection('support',this)">STEWARDSHIP</button>
-        <button onclick="showSection('join',this)">THE TABLE</button>
-        <button onclick="showSection('contact',this)">INTEL</button>
+        <button onclick="showSection('merch',this)">MERCH</button>
+        <button onclick="showSection('sermon',this)">SERMON</button>
+        <button onclick="showSection('events',this)">EVENTS</button>
+        <button onclick="showSection('support',this)">SUPPORT</button>
+        <button onclick="showSection('join',this)">JOIN</button>
+        <button onclick="showSection('contact',this)">CONTACT</button>
       </div>
     </div>
   </nav>
 
   <div id="home-wrapper">
     <header id="home" class="hero-container">
-      <div class="hero-zoom-wrapper">
-        <div class="hero-bg-layer"></div>
+      <div class="hero-bg-wrapper">
+          <div class="hero-bg"></div>
       </div>
-      <div class="hero-overlay-layer"></div>
+      <div class="hero-overlay"></div>
       
-      <div class="hero-content-layer">
-        <div class="brand-block">
-          <div class="pre-title">ESTABLISHED IN THE KINGDOM</div>
-          <h1 class="bugatti-title">
-            <span class="title-serif">Bible</span>
-            <span class="title-amp">&</span>
-            <span class="title-sans">Coffee</span>
-            <span class="title-gold">Fridays©</span>
+      <div class="hero-content">
+        <div class="brand-reveal">
+          <p class="hero-pretitle">THE EXTRACTION MISSION</p>
+          <h1 class="hero-title">
+            <span class="serif-text">Bible</span>
+            <span class="ampersand">&</span>
+            <span class="sans-text">Coffee</span>
           </h1>
-          
-          <div class="hero-manifesto-line">
-            <div class="gold-vertical-line"></div>
-            <div class="manifesto-text-box">
-              <h2 class="sub-heading-gold">THANK GOD IT'S FRIDAY</h2>
-              <h3 class="serif-italic-sub">The Extraction of Souls is a Lifestyle.</h3>
-              <p class="hero-paragraph">
-                We are a movement of modern believers choosing <span class="text-gold-bold">depth over hype</span>. Gathering in the shadows of coffee shops to study the Word and reclaim the city.
-              </p>
-            </div>
-          </div>
+          <p class="hero-subtitle">FRIDAYS©</p>
         </div>
       </div>
     </header>
 
-    <div class="hero-marquee">
-        <div class="marquee-content">
-            ADDIS ABABA <span class="dot">●</span> LONDON <span class="dot">●</span> DALLAS <span class="dot">●</span> NAIROBI <span class="dot">●</span> STOCKHOLM <span class="dot">●</span> JOHANNESBURG <span class="dot">●</span> DUBAI <span class="dot">●</span> NEW YORK <span class="dot">●</span>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ● 
+            ADDIS ABABA ● LONDON ● DALLAS ● NAIROBI ● STOCKHOLM ● JOHANNESBURG ● DUBAI ● NEW YORK ●
         </div>
     </div>
 
-    <section id="manifesto" class="manifesto-section">
-      <div class="divider-glow"></div>
-      <div class="manifesto-inner">
-          <div class="manifesto-grid">
-              <div class="manifesto-card">
-                  <span class="card-num">01</span>
-                  <h4>AUTHENTIC</h4>
-                  <p>Beyond the walls, where the Gospel comes alive. Simple. Clear. Honest.</p>
-              </div>
-              <div class="manifesto-card">
-                  <span class="card-num">02</span>
-                  <h4>TRANSFORMATION</h4>
-                  <p>Not rituals — but real transformation. Not performance — but presence.</p>
-              </div>
-              <div class="manifesto-card">
-                  <span class="card-num">03</span>
-                  <h4>RECLAIMED</h4>
-                  <p>Every seat at the table is a soul reclaimed. Connection, not just attendance.</p>
-              </div>
-              <div class="manifesto-card">
-                  <span class="card-num">04</span>
-                  <h4>RESCUE</h4>
-                  <p>Establishing the Kingdom in every heart. Pulling up with the Word in hand.</p>
-              </div>
-          </div>
-
-          <div class="extraction-mission-box">
-              <p class="mission-label">MISSION PROTOCOL</p>
-              <h2 class="mission-title">
-                  "WE ARE GOING TO <br><span class="soul-robber-text">ROB SOULS</span><br>FROM HELL."
-              </h2>
-              <button onclick="showSection('join')" class="mission-btn-luxury">
-                  REQUEST ACCESS
-              </button>
-          </div>
-      </div>
+    <section class="mission-grid">
+        <div class="mission-card"><h4>AUTHENTIC</h4><p>Beyond the walls, where the Gospel comes alive.</p></div>
+        <div class="mission-card"><h4>TRANSFORMATION</h4><p>Not rituals — but real transformation.</p></div>
+        <div class="mission-card"><h4>RECLAIMED</h4><p>Every seat at the table is a soul reclaimed.</p></div>
+        <div class="mission-card"><h4>RESCUE</h4><p>Establishing the Kingdom in every heart.</p></div>
     </section>
   </div>
 
-  <section id="magazine" class="section-container hidden">
-      <div class="max-w-6xl mx-auto px-6">
-          <div class="editorial-header">
-              <h2 class="editorial-title">THE ARCHIVES</h2>
-              <p class="editorial-subtitle">INTEL // VOLUME 01</p>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-32">
-              <div class="magazine-main-feature" onclick="window.open('magazine28.pdf', '_blank')">
-                  <img src="megimage.jpeg" alt="Cover" class="luxury-img">
-                  <div class="img-reveal-text">DECRYPT EDITION</div>
-              </div>
-              <div class="space-y-8">
-                  <span class="transmission-label">LATEST TRANSMISSION</span>
-                  <h3 class="feature-title">Culture, Faith & <span class="text-white/20">The Streets</span></h3>
-                  <p class="feature-description">Issue 28 explores the collision of ancient truth and urban survival.</p>
-                  <a href="magazine28.pdf" target="_blank" class="luxury-link">READ FULL DOSSIER</a>
-              </div>
-          </div>
-      </div>
-  </section>
-
   <section id="join" class="section-container hidden">
-    <div class="max-w-3xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <span class="premium-subtitle">SEATING PROTOCOL</span>
-            <h2 class="luxury-briefing-title">RESERVE YOUR SEAT</h2>
-            <div class="premium-divider"></div>
-        </div>
-
-        <div class="luxury-form-container">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="input-group">
-                    <select id="country-select" class="luxury-input" required onchange="updateCities()">
-                        <option value="" disabled selected>SELECT COUNTRY</option>
-                    </select>
-                    <label class="luxury-label">COUNTRY</label>
-                </div>
-                <div class="input-group">
-                    <select id="city-select" class="luxury-input" required onchange="updateLocations()">
-                        <option value="" disabled selected>SELECT CITY</option>
-                    </select>
-                    <label class="luxury-label">CITY</label>
-                </div>
-                <div class="input-group md:col-span-2">
-                    <select id="location-select" class="luxury-input" required>
-                        <option value="" disabled selected>SELECT SPECIFIC HUB</option>
-                    </select>
-                    <label class="luxury-label">MISSION HUB</label>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="name-input" class="luxury-input" placeholder=" " required>
-                    <label class="luxury-label">FULL NAME</label>
-                </div>
-                <div class="input-group">
-                    <input type="email" id="email-input" class="luxury-input" placeholder=" " required>
-                    <label class="luxury-label">EMAIL ADDRESS</label>
-                </div>
-                <div class="input-group md:col-span-2">
-                    <input type="tel" id="phone-input" class="luxury-input" placeholder=" " required>
-                    <label class="luxury-label">SECURE LINE (PHONE)</label>
-                </div>
-            </div>
-
-            <div class="mt-16 text-center">
-                <div id="slot-status-text">
-                    REMAINING SEATS: <span id="slot-counter" class="counter-glow">--</span>
-                </div>
-                <button id="reserve-btn" onclick="handleReservation()" class="bugatti-btn">
-                    CONFIRM DEPLOYMENT
-                    <div class="btn-shimmer"></div>
-                </button>
-            </div>
-        </div>
-    </div>
+      <div class="join-box">
+          <h2>JOIN THE TABLE</h2>
+          <div class="form-grid">
+              <select id="country-select" onchange="updateCities()">
+                  <option value="" disabled selected>SELECT COUNTRY</option>
+              </select>
+              <select id="city-select" onchange="updateLocations()">
+                  <option value="" disabled selected>SELECT CITY</option>
+              </select>
+              <select id="location-select">
+                  <option value="" disabled selected>SPECIFIC HUB</option>
+              </select>
+              <input type="text" id="name-input" placeholder="FULL NAME">
+              <input type="email" id="email-input" placeholder="EMAIL">
+              <input type="tel" id="phone-input" placeholder="TEL. NUMBER">
+          </div>
+          <button id="reserve-btn" onclick="handleReservation()">RESERVE YOUR SEAT</button>
+          <p id="slot-status">SYSTEM READY: <span id="slot-counter">--</span> SEATS</p>
+      </div>
   </section>
 
-  <footer class="luxury-footer">
-      <div id="audio-control" class="hud-terminal">
-          <div id="hud-content">
-              <div class="radar-circle">
-                  <div id="radar-ring"></div>
-                  <div id="signal-dot"></div>
-              </div>
-              <div class="hud-text">
-                  <span id="audio-status">SIGNAL: MUTED</span>
-                  <span class="hud-sub">SECURE FREQUENCY</span>
-              </div>
-              <button onclick="handleSignal()" class="hud-btn"><i data-lucide="radio"></i></button>
+  <div id="audio-control">
+      <div id="hud-content">
+          <div class="radar"><div id="radar-ring"></div><div id="signal-dot"></div></div>
+          <div class="hud-text">
+              <span id="audio-status">SIGNAL: MUTED</span>
+              <span class="hz">88.4 MHZ ARCHIVE</span>
           </div>
+          <button onclick="handleSignal()"><i data-lucide="radio"></i></button>
       </div>
-  </footer>
+  </div>
 
   <script src="script.js"></script>
-  <script>lucide.createIcons();</script>
 </body>
 </html>

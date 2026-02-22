@@ -1558,15 +1558,16 @@ select.ultra-input {
     opacity: 0;
 }
 
-/* MONACO KINETICS */
+/* MONACO SLIKNESS PHYSICS */
 .monaco-ticker {
     display: flex;
     overflow: hidden;
+    pointer-events: none; /* Smooth scrolling bypass */
 }
 
 .ticker-slide {
     display: inline-block;
-    animation: monaco-drift 30s linear infinite;
+    animation: monaco-drift 20s linear infinite; /* Faster for mobile energy */
 }
 
 @keyframes monaco-drift {
@@ -1574,18 +1575,17 @@ select.ultra-input {
     100% { transform: translateX(-100%); }
 }
 
-/* MOBILE REFINEMENT */
-@media (max-width: 768px) {
-    #monaco-architecture {
-        padding-top: 8vh !important;
-    }
+/* OLED OPTIMIZATION */
+@media (max-width: 480px) {
     #monaco-architecture h2 {
-        letter-spacing: -2px !important;
-    }
-    #monaco-architecture h2 span {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.5) !important; /* Sharper on mobile */
+        font-size: 18vw !important; /* Aggressive sizing for small screens */
     }
     #monaco-architecture p {
-        font-size: 17px !important;
+        font-size: 16px !important;
+        padding: 0 10px;
+    }
+    /* Ensure the hollow text is sharp on Retina displays */
+    #monaco-architecture h2 span {
+        -webkit-text-stroke: 0.8px rgba(255,255,255,0.5) !important;
     }
 }

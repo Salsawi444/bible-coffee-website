@@ -1589,3 +1589,35 @@ select.ultra-input {
         -webkit-text-stroke: 0.8px rgba(255,255,255,0.5) !important;
     }
 }
+
+/* MONACO SLIKNESS PHYSICS */
+.monaco-ticker {
+    display: flex;
+    overflow: hidden;
+    pointer-events: none; /* Smooth scrolling bypass */
+}
+
+.ticker-slide {
+    display: inline-block;
+    animation: monaco-drift 20s linear infinite; /* Faster for mobile energy */
+}
+
+@keyframes monaco-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* OLED OPTIMIZATION */
+@media (max-width: 480px) {
+    #monaco-architecture h2 {
+        font-size: 18vw !important; /* Aggressive sizing for small screens */
+    }
+    #monaco-architecture p {
+        font-size: 16px !important;
+        padding: 0 10px;
+    }
+    /* Ensure the hollow text is sharp on Retina displays */
+    #monaco-architecture h2 span {
+        -webkit-text-stroke: 0.8px rgba(255,255,255,0.5) !important;
+    }
+}

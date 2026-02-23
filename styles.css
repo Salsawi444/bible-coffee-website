@@ -1,3 +1,47 @@
+/* --- THE PLATINUM DNA // ADD TO TOP OF FILE --- */
+:root {
+    --honey-gold: #c5a059;      
+    --neutral-charcoal: #0a0a0a; 
+    --soft-cream: #f4f1ea;      
+    --deep-black: #000000;
+    
+    /* Mapping the old Master colors to the new DNA so nothing breaks */
+    --primary-orange: var(--honey-gold); 
+    --accent: var(--honey-gold);
+}
+
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--deep-black); 
+    color: var(--soft-cream); 
+    line-height: 1.8;
+}
+
+/* Update your existing Nav to the Refined look */
+nav { 
+    background: rgba(0,0,0,0.92) !important; 
+    backdrop-filter: blur(20px); 
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1) !important; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- 1. CORE ARCHITECTURE --- */
 * { 
     box-sizing: border-box; 

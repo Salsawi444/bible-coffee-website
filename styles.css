@@ -79,50 +79,134 @@ nav {
     .nav-links.active-menu { display: flex !important; }
 }
 
-/* --- 3. HERO & BRANDING --- */
-.hero-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden; background-color: black; }
-.hero-bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('hero-family.jpg'); background-size: cover; background-position: center center; z-index: 0; }
-.hero-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 60%, #000000 100%); }
+/* REPLACE Section 3 (HERO & BRANDING) in your styles.css with this elevated version */
+
+/* --- 3. ELEVATED HERO (GOLDEN HOUR) --- */
+.hero-container { 
+    position: relative; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    background-color: #0f0f12; /* Charcoal Matte */
+    overflow: hidden;
+}
+
+.hero-bg-layer { 
+    position: absolute; 
+    inset: 0;
+    background-image: url('hero-family.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    filter: saturate(0.8) contrast(1.1); /* Cinematic desaturation */
+    z-index: 0; 
+}
+
+/* The Golden Hour Gradient Overlay */
+.hero-overlay-layer { 
+    position: absolute; 
+    inset: 0;
+    z-index: 1; 
+    background: linear-gradient(180deg, 
+        rgba(198, 168, 90, 0.15) 0%,   /* Top Warmth (Honey Gold tint) */
+        rgba(15, 15, 18, 0.6) 50%,     /* Middle Balance */
+        rgba(15, 15, 18, 0.95) 100%    /* Deep Bottom for text clarity */
+    );
+}
 
 .hero-content-layer { 
     position: relative; 
     z-index: 10; 
-    padding: 100px 25px 0; 
     max-width: 1200px; 
-    width: 100%; 
     margin: 0 auto; 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    padding: 120px 25px 0;
+    width: 100%;
 }
 
-.responsive-title { 
-    font-family: 'Oswald', sans-serif; 
-    font-size: clamp(3rem, 12vw, 6.5rem) !important; 
-    line-height: 0.85; 
-    text-transform: uppercase; 
-    font-weight: 700; 
+/* Stacked Headline Typography */
+.hero-headline {
+    font-family: 'Oswald', sans-serif;
+    line-height: 0.9;
+    margin-bottom: 40px;
 }
 
-.copyright-mark {
-    font-size: 0.2em;
-    position: relative;
-    display: inline-block; 
-    color: white;
-    font-weight: 400;
+.hero-headline .line-1 {
+    display: block;
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: #f2f2f2; /* Soft Cream */
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.hero-headline .line-2 {
+    display: block;
+    font-size: clamp(3.2rem, 11vw, 6.5rem);
+    color: #c6a85a; /* Warm Honey Gold */
+    font-weight: 800; /* Heavier for identity stamp */
+    letter-spacing: -3px;
+}
+
+/* Belonging Block Spacing */
+.belonging-block {
+    border-left: 1px solid rgba(198, 168, 90, 0.3);
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.gold-accent-line {
+    color: #c6a85a;
+    font-family: 'Oswald';
+    font-size: 1rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.manifesto-mini {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: #f2f2f2;
+    font-style: italic;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.belonging-description {
+    color: rgba(242, 242, 242, 0.6);
+    font-size: 1.1rem;
     font-family: 'Inter', sans-serif;
-    top: -5rem; 
-    left: 0rem;
+    font-weight: 300;
+    margin-bottom: 40px;
 }
 
-@media (max-width: 768px) {
-    .copyright-mark {
-        top: -2.5rem; 
-        left: 0rem;
-        font-size: 0.22em; 
-    }
+/* Warm CTA Button */
+.hero-cta-button {
+    background: #c6a85a;
+    color: #0f0f12;
+    font-family: 'Oswald';
+    font-weight: 700;
+    padding: 20px 45px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 4px; /* Slightly rounded for warmth */
 }
 
+.hero-cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(198, 168, 90, 0.3);
+    background: #d4bc7d;
+}
+
+.cta-micro-copy {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: rgba(242, 242, 242, 0.4);
+    letter-spacing: 2px;
+    font-family: 'Inter';
+}
 /* --- 4. THE MINIMALIST PLATINUM MARQUEE --- */
 .hero-marquee { 
     width: 100%; 

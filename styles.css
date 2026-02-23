@@ -1,3 +1,19 @@
+:root {
+    --honey-gold: #c5a059;      
+    --soft-cream: #f4f1ea;      
+    --primary-orange: var(--honey-gold); 
+}
+
+/* ZERO POSITION IMPACT */
+.responsive-title {
+    font-family: 'Oswald', sans-serif;
+    line-height: 0.95;
+    text-transform: uppercase;
+    /* We remove 'display: block' to prevent it from forcing new lines if your script doesn't want them */
+}
+
+
+
 /* --- THE PLATINUM DNA // ZERO-DISTORTION --- */
 :root {
     --honey-gold: #c5a059;      

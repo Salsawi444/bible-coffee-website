@@ -1,3 +1,23 @@
+
+:root {
+    --honey-gold: #c5a059;
+    --soft-cream: #f4f1ea;
+    --primary-orange: #c5a059; /* Directly setting the hex for mobile stability */
+}
+
+/* HERO IMAGE REFINEMENT - THE NEXT STAGE */
+.hero-bg-layer {
+    filter: sepia(20%) brightness(65%) contrast(115%);
+    /* This makes the image feel "Kingdom" and high-end */
+}
+
+.hero-overlay-layer {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(197,160,89,0.05), rgba(0,0,0,0.8)) !important;
+}
+
+
+
+
 /* --- THE PLATINUM DNA // ABSOLUTE STABILITY --- */
 :root {
     --honey-gold: #c5a059;      

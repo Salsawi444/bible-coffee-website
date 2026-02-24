@@ -1,32 +1,27 @@
-/* --- THE PLATINUM DNA // KINGDOM FOUNDATION --- */
+/* --- THE PLATINUM DNA // ABSOLUTE STABILITY --- */
 :root {
-    --honey-gold: #c5a059;      /* Golden Hour Warmth */
-    --soft-cream: #f4f1ea;      /* Sacred Ordinary Tone */
-    --deep-black: #0a0a0a;      
-    --primary-orange: var(--honey-gold); /* Master Sync */
+    --honey-gold: #c5a059;
+    --soft-cream: #f4f1ea;
+    --primary-orange: #c5a059; /* Directly setting the hex to avoid mobile glitches */
 }
 
-/* ZERO-DRIFT FONT REFINEMENT */
+/* REFINED HERO IMAGE: THE NEXT STAGE */
+.hero-bg-layer {
+    filter: sepia(20%) brightness(70%) contrast(110%);
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+/* THE SACRED OVERLAY */
+.hero-overlay-layer {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(197,160,89,0.05), rgba(0,0,0,0.9)) !important;
+}
+
 .responsive-title {
     font-family: 'Oswald', sans-serif;
     line-height: 0.9;
     text-transform: uppercase;
-    font-weight: 700;
 }
-
-/* CINEMATIC HERO UPGRADE */
-.hero-bg-layer {
-    filter: sepia(15%) brightness(75%) contrast(110%);
-    transition: transform 20s ease-in-out;
-}
-
-.hero-bg-layer::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(197, 160, 89, 0.08), rgba(0,0,0,0.9));
-}
-
 /* --- 2. NAVIGATION --- */
 nav { 
     position: fixed; 

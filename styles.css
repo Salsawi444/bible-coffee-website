@@ -1603,3 +1603,34 @@ select.ultra-input {
     opacity: 0;
 }
 
+
+/* --- LUXURY TYPOGRAPHY ADD-ON --- */
+.luxury-serif {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 400 !important;
+    letter-spacing: -2px !important;
+    text-transform: none !important; /* Castelfalfi uses sentence case for elegance */
+}
+
+.luxury-italic {
+    font-style: italic !important;
+}
+
+.ghost-button {
+    background: transparent !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    padding: 18px 45px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 4px !important;
+    text-transform: uppercase !important;
+    transition: all 0.4s ease !important;
+    cursor: pointer;
+}
+
+.ghost-button:hover {
+    border-color: #FCA311 !important;
+    color: #FCA311 !important;
+    letter-spacing: 6px !important;
+}

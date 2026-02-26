@@ -342,7 +342,7 @@ select.ultra-input option {
 }
 
 @media (max-width: 768px) {
-   @media (max-width: 768px) {
+   
     /* 1. LOCK BAR TO BOTTOM & PUSH CONTENT TO THE RIGHT */
     nav { 
         top: auto !important; 

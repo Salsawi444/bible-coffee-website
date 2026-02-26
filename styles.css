@@ -558,11 +558,11 @@ select.ultra-input option {
 
 /* Glassmorphism Refinement for Nav & Forms */
 nav {
-        top: auto !important;
-        bottom: 0 !important; /* Locks to thumb reach */
-        border-top: 1px solid rgba(252, 163, 17, 0.3) !important;
-        border-bottom: none !important;
-    }
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(252, 163, 17, 0.15) !important;
+}
+
 .premium-form-wrapper {
     background: rgba(10, 10, 10, 0.6) !important;
     backdrop-filter: blur(15px);
@@ -571,18 +571,16 @@ nav {
 }
 
 /* Sophisticated Typography & Hover Effects */
-nav-links {
-        position: fixed;
-        bottom: 65px; /* Pops UP from the bottom */
-        left: 0;
-        width: 100%;
-        background: rgba(10, 10, 10, 0.98);
-        display: none; /* Controlled by your JS toggle */
-    }
+.nav-links button:hover {
+    color: #FCA311;
+    letter-spacing: 6px; /* Dynamic expansion effect */
+}
 
-    .nav-links.active {
-        display: flex !important;
-    }
+/* Section Transition Smoothing */
+.section-container, #home-wrapper {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
 .hidden {
     opacity: 0;
     transform: translateY(10px);

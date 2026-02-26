@@ -342,7 +342,8 @@ select.ultra-input option {
 }
 
 @media (max-width: 768px) {
-    /* 1. LOCK THE BAR TO THE VERY BOTTOM */
+   @media (max-width: 768px) {
+    /* 1. LOCK BAR TO BOTTOM & PUSH CONTENT TO THE RIGHT */
     nav { 
         top: auto !important; 
         bottom: 0 !important; 
@@ -350,22 +351,25 @@ select.ultra-input option {
         background: rgba(0,0,0,0.95) !important; 
         backdrop-filter: blur(15px) !important;
         border-top: 1px solid rgba(252, 163, 17, 0.4) !important;
-        height: 60px !important;
+        height: 70px !important;
         display: flex !important;
         align-items: center !important;
+        z-index: 10000 !important;
     }
 
-    /* 2. CENTER THE HAMBURGER FOR THUMB USE */
+    /* THIS IS THE KEY: Forces right-alignment and prevents centering */
     .nav-container { 
-        justify-content: center !important; 
+        display: flex !important;
+        justify-content: flex-end !important; 
         width: 100% !important;
-        padding: 0 !important;
+        padding: 0 25px !important;
+        max-width: none !important;
     }
 
-    /* 3. FORCE THE MENU TO POP UPWARDS */
+    /* 2. FORCE MENU TO POP UPWARDS */
     .nav-links {
         position: fixed !important;
-        bottom: 60px !important; /* Starts exactly where the nav bar ends */
+        bottom: 70px !important; /* Anchors it to sit ON TOP of the nav bar */
         top: auto !important;     /* Disables the downward anchor */
         left: 0 !important;
         width: 100% !important;
@@ -375,10 +379,21 @@ select.ultra-input option {
         display: none; 
     }
 
-    /* 4. SHOW MENU WHEN ACTIVE */
     .nav-links.active { 
         display: flex !important; 
     }
+
+    /* 3. FIX SOCIAL MEDIA ICONS (Force them back to horizontal) */
+    .footer-socials {
+        display: flex !important;
+        flex-direction: row !important; /* FORCES HORIZONTAL ALIGNMENT */
+        justify-content: center !important;
+        gap: 30px !important;
+    }
+
+    /* PROTECT YOUR ORIGINAL HERO SETTINGS */
+    .hero-container { height: 100vh !important; min-height: -webkit-fill-available; }
+    .hero-bg-layer { background-position: center top !important; background-size: 100% auto !important; background-repeat: no-repeat; height: 100vh !important; }
 }
     /* JOYSTICK CONTROLS */
     .brand-block h1 { position: relative !important; top: 40px !important; left: -20px !important; }

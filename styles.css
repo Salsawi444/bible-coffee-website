@@ -343,39 +343,44 @@ select.ultra-input option {
 
 /* --- 8. MOBILE OPTIMIZATION & JOYSTICKS --- */
 @media (max-width: 768px) {
-    /* LOCK NAV TO BOTTOM */
+    /* 1. LOCK THE BAR TO THE VERY BOTTOM */
     nav { 
         top: auto !important; 
         bottom: 0 !important; 
         position: fixed !important; 
-        background: rgba(0,0,0,0.9) !important; 
-        backdrop-filter: blur(15px) !important; 
-        border-top: 1px solid rgba(252, 163, 17, 0.3) !important; 
-        padding: 10px 0 !important;
+        background: rgba(0,0,0,0.95) !important; 
+        backdrop-filter: blur(15px) !important;
+        border-top: 1px solid rgba(252, 163, 17, 0.4) !important;
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
     }
-    
-    .nav-container { justify-content: center !important; padding: 0 !important; }
 
-    /* FORCE MENU TO POP UPWARDS */
+    /* 2. CENTER THE HAMBURGER FOR THUMB USE */
+    .nav-container { 
+        justify-content: center !important; 
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* 3. FORCE THE MENU TO POP UPWARDS */
     .nav-links {
         position: fixed !important;
-        bottom: 60px !important; /* Anchors it ABOVE the bar */
-        top: auto !important;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
+        bottom: 60px !important; /* Starts exactly where the nav bar ends */
+        top: auto !important;     /* Disables the downward anchor */
+        left: 0 !important;
+        width: 100% !important;
+        flex-direction: column !important;
         background: rgba(10, 10, 10, 0.98) !important;
+        border-top: 1px solid #FCA311 !important;
         display: none; 
-        border-top: 1px solid #FCA311;
     }
 
-    .nav-links.active { display: flex !important; }
-
-    /* PROTECTED: YOUR ORIGINAL HERO SETTINGS */
-    .hero-container { height: 100vh !important; min-height: -webkit-fill-available; }
-    .hero-bg-layer { background-position: center top !important; background-size: 100% auto !important; background-repeat: no-repeat; height: 100vh !important; }
+    /* 4. SHOW MENU WHEN ACTIVE */
+    .nav-links.active { 
+        display: flex !important; 
+    }
 }
-
     /* JOYSTICK CONTROLS */
     .brand-block h1 { position: relative !important; top: 40px !important; left: -20px !important; }
     .brand-block div[style*="border-left"] { position: relative !important; top: 20px !important; left: 0px !important; }

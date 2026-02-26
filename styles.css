@@ -341,9 +341,8 @@ select.ultra-input option {
     letter-spacing: 2px;
 }
 
-/* --- 8. MOBILE OPTIMIZATION & JOYSTICKS --- */
 @media (max-width: 768px) {
-    /* 1. GROUND THE BAR & PUSH BUTTON TO THE RIGHT */
+    /* 1. LOCK THE BAR TO THE VERY BOTTOM */
     nav { 
         top: auto !important; 
         bottom: 0 !important; 
@@ -351,23 +350,23 @@ select.ultra-input option {
         background: rgba(0,0,0,0.95) !important; 
         backdrop-filter: blur(15px) !important;
         border-top: 1px solid rgba(252, 163, 17, 0.4) !important;
-        border-bottom: none !important;
-        height: 70px !important;
+        height: 60px !important;
         display: flex !important;
         align-items: center !important;
     }
 
+    /* 2. CENTER THE HAMBURGER FOR THUMB USE */
     .nav-container { 
-        justify-content: flex-end !important; /* Pushes hamburger to the right */
+        justify-content: center !important; 
         width: 100% !important;
-        padding: 0 25px !important;
+        padding: 0 !important;
     }
 
-    /* 2. ANCHOR MENU TO BOTTOM SO IT OPENS UPWARDS */
+    /* 3. FORCE THE MENU TO POP UPWARDS */
     .nav-links {
         position: fixed !important;
-        bottom: 70px !important; /* Sits on top of the nav bar */
-        top: auto !important;     /* Kills the downward drop */
+        bottom: 60px !important; /* Starts exactly where the nav bar ends */
+        top: auto !important;     /* Disables the downward anchor */
         left: 0 !important;
         width: 100% !important;
         flex-direction: column !important;
@@ -376,13 +375,10 @@ select.ultra-input option {
         display: none; 
     }
 
+    /* 4. SHOW MENU WHEN ACTIVE */
     .nav-links.active { 
         display: flex !important; 
     }
-
-    /* 3. PROTECT YOUR HERO SETTINGS */
-    .hero-container { height: 100vh !important; min-height: -webkit-fill-available; }
-    .hero-bg-layer { background-position: center top !important; background-size: 100% auto !important; background-repeat: no-repeat; height: 100vh !important; }
 }
     /* JOYSTICK CONTROLS */
     .brand-block h1 { position: relative !important; top: 40px !important; left: -20px !important; }

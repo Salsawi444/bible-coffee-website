@@ -1634,3 +1634,9 @@ select.ultra-input {
     color: #FCA311 !important;
     letter-spacing: 6px !important;
 }
+
+.nav-links button {
+    position: relative;
+    z-index: 10002 !important; /* Forces buttons to be "on top" of any overlays */
+    pointer-events: auto !important;
+}

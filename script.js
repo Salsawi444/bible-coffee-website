@@ -393,17 +393,3 @@ function generateMerchCode() {
 
 
 
-// --- NAVIGATION OVERRIDE: SUPPORT DISABLE ---
-// This ensures the section cannot be opened even if the button is clicked or forced
-const originalShowSection = window.showSection;
-window.showSection = function(sectionId, btn) {
-    if (sectionId === 'support') {
-        console.log("Sector Support is currently offline.");
-        return; // Stops the function here
-    }
-    // Otherwise, run the normal navigation logic
-    if (typeof originalShowSection === 'function') {
-        originalShowSection(sectionId, btn);
-    }
-};
-

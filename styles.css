@@ -1609,15 +1609,4 @@ select.ultra-input {
 
 
 
-/* --- TEMPORARY DECOMMISSION: SUPPORT SECTION --- */
-
-/* Removes the Support button from the desktop navigation row */
-.nav-links button:nth-child(6) {
-    display: none !important;
-}
-
-/* Removes the Support button from the mobile menu list */
-#nav-links button[onclick*="support"] {
-    display: none !important;
-}
 
